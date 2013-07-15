@@ -31,7 +31,7 @@ public class OxBodyCharmBuilder implements SpecialCharmBuilder {
 
   @Override
   public ISpecialCharm readCharm(Element charmElement, String id) {
-    OxBodyTechniqueDto dto = createDto(charmElement, id);
+    OxBodyTechniqueDto dto = createDto(charmElement);
     TraitType[] traitList = new TraitType[dto.traits.size()];
     for (int i = 0; i != traitList.length; i++) {
       traitList[i] = traitTypeFinder.getTrait(dto.traits.get(i));
@@ -61,10 +61,9 @@ public class OxBodyCharmBuilder implements SpecialCharmBuilder {
     return healthTypeByString;
   }
 
-  private OxBodyTechniqueDto createDto(Element charmElement, String id) {
+  private OxBodyTechniqueDto createDto(Element charmElement) {
     OxBodyTechniqueDto dto = new OxBodyTechniqueDto();
     Element oxBodyElement = charmElement.element(TAG_OXBODY_CHARM);
-    dto.charmId = id;
     dto.traits.addAll(Arrays.asList(oxBodyElement.attributeValue(ATTRIB_TRAIT).split(",")));
     for (Object pickObj : oxBodyElement.elements(TAG_OXBODY_PICK)) {
       Element pick = (Element) pickObj;

@@ -1,15 +1,19 @@
 package net.sf.anathema.character.main.magic.model.charm.special;
 
 import com.google.common.base.Preconditions;
+import net.sf.anathema.character.main.magic.parser.charms.special.paintolerance.PainToleranceDto;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class StaticPainToleranceCharm extends StaticMultiLearnableCharm implements IPainToleranceCharm {
 
-  private final int[] painToleranceLevels;
+  private final List<Integer> painToleranceLevels;
 
-  public StaticPainToleranceCharm(String charmId, int learnCount, int[] painToleranceLevels) {
-    super(charmId, learnCount);
-    Preconditions.checkArgument(painToleranceLevels.length == learnCount, "Number of pain tolerance levels must equal learn count.");
-    this.painToleranceLevels = painToleranceLevels;
+  public StaticPainToleranceCharm(String charmId, PainToleranceDto dto) {
+    super(charmId, dto.learnCount);
+    Preconditions.checkArgument(dto.learnCount == dto.levels.size(), "Number of pain tolerance levels must equal learn count.");
+    this.painToleranceLevels = new ArrayList<Integer>(dto.levels);
   }
 
   @Override
@@ -23,6 +27,6 @@ public class StaticPainToleranceCharm extends StaticMultiLearnableCharm implemen
     if (learnCount <= 0) {
       return 0;
     }
-    return painToleranceLevels[learnCount - 1];
+    return painToleranceLevels.get(learnCount - 1);
   }
 }
