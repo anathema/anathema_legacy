@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public class OxBodyTechniqueConfiguration implements OxBodyTechniqueSpecials {
+public class OxBodyTechniqueSpecialsImpl implements OxBodyTechniqueSpecials {
 
   private final Announcer<ISpecialCharmLearnListener> control = Announcer.to(ISpecialCharmLearnListener.class);
   private final IncrementChecker incrementChecker;
@@ -29,8 +29,8 @@ public class OxBodyTechniqueConfiguration implements OxBodyTechniqueSpecials {
   private final Charm oxBodyTechnique;
   private final IHealthLevelProvider healthLevelProvider;
 
-  public OxBodyTechniqueConfiguration(final Hero hero, Charm oxBodyTechnique, final TraitType[] relevantTraits,
-                                      final OxBodyTechniqueArbitrator arbitrator, IOxBodyTechniqueCharm properties) {
+  public OxBodyTechniqueSpecialsImpl(final Hero hero, Charm oxBodyTechnique, final TraitType[] relevantTraits,
+                                     final OxBodyTechniqueArbitrator arbitrator, IOxBodyTechniqueCharm properties) {
     this.oxBodyTechnique = oxBodyTechnique;
     incrementChecker = new IncrementChecker() {
       @Override
