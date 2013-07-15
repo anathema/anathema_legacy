@@ -77,40 +77,7 @@ String operatingSystem() {
 }
 
 subprojects {
-  apply plugin: 'java'
-  sourceCompatibility = 1.7
-
-  apply plugin: 'idea'
-  apply plugin: 'eclipse'
-  
-  repositories {
-    mavenCentral()
-    maven {
-      url 'https://github.com/anathema/anathema-thirdparty/raw/master/releases/'
-    }
-  }
-
-  configurations.all {
-    resolutionStrategy {
-      force 'commons-io:commons-io:2.4'
-    }
-  }
-
-  sourceSets.main.java.srcDir 'src'
-  sourceSets.test.java.srcDir 'test'
-  sourceSets.main.resources.srcDir 'resources'
-
-  task collectTransitiveDependencies() << {
-    copy {
-      from configurations.compile.findAll { File dependency -> (!dependency.absolutePath.contains('jfxrt.jar')) }
-      into parent.ext.dependenciesDir
-    }
-  }
-
-  task testJar(type: Jar, dependsOn: testClasses) {
-    baseName = "test-${project.archivesBaseName}"
-    from sourceSets.test.output
-  }
+  apply from: "../gradle/subprojectPresets.gradle"
 }
 
 task clean << {
