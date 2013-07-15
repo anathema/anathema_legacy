@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.charms.advance.creation;
 
 import net.sf.anathema.character.main.magic.model.magic.Magic;
-import net.sf.anathema.hero.advance.CostAnalyzer;
+import net.sf.anathema.hero.charms.advance.costs.CostAnalyzer;
 import net.sf.anathema.hero.charms.advance.costs.MagicCosts;
 import net.sf.anathema.hero.charms.model.MagicCreationCostEvaluator;
 import net.sf.anathema.hero.charms.model.WeightedMagicSorter;

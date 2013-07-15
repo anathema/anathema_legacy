@@ -1,11 +1,5 @@
-package net.sf.anathema.character.main.magic.model.charms;
+package net.sf.anathema.character.main.magic.model.charm;
 
-import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charm.CharmAttributeList;
-import net.sf.anathema.character.main.magic.model.charm.CharmGroup;
-import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
-import net.sf.anathema.character.main.magic.model.charm.ICharmLearnListener;
-import net.sf.anathema.character.main.magic.model.charm.ICharmLearnStrategy;
 import net.sf.anathema.character.main.magic.model.charm.special.CharmSpecialsModel;
 import net.sf.anathema.character.main.magic.model.charm.special.MultiLearnCharmSpecials;
 import net.sf.anathema.character.main.magic.model.charm.special.MultipleEffectCharmSpecials;

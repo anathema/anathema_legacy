@@ -9,7 +9,7 @@ import net.sf.anathema.character.main.magic.model.charm.special.CharmSpecialsMod
 import net.sf.anathema.character.main.magic.model.charm.special.MultipleEffectCharmSpecials;
 import net.sf.anathema.character.main.magic.model.charm.special.SubEffect;
 import net.sf.anathema.character.main.magic.model.charm.special.SubEffectCharmSpecials;
-import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
+import net.sf.anathema.character.main.magic.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.magic.sheet.content.IMagicStats;
 import net.sf.anathema.hero.charms.model.CharmsModel;

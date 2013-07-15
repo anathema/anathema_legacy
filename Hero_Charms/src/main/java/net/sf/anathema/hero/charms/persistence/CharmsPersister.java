@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.charms.persistence;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
+import net.sf.anathema.character.main.magic.model.charm.ILearningCharmGroup;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.charms.persistence.special.SpecialCharmListPersister;
 import net.sf.anathema.hero.model.Hero;

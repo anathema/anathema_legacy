@@ -1,8 +1,4 @@
-package net.sf.anathema.character.main.magic.model.charms;
-
-import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
-import net.sf.anathema.character.main.magic.model.charm.ICharmLearnListener;
+package net.sf.anathema.character.main.magic.model.charm;
 
 public interface ILearningCharmGroup extends ICharmGroup, IBasicLearnCharmGroup {
 

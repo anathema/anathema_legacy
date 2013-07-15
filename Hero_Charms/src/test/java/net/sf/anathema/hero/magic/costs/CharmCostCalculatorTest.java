@@ -7,7 +7,7 @@ import net.sf.anathema.character.main.traits.context.CreationTraitValueStrategy;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.hero.BasicCharacterTestCase;
 import net.sf.anathema.hero.advance.AbstractBonusPointTestCase;
-import net.sf.anathema.hero.advance.CostAnalyzerImpl;
+import net.sf.anathema.hero.charms.advance.costs.CostAnalyzerImpl;
 import net.sf.anathema.hero.charms.advance.creation.MagicCreationCostCalculator;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.charms.model.CharmsModelImpl;

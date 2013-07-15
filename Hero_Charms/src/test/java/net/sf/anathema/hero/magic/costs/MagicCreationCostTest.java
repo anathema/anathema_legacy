@@ -2,7 +2,7 @@ package net.sf.anathema.hero.magic.costs;
 
 import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.character.main.magic.model.magic.Magic;
-import net.sf.anathema.hero.advance.CostAnalyzer;
+import net.sf.anathema.hero.charms.advance.costs.CostAnalyzer;
 import net.sf.anathema.hero.charms.advance.creation.MagicCreationCosts;
 import net.sf.anathema.hero.charms.template.advance.MagicPointsTemplate;
 import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;

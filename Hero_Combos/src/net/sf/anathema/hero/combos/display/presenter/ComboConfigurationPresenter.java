@@ -8,7 +8,7 @@ import com.google.common.collect.Lists;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmLearnAdapter;
 import net.sf.anathema.character.main.magic.model.charm.ICharmLearnListener;
-import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
+import net.sf.anathema.character.main.magic.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.MagicDisplayLabeler;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.hero.charms.model.CharmsModel;

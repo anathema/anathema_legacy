@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.charms.advance.experience;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.hero.advance.CostAnalyzerImpl;
+import net.sf.anathema.hero.charms.advance.costs.CostAnalyzerImpl;
 import net.sf.anathema.hero.model.Hero;
 
 public class CharmExperienceCostCalculator {

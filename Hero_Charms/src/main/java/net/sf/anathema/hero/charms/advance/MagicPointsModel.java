@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.charms.advance;
 
 import net.sf.anathema.character.main.template.creation.ICreationPoints;
-import net.sf.anathema.hero.advance.CostAnalyzerImpl;
+import net.sf.anathema.hero.charms.advance.costs.CostAnalyzerImpl;
 import net.sf.anathema.hero.charms.advance.creation.DefaultMagicModel;
 import net.sf.anathema.hero.charms.advance.creation.FavoredMagicModel;
 import net.sf.anathema.hero.charms.advance.creation.MagicCreationCostCalculator;

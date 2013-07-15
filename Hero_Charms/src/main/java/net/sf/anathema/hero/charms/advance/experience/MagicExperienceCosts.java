@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.charms.advance.experience;
 
 import net.sf.anathema.character.main.magic.model.magic.Magic;
-import net.sf.anathema.hero.advance.CostAnalyzer;
+import net.sf.anathema.hero.charms.advance.costs.CostAnalyzer;
 import net.sf.anathema.hero.charms.advance.costs.MagicCosts;
 import net.sf.anathema.hero.charms.advance.costs.MagicPointsStrategy;
 import net.sf.anathema.hero.charms.template.advance.MagicPointsTemplate;

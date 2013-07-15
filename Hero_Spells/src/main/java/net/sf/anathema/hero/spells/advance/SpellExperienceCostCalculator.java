@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.spells.advance;
 
 import net.sf.anathema.character.main.magic.model.spells.Spell;
-import net.sf.anathema.hero.advance.CostAnalyzerImpl;
+import net.sf.anathema.hero.charms.advance.costs.CostAnalyzerImpl;
 import net.sf.anathema.hero.charms.advance.experience.MagicExperienceCosts;
 import net.sf.anathema.hero.model.Hero;
 
