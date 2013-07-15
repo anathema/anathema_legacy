@@ -5,24 +5,24 @@ import net.sf.anathema.hero.concept.CasteType;
 
 public class CharmsRulesImpl implements CharmsRules {
 
-  private CharmsTemplate tto;
+  private CharmsTemplate template;
 
-  public CharmsRulesImpl(CharmsTemplate tto) {
-    this.tto = tto;
+  public CharmsRulesImpl(CharmsTemplate template) {
+    this.template = template;
   }
 
   @Override
   public MartialArtsRules getMartialArtsRules() {
-    return new MartialArtsRulesImpl(tto.martialArts);
+    return new MartialArtsRulesImpl(template.martialArts);
   }
 
   @Override
   public boolean canLearnCharms() {
-    return !"None".equals(tto.charmType);
+    return !"None".equals(template.charmType);
   }
 
   @Override
   public boolean isAllowedAlienCharms(CasteType caste) {
-    return tto.charmType.contains(caste.getId());
+    return template.alienCharmCastes.contains(caste.getId());
   }
 }

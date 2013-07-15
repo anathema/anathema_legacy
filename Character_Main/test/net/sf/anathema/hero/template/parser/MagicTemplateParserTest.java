@@ -1,25 +1,16 @@
 package net.sf.anathema.hero.template.parser;
 
-import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.character.main.dummy.DummyCharmUtilities;
 import net.sf.anathema.character.main.magic.model.spells.CircleType;
-import net.sf.anathema.character.main.template.magic.CharmTemplate;
-import net.sf.anathema.character.main.template.magic.MartialArtsRulesImpl;
-import net.sf.anathema.hero.dummy.DummyCasteType;
-import net.sf.anathema.hero.dummy.magic.DummyMartialArtsRules;
-import net.sf.anathema.hero.dummy.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.character.main.xml.magic.GenericMagicTemplate;
 import net.sf.anathema.character.main.xml.magic.GenericMagicTemplateParser;
-import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
-import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.hero.dummy.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.apache.commons.lang3.ArrayUtils;
 import org.dom4j.Element;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -77,15 +68,6 @@ public class MagicTemplateParserTest {
   }
 
   @Test
-  public void testMortalCharmTemplate() throws Exception {
-    Element templateElement = DocumentUtilities.read(xml).getRootElement();
-    GenericMagicTemplate template = parser.parseTemplate(templateElement);
-    CharmTemplate charmTemplate = template.getCharmTemplate();
-    assertEquals(MartialArtsLevel.Mortal, charmTemplate.getMartialArtsRules().getStandardLevel());
-    assertFalse(charmTemplate.canLearnCharms());
-  }
-
-  @Test
   public void testMortalSpellTemplate() throws Exception {
     Element templateElement = DocumentUtilities.read(xml).getRootElement();
     GenericMagicTemplate template = parser.parseTemplate(templateElement);
@@ -101,66 +83,5 @@ public class MagicTemplateParserTest {
     assertTrue(ArrayUtils.contains(template.getSpellMagic().getNecromancyCircles(), CircleType.Shadowlands));
     assertTrue(ArrayUtils.contains(template.getSpellMagic().getNecromancyCircles(), CircleType.Labyrinth));
     assertFalse(ArrayUtils.contains(template.getSpellMagic().getNecromancyCircles(), CircleType.Void));
-  }
-
-  @Test
-  public void testHighLevelSettingUnmodified() throws Exception {
-    String celestialXml = "<magicTemplate>" +
-                          "<charmTemplate charmType=\"None\"><martialArts level=\"Terrestrial\"/></charmTemplate>" + "</magicTemplate>";
-    Element templateElement = DocumentUtilities.read(celestialXml).getRootElement();
-    GenericMagicTemplate template = parser.parseTemplate(templateElement);
-    DummyCharm dummyMartialArtsCharm = new DummyCharm("Dummy") {
-      @Override
-      public boolean hasAttribute(Identifier attribute) {
-        return attribute.getId().equals("MartialArts") || attribute.getId().equals("Celestial");
-      }
-    };
-    assertFalse(template.getCharmTemplate().getMartialArtsRules().isCharmAllowed(dummyMartialArtsCharm, false));
-  }
-
-  @Test
-  public void testHighLevelSettingModified() throws Exception {
-    String celestialXml = "<magicTemplate>" +
-                          "<charmTemplate charmType=\"None\" ><martialArts level=\"Terrestrial\" highLevel=\"true\"/></charmTemplate>" +
-                          "</magicTemplate>";
-    Element templateElement = DocumentUtilities.read(celestialXml).getRootElement();
-    GenericMagicTemplate template = parser.parseTemplate(templateElement);
-    DummyCharm dummyMartialArtsCharm = new DummyCharm("Dummy") {
-      @Override
-      public boolean hasAttribute(Identifier attribute) {
-        return attribute.getId().equals("MartialArts") || attribute.getId().equals("Celestial");
-      }
-    };
-    assertTrue(template.getCharmTemplate().getMartialArtsRules().isCharmAllowed(dummyMartialArtsCharm, false));
-  }
-
-  @Test
-  public void testDefaultRulesSetting() throws Exception {
-    String celestialXml = "<magicTemplate>" +
-                          "<charmTemplate charmType=\"None\" ><martialArts level=\"Terrestrial\" /></charmTemplate>" + "</magicTemplate>";
-    Element templateElement = DocumentUtilities.read(celestialXml).getRootElement();
-    GenericMagicTemplate template = parser.parseTemplate(templateElement);
-    Assert.assertTrue(template.getCharmTemplate().getMartialArtsRules() instanceof MartialArtsRulesImpl);
-  }
-
-  @Test
-  public void picksUpMartialArtsRules() throws Exception {
-    String celestialXml = "<magicTemplate>" +
-                          "<charmTemplate charmType=\"None\" ><martialArts rulesClass=\"" +
-                          DummyMartialArtsRules.class.getName() +
-                          "\" level=\"Terrestrial\" /></charmTemplate>" +
-                          "</magicTemplate>";
-    Element templateElement = DocumentUtilities.read(celestialXml).getRootElement();
-    GenericMagicTemplate template = parser.parseTemplate(templateElement);
-    Assert.assertTrue(template.getCharmTemplate().getMartialArtsRules() instanceof DummyMartialArtsRules);
-  }
-
-  @Test
-  public void testAlienCharmsAllowed() throws Exception {
-    String typeXml = "<magicTemplate>" + "<charmTemplate charmType=\"None\">" + " <alienCharms> <caste type=\"DummyCaste\"/></alienCharms>" +
-                     "<martialArts level=\"Celestial\" highLevel=\"false\" />" + "</charmTemplate>" + "</magicTemplate>";
-    Element templateElement = DocumentUtilities.read(typeXml).getRootElement();
-    GenericMagicTemplate template = parser.parseTemplate(templateElement);
-    assertTrue(template.getCharmTemplate().isAllowedAlienCharms(new DummyCasteType("DummyCaste")));
   }
 }
