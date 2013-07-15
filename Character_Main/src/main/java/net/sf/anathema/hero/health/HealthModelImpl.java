@@ -1,6 +1,5 @@
 package net.sf.anathema.hero.health;
 
-import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.traits.types.AttributeType;
 import net.sf.anathema.health.HealthLevelType;
 import net.sf.anathema.health.IHealthLevelTypeVisitor;
@@ -15,11 +14,10 @@ import net.sf.anathema.lib.util.Identifier;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HealthModelImpl implements HealthModel, HeroModel {
+public class HealthModelImpl implements HealthModel  {
 
   private final List<IHealthLevelProvider> healthLevelProviders = new ArrayList<>();
   private final List<IPainToleranceProvider> painResistanceProviders = new ArrayList<>();
-  private OxBodyTechniqueArbitratorImpl arbitrator;
 
   @Override
   public Identifier getId() {
@@ -28,18 +26,15 @@ public class HealthModelImpl implements HealthModel, HeroModel {
 
   @Override
   public void initialize(HeroEnvironment environment, Hero hero) {
-    TraitMap traitMap = TraitModelFetcher.fetch(hero);
-    HeroTemplate template = hero.getTemplate();
-    this.arbitrator = new OxBodyTechniqueArbitratorImpl(traitMap.getTraits(template.getToughnessControllingTraitTypes()));
-    addHealthLevelProvider(new DyingStaminaHealthLevelProvider(traitMap));
-    if (template.getBaseHealthProviders() == null) {
+    addHealthLevelProvider(new DyingStaminaHealthLevelProvider(TraitModelFetcher.fetch(hero)));
+    if (hero.getTemplate().getBaseHealthProviders() == null) {
       return;
     }
-    for (String providerString : template.getBaseHealthProviders()) {
+    for (String providerString : hero.getTemplate().getBaseHealthProviders()) {
       Class<?> loadedClass;
       try {
         loadedClass = Class.forName(providerString);
-        IHealthLevelProvider provider = (IHealthLevelProvider) loadedClass.getConstructors()[0].newInstance(traitMap);
+        IHealthLevelProvider provider = (IHealthLevelProvider) loadedClass.getConstructors()[0].newInstance(TraitModelFetcher.fetch(hero));
         addHealthLevelProvider(provider);
       } catch (Exception e) {
         e.printStackTrace();
@@ -105,11 +100,6 @@ public class HealthModelImpl implements HealthModel, HeroModel {
       }
     });
     return basicCount[0];
-  }
-
-  @Override
-  public OxBodyTechniqueArbitrator getOxBodyLearnArbitrator() {
-    return arbitrator;
   }
 
   @Override

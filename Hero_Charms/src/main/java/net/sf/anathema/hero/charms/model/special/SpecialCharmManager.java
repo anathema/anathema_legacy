@@ -2,8 +2,8 @@ package net.sf.anathema.hero.charms.model.special;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmLearnAdapter;
-import net.sf.anathema.hero.charms.display.special.CharmSpecialistImpl;
-import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmManager;
+import net.sf.anathema.character.main.magic.model.charm.IExtendedCharmLearnableArbitrator;
+import net.sf.anathema.character.main.magic.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.main.magic.model.charm.special.CharmSpecialsModel;
 import net.sf.anathema.character.main.magic.model.charm.special.IMultiLearnableCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.IMultipleEffectCharm;
@@ -12,17 +12,20 @@ import net.sf.anathema.character.main.magic.model.charm.special.IPainToleranceCh
 import net.sf.anathema.character.main.magic.model.charm.special.IPrerequisiteModifyingCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmLearnListener;
+import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmManager;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmVisitor;
 import net.sf.anathema.character.main.magic.model.charm.special.ISubEffectCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.ITraitCapModifyingCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.IUpgradableCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.MultipleEffectCharmConfiguration;
-import net.sf.anathema.character.main.magic.model.charm.IExtendedCharmLearnableArbitrator;
-import net.sf.anathema.character.main.magic.model.charm.ILearningCharmGroup;
+import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.hero.charms.display.special.CharmSpecialistImpl;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.health.HealthModel;
 import net.sf.anathema.hero.health.IPainToleranceProvider;
+import net.sf.anathema.hero.health.OxBodyTechniqueArbitratorImpl;
 import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.traits.TraitModelFetcher;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -66,7 +69,7 @@ public class SpecialCharmManager implements ISpecialCharmManager {
 
       @Override
       public void visitSubEffectCharm(ISubEffectCharm visitedCharm) {
-        registerSubeffectCharm(visitedCharm, charm, group);
+        registerSubEffectCharm(visitedCharm, charm, group);
       }
 
       @Override
@@ -113,26 +116,31 @@ public class SpecialCharmManager implements ISpecialCharmManager {
 
   private void registerOxBodyTechnique(IOxBodyTechniqueCharm visited, Charm charm, ILearningCharmGroup group) {
     HealthModel health = specialist.getHealth();
-    OxBodyTechniqueSpecialsImpl oxBodyTechniqueConfiguration =
-            new OxBodyTechniqueSpecialsImpl(hero, charm, visited.getRelevantTraits(), health.getOxBodyLearnArbitrator(), visited);
-    addSpecialCharmConfiguration(charm, group, oxBodyTechniqueConfiguration, true, true);
-    health.getOxBodyLearnArbitrator().addOxBodyTechniqueConfiguration(oxBodyTechniqueConfiguration);
-    health.addHealthLevelProvider(oxBodyTechniqueConfiguration.getHealthLevelProvider());
+    OxBodyTechniqueArbitratorImpl arbitrator = createArbitrator();
+    TraitType[] relevantTraits = visited.getRelevantTraits();
+    OxBodyTechniqueSpecialsImpl specials = new OxBodyTechniqueSpecialsImpl(hero, charm, relevantTraits, arbitrator, visited);
+    addSpecialCharmConfiguration(charm, group, specials, true, true);
+    arbitrator.addOxBodyTechniqueConfiguration(specials);
+    health.addHealthLevelProvider(specials.getHealthLevelProvider());
+  }
+
+  private OxBodyTechniqueArbitratorImpl createArbitrator() {
+    return new OxBodyTechniqueArbitratorImpl(TraitModelFetcher.fetch(hero).getTraits(hero.getTemplate().getToughnessControllingTraitTypes()));
   }
 
   private void registerPainToleranceCharm(final IPainToleranceCharm visitedCharm, Charm charm) {
-    final CharmSpecialsModel specialCharmConfiguration = getSpecialCharmConfiguration(charm);
+    final CharmSpecialsModel charmSpecialsModel = getSpecialCharmConfiguration(charm);
     IPainToleranceProvider painToleranceProvider = new IPainToleranceProvider() {
       @Override
       public int getPainToleranceLevel() {
-        int learnCount = specialCharmConfiguration.getCurrentLearnCount();
+        int learnCount = charmSpecialsModel.getCurrentLearnCount();
         return visitedCharm.getPainToleranceLevel(learnCount);
       }
     };
     specialist.getHealth().addPainToleranceProvider(painToleranceProvider);
   }
 
-  private void registerSubeffectCharm(ISubEffectCharm visited, Charm charm, ILearningCharmGroup group) {
+  private void registerSubEffectCharm(ISubEffectCharm visited, Charm charm, ILearningCharmGroup group) {
     SubEffectCharmSpecialsImpl configuration = new SubEffectCharmSpecialsImpl(specialist, charm, visited, arbitrator);
     addSpecialCharmConfiguration(charm, group, configuration, true, true);
   }
