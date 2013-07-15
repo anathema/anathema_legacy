@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.charms.display.view;
+package net.sf.anathema.hero.charms.display.special;
 
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;

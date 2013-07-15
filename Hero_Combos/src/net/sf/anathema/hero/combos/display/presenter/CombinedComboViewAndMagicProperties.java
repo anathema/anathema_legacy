@@ -6,7 +6,7 @@ import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.CharmTooltipBuilder;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.CharmTooltipBuilderImpl;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
-import net.sf.anathema.hero.magic.display.AbstractMagicLearnProperties;
+import net.sf.anathema.hero.charms.display.magic.AbstractMagicLearnProperties;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.resources.Resources;

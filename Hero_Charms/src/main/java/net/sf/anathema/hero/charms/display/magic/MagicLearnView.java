@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.magic.display;
+package net.sf.anathema.hero.charms.display.magic;
 
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ChangeListener;

@@ -3,7 +3,7 @@ package net.sf.anathema.character.main.magic.model.charmtree;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmGroup;
 import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
-import net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities;
+import net.sf.anathema.charms.MartialArtsUtilities;
 
 import java.util.ArrayList;
 import java.util.Collection;

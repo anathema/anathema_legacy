@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities.MARTIAL_ARTS;
+import static net.sf.anathema.charms.MartialArtsUtilities.MARTIAL_ARTS;
 
 public class CharmCacheImpl implements CharmCache {
 

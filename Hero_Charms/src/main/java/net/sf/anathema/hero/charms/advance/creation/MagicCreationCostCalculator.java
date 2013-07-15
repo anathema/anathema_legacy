@@ -5,7 +5,7 @@ import net.sf.anathema.hero.charms.advance.costs.CostAnalyzer;
 import net.sf.anathema.hero.charms.advance.costs.MagicCosts;
 import net.sf.anathema.hero.charms.model.WeightedMagicSorter;
 import net.sf.anathema.hero.charms.template.advance.MagicPointsTemplate;
-import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
+import net.sf.anathema.charms.MartialArtsLevel;
 import net.sf.anathema.hero.points.HeroBonusPointCalculator;
 
 import java.util.HashSet;

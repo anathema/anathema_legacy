@@ -5,7 +5,7 @@ import net.sf.anathema.hero.charms.model.rules.CharmsRulesImpl;
 import net.sf.anathema.hero.charms.model.rules.MartialArtsRules;
 import net.sf.anathema.hero.charms.template.model.CharmsTemplate;
 import net.sf.anathema.hero.dummy.DummyCasteType;
-import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
+import net.sf.anathema.charms.MartialArtsLevel;
 import net.sf.anathema.hero.magic.testing.CharmObjectMother;
 import org.junit.Test;
 

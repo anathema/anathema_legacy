@@ -4,9 +4,9 @@ import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider
 import net.sf.anathema.character.main.magic.model.spells.CircleType;
 import net.sf.anathema.character.main.magic.model.spells.Spell;
 import net.sf.anathema.hero.experience.ExperienceModel;
-import net.sf.anathema.hero.magic.display.MagicLearnPresenter;
-import net.sf.anathema.hero.magic.display.MagicLearnView;
-import net.sf.anathema.hero.magic.display.MagicViewListener;
+import net.sf.anathema.hero.charms.display.magic.MagicLearnPresenter;
+import net.sf.anathema.hero.charms.display.magic.MagicLearnView;
+import net.sf.anathema.hero.charms.display.magic.MagicViewListener;
 import net.sf.anathema.hero.spells.model.CircleModel;
 import net.sf.anathema.hero.spells.model.SpellsModel;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;

@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.combos.display.presenter;
 
-import net.sf.anathema.hero.magic.display.MagicLearnProperties;
-import net.sf.anathema.hero.magic.display.MagicLearnView;
+import net.sf.anathema.hero.charms.display.magic.MagicLearnProperties;
+import net.sf.anathema.hero.charms.display.magic.MagicLearnView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
 public interface ComboConfigurationView {

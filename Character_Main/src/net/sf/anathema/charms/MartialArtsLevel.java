@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.magic.model.martial;
+package net.sf.anathema.charms;
 
 import net.sf.anathema.lib.util.Identifier;
 

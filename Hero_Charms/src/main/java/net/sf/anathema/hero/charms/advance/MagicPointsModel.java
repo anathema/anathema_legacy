@@ -12,7 +12,7 @@ import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.charms.model.CharmsModelFetcher;
 import net.sf.anathema.hero.charms.template.advance.MagicPointsTemplate;
 import net.sf.anathema.hero.framework.HeroEnvironment;
-import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
+import net.sf.anathema.charms.MartialArtsLevel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.hero.model.change.ChangeAnnouncer;

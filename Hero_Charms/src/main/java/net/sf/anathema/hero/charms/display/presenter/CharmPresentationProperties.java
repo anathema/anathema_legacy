@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.charms.display;
+package net.sf.anathema.hero.charms.display.presenter;
 
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.platform.tree.document.visualizer.TreePresentationProperties;

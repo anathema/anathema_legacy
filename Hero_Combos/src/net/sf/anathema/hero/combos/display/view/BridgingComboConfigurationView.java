@@ -4,8 +4,8 @@ import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.hero.combos.display.presenter.ComboConfigurationView;
 import net.sf.anathema.hero.combos.display.presenter.ComboContainer;
 import net.sf.anathema.hero.combos.display.presenter.ComboViewProperties;
-import net.sf.anathema.hero.magic.display.MagicLearnProperties;
-import net.sf.anathema.hero.magic.display.MagicLearnView;
+import net.sf.anathema.hero.charms.display.magic.MagicLearnProperties;
+import net.sf.anathema.hero.charms.display.magic.MagicLearnView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.platform.fx.BridgingPanel;
 
