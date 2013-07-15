@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.charms.display.presenter;
+package net.sf.anathema.hero.charms.display.view;
 
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
@@ -6,6 +6,7 @@ import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.CharmTooltipBuilder;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.CharmTooltipBuilderImpl;
+import net.sf.anathema.hero.charms.display.view.ICharmTreeViewProperties;
 import net.sf.anathema.lib.gui.TooltipBuilder;
 import net.sf.anathema.lib.resources.Resources;
 

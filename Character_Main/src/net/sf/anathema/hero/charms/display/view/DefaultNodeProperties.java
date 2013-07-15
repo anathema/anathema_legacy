@@ -1,7 +1,6 @@
 package net.sf.anathema.hero.charms.display.view;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.hero.charms.display.presenter.ICharmTreeViewProperties;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.MagicDisplayLabeler;

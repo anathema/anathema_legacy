@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.charms.display.tree;
 
 import net.sf.anathema.hero.charms.display.view.CharmView;
-import net.sf.anathema.hero.charms.display.presenter.ICharmTreeViewProperties;
+import net.sf.anathema.hero.charms.display.view.ICharmTreeViewProperties;
 import net.sf.anathema.character.main.magic.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.main.magic.model.charm.ILearningCharmGroup;
 import net.sf.anathema.hero.charms.display.coloring.CharmDye;

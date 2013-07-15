@@ -1,6 +1,3 @@
-/**
- *
- */
 package net.sf.anathema.hero.charms.display.presenter;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
