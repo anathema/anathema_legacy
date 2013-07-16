@@ -6,4 +6,5 @@ public class SpecialCharmDto {
   public PainToleranceDto painTolerance;
   public TraitCapModifierDto traitCapModifier;
   public boolean isEssenceRepurchase = false;
+  public MultiEffectDto multiEffect;
 }
