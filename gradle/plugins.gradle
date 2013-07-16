@@ -8,7 +8,7 @@ def buildPlugin = {name, projects, task ->
     }
 }
 
-def exclude = ['Anathema', 'Development_Code']
+def exclude = ['Anathema']
 project.subprojects.each {
     if (exclude.contains(it.name)){
         return;
