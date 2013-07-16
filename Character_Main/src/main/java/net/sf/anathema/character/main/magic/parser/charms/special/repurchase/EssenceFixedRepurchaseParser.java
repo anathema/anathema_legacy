@@ -2,6 +2,7 @@ package net.sf.anathema.character.main.magic.parser.charms.special.repurchase;
 
 import net.sf.anathema.character.main.magic.parser.charms.special.RegisteredSpecialCharmParser;
 import net.sf.anathema.character.main.magic.parser.charms.special.SpecialCharmParser;
+import net.sf.anathema.character.main.magic.parser.dto.special.RepurchaseDto;
 import net.sf.anathema.character.main.magic.parser.dto.special.SpecialCharmDto;
 import org.dom4j.Element;
 
@@ -12,8 +13,9 @@ public class EssenceFixedRepurchaseParser implements SpecialCharmParser {
 
   @Override
   public void parse(Element charmElement, SpecialCharmDto overallDto) {
-    overallDto.isEssenceRepurchase = true;
-   }
+    overallDto.repurchase = new RepurchaseDto();
+    overallDto.repurchase.isEssenceRepurchase = true;
+  }
 
   @Override
   public boolean supports(Element charmElement) {
