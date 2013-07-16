@@ -48,7 +48,7 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
 
   public CharmCompiler(ObjectFactory objectFactory) {
     this.characterTypes = new ReflectionCharacterTypes(objectFactory);
-    SpecialCharmBuilder specialCharmBuilder = new ReflectionSpecialCharmBuilder(objectFactory);
+    ReflectionSpecialCharmBuilder specialCharmBuilder = new ReflectionSpecialCharmBuilder(objectFactory);
     this.setBuilder = new CharmSetBuilder(characterTypes, specialCharmBuilder);
     this.genericBuilder = new GenericCharmSetBuilder(characterTypes, specialCharmBuilder);
   }

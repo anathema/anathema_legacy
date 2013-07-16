@@ -69,7 +69,7 @@ public class OxBodyCharmBuilder implements SpecialCharmBuilder {
   }
 
   @Override
-  public boolean willReadCharm(Element charmElement) {
+  public boolean supports(Element charmElement) {
     return charmElement.element(TAG_OX_BODY_CHARM) != null;
   }
 }

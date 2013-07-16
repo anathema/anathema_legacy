@@ -20,7 +20,7 @@ public class PainToleranceCharmBuilder implements SpecialCharmBuilder {
   }
 
   @Override
-  public boolean willReadCharm(Element charmElement) {
+  public boolean supports(Element charmElement) {
     Element painToleranceElement = charmElement.element(TAG_PAIN_TOLERANCE);
     return painToleranceElement != null;
   }

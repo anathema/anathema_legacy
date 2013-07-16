@@ -20,7 +20,7 @@ public class EssenceFixedRepurchaseCharmBuilder implements SpecialCharmBuilder {
   }
 
   @Override
-  public boolean willReadCharm(Element charmElement) {
+  public boolean supports(Element charmElement) {
     return charmElement.element(TAG_ESSENCE_FIXED_REPURCHASES) != null;
   }
 }

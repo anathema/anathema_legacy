@@ -5,21 +5,21 @@ import net.sf.anathema.initialization.ObjectFactory;
 import org.dom4j.Element;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
-public class ReflectionSpecialCharmBuilder implements SpecialCharmBuilder {
+public class ReflectionSpecialCharmBuilder {
 
   private final List<SpecialCharmBuilder> builders = new ArrayList<>();
+  private final List<SpecialCharmBuilder> parsers = new ArrayList<>();
 
   public ReflectionSpecialCharmBuilder(ObjectFactory objectFactory) {
-    Collection<SpecialCharmBuilder> builders = objectFactory.instantiateAll(RegisteredSpecialCharmBuilder.class);
-    this.builders.addAll(builders);
+    this.builders.addAll(objectFactory.<SpecialCharmBuilder>instantiateAll(RegisteredSpecialCharmBuilder.class));
+    this.parsers.addAll(objectFactory.<SpecialCharmBuilder>instantiateAll(RegisteredSpecialCharmParser.class));
   }
 
   public ISpecialCharm readCharm(Element charmElement, String id) {
     for (SpecialCharmBuilder builder : builders) {
-      if (!builder.willReadCharm(charmElement)) {
+      if (!builder.supports(charmElement)) {
         continue;
       }
       return builder.readCharm(charmElement, id);
@@ -27,10 +27,9 @@ public class ReflectionSpecialCharmBuilder implements SpecialCharmBuilder {
     return null;
   }
 
-  @Override
-  public boolean willReadCharm(Element charmElement) {
+  public boolean supports(Element charmElement) {
     for (SpecialCharmBuilder builder : builders) {
-      if (builder.willReadCharm(charmElement)) {
+      if (builder.supports(charmElement)) {
         return true;
       }
     }

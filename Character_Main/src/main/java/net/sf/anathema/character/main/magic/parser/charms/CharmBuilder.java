@@ -5,6 +5,7 @@ import net.sf.anathema.character.main.magic.charm.CharmException;
 import net.sf.anathema.character.main.magic.charm.CharmImpl;
 import net.sf.anathema.character.main.magic.charm.ICharmXMLConstants;
 import net.sf.anathema.character.main.magic.model.source.SourceBook;
+import net.sf.anathema.character.main.magic.parser.charms.special.ReflectionSpecialCharmBuilder;
 import net.sf.anathema.hero.charmtree.duration.Duration;
 import net.sf.anathema.character.main.magic.charm.special.ISpecialCharm;
 import net.sf.anathema.hero.charmtree.type.ICharmTypeModel;
@@ -43,7 +44,7 @@ public class CharmBuilder implements ICharmBuilder {
   private final GroupStringBuilder groupBuilder = new GroupStringBuilder();
   private final SourceBuilder sourceBuilder = new SourceBuilder();
   private final CharmAttributeBuilder attributeBuilder = new CharmAttributeBuilder();
-  private final SpecialCharmBuilder specialCharmBuilder;
+  private final ReflectionSpecialCharmBuilder specialCharmBuilder;
   private final IIdStringBuilder idBuilder;
   private final ITraitPrerequisitesBuilder traitsBuilder;
   private final IAttributeRequirementBuilder attributeRequirementsBuilder;
@@ -53,7 +54,7 @@ public class CharmBuilder implements ICharmBuilder {
 
   public CharmBuilder(IIdStringBuilder idBuilder, ITraitPrerequisitesBuilder traitsBuilder, IAttributeRequirementBuilder attributeRequirementsBuilder,
                       IComboRulesBuilder comboBuilder, ICharmPrerequisiteBuilder charmPrerequisiteBuilder, CharacterTypes characterTypes,
-                      SpecialCharmBuilder specialCharmBuilder) {
+                      ReflectionSpecialCharmBuilder specialCharmBuilder) {
     this.idBuilder = idBuilder;
     this.traitsBuilder = traitsBuilder;
     this.attributeRequirementsBuilder = attributeRequirementsBuilder;

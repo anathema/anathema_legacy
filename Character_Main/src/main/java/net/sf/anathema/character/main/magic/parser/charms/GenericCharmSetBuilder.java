@@ -4,6 +4,7 @@ import net.sf.anathema.character.main.magic.charm.CharmImpl;
 import net.sf.anathema.character.main.magic.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.GenericAttributeRequirementBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.GenericTraitPrerequisitesBuilder;
+import net.sf.anathema.character.main.magic.parser.charms.special.ReflectionSpecialCharmBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.special.SpecialCharmBuilder;
 import net.sf.anathema.character.main.magic.parser.combos.GenericComboRulesBuilder;
 import net.sf.anathema.character.main.traits.TraitType;
@@ -21,7 +22,7 @@ public class GenericCharmSetBuilder extends AbstractCharmSetBuilder {
   private final GenericCharmBuilder genericsBuilder;
   private TraitType[] types;
 
-  public GenericCharmSetBuilder(CharacterTypes characterTypes, SpecialCharmBuilder specialCharmBuilder) {
+  public GenericCharmSetBuilder(CharacterTypes characterTypes, ReflectionSpecialCharmBuilder specialCharmBuilder) {
     this.genericsBuilder =
             new GenericCharmBuilder(new GenericIdStringBuilder(), new GenericTraitPrerequisitesBuilder(), new GenericAttributeRequirementBuilder(),
                     new GenericComboRulesBuilder(), new GenericCharmPrerequisiteBuilder(), characterTypes, specialCharmBuilder);

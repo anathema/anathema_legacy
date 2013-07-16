@@ -31,7 +31,7 @@ public class TranscendenceCharmBuilder implements SpecialCharmBuilder {
   }
 
   @Override
-  public boolean willReadCharm(Element charmElement) {
+  public boolean supports(Element charmElement) {
     return charmElement.element(TAG_TRANSCENDENCE) != null;
   }
 }

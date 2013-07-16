@@ -7,5 +7,5 @@ public interface SpecialCharmBuilder {
 
   ISpecialCharm readCharm(Element charmElement, String id);
 
-  boolean willReadCharm(Element charmElement);
+  boolean supports(Element charmElement);
 }

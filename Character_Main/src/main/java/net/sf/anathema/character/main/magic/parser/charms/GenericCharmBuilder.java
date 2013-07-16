@@ -2,6 +2,7 @@ package net.sf.anathema.character.main.magic.parser.charms;
 
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.GenericAttributeRequirementBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.GenericTraitPrerequisitesBuilder;
+import net.sf.anathema.character.main.magic.parser.charms.special.ReflectionSpecialCharmBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.special.SpecialCharmBuilder;
 import net.sf.anathema.character.main.magic.parser.combos.GenericComboRulesBuilder;
 import net.sf.anathema.character.main.traits.TraitType;
@@ -18,7 +19,7 @@ public class GenericCharmBuilder extends CharmBuilder implements ICharmBuilder, 
   public GenericCharmBuilder(GenericIdStringBuilder idBuilder, GenericTraitPrerequisitesBuilder traitBuilder,
                              GenericAttributeRequirementBuilder attributeRequirementBuilder, GenericComboRulesBuilder comboBuilder,
                              GenericCharmPrerequisiteBuilder charmPrerequisiteBuilder, CharacterTypes characterTypes,
-                             SpecialCharmBuilder specialCharmBuilder) {
+                             ReflectionSpecialCharmBuilder specialCharmBuilder) {
     super(idBuilder, traitBuilder, attributeRequirementBuilder, comboBuilder, charmPrerequisiteBuilder, characterTypes, specialCharmBuilder);
     this.idBuilder = idBuilder;
     this.traitBuilder = traitBuilder;

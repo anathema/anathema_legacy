@@ -6,11 +6,11 @@ import net.sf.anathema.character.main.magic.parser.charms.GenericCharmPrerequisi
 import net.sf.anathema.character.main.magic.parser.charms.GenericIdStringBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.GenericAttributeRequirementBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.GenericTraitPrerequisitesBuilder;
-import net.sf.anathema.character.main.magic.parser.charms.special.SpecialCharmBuilder;
+import net.sf.anathema.character.main.magic.parser.charms.special.ReflectionSpecialCharmBuilder;
 import net.sf.anathema.character.main.magic.parser.combos.GenericComboRulesBuilder;
+import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.hero.dummy.DummyCharacterTypes;
 import net.sf.anathema.hero.dummy.DummyExaltCharacterType;
-import net.sf.anathema.character.main.traits.types.AbilityType;
 import org.dom4j.Element;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,7 +23,7 @@ public class GenericCharmBuilderTest {
   private final DummyCharacterTypes characterTypes = new DummyCharacterTypes();
   private final GenericCharmBuilder builder =
           new GenericCharmBuilder(new GenericIdStringBuilder(), new GenericTraitPrerequisitesBuilder(), new GenericAttributeRequirementBuilder(),
-                  new GenericComboRulesBuilder(), new GenericCharmPrerequisiteBuilder(), characterTypes, mock(SpecialCharmBuilder.class));
+                  new GenericComboRulesBuilder(), new GenericCharmPrerequisiteBuilder(), characterTypes, mock(ReflectionSpecialCharmBuilder.class));
 
   @Before
   public void setUp() throws Exception {
