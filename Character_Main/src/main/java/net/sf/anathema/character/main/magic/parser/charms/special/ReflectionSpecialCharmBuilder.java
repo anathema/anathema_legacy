@@ -18,12 +18,16 @@ public class ReflectionSpecialCharmBuilder {
     this.parsers.addAll(objectFactory.<SpecialCharmParser>instantiateAll(RegisteredSpecialCharmParser.class));
   }
 
-  public ISpecialCharm readCharm(Element charmElement, String id) {
+  public SpecialCharmDto readCharmDto(Element charmElement, String id) {
     SpecialCharmDto overallDto = new SpecialCharmDto();
     overallDto.charmId = id;
     findParser(charmElement).parse(charmElement, overallDto);
+    return overallDto;
+  }
+
+  public ISpecialCharm readCharm(SpecialCharmDto overallDto) {
     return findBuilder(overallDto).readCharm(overallDto);
-   }
+  }
 
   private SpecialCharmParser findParser(Element charmElement) {
     for (SpecialCharmParser parser : parsers) {

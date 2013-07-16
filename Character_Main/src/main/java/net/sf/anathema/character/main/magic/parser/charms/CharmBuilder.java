@@ -4,26 +4,26 @@ import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.charm.CharmException;
 import net.sf.anathema.character.main.magic.charm.CharmImpl;
 import net.sf.anathema.character.main.magic.charm.ICharmXMLConstants;
-import net.sf.anathema.character.main.magic.model.source.SourceBook;
-import net.sf.anathema.character.main.magic.parser.charms.special.ReflectionSpecialCharmBuilder;
-import net.sf.anathema.hero.charmtree.duration.Duration;
 import net.sf.anathema.character.main.magic.charm.special.ISpecialCharm;
-import net.sf.anathema.hero.charmtree.type.ICharmTypeModel;
 import net.sf.anathema.character.main.magic.combos.IComboRestrictions;
 import net.sf.anathema.character.main.magic.model.attribute.MagicAttribute;
 import net.sf.anathema.character.main.magic.model.cost.ICostList;
+import net.sf.anathema.character.main.magic.model.source.SourceBook;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.IAttributeRequirementBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.ICharmPrerequisiteBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.ITraitPrerequisitesBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.PrerequisiteListBuilder;
-import net.sf.anathema.character.main.magic.parser.charms.special.SpecialCharmBuilder;
+import net.sf.anathema.character.main.magic.parser.charms.special.ReflectionSpecialCharmBuilder;
 import net.sf.anathema.character.main.magic.parser.combos.IComboRulesBuilder;
+import net.sf.anathema.character.main.magic.parser.dto.special.SpecialCharmDto;
 import net.sf.anathema.character.main.magic.parser.magic.CostListBuilder;
 import net.sf.anathema.character.main.magic.parser.magic.ICostListBuilder;
 import net.sf.anathema.character.main.magic.parser.magic.SourceBuilder;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.type.CharacterTypes;
+import net.sf.anathema.hero.charmtree.duration.Duration;
+import net.sf.anathema.hero.charmtree.type.ICharmTypeModel;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
@@ -96,9 +96,9 @@ public class CharmBuilder implements ICharmBuilder {
       }
       loadSpecialLearning(charmElement, charm);
 
-      ISpecialCharm special = specialCharmBuilder.readCharm(charmElement, id);
-      if (special != null) {
-        specialCharms.add(special);
+      SpecialCharmDto dto = specialCharmBuilder.readCharmDto(charmElement, id);
+      if (dto.isSpecial()) {
+        specialCharms.add(specialCharmBuilder.readCharm(dto));
       }
       return charm;
     } catch (PersistenceException e) {

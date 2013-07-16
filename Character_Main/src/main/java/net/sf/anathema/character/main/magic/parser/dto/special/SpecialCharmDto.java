@@ -10,4 +10,9 @@ public class SpecialCharmDto {
   public TranscendenceDto transcendence;
   public UpgradableDto upgradable;
   public SubEffectDto subEffect;
+
+  public boolean isSpecial() {
+    return repurchase != null || oxBodyTechnique != null || painTolerance != null || traitCapModifier != null || multiEffect != null ||
+           transcendence != null || upgradable != null || subEffect != null;
+  }
 }
