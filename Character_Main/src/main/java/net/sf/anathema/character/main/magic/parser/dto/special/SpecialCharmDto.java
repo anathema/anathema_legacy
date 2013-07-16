@@ -8,4 +8,5 @@ public class SpecialCharmDto {
   public TraitCapModifierDto traitCapModifier;
   public MultiEffectDto multiEffect;
   public TranscendenceDto transcendence;
+  public UpgradableDto upgradable;
 }
