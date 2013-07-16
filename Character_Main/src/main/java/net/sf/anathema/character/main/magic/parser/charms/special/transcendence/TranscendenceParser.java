@@ -13,12 +13,12 @@ public class TranscendenceParser implements SpecialCharmParser {
 
   @Override
   public void parse(Element charmElement, SpecialCharmDto overallDto) {
-    overallDto.transcendence = createTranscendenceDto(charmElement, overallDto);
+    Element transcendenceElement = charmElement.element(TAG_TRANSCENDENCE);
+    overallDto.transcendence = createTranscendenceDto(transcendenceElement, overallDto);
   }
 
-  private TranscendenceDto createTranscendenceDto(Element charmElement, SpecialCharmDto overallDto) {
+  private TranscendenceDto createTranscendenceDto(Element transcendenceElement, SpecialCharmDto overallDto) {
     TranscendenceDto dto = new TranscendenceDto();
-    Element transcendenceElement = charmElement.element(TAG_TRANSCENDENCE);
     dto.trait = getGenericTraitType(overallDto.charmId);
     dto.modifier = Integer.parseInt(transcendenceElement.attributeValue(ATTRIB_MODIFIER));
     return dto;

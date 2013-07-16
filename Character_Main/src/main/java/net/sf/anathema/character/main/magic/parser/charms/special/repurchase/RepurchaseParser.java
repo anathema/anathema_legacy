@@ -24,19 +24,22 @@ public class RepurchaseParser implements SpecialCharmParser {
 
   @Override
   public void parse(Element charmElement, SpecialCharmDto overallDto) {
-    RepurchaseDto dto = new RepurchaseDto();
-    overallDto.repurchase = dto;
     Element repurchasesElement = charmElement.element(TAG_REPURCHASES);
+    overallDto.repurchase = createRepurchaseDto(repurchasesElement);
+  }
+
+  private RepurchaseDto createRepurchaseDto(Element repurchasesElement) {
+    RepurchaseDto dto = new RepurchaseDto();
     parseTraitRepurchase(dto, repurchasesElement);
     if (dto.traitRepurchase != null) {
-      return;
+      return dto;
     }
     parseStaticRepurchase(dto, repurchasesElement);
     if (dto.staticRepurchase != null) {
-      return;
+      return dto;
     }
     parseTierRepurchaseDto(dto, repurchasesElement);
-    overallDto.repurchase = dto;
+    return dto;
   }
 
   private void parseTraitRepurchase(RepurchaseDto dto, Element repurchasesElement) {

@@ -16,14 +16,18 @@ public class MultiEffectParser implements SpecialCharmParser {
 
   @Override
   public void parse(Element charmElement, SpecialCharmDto overallDto) {
-    MultiEffectDto dto = new MultiEffectDto();
     Element multiEffectElement = charmElement.element(TAG_MULTI_EFFECT);
+    overallDto.multiEffect = createMultiEffectDto(multiEffectElement);
+  }
+
+  private MultiEffectDto createMultiEffectDto(Element multiEffectElement) {
+    MultiEffectDto dto = new MultiEffectDto();
     for (Object effectObj : multiEffectElement.elements(TAG_EFFECT)) {
       Element effect = (Element) effectObj;
       dto.effects.add(effect.attributeValue(ATTRIB_NAME));
       dto.prerequisiteEffectMap.put(effect.attributeValue(ATTRIB_NAME), effect.attributeValue(ATTRIB_PREREQ_EFFECT));
     }
-    overallDto.multiEffect = dto;
+    return dto;
   }
 
   @Override

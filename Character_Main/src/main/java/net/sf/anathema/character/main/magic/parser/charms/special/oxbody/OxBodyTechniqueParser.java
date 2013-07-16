@@ -19,14 +19,18 @@ public class OxBodyTechniqueParser implements SpecialCharmParser {
 
   @Override
   public void parse(Element charmElement, SpecialCharmDto overallDto) {
-    OxBodyTechniqueDto dto = new OxBodyTechniqueDto();
     Element oxBodyElement = charmElement.element(TAG_OX_BODY_CHARM);
+    overallDto.oxBodyTechnique = createOxBodyTechniqueDto(oxBodyElement);
+  }
+
+  private OxBodyTechniqueDto createOxBodyTechniqueDto(Element oxBodyElement) {
+    OxBodyTechniqueDto dto = new OxBodyTechniqueDto();
     dto.traits.addAll(Arrays.asList(oxBodyElement.attributeValue(ATTRIB_TRAIT).split(",")));
     for (Object pickObj : oxBodyElement.elements(TAG_OX_BODY_PICK)) {
       Element pick = (Element) pickObj;
       createPickDto(dto, pick);
     }
-    overallDto.oxBodyTechnique = dto;
+    return dto;
   }
 
   private void createPickDto(OxBodyTechniqueDto dto, Element pick) {
