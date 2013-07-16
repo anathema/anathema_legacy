@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@SpecialCharmParser
+@RegisteredSpecialCharmBuilder
 public class UpgradableCharmBuilder implements SpecialCharmBuilder {
   private static final String TAG_UPGRADABLE = "upgradeable";
   private static final String TAG_UPGRADE = "upgrade";

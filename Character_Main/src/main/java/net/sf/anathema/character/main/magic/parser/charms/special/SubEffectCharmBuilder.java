@@ -7,7 +7,7 @@ import org.dom4j.Element;
 import java.util.ArrayList;
 import java.util.List;
 
-@SpecialCharmParser
+@RegisteredSpecialCharmBuilder
 public class SubEffectCharmBuilder implements SpecialCharmBuilder {
 
   private static final String TAG_SUBEFFECTS = "Subeffects";

@@ -18,7 +18,7 @@ import java.util.List;
 
 import static net.sf.anathema.character.main.traits.types.OtherTraitType.Essence;
 
-@SpecialCharmParser
+@RegisteredSpecialCharmBuilder
 public class RepurchaseCharmBuilder implements SpecialCharmBuilder {
 
   private static final String TAG_REPURCHASES = "repurchases";

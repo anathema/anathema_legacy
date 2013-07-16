@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magic.parser.charms.special.traitcap;
+package net.sf.anathema.character.main.magic.parser.dto.special;
 
 public class TraitCapModifierDto {
 

@@ -7,7 +7,7 @@ import org.dom4j.Element;
 
 import static net.sf.anathema.character.main.traits.types.OtherTraitType.Essence;
 
-@SpecialCharmParser
+@RegisteredSpecialCharmBuilder
 public class EssenceFixedRepurchaseCharmBuilder implements SpecialCharmBuilder {
   private static final String TAG_ESSENCE_FIXED_REPURCHASES = "essenceFixedRepurchases";
 

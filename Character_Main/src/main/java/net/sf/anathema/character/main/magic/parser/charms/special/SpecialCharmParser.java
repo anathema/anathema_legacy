@@ -1,12 +1,10 @@
 package net.sf.anathema.character.main.magic.parser.charms.special;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import net.sf.anathema.character.main.magic.parser.dto.special.SpecialCharmDto;
+import org.dom4j.Element;
 
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
-public @interface SpecialCharmParser {
-  //nothing to do
+public interface SpecialCharmParser {
+  void parse(Element charmElement, SpecialCharmDto overallDto);
+
+  boolean supports(Element charmElement);
 }

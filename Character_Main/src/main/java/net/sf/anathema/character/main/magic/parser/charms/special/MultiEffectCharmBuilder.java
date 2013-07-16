@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@SpecialCharmParser
+@RegisteredSpecialCharmBuilder
 public class MultiEffectCharmBuilder implements SpecialCharmBuilder {
   private static final String TAG_MULTI_EFFECT = "multiEffects";
   private static final String TAG_EFFECT = "effect";

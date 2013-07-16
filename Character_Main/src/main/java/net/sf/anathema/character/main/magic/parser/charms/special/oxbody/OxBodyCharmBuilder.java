@@ -3,23 +3,24 @@ package net.sf.anathema.character.main.magic.parser.charms.special.oxbody;
 import net.sf.anathema.character.main.magic.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.magic.charm.special.OxBodyTechniqueCharm;
 import net.sf.anathema.character.main.magic.parser.charms.TraitTypeFinder;
+import net.sf.anathema.character.main.magic.parser.charms.special.RegisteredSpecialCharmBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.special.SpecialCharmBuilder;
-import net.sf.anathema.character.main.magic.parser.charms.special.SpecialCharmParser;
+import net.sf.anathema.character.main.magic.parser.dto.special.OxBodyPickDto;
+import net.sf.anathema.character.main.magic.parser.dto.special.OxBodyTechniqueDto;
+import net.sf.anathema.character.main.magic.parser.dto.special.SpecialCharmDto;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.health.HealthLevelType;
 import org.dom4j.Element;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-@SpecialCharmParser
+@RegisteredSpecialCharmBuilder
 public class OxBodyCharmBuilder implements SpecialCharmBuilder {
-  private static final String TAG_OXBODY_CHARM = "oxbody";
-  private static final String TAG_OXBODY_PICK = "pick";
+  private static final String TAG_OX_BODY_CHARM = "oxbody";
   private static final String TAG_ZERO_HEALTH = "zeroHealthLevel";
   private static final String TAG_ONE_HEALTH = "oneHealthLevel";
   private static final String TAG_TWO_HEALTH = "twoHealthLevel";
@@ -31,7 +32,13 @@ public class OxBodyCharmBuilder implements SpecialCharmBuilder {
 
   @Override
   public ISpecialCharm readCharm(Element charmElement, String id) {
-    OxBodyTechniqueDto dto = createDto(charmElement);
+    SpecialCharmDto overallDto = new SpecialCharmDto();
+    overallDto.charmId = id;
+    new OxBodyTechniqueParser().parse(charmElement, overallDto);
+    return createSpecialCharm(id, overallDto.oxBodyTechnique);
+  }
+
+  private ISpecialCharm createSpecialCharm(String id, OxBodyTechniqueDto dto) {
     TraitType[] traitList = new TraitType[dto.traits.size()];
     for (int i = 0; i != traitList.length; i++) {
       traitList[i] = traitTypeFinder.getTrait(dto.traits.get(i));
@@ -61,30 +68,8 @@ public class OxBodyCharmBuilder implements SpecialCharmBuilder {
     return healthTypeByString;
   }
 
-  private OxBodyTechniqueDto createDto(Element charmElement) {
-    OxBodyTechniqueDto dto = new OxBodyTechniqueDto();
-    Element oxBodyElement = charmElement.element(TAG_OXBODY_CHARM);
-    dto.traits.addAll(Arrays.asList(oxBodyElement.attributeValue(ATTRIB_TRAIT).split(",")));
-    for (Object pickObj : oxBodyElement.elements(TAG_OXBODY_PICK)) {
-      Element pick = (Element) pickObj;
-      createPickDto(dto, pick);
-    }
-    return dto;
-  }
-
-  private void createPickDto(OxBodyTechniqueDto dto, Element pick) {
-    OxBodyPickDto category = new OxBodyPickDto();
-    category.id = pick.attributeValue(ATTRIB_NAME);
-    for (Object levelObj : pick.elements()) {
-      Element levelElement = (Element) levelObj;
-      category.healthLevels.add(levelElement.getName());
-    }
-    dto.picks.add(category);
-  }
-
   @Override
   public boolean willReadCharm(Element charmElement) {
-    Element oxbodyElement = charmElement.element(TAG_OXBODY_CHARM);
-    return oxbodyElement != null;
+    return charmElement.element(TAG_OX_BODY_CHARM) != null;
   }
 }

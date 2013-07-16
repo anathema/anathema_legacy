@@ -3,11 +3,12 @@ package net.sf.anathema.character.main.magic.parser.charms.special.traitcap;
 import net.sf.anathema.character.main.magic.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.magic.charm.special.TraitCapModifyingCharm;
 import net.sf.anathema.character.main.magic.parser.charms.TraitTypeFinder;
+import net.sf.anathema.character.main.magic.parser.charms.special.RegisteredSpecialCharmBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.special.SpecialCharmBuilder;
-import net.sf.anathema.character.main.magic.parser.charms.special.SpecialCharmParser;
+import net.sf.anathema.character.main.magic.parser.dto.special.TraitCapModifierDto;
 import org.dom4j.Element;
 
-@SpecialCharmParser
+@RegisteredSpecialCharmBuilder
 public class TraitCapModifierCharmBuilder implements SpecialCharmBuilder {
   private static final String TAG_TRAIT_CAP_MODIFIER = "traitCapModifier";
   private final TraitTypeFinder traitTypeFinder = new TraitTypeFinder();

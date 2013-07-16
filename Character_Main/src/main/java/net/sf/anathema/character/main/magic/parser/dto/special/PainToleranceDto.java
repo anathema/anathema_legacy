@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magic.parser.charms.special.paintolerance;
+package net.sf.anathema.character.main.magic.parser.dto.special;
 
 import java.util.ArrayList;
 import java.util.List;

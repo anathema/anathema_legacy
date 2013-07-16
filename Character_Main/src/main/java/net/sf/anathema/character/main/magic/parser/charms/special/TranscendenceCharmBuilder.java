@@ -6,7 +6,7 @@ import net.sf.anathema.character.main.magic.parser.charms.TraitTypeFinder;
 import net.sf.anathema.character.main.traits.TraitType;
 import org.dom4j.Element;
 
-@SpecialCharmParser
+@RegisteredSpecialCharmBuilder
 public class TranscendenceCharmBuilder implements SpecialCharmBuilder {
 
   private static final String TAG_TRANSCENDENCE = "transcendence";

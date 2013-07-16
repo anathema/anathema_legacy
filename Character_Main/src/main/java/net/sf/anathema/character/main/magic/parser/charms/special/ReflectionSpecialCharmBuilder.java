@@ -13,7 +13,7 @@ public class ReflectionSpecialCharmBuilder implements SpecialCharmBuilder {
   private final List<SpecialCharmBuilder> builders = new ArrayList<>();
 
   public ReflectionSpecialCharmBuilder(ObjectFactory objectFactory) {
-    Collection<SpecialCharmBuilder> builders = objectFactory.instantiateAll(SpecialCharmParser.class);
+    Collection<SpecialCharmBuilder> builders = objectFactory.instantiateAll(RegisteredSpecialCharmBuilder.class);
     this.builders.addAll(builders);
   }
 
