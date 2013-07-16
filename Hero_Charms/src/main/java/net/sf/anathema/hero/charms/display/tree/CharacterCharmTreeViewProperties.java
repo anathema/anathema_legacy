@@ -3,9 +3,9 @@ package net.sf.anathema.hero.charms.display.tree;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.hero.charms.display.view.AbstractCharmTreeViewProperties;
 import net.sf.anathema.hero.charms.model.special.NullSpecialCharm;
-import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
-import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
+import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.character.main.magic.charm.CharmIdMap;
+import net.sf.anathema.character.main.magic.charm.special.ISpecialCharm;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.lib.resources.Resources;
 

@@ -2,7 +2,7 @@ package net.sf.anathema.hero.magic.costs;
 
 import com.google.common.collect.ImmutableList;
 import net.sf.anathema.character.main.library.trait.favorable.FavorableState;
-import net.sf.anathema.character.main.magic.model.spells.Spell;
+import net.sf.anathema.character.main.magic.spells.Spell;
 import net.sf.anathema.character.main.traits.context.CreationTraitValueStrategy;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.hero.BasicCharacterTestCase;

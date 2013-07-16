@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.charms.display.coloring;
 
 import net.sf.anathema.hero.charms.display.presenter.CharmGroupInformer;
-import net.sf.anathema.character.main.magic.model.charm.Charm;
+import net.sf.anathema.character.main.magic.charm.Charm;
 
 public class ExternalPrerequisitesColorer implements CharmColorer {
   private final CharmGroupInformer groupInformer;

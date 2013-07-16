@@ -1,17 +1,17 @@
 package net.sf.anathema.hero.magic.model.charms;
 
 import net.sf.anathema.character.main.dummy.DummyCharm;
-import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charm.CharmImpl;
-import net.sf.anathema.character.main.magic.model.charm.IndirectCharmRequirement;
+import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.character.main.magic.charm.CharmImpl;
+import net.sf.anathema.character.main.magic.charm.IndirectCharmRequirement;
+import net.sf.anathema.character.main.magic.model.source.SourceBook;
 import net.sf.anathema.hero.charmtree.duration.SimpleDuration;
 import net.sf.anathema.hero.charmtree.type.CharmType;
 import net.sf.anathema.hero.charmtree.type.CharmTypeModel;
-import net.sf.anathema.character.main.magic.model.combos.ComboRestrictions;
-import net.sf.anathema.character.main.magic.model.magic.cost.CostList;
+import net.sf.anathema.character.main.magic.combos.ComboRestrictions;
+import net.sf.anathema.character.main.magic.model.cost.CostList;
 import net.sf.anathema.character.main.magic.parser.charms.CharmPrerequisiteList;
 import net.sf.anathema.character.main.magic.parser.charms.SelectiveCharmGroupTemplate;
-import net.sf.anathema.character.main.magic.parser.magic.IExaltedSourceBook;
 import net.sf.anathema.hero.dummy.DummyExaltCharacterType;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.traits.types.AbilityType;
@@ -44,7 +44,7 @@ public class CharmTest {
     CharmImpl charmImpl =
             new CharmImpl(new DummyExaltCharacterType(), "ATTRIBUTES", "Group", false, prerequisiteList, new CostList(null, null, null, null),
               new ComboRestrictions(), SimpleDuration.getDuration("Duration"),
-              model, new IExaltedSourceBook[0]);
+              model, new SourceBook[0]);
     charmImpl.addParentCharms(parent);
     return charmImpl;
   }

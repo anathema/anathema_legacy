@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.charms.display.coloring;
 
 import net.sf.anathema.hero.charms.display.view.CharmView;
-import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charm.IndirectCharmRequirement;
+import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.character.main.magic.charm.IndirectCharmRequirement;
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.hero.charms.display.model.CharmDisplayModel;
 import net.sf.anathema.hero.charms.model.CharmsModel;

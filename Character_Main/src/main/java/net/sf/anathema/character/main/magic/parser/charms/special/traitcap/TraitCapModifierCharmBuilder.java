@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.parser.charms.special.traitcap;
 
-import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
-import net.sf.anathema.character.main.magic.model.charm.special.TraitCapModifyingCharm;
+import net.sf.anathema.character.main.magic.charm.special.ISpecialCharm;
+import net.sf.anathema.character.main.magic.charm.special.TraitCapModifyingCharm;
 import net.sf.anathema.character.main.magic.parser.charms.TraitTypeFinder;
 import net.sf.anathema.character.main.magic.parser.charms.special.SpecialCharmBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.special.SpecialCharmParser;

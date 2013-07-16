@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.parser.charms.special.paintolerance;
 
-import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
-import net.sf.anathema.character.main.magic.model.charm.special.StaticPainToleranceCharm;
+import net.sf.anathema.character.main.magic.charm.special.ISpecialCharm;
+import net.sf.anathema.character.main.magic.charm.special.StaticPainToleranceCharm;
 import net.sf.anathema.character.main.magic.parser.charms.special.SpecialCharmBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.special.SpecialCharmParser;
 import org.dom4j.Element;

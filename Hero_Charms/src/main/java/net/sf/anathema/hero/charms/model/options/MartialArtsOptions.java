@@ -1,11 +1,11 @@
 package net.sf.anathema.hero.charms.model.options;
 
-import net.sf.anathema.character.main.magic.cache.CharmProvider;
-import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
-import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
-import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnableArbitrator;
-import net.sf.anathema.character.main.magic.model.charmtree.MartialArtsCharmTree;
+import net.sf.anathema.character.main.magic.charmtree.cache.CharmProvider;
+import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.character.main.magic.charm.CharmIdMap;
+import net.sf.anathema.character.main.magic.charm.ICharmGroup;
+import net.sf.anathema.character.main.magic.charmtree.ICharmLearnableArbitrator;
+import net.sf.anathema.character.main.magic.charmtree.MartialArtsCharmTree;
 import net.sf.anathema.hero.charms.model.rules.CharmsRules;
 import net.sf.anathema.hero.charmtree.martial.MartialArtsLevel;
 

@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic.description;
 
-import net.sf.anathema.character.main.magic.model.magic.Magic;
+import net.sf.anathema.character.main.magic.model.Magic;
 
 public interface MagicDescriptionProvider {
 

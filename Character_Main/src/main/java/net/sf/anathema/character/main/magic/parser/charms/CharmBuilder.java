@@ -1,15 +1,16 @@
 package net.sf.anathema.character.main.magic.parser.charms;
 
-import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charm.CharmException;
-import net.sf.anathema.character.main.magic.model.charm.CharmImpl;
-import net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants;
-import net.sf.anathema.hero.charmtree.duration.IDuration;
-import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
+import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.character.main.magic.charm.CharmException;
+import net.sf.anathema.character.main.magic.charm.CharmImpl;
+import net.sf.anathema.character.main.magic.charm.ICharmXMLConstants;
+import net.sf.anathema.character.main.magic.model.source.SourceBook;
+import net.sf.anathema.hero.charmtree.duration.Duration;
+import net.sf.anathema.character.main.magic.charm.special.ISpecialCharm;
 import net.sf.anathema.hero.charmtree.type.ICharmTypeModel;
-import net.sf.anathema.character.main.magic.model.combos.IComboRestrictions;
-import net.sf.anathema.character.main.magic.model.magic.attribute.MagicAttribute;
-import net.sf.anathema.character.main.magic.model.magic.cost.ICostList;
+import net.sf.anathema.character.main.magic.combos.IComboRestrictions;
+import net.sf.anathema.character.main.magic.model.attribute.MagicAttribute;
+import net.sf.anathema.character.main.magic.model.cost.ICostList;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.IAttributeRequirementBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.ICharmPrerequisiteBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.ITraitPrerequisitesBuilder;
@@ -18,7 +19,6 @@ import net.sf.anathema.character.main.magic.parser.charms.special.SpecialCharmBu
 import net.sf.anathema.character.main.magic.parser.combos.IComboRulesBuilder;
 import net.sf.anathema.character.main.magic.parser.magic.CostListBuilder;
 import net.sf.anathema.character.main.magic.parser.magic.ICostListBuilder;
-import net.sf.anathema.character.main.magic.parser.magic.IExaltedSourceBook;
 import net.sf.anathema.character.main.magic.parser.magic.SourceBuilder;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.type.CharacterType;
@@ -30,10 +30,10 @@ import org.dom4j.Element;
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.ATTRIB_EXALT;
-import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.TAG_COST;
-import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.TAG_DURATION;
-import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.TAG_PREREQUISITE_LIST;
+import static net.sf.anathema.character.main.magic.charm.ICharmXMLConstants.ATTRIB_EXALT;
+import static net.sf.anathema.character.main.magic.charm.ICharmXMLConstants.TAG_COST;
+import static net.sf.anathema.character.main.magic.charm.ICharmXMLConstants.TAG_DURATION;
+import static net.sf.anathema.character.main.magic.charm.ICharmXMLConstants.TAG_PREREQUISITE_LIST;
 
 public class CharmBuilder implements ICharmBuilder {
 
@@ -80,9 +80,9 @@ public class CharmBuilder implements ICharmBuilder {
         throw new CharmException("Error building costlist for charm " + id, e);
       }
       IComboRestrictions comboRules = comboBuilder.buildComboRules(charmElement);
-      IDuration duration = buildDuration(charmElement);
+      Duration duration = buildDuration(charmElement);
       ICharmTypeModel charmTypeModel = charmTypeBuilder.build(charmElement);
-      IExaltedSourceBook[] sources = sourceBuilder.buildSourceList(charmElement);
+      SourceBook[] sources = sourceBuilder.buildSourceList(charmElement);
       CharmPrerequisiteList prerequisiteList = getPrerequisites(charmElement);
       ValuedTraitType[] prerequisites = prerequisiteList.getPrerequisites();
       ValuedTraitType primaryPrerequisite = prerequisites.length != 0 ? prerequisites[0] : null;
@@ -105,8 +105,8 @@ public class CharmBuilder implements ICharmBuilder {
     }
   }
 
-  private IDuration buildDuration(Element charmElement) throws CharmException {
-    IDuration duration;
+  private Duration buildDuration(Element charmElement) throws CharmException {
+    Duration duration;
     try {
       duration = durationBuilder.buildDuration(charmElement.element(TAG_DURATION));
     } catch (PersistenceException e) {

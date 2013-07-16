@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.magic.parser;
 
-import net.sf.anathema.character.main.magic.model.charm.CharmException;
+import net.sf.anathema.character.main.magic.charm.CharmException;
 import net.sf.anathema.hero.charmtree.type.CharmType;
 import net.sf.anathema.hero.charmtree.type.ICharmTypeModel;
 import net.sf.anathema.hero.charmtree.type.IReflexiveSpecialsModel;

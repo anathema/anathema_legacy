@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.charms.persistence.special.oxbody;
 
-import net.sf.anathema.character.main.magic.model.charm.OxBodyCategory;
-import net.sf.anathema.character.main.magic.model.charm.special.CharmSpecialsModel;
-import net.sf.anathema.character.main.magic.model.charm.special.OxBodyTechniqueSpecials;
+import net.sf.anathema.character.main.magic.charm.OxBodyCategory;
+import net.sf.anathema.character.main.magic.charm.special.CharmSpecialsModel;
+import net.sf.anathema.character.main.magic.charm.special.OxBodyTechniqueSpecials;
 import net.sf.anathema.hero.charms.persistence.special.CharmSpecialsPto;
 import net.sf.anathema.hero.charms.persistence.special.SpecialCharmPersister;
 

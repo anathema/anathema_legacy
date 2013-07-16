@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.charms.model.context;
 
-import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charm.ICharmLearnStrategy;
-import net.sf.anathema.character.main.magic.model.charm.IBasicLearnCharmGroup;
+import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.character.main.magic.charm.ICharmLearnStrategy;
+import net.sf.anathema.character.main.magic.charm.IBasicLearnCharmGroup;
 
 public class ExperiencedCharmLearnStrategy implements ICharmLearnStrategy {
 

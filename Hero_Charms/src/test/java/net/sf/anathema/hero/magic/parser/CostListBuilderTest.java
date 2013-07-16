@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.magic.parser;
 
-import net.sf.anathema.character.main.magic.model.magic.cost.ICost;
-import net.sf.anathema.character.main.magic.model.magic.cost.ICostList;
+import net.sf.anathema.character.main.magic.model.cost.Cost;
+import net.sf.anathema.character.main.magic.model.cost.ICostList;
 import net.sf.anathema.character.main.magic.parser.magic.CostListBuilder;
 import net.sf.anathema.lib.exception.PersistenceException;
 import org.junit.Test;
@@ -37,7 +37,7 @@ public class CostListBuilderTest {
     return builder.buildCostList(null);
   }
 
-  private void assertCostIsZero(ICost cost) {
+  private void assertCostIsZero(Cost cost) {
     assertThat(cost.getCost(), is("0"));
   }
 }

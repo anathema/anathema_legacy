@@ -1,17 +1,17 @@
 package net.sf.anathema.hero.charms.model;
 
-import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charm.CharmAttributeList;
-import net.sf.anathema.character.main.magic.model.charm.CharmGroup;
-import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
-import net.sf.anathema.character.main.magic.model.charm.ICharmLearnListener;
-import net.sf.anathema.character.main.magic.model.charm.ICharmLearnStrategy;
-import net.sf.anathema.character.main.magic.model.charm.IExtendedCharmLearnableArbitrator;
-import net.sf.anathema.character.main.magic.model.charm.ILearningCharmGroup;
-import net.sf.anathema.character.main.magic.model.charm.ILearningCharmGroupContainer;
-import net.sf.anathema.character.main.magic.model.charm.special.CharmSpecialsModel;
-import net.sf.anathema.character.main.magic.model.charm.special.MultiLearnCharmSpecials;
-import net.sf.anathema.character.main.magic.model.charm.special.MultipleEffectCharmSpecials;
+import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.character.main.magic.charm.CharmAttributeList;
+import net.sf.anathema.character.main.magic.charm.CharmGroup;
+import net.sf.anathema.character.main.magic.charm.ICharmGroup;
+import net.sf.anathema.character.main.magic.charm.ICharmLearnListener;
+import net.sf.anathema.character.main.magic.charm.ICharmLearnStrategy;
+import net.sf.anathema.character.main.magic.charm.IExtendedCharmLearnableArbitrator;
+import net.sf.anathema.character.main.magic.charm.ILearningCharmGroup;
+import net.sf.anathema.character.main.magic.charm.ILearningCharmGroupContainer;
+import net.sf.anathema.character.main.magic.charm.special.CharmSpecialsModel;
+import net.sf.anathema.character.main.magic.charm.special.MultiLearnCharmSpecials;
+import net.sf.anathema.character.main.magic.charm.special.MultipleEffectCharmSpecials;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;

@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.spells.model;
 
-import net.sf.anathema.character.main.magic.model.spells.CircleType;
-import net.sf.anathema.character.main.magic.model.spells.ISpellMapper;
-import net.sf.anathema.character.main.magic.model.spells.Spell;
-import net.sf.anathema.character.main.magic.model.spells.SpellMapper;
+import net.sf.anathema.character.main.magic.spells.CircleType;
+import net.sf.anathema.character.main.magic.spells.ISpellMapper;
+import net.sf.anathema.character.main.magic.spells.Spell;
+import net.sf.anathema.character.main.magic.spells.SpellMapper;
 import net.sf.anathema.character.main.magic.parser.spells.ISpellCache;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.magic.ISpellMagicTemplate;

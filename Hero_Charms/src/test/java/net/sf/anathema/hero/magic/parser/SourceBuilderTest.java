@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.magic.parser;
 
-import net.sf.anathema.character.main.magic.parser.magic.IExaltedSourceBook;
-import net.sf.anathema.character.main.magic.parser.magic.SourceBook;
+import net.sf.anathema.character.main.magic.model.source.SourceBook;
+import net.sf.anathema.character.main.magic.model.source.SourceBookImpl;
 import net.sf.anathema.character.main.magic.parser.magic.SourceBuilder;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.dom4j.Element;
@@ -16,7 +16,7 @@ public class SourceBuilderTest {
     String xml = "<parent><source source=\"ABAir\" /></parent>";
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
     SourceBuilder sourceBuilder = new SourceBuilder();
-    IExaltedSourceBook[] sources = sourceBuilder.buildSourceList(rootElement);
-    assertArrayEquals(new IExaltedSourceBook[]{new SourceBook("ABAir")}, sources);
+    SourceBook[] sources = sourceBuilder.buildSourceList(rootElement);
+    assertArrayEquals(new SourceBook[]{new SourceBookImpl("ABAir")}, sources);
   }
 }

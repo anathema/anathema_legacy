@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic.parser.charms;
 
-import net.sf.anathema.character.main.magic.model.charm.CharmException;
+import net.sf.anathema.character.main.magic.charm.CharmException;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.lib.util.Identifier;
 import org.dom4j.Element;

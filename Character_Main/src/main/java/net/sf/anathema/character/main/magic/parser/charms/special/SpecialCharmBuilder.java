@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic.parser.charms.special;
 
-import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
+import net.sf.anathema.character.main.magic.charm.special.ISpecialCharm;
 import org.dom4j.Element;
 
 public interface SpecialCharmBuilder {

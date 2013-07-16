@@ -4,7 +4,7 @@ import com.google.common.base.Preconditions;
 import net.sf.anathema.lib.lang.ReflectionEqualsObject;
 import net.sf.anathema.lib.resources.Resources;
 
-public class UntilEventDuration extends ReflectionEqualsObject implements IDuration {
+public class UntilEventDuration extends ReflectionEqualsObject implements Duration {
 
   private final String event;
 

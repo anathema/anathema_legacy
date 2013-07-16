@@ -2,7 +2,7 @@ package net.sf.anathema.hero.charmtree.duration;
 
 import net.sf.anathema.lib.resources.Resources;
 
-public class SimpleDuration implements IDuration {
+public class SimpleDuration implements Duration {
   public static final String INSTANT = "Instant";
   private static final String PERMANENT = "Permanent";
   public static final SimpleDuration INSTANT_DURATION = new SimpleDuration(INSTANT);

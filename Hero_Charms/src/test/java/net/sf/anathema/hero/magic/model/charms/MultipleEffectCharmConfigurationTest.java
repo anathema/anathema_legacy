@@ -1,13 +1,13 @@
 package net.sf.anathema.hero.magic.model.charms;
 
-import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charm.CharmSpecialist;
-import net.sf.anathema.character.main.magic.model.charm.special.ArraySubEffects;
-import net.sf.anathema.character.main.magic.model.charm.special.IMultipleEffectCharm;
-import net.sf.anathema.character.main.magic.model.charm.special.MultipleEffectCharmConfiguration;
-import net.sf.anathema.character.main.magic.model.charm.special.SubEffect;
-import net.sf.anathema.character.main.magic.model.charm.special.SubEffectImpl;
-import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnableArbitrator;
+import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.character.main.magic.charm.CharmSpecialist;
+import net.sf.anathema.character.main.magic.charm.special.ArraySubEffects;
+import net.sf.anathema.character.main.magic.charm.special.IMultipleEffectCharm;
+import net.sf.anathema.character.main.magic.charm.special.MultipleEffectCharmConfiguration;
+import net.sf.anathema.character.main.magic.charm.special.SubEffect;
+import net.sf.anathema.character.main.magic.charm.special.SubEffectImpl;
+import net.sf.anathema.character.main.magic.charmtree.ICharmLearnableArbitrator;
 import net.sf.anathema.hero.dummy.DummyCondition;
 import net.sf.anathema.hero.experience.ExperienceModel;
 import org.junit.Test;

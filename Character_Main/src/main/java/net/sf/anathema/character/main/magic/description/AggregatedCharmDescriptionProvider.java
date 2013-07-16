@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.description;
 
 import com.google.common.base.Function;
-import net.sf.anathema.character.main.magic.model.magic.Magic;
+import net.sf.anathema.character.main.magic.model.Magic;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;

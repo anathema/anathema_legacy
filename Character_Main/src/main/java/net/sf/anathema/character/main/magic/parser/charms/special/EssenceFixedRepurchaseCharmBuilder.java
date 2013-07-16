@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.parser.charms.special;
 
-import net.sf.anathema.character.main.magic.model.charm.special.EssenceFixedMultiLearnableCharm;
-import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
+import net.sf.anathema.character.main.magic.charm.special.EssenceFixedMultiLearnableCharm;
+import net.sf.anathema.character.main.magic.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.traits.EssenceTemplate;
 import org.dom4j.Element;
 

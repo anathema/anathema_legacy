@@ -1,6 +1,6 @@
 package net.sf.anathema.cascades.presenter;
 
-import net.sf.anathema.character.main.magic.model.charmtree.ICharmTree;
+import net.sf.anathema.character.main.magic.charmtree.ICharmTree;
 import net.sf.anathema.lib.util.Identifier;
 
 import java.util.HashMap;

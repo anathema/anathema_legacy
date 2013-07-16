@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.parser.charms;
 
-import net.sf.anathema.character.main.magic.model.charm.CharmImpl;
-import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
+import net.sf.anathema.character.main.magic.charm.CharmImpl;
+import net.sf.anathema.character.main.magic.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.AttributeRequirementBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.CharmPrerequisiteBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.TraitPrerequisitesBuilder;
@@ -15,7 +15,7 @@ import org.dom4j.Element;
 import java.util.Collection;
 import java.util.List;
 
-import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.TAG_CHARM;
+import static net.sf.anathema.character.main.magic.charm.ICharmXMLConstants.TAG_CHARM;
 
 public class CharmSetBuilder extends AbstractCharmSetBuilder {
 

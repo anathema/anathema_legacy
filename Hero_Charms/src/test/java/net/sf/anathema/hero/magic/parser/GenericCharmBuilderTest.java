@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.magic.parser;
 
-import net.sf.anathema.character.main.magic.model.charm.CharmImpl;
+import net.sf.anathema.character.main.magic.charm.CharmImpl;
 import net.sf.anathema.character.main.magic.parser.charms.GenericCharmBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.GenericCharmPrerequisiteBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.GenericIdStringBuilder;

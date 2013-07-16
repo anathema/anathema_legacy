@@ -2,9 +2,9 @@ package net.sf.anathema.hero.combos.display.presenter;
 
 import net.sf.anathema.character.main.CharacterUI;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
-import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.CharmTooltipBuilder;
-import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.CharmTooltipBuilderImpl;
+import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.character.main.magic.charmtree.builder.stringbuilder.CharmTooltipBuilder;
+import net.sf.anathema.character.main.magic.charmtree.builder.stringbuilder.CharmTooltipBuilderImpl;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.hero.charms.display.magic.AbstractMagicLearnProperties;
 import net.sf.anathema.lib.file.RelativePath;

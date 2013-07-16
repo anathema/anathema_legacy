@@ -1,10 +1,10 @@
 package net.sf.anathema.hero.magic.model.charms;
 
 import net.sf.anathema.character.main.dummy.DummyCharm;
-import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charm.special.IMultiLearnableCharm;
-import net.sf.anathema.character.main.magic.model.charm.special.StaticMultiLearnableCharm;
-import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnableArbitrator;
+import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.character.main.magic.charm.special.IMultiLearnableCharm;
+import net.sf.anathema.character.main.magic.charm.special.StaticMultiLearnableCharm;
+import net.sf.anathema.character.main.magic.charmtree.ICharmLearnableArbitrator;
 import net.sf.anathema.hero.BasicCharacterTestCase;
 import net.sf.anathema.hero.dummy.DummyHero;
 import net.sf.anathema.hero.magic.dummy.DummyCharmsModel;

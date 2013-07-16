@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.combos.model.rules;
 
-import net.sf.anathema.character.main.magic.model.charm.Charm;
+import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.hero.charmtree.type.ICharmTypeVisitor;
 import net.sf.anathema.hero.charmtree.type.CharmType;
 

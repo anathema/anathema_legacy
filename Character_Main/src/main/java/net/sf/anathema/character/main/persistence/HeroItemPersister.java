@@ -3,7 +3,7 @@ package net.sf.anathema.character.main.persistence;
 import net.sf.anathema.character.main.CharacterStatisticsConfiguration;
 import net.sf.anathema.character.main.ExaltedCharacter;
 import net.sf.anathema.character.main.framework.item.DataItem;
-import net.sf.anathema.character.main.magic.model.spells.SpellException;
+import net.sf.anathema.character.main.magic.spells.SpellException;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.framework.persistence.ItemMetaDataPersister;

@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.magic.dummy;
 
-import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charm.ILearningCharmGroup;
-import net.sf.anathema.character.main.magic.model.charm.ILearningCharmGroupContainer;
+import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.character.main.magic.charm.ILearningCharmGroup;
+import net.sf.anathema.character.main.magic.charm.ILearningCharmGroupContainer;
 import net.sf.anathema.hero.charms.model.LearningCharmGroup;
 
 public class DummyLearningCharmGroupContainer implements ILearningCharmGroupContainer {

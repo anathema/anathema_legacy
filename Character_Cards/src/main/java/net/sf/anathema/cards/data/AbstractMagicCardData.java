@@ -4,11 +4,11 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import net.sf.anathema.cards.layout.ICardReportResourceProvider;
 import net.sf.anathema.character.main.magic.description.MagicDescription;
-import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.ScreenDisplayInfoContributor;
-import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.source.MagicSourceContributor;
-import net.sf.anathema.character.main.magic.model.magic.Magic;
-import net.sf.anathema.character.main.magic.model.magic.cost.Cost;
-import net.sf.anathema.character.main.magic.model.magic.cost.HealthCost;
+import net.sf.anathema.character.main.magic.charmtree.builder.stringbuilder.ScreenDisplayInfoContributor;
+import net.sf.anathema.character.main.magic.charmtree.builder.stringbuilder.source.MagicSourceContributor;
+import net.sf.anathema.character.main.magic.model.Magic;
+import net.sf.anathema.character.main.magic.model.cost.CostImpl;
+import net.sf.anathema.character.main.magic.model.cost.HealthCost;
 import net.sf.anathema.lib.resources.Resources;
 
 public abstract class AbstractMagicCardData implements ICardData {
@@ -61,10 +61,10 @@ public abstract class AbstractMagicCardData implements ICardData {
   }
 
   protected boolean hasCost(Magic magic) {
-    return magic.getTemporaryCost().getEssenceCost() != Cost.NULL_COST ||
-           magic.getTemporaryCost().getWillpowerCost() != Cost.NULL_COST ||
+    return magic.getTemporaryCost().getEssenceCost() != CostImpl.NULL_COST ||
+           magic.getTemporaryCost().getWillpowerCost() != CostImpl.NULL_COST ||
            magic.getTemporaryCost().getHealthCost() != HealthCost.NULL_HEALTH_COST ||
-           magic.getTemporaryCost().getXPCost() != Cost.NULL_COST;
+           magic.getTemporaryCost().getXPCost() != CostImpl.NULL_COST;
   }
 
   @Override

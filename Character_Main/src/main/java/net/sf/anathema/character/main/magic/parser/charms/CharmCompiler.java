@@ -2,11 +2,11 @@ package net.sf.anathema.character.main.magic.parser.charms;
 
 import net.sf.anathema.character.main.framework.data.ExtensibleDataSet;
 import net.sf.anathema.character.main.framework.data.IExtensibleDataSetCompiler;
-import net.sf.anathema.character.main.magic.cache.CharmCacheImpl;
-import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charm.CharmException;
-import net.sf.anathema.character.main.magic.model.charm.CharmImpl;
-import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
+import net.sf.anathema.character.main.magic.charmtree.cache.CharmCacheImpl;
+import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.character.main.magic.charm.CharmException;
+import net.sf.anathema.character.main.magic.charm.CharmImpl;
+import net.sf.anathema.character.main.magic.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.magic.parser.charms.special.ReflectionSpecialCharmBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.special.SpecialCharmBuilder;
 import net.sf.anathema.character.main.traits.TraitType;

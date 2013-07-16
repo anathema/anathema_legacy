@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.magic.parser.charms;
 
-import net.sf.anathema.character.main.magic.model.charm.CharmException;
-import net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants;
-import net.sf.anathema.hero.charmtree.duration.IDuration;
+import net.sf.anathema.character.main.magic.charm.CharmException;
+import net.sf.anathema.character.main.magic.charm.ICharmXMLConstants;
+import net.sf.anathema.hero.charmtree.duration.Duration;
 import net.sf.anathema.hero.charmtree.duration.QualifiedAmountDuration;
 import net.sf.anathema.hero.charmtree.duration.SimpleDuration;
 import net.sf.anathema.hero.charmtree.duration.UntilEventDuration;
@@ -12,7 +12,7 @@ import org.dom4j.Element;
 
 public class DurationBuilder {
 
-  public IDuration buildDuration(Element durationElement) throws PersistenceException {
+  public Duration buildDuration(Element durationElement) throws PersistenceException {
     if (durationElement == null) {
       throw new CharmException("Duration not specified for Charm");
     }

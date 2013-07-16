@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.magic.model.charms;
 
 import net.sf.anathema.character.main.dummy.DummyCharm;
-import net.sf.anathema.character.main.magic.model.charm.CharmHasSameTypeAsCharacter;
+import net.sf.anathema.character.main.magic.charm.CharmHasSameTypeAsCharacter;
 import net.sf.anathema.hero.dummy.DummyMundaneCharacterType;
 import net.sf.anathema.hero.dummy.template.DummyHeroTemplate;
 import net.sf.anathema.character.main.type.CharacterType;

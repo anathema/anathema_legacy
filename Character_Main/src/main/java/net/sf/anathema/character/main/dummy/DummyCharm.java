@@ -1,18 +1,18 @@
 package net.sf.anathema.character.main.dummy;
 
-import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charm.IndirectCharmRequirement;
-import net.sf.anathema.hero.charmtree.duration.IDuration;
+import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.character.main.magic.charm.IndirectCharmRequirement;
+import net.sf.anathema.character.main.magic.model.source.SourceBook;
+import net.sf.anathema.hero.charmtree.duration.Duration;
 import net.sf.anathema.hero.charmtree.duration.SimpleDuration;
 import net.sf.anathema.hero.charmtree.type.CharmType;
 import net.sf.anathema.hero.charmtree.type.CharmTypeModel;
-import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnArbitrator;
-import net.sf.anathema.character.main.magic.model.combos.ComboRestrictions;
-import net.sf.anathema.character.main.magic.model.combos.IComboRestrictions;
-import net.sf.anathema.character.main.magic.model.magic.attribute.MagicAttribute;
-import net.sf.anathema.character.main.magic.model.magic.attribute.MagicAttributeImpl;
-import net.sf.anathema.character.main.magic.model.magic.cost.CostList;
-import net.sf.anathema.character.main.magic.parser.magic.IExaltedSourceBook;
+import net.sf.anathema.character.main.magic.charmtree.ICharmLearnArbitrator;
+import net.sf.anathema.character.main.magic.combos.ComboRestrictions;
+import net.sf.anathema.character.main.magic.combos.IComboRestrictions;
+import net.sf.anathema.character.main.magic.model.attribute.MagicAttribute;
+import net.sf.anathema.character.main.magic.model.attribute.MagicAttributeImpl;
+import net.sf.anathema.character.main.magic.model.cost.CostList;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.type.CharacterType;
@@ -31,7 +31,7 @@ import java.util.Set;
 
 public class DummyCharm extends SimpleIdentifier implements Charm {
 
-  private IDuration duration;
+  private Duration duration;
   private IComboRestrictions comboRestrictions = new ComboRestrictions();
   private ValuedTraitType[] prerequisites;
   private Set<Charm> parentCharms;
@@ -114,7 +114,7 @@ public class DummyCharm extends SimpleIdentifier implements Charm {
   }
 
   @Override
-  public IDuration getDuration() {
+  public Duration getDuration() {
     return duration;
   }
 
@@ -225,12 +225,12 @@ public class DummyCharm extends SimpleIdentifier implements Charm {
   }
 
   @Override
-  public IExaltedSourceBook[] getSources() {
-    return new IExaltedSourceBook[]{null};
+  public SourceBook[] getSources() {
+    return new SourceBook[]{null};
   }
 
   @Override
-  public IExaltedSourceBook getPrimarySource() {
+  public SourceBook getPrimarySource() {
     return null;
   }
 
@@ -238,7 +238,7 @@ public class DummyCharm extends SimpleIdentifier implements Charm {
     model.setCharmType(type);
   }
 
-  public void setDuration(IDuration duration) {
+  public void setDuration(Duration duration) {
     this.duration = duration;
   }
 

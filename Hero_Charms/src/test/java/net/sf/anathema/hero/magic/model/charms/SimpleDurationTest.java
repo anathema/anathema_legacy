@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.magic.model.charms;
 
-import net.sf.anathema.hero.charmtree.duration.IDuration;
+import net.sf.anathema.hero.charmtree.duration.Duration;
 import net.sf.anathema.hero.charmtree.duration.SimpleDuration;
 import org.junit.Test;
 
@@ -11,7 +11,7 @@ public class SimpleDurationTest {
 
   @Test
   public void testInstantDuration() throws Exception {
-    IDuration duration = SimpleDuration.getDuration("Instant");
+    Duration duration = SimpleDuration.getDuration("Instant");
     assertEquals(SimpleDuration.INSTANT_DURATION, duration);
   }
 
@@ -25,7 +25,7 @@ public class SimpleDurationTest {
 
   @Test
   public void testPermanentDuration() throws Exception {
-    IDuration duration = SimpleDuration.getDuration("Permanent");
+    Duration duration = SimpleDuration.getDuration("Permanent");
     assertEquals(SimpleDuration.PERMANENT_DURATION, duration);
   }
 }

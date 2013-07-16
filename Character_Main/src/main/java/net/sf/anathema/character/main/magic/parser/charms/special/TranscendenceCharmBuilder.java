@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.parser.charms.special;
 
-import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
-import net.sf.anathema.character.main.magic.model.charm.special.PrerequisiteModifyingCharm;
+import net.sf.anathema.character.main.magic.charm.special.ISpecialCharm;
+import net.sf.anathema.character.main.magic.charm.special.PrerequisiteModifyingCharm;
 import net.sf.anathema.character.main.magic.parser.charms.TraitTypeFinder;
 import net.sf.anathema.character.main.traits.TraitType;
 import org.dom4j.Element;

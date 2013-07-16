@@ -1,14 +1,14 @@
 package net.sf.anathema.charms;
 
-import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.magic.Magic;
+import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.character.main.magic.model.Magic;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.hero.charmtree.martial.MartialArtsLevel;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
 import java.text.MessageFormat;
 
-import static net.sf.anathema.character.main.magic.model.charm.CharmAttributeList.FORM_ATTRIBUTE;
+import static net.sf.anathema.character.main.magic.charm.CharmAttributeList.FORM_ATTRIBUTE;
 
 public class MartialArtsUtilities {
 

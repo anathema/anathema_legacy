@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.magic.parser;
 
-import net.sf.anathema.character.main.magic.model.magic.cost.Cost;
-import net.sf.anathema.character.main.magic.model.magic.cost.ICost;
+import net.sf.anathema.character.main.magic.model.cost.Cost;
+import net.sf.anathema.character.main.magic.model.cost.CostImpl;
 import net.sf.anathema.character.main.magic.parser.magic.CostBuilder;
 import net.sf.anathema.lib.exception.PersistenceException;
 import org.dom4j.Element;
@@ -22,15 +22,15 @@ public class CostBuilderTest {
 
   @Test
   public void testNullElement() throws Exception {
-    ICost cost = builder.buildCost(null);
-    assertEquals(Cost.NULL_COST, cost);
+    Cost cost = builder.buildCost(null);
+    assertEquals(CostImpl.NULL_COST, cost);
   }
 
   @Test
   public void testValueButNoText() throws Exception {
     Element costElement = getCostElement();
     costElement.addAttribute("cost", "5");
-    ICost cost = builder.buildCost(costElement);
+    Cost cost = builder.buildCost(costElement);
     assertEquals("5", cost.getCost());
     assertEquals(null, cost.getText());
   }
@@ -41,7 +41,7 @@ public class CostBuilderTest {
     costElement.addAttribute("cost", "7");
     String expectedText = "expectedText";
     costElement.addAttribute("text", expectedText);
-    ICost cost = builder.buildCost(costElement);
+    Cost cost = builder.buildCost(costElement);
     assertEquals("7", cost.getCost());
     assertEquals(expectedText, cost.getText());
   }
@@ -51,7 +51,7 @@ public class CostBuilderTest {
     Element costElement = getCostElement();
     String expectedText = "10+";
     costElement.addAttribute("cost", expectedText);
-    ICost cost = builder.buildCost(costElement);
+    Cost cost = builder.buildCost(costElement);
     assertEquals(expectedText, cost.getCost());
   }
 
@@ -62,7 +62,7 @@ public class CostBuilderTest {
     String expectedText2 = "and some more";
     costElement.addAttribute("cost", expectedText1);
     costElement.addAttribute("text", expectedText2);
-    ICost cost = builder.buildCost(costElement);
+    Cost cost = builder.buildCost(costElement);
     assertEquals(expectedText1, cost.getCost());
     assertEquals(expectedText2, cost.getText());
   }

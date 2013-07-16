@@ -6,7 +6,7 @@ import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
-import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.ATTRIB_VALUE;
+import static net.sf.anathema.character.main.magic.charm.ICharmXMLConstants.ATTRIB_VALUE;
 
 public class GenericTraitPrerequisiteBuilder implements ITraitPrerequisiteBuilder {
 

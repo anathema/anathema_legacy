@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.spells.model;
 
-import net.sf.anathema.character.main.magic.model.spells.CircleType;
+import net.sf.anathema.character.main.magic.spells.CircleType;
 import net.sf.anathema.hero.model.Hero;
 
 public class SorceryModel extends CircleModel {

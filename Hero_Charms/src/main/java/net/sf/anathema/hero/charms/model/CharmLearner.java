@@ -1,10 +1,10 @@
 package net.sf.anathema.hero.charms.model;
 
-import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charm.special.CharmSpecialsModel;
-import net.sf.anathema.character.main.magic.model.charm.special.IUpgradableCharmConfiguration;
-import net.sf.anathema.character.main.magic.model.charm.special.SubEffectCharmSpecials;
-import net.sf.anathema.character.main.magic.model.magic.Magic;
+import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.character.main.magic.charm.special.CharmSpecialsModel;
+import net.sf.anathema.character.main.magic.charm.special.IUpgradableCharmConfiguration;
+import net.sf.anathema.character.main.magic.charm.special.SubEffectCharmSpecials;
+import net.sf.anathema.character.main.magic.model.Magic;
 
 import java.util.Arrays;
 import java.util.Collection;

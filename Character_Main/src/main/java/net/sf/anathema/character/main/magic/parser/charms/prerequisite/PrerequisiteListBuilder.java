@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.parser.charms.prerequisite;
 
-import net.sf.anathema.character.main.magic.model.charm.CharmException;
-import net.sf.anathema.character.main.magic.model.charm.IndirectCharmRequirement;
+import net.sf.anathema.character.main.magic.charm.CharmException;
+import net.sf.anathema.character.main.magic.charm.IndirectCharmRequirement;
 import net.sf.anathema.character.main.magic.parser.charms.CharmPrerequisiteList;
 import net.sf.anathema.character.main.magic.parser.charms.SelectiveCharmGroupTemplate;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
@@ -11,10 +11,10 @@ import org.dom4j.Element;
 
 import java.util.List;
 
-import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.ATTRIB_THRESHOLD;
-import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.ATTRIB_VALUE;
-import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.TAG_ESSENCE;
-import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.TAG_SELECTIVE_CHARM_GROUP;
+import static net.sf.anathema.character.main.magic.charm.ICharmXMLConstants.ATTRIB_THRESHOLD;
+import static net.sf.anathema.character.main.magic.charm.ICharmXMLConstants.ATTRIB_VALUE;
+import static net.sf.anathema.character.main.magic.charm.ICharmXMLConstants.TAG_ESSENCE;
+import static net.sf.anathema.character.main.magic.charm.ICharmXMLConstants.TAG_SELECTIVE_CHARM_GROUP;
 import static net.sf.anathema.character.main.traits.types.OtherTraitType.Essence;
 
 public class PrerequisiteListBuilder {
