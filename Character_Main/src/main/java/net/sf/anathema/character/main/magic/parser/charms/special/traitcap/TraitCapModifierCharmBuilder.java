@@ -25,7 +25,6 @@ public class TraitCapModifierCharmBuilder implements SpecialCharmBuilder {
 
   @Override
   public boolean willReadCharm(Element charmElement) {
-    Element traitCapModifierElement = charmElement.element(TAG_TRAIT_CAP_MODIFIER);
-    return traitCapModifierElement != null;
+    return charmElement.element(TAG_TRAIT_CAP_MODIFIER) != null;
   }
 }

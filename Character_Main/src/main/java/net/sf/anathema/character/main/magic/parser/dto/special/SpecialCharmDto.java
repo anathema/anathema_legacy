@@ -9,4 +9,5 @@ public class SpecialCharmDto {
   public MultiEffectDto multiEffect;
   public TranscendenceDto transcendence;
   public UpgradableDto upgradable;
+  public SubEffectDto subEffect;
 }

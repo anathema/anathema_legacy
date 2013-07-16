@@ -9,6 +9,7 @@ import net.sf.anathema.character.main.magic.charm.special.StaticMultiLearnableCh
 import net.sf.anathema.character.main.magic.charm.special.TieredMultiLearnableCharm;
 import net.sf.anathema.character.main.magic.charm.special.TraitDependentMultiLearnableCharm;
 import net.sf.anathema.character.main.magic.model.Magic;
+import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.types.OtherTraitType;
 import net.sf.anathema.lib.gui.ConfigurableTooltip;
 import net.sf.anathema.lib.gui.TooltipBuilder;
@@ -83,7 +84,8 @@ public class SpecialCharmContributor implements MagicTooltipContributor {
   private String printTraitLimit(TraitDependentMultiLearnableCharm details) {
     StringBuilder builder = new StringBuilder();
     builder.append("(");
-    builder.append(resources.getString(details.getTraitType().getId()));
+    TraitType traitType = details.getTraitType();
+    builder.append(resources.getString(traitType.getId()));
     if (details.getModifier() != 0) {
       builder.append(details.getModifier());
     }

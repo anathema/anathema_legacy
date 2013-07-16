@@ -46,6 +46,7 @@ public class RepurchaseParser implements SpecialCharmParser {
     String limitingTraitString = repurchasesElement.attributeValue(ATTRIB_LIMITING_TRAIT);
     if (limitingTraitString != null) {
       TraitRepurchaseDto traitRepurchase = new TraitRepurchaseDto();
+      traitRepurchase.limitingTrait = limitingTraitString;
       traitRepurchase.modifier = parseModifier(repurchasesElement);
       traitRepurchase.absoluteMax = parseAbsoluteMaximum(repurchasesElement, traitRepurchase.modifier);
       dto.traitRepurchase = traitRepurchase;

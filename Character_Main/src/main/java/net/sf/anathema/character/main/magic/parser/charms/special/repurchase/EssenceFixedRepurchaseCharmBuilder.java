@@ -5,10 +5,7 @@ import net.sf.anathema.character.main.magic.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.magic.parser.charms.special.RegisteredSpecialCharmBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.special.SpecialCharmBuilder;
 import net.sf.anathema.character.main.magic.parser.dto.special.SpecialCharmDto;
-import net.sf.anathema.character.main.traits.EssenceTemplate;
 import org.dom4j.Element;
-
-import static net.sf.anathema.character.main.traits.types.OtherTraitType.Essence;
 
 @RegisteredSpecialCharmBuilder
 public class EssenceFixedRepurchaseCharmBuilder implements SpecialCharmBuilder {
@@ -19,7 +16,7 @@ public class EssenceFixedRepurchaseCharmBuilder implements SpecialCharmBuilder {
     SpecialCharmDto overallDto = new SpecialCharmDto();
     overallDto.charmId = id;
     new EssenceFixedRepurchaseParser().parse(charmElement, overallDto);
-    return new EssenceFixedMultiLearnableCharm(id, EssenceTemplate.SYSTEM_ESSENCE_MAX, Essence);
+    return new EssenceFixedMultiLearnableCharm(id);
   }
 
   @Override
