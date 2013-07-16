@@ -10,7 +10,6 @@ import net.sf.anathema.character.main.magic.parser.dto.special.OxBodyTechniqueDt
 import net.sf.anathema.character.main.magic.parser.dto.special.SpecialCharmDto;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.health.HealthLevelType;
-import org.dom4j.Element;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,7 +19,6 @@ import java.util.Map;
 
 @RegisteredSpecialCharmBuilder
 public class OxBodyCharmBuilder implements SpecialCharmBuilder {
-  private static final String TAG_OX_BODY_CHARM = "oxbody";
   private static final String TAG_ZERO_HEALTH = "zeroHealthLevel";
   private static final String TAG_ONE_HEALTH = "oneHealthLevel";
   private static final String TAG_TWO_HEALTH = "twoHealthLevel";
@@ -31,11 +29,8 @@ public class OxBodyCharmBuilder implements SpecialCharmBuilder {
   private final TraitTypeFinder traitTypeFinder = new TraitTypeFinder();
 
   @Override
-  public ISpecialCharm readCharm(Element charmElement, String id) {
-    SpecialCharmDto overallDto = new SpecialCharmDto();
-    overallDto.charmId = id;
-    new OxBodyTechniqueParser().parse(charmElement, overallDto);
-    return createSpecialCharm(id, overallDto.oxBodyTechnique);
+  public ISpecialCharm readCharm(SpecialCharmDto overallDto) {
+    return createSpecialCharm(overallDto.charmId, overallDto.oxBodyTechnique);
   }
 
   private ISpecialCharm createSpecialCharm(String id, OxBodyTechniqueDto dto) {
@@ -69,7 +64,7 @@ public class OxBodyCharmBuilder implements SpecialCharmBuilder {
   }
 
   @Override
-  public boolean supports(Element charmElement) {
-    return charmElement.element(TAG_OX_BODY_CHARM) != null;
+  public boolean supports(SpecialCharmDto overallDto) {
+    return overallDto.oxBodyTechnique != null;
   }
 }

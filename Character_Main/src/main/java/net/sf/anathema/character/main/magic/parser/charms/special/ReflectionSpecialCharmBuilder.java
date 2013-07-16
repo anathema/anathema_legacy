@@ -1,6 +1,7 @@
 package net.sf.anathema.character.main.magic.parser.charms.special;
 
 import net.sf.anathema.character.main.magic.charm.special.ISpecialCharm;
+import net.sf.anathema.character.main.magic.parser.dto.special.SpecialCharmDto;
 import net.sf.anathema.initialization.ObjectFactory;
 import org.dom4j.Element;
 
@@ -10,29 +11,35 @@ import java.util.List;
 public class ReflectionSpecialCharmBuilder {
 
   private final List<SpecialCharmBuilder> builders = new ArrayList<>();
-  private final List<SpecialCharmBuilder> parsers = new ArrayList<>();
+  private final List<SpecialCharmParser> parsers = new ArrayList<>();
 
   public ReflectionSpecialCharmBuilder(ObjectFactory objectFactory) {
     this.builders.addAll(objectFactory.<SpecialCharmBuilder>instantiateAll(RegisteredSpecialCharmBuilder.class));
-    this.parsers.addAll(objectFactory.<SpecialCharmBuilder>instantiateAll(RegisteredSpecialCharmParser.class));
+    this.parsers.addAll(objectFactory.<SpecialCharmParser>instantiateAll(RegisteredSpecialCharmParser.class));
   }
 
   public ISpecialCharm readCharm(Element charmElement, String id) {
-    for (SpecialCharmBuilder builder : builders) {
-      if (!builder.supports(charmElement)) {
-        continue;
+    SpecialCharmDto overallDto = new SpecialCharmDto();
+    overallDto.charmId = id;
+    findParser(charmElement).parse(charmElement, overallDto);
+    return findBuilder(overallDto).readCharm(overallDto);
+   }
+
+  private SpecialCharmParser findParser(Element charmElement) {
+    for (SpecialCharmParser parser : parsers) {
+      if (parser.supports(charmElement)) {
+        return parser;
       }
-      return builder.readCharm(charmElement, id);
     }
-    return null;
+    return new NullSpecialCharmParser();
   }
 
-  public boolean supports(Element charmElement) {
+  private SpecialCharmBuilder findBuilder(SpecialCharmDto dto) {
     for (SpecialCharmBuilder builder : builders) {
-      if (builder.supports(charmElement)) {
-        return true;
+      if (builder.supports(dto)) {
+        return builder;
       }
     }
-    return false;
+    return new NullSpecialCharmBuilder();
   }
 }

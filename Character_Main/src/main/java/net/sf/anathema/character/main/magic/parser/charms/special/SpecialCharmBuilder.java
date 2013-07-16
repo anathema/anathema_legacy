@@ -1,11 +1,11 @@
 package net.sf.anathema.character.main.magic.parser.charms.special;
 
 import net.sf.anathema.character.main.magic.charm.special.ISpecialCharm;
-import org.dom4j.Element;
+import net.sf.anathema.character.main.magic.parser.dto.special.SpecialCharmDto;
 
 public interface SpecialCharmBuilder {
 
-  ISpecialCharm readCharm(Element charmElement, String id);
+  ISpecialCharm readCharm(SpecialCharmDto dto);
 
-  boolean supports(Element charmElement);
+  boolean supports(SpecialCharmDto dto);
 }

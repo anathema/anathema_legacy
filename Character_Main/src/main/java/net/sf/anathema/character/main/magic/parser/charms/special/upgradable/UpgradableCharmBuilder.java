@@ -8,25 +8,20 @@ import net.sf.anathema.character.main.magic.parser.charms.special.SpecialCharmBu
 import net.sf.anathema.character.main.magic.parser.dto.special.SpecialCharmDto;
 import net.sf.anathema.character.main.magic.parser.dto.special.UpgradableDto;
 import net.sf.anathema.character.main.traits.TraitType;
-import org.dom4j.Element;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @RegisteredSpecialCharmBuilder
 public class UpgradableCharmBuilder implements SpecialCharmBuilder {
-  private static final String TAG_UPGRADABLE = "upgradeable";
 
   private final TraitTypeFinder traitTypeFinder = new TraitTypeFinder();
 
   @Override
-  public ISpecialCharm readCharm(Element charmElement, String id) {
-    SpecialCharmDto overallDto = new SpecialCharmDto();
-    overallDto.charmId = id;
-    new UpgradableParser().parse(charmElement, overallDto);
+  public ISpecialCharm readCharm(SpecialCharmDto overallDto) {
     UpgradableDto dto = overallDto.upgradable;
-    return new UpgradableCharm(id, createUpgrades(dto), dto.requiresBase, dto.bpCostsByName, dto.xpCostsByName, dto.essenceMinimumsByName,
-            dto.traitMinimumsByName, createTraitsMap(dto));
+    return new UpgradableCharm(overallDto.charmId, createUpgrades(dto), dto.requiresBase, dto.bpCostsByName, dto.xpCostsByName,
+            dto.essenceMinimumsByName, dto.traitMinimumsByName, createTraitsMap(dto));
   }
 
   private Map<String, TraitType> createTraitsMap(UpgradableDto dto) {
@@ -42,7 +37,7 @@ public class UpgradableCharmBuilder implements SpecialCharmBuilder {
   }
 
   @Override
-  public boolean supports(Element charmElement) {
-    return charmElement.element(TAG_UPGRADABLE) != null;
+  public boolean supports(SpecialCharmDto overallDto) {
+    return overallDto.upgradable != null;
   }
 }

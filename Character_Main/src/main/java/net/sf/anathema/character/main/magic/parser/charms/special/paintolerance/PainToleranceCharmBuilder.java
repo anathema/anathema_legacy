@@ -5,23 +5,16 @@ import net.sf.anathema.character.main.magic.charm.special.StaticPainToleranceCha
 import net.sf.anathema.character.main.magic.parser.charms.special.RegisteredSpecialCharmBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.special.SpecialCharmBuilder;
 import net.sf.anathema.character.main.magic.parser.dto.special.SpecialCharmDto;
-import org.dom4j.Element;
 
 @RegisteredSpecialCharmBuilder
 public class PainToleranceCharmBuilder implements SpecialCharmBuilder {
 
-  private static final String TAG_PAIN_TOLERANCE = "painTolerance";
-
-  public ISpecialCharm readCharm(Element charmElement, String id) {
-    SpecialCharmDto overallDto = new SpecialCharmDto();
-    overallDto.charmId = id;
-    new PainToleranceParser().parse(charmElement, overallDto);
-    return new StaticPainToleranceCharm(id, overallDto.painTolerance);
+  public ISpecialCharm readCharm(SpecialCharmDto overallDto) {
+    return new StaticPainToleranceCharm(overallDto.charmId, overallDto.painTolerance);
   }
 
   @Override
-  public boolean supports(Element charmElement) {
-    Element painToleranceElement = charmElement.element(TAG_PAIN_TOLERANCE);
-    return painToleranceElement != null;
+  public boolean supports(SpecialCharmDto overallDto) {
+    return overallDto.painTolerance != null;
   }
 }

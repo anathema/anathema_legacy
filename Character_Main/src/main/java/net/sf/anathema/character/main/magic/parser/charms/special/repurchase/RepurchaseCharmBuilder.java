@@ -1,6 +1,7 @@
 package net.sf.anathema.character.main.magic.parser.charms.special.repurchase;
 
 import net.sf.anathema.character.main.magic.charm.special.CharmTier;
+import net.sf.anathema.character.main.magic.charm.special.EssenceFixedMultiLearnableCharm;
 import net.sf.anathema.character.main.magic.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.magic.charm.special.StaticMultiLearnableCharm;
 import net.sf.anathema.character.main.magic.charm.special.TieredMultiLearnableCharm;
@@ -17,7 +18,6 @@ import net.sf.anathema.character.main.magic.parser.dto.special.TierRepurchaseDto
 import net.sf.anathema.character.main.magic.parser.dto.special.TraitRepurchaseDto;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.types.ValuedTraitType;
-import org.dom4j.Element;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,23 +25,21 @@ import java.util.List;
 @RegisteredSpecialCharmBuilder
 public class RepurchaseCharmBuilder implements SpecialCharmBuilder {
 
-  private static final String TAG_REPURCHASES = "repurchases";
-
   private final TraitTypeFinder traitTypeFinder = new TraitTypeFinder();
 
   @Override
-  public ISpecialCharm readCharm(Element charmElement, String id) {
-    SpecialCharmDto overallDto = new SpecialCharmDto();
-    overallDto.charmId = id;
-    new RepurchaseParser().parse(charmElement, overallDto);
+  public ISpecialCharm readCharm(SpecialCharmDto overallDto) {
     RepurchaseDto repurchaseDto = overallDto.repurchase;
+    if (repurchaseDto.isEssenceRepurchase) {
+      return new EssenceFixedMultiLearnableCharm(overallDto.charmId);
+    }
     if (repurchaseDto.traitRepurchase != null) {
-      return createTraitMultiLearnable(id, repurchaseDto.traitRepurchase);
+      return createTraitMultiLearnable(overallDto.charmId, repurchaseDto.traitRepurchase);
     }
     if (repurchaseDto.staticRepurchase != null) {
-      return new StaticMultiLearnableCharm(id, repurchaseDto.staticRepurchase.limit);
+      return new StaticMultiLearnableCharm(overallDto.charmId, repurchaseDto.staticRepurchase.limit);
     }
-    return createTierMultiLearnable(id, repurchaseDto);
+    return createTierMultiLearnable(overallDto.charmId, repurchaseDto);
   }
 
   private ISpecialCharm createTierMultiLearnable(String id, RepurchaseDto repurchaseDto) {
@@ -70,7 +68,7 @@ public class RepurchaseCharmBuilder implements SpecialCharmBuilder {
   }
 
   @Override
-  public boolean supports(Element charmElement) {
-    return charmElement.element(TAG_REPURCHASES) != null;
+  public boolean supports(SpecialCharmDto overallDto) {
+    return overallDto.repurchase != null;
   }
 }
