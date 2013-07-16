@@ -13,8 +13,6 @@ public interface CharmCache extends ExtensibleDataSet {
 
   ISpecialCharm[] getSpecialCharmData(Identifier type);
 
-  Charm[] getMartialArtsCharms();
-
   Charm[] getCharms(Identifier type);
 
   CharmProvider getCharmProvider();

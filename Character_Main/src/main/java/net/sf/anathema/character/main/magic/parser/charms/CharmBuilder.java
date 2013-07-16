@@ -4,7 +4,6 @@ import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.charm.CharmException;
 import net.sf.anathema.character.main.magic.charm.CharmImpl;
 import net.sf.anathema.character.main.magic.charm.ICharmXMLConstants;
-import net.sf.anathema.character.main.magic.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.magic.combos.IComboRestrictions;
 import net.sf.anathema.character.main.magic.model.attribute.MagicAttribute;
 import net.sf.anathema.character.main.magic.model.cost.ICostList;
@@ -28,7 +27,6 @@ import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static net.sf.anathema.character.main.magic.charm.ICharmXMLConstants.ATTRIB_EXALT;
@@ -65,12 +63,7 @@ public class CharmBuilder implements ICharmBuilder {
   }
 
   @Override
-  public CharmImpl buildCharm(Element charmElement) throws PersistenceException {
-    return buildCharm(charmElement, new ArrayList<ISpecialCharm>());
-  }
-
-  @Override
-  public CharmImpl buildCharm(Element charmElement, List<ISpecialCharm> specialCharms) throws PersistenceException {
+  public CharmImpl buildCharm(Element charmElement, List<SpecialCharmDto> specialCharms) throws PersistenceException {
     String id = idBuilder.build(charmElement);
     try {
       CharacterType characterType = getCharacterType(charmElement);
@@ -98,7 +91,7 @@ public class CharmBuilder implements ICharmBuilder {
 
       SpecialCharmDto dto = specialCharmBuilder.readCharmDto(charmElement, id);
       if (dto.isSpecial()) {
-        specialCharms.add(specialCharmBuilder.readCharm(dto));
+        specialCharms.add(dto);
       }
       return charm;
     } catch (PersistenceException e) {

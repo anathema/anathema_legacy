@@ -54,7 +54,7 @@ public class HeroItemPersisterTest {
 
   private HeroEnvironment createCharacterGenerics() {
     IExtensibleDataSetProvider dataSetProvider = mock(IExtensibleDataSetProvider.class);
-    when(dataSetProvider.getDataSet(CharmCache.class)).thenReturn(new CharmCacheImpl());
+    when(dataSetProvider.getDataSet(CharmCache.class)).thenReturn(new CharmCacheImpl(null));
     when(dataSetProvider.getDataSet(ISpellCache.class)).thenReturn(new SpellCache());
     HeroEnvironment generics = new HeroEnvironmentImpl(null, new DummyObjectFactory(), dataSetProvider);
     generics.getTemplateRegistry().register(template);

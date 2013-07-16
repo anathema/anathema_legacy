@@ -2,6 +2,8 @@ package net.sf.anathema.character.main.magic.charmtree.cache;
 
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.charm.special.ISpecialCharm;
+import net.sf.anathema.character.main.magic.parser.charms.special.ReflectionSpecialCharmBuilder;
+import net.sf.anathema.character.main.magic.parser.dto.special.SpecialCharmDto;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
@@ -11,23 +13,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static net.sf.anathema.charms.MartialArtsUtilities.MARTIAL_ARTS;
-
 public class CharmCacheImpl implements CharmCache {
 
   private MultiEntryMap<Identifier, Charm> charmSets = new MultiEntryMap<>();
-  private Map<Identifier, List<ISpecialCharm>> specialCharmsByType = new HashMap<>();
+  private Map<Identifier, List<SpecialCharmDto>> specialCharmsByType = new HashMap<>();
   private Map<String, Charm> charmsById = new HashMap<>();
   private CharmProvider charmProvider;
+  private ReflectionSpecialCharmBuilder specialCharmBuilder;
+
+  public CharmCacheImpl(ReflectionSpecialCharmBuilder builder) {
+    this.specialCharmBuilder = builder;
+  }
 
   @Override
   public Charm getCharm(String charmId) {
     return charmsById.get(charmId);
-  }
-
-  @Override
-  public Charm[] getMartialArtsCharms() {
-    return getCharms(MARTIAL_ARTS);
   }
 
   @Override
@@ -68,10 +68,10 @@ public class CharmCacheImpl implements CharmCache {
     return allCharms;
   }
 
-  private List<ISpecialCharm> getSpecialCharmList(Identifier type) {
-    Map<Identifier, List<ISpecialCharm>> map = specialCharmsByType;
+  private List<SpecialCharmDto> getSpecialCharmList(Identifier type) {
+    Map<Identifier, List<SpecialCharmDto>> map = specialCharmsByType;
     type = new SimpleIdentifier(type.getId());
-    List<ISpecialCharm> list = map.get(type);
+    List<SpecialCharmDto> list = map.get(type);
     if (list == null) {
       list = new ArrayList<>();
       map.put(type, list);
@@ -81,15 +81,18 @@ public class CharmCacheImpl implements CharmCache {
 
   @Override
   public ISpecialCharm[] getSpecialCharmData(Identifier type) {
-    List<ISpecialCharm> charmList = getSpecialCharmList(type);
-    return charmList.toArray(new ISpecialCharm[charmList.size()]);
+    List<ISpecialCharm> specialCharms = new ArrayList<>();
+    for (SpecialCharmDto dto : getSpecialCharmList(type)) {
+      specialCharms.add(specialCharmBuilder.readCharm(dto));
+    }
+    return specialCharms.toArray(new ISpecialCharm[specialCharms.size()]);
   }
 
-  public void addSpecialCharmData(Identifier type, List<ISpecialCharm> data) {
+  public void addSpecialCharmData(Identifier type, List<SpecialCharmDto> data) {
     if (data == null) {
       return;
     }
-    List<ISpecialCharm> list = getSpecialCharmList(type);
+    List<SpecialCharmDto> list = getSpecialCharmList(type);
     list.addAll(data);
   }
 

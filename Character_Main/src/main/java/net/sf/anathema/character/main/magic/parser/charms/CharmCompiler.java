@@ -2,13 +2,12 @@ package net.sf.anathema.character.main.magic.parser.charms;
 
 import net.sf.anathema.character.main.framework.data.ExtensibleDataSet;
 import net.sf.anathema.character.main.framework.data.IExtensibleDataSetCompiler;
-import net.sf.anathema.character.main.magic.charmtree.cache.CharmCacheImpl;
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.charm.CharmException;
 import net.sf.anathema.character.main.magic.charm.CharmImpl;
-import net.sf.anathema.character.main.magic.charm.special.ISpecialCharm;
+import net.sf.anathema.character.main.magic.charmtree.cache.CharmCacheImpl;
 import net.sf.anathema.character.main.magic.parser.charms.special.ReflectionSpecialCharmBuilder;
-import net.sf.anathema.character.main.magic.parser.charms.special.SpecialCharmBuilder;
+import net.sf.anathema.character.main.magic.parser.dto.special.SpecialCharmDto;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.type.CharacterTypes;
@@ -41,14 +40,15 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
   private final CharmAlternativeBuilder alternativeBuilder = new CharmAlternativeBuilder();
   private final CharmMergedBuilder mergedBuilder = new CharmMergedBuilder();
   private final SAXReader reader = new SAXReader();
-  private final CharmCacheImpl charmCache = new CharmCacheImpl();
+  private final CharmCacheImpl charmCache;
   private final CharacterTypes characterTypes;
   private final CharmSetBuilder setBuilder;
   private final GenericCharmSetBuilder genericBuilder;
 
   public CharmCompiler(ObjectFactory objectFactory) {
-    this.characterTypes = new ReflectionCharacterTypes(objectFactory);
     ReflectionSpecialCharmBuilder specialCharmBuilder = new ReflectionSpecialCharmBuilder(objectFactory);
+    this.charmCache =  new CharmCacheImpl(specialCharmBuilder);
+    this.characterTypes = new ReflectionCharacterTypes(objectFactory);
     this.setBuilder = new CharmSetBuilder(characterTypes, specialCharmBuilder);
     this.genericBuilder = new GenericCharmSetBuilder(characterTypes, specialCharmBuilder);
   }
@@ -138,7 +138,7 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
   }
 
   private void buildTypeCharms(Identifier type, Document charmDocument, ICharmSetBuilder builder) throws PersistenceException {
-    List<ISpecialCharm> specialCharms = new ArrayList<>();
+    List<SpecialCharmDto> specialCharms = new ArrayList<>();
     Charm[] charmArray = builder.buildCharms(charmDocument, specialCharms);
     for (Charm charm : charmArray) {
       charmCache.addCharm(type, charm);
