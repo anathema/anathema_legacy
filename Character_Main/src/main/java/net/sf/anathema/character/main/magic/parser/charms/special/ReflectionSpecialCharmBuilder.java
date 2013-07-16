@@ -25,10 +25,6 @@ public class ReflectionSpecialCharmBuilder {
     return overallDto;
   }
 
-  public ISpecialCharm readCharm(SpecialCharmDto overallDto) {
-    return findBuilder(overallDto).readCharm(overallDto);
-  }
-
   private SpecialCharmParser findParser(Element charmElement) {
     for (SpecialCharmParser parser : parsers) {
       if (parser.supports(charmElement)) {
@@ -36,6 +32,10 @@ public class ReflectionSpecialCharmBuilder {
       }
     }
     return new NullSpecialCharmParser();
+  }
+
+  public ISpecialCharm readCharm(SpecialCharmDto overallDto) {
+    return findBuilder(overallDto).readCharm(overallDto);
   }
 
   private SpecialCharmBuilder findBuilder(SpecialCharmDto dto) {
