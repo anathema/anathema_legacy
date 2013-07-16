@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.type;
 
-import net.sf.anathema.character.main.magic.model.charm.type.ISimpleSpecialsModel;
-import net.sf.anathema.character.main.magic.model.charm.type.TurnType;
+import net.sf.anathema.hero.charmtree.type.ISimpleSpecialsModel;
+import net.sf.anathema.hero.charmtree.type.TurnType;
 import net.sf.anathema.lib.gui.TooltipBuilder;
 import net.sf.anathema.lib.resources.Resources;
 

@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.model.charm;
 
-import net.sf.anathema.character.main.magic.model.charm.duration.IDuration;
-import net.sf.anathema.character.main.magic.model.charm.type.ICharmTypeModel;
+import net.sf.anathema.hero.charmtree.duration.IDuration;
+import net.sf.anathema.hero.charmtree.type.ICharmTypeModel;
 import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnArbitrator;
 import net.sf.anathema.character.main.magic.model.combos.IComboRestrictions;
 import net.sf.anathema.character.main.magic.model.magic.Magic;

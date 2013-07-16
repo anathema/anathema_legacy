@@ -2,7 +2,7 @@ package net.sf.anathema.hero.combos.model.rules;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmAttributeList;
-import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
+import net.sf.anathema.hero.charmtree.type.CharmType;
 
 public class SecondEditionComboArbitrator extends AbstractComboArbitrator {
 

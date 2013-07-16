@@ -10,7 +10,7 @@ import net.sf.anathema.character.main.magic.model.charm.IExtendedCharmLearnableA
 import net.sf.anathema.character.main.magic.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.main.magic.model.charmtree.SpecialCharmLearnArbitrator;
 import net.sf.anathema.character.main.type.CharacterType;
-import net.sf.anathema.charms.MartialArtsLevel;
+import net.sf.anathema.hero.charmtree.martial.MartialArtsLevel;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;

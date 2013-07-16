@@ -1,6 +1,6 @@
-package net.sf.anathema.character.main.magic.model.charm;
+package net.sf.anathema.hero.charmtree.type;
 
-import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
+import net.sf.anathema.hero.charmtree.type.CharmType;
 
 public interface ICharmTypeVisitor {
 

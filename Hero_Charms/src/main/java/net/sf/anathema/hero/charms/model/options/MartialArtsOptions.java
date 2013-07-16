@@ -7,7 +7,7 @@ import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
 import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnableArbitrator;
 import net.sf.anathema.character.main.magic.model.charmtree.MartialArtsCharmTree;
 import net.sf.anathema.hero.charms.model.rules.CharmsRules;
-import net.sf.anathema.charms.MartialArtsLevel;
+import net.sf.anathema.hero.charmtree.martial.MartialArtsLevel;
 
 import static net.sf.anathema.charms.MartialArtsUtilities.isMartialArts;
 

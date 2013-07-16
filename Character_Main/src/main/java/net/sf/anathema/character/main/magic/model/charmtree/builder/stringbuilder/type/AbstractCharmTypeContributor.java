@@ -1,12 +1,12 @@
 package net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.type;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charm.ICharmTypeVisitor;
-import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
-import net.sf.anathema.character.main.magic.model.charm.type.ICharmTypeModel;
-import net.sf.anathema.character.main.magic.model.charm.type.IReflexiveSpecialsModel;
-import net.sf.anathema.character.main.magic.model.charm.type.ISimpleSpecialsModel;
-import net.sf.anathema.character.main.magic.model.charm.type.TurnType;
+import net.sf.anathema.hero.charmtree.type.ICharmTypeVisitor;
+import net.sf.anathema.hero.charmtree.type.CharmType;
+import net.sf.anathema.hero.charmtree.type.ICharmTypeModel;
+import net.sf.anathema.hero.charmtree.type.IReflexiveSpecialsModel;
+import net.sf.anathema.hero.charmtree.type.ISimpleSpecialsModel;
+import net.sf.anathema.hero.charmtree.type.TurnType;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.ICharmTypeStringBuilder;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.MagicTooltipContributor;
 import net.sf.anathema.character.main.magic.model.magic.Magic;

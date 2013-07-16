@@ -14,7 +14,7 @@ import net.sf.anathema.hero.charms.advance.creation.MagicCreationCostEvaluator;
 import net.sf.anathema.hero.charms.model.MagicLearner;
 import net.sf.anathema.hero.charms.model.PrintMagicProvider;
 import net.sf.anathema.hero.framework.HeroEnvironment;
-import net.sf.anathema.charms.MartialArtsLevel;
+import net.sf.anathema.hero.charmtree.martial.MartialArtsLevel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.lib.control.ChangeListener;

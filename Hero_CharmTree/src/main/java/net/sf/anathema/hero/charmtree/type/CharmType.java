@@ -1,6 +1,5 @@
-package net.sf.anathema.character.main.magic.model.charm.type;
+package net.sf.anathema.hero.charmtree.type;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharmTypeVisitor;
 import net.sf.anathema.lib.util.Identifier;
 
 public enum CharmType implements Identifier {

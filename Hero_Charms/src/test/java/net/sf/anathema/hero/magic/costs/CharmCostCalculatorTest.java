@@ -17,7 +17,7 @@ import net.sf.anathema.hero.charms.template.model.CharmsTemplate;
 import net.sf.anathema.hero.dummy.DummyHero;
 import net.sf.anathema.hero.magic.dummy.DummyCharmsModel;
 import net.sf.anathema.hero.dummy.magic.DummySpell;
-import net.sf.anathema.charms.MartialArtsLevel;
+import net.sf.anathema.hero.charmtree.martial.MartialArtsLevel;
 import net.sf.anathema.hero.magic.testing.DummySpellsModel;
 import net.sf.anathema.hero.traits.TraitModel;
 import net.sf.anathema.hero.traits.TraitModelFetcher;

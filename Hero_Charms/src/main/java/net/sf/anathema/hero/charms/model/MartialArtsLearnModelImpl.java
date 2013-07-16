@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static net.sf.anathema.character.main.magic.model.charm.CharmAttributeList.NO_STYLE_ATTRIBUTE;
-import static net.sf.anathema.charms.MartialArtsLevel.Celestial;
+import static net.sf.anathema.hero.charmtree.martial.MartialArtsLevel.Celestial;
 import static net.sf.anathema.charms.MartialArtsUtilities.MARTIAL_ARTS;
 import static net.sf.anathema.charms.MartialArtsUtilities.hasLevel;
 

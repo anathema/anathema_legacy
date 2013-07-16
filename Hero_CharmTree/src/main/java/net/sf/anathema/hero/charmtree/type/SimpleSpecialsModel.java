@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magic.model.charm.type;
+package net.sf.anathema.hero.charmtree.type;
 
 public class SimpleSpecialsModel implements ISimpleSpecialsModel {
 

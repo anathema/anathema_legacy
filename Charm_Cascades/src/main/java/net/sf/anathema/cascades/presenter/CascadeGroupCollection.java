@@ -8,7 +8,7 @@ import net.sf.anathema.character.main.magic.model.charmtree.MartialArtsCharmTree
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.hero.charms.model.CharmGroupCollection;
-import net.sf.anathema.charms.MartialArtsLevel;
+import net.sf.anathema.hero.charmtree.martial.MartialArtsLevel;
 import net.sf.anathema.charms.MartialArtsUtilities;
 import net.sf.anathema.lib.util.Identifier;
 

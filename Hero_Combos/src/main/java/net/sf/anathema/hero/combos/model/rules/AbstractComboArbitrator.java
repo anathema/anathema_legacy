@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.combos.model.rules;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charm.ICharmTypeVisitor;
-import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
+import net.sf.anathema.hero.charmtree.type.ICharmTypeVisitor;
+import net.sf.anathema.hero.charmtree.type.CharmType;
 import net.sf.anathema.character.main.magic.model.combos.IComboRestrictions;
 import net.sf.anathema.hero.combos.display.presenter.Combo;
 import net.sf.anathema.hero.combos.model.ComboRules;

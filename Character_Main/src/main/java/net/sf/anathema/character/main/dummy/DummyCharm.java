@@ -2,10 +2,10 @@ package net.sf.anathema.character.main.dummy;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.IndirectCharmRequirement;
-import net.sf.anathema.character.main.magic.model.charm.duration.IDuration;
-import net.sf.anathema.character.main.magic.model.charm.duration.SimpleDuration;
-import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
-import net.sf.anathema.character.main.magic.model.charm.type.CharmTypeModel;
+import net.sf.anathema.hero.charmtree.duration.IDuration;
+import net.sf.anathema.hero.charmtree.duration.SimpleDuration;
+import net.sf.anathema.hero.charmtree.type.CharmType;
+import net.sf.anathema.hero.charmtree.type.CharmTypeModel;
 import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnArbitrator;
 import net.sf.anathema.character.main.magic.model.combos.ComboRestrictions;
 import net.sf.anathema.character.main.magic.model.combos.IComboRestrictions;

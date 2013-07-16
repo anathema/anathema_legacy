@@ -1,4 +1,4 @@
-package net.sf.anathema.charms;
+package net.sf.anathema.hero.charmtree.martial;
 
 import net.sf.anathema.lib.util.Identifier;
 

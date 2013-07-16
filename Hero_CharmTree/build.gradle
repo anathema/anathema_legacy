@@ -1,0 +1,6 @@
+dependencies {
+//  Insert your dependencies here like this:
+    compile project(':Platform')
+    testCompile parent.ext.testDependencies //includes JUnit etc.
+//  testCompile project(path: ':Platform', configuration: 'tests')
+}

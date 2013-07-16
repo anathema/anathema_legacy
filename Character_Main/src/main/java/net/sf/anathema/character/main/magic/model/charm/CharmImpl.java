@@ -1,11 +1,11 @@
 package net.sf.anathema.character.main.magic.model.charm;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.character.main.magic.model.charm.duration.IDuration;
+import net.sf.anathema.hero.charmtree.duration.IDuration;
 import net.sf.anathema.character.main.magic.model.charm.prerequisite.CompositeLearnWorker;
 import net.sf.anathema.character.main.magic.model.charm.prerequisite.ICharmLearnWorker;
 import net.sf.anathema.character.main.magic.model.charm.prerequisite.SelectiveCharmGroup;
-import net.sf.anathema.character.main.magic.model.charm.type.ICharmTypeModel;
+import net.sf.anathema.hero.charmtree.type.ICharmTypeModel;
 import net.sf.anathema.character.main.magic.model.charmtree.GroupedCharmRequirement;
 import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnArbitrator;
 import net.sf.anathema.character.main.magic.model.combos.IComboRestrictions;

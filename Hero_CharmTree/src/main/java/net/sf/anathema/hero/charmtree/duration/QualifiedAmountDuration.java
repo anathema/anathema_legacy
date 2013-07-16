@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magic.model.charm.duration;
+package net.sf.anathema.hero.charmtree.duration;
 
 import com.google.common.base.Preconditions;
 import net.sf.anathema.lib.lang.ReflectionEqualsObject;

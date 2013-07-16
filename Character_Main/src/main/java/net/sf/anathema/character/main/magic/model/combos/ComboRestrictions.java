@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.model.combos;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
+import net.sf.anathema.hero.charmtree.type.CharmType;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 

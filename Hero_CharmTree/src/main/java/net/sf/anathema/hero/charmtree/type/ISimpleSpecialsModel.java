@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magic.model.charm.type;
+package net.sf.anathema.hero.charmtree.type;
 
 public interface ISimpleSpecialsModel extends ITypeSpecialsModel {
   int DEFAULT_SPEED = 6;

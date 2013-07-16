@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.parser.dto;
 
-import net.sf.anathema.character.main.magic.model.charm.type.ISimpleSpecialsModel;
-import net.sf.anathema.character.main.magic.model.charm.type.TurnType;
+import net.sf.anathema.hero.charmtree.type.ISimpleSpecialsModel;
+import net.sf.anathema.hero.charmtree.type.TurnType;
 
 public class CharmTypeSpecialsDto {
 
