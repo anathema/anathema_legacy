@@ -321,7 +321,7 @@ applicationCategory: "public.app-category.utilities" , //opt
     runtime(    dir: "build/jre/mac64/jre${jreVersion}/Contents/Home")  //opt 
       
     classpath(  dir: "Anathema/build/libs/")
-    classpath( file: "Anathema/resources/icons/core/AnathemaSplashNew.png")
+    classpath( file: "Anathema/src/main/resources/icons/core/AnathemaSplashNew.png")
     classpath(  dir: "${buildDir}/dependencies/")
     classpath(  dir: "${buildDir}/plugins/")
       
