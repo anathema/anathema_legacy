@@ -18,13 +18,17 @@ public class PainToleranceParser implements SpecialCharmParser {
   @Override
   public void parse(Element charmElement, SpecialCharmDto overallDto) {
     Element painToleranceElement = charmElement.element(TAG_PAIN_TOLERANCE);
+    overallDto.painTolerance = createPaintToleranceDto(painToleranceElement);
+  }
+
+  private PainToleranceDto createPaintToleranceDto(Element painToleranceElement) {
     PainToleranceDto dto = new PainToleranceDto();
     List<Element> elements = painToleranceElement.elements(TAG_LEVEL);
     for (Element levelElement : elements) {
       dto.levels.add(parseValue(levelElement));
     }
     dto.learnCount = dto.levels.size();
-    overallDto.painTolerance = dto;
+    return dto;
   }
 
   private int parseValue(Element levelElement) {

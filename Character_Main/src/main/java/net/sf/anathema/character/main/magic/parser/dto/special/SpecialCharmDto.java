@@ -7,4 +7,5 @@ public class SpecialCharmDto {
   public PainToleranceDto painTolerance;
   public TraitCapModifierDto traitCapModifier;
   public MultiEffectDto multiEffect;
+  public TranscendenceDto transcendence;
 }
