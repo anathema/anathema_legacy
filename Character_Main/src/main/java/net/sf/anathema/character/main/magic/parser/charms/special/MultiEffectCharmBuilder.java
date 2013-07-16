@@ -35,7 +35,6 @@ public class MultiEffectCharmBuilder implements SpecialCharmBuilder {
 
   @Override
   public boolean willReadCharm(Element charmElement) {
-    Element multiEffectElement = charmElement.element(TAG_MULTI_EFFECT);
-    return multiEffectElement != null;
+    return charmElement.element(TAG_MULTI_EFFECT) != null;
   }
 }

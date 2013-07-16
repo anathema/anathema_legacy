@@ -1,7 +1,10 @@
-package net.sf.anathema.character.main.magic.parser.charms.special;
+package net.sf.anathema.character.main.magic.parser.charms.special.repurchase;
 
 import net.sf.anathema.character.main.magic.charm.special.EssenceFixedMultiLearnableCharm;
 import net.sf.anathema.character.main.magic.charm.special.ISpecialCharm;
+import net.sf.anathema.character.main.magic.parser.charms.special.RegisteredSpecialCharmBuilder;
+import net.sf.anathema.character.main.magic.parser.charms.special.SpecialCharmBuilder;
+import net.sf.anathema.character.main.magic.parser.dto.special.SpecialCharmDto;
 import net.sf.anathema.character.main.traits.EssenceTemplate;
 import org.dom4j.Element;
 
@@ -13,13 +16,14 @@ public class EssenceFixedRepurchaseCharmBuilder implements SpecialCharmBuilder {
 
   @Override
   public ISpecialCharm readCharm(Element charmElement, String id) {
-    Element repurchasesElement = charmElement.element(TAG_ESSENCE_FIXED_REPURCHASES);
+    SpecialCharmDto overallDto = new SpecialCharmDto();
+    overallDto.charmId = id;
+    new EssenceFixedRepurchaseParser().parse(charmElement, overallDto);
     return new EssenceFixedMultiLearnableCharm(id, EssenceTemplate.SYSTEM_ESSENCE_MAX, Essence);
   }
 
   @Override
   public boolean willReadCharm(Element charmElement) {
-    Element repurchasesElement = charmElement.element(TAG_ESSENCE_FIXED_REPURCHASES);
-    return repurchasesElement != null;
+    return charmElement.element(TAG_ESSENCE_FIXED_REPURCHASES) != null;
   }
 }

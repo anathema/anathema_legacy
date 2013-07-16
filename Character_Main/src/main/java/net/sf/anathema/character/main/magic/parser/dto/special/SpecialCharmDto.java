@@ -5,4 +5,5 @@ public class SpecialCharmDto {
   public OxBodyTechniqueDto oxBodyTechnique;
   public PainToleranceDto painTolerance;
   public TraitCapModifierDto traitCapModifier;
+  public boolean isEssenceRepurchase = false;
 }

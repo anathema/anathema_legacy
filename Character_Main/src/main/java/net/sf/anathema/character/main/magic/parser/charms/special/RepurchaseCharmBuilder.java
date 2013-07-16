@@ -78,8 +78,7 @@ public class RepurchaseCharmBuilder implements SpecialCharmBuilder {
 
   @Override
   public boolean willReadCharm(Element charmElement) {
-    Element repurchaseElement = charmElement.element(TAG_REPURCHASES);
-    return repurchaseElement != null;
+    return charmElement.element(TAG_REPURCHASES) != null;
   }
 
   private CharmTier createTier(TraitType trait, Element repurchase, int essence) {

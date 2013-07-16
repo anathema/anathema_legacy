@@ -22,8 +22,7 @@ public class TranscendenceCharmBuilder implements SpecialCharmBuilder {
 
   @Override
   public boolean willReadCharm(Element charmElement) {
-    Element transcendenceElement = charmElement.element(TAG_TRANSCENDENCE);
-    return transcendenceElement != null;
+    return charmElement.element(TAG_TRANSCENDENCE) != null;
   }
 
   private TraitType getGenericTraitType(String value) {

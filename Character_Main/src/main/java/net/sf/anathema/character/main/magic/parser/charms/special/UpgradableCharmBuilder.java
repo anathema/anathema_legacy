@@ -73,7 +73,6 @@ public class UpgradableCharmBuilder implements SpecialCharmBuilder {
 
   @Override
   public boolean willReadCharm(Element charmElement) {
-    Element upgradableElement = charmElement.element(TAG_UPGRADABLE);
-    return upgradableElement != null;
+    return charmElement.element(TAG_UPGRADABLE) != null;
   }
 }
