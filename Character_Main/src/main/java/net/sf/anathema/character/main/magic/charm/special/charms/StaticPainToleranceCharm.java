@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magic.charm.special;
+package net.sf.anathema.character.main.magic.charm.special.charms;
 
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.main.magic.parser.dto.special.PainToleranceDto;

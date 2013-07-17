@@ -1,7 +1,11 @@
-package net.sf.anathema.character.main.magic.charm.special;
+package net.sf.anathema.character.main.magic.charm.special.charms;
 
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.charm.CharmSpecialist;
+import net.sf.anathema.character.main.magic.charm.special.SubEffects;
+import net.sf.anathema.character.main.magic.charm.special.UpgradableSubEffects;
+import net.sf.anathema.character.main.magic.charm.special.Upgrade;
+import net.sf.anathema.character.main.magic.charm.special.UpgradeCondition;
 import net.sf.anathema.character.main.magic.charmtree.ICharmLearnableArbitrator;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.lib.data.Condition;

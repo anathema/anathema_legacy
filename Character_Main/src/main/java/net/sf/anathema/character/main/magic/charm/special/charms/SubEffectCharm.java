@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magic.charm.special;
+package net.sf.anathema.character.main.magic.charm.special.charms;
 
 public class SubEffectCharm extends MultipleEffectCharm implements ISubEffectCharm {
 

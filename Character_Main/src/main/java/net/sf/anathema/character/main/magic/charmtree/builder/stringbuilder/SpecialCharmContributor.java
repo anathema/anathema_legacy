@@ -1,13 +1,13 @@
 package net.sf.anathema.character.main.magic.charmtree.builder.stringbuilder;
 
 import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.character.main.magic.charm.special.AbstractMultiLearnableCharm;
+import net.sf.anathema.character.main.magic.charm.special.charms.AbstractMultiLearnableCharm;
 import net.sf.anathema.character.main.magic.charm.special.CharmTier;
-import net.sf.anathema.character.main.magic.charm.special.EssenceFixedMultiLearnableCharm;
-import net.sf.anathema.character.main.magic.charm.special.ISpecialCharm;
-import net.sf.anathema.character.main.magic.charm.special.StaticMultiLearnableCharm;
-import net.sf.anathema.character.main.magic.charm.special.TieredMultiLearnableCharm;
-import net.sf.anathema.character.main.magic.charm.special.TraitDependentMultiLearnableCharm;
+import net.sf.anathema.character.main.magic.charm.special.charms.EssenceFixedMultiLearnableCharm;
+import net.sf.anathema.character.main.magic.charm.special.charms.ISpecialCharm;
+import net.sf.anathema.character.main.magic.charm.special.charms.StaticMultiLearnableCharm;
+import net.sf.anathema.character.main.magic.charm.special.charms.TieredMultiLearnableCharm;
+import net.sf.anathema.character.main.magic.charm.special.charms.TraitDependentMultiLearnableCharm;
 import net.sf.anathema.character.main.magic.model.Magic;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.types.OtherTraitType;

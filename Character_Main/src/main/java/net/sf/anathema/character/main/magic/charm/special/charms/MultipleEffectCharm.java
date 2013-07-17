@@ -1,8 +1,15 @@
-package net.sf.anathema.character.main.magic.charm.special;
+package net.sf.anathema.character.main.magic.charm.special.charms;
 
 import com.google.common.base.Objects;
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.charm.CharmSpecialist;
+import net.sf.anathema.character.main.magic.charm.special.ArbitratorLearnCondition;
+import net.sf.anathema.character.main.magic.charm.special.ArraySubEffects;
+import net.sf.anathema.character.main.magic.charm.special.SubEffect;
+import net.sf.anathema.character.main.magic.charm.special.SubEffectImpl;
+import net.sf.anathema.character.main.magic.charm.special.SubEffects;
+import net.sf.anathema.character.main.magic.charm.special.charms.IMultipleEffectCharm;
+import net.sf.anathema.character.main.magic.charm.special.charms.ISpecialCharmVisitor;
 import net.sf.anathema.character.main.magic.charmtree.ICharmLearnableArbitrator;
 import net.sf.anathema.lib.data.Condition;
 

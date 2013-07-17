@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.charms.model.special;
 
-import net.sf.anathema.character.main.magic.charm.special.ISpecialCharm;
-import net.sf.anathema.character.main.magic.charm.special.ISpecialCharmVisitor;
+import net.sf.anathema.character.main.magic.charm.special.charms.ISpecialCharm;
+import net.sf.anathema.character.main.magic.charm.special.charms.ISpecialCharmVisitor;
 
 public class NullSpecialCharm implements ISpecialCharm {
   @Override

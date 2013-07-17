@@ -1,4 +1,8 @@
-package net.sf.anathema.character.main.magic.charm.special;
+package net.sf.anathema.character.main.magic.charm.special.charms;
+
+import net.sf.anathema.character.main.magic.charm.special.CharmTier;
+import net.sf.anathema.character.main.magic.charm.special.LearnRangeContext;
+import net.sf.anathema.character.main.magic.charm.special.charms.AbstractMultiLearnableCharm;
 
 public class TieredMultiLearnableCharm extends AbstractMultiLearnableCharm {
 

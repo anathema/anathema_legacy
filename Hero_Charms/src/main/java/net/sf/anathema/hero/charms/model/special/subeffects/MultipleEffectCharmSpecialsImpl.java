@@ -2,8 +2,8 @@ package net.sf.anathema.hero.charms.model.special.subeffects;
 
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.charm.CharmSpecialist;
-import net.sf.anathema.character.main.magic.charm.special.IMultipleEffectCharm;
-import net.sf.anathema.character.main.magic.charm.special.ISpecialCharmLearnListener;
+import net.sf.anathema.character.main.magic.charm.special.charms.IMultipleEffectCharm;
+import net.sf.anathema.hero.charms.model.special.ISpecialCharmLearnListener;
 import net.sf.anathema.character.main.magic.charm.special.SubEffect;
 import net.sf.anathema.character.main.magic.charm.special.SubEffects;
 import net.sf.anathema.character.main.magic.charmtree.ICharmLearnableArbitrator;

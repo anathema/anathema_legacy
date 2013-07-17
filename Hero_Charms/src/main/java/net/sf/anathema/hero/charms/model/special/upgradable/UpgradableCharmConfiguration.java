@@ -2,7 +2,7 @@ package net.sf.anathema.hero.charms.model.special.upgradable;
 
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.charm.CharmSpecialist;
-import net.sf.anathema.character.main.magic.charm.special.IUpgradableCharm;
+import net.sf.anathema.character.main.magic.charm.special.charms.IUpgradableCharm;
 import net.sf.anathema.hero.charms.model.special.subeffects.MultipleEffectCharmSpecialsImpl;
 import net.sf.anathema.character.main.magic.charm.special.UpgradableSubEffects;
 import net.sf.anathema.character.main.magic.charmtree.ICharmLearnableArbitrator;

@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.charms.compiler.special;
 
-import net.sf.anathema.character.main.magic.charm.special.ISpecialCharm;
-import net.sf.anathema.character.main.magic.charm.special.SubEffectCharm;
+import net.sf.anathema.character.main.magic.charm.special.charms.ISpecialCharm;
+import net.sf.anathema.character.main.magic.charm.special.charms.SubEffectCharm;
 import net.sf.anathema.character.main.magic.parser.dto.special.SpecialCharmDto;
 import net.sf.anathema.character.main.magic.parser.dto.special.SubEffectDto;
 

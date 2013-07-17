@@ -3,7 +3,7 @@ package net.sf.anathema.hero.magic.model.charms;
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.charm.CharmSpecialist;
 import net.sf.anathema.character.main.magic.charm.special.ArraySubEffects;
-import net.sf.anathema.character.main.magic.charm.special.IMultipleEffectCharm;
+import net.sf.anathema.character.main.magic.charm.special.charms.IMultipleEffectCharm;
 import net.sf.anathema.hero.charms.model.special.subeffects.MultipleEffectCharmSpecialsImpl;
 import net.sf.anathema.character.main.magic.charm.special.SubEffect;
 import net.sf.anathema.character.main.magic.charm.special.SubEffectImpl;

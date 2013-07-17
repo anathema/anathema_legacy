@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.charmtree.ICharmLearnableArbitrator;
 import net.sf.anathema.lib.data.Condition;
 
-class PrerequisiteLearnCondition implements Condition {
+public class PrerequisiteLearnCondition implements Condition {
   private final SubEffects allEffects;
   private final ICharmLearnableArbitrator arbitrator;
   private final Charm charm;

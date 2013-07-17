@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.charms.model;
 
 import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.character.main.magic.charm.special.CharmSpecialsModel;
+import net.sf.anathema.hero.charms.model.special.CharmSpecialsModel;
 import net.sf.anathema.hero.charms.model.special.subeffects.SubEffectCharmSpecials;
 import net.sf.anathema.character.main.magic.model.Magic;
 import net.sf.anathema.hero.charms.model.special.upgradable.IUpgradableCharmConfiguration;

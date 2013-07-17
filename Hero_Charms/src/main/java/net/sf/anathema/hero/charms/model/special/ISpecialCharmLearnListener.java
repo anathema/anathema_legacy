@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magic.charm.special;
+package net.sf.anathema.hero.charms.model.special;
 
 public interface ISpecialCharmLearnListener {
   void learnCountChanged(int newValue);

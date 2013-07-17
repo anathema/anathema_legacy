@@ -1,12 +1,12 @@
 package net.sf.anathema.hero.charms.compiler.special;
 
 import net.sf.anathema.character.main.magic.charm.special.CharmTier;
-import net.sf.anathema.character.main.magic.charm.special.EssenceFixedMultiLearnableCharm;
-import net.sf.anathema.character.main.magic.charm.special.ISpecialCharm;
-import net.sf.anathema.character.main.magic.charm.special.StaticMultiLearnableCharm;
-import net.sf.anathema.character.main.magic.charm.special.TieredMultiLearnableCharm;
+import net.sf.anathema.character.main.magic.charm.special.charms.EssenceFixedMultiLearnableCharm;
+import net.sf.anathema.character.main.magic.charm.special.charms.ISpecialCharm;
+import net.sf.anathema.character.main.magic.charm.special.charms.StaticMultiLearnableCharm;
+import net.sf.anathema.character.main.magic.charm.special.charms.TieredMultiLearnableCharm;
 import net.sf.anathema.character.main.magic.charm.special.TraitCharmTier;
-import net.sf.anathema.character.main.magic.charm.special.TraitDependentMultiLearnableCharm;
+import net.sf.anathema.character.main.magic.charm.special.charms.TraitDependentMultiLearnableCharm;
 import net.sf.anathema.character.main.magic.parser.charms.TraitTypeFinder;
 import net.sf.anathema.character.main.magic.parser.dto.special.RepurchaseDto;
 import net.sf.anathema.character.main.magic.parser.dto.special.RequirementDto;

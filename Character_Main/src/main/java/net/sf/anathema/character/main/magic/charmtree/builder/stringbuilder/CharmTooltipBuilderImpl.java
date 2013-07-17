@@ -3,7 +3,7 @@ package net.sf.anathema.character.main.magic.charmtree.builder.stringbuilder;
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.character.main.magic.charm.special.ISpecialCharm;
+import net.sf.anathema.character.main.magic.charm.special.charms.ISpecialCharm;
 import net.sf.anathema.character.main.magic.charmtree.builder.stringbuilder.source.MagicSourceContributor;
 import net.sf.anathema.character.main.magic.charmtree.builder.stringbuilder.type.VerboseCharmTypeContributor;
 import net.sf.anathema.lib.gui.ConfigurableTooltip;
