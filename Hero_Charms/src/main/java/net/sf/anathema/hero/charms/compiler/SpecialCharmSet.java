@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.charms.compiler;
 
-import net.sf.anathema.hero.charms.model.special.charms.ISpecialCharm;
+import net.sf.anathema.hero.charms.model.special.ISpecialCharm;
 
 import java.util.ArrayList;
 import java.util.Collection;

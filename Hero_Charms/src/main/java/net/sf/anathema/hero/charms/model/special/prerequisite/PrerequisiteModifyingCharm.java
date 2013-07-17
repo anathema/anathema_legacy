@@ -1,7 +1,8 @@
-package net.sf.anathema.hero.charms.model.special.charms;
+package net.sf.anathema.hero.charms.model.special.prerequisite;
 
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.hero.charms.model.special.ISpecialCharmVisitor;
 
 public class PrerequisiteModifyingCharm implements IPrerequisiteModifyingCharm {
   private final String charmId;

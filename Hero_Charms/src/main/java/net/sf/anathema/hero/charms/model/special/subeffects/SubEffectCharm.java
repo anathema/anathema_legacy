@@ -1,4 +1,6 @@
-package net.sf.anathema.hero.charms.model.special.charms;
+package net.sf.anathema.hero.charms.model.special.subeffects;
+
+import net.sf.anathema.hero.charms.model.special.ISpecialCharmVisitor;
 
 public class SubEffectCharm extends MultipleEffectCharm implements ISubEffectCharm {
 

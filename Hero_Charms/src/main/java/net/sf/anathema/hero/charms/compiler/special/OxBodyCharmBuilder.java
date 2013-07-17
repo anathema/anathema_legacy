@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.charms.compiler.special;
 
-import net.sf.anathema.hero.charms.model.special.charms.ISpecialCharm;
-import net.sf.anathema.hero.charms.model.special.charms.OxBodyTechniqueCharm;
+import net.sf.anathema.hero.charms.model.special.ISpecialCharm;
+import net.sf.anathema.hero.charms.model.special.oxbody.OxBodyTechniqueCharm;
 import net.sf.anathema.character.main.magic.parser.charms.TraitTypeFinder;
 import net.sf.anathema.character.main.magic.parser.dto.special.OxBodyPickDto;
 import net.sf.anathema.character.main.magic.parser.dto.special.OxBodyTechniqueDto;

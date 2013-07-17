@@ -1,7 +1,9 @@
-package net.sf.anathema.hero.charms.model.special.charms;
+package net.sf.anathema.hero.charms.model.special.paintolerance;
 
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.main.magic.parser.dto.special.PainToleranceDto;
+import net.sf.anathema.hero.charms.model.special.ISpecialCharmVisitor;
+import net.sf.anathema.hero.charms.model.special.multilearn.StaticMultiLearnableCharm;
 
 import java.util.ArrayList;
 import java.util.List;

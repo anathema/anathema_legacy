@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.charms.model.special.charms;
+package net.sf.anathema.hero.charms.model.special;
 
 public interface ISpecialCharm {
 

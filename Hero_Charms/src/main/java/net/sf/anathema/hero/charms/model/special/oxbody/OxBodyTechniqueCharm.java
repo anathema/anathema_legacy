@@ -1,7 +1,8 @@
-package net.sf.anathema.hero.charms.model.special.charms;
+package net.sf.anathema.hero.charms.model.special.oxbody;
 
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.health.HealthLevelType;
+import net.sf.anathema.hero.charms.model.special.ISpecialCharmVisitor;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

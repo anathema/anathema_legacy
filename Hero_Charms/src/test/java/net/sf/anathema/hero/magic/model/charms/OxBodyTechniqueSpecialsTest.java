@@ -6,7 +6,7 @@ import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.favorable.FriendlyIncrementChecker;
 import net.sf.anathema.character.main.library.trait.rules.FavorableTraitRules;
 import net.sf.anathema.character.main.magic.charm.OxBodyCategory;
-import net.sf.anathema.hero.charms.model.special.charms.OxBodyTechniqueCharm;
+import net.sf.anathema.hero.charms.model.special.oxbody.OxBodyTechniqueCharm;
 import net.sf.anathema.hero.charms.model.special.oxbody.OxBodyTechniqueSpecials;
 import net.sf.anathema.character.main.traits.ITraitTemplate;
 import net.sf.anathema.character.main.traits.SimpleTraitTemplate;

@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.charms.model.special.charms;
+package net.sf.anathema.hero.charms.model.special.upgradable;
 
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.charm.CharmSpecialist;
@@ -8,6 +8,8 @@ import net.sf.anathema.character.main.magic.charm.special.Upgrade;
 import net.sf.anathema.character.main.magic.charm.special.UpgradeCondition;
 import net.sf.anathema.character.main.magic.charmtree.ICharmLearnableArbitrator;
 import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.hero.charms.model.special.ISpecialCharmVisitor;
+import net.sf.anathema.hero.charms.model.special.subeffects.MultipleEffectCharm;
 import net.sf.anathema.lib.data.Condition;
 
 import java.util.Map;

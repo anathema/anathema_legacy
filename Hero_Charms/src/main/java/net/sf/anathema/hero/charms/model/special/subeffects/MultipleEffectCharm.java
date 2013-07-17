@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.charms.model.special.charms;
+package net.sf.anathema.hero.charms.model.special.subeffects;
 
 import com.google.common.base.Objects;
 import net.sf.anathema.character.main.magic.charm.Charm;
@@ -9,6 +9,7 @@ import net.sf.anathema.character.main.magic.charm.special.SubEffect;
 import net.sf.anathema.character.main.magic.charm.special.SubEffectImpl;
 import net.sf.anathema.character.main.magic.charm.special.SubEffects;
 import net.sf.anathema.character.main.magic.charmtree.ICharmLearnableArbitrator;
+import net.sf.anathema.hero.charms.model.special.ISpecialCharmVisitor;
 import net.sf.anathema.lib.data.Condition;
 
 import java.util.ArrayList;
