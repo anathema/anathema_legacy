@@ -2,7 +2,7 @@ package net.sf.anathema.hero.charms.persistence.special.learn;
 
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.magic.charm.special.CharmSpecialsModel;
-import net.sf.anathema.character.main.magic.charm.special.MultiLearnCharmSpecials;
+import net.sf.anathema.hero.charms.model.special.multilearn.MultiLearnCharmSpecials;
 import net.sf.anathema.hero.charms.persistence.special.CharmSpecialsPto;
 import net.sf.anathema.hero.charms.persistence.special.SpecialCharmPersister;
 

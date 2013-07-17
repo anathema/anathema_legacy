@@ -6,6 +6,7 @@ import net.sf.anathema.character.main.magic.charm.special.IMultiLearnableCharm;
 import net.sf.anathema.character.main.magic.charm.special.StaticMultiLearnableCharm;
 import net.sf.anathema.character.main.magic.charmtree.ICharmLearnableArbitrator;
 import net.sf.anathema.hero.BasicCharacterTestCase;
+import net.sf.anathema.hero.charms.model.special.multilearn.MultiLearnableCharmSpecialsImpl;
 import net.sf.anathema.hero.dummy.DummyHero;
 import net.sf.anathema.hero.magic.dummy.DummyCharmsModel;
 import net.sf.anathema.hero.magic.dummy.DummyLearnableArbitrator;
@@ -13,7 +14,6 @@ import net.sf.anathema.character.main.traits.context.CreationTraitValueStrategy;
 import net.sf.anathema.character.main.traits.context.ExperiencedTraitValueStrategy;
 import net.sf.anathema.character.main.traits.context.ProxyTraitValueStrategy;
 import net.sf.anathema.hero.charms.model.CharmsModel;
-import net.sf.anathema.hero.charms.model.special.multilearn.MultiLearnableCharmConfiguration;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -27,13 +27,13 @@ public class MultiLearnableCharmConfigurationTest {
   private IMultiLearnableCharm specialCharm = new StaticMultiLearnableCharm("id", 5);
   private ICharmLearnableArbitrator arbitrator = new DummyLearnableArbitrator("id");
   private DummyHero hero = new DummyHero();
-  private MultiLearnableCharmConfiguration configuration;
+  private MultiLearnableCharmSpecialsImpl configuration;
   private ProxyTraitValueStrategy valueStrategy = new ProxyTraitValueStrategy(new CreationTraitValueStrategy());
 
   @Before
   public void setUp() throws Exception {
     hero = new BasicCharacterTestCase().createModelContextWithEssence2(valueStrategy);
-    configuration = new MultiLearnableCharmConfiguration(hero, config, charm, specialCharm, arbitrator);
+    configuration = new MultiLearnableCharmSpecialsImpl(hero, config, charm, specialCharm, arbitrator);
   }
 
   @Test

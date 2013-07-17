@@ -3,7 +3,7 @@ package net.sf.anathema.hero.magic.model.charms;
 import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.charm.CharmAttributeList;
-import net.sf.anathema.character.main.magic.charm.ILearningCharmGroup;
+import net.sf.anathema.hero.charms.model.ILearningCharmGroup;
 import net.sf.anathema.character.main.magic.charmtree.ICharmLearnArbitrator;
 import net.sf.anathema.hero.charms.model.MartialArtsLearnModelImpl;
 import net.sf.anathema.hero.magic.dummy.DummyCharmsModel;

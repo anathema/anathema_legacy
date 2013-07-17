@@ -1,7 +1,6 @@
 package net.sf.anathema.hero.charms.model;
 
 import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.character.main.magic.charm.ILearningCharmGroup;
 import net.sf.anathema.hero.experience.ExperienceModel;
 
 import java.util.HashSet;

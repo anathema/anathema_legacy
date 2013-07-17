@@ -1,18 +1,21 @@
-package net.sf.anathema.character.main.magic.charm.special;
+package net.sf.anathema.hero.charms.model.special.subeffects;
 
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.charm.CharmSpecialist;
+import net.sf.anathema.character.main.magic.charm.special.IMultipleEffectCharm;
+import net.sf.anathema.character.main.magic.charm.special.ISpecialCharmLearnListener;
+import net.sf.anathema.character.main.magic.charm.special.SubEffect;
+import net.sf.anathema.character.main.magic.charm.special.SubEffects;
 import net.sf.anathema.character.main.magic.charmtree.ICharmLearnableArbitrator;
 import net.sf.anathema.lib.control.ChangeListener;
 import org.jmock.example.announcer.Announcer;
 
-public class MultipleEffectCharmConfiguration implements MultipleEffectCharmSpecials {
+public class MultipleEffectCharmSpecialsImpl implements MultipleEffectCharmSpecials {
   private final Charm charm;
   private final SubEffects subeffects;
   private final Announcer<ISpecialCharmLearnListener> control = Announcer.to(ISpecialCharmLearnListener.class);
 
-  public MultipleEffectCharmConfiguration(CharmSpecialist specialist, Charm charm, IMultipleEffectCharm visited,
-                                          ICharmLearnableArbitrator arbitrator) {
+  public MultipleEffectCharmSpecialsImpl(CharmSpecialist specialist, Charm charm, IMultipleEffectCharm visited, ICharmLearnableArbitrator arbitrator) {
     this.charm = charm;
     this.subeffects = visited.buildSubEffects(specialist, arbitrator, charm);
     for (SubEffect subeffect : subeffects) {

@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.charm.CharmSpecialist;
 import net.sf.anathema.character.main.magic.charm.special.ArraySubEffects;
 import net.sf.anathema.character.main.magic.charm.special.IMultipleEffectCharm;
-import net.sf.anathema.character.main.magic.charm.special.MultipleEffectCharmConfiguration;
+import net.sf.anathema.hero.charms.model.special.subeffects.MultipleEffectCharmSpecialsImpl;
 import net.sf.anathema.character.main.magic.charm.special.SubEffect;
 import net.sf.anathema.character.main.magic.charm.special.SubEffectImpl;
 import net.sf.anathema.character.main.magic.charmtree.ICharmLearnableArbitrator;
@@ -27,7 +27,7 @@ public class MultipleEffectCharmConfigurationTest {
     DummyCondition condition = createCondition();
     SubEffectImpl effect = new SubEffectImpl("id", specialist.getExperience(), condition);
     IMultipleEffectCharm charm = createCharm(effect);
-    MultipleEffectCharmConfiguration configuration = new MultipleEffectCharmConfiguration(specialist, null, charm, null);
+    MultipleEffectCharmSpecialsImpl configuration = new MultipleEffectCharmSpecialsImpl(specialist, null, charm, null);
     effect.setExperienceLearned(true);
     configuration.learn(true);
     assertTrue(effect.isLearned());

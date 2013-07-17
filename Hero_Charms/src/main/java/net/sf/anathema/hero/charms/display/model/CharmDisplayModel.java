@@ -2,7 +2,7 @@ package net.sf.anathema.hero.charms.display.model;
 
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.character.main.magic.charm.ILearningCharmGroup;
+import net.sf.anathema.hero.charms.model.ILearningCharmGroup;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.charms.model.CharmsModelFetcher;
 import net.sf.anathema.hero.concept.CasteSelection;

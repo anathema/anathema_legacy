@@ -1,5 +1,6 @@
-package net.sf.anathema.character.main.magic.charm;
+package net.sf.anathema.hero.charms.model;
 
+import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.charmtree.ICharmLearnArbitrator;
 import net.sf.anathema.character.main.magic.charmtree.ICharmLearnableArbitrator;
 

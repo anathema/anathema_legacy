@@ -1,7 +1,6 @@
 package net.sf.anathema.hero.charms.model.special.oxbody;
 
 import net.sf.anathema.character.main.library.trait.Trait;
-import net.sf.anathema.character.main.magic.charm.special.OxBodyTechniqueSpecials;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 
 import java.util.ArrayList;

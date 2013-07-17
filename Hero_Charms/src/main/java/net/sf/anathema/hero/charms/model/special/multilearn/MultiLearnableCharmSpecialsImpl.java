@@ -11,7 +11,6 @@ import net.sf.anathema.character.main.magic.charm.PrerequisiteModifyingCharms;
 import net.sf.anathema.character.main.magic.charm.special.IMultiLearnableCharm;
 import net.sf.anathema.character.main.magic.charm.special.ISpecialCharmLearnListener;
 import net.sf.anathema.character.main.magic.charm.special.LearnRangeContext;
-import net.sf.anathema.character.main.magic.charm.special.MultiLearnCharmSpecials;
 import net.sf.anathema.character.main.magic.charmtree.CharmTraitRequirementChecker;
 import net.sf.anathema.character.main.magic.charmtree.ICharmLearnableArbitrator;
 import net.sf.anathema.hero.charms.model.CharmsModel;
@@ -26,7 +25,7 @@ import org.jmock.example.announcer.Announcer;
 
 import static net.sf.anathema.character.main.traits.SimpleTraitTemplate.createStaticLimitedTemplate;
 
-public class MultiLearnableCharmConfiguration implements MultiLearnCharmSpecials {
+public class MultiLearnableCharmSpecialsImpl implements MultiLearnCharmSpecials {
 
   private final Announcer<ISpecialCharmLearnListener> control = Announcer.to(ISpecialCharmLearnListener.class);
   private final Trait trait;
@@ -37,7 +36,8 @@ public class MultiLearnableCharmConfiguration implements MultiLearnCharmSpecials
   private ICharmLearnableArbitrator arbitrator;
   private Hero hero;
 
-  public MultiLearnableCharmConfiguration(Hero hero, CharmsModel config, Charm charm, IMultiLearnableCharm specialCharm, ICharmLearnableArbitrator arbitrator) {
+  public MultiLearnableCharmSpecialsImpl(Hero hero, CharmsModel config, Charm charm, IMultiLearnableCharm specialCharm,
+                                         ICharmLearnableArbitrator arbitrator) {
     this.hero = hero;
     this.specialist = new CharmSpecialistImpl(hero);
     this.config = config;
@@ -150,7 +150,7 @@ public class MultiLearnableCharmConfiguration implements MultiLearnCharmSpecials
   private class MultiLearnableIncrementChecker implements IncrementChecker {
     @Override
     public boolean isValidIncrement(int increment) {
-      int incrementedValue = MultiLearnableCharmConfiguration.this.trait.getCurrentValue() + increment;
+      int incrementedValue = MultiLearnableCharmSpecialsImpl.this.trait.getCurrentValue() + increment;
       if (incrementedValue == 0) {
         return true;
       }

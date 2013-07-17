@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.charms.display.special;
 
-import net.sf.anathema.character.main.magic.charm.special.MultipleEffectCharmSpecials;
+import net.sf.anathema.hero.charms.model.special.subeffects.MultipleEffectCharmSpecials;
 import net.sf.anathema.character.main.magic.charm.special.SubEffect;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;

@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.charms.model.special;
 
 import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.character.main.magic.charm.CharmLearnAdapter;
-import net.sf.anathema.character.main.magic.charm.IExtendedCharmLearnableArbitrator;
-import net.sf.anathema.character.main.magic.charm.ILearningCharmGroup;
+import net.sf.anathema.hero.charms.model.CharmLearnAdapter;
+import net.sf.anathema.hero.charms.model.IExtendedCharmLearnableArbitrator;
+import net.sf.anathema.hero.charms.model.ILearningCharmGroup;
 import net.sf.anathema.character.main.magic.charm.special.CharmSpecialsModel;
 import net.sf.anathema.character.main.magic.charm.special.IMultiLearnableCharm;
 import net.sf.anathema.character.main.magic.charm.special.IMultipleEffectCharm;
@@ -12,17 +12,16 @@ import net.sf.anathema.character.main.magic.charm.special.IPainToleranceCharm;
 import net.sf.anathema.character.main.magic.charm.special.IPrerequisiteModifyingCharm;
 import net.sf.anathema.character.main.magic.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.magic.charm.special.ISpecialCharmLearnListener;
-import net.sf.anathema.character.main.magic.charm.special.ISpecialCharmManager;
 import net.sf.anathema.character.main.magic.charm.special.ISpecialCharmVisitor;
 import net.sf.anathema.character.main.magic.charm.special.ISubEffectCharm;
 import net.sf.anathema.character.main.magic.charm.special.ITraitCapModifyingCharm;
 import net.sf.anathema.character.main.magic.charm.special.IUpgradableCharm;
-import net.sf.anathema.character.main.magic.charm.special.MultipleEffectCharmConfiguration;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.hero.charms.display.special.CharmSpecialistImpl;
 import net.sf.anathema.hero.charms.model.CharmsModel;
-import net.sf.anathema.hero.charms.model.special.multilearn.MultiLearnableCharmConfiguration;
+import net.sf.anathema.hero.charms.model.special.multilearn.MultiLearnableCharmSpecialsImpl;
 import net.sf.anathema.hero.charms.model.special.oxbody.OxBodyTechniqueSpecialsImpl;
+import net.sf.anathema.hero.charms.model.special.subeffects.MultipleEffectCharmSpecialsImpl;
 import net.sf.anathema.hero.charms.model.special.subeffects.SubEffectCharmSpecialsImpl;
 import net.sf.anathema.hero.charms.model.special.traitcap.TraitCapModifyingCharmConfiguration;
 import net.sf.anathema.hero.charms.model.special.upgradable.UpgradableCharmConfiguration;
@@ -105,7 +104,7 @@ public class SpecialCharmManager implements ISpecialCharmManager {
   }
 
   private void registerEffectMultilearnableCharm(IMultipleEffectCharm visited, Charm charm, ILearningCharmGroup group) {
-    MultipleEffectCharmConfiguration configuration = new MultipleEffectCharmConfiguration(specialist, charm, visited, arbitrator);
+    MultipleEffectCharmSpecialsImpl configuration = new MultipleEffectCharmSpecialsImpl(specialist, charm, visited, arbitrator);
     addSpecialCharmConfiguration(charm, group, configuration, true, true);
   }
 
@@ -115,7 +114,7 @@ public class SpecialCharmManager implements ISpecialCharmManager {
   }
 
   private void registerMultiLearnableCharm(IMultiLearnableCharm visitedCharm, Charm charm, ILearningCharmGroup group) {
-    MultiLearnableCharmConfiguration configuration = new MultiLearnableCharmConfiguration(hero, charmsModel, charm, visitedCharm, arbitrator);
+    MultiLearnableCharmSpecialsImpl configuration = new MultiLearnableCharmSpecialsImpl(hero, charmsModel, charm, visitedCharm, arbitrator);
     addSpecialCharmConfiguration(charm, group, configuration, true, true);
   }
 

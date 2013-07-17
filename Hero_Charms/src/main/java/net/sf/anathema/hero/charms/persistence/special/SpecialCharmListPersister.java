@@ -13,7 +13,7 @@ import net.sf.anathema.character.main.magic.charm.special.ISpecialCharmVisitor;
 import net.sf.anathema.character.main.magic.charm.special.ISubEffectCharm;
 import net.sf.anathema.character.main.magic.charm.special.ITraitCapModifyingCharm;
 import net.sf.anathema.character.main.magic.charm.special.IUpgradableCharm;
-import net.sf.anathema.character.main.magic.charm.special.MultiLearnCharmSpecials;
+import net.sf.anathema.hero.charms.model.special.multilearn.MultiLearnCharmSpecials;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.charms.persistence.CharmListPto;
 import net.sf.anathema.hero.charms.persistence.special.effect.MultipleEffectCharmPersister;
