@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.charms.model;
 
 import com.google.common.base.Functions;
-import net.sf.anathema.character.main.magic.charmtree.cache.CharmCache;
-import net.sf.anathema.character.main.magic.charmtree.cache.CharmProvider;
+import net.sf.anathema.hero.charms.compiler.CharmCache;
+import net.sf.anathema.hero.charms.compiler.CharmProvider;
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.charm.CharmAttributeList;
 import net.sf.anathema.character.main.magic.charm.CharmIdMap;

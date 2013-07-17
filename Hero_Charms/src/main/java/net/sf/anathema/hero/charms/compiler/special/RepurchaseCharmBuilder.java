@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magic.parser.charms.special.repurchase;
+package net.sf.anathema.hero.charms.compiler.special;
 
 import net.sf.anathema.character.main.magic.charm.special.CharmTier;
 import net.sf.anathema.character.main.magic.charm.special.EssenceFixedMultiLearnableCharm;

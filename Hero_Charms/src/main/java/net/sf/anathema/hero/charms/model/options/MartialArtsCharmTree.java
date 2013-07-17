@@ -1,6 +1,7 @@
-package net.sf.anathema.character.main.magic.charmtree;
+package net.sf.anathema.hero.charms.model.options;
 
-import net.sf.anathema.character.main.magic.charmtree.cache.CharmProvider;
+import net.sf.anathema.character.main.magic.charmtree.CharmTree;
+import net.sf.anathema.hero.charms.compiler.CharmProvider;
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.hero.charmtree.martial.MartialArtsLevel;
 import net.sf.anathema.charms.MartialArtsUtilities;

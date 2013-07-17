@@ -1,26 +1,27 @@
-package net.sf.anathema.character.main.magic.parser.charms.special.traitcap;
+package net.sf.anathema.hero.charms.compiler.special;
 
 import net.sf.anathema.character.main.magic.charm.special.ISpecialCharm;
-import net.sf.anathema.character.main.magic.charm.special.TraitCapModifyingCharm;
+import net.sf.anathema.character.main.magic.charm.special.PrerequisiteModifyingCharm;
 import net.sf.anathema.character.main.magic.parser.charms.TraitTypeFinder;
 import net.sf.anathema.character.main.magic.parser.charms.special.RegisteredSpecialCharmBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.special.SpecialCharmBuilder;
 import net.sf.anathema.character.main.magic.parser.dto.special.SpecialCharmDto;
-import net.sf.anathema.character.main.magic.parser.dto.special.TraitCapModifierDto;
+import net.sf.anathema.character.main.traits.TraitType;
 
 @RegisteredSpecialCharmBuilder
-public class TraitCapModifierCharmBuilder implements SpecialCharmBuilder {
+public class TranscendenceCharmBuilder implements SpecialCharmBuilder {
 
   private final TraitTypeFinder traitTypeFinder = new TraitTypeFinder();
 
   @Override
   public ISpecialCharm readCharm(SpecialCharmDto overallDto) {
-    TraitCapModifierDto dto = overallDto.traitCapModifier;
-    return new TraitCapModifyingCharm(overallDto.charmId, traitTypeFinder.getTrait(dto.trait), dto.modifier);
+    TraitType trait = traitTypeFinder.getTrait(overallDto.transcendence.trait);
+    int modifier = overallDto.transcendence.modifier;
+    return new PrerequisiteModifyingCharm(overallDto.charmId, trait, modifier);
   }
 
   @Override
   public boolean supports(SpecialCharmDto overallDto) {
-    return overallDto.traitCapModifier != null;
+    return overallDto.transcendence != null;
   }
 }

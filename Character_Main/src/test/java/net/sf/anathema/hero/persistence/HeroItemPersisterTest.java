@@ -3,10 +3,6 @@ package net.sf.anathema.hero.persistence;
 import net.sf.anathema.character.main.Character;
 import net.sf.anathema.character.main.CharacterStatisticsConfiguration;
 import net.sf.anathema.character.main.framework.data.IExtensibleDataSetProvider;
-import net.sf.anathema.character.main.magic.charmtree.cache.CharmCache;
-import net.sf.anathema.character.main.magic.charmtree.cache.CharmCacheImpl;
-import net.sf.anathema.character.main.magic.parser.spells.ISpellCache;
-import net.sf.anathema.character.main.magic.parser.spells.SpellCache;
 import net.sf.anathema.character.main.persistence.HeroItemPersister;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.messaging.IMessaging;
@@ -46,16 +42,14 @@ public class HeroItemPersisterTest {
 
   @Test
   public void createsFullyLoadedCharacter() throws Exception {
-    HeroEnvironment generics = createCharacterGenerics();
+    HeroEnvironment generics = createEnvironment();
     HeroItemPersister persister = new HeroItemPersister(type, generics, messaging);
     Character character = createNewCharacter(persister);
     assertThat(character.isFullyLoaded(), is(true));
   }
 
-  private HeroEnvironment createCharacterGenerics() {
+  private HeroEnvironment createEnvironment() {
     IExtensibleDataSetProvider dataSetProvider = mock(IExtensibleDataSetProvider.class);
-    when(dataSetProvider.getDataSet(CharmCache.class)).thenReturn(new CharmCacheImpl(null));
-    when(dataSetProvider.getDataSet(ISpellCache.class)).thenReturn(new SpellCache());
     HeroEnvironment generics = new HeroEnvironmentImpl(null, new DummyObjectFactory(), dataSetProvider);
     generics.getTemplateRegistry().register(template);
     return generics;

@@ -1,11 +1,17 @@
-package net.sf.anathema.character.main.magic.parser.charms;
+package net.sf.anathema.hero.charms.compiler;
 
 import net.sf.anathema.character.main.framework.data.ExtensibleDataSet;
 import net.sf.anathema.character.main.framework.data.IExtensibleDataSetCompiler;
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.charm.CharmException;
 import net.sf.anathema.character.main.magic.charm.CharmImpl;
-import net.sf.anathema.character.main.magic.charmtree.cache.CharmCacheImpl;
+import net.sf.anathema.character.main.magic.parser.charms.CharmAlternativeBuilder;
+import net.sf.anathema.character.main.magic.parser.charms.CharmMergedBuilder;
+import net.sf.anathema.character.main.magic.parser.charms.CharmSetBuilder;
+import net.sf.anathema.character.main.magic.parser.charms.GenericCharmSetBuilder;
+import net.sf.anathema.character.main.magic.parser.charms.ICharmSetBuilder;
+import net.sf.anathema.character.main.magic.parser.charms.IIdentificateRegistry;
+import net.sf.anathema.character.main.magic.parser.charms.IdentificateRegistry;
 import net.sf.anathema.character.main.magic.parser.charms.special.ReflectionSpecialCharmBuilder;
 import net.sf.anathema.character.main.magic.parser.dto.special.SpecialCharmDto;
 import net.sf.anathema.character.main.traits.TraitType;

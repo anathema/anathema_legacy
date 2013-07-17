@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.magic.model.charms;
 
 import net.sf.anathema.character.main.dummy.DummyCharm;
-import net.sf.anathema.character.main.magic.charmtree.cache.CharmProvider;
+import net.sf.anathema.hero.charms.compiler.CharmProvider;
 import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.character.main.magic.charmtree.MartialArtsCharmTree;
+import net.sf.anathema.hero.charms.model.options.MartialArtsCharmTree;
 import net.sf.anathema.character.main.magic.model.attribute.MagicAttributeImpl;
 import net.sf.anathema.hero.charmtree.martial.MartialArtsLevel;
 import org.junit.Test;

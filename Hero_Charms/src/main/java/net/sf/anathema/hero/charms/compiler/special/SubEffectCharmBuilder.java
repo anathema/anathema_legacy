@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magic.parser.charms.special.subeffect;
+package net.sf.anathema.hero.charms.compiler.special;
 
 import net.sf.anathema.character.main.magic.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.magic.charm.special.SubEffectCharm;

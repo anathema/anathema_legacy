@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magic.charmtree.cache;
+package net.sf.anathema.hero.charms.compiler;
 
 import net.sf.anathema.character.main.framework.data.ExtensibleDataSet;
 import net.sf.anathema.character.main.magic.charm.Charm;
