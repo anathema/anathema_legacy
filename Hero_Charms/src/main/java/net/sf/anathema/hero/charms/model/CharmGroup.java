@@ -1,5 +1,6 @@
-package net.sf.anathema.character.main.magic.charm;
+package net.sf.anathema.hero.charms.model;
 
+import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.lib.util.Identifier;
 

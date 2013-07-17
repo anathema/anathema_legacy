@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.hero.charms.model.special.multilearn.IMultiLearnableCharm;
 import net.sf.anathema.hero.charms.model.special.multilearn.StaticMultiLearnableCharm;
-import net.sf.anathema.character.main.magic.charmtree.ICharmLearnableArbitrator;
+import net.sf.anathema.character.main.magic.charm.ICharmLearnableArbitrator;
 import net.sf.anathema.hero.BasicCharacterTestCase;
 import net.sf.anathema.hero.charms.model.special.multilearn.MultiLearnableCharmSpecialsImpl;
 import net.sf.anathema.hero.dummy.DummyHero;

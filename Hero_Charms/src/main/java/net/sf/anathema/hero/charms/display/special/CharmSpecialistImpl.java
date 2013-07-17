@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.charms.display.special;
 
-import net.sf.anathema.character.main.magic.charm.CharmSpecialist;
+import net.sf.anathema.hero.charms.model.special.CharmSpecialist;
 import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.health.HealthModel;

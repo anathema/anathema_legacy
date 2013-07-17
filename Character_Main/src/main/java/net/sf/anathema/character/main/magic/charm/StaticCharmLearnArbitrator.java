@@ -1,7 +1,6 @@
-package net.sf.anathema.character.main.magic.charmtree;
+package net.sf.anathema.character.main.magic.charm;
 
 import com.google.common.collect.Lists;
-import net.sf.anathema.character.main.magic.charm.Charm;
 
 import java.util.Collections;
 import java.util.List;

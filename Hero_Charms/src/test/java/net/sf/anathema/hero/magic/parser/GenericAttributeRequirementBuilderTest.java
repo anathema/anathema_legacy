@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.magic.parser;
 
 import net.sf.anathema.character.main.magic.charm.IndirectCharmRequirement;
-import net.sf.anathema.character.main.magic.charmtree.CharmAttributeRequirement;
+import net.sf.anathema.character.main.magic.charm.CharmAttributeRequirement;
 import net.sf.anathema.character.main.magic.model.attribute.MagicAttributeImpl;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.GenericAttributeRequirementBuilder;
 import net.sf.anathema.character.main.traits.types.AbilityType;

@@ -1,8 +1,4 @@
-package net.sf.anathema.character.main.magic.charm.prerequisite;
-
-import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.character.main.magic.charm.CharmImpl;
-import net.sf.anathema.character.main.magic.charmtree.ICharmLearnArbitrator;
+package net.sf.anathema.character.main.magic.charm;
 
 import java.util.HashSet;
 import java.util.Set;

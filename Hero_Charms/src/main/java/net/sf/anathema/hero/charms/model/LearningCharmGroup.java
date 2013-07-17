@@ -2,8 +2,6 @@ package net.sf.anathema.hero.charms.model;
 
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.charm.CharmAttributeList;
-import net.sf.anathema.character.main.magic.charm.CharmGroup;
-import net.sf.anathema.character.main.magic.charm.ICharmGroup;
 import net.sf.anathema.hero.charms.model.special.CharmSpecialsModel;
 import net.sf.anathema.hero.charms.model.special.multilearn.MultiLearnCharmSpecials;
 import net.sf.anathema.hero.charms.model.special.subeffects.MultipleEffectCharmSpecials;

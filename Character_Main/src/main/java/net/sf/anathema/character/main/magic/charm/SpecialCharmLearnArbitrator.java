@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magic.charmtree;
+package net.sf.anathema.character.main.magic.charm;
 
 public interface SpecialCharmLearnArbitrator {
   boolean isLearned(String charmId);

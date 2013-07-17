@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magic.charm;
+package net.sf.anathema.hero.charms.model.special;
 
 import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.hero.health.HealthModel;

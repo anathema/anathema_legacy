@@ -1,4 +1,6 @@
-package net.sf.anathema.character.main.magic.charm;
+package net.sf.anathema.hero.charms.model;
+
+import net.sf.anathema.character.main.magic.charm.Charm;
 
 import java.util.Collection;
 

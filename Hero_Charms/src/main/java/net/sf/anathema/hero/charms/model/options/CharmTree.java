@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.charms.model.options;
 
 import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.character.main.magic.charm.CharmIdMap;
-import net.sf.anathema.character.main.magic.charmtree.GroupCharmTree;
-import net.sf.anathema.character.main.magic.charmtree.ICharmLearnableArbitrator;
+import net.sf.anathema.hero.charms.model.CharmIdMap;
+import net.sf.anathema.hero.charms.model.GroupCharmTree;
+import net.sf.anathema.character.main.magic.charm.ICharmLearnableArbitrator;
 
 import java.util.List;
 

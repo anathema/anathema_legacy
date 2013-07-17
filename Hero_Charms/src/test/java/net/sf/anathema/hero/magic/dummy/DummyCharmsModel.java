@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.magic.dummy;
 
 import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.character.main.magic.charm.CharmIdMap;
-import net.sf.anathema.character.main.magic.charm.ICharmGroup;
+import net.sf.anathema.hero.charms.model.CharmIdMap;
+import net.sf.anathema.hero.charms.model.ICharmGroup;
 import net.sf.anathema.hero.charms.model.ICharmLearnListener;
 import net.sf.anathema.hero.charms.model.special.CharmSpecialsModel;
 import net.sf.anathema.hero.charms.model.special.ISpecialCharm;

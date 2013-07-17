@@ -1,7 +1,7 @@
 package net.sf.anathema.cascades.presenter;
 
 import net.sf.anathema.hero.charms.compiler.CharmProvider;
-import net.sf.anathema.character.main.magic.charm.ICharmGroup;
+import net.sf.anathema.hero.charms.model.ICharmGroup;
 import net.sf.anathema.hero.charms.model.options.CharmTree;
 import net.sf.anathema.hero.charms.model.options.CharmTreeImpl;
 import net.sf.anathema.hero.charms.model.options.MartialArtsCharmTree;

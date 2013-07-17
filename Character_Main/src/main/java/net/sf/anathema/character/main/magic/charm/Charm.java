@@ -2,7 +2,6 @@ package net.sf.anathema.character.main.magic.charm;
 
 import net.sf.anathema.hero.charmtree.duration.Duration;
 import net.sf.anathema.hero.charmtree.type.ICharmTypeModel;
-import net.sf.anathema.character.main.magic.charmtree.ICharmLearnArbitrator;
 import net.sf.anathema.character.main.magic.combos.IComboRestrictions;
 import net.sf.anathema.character.main.magic.model.Magic;
 import net.sf.anathema.character.main.traits.TraitType;

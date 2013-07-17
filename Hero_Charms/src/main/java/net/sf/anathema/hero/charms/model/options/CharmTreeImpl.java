@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.charms.model.options;
 
 import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.character.main.magic.charm.CharmGroup;
-import net.sf.anathema.character.main.magic.charm.ICharmGroup;
+import net.sf.anathema.hero.charms.model.CharmGroup;
+import net.sf.anathema.hero.charms.model.ICharmGroup;
 import net.sf.anathema.charms.MartialArtsUtilities;
 
 import java.util.ArrayList;

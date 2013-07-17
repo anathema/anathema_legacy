@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magic.charm;
+package net.sf.anathema.hero.charms.model.special.oxbody;
 
 import net.sf.anathema.character.main.library.trait.DefaultTraitType;
 import net.sf.anathema.character.main.library.trait.LimitedTrait;

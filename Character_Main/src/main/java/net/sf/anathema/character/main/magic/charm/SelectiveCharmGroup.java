@@ -1,9 +1,6 @@
-package net.sf.anathema.character.main.magic.charm.prerequisite;
+package net.sf.anathema.character.main.magic.charm;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.character.main.magic.charm.CharmImpl;
-import net.sf.anathema.character.main.magic.charmtree.ICharmLearnArbitrator;
 import net.sf.anathema.character.main.magic.parser.charms.SelectiveCharmGroupTemplate;
 import net.sf.anathema.lib.logging.Logger;
 

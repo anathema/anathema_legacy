@@ -6,7 +6,7 @@ import net.sf.anathema.hero.charms.compiler.CharmCache;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.hero.charms.display.presenter.CharmDisplayPropertiesMap;
 import net.sf.anathema.hero.charms.display.view.DefaultNodeProperties;
-import net.sf.anathema.character.main.magic.charmtree.GroupCharmTree;
+import net.sf.anathema.hero.charms.model.GroupCharmTree;
 import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.hero.charms.display.coloring.CharmDye;
 import net.sf.anathema.hero.charms.display.coloring.ConfigurableCharmDye;

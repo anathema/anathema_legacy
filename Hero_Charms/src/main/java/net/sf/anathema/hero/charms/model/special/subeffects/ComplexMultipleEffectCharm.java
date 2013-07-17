@@ -1,10 +1,10 @@
 package net.sf.anathema.hero.charms.model.special.subeffects;
 
 import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.character.main.magic.charm.CharmSpecialist;
+import net.sf.anathema.hero.charms.model.special.CharmSpecialist;
 import net.sf.anathema.hero.charms.model.special.upgradable.CollectionSubEffects;
 import net.sf.anathema.hero.charms.model.special.prerequisite.PrerequisiteLearnCondition;
-import net.sf.anathema.character.main.magic.charmtree.ICharmLearnableArbitrator;
+import net.sf.anathema.character.main.magic.charm.ICharmLearnableArbitrator;
 import net.sf.anathema.lib.data.Condition;
 
 import java.util.Map;

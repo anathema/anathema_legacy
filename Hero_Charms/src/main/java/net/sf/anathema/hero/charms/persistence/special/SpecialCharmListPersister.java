@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.charms.persistence.special;
 
 import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.character.main.magic.charm.CharmIdMap;
+import net.sf.anathema.hero.charms.model.CharmIdMap;
 import net.sf.anathema.hero.charms.model.special.CharmSpecialsModel;
 import net.sf.anathema.hero.charms.model.special.multilearn.IMultiLearnableCharm;
 import net.sf.anathema.hero.charms.model.special.subeffects.IMultipleEffectCharm;

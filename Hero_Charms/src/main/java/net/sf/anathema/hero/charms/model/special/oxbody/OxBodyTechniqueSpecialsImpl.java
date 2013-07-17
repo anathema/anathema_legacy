@@ -3,7 +3,6 @@ package net.sf.anathema.hero.charms.model.special.oxbody;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.character.main.magic.charm.OxBodyCategory;
 import net.sf.anathema.hero.charms.model.special.ISpecialCharmLearnListener;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.hero.health.IHealthLevelProvider;
