@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.parser.combos;
 
 import net.sf.anathema.character.main.magic.charm.CharmException;
-import net.sf.anathema.character.main.magic.combos.ComboRestrictions;
+import net.sf.anathema.character.main.magic.charm.combos.ComboRestrictions;
 import net.sf.anathema.character.main.magic.parser.charms.GenericCharmUtilities;
 import net.sf.anathema.character.main.magic.parser.charms.IGenericsBuilder;
 import net.sf.anathema.character.main.traits.TraitType;

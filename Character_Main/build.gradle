@@ -2,7 +2,6 @@ dependencies {
     compile project(':Platform')
     compile project(':Platform_Swing')
     compile project(':Platform_SwingTree')
-    compile project(':Hero_CharmTree')
     compile project(':GraphLayout')
     compile project(':Namegenerator')
     testCompile parent.ext.testDependencies

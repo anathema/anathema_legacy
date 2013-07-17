@@ -16,7 +16,7 @@ import net.sf.anathema.hero.charms.model.learn.MagicLearner;
 import net.sf.anathema.hero.charms.model.learn.MartialArtsLearnModel;
 import net.sf.anathema.hero.charms.model.learn.MartialArtsLearnModelImpl;
 import net.sf.anathema.hero.charms.model.special.ISpecialCharmManager;
-import net.sf.anathema.character.main.magic.charm.IndirectCharmRequirement;
+import net.sf.anathema.character.main.magic.charm.requirements.IndirectCharmRequirement;
 import net.sf.anathema.hero.charms.model.special.prerequisite.PrerequisiteModifyingCharms;
 import net.sf.anathema.hero.charms.model.special.CharmSpecialsModel;
 import net.sf.anathema.hero.charms.model.special.ISpecialCharm;
@@ -41,8 +41,8 @@ import net.sf.anathema.hero.concept.HeroConceptFetcher;
 import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.framework.HeroEnvironment;
-import net.sf.anathema.hero.charmtree.martial.MartialArtsLevel;
-import net.sf.anathema.charms.MartialArtsUtilities;
+import net.sf.anathema.character.main.magic.charm.martial.MartialArtsLevel;
+import net.sf.anathema.character.main.magic.charm.martial.MartialArtsUtilities;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.change.ChangeFlavor;
@@ -63,10 +63,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static net.sf.anathema.hero.charmtree.martial.MartialArtsLevel.Sidereal;
-import static net.sf.anathema.charms.MartialArtsUtilities.hasLevel;
-import static net.sf.anathema.charms.MartialArtsUtilities.isFormMagic;
-import static net.sf.anathema.charms.MartialArtsUtilities.isMartialArts;
+import static net.sf.anathema.character.main.magic.charm.martial.MartialArtsLevel.Sidereal;
+import static net.sf.anathema.character.main.magic.charm.martial.MartialArtsUtilities.hasLevel;
+import static net.sf.anathema.character.main.magic.charm.martial.MartialArtsUtilities.isFormMagic;
+import static net.sf.anathema.character.main.magic.charm.martial.MartialArtsUtilities.isMartialArts;
 
 public class CharmsModelImpl implements CharmsModel {
 

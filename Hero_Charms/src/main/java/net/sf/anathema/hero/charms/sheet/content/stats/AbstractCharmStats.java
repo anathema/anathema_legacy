@@ -2,7 +2,7 @@ package net.sf.anathema.hero.charms.sheet.content.stats;
 
 import com.google.common.base.Function;
 import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.hero.charmtree.type.ICharmTypeModel;
+import net.sf.anathema.character.main.magic.charm.type.ICharmTypeModel;
 import net.sf.anathema.hero.charms.display.tooltip.IMagicSourceStringBuilder;
 import net.sf.anathema.hero.charms.display.tooltip.source.MagicSourceContributor;
 import net.sf.anathema.hero.charms.display.tooltip.type.ShortCharmTypeContributor;

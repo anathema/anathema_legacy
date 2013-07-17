@@ -2,9 +2,9 @@ package net.sf.anathema.hero.combos;
 
 import net.sf.anathema.hero.dummy.DummyCharmUtilities;
 import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.hero.charmtree.duration.SimpleDuration;
-import net.sf.anathema.hero.charmtree.type.CharmType;
-import net.sf.anathema.character.main.magic.combos.ComboRestrictions;
+import net.sf.anathema.character.main.magic.charm.duration.SimpleDuration;
+import net.sf.anathema.character.main.magic.charm.type.CharmType;
+import net.sf.anathema.character.main.magic.charm.combos.ComboRestrictions;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.traits.types.AttributeType;
 import net.sf.anathema.character.main.traits.types.ValuedTraitType;

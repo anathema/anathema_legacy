@@ -2,8 +2,8 @@ package net.sf.anathema.hero.magic.model.charms;
 
 import net.sf.anathema.hero.dummy.DummyCharm;
 import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.hero.charmtree.martial.MartialArtsLevel;
-import net.sf.anathema.charms.MartialArtsUtilities;
+import net.sf.anathema.character.main.magic.charm.martial.MartialArtsLevel;
+import net.sf.anathema.character.main.magic.charm.martial.MartialArtsUtilities;
 import net.sf.anathema.lib.util.Identifier;
 import org.junit.Test;
 

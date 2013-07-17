@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.parser.charms;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.character.main.magic.charm.IndirectCharmRequirement;
+import net.sf.anathema.character.main.magic.charm.requirements.IndirectCharmRequirement;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 
 public class CharmPrerequisiteList {

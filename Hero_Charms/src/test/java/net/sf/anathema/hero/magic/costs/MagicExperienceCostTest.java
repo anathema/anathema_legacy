@@ -4,7 +4,7 @@ import net.sf.anathema.hero.dummy.DummyCharm;
 import net.sf.anathema.hero.charms.advance.costs.CostAnalyzer;
 import net.sf.anathema.hero.charms.advance.experience.MagicExperienceCosts;
 import net.sf.anathema.hero.charms.template.advance.MagicPointsTemplate;
-import net.sf.anathema.hero.charmtree.martial.MartialArtsLevel;
+import net.sf.anathema.character.main.magic.charm.martial.MartialArtsLevel;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.is;

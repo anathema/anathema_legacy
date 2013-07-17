@@ -5,7 +5,7 @@ import com.itextpdf.text.Image;
 import net.sf.anathema.character.main.magic.spells.CircleType;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.type.CharacterType;
-import net.sf.anathema.hero.charmtree.martial.MartialArtsLevel;
+import net.sf.anathema.character.main.magic.charm.martial.MartialArtsLevel;
 
 public interface ICardReportResourceProvider {
 	

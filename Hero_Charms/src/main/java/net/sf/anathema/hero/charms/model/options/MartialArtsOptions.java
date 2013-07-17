@@ -6,9 +6,9 @@ import net.sf.anathema.hero.charms.model.CharmIdMap;
 import net.sf.anathema.hero.charms.model.ICharmGroup;
 import net.sf.anathema.hero.charms.model.learn.ICharmLearnableArbitrator;
 import net.sf.anathema.hero.charms.model.rules.CharmsRules;
-import net.sf.anathema.hero.charmtree.martial.MartialArtsLevel;
+import net.sf.anathema.character.main.magic.charm.martial.MartialArtsLevel;
 
-import static net.sf.anathema.charms.MartialArtsUtilities.isMartialArts;
+import static net.sf.anathema.character.main.magic.charm.martial.MartialArtsUtilities.isMartialArts;
 
 public class MartialArtsOptions implements CharmIdMap, ICharmLearnableArbitrator {
 

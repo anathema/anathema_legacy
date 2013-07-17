@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.magic.parser.combos;
 
 import net.sf.anathema.character.main.magic.charm.CharmException;
-import net.sf.anathema.hero.charmtree.type.CharmType;
-import net.sf.anathema.character.main.magic.combos.ComboRestrictions;
-import net.sf.anathema.character.main.magic.combos.IComboRestrictions;
+import net.sf.anathema.character.main.magic.charm.type.CharmType;
+import net.sf.anathema.character.main.magic.charm.combos.ComboRestrictions;
+import net.sf.anathema.character.main.magic.charm.combos.IComboRestrictions;
 import net.sf.anathema.character.main.traits.TraitTypeUtils;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;

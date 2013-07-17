@@ -1,10 +1,14 @@
 package net.sf.anathema.character.main.magic.charm;
 
 import com.google.common.base.Preconditions;
+import net.sf.anathema.character.main.magic.charm.requirements.GroupedCharmRequirement;
+import net.sf.anathema.character.main.magic.charm.requirements.IndirectCharmRequirement;
+import net.sf.anathema.character.main.magic.charm.requirements.SelectiveCharmGroup;
+import net.sf.anathema.character.main.magic.charm.requirements.SelectiveCharmGroups;
 import net.sf.anathema.character.main.magic.model.source.SourceBook;
-import net.sf.anathema.hero.charmtree.duration.Duration;
-import net.sf.anathema.hero.charmtree.type.ICharmTypeModel;
-import net.sf.anathema.character.main.magic.combos.IComboRestrictions;
+import net.sf.anathema.character.main.magic.charm.duration.Duration;
+import net.sf.anathema.character.main.magic.charm.type.ICharmTypeModel;
+import net.sf.anathema.character.main.magic.charm.combos.IComboRestrictions;
 import net.sf.anathema.character.main.magic.model.AbstractMagic;
 import net.sf.anathema.character.main.magic.model.attribute.MagicAttributeImpl;
 import net.sf.anathema.character.main.magic.model.cost.ICostList;

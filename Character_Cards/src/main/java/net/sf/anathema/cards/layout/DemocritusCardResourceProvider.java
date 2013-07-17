@@ -7,7 +7,7 @@ import com.itextpdf.text.Image;
 import net.sf.anathema.character.main.magic.spells.CircleType;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.type.CharacterType;
-import net.sf.anathema.hero.charmtree.martial.MartialArtsLevel;
+import net.sf.anathema.character.main.magic.charm.martial.MartialArtsLevel;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.icon.ImageLoadingException;
 import net.sf.anathema.lib.gui.icon.ImageProvider;
