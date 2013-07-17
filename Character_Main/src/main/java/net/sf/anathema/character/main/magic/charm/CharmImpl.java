@@ -5,13 +5,13 @@ import net.sf.anathema.character.main.magic.charm.requirements.GroupedCharmRequi
 import net.sf.anathema.character.main.magic.charm.requirements.IndirectCharmRequirement;
 import net.sf.anathema.character.main.magic.charm.requirements.SelectiveCharmGroup;
 import net.sf.anathema.character.main.magic.charm.requirements.SelectiveCharmGroups;
-import net.sf.anathema.character.main.magic.model.source.SourceBook;
+import net.sf.anathema.character.main.magic.basic.source.SourceBook;
 import net.sf.anathema.character.main.magic.charm.duration.Duration;
 import net.sf.anathema.character.main.magic.charm.type.ICharmTypeModel;
 import net.sf.anathema.character.main.magic.charm.combos.IComboRestrictions;
-import net.sf.anathema.character.main.magic.model.AbstractMagic;
-import net.sf.anathema.character.main.magic.model.attribute.MagicAttributeImpl;
-import net.sf.anathema.character.main.magic.model.cost.ICostList;
+import net.sf.anathema.character.main.magic.basic.AbstractMagic;
+import net.sf.anathema.character.main.magic.basic.attribute.MagicAttributeImpl;
+import net.sf.anathema.character.main.magic.basic.cost.ICostList;
 import net.sf.anathema.character.main.magic.parser.charms.CharmPrerequisiteList;
 import net.sf.anathema.character.main.magic.parser.charms.SelectiveCharmGroupTemplate;
 import net.sf.anathema.character.main.traits.TraitType;

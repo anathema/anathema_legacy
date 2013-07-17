@@ -9,7 +9,7 @@ import net.sf.anathema.character.main.magic.charm.type.ISimpleSpecialsModel;
 import net.sf.anathema.character.main.magic.charm.type.TurnType;
 import net.sf.anathema.hero.charms.display.tooltip.ICharmTypeStringBuilder;
 import net.sf.anathema.hero.charms.display.tooltip.MagicTooltipContributor;
-import net.sf.anathema.character.main.magic.model.Magic;
+import net.sf.anathema.character.main.magic.basic.Magic;
 import net.sf.anathema.lib.gui.ConfigurableTooltip;
 import net.sf.anathema.lib.gui.TooltipBuilder;
 import net.sf.anathema.lib.resources.Resources;

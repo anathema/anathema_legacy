@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magic.model.source;
+package net.sf.anathema.character.main.magic.basic.source;
 
 public interface ISourceList {
 

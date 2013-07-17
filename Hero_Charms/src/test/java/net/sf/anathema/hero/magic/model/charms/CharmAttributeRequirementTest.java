@@ -3,7 +3,7 @@ package net.sf.anathema.hero.magic.model.charms;
 import net.sf.anathema.hero.dummy.DummyCharm;
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.charm.requirements.CharmAttributeRequirement;
-import net.sf.anathema.character.main.magic.model.attribute.MagicAttributeImpl;
+import net.sf.anathema.character.main.magic.basic.attribute.MagicAttributeImpl;
 import net.sf.anathema.lib.util.Identifier;
 import org.junit.Assert;
 import org.junit.Before;

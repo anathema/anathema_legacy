@@ -1,6 +1,6 @@
-package net.sf.anathema.character.main.magic.model;
+package net.sf.anathema.character.main.magic.basic;
 
-import net.sf.anathema.character.main.magic.model.attribute.MagicAttribute;
+import net.sf.anathema.character.main.magic.basic.attribute.MagicAttribute;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 

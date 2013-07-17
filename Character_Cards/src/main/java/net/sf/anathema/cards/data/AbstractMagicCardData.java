@@ -6,9 +6,9 @@ import net.sf.anathema.cards.layout.ICardReportResourceProvider;
 import net.sf.anathema.character.main.magic.description.MagicDescription;
 import net.sf.anathema.hero.charms.display.tooltip.ScreenDisplayInfoContributor;
 import net.sf.anathema.hero.charms.display.tooltip.source.MagicSourceContributor;
-import net.sf.anathema.character.main.magic.model.Magic;
-import net.sf.anathema.character.main.magic.model.cost.CostImpl;
-import net.sf.anathema.character.main.magic.model.cost.HealthCost;
+import net.sf.anathema.character.main.magic.basic.Magic;
+import net.sf.anathema.character.main.magic.basic.cost.CostImpl;
+import net.sf.anathema.character.main.magic.basic.cost.HealthCost;
 import net.sf.anathema.lib.resources.Resources;
 
 public abstract class AbstractMagicCardData implements ICardData {

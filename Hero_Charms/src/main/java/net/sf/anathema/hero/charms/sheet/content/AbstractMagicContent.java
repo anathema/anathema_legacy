@@ -1,6 +1,5 @@
 package net.sf.anathema.hero.charms.sheet.content;
 
-import net.sf.anathema.character.main.magic.sheet.content.IMagicStats;
 import net.sf.anathema.hero.charms.sheet.content.mnemonic.MagicMnemonic;
 import net.sf.anathema.hero.charms.sheet.content.stats.MagicCostStatsGroup;
 import net.sf.anathema.hero.charms.sheet.content.stats.MagicDetailsStatsGroup;

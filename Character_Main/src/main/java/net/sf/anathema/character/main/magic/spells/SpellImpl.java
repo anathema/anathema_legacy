@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.magic.spells;
 
-import net.sf.anathema.character.main.magic.model.AbstractMagic;
-import net.sf.anathema.character.main.magic.model.cost.ICostList;
-import net.sf.anathema.character.main.magic.model.source.ISourceList;
-import net.sf.anathema.character.main.magic.model.source.SourceBook;
+import net.sf.anathema.character.main.magic.basic.AbstractMagic;
+import net.sf.anathema.character.main.magic.basic.cost.ICostList;
+import net.sf.anathema.character.main.magic.basic.source.ISourceList;
+import net.sf.anathema.character.main.magic.basic.source.SourceBook;
 import net.sf.anathema.character.main.template.magic.FavoringTraitType;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.hero.model.Hero;

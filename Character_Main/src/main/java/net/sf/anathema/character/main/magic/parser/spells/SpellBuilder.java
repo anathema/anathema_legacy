@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.magic.parser.spells;
 
-import net.sf.anathema.character.main.magic.model.cost.ICostList;
-import net.sf.anathema.character.main.magic.model.source.ISourceList;
-import net.sf.anathema.character.main.magic.model.source.SourceBook;
-import net.sf.anathema.character.main.magic.model.source.SourceList;
+import net.sf.anathema.character.main.magic.basic.cost.ICostList;
+import net.sf.anathema.character.main.magic.basic.source.ISourceList;
+import net.sf.anathema.character.main.magic.basic.source.SourceBook;
+import net.sf.anathema.character.main.magic.basic.source.SourceList;
 import net.sf.anathema.character.main.magic.spells.CircleType;
 import net.sf.anathema.character.main.magic.spells.Spell;
 import net.sf.anathema.character.main.magic.spells.SpellImpl;

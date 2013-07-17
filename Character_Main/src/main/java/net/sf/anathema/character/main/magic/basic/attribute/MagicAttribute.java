@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magic.model.attribute;
+package net.sf.anathema.character.main.magic.basic.attribute;
 
 import net.sf.anathema.lib.util.Identifier;
 

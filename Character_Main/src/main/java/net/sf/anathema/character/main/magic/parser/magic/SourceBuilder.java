@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.parser.magic;
 
-import net.sf.anathema.character.main.magic.model.source.SourceBook;
-import net.sf.anathema.character.main.magic.model.source.SourceBookImpl;
+import net.sf.anathema.character.main.magic.basic.source.SourceBook;
+import net.sf.anathema.character.main.magic.basic.source.SourceBookImpl;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 

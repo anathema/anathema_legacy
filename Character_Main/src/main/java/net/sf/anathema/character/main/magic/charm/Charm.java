@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.magic.charm.requirements.IndirectCharmRequ
 import net.sf.anathema.character.main.magic.charm.duration.Duration;
 import net.sf.anathema.character.main.magic.charm.type.ICharmTypeModel;
 import net.sf.anathema.character.main.magic.charm.combos.IComboRestrictions;
-import net.sf.anathema.character.main.magic.model.Magic;
+import net.sf.anathema.character.main.magic.basic.Magic;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.type.CharacterType;

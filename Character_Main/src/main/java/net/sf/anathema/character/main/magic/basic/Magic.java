@@ -1,8 +1,8 @@
-package net.sf.anathema.character.main.magic.model;
+package net.sf.anathema.character.main.magic.basic;
 
-import net.sf.anathema.character.main.magic.model.attribute.MagicAttribute;
-import net.sf.anathema.character.main.magic.model.cost.ICostList;
-import net.sf.anathema.character.main.magic.model.source.SourceBook;
+import net.sf.anathema.character.main.magic.basic.attribute.MagicAttribute;
+import net.sf.anathema.character.main.magic.basic.cost.ICostList;
+import net.sf.anathema.character.main.magic.basic.source.SourceBook;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.util.Identifier;
 

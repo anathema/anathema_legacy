@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.charms.advance.costs;
 
-import net.sf.anathema.character.main.magic.model.Magic;
+import net.sf.anathema.character.main.magic.basic.Magic;
 import net.sf.anathema.character.main.magic.charm.martial.MartialArtsLevel;
 import net.sf.anathema.character.main.magic.charm.martial.MartialArtsUtilities;
 import net.sf.anathema.hero.model.Hero;

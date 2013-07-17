@@ -7,7 +7,7 @@ import net.sf.anathema.hero.charms.model.learn.ICharmLearnListener;
 import net.sf.anathema.hero.charms.model.special.CharmSpecialsModel;
 import net.sf.anathema.hero.charms.model.special.ISpecialCharm;
 import net.sf.anathema.hero.charms.model.learn.ILearningCharmGroup;
-import net.sf.anathema.character.main.magic.sheet.content.IMagicStats;
+import net.sf.anathema.hero.charms.sheet.content.IMagicStats;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.charms.advance.creation.MagicCreationCostEvaluator;

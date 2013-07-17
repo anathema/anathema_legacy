@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.charms.display.tooltip;
 
-import net.sf.anathema.character.main.magic.model.cost.IHealthCost;
+import net.sf.anathema.character.main.magic.basic.cost.IHealthCost;
 import net.sf.anathema.lib.gui.TooltipBuilder;
 import net.sf.anathema.lib.resources.Resources;
 

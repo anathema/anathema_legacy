@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.charms.model.learn;
 
-import net.sf.anathema.character.main.magic.model.Magic;
+import net.sf.anathema.character.main.magic.basic.Magic;
 
 import java.util.Collection;
 import java.util.Set;

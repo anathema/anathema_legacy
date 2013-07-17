@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magic.model.cost;
+package net.sf.anathema.character.main.magic.basic.cost;
 
 public class CostImpl implements Cost {
 

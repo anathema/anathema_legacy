@@ -1,9 +1,8 @@
 package net.sf.anathema.character.main.magic.charm.martial;
 
 import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.character.main.magic.model.Magic;
+import net.sf.anathema.character.main.magic.basic.Magic;
 import net.sf.anathema.character.main.traits.types.AbilityType;
-import net.sf.anathema.character.main.magic.charm.martial.MartialArtsLevel;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
 import java.text.MessageFormat;

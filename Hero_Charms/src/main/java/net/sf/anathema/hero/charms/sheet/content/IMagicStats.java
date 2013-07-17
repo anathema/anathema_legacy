@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magic.sheet.content;
+package net.sf.anathema.hero.charms.sheet.content;
 
 import net.sf.anathema.character.main.util.IStats;
 import net.sf.anathema.lib.resources.Resources;

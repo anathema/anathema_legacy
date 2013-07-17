@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.template.magic;
 
 import com.google.common.base.Predicate;
 import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.character.main.magic.model.Magic;
+import net.sf.anathema.character.main.magic.basic.Magic;
 
 import java.util.ArrayList;
 import java.util.List;

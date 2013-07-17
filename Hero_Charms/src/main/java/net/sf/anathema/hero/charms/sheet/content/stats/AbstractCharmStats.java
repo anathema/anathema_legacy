@@ -6,8 +6,8 @@ import net.sf.anathema.character.main.magic.charm.type.ICharmTypeModel;
 import net.sf.anathema.hero.charms.display.tooltip.IMagicSourceStringBuilder;
 import net.sf.anathema.hero.charms.display.tooltip.source.MagicSourceContributor;
 import net.sf.anathema.hero.charms.display.tooltip.type.ShortCharmTypeContributor;
-import net.sf.anathema.character.main.magic.model.attribute.MagicAttribute;
-import net.sf.anathema.character.main.magic.sheet.content.IMagicStats;
+import net.sf.anathema.character.main.magic.basic.attribute.MagicAttribute;
+import net.sf.anathema.hero.charms.sheet.content.IMagicStats;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
