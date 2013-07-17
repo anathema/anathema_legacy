@@ -1,11 +1,9 @@
-def buildPlugin = {name, projects, task ->
+def buildPlugin = {name, project, task ->
     task.archiveName = "${name}.jar"
     task.destinationDir = new File(buildDir, "plugins")
-    projects.each {
-        task.dependsOn(":$it:assemble")
-        task.dependsOn(":$it:collectTransitiveDependencies")
-        task.from projectLibrary(it)
-    }
+    task.dependsOn(":$project:assemble")
+    task.dependsOn(":$project:collectTransitiveDependencies")
+    task.from projectLibrary(project)
 }
 
 def exclude = ['Anathema']
@@ -14,8 +12,8 @@ project.subprojects.each {
         return;
     }
     def name = it.name.toLowerCase();
-    def projects = [it.name]
-    task "build${it.name}Plugin"(type: Jar) {
-        buildPlugin name, projects, delegate
+    def project = it.name
+    task "build${project}Plugin"(type: Jar) {
+        buildPlugin name, project, delegate
     }
 }
