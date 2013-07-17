@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magic.charm.special.charms;
+package net.sf.anathema.hero.charms.model.special.charms;
 
 import net.sf.anathema.character.main.magic.charm.special.LearnRangeContext;
 

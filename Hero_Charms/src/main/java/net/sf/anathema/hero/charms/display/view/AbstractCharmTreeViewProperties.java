@@ -3,7 +3,7 @@ package net.sf.anathema.hero.charms.display.view;
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.character.main.magic.charm.special.charms.ISpecialCharm;
+import net.sf.anathema.hero.charms.model.special.charms.ISpecialCharm;
 import net.sf.anathema.hero.charms.display.tooltip.CharmTooltipBuilder;
 import net.sf.anathema.hero.charms.display.tooltip.CharmTooltipBuilderImpl;
 import net.sf.anathema.lib.gui.TooltipBuilder;

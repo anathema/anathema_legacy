@@ -1,9 +1,10 @@
-package net.sf.anathema.character.main.magic.charmtree;
+package net.sf.anathema.hero.charms.model;
 
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.character.main.magic.charm.special.charms.PrerequisiteModifyingCharms;
-import net.sf.anathema.character.main.magic.charm.special.charms.IPrerequisiteModifyingCharm;
+import net.sf.anathema.character.main.magic.charmtree.SpecialCharmLearnArbitrator;
+import net.sf.anathema.hero.charms.model.special.charms.PrerequisiteModifyingCharms;
+import net.sf.anathema.hero.charms.model.special.charms.IPrerequisiteModifyingCharm;
 import net.sf.anathema.character.main.magic.charm.special.TraitRequirementChecker;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.hero.traits.TraitMap;
