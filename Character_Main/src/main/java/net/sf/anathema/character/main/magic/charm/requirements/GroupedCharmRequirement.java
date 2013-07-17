@@ -16,8 +16,8 @@ public class GroupedCharmRequirement implements IndirectCharmRequirement {
   }
 
   @Override
-  public boolean isFulfilled(Charm[] learnedCharms) {
-    ICharmLearnArbitrator arbitrator = new StaticCharmLearnArbitrator(learnedCharms);
+  public boolean isFulfilled(Charm[] charms) {
+    ICharmLearnArbitrator arbitrator = new StaticCharmLearnArbitrator(charms);
     return charmGroup.holdsThreshold(arbitrator);
   }
 }

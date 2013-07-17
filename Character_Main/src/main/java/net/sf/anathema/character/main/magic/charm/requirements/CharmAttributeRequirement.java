@@ -25,9 +25,9 @@ public class CharmAttributeRequirement extends ReflectionEqualsObject implements
   }
 
   @Override
-  public boolean isFulfilled(Charm[] learnedCharms) {
+  public boolean isFulfilled(Charm[] charms) {
     int amount = 0;
-    for (Charm charm : learnedCharms) {
+    for (Charm charm : charms) {
       if (charm.hasAttribute(attribute)) {
         amount++;
       }
