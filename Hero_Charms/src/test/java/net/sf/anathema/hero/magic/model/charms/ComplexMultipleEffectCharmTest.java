@@ -5,7 +5,7 @@ import net.sf.anathema.hero.charms.display.special.CharmSpecialistImpl;
 import net.sf.anathema.hero.charms.model.special.subeffects.ComplexMultipleEffectCharm;
 import net.sf.anathema.hero.charms.model.special.subeffects.IMultipleEffectCharm;
 import net.sf.anathema.hero.charms.model.special.subeffects.SubEffect;
-import net.sf.anathema.character.main.magic.charm.ICharmLearnableArbitrator;
+import net.sf.anathema.hero.charms.model.learn.ICharmLearnableArbitrator;
 import net.sf.anathema.hero.dummy.DummyHero;
 import org.junit.Test;
 

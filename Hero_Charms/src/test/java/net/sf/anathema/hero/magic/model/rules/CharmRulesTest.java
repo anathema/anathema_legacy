@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.magic.model.rules;
 
-import net.sf.anathema.character.main.dummy.DummyCharm;
+import net.sf.anathema.hero.dummy.DummyCharm;
 import net.sf.anathema.hero.charms.model.rules.CharmsRulesImpl;
 import net.sf.anathema.hero.charms.model.rules.MartialArtsRules;
 import net.sf.anathema.hero.charms.template.model.CharmsTemplate;

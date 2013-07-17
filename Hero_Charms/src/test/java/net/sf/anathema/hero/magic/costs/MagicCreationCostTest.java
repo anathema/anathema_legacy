@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.magic.costs;
 
-import net.sf.anathema.character.main.dummy.DummyCharm;
+import net.sf.anathema.hero.dummy.DummyCharm;
 import net.sf.anathema.character.main.magic.model.Magic;
 import net.sf.anathema.hero.charms.advance.costs.CostAnalyzer;
 import net.sf.anathema.hero.charms.advance.creation.MagicCreationCosts;

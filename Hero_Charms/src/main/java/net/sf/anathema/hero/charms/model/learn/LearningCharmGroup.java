@@ -1,7 +1,10 @@
-package net.sf.anathema.hero.charms.model;
+package net.sf.anathema.hero.charms.model.learn;
 
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.charm.CharmAttributeList;
+import net.sf.anathema.hero.charms.model.CharmGroup;
+import net.sf.anathema.hero.charms.model.CharmsModel;
+import net.sf.anathema.hero.charms.model.ICharmGroup;
 import net.sf.anathema.hero.charms.model.special.CharmSpecialsModel;
 import net.sf.anathema.hero.charms.model.special.multilearn.MultiLearnCharmSpecials;
 import net.sf.anathema.hero.charms.model.special.subeffects.MultipleEffectCharmSpecials;

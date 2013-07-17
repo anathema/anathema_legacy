@@ -2,7 +2,7 @@ package net.sf.anathema.hero.charms.model;
 
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.character.main.magic.charm.SpecialCharmLearnArbitrator;
+import net.sf.anathema.hero.charms.model.special.SpecialCharmLearnArbitrator;
 import net.sf.anathema.hero.charms.model.special.prerequisite.PrerequisiteModifyingCharms;
 import net.sf.anathema.hero.charms.model.special.prerequisite.IPrerequisiteModifyingCharm;
 import net.sf.anathema.hero.charms.model.special.multilearn.TraitRequirementChecker;

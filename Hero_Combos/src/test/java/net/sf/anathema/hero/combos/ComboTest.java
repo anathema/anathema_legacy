@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.combos;
 
-import net.sf.anathema.character.main.dummy.DummyCharmUtilities;
+import net.sf.anathema.hero.dummy.DummyCharmUtilities;
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.hero.charmtree.duration.SimpleDuration;
 import net.sf.anathema.hero.charmtree.type.CharmType;

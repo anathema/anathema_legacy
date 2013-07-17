@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.charms.model.special;
 
 import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.hero.charms.model.ILearningCharmGroup;
+import net.sf.anathema.hero.charms.model.learn.ILearningCharmGroup;
 
 public interface ISpecialCharmManager {
 

@@ -3,7 +3,7 @@ package net.sf.anathema.hero.charms.display.tree;
 import net.sf.anathema.hero.charms.display.presenter.AbstractCharmGroupChangeListener;
 import net.sf.anathema.hero.charms.display.presenter.CharmDisplayPropertiesMap;
 import net.sf.anathema.hero.charms.display.presenter.CharmGroupArbitrator;
-import net.sf.anathema.hero.charms.model.ILearningCharmGroup;
+import net.sf.anathema.hero.charms.model.learn.ILearningCharmGroup;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.platform.tree.display.TreeRenderer;
 

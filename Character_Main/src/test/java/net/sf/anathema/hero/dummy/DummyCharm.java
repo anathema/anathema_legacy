@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.dummy;
+package net.sf.anathema.hero.dummy;
 
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.charm.IndirectCharmRequirement;
