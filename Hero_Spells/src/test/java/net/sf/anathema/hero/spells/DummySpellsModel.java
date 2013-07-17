@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.magic.testing;
+package net.sf.anathema.hero.spells;
 
 import net.sf.anathema.character.main.magic.basic.Magic;
 import net.sf.anathema.character.main.magic.spells.CircleType;

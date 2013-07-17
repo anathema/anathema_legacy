@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.magic.costs;
+package net.sf.anathema.hero.spells;
 
 import com.google.common.collect.ImmutableList;
 import net.sf.anathema.character.main.library.trait.favorable.FavorableState;
@@ -18,7 +18,7 @@ import net.sf.anathema.hero.dummy.DummyHero;
 import net.sf.anathema.hero.magic.dummy.DummyCharmsModel;
 import net.sf.anathema.hero.dummy.magic.DummySpell;
 import net.sf.anathema.character.main.magic.charm.martial.MartialArtsLevel;
-import net.sf.anathema.hero.magic.testing.DummySpellsModel;
+import net.sf.anathema.hero.spells.DummySpellsModel;
 import net.sf.anathema.hero.traits.TraitModel;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
 import org.junit.Before;
