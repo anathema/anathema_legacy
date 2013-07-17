@@ -6,8 +6,6 @@ import net.sf.anathema.character.main.magic.charm.CharmHasSameTypeAsCharacter;
 import net.sf.anathema.character.main.magic.charm.CharmIdMap;
 import net.sf.anathema.character.main.magic.charm.GroupedCharmIdMap;
 import net.sf.anathema.character.main.magic.charm.ICharmGroup;
-import net.sf.anathema.character.main.magic.charmtree.CharmTree;
-import net.sf.anathema.character.main.magic.charmtree.ICharmTree;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.hero.charms.display.presenter.CharmGroupArbitrator;
@@ -31,7 +29,7 @@ public class NonMartialArtsOptions implements CharmIdMap, CharmGroupArbitrator {
   private CharmProvider charmProvider;
   private CharmsRules charmsRules;
   private final CharacterTypeList availableTypes;
-  private final Map<Identifier, ICharmTree> treesByType = new HashMap<>();
+  private final Map<Identifier, CharmTree> treesByType = new HashMap<>();
   private Hero hero;
 
   public NonMartialArtsOptions(Hero hero, CharacterTypes characterTypes, CharmProvider charmProvider, CharmsRules charmsRules) {
@@ -44,7 +42,7 @@ public class NonMartialArtsOptions implements CharmIdMap, CharmGroupArbitrator {
     initCharmTreesForAvailableTypes();
   }
 
-  public ICharmTree getCharmTrees(CharacterType type) {
+  public CharmTree getCharmTrees(CharacterType type) {
     return treesByType.get(type);
   }
 
@@ -96,7 +94,7 @@ public class NonMartialArtsOptions implements CharmIdMap, CharmGroupArbitrator {
   private void initCharmTreesForAvailableTypes() {
     for (CharacterType type : availableTypes) {
       Charm[] charms = charmProvider.getCharms(type);
-      treesByType.put(type, new CharmTree(charms));
+      treesByType.put(type, new CharmTreeImpl(charms));
     }
   }
 

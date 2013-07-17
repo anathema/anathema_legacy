@@ -2,8 +2,8 @@ package net.sf.anathema.cascades.presenter;
 
 import net.sf.anathema.hero.charms.compiler.CharmProvider;
 import net.sf.anathema.character.main.magic.charm.ICharmGroup;
-import net.sf.anathema.character.main.magic.charmtree.CharmTree;
-import net.sf.anathema.character.main.magic.charmtree.ICharmTree;
+import net.sf.anathema.hero.charms.model.options.CharmTree;
+import net.sf.anathema.hero.charms.model.options.CharmTreeImpl;
 import net.sf.anathema.hero.charms.model.options.MartialArtsCharmTree;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.type.CharacterTypes;
@@ -44,17 +44,17 @@ public class CascadeGroupCollection implements CharmGroupCollection {
   }
 
   private void initMartialArtsCharms(List<ICharmGroup> allCharmGroups) {
-    ICharmTree martialArtsTree = new MartialArtsCharmTree(charmProvider, MartialArtsLevel.Sidereal);
+    CharmTree martialArtsTree = new MartialArtsCharmTree(charmProvider, MartialArtsLevel.Sidereal);
     treeIdentifierMap.put(MartialArtsUtilities.MARTIAL_ARTS, martialArtsTree);
     allCharmGroups.addAll(Arrays.asList(martialArtsTree.getAllCharmGroups()));
   }
 
   private void registerTypeCharms(List<ICharmGroup> allCharmGroups, CharacterType type) {
-    ICharmTree typeTree = new CharmTree(charmProvider.getCharms(type));
+    CharmTree typeTree = new CharmTreeImpl(charmProvider.getCharms(type));
     registerGroups(allCharmGroups, type, typeTree);
   }
 
-  private void registerGroups(List<ICharmGroup> allCharmGroups, Identifier typeId, ICharmTree charmTree) {
+  private void registerGroups(List<ICharmGroup> allCharmGroups, Identifier typeId, CharmTree charmTree) {
     ICharmGroup[] groups = charmTree.getAllCharmGroups();
     if (groups.length != 0) {
       treeIdentifierMap.put(typeId, charmTree);
