@@ -6,7 +6,7 @@ import net.sf.anathema.character.main.magic.parser.charms.GenericCharmPrerequisi
 import net.sf.anathema.character.main.magic.parser.charms.GenericIdStringBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.GenericAttributeRequirementBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.GenericTraitPrerequisitesBuilder;
-import net.sf.anathema.character.main.magic.parser.charms.special.ReflectionSpecialCharmBuilder;
+import net.sf.anathema.character.main.magic.parser.charms.special.ReflectionSpecialCharmParser;
 import net.sf.anathema.character.main.magic.parser.combos.GenericComboRulesBuilder;
 import net.sf.anathema.character.main.magic.parser.dto.special.SpecialCharmDto;
 import net.sf.anathema.character.main.traits.types.AbilityType;
@@ -26,15 +26,15 @@ import static org.mockito.Mockito.when;
 public class GenericCharmBuilderTest {
 
   private final DummyCharacterTypes characterTypes = new DummyCharacterTypes();
-  private ReflectionSpecialCharmBuilder specialCharmBuilderMock = mock(ReflectionSpecialCharmBuilder.class);
+  private ReflectionSpecialCharmParser specialCharmParserMock = mock(ReflectionSpecialCharmParser.class);
   private final GenericCharmBuilder builder =
           new GenericCharmBuilder(new GenericIdStringBuilder(), new GenericTraitPrerequisitesBuilder(), new GenericAttributeRequirementBuilder(),
-                  new GenericComboRulesBuilder(), new GenericCharmPrerequisiteBuilder(), characterTypes, specialCharmBuilderMock);
+                  new GenericComboRulesBuilder(), new GenericCharmPrerequisiteBuilder(), characterTypes, specialCharmParserMock);
 
   @Before
   public void setUp() throws Exception {
     characterTypes.add(new DummyExaltCharacterType());
-    when(specialCharmBuilderMock.readCharmDto((Element) any(), (String) any())).thenReturn(new SpecialCharmDto());
+    when(specialCharmParserMock.readCharmDto((Element) any(), (String) any())).thenReturn(new SpecialCharmDto());
   }
 
   @Test

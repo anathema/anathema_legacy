@@ -6,6 +6,7 @@ import net.sf.anathema.character.main.magic.parser.charms.prerequisite.Attribute
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.CharmPrerequisiteBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.TraitPrerequisitesBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.special.ReflectionSpecialCharmBuilder;
+import net.sf.anathema.character.main.magic.parser.charms.special.ReflectionSpecialCharmParser;
 import net.sf.anathema.character.main.magic.parser.charms.special.SpecialCharmBuilder;
 import net.sf.anathema.character.main.magic.parser.combos.ComboRulesBuilder;
 import net.sf.anathema.character.main.magic.parser.dto.special.SpecialCharmDto;
@@ -23,14 +24,15 @@ public class CharmSetBuilder extends AbstractCharmSetBuilder {
 
   private final ICharmBuilder builder;
 
-  public CharmSetBuilder(CharacterTypes characterTypes, ReflectionSpecialCharmBuilder specialCharmBuilder) {
+  public CharmSetBuilder(CharacterTypes characterTypes, ReflectionSpecialCharmParser specialCharmParser) {
     this.builder =
             new CharmBuilder(new IdStringBuilder(), new TraitPrerequisitesBuilder(), new AttributeRequirementBuilder(), new ComboRulesBuilder(),
-                    new CharmPrerequisiteBuilder(), characterTypes, specialCharmBuilder);
+                    new CharmPrerequisiteBuilder(), characterTypes, specialCharmParser);
   }
 
   @Override
-  protected void buildCharms(Collection<CharmImpl> allCharms, List<SpecialCharmDto> specialCharms, Element charmListElement) throws PersistenceException {
+  protected void buildCharms(Collection<CharmImpl> allCharms, List<SpecialCharmDto> specialCharms, Element charmListElement) throws
+          PersistenceException {
     for (Element charmElementObject : ElementUtilities.elements(charmListElement, TAG_CHARM)) {
       createCharm(allCharms, specialCharms, builder, charmElementObject);
     }

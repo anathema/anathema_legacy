@@ -13,6 +13,7 @@ import net.sf.anathema.character.main.magic.parser.charms.ICharmSetBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.IIdentificateRegistry;
 import net.sf.anathema.character.main.magic.parser.charms.IdentificateRegistry;
 import net.sf.anathema.character.main.magic.parser.charms.special.ReflectionSpecialCharmBuilder;
+import net.sf.anathema.character.main.magic.parser.charms.special.ReflectionSpecialCharmParser;
 import net.sf.anathema.character.main.magic.parser.dto.special.SpecialCharmDto;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.type.CharacterType;
@@ -53,10 +54,11 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
 
   public CharmCompiler(ObjectFactory objectFactory) {
     ReflectionSpecialCharmBuilder specialCharmBuilder = new ReflectionSpecialCharmBuilder(objectFactory);
+    ReflectionSpecialCharmParser specialCharmParser = new ReflectionSpecialCharmParser(objectFactory);
     this.charmCache =  new CharmCacheImpl(specialCharmBuilder);
     this.characterTypes = new ReflectionCharacterTypes(objectFactory);
-    this.setBuilder = new CharmSetBuilder(characterTypes, specialCharmBuilder);
-    this.genericBuilder = new GenericCharmSetBuilder(characterTypes, specialCharmBuilder);
+    this.setBuilder = new CharmSetBuilder(characterTypes, specialCharmParser);
+    this.genericBuilder = new GenericCharmSetBuilder(characterTypes, specialCharmParser);
   }
 
   @Override

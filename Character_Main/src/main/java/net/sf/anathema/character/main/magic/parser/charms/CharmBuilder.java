@@ -12,7 +12,7 @@ import net.sf.anathema.character.main.magic.parser.charms.prerequisite.IAttribut
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.ICharmPrerequisiteBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.ITraitPrerequisitesBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.PrerequisiteListBuilder;
-import net.sf.anathema.character.main.magic.parser.charms.special.ReflectionSpecialCharmBuilder;
+import net.sf.anathema.character.main.magic.parser.charms.special.ReflectionSpecialCharmParser;
 import net.sf.anathema.character.main.magic.parser.combos.IComboRulesBuilder;
 import net.sf.anathema.character.main.magic.parser.dto.special.SpecialCharmDto;
 import net.sf.anathema.character.main.magic.parser.magic.CostListBuilder;
@@ -42,7 +42,7 @@ public class CharmBuilder implements ICharmBuilder {
   private final GroupStringBuilder groupBuilder = new GroupStringBuilder();
   private final SourceBuilder sourceBuilder = new SourceBuilder();
   private final CharmAttributeBuilder attributeBuilder = new CharmAttributeBuilder();
-  private final ReflectionSpecialCharmBuilder specialCharmBuilder;
+  private final ReflectionSpecialCharmParser specialCharmParser;
   private final IIdStringBuilder idBuilder;
   private final ITraitPrerequisitesBuilder traitsBuilder;
   private final IAttributeRequirementBuilder attributeRequirementsBuilder;
@@ -52,14 +52,14 @@ public class CharmBuilder implements ICharmBuilder {
 
   public CharmBuilder(IIdStringBuilder idBuilder, ITraitPrerequisitesBuilder traitsBuilder, IAttributeRequirementBuilder attributeRequirementsBuilder,
                       IComboRulesBuilder comboBuilder, ICharmPrerequisiteBuilder charmPrerequisiteBuilder, CharacterTypes characterTypes,
-                      ReflectionSpecialCharmBuilder specialCharmBuilder) {
+                      ReflectionSpecialCharmParser specialCharmParser) {
     this.idBuilder = idBuilder;
     this.traitsBuilder = traitsBuilder;
     this.attributeRequirementsBuilder = attributeRequirementsBuilder;
     this.comboBuilder = comboBuilder;
     this.charmPrerequisiteBuilder = charmPrerequisiteBuilder;
     this.characterTypes = characterTypes;
-    this.specialCharmBuilder = specialCharmBuilder;
+    this.specialCharmParser = specialCharmParser;
   }
 
   @Override
@@ -89,7 +89,7 @@ public class CharmBuilder implements ICharmBuilder {
       }
       loadSpecialLearning(charmElement, charm);
 
-      SpecialCharmDto dto = specialCharmBuilder.readCharmDto(charmElement, id);
+      SpecialCharmDto dto = specialCharmParser.readCharmDto(charmElement, id);
       if (dto.isSpecial()) {
         specialCharms.add(dto);
       }
