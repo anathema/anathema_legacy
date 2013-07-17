@@ -1,7 +1,9 @@
-package net.sf.anathema.character.main.magic.charm.special;
+package net.sf.anathema.hero.charms.model.special.upgradable;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
+import net.sf.anathema.hero.charms.model.special.subeffects.SubEffect;
+import net.sf.anathema.hero.charms.model.special.subeffects.SubEffects;
 
 import java.util.ArrayList;
 import java.util.Iterator;

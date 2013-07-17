@@ -3,7 +3,7 @@ package net.sf.anathema.hero.charms.display.view;
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.charm.CharmIdMap;
-import net.sf.anathema.character.main.magic.charmtree.builder.MagicDisplayLabeler;
+import net.sf.anathema.hero.charms.display.MagicDisplayLabeler;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.platform.tree.display.NodeProperties;

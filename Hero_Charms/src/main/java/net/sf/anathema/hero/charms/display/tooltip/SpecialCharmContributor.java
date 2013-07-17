@@ -2,7 +2,7 @@ package net.sf.anathema.hero.charms.display.tooltip;
 
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.hero.charms.model.special.multilearn.AbstractMultiLearnableCharm;
-import net.sf.anathema.character.main.magic.charm.special.CharmTier;
+import net.sf.anathema.hero.charms.model.special.multilearn.CharmTier;
 import net.sf.anathema.hero.charms.model.special.multilearn.EssenceFixedMultiLearnableCharm;
 import net.sf.anathema.hero.charms.model.special.ISpecialCharm;
 import net.sf.anathema.hero.charms.model.special.multilearn.StaticMultiLearnableCharm;

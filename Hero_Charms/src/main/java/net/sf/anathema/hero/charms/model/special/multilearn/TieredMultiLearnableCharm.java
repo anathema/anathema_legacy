@@ -1,8 +1,5 @@
 package net.sf.anathema.hero.charms.model.special.multilearn;
 
-import net.sf.anathema.character.main.magic.charm.special.CharmTier;
-import net.sf.anathema.character.main.magic.charm.special.LearnRangeContext;
-
 public class TieredMultiLearnableCharm extends AbstractMultiLearnableCharm {
 
   private final CharmTier[] tiers;

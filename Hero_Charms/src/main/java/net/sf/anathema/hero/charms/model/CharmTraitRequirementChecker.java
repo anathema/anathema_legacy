@@ -5,7 +5,7 @@ import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.charmtree.SpecialCharmLearnArbitrator;
 import net.sf.anathema.hero.charms.model.special.prerequisite.PrerequisiteModifyingCharms;
 import net.sf.anathema.hero.charms.model.special.prerequisite.IPrerequisiteModifyingCharm;
-import net.sf.anathema.character.main.magic.charm.special.TraitRequirementChecker;
+import net.sf.anathema.hero.charms.model.special.multilearn.TraitRequirementChecker;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.hero.traits.TraitMap;
 

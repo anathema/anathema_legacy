@@ -7,7 +7,7 @@ import net.sf.anathema.character.main.framework.configuration.AnathemaCharacterP
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.hero.charms.model.special.CharmSpecialsModel;
 import net.sf.anathema.hero.charms.model.special.subeffects.MultipleEffectCharmSpecials;
-import net.sf.anathema.character.main.magic.charm.special.SubEffect;
+import net.sf.anathema.hero.charms.model.special.subeffects.SubEffect;
 import net.sf.anathema.hero.charms.model.special.subeffects.SubEffectCharmSpecials;
 import net.sf.anathema.hero.charms.model.ILearningCharmGroup;
 import net.sf.anathema.character.main.magic.model.Magic;

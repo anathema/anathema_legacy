@@ -1,7 +1,5 @@
 package net.sf.anathema.hero.charms.model.special.multilearn;
 
-import net.sf.anathema.character.main.magic.charm.special.LearnRangeContext;
-
 public class StaticMultiLearnableCharm extends AbstractMultiLearnableCharm {
 
   private final int learnCount;

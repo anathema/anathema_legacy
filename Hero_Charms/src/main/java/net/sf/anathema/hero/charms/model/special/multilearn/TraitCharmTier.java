@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magic.charm.special;
+package net.sf.anathema.hero.charms.model.special.multilearn;
 
 import com.google.common.collect.Lists;
 import net.sf.anathema.character.main.traits.TraitType;

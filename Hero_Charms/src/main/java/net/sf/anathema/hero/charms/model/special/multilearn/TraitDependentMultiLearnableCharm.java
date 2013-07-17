@@ -1,6 +1,5 @@
 package net.sf.anathema.hero.charms.model.special.multilearn;
 
-import net.sf.anathema.character.main.magic.charm.special.LearnRangeContext;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 

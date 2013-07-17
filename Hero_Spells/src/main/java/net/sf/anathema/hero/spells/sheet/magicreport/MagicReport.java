@@ -9,7 +9,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import net.sf.anathema.character.main.magic.description.MagicDescription;
 import net.sf.anathema.hero.charms.display.presenter.CharmDescriptionProviderExtractor;
 import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.character.main.magic.charmtree.builder.MagicDisplayLabeler;
+import net.sf.anathema.hero.charms.display.MagicDisplayLabeler;
 import net.sf.anathema.hero.charms.display.tooltip.ScreenDisplayInfoContributor;
 import net.sf.anathema.hero.charms.display.tooltip.source.MagicSourceContributor;
 import net.sf.anathema.hero.charms.display.tooltip.type.VerboseCharmTypeContributor;

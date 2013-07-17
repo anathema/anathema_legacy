@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magic.charm.special;
+package net.sf.anathema.hero.charms.model.special.subeffects;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Lists;

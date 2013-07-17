@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magic.charm.special;
+package net.sf.anathema.hero.charms.model.special.subeffects;
 
 import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.lib.control.ChangeListener;

@@ -9,7 +9,7 @@ import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.hero.charms.model.CharmLearnAdapter;
 import net.sf.anathema.hero.charms.model.ICharmLearnListener;
 import net.sf.anathema.hero.charms.model.ILearningCharmGroup;
-import net.sf.anathema.character.main.magic.charmtree.builder.MagicDisplayLabeler;
+import net.sf.anathema.hero.charms.display.MagicDisplayLabeler;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.combos.model.ComboConfigurationModel;

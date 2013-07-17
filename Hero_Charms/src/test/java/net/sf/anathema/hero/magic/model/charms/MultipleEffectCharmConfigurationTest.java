@@ -2,11 +2,11 @@ package net.sf.anathema.hero.magic.model.charms;
 
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.charm.CharmSpecialist;
-import net.sf.anathema.character.main.magic.charm.special.ArraySubEffects;
+import net.sf.anathema.hero.charms.model.special.subeffects.ArraySubEffects;
 import net.sf.anathema.hero.charms.model.special.subeffects.IMultipleEffectCharm;
 import net.sf.anathema.hero.charms.model.special.subeffects.MultipleEffectCharmSpecialsImpl;
-import net.sf.anathema.character.main.magic.charm.special.SubEffect;
-import net.sf.anathema.character.main.magic.charm.special.SubEffectImpl;
+import net.sf.anathema.hero.charms.model.special.subeffects.SubEffect;
+import net.sf.anathema.hero.charms.model.special.subeffects.SubEffectImpl;
 import net.sf.anathema.character.main.magic.charmtree.ICharmLearnableArbitrator;
 import net.sf.anathema.hero.dummy.DummyCondition;
 import net.sf.anathema.hero.experience.ExperienceModel;

@@ -9,7 +9,6 @@ import net.sf.anathema.character.main.magic.charm.CharmSpecialist;
 import net.sf.anathema.hero.charms.display.special.CharmSpecialistImpl;
 import net.sf.anathema.hero.charms.model.special.prerequisite.PrerequisiteModifyingCharms;
 import net.sf.anathema.hero.charms.model.special.ISpecialCharmLearnListener;
-import net.sf.anathema.character.main.magic.charm.special.LearnRangeContext;
 import net.sf.anathema.hero.charms.model.CharmTraitRequirementChecker;
 import net.sf.anathema.character.main.magic.charmtree.ICharmLearnableArbitrator;
 import net.sf.anathema.hero.charms.model.CharmsModel;

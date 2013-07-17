@@ -2,7 +2,7 @@ package net.sf.anathema.hero.charms.display.presenter;
 
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.charm.ICharmGroup;
-import net.sf.anathema.character.main.magic.charmtree.builder.CharmGraphNodeBuilder;
+import net.sf.anathema.hero.charms.display.node.CharmGraphNodeBuilder;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.graph.nodes.IIdentifiedRegularNode;
 import net.sf.anathema.graph.nodes.IRegularNode;
