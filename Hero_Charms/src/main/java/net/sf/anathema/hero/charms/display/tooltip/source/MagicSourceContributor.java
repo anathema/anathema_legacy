@@ -1,7 +1,7 @@
-package net.sf.anathema.character.main.magic.charmtree.builder.stringbuilder.source;
+package net.sf.anathema.hero.charms.display.tooltip.source;
 
-import net.sf.anathema.character.main.magic.charmtree.builder.stringbuilder.IMagicSourceStringBuilder;
-import net.sf.anathema.character.main.magic.charmtree.builder.stringbuilder.MagicTooltipContributor;
+import net.sf.anathema.hero.charms.display.tooltip.IMagicSourceStringBuilder;
+import net.sf.anathema.hero.charms.display.tooltip.MagicTooltipContributor;
 import net.sf.anathema.character.main.magic.model.Magic;
 import net.sf.anathema.character.main.magic.model.source.SourceBook;
 import net.sf.anathema.lib.gui.ConfigurableTooltip;

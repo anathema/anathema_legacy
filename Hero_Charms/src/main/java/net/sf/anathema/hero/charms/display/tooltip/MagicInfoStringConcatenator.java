@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magic.charmtree.builder.stringbuilder;
+package net.sf.anathema.hero.charms.display.tooltip;
 
 import com.google.common.base.Strings;
 import net.sf.anathema.lib.resources.Resources;
