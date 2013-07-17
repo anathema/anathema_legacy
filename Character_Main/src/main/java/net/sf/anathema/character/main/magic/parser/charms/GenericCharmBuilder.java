@@ -2,9 +2,7 @@ package net.sf.anathema.character.main.magic.parser.charms;
 
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.GenericAttributeRequirementBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.GenericTraitPrerequisitesBuilder;
-import net.sf.anathema.character.main.magic.parser.charms.special.ReflectionSpecialCharmBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.special.ReflectionSpecialCharmParser;
-import net.sf.anathema.character.main.magic.parser.charms.special.SpecialCharmBuilder;
 import net.sf.anathema.character.main.magic.parser.combos.GenericComboRulesBuilder;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.type.CharacterTypes;

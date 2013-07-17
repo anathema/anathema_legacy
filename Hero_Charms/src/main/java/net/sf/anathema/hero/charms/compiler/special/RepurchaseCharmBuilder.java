@@ -8,8 +8,6 @@ import net.sf.anathema.character.main.magic.charm.special.TieredMultiLearnableCh
 import net.sf.anathema.character.main.magic.charm.special.TraitCharmTier;
 import net.sf.anathema.character.main.magic.charm.special.TraitDependentMultiLearnableCharm;
 import net.sf.anathema.character.main.magic.parser.charms.TraitTypeFinder;
-import net.sf.anathema.character.main.magic.parser.charms.special.RegisteredSpecialCharmBuilder;
-import net.sf.anathema.character.main.magic.parser.charms.special.SpecialCharmBuilder;
 import net.sf.anathema.character.main.magic.parser.dto.special.RepurchaseDto;
 import net.sf.anathema.character.main.magic.parser.dto.special.RequirementDto;
 import net.sf.anathema.character.main.magic.parser.dto.special.SpecialCharmDto;

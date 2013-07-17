@@ -2,8 +2,6 @@ package net.sf.anathema.hero.charms.compiler.special;
 
 import net.sf.anathema.character.main.magic.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.magic.charm.special.StaticPainToleranceCharm;
-import net.sf.anathema.character.main.magic.parser.charms.special.RegisteredSpecialCharmBuilder;
-import net.sf.anathema.character.main.magic.parser.charms.special.SpecialCharmBuilder;
 import net.sf.anathema.character.main.magic.parser.dto.special.SpecialCharmDto;
 
 @RegisteredSpecialCharmBuilder

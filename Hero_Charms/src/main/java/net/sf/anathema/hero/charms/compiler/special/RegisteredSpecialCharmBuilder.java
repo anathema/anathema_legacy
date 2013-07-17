@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magic.parser.charms.special;
+package net.sf.anathema.hero.charms.compiler.special;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

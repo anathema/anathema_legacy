@@ -3,8 +3,6 @@ package net.sf.anathema.hero.charms.compiler.special;
 import net.sf.anathema.character.main.magic.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.magic.charm.special.OxBodyTechniqueCharm;
 import net.sf.anathema.character.main.magic.parser.charms.TraitTypeFinder;
-import net.sf.anathema.character.main.magic.parser.charms.special.RegisteredSpecialCharmBuilder;
-import net.sf.anathema.character.main.magic.parser.charms.special.SpecialCharmBuilder;
 import net.sf.anathema.character.main.magic.parser.dto.special.OxBodyPickDto;
 import net.sf.anathema.character.main.magic.parser.dto.special.OxBodyTechniqueDto;
 import net.sf.anathema.character.main.magic.parser.dto.special.SpecialCharmDto;

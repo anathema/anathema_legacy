@@ -12,13 +12,13 @@ import net.sf.anathema.character.main.magic.parser.charms.GenericCharmSetBuilder
 import net.sf.anathema.character.main.magic.parser.charms.ICharmSetBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.IIdentificateRegistry;
 import net.sf.anathema.character.main.magic.parser.charms.IdentificateRegistry;
-import net.sf.anathema.character.main.magic.parser.charms.special.ReflectionSpecialCharmBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.special.ReflectionSpecialCharmParser;
 import net.sf.anathema.character.main.magic.parser.dto.special.SpecialCharmDto;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.character.main.type.ReflectionCharacterTypes;
+import net.sf.anathema.hero.charms.compiler.special.ReflectionSpecialCharmBuilder;
 import net.sf.anathema.initialization.ExtensibleDataSetCompiler;
 import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.lib.exception.PersistenceException;
