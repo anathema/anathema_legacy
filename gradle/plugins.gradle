@@ -4,7 +4,7 @@ project.subprojects.each {
         return;
     }
     def project = it.name
-    task "build${project}Plugin"(type: Copy) {
+    task "copy${project}Module"(type: Copy) {
         it.dependsOn(":$project:assemble")
         it.from "$project/build/libs/${project}.jar"
         it.into pluginsDir

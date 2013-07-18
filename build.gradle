@@ -359,7 +359,7 @@ task releaseMac(type: Zip) {
 }
 
 tasks.each {
-    def isPluginTask = it.name.matches('build.*Plugin')
+    def isPluginTask = it.name.matches('copy.*Module')
     if (isPluginTask) {
         buildZip.dependsOn it
         buildWin.dependsOn it
