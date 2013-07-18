@@ -26,10 +26,3 @@ configurations {
 artifacts {
   tests testJar
 }
-
-task collectTransitiveDependencies() << {
-  copy {
-    from configurations.compile.findAll { File dependency -> (!dependency.absolutePath.contains('jfxrt.jar')) }
-    into parent.ext.dependenciesDir
-  }
-}

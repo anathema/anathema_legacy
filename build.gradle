@@ -9,9 +9,14 @@ ext.versionString    = "${version_major}.${version_minor}.${version_revision}"
 ext.testDependencies = ['junit:junit-dep:4.11', 'org.mockito:mockito-core:1.9.5', 'org.hamcrest:hamcrest-core:1.3', 'org.hamcrest:hamcrest-library:1.3']
 ext.integrationTestDependencies = ['info.cukes:cucumber-java:1.1.3', 'info.cukes:cucumber-junit:1.1.3', 'info.cukes:cucumber-guice:1.1.3', 'com.google.inject:guice:3.0']
 
+apply plugin: 'java'
+apply plugin: 'idea'
+idea { project { languageLevel = '1.7' } }
+
 apply from: "gradle/publishUpdate.gradle"
 apply from: "gradle/publishFullRelease.gradle"
 apply from: "gradle/createModule.gradle"
+apply from: 'gradle/plugins.gradle'
 
 buildscript {
   repositories {
@@ -55,10 +60,6 @@ dependencies {
   jreMac "oracle:jre-mac64:${jreVersion}@zip"
 }
 
-apply plugin: 'idea'
-
-idea { project { languageLevel = '1.7' } }
-
 task wrapper(type: Wrapper) {
   gradleVersion = '1.3'
 }
@@ -80,15 +81,11 @@ subprojects {
   apply from: "../gradle/subprojectPresets.gradle"
 }
 
-task clean << {
+task clean (overwrite:true) << {
   buildDir.mkdirs()
   ant.delete(includeemptydirs:true, quiet:false) {
     fileset(dir:buildDir, includes:"**/*", defaultexcludes:false )
   }
-}
-
-def projectLibrary(String project) {
-  return zipTree("$project/build/libs/${project}.jar")
 }
 
 // Release Variables
@@ -357,12 +354,22 @@ task releaseMac(type: Zip) {
 [buildWin, buildMac, buildZip].each {
   it.dependsOn createReleaseDirectory
   it.dependsOn ':Anathema:jar'
+  it.dependsOn copyExternalDependencies
+}
+
+tasks.each {
+    def isPluginTask = it.name.matches('build.*Plugin')
+    if (isPluginTask) {
+        buildZip.dependsOn it
+        buildWin.dependsOn it
+        buildMac.dependsOn it
+    }
 }
 
 buildZip.dependsOn buildWin  // Builds the exe launcher which gets included in the zip distribution
 buildWin.dependsOn prepareWinJRE
 buildMac.dependsOn prepareMacJRE
-  
+
 releaseZip.dependsOn buildZip
 releaseWin.dependsOn buildWin
 releaseMac.dependsOn buildMac
@@ -371,18 +378,6 @@ release.dependsOn releaseZip, releaseWin, releaseMac
 
 tagPush.dependsOn tagVersion
 tag.dependsOn tagVersion, tagPush
-
-// Plugins
-apply from: 'gradle/plugins.gradle'
-
-tasks.each {
-  def isPluginTask = it.name.matches('build.*Plugin')
-  if (isPluginTask) {
-    buildZip.dependsOn it
-    buildWin.dependsOn it
-    buildMac.dependsOn it
-  }
-}
 
 //SSH Support
 def usePropertyOrPrompt(property, prompt) {

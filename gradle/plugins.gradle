@@ -1,21 +1,37 @@
-def buildPlugin = {name, projects, task ->
-    task.archiveName = "${name}.jar"
-    task.destinationDir = new File(buildDir, "plugins")
-    projects.each {
-        task.dependsOn(":$it:assemble")
-        task.dependsOn(":$it:collectTransitiveDependencies")
-        task.from projectLibrary(it)
+def exclude = ['Anathema']
+project.subprojects.each {
+    if (exclude.contains(it.name)) {
+        return;
+    }
+    def project = it.name
+    task "build${it.name}Plugin"(type: Copy) {
+        task.dependsOn(":$project:assemble")
+        task.from "$project/build/libs/${project}.jar"
+        task.into new File(buildDir, "plugins")
     }
 }
 
-def exclude = ['Anathema']
-project.subprojects.each {
-    if (exclude.contains(it.name)){
-        return;
+/*task copyAnathemaModules() << {
+    project.subprojects.each {
+        copy {
+            from "$it/build/libs/${it}.jar"
+            into new File(buildDir, "plugins")
+        }
     }
-    def name = it.name.toLowerCase();
-    def projects = [it.name]
-    task "build${it.name}Plugin"(type: Jar) {
-        buildPlugin name, projects, delegate
+}        */
+
+task copyExternalDependencies << {
+    Set applicationDependencies = [];
+    subprojects.each { project ->
+        def moduleDependencies = project.configurations.compile.findAll { File dependency ->
+            def isNotJavaFx =!dependency.absolutePath.contains('jfxrt.jar')
+            def isExternal = dependency.absolutePath.contains('cache')
+            return isExternal && isNotJavaFx
+        }
+        applicationDependencies.addAll moduleDependencies
+    }
+    copy {
+        from applicationDependencies
+        into dependenciesDir
     }
 }
