@@ -1,9 +1,8 @@
-def exclude = ['Anathema']
 task copyAnathemaModules(type: Copy) {
-    dependsOn subprojects.build
+    dependsOn subprojects.assemble
     subprojects.each {
         def projectName = it.name
-        if (exclude.containsIgnoreCase(projectName)) {
+        if (projectName.toLowerCase().contains("anathema")) {
             return;
         }
         from "$projectName/build/libs/${projectName}.jar"

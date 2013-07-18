@@ -161,10 +161,6 @@ task version << {
   out.println(   "A new build must be run in order to use the new values.")
 }
 
-task createReleaseDirectory << {
-  releaseDir.mkdirs()
-}
-
 // JRE archive download and explosion into build folder
 task prepareWinJRE(type: Copy) {
   def target = new File('build/jre/win32');
@@ -355,7 +351,6 @@ task releaseMac(type: Zip) {
 
 // Release Dependencies
 [buildWin, buildMac, buildZip].each {
-  it.dependsOn createReleaseDirectory
   it.dependsOn ':Anathema:jar'
   it.dependsOn copyExternalDependencies
   it.dependsOn copyAnathemaModules
