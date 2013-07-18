@@ -7,7 +7,7 @@ project.subprojects.each {
     task "build${project}Plugin"(type: Copy) {
         it.dependsOn(":$project:assemble")
         it.from "$project/build/libs/${project}.jar"
-        it.into new File(buildDir, "plugins")
+        it.into pluginsDir
     }
 }
 

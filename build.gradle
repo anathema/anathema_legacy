@@ -5,6 +5,7 @@ import org.ajoberstar.gradle.git.tasks.GitPush;
 
 ext.jreVersion       = "1.7.0_21"
 ext.dependenciesDir  = new File(buildDir, 'dependencies')
+ext.pluginsDir  = new File(buildDir, 'plugins')
 ext.versionString    = "${version_major}.${version_minor}.${version_revision}"
 ext.testDependencies = ['junit:junit-dep:4.11', 'org.mockito:mockito-core:1.9.5', 'org.hamcrest:hamcrest-core:1.3', 'org.hamcrest:hamcrest-library:1.3']
 ext.integrationTestDependencies = ['info.cukes:cucumber-java:1.1.3', 'info.cukes:cucumber-junit:1.1.3', 'info.cukes:cucumber-guice:1.1.3', 'com.google.inject:guice:3.0']
@@ -218,8 +219,8 @@ task buildZip(type: Zip) {
   destinationDir = releaseDir
   from 'Anathema/build/libs'
   into('lib') {
-    from('build/dependencies')
-    from('build/plugins')
+    from(dependenciesDir)
+    from(pluginsDir)
   }
   from("Development_Distribution/Linux") {
     include 'anathema.sh'
