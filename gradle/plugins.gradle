@@ -5,9 +5,9 @@ project.subprojects.each {
     }
     def project = it.name
     task "build${it.name}Plugin"(type: Copy) {
-        task.dependsOn(":$project:assemble")
-        task.from "$project/build/libs/${project}.jar"
-        task.into new File(buildDir, "plugins")
+        it.dependsOn(":$project:assemble")
+        it.from "$project/build/libs/${project}.jar"
+        it.into new File(buildDir, "plugins")
     }
 }
 
