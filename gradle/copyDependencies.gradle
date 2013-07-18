@@ -1,0 +1,28 @@
+def exclude = ['Anathema']
+task copyAnathemaModules(type: Copy) {
+    dependsOn subprojects.build
+    subprojects.each {
+        def projectName = it.name
+        if (exclude.containsIgnoreCase(projectName)) {
+            return;
+        }
+        from "$projectName/build/libs/${projectName}.jar"
+    }
+    into pluginsDir
+}
+
+task copyExternalDependencies << {
+    Set applicationDependencies = [];
+    subprojects.each { project ->
+        def moduleDependencies = project.configurations.compile.findAll { File dependency ->
+            def isNotJavaFx = !dependency.absolutePath.contains('jfxrt.jar')
+            def isExternal = dependency.absolutePath.contains('cache')
+            return isExternal && isNotJavaFx
+        }
+        applicationDependencies.addAll moduleDependencies
+    }
+    copy {
+        from applicationDependencies
+        into dependenciesDir
+    }
+}
