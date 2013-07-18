@@ -1,4 +1,4 @@
-apply plugin: 'java'
+//apply plugin: 'java' //comes automatically through allprojects-setting in parent build.gradle
 apply plugin: 'idea'
 apply plugin: 'eclipse'
 
