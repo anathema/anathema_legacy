@@ -14,9 +14,6 @@ allprojects {
     apply plugin: 'java'
     sourceCompatibility = 1.7
 
-    apply plugin: 'idea'
-    idea { project { languageLevel = '1.7' } }
-
     repositories {
         mavenCentral()
         maven {
@@ -24,6 +21,9 @@ allprojects {
         }
     }
 }
+
+apply plugin: 'idea'
+idea { project { languageLevel = '1.7' } }
 
 subprojects {
     apply from: "../gradle/subprojectPresets.gradle"
