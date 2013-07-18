@@ -10,18 +10,18 @@ task copyAnathemaModules(type: Copy) {
     into pluginsDir
 }
 
-task copyExternalDependencies << {
-    Set applicationDependencies = [];
-    subprojects.each { project ->
-        def moduleDependencies = project.configurations.compile.findAll { File dependency ->
-            def isNotJavaFx = !dependency.absolutePath.contains('jfxrt.jar')
-            def isExternal = dependency.absolutePath.contains('cache')
-            return isExternal && isNotJavaFx
+task copyExternalDependencies(type: Copy) {
+    from {
+        Set allDependencies = []
+        subprojects.each { project ->
+            def moduleDependencies = project.configurations.compile.findAll { File dependency ->
+                def isNotJavaFx = !dependency.absolutePath.contains('jfxrt.jar')
+                def isExternal = dependency.absolutePath.contains('cache')
+                return isExternal && isNotJavaFx
+            }
+            allDependencies.addAll moduleDependencies
         }
-        applicationDependencies.addAll moduleDependencies
+        return allDependencies
     }
-    copy {
-        from applicationDependencies
-        into dependenciesDir
-    }
+    into dependenciesDir
 }
