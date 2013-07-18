@@ -1,7 +1,7 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats;
 
 import net.sf.anathema.character.equipment.character.model.stats.modification.ReactiveBaseMaterial;
-import net.sf.anathema.character.main.equipment.weapon.IWeaponStats;
+import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IWeaponStats;
 import net.sf.anathema.equipment.core.MagicalMaterial;
 import net.sf.anathema.hero.equipment.model.ModifierFactory;
 import net.sf.anathema.hero.equipment.model.ProxyWeaponStats;

@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.equipment.sheet.content;
 
 import net.sf.anathema.character.equipment.character.model.IEquipmentPrintModel;
-import net.sf.anathema.character.main.equipment.HeroStatsModifiers;
-import net.sf.anathema.character.main.equipment.weapon.IArmourStats;
-import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.character.main.util.HeroStatsModifiers;
+import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IArmourStats;
+import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 import net.sf.anathema.hero.equipment.EquipmentModel;
 import net.sf.anathema.hero.equipment.EquipmentModelFetcher;
 import net.sf.anathema.hero.model.Hero;

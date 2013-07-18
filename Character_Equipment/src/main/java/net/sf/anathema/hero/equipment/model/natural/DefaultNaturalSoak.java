@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.equipment.model.natural;
 
 import net.sf.anathema.character.equipment.character.model.stats.AbstractCombatStats;
-import net.sf.anathema.character.main.equipment.weapon.IArmourStats;
+import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IArmourStats;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.hero.health.HealthType;

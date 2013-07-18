@@ -1,6 +1,6 @@
 package net.sf.anathema.equipment.core;
 
-import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 
 public interface IEquipmentTemplate {
 

@@ -8,7 +8,7 @@ import net.sf.anathema.character.equipment.creation.presenter.stats.CloseCombatS
 import net.sf.anathema.character.equipment.creation.presenter.stats.IEquipmentStatisticsCreationViewFactory;
 import net.sf.anathema.character.equipment.creation.presenter.stats.RangedCombatStatisticsPresenterPage;
 import net.sf.anathema.character.equipment.creation.presenter.stats.TraitModifyingStatisticsPresenterPage;
-import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 import net.sf.anathema.equipment.editor.wizard.AnathemaWizardDialog;
 import net.sf.anathema.equipment.editor.wizard.IAnathemaWizardPage;
 import net.sf.anathema.equipment.editor.wizard.WizardDialog;

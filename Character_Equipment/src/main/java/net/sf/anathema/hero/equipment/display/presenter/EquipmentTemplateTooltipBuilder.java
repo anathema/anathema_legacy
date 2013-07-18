@@ -2,7 +2,7 @@ package net.sf.anathema.hero.equipment.display.presenter;
 
 import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
-import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 import net.sf.anathema.equipment.core.IEquipmentTemplate;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 import net.sf.anathema.lib.gui.ConfigurableTooltip;

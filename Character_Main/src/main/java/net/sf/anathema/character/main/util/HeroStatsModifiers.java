@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.equipment;
+package net.sf.anathema.character.main.util;
 
 public interface HeroStatsModifiers {
 

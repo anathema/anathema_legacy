@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.combat.sheet.combat.content;
 
-import net.sf.anathema.character.main.equipment.HeroStatsModifiers;
+import net.sf.anathema.character.main.util.HeroStatsModifiers;
 import net.sf.anathema.character.main.library.trait.specialties.HighestSpecialty;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.util.CharacterUtilities;

@@ -1,6 +1,6 @@
-package net.sf.anathema.character.main.equipment;
+package net.sf.anathema.hero.equipment.sheet.content.stats;
 
-import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 
 public interface ArtifactStats extends IEquipmentStats {
   Integer getAttuneCost();

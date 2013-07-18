@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.equipment.sheet.content.stats.weapons;
 
-import net.sf.anathema.character.main.equipment.HeroStatsModifiers;
-import net.sf.anathema.character.main.equipment.weapon.IWeaponStats;
+import net.sf.anathema.character.main.util.HeroStatsModifiers;
+import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IWeaponStats;
 import net.sf.anathema.lib.resources.Resources;
 
 public class SecondEditionSpeedWeaponStatsGroup extends AbstractSpeedWeaponStatsGroup {

@@ -1,10 +1,10 @@
 package net.sf.anathema.character.equipment.item;
 
-import net.sf.anathema.character.main.equipment.ArtifactStats;
-import net.sf.anathema.character.main.equipment.ITraitModifyingStats;
-import net.sf.anathema.character.main.equipment.weapon.IArmourStats;
-import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.character.main.equipment.weapon.IWeaponStats;
+import net.sf.anathema.hero.equipment.sheet.content.stats.ArtifactStats;
+import net.sf.anathema.hero.equipment.sheet.content.stats.ITraitModifyingStats;
+import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IArmourStats;
+import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
+import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IWeaponStats;
 import net.sf.anathema.hero.equipment.display.presenter.EquipmentStringBuilder;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 import net.sf.anathema.lib.file.RelativePath;

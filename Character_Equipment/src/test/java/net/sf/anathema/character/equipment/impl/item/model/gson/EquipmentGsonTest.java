@@ -7,7 +7,7 @@ import net.sf.anathema.character.equipment.character.model.stats.MeleeWeaponStat
 import net.sf.anathema.character.equipment.character.model.stats.RangedWeaponStats;
 import net.sf.anathema.character.equipment.character.model.stats.TraitModifyingStats;
 import net.sf.anathema.character.equipment.item.model.gson.EquipmentGson;
-import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 import net.sf.anathema.equipment.core.IEquipmentTemplate;
 import org.junit.Test;
 

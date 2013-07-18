@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.equipment;
+package net.sf.anathema.hero.equipment.sheet.content.stats;
 
 public enum ArtifactAttuneType {
   Unattuned, PartiallyAttuned, ExpensivePartiallyAttuned, UnharmoniouslyAttuned, FullyAttuned;

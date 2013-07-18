@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.equipment.weapon;
+package net.sf.anathema.hero.equipment.sheet.content.stats.weapon;
 
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.hero.health.HealthType;

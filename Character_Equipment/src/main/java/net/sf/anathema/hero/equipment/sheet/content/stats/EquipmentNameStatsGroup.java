@@ -2,7 +2,7 @@ package net.sf.anathema.hero.equipment.sheet.content.stats;
 
 import com.itextpdf.text.Font;
 import com.itextpdf.text.pdf.PdfPTable;
-import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 import net.sf.anathema.hero.equipment.display.presenter.EquipmentObjectPresenter;
 import net.sf.anathema.hero.sheet.pdf.content.stats.AbstractNameStatsGroup;
 import net.sf.anathema.lib.resources.Resources;
