@@ -81,13 +81,6 @@ String operatingSystem() {
     return result
 }
 
-task clean(overwrite: true) << {
-    buildDir.mkdirs()
-    ant.delete(includeemptydirs: true, quiet: false) {
-        fileset(dir: buildDir, includes: "**/*", defaultexcludes: false)
-    }
-}
-
 // Release Variables
 ext.projectName = "Anathema"
 ext.releaseZipName = "${projectName}_Zip_v${versionString}.zip"
