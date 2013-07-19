@@ -38,7 +38,7 @@ Run ``gradlew test``
 2. Regenerate your IDE's workspace as per the "Developing with..." sections above.
 
 ### Building Anathema ###
-> This command builds the distribution artifacts for Linux, OS X and Windows.
+> This command builds the distribution artifacts for Linux, OS X and Windows.  
 > For the full process, see the [wiki](https://github.com/anathema/anathema/wiki/How-to-release-a-new-version).
 
 1. Run ``gradlew clean build``
