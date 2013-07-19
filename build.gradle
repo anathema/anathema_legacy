@@ -332,15 +332,6 @@ def usePropertyOrPrompt(property, prompt) {
     return propertyValue
 }
 
-def usePropertyOrPromptForPassphrase(property, prompt) {
-    if (project.hasProperty(property)) {
-        return project.property(property);
-    }
-    def password = System.console().readPassword("\n${prompt}: ")
-    ext[property] = password
-    return password
-}
-
 def findKeyFile() {
     def keyfile = "${System.properties['user.home']}/.ssh/id_rsa"
     while (!new File(keyfile).exists()) {
