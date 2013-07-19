@@ -18,12 +18,12 @@ jar {
 dependencies {
   //For development, all projects need to be on the classpath at runtime.
   project.parent.subprojects.each {
-      if (isNotSelf(it)){
+      if (isRelevant(it)){
         runtime project(":${it.name}")
       }
   }
 }
 
-private boolean isNotSelf(project) {
-    return project.name != "Anathema"
+private boolean isRelevant(project) {
+    return project.name != "Anathema" && project.name != "Integrationtest"
 }
