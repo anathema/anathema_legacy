@@ -37,25 +37,9 @@ Run ``gradlew test``
 1. Run ``gradlew createModule``
 2. Regenerate your IDE's workspace as per the "Developing with..." sections above.
 
-Deployment
-==========
-These commands just build the distribution artifacts. For the full process, see the [wiki](https://github.com/anathema/anathema/wiki/How-to-release-a-new-version).
-### Building a Multi-Platform Release ###
-> This works on any OS.  It creates a zip file containing a multi-platform executable anathema.jar and a Windows anathema.exe launcher.
+### Building Anathema ###
+> This command builds the distribution artifacts for Linux, OS X and Windows.
+> For the full process, see the [wiki](https://github.com/anathema/anathema/wiki/How-to-release-a-new-version).
 
-Run ``gradlew releaseZip``
-
-### Building a Windows Release ###
-> This works on any OS.  It creates a Windows installer.
-
-Run ``gradlew releaseWin``
-
-### Building a Macintosh Release ###
-> This works on any OS.  It creates a zip file containing a Mac application bundle.
-
-Run ``gradlew releaseMac``
-
-### Building All Platforms for Release
-> Builds the Zip, Windows, and Mac distributions
-
-Run ``gradlew release``
+1. Run ``gradlew clean build``
+2. Fetch your artifacts from ``./build/Anathema x.x.x``
