@@ -208,7 +208,7 @@ task extractMacJRE(type: Zip) {
 extractMacJRE.onlyIf { os.equals("mac") }
 
 // Zip Release
-task buildZip(type: Zip) {
+task assembleZip(type: Zip) {
     archiveName = releaseZipName
     destinationDir = releaseDir
     from 'Anathema/build/libs'
@@ -232,10 +232,8 @@ task buildZip(type: Zip) {
     }
 }
 
-task releaseZip
-
 // Windows Release
-task buildWin << {
+task compileLauncherWin << {
     def launch4jPath = "Development_Distribution/Windows/Binaries/launch4j/bin_" + os
 
     mkdir("./build/launcher")
@@ -275,7 +273,7 @@ task buildWin << {
     }
 }
 
-task releaseWin << {
+task assembleWin << {
     def nsisPath = "Development_Distribution/Windows/Binaries/NSIS/bin_" + os
 
     ant.taskdef(name: "nsis",
@@ -291,7 +289,7 @@ task releaseWin << {
 }
 
 // Mac Release
-task buildMac << {
+task compileLauncherMac << {
     ant.taskdef(
             name: "bundleapp",
             classname: "com.oracle.appbundler.AppBundlerTask",
@@ -323,7 +321,7 @@ task buildMac << {
     }
 }
 
-task releaseMac(type: Zip) {
+task assembleMac(type: Zip) {
     archiveName = releaseMacName
     destinationDir = releaseDir
     into("${projectName}") {
@@ -346,22 +344,21 @@ task releaseMac(type: Zip) {
 }
 
 // Release Dependencies
-[buildWin, buildMac, buildZip].each {
+[compileLauncherWin, compileLauncherMac, assembleZip].each {
     it.dependsOn ':Anathema:jar'
     it.dependsOn copyExternalDependencies
     it.dependsOn copyAnathemaModules
+    it.dependsOn generateChangelog
 }
 
-buildZip.dependsOn buildWin  // Builds the exe launcher which gets included in the zip distribution
-buildWin.dependsOn prepareWinJRE
-buildMac.dependsOn prepareMacJRE
+compileLauncherWin.dependsOn prepareWinJRE
+compileLauncherMac.dependsOn prepareMacJRE
 
-releaseZip.dependsOn buildZip
-releaseWin.dependsOn buildWin
-releaseMac.dependsOn buildMac
+assembleZip.dependsOn compileLauncherWin
+assembleWin.dependsOn compileLauncherWin
+assembleMac.dependsOn compileLauncherMac
 
-generateChangelog.dependsOn releaseZip, releaseWin, releaseMac
-build.dependsOn releaseZip, releaseWin, releaseMac
+assemble.dependsOn assembleZip, assembleWin, assembleMac
 
 tagPush.dependsOn tagVersion
 tag.dependsOn tagVersion, tagPush
