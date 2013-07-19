@@ -99,7 +99,7 @@ if ("${version_revision}" == '0') releaseDirName
 ext.releaseDir = new File("${buildDir}/${releaseDirName}")
 
 // All Releases
-task release << {
+task generateChangelog << {
     // grab the latest updates for this release from versions.md and put into readme.md for sourceforge
     String delim = "## Release ${versionString}"
     String delim2 = "## Release "
@@ -111,8 +111,7 @@ task release << {
     }
 }
 
-release.group = 'Release'
-release.description = 'Builds all artifacts required to release a new version.'
+generateChangelog.group = 'Release'
 
 task tag
 
@@ -361,7 +360,8 @@ releaseZip.dependsOn buildZip
 releaseWin.dependsOn buildWin
 releaseMac.dependsOn buildMac
 
-release.dependsOn releaseZip, releaseWin, releaseMac
+generateChangelog.dependsOn releaseZip, releaseWin, releaseMac
+build.dependsOn releaseZip, releaseWin, releaseMac
 
 tagPush.dependsOn tagVersion
 tag.dependsOn tagVersion, tagPush
