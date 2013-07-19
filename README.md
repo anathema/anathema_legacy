@@ -24,8 +24,11 @@ Launch ``net.sf.anathema.AnathemaBootLoader``
 ### Launching Anathema (Command Prompt)###
 Run `gradlew run`
 
-### Running the test suite###
+### Running the unit test suite###
 Run ``gradlew test``
+
+### Running the integration test suite###
+Run ``gradlew cucumber``
 
 ### Adding a dependency ###
 1. Add the dependency entry to the module's ``build.gradle``.
