@@ -3,3 +3,20 @@ dependencies {
     testCompile ext.testDependencies
     testCompile ext.integrationTestDependencies
 }
+
+configurations {
+    cucumberRuntime {
+        extendsFrom testRuntime
+    }
+}
+
+task cucumber() {
+    dependsOn assemble, compileTestJava
+    doLast {
+        javaexec {
+            main = "cucumber.api.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = ['--glue', 'net.sf.anathema', 'src/test/resources']
+        }
+    }
+}
