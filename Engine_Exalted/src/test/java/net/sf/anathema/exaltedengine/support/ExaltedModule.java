@@ -9,6 +9,5 @@ public class ExaltedModule extends AbstractModule {
   @Override
   protected void configure() {
       bind(ExaltedEngine.class).in(Singleton.class);
-      bind(CharacterHolder.class).in(Singleton.class);
   }
 }
