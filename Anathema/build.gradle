@@ -1,9 +1,7 @@
 archivesBaseName= 'anathema'
 
-task(run, dependsOn: compileJava, type: JavaExec) {
-  main = "net.sf.anathema.AnathemaBootLoader"
-  classpath = sourceSets.main.runtimeClasspath
-}
+apply plugin:'application'
+mainClassName = "net.sf.anathema.AnathemaBootLoader"
 
 jar {
   manifest {
