@@ -8,6 +8,7 @@ Website: [anathema.github.com](http://anathema.github.com)
 
 ### Bugfix
 * Corrects Essence requirement for [Solar/Investigation] "Oracular Magistrate Understanding".
+* Corrects requirements for [Solar/Athletics] "Speed of Light Approach".
 * Corrects Charm prerequisites for [Abyssal/Athletics] "Nimble Ghost Grace".
 
 ## Release 5.1.2
