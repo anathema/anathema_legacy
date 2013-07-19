@@ -1,8 +1,9 @@
 task copyAnathemaModules(type: Copy) {
     dependsOn subprojects.assemble
     subprojects.each {
-        def projectName = it.name
-        from "$projectName/build/libs/${projectName}.jar"
+        it.tasks.withType(Jar).each { archiveTask ->
+            from archiveTask.archivePath
+        }
     }
     into pluginsDir
     exclude "**/anathema.jar"
