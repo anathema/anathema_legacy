@@ -2,7 +2,6 @@ package net.sf.anathema.platform.tree.swing;
 
 import net.sf.anathema.platform.tree.display.SpecialCharmContainer;
 import net.sf.anathema.platform.tree.view.interaction.SpecialContentMap;
-import net.sf.anathema.platform.tree.view.interaction.UntogglingListener;
 
 import javax.swing.JPopupMenu;
 import javax.swing.JToggleButton;

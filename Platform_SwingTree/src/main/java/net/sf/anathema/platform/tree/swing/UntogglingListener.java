@@ -1,4 +1,4 @@
-package net.sf.anathema.platform.tree.view.interaction;
+package net.sf.anathema.platform.tree.swing;
 
 import javax.swing.JToggleButton;
 import javax.swing.event.PopupMenuEvent;
