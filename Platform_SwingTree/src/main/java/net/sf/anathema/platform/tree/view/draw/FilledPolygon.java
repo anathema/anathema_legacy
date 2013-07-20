@@ -3,7 +3,7 @@ package net.sf.anathema.platform.tree.view.draw;
 import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.lib.gui.swing.ColorUtilities;
-import net.sf.anathema.platform.tree.view.interaction.SpecialControl;
+import net.sf.anathema.platform.tree.view.interaction.ShapeWithPosition;
 import org.jmock.example.announcer.Announcer;
 
 import java.awt.Color;
@@ -64,7 +64,7 @@ public class FilledPolygon implements InteractiveGraphicsElement, AgnosticPolygo
     textWriter.setText(text);
   }
 
-  public void position(SpecialControl control) {
+  public void position(ShapeWithPosition control) {
     Rectangle bounds = polygon.getBounds();
     control.setPosition((int) bounds.getMinX(), (int) bounds.getMaxY() + 10);
     control.setWidth((int) bounds.getWidth());

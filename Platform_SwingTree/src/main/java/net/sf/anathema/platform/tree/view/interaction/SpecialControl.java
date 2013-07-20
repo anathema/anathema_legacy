@@ -3,7 +3,7 @@ package net.sf.anathema.platform.tree.view.interaction;
 import javax.swing.JComponent;
 import java.awt.geom.AffineTransform;
 
-public interface SpecialControl {
+public interface SpecialControl extends ShapeWithPosition {
   void transformThrough(AffineTransform transform);
 
   void addTo(JComponent parent);
@@ -11,8 +11,4 @@ public interface SpecialControl {
   void remove(JComponent parent);
 
   void transformOriginalCoordinates(AffineTransform transform);
-
-  void setPosition(int x, int y);
-
-  void setWidth(int width);
 }

@@ -3,7 +3,7 @@ package net.sf.anathema.platform.tree.view.container;
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.platform.tree.display.NodeProperties;
 import net.sf.anathema.platform.tree.view.PolygonPanel;
-import net.sf.anathema.platform.tree.view.interaction.SpecialControl;
+import net.sf.anathema.platform.tree.view.interaction.ShapeWithPosition;
 
 public class ProxyCascade implements Cascade {
   private Cascade delegate = new NullCascade();
@@ -43,7 +43,7 @@ public class ProxyCascade implements Cascade {
   }
 
   @Override
-  public void determinePositionFor(String nodeId, SpecialControl control) {
+  public void determinePositionFor(String nodeId, ShapeWithPosition control) {
     delegate.determinePositionFor(nodeId, control);
   }
 

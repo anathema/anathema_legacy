@@ -3,7 +3,7 @@ package net.sf.anathema.platform.tree.view.container;
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.platform.tree.display.NodeProperties;
 import net.sf.anathema.platform.tree.view.PolygonPanel;
-import net.sf.anathema.platform.tree.view.interaction.SpecialControl;
+import net.sf.anathema.platform.tree.view.interaction.ShapeWithPosition;
 
 public class NullCascade implements Cascade {
   @Override
@@ -37,7 +37,7 @@ public class NullCascade implements Cascade {
   }
 
   @Override
-  public void determinePositionFor(String nodeId, SpecialControl control) {
+  public void determinePositionFor(String nodeId, ShapeWithPosition control) {
     //Nothing to do
   }
 }

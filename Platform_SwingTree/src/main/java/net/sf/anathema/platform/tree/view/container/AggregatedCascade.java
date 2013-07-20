@@ -4,7 +4,7 @@ import com.google.common.collect.Lists;
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.platform.tree.display.NodeProperties;
 import net.sf.anathema.platform.tree.view.PolygonPanel;
-import net.sf.anathema.platform.tree.view.interaction.SpecialControl;
+import net.sf.anathema.platform.tree.view.interaction.ShapeWithPosition;
 
 import java.util.List;
 
@@ -58,7 +58,7 @@ public class AggregatedCascade implements Cascade {
   }
 
   @Override
-  public void determinePositionFor(String nodeId, SpecialControl control) {
+  public void determinePositionFor(String nodeId, ShapeWithPosition control) {
     for (ContainerCascade cascade : cascades) {
       cascade.determinePositionFor(nodeId, control);
     }

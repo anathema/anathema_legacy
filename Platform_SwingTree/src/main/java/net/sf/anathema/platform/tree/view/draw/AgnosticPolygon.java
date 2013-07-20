@@ -2,7 +2,7 @@ package net.sf.anathema.platform.tree.view.draw;
 
 import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.framework.ui.RGBColor;
-import net.sf.anathema.platform.tree.view.interaction.SpecialControl;
+import net.sf.anathema.platform.tree.view.interaction.ShapeWithPosition;
 
 public interface AgnosticPolygon {
   void whenToggledDo(Runnable runnable);
@@ -15,7 +15,7 @@ public interface AgnosticPolygon {
 
   void moveBy(int x, int y);
 
-  void position(SpecialControl control);
+  void position(ShapeWithPosition control);
 
   boolean contains(Coordinate point);
 }

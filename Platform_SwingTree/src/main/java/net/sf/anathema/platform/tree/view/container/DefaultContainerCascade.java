@@ -6,7 +6,7 @@ import net.sf.anathema.platform.tree.display.NodeProperties;
 import net.sf.anathema.platform.tree.view.PolygonPanel;
 import net.sf.anathema.platform.tree.view.draw.FilledPolygon;
 import net.sf.anathema.platform.tree.view.draw.FlexibleArrow;
-import net.sf.anathema.platform.tree.view.interaction.SpecialControl;
+import net.sf.anathema.platform.tree.view.interaction.ShapeWithPosition;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.List;
@@ -78,7 +78,7 @@ public class DefaultContainerCascade implements ContainerCascade {
   }
 
   @Override
-  public void determinePositionFor(String nodeId, SpecialControl control) {
+  public void determinePositionFor(String nodeId, ShapeWithPosition control) {
     for (IdentifiedPolygon node : nodes) {
       if (node.id.equals(nodeId)) {
         node.element.position(control);
