@@ -1,5 +1,7 @@
 package net.sf.anathema.framework.ui;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -44,5 +46,16 @@ public class Coordinates implements Iterable<Coordinate> {
 
   public Coordinate get(int index) {
     return coordinates.get(index);
+  }
+
+
+  @Override
+  public boolean equals(Object obj) {
+    return EqualsBuilder.reflectionEquals(this, obj);
+  }
+
+  @Override
+  public int hashCode() {
+    return coordinates.hashCode();
   }
 }

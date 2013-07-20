@@ -1,5 +1,7 @@
 package net.sf.anathema.platform.tree.display.transform;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -24,8 +26,19 @@ public class AgnosticTransform implements Iterable<TransformOperation> {
   public AgnosticTransform createCopy() {
     AgnosticTransform copy = new AgnosticTransform();
     for (TransformOperation operation : operations) {
-       copy.add(operation);
+      copy.add(operation);
     }
     return copy;
+  }
+
+
+  @Override
+  public boolean equals(Object obj) {
+    return EqualsBuilder.reflectionEquals(this, obj);
+  }
+
+  @Override
+  public int hashCode() {
+    return operations.hashCode();
   }
 }

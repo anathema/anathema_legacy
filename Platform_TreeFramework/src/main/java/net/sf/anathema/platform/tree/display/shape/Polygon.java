@@ -2,6 +2,7 @@ package net.sf.anathema.platform.tree.display.shape;
 
 import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.framework.ui.Coordinates;
+import org.apache.commons.lang3.builder.EqualsBuilder;
 
 public class Polygon implements AgnosticShape {
   public final Coordinates coordinates = new Coordinates();
@@ -41,5 +42,15 @@ public class Polygon implements AgnosticShape {
       indexBefore = currentIndex;
     }
     return isInside;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    return EqualsBuilder.reflectionEquals(this, obj);
+  }
+
+  @Override
+  public int hashCode() {
+    return coordinates.hashCode();
   }
 }
