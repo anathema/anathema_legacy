@@ -1,12 +1,14 @@
 package net.sf.anathema.platform.tree.view.interaction;
 
+import net.sf.anathema.platform.tree.view.transform.AgnosticTransform;
+import net.sf.anathema.platform.tree.view.transform.SwingTransformer;
+
 import javax.swing.JComponent;
 import javax.swing.JToggleButton;
 import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.geom.AffineTransform;
 
 public class ButtonSpecialControl implements SpecialControl {
 
@@ -20,8 +22,8 @@ public class ButtonSpecialControl implements SpecialControl {
   }
 
   @Override
-  public void transformThrough(AffineTransform transform) {
-    Shape transformedShape = transform.createTransformedShape(originalBounds);
+  public void transformThrough(AgnosticTransform transform) {
+    Shape transformedShape = SwingTransformer.convert(transform).createTransformedShape(originalBounds);
     Rectangle transformedShapeBounds = transformedShape.getBounds();
     button.setBounds(transformedShapeBounds);
   }
@@ -37,8 +39,8 @@ public class ButtonSpecialControl implements SpecialControl {
   }
 
   @Override
-  public void transformOriginalCoordinates(AffineTransform transform) {
-    Shape transformedShape = transform.createTransformedShape(originalBounds);
+  public void transformOriginalCoordinates(AgnosticTransform transform) {
+    Shape transformedShape = SwingTransformer.convert(transform).createTransformedShape(originalBounds);
     this.originalBounds = transformedShape.getBounds();
     button.setBounds(originalBounds);
   }

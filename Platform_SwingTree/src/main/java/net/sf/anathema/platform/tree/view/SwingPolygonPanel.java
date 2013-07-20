@@ -10,6 +10,12 @@ import net.sf.anathema.platform.tree.view.interaction.Closure;
 import net.sf.anathema.platform.tree.view.interaction.ElementContainer;
 import net.sf.anathema.platform.tree.view.interaction.Executor;
 import net.sf.anathema.platform.tree.view.interaction.SpecialControl;
+import net.sf.anathema.platform.tree.view.transform.AgnosticTransform;
+import net.sf.anathema.platform.tree.view.transform.CenterOn;
+import net.sf.anathema.platform.tree.view.transform.PreConcatenate;
+import net.sf.anathema.platform.tree.view.transform.Scale;
+import net.sf.anathema.platform.tree.view.transform.SwingTransformer;
+import net.sf.anathema.platform.tree.view.transform.Translation;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -35,7 +41,7 @@ import static net.sf.anathema.lib.gui.swing.ColorUtilities.toAwtColor;
 public class SwingPolygonPanel extends JPanel implements PolygonPanel {
   private static final double MAX_ZOOM_OUT_SCALE = 0.3d; //30%
   private static final double MAX_ZOOM_IN_SCALE = 1.5d; //150%
-  private AffineTransform transform = new AffineTransform();
+  private AgnosticTransform transform = new AgnosticTransform();
   private ElementContainer container = new ElementContainer();
   private final List<SpecialControl> specialControls = new ArrayList<>();
 
@@ -48,7 +54,8 @@ public class SwingPolygonPanel extends JPanel implements PolygonPanel {
   protected void paintComponent(Graphics g) {
     super.paintComponent(g);
     Graphics2D graphics = (Graphics2D) g.create();
-    graphics.transform(transform);
+    AffineTransform affineTransform = SwingTransformer.convert(transform);
+    graphics.transform(affineTransform);
     graphics.setRenderingHint(KEY_RENDERING, VALUE_RENDER_QUALITY);
     graphics.setRenderingHint(KEY_ANTIALIASING, VALUE_ANTIALIAS_ON);
     Canvas canvas = new SwingGraphicsCanvas(graphics);
@@ -93,28 +100,29 @@ public class SwingPolygonPanel extends JPanel implements PolygonPanel {
 
   @Override
   public void scale(double scale) {
-    AffineTransform scaleTransform = AffineTransform.getScaleInstance(scale, scale);
+    AgnosticTransform scaleTransform = new AgnosticTransform();
+    scaleTransform.add(new Scale(scale));
     executeScaleIfBoundsAreNotBroken(scaleTransform);
   }
 
   @Override
   public void scaleToPoint(double scale, int x, int y) {
-    AffineTransform scaleTransform = new AffineTransform();
-    scaleTransform.translate(x, y);
-    scaleTransform.scale(scale, scale);
-    scaleTransform.translate(-x, -y);
+    AgnosticTransform scaleTransform = new AgnosticTransform();
+    scaleTransform.add(new Translation(x, y));
+    scaleTransform.add(new Scale(scale));
+    scaleTransform.add(new Translation(-x, -y));
     executeScaleIfBoundsAreNotBroken(scaleTransform);
   }
 
   @Override
   public void translate(int x, int y) {
-    transform.translate(x, y);
+    transform.add(new Translation(x, y));
   }
 
   @Override
   public void translateRelativeToScale(int x, int y) {
-    double scale = Math.sqrt(transform.getDeterminant());
-    transform.translate(x / scale, y / scale);
+    double scale = Math.sqrt(getScaleSquared(transform));
+    transform.add(new Translation(x / scale, y / scale));
   }
 
   @Override
@@ -152,7 +160,7 @@ public class SwingPolygonPanel extends JPanel implements PolygonPanel {
 
   private Point2D transformClickPointToObjectCoordinates(Point p) {
     try {
-      return transform.inverseTransform(p, p);
+      return SwingTransformer.convert(transform).inverseTransform(p, p);
     } catch (NoninvertibleTransformException e1) {
       throw new RuntimeException(e1);
     }
@@ -164,8 +172,7 @@ public class SwingPolygonPanel extends JPanel implements PolygonPanel {
     int yCenter = getHeight() / 2;
     int newCenterX = xCenter - x;
     int newCenterY = yCenter - y;
-    AffineTransform newCenter = AffineTransform.getTranslateInstance(newCenterX, newCenterY);
-    transform.preConcatenate(newCenter);
+    transform.add(new CenterOn(newCenterX, newCenterY));
     repaint();
   }
 
@@ -174,14 +181,14 @@ public class SwingPolygonPanel extends JPanel implements PolygonPanel {
     setBackground(toAwtColor(color));
   }
 
-  private void executeScaleIfBoundsAreNotBroken(AffineTransform scaleInstance) {
-    AffineTransform clone = (AffineTransform) transform.clone();
-    clone.preConcatenate(scaleInstance);
-    double determinant = clone.getDeterminant();
+  private void executeScaleIfBoundsAreNotBroken(AgnosticTransform scaleInstance) {
+    AgnosticTransform copy = transform.createCopy();
+    copy.add(new PreConcatenate(scaleInstance));
+    double determinant = getScaleSquared(copy);
     double maxZoomOutDeterminant = MAX_ZOOM_OUT_SCALE * MAX_ZOOM_OUT_SCALE;
     double maxZoomInDeterminant = MAX_ZOOM_IN_SCALE * MAX_ZOOM_IN_SCALE;
     if (maxZoomOutDeterminant <= determinant && determinant <= maxZoomInDeterminant) {
-      transform.preConcatenate(scaleInstance);
+      transform.add(new PreConcatenate(scaleInstance));
     }
   }
 
@@ -190,6 +197,7 @@ public class SwingPolygonPanel extends JPanel implements PolygonPanel {
   }
 
   private class SetDefaultCursor implements Runnable {
+
     @Override
     public void run() {
       setCursor(Cursor.getDefaultCursor());
@@ -197,9 +205,14 @@ public class SwingPolygonPanel extends JPanel implements PolygonPanel {
   }
 
   private class SetHandCursor implements Closure {
+
     @Override
     public void execute(InteractiveGraphicsElement polygon) {
       setCursor(getPredefinedCursor(HAND_CURSOR));
     }
+  }
+
+  private double getScaleSquared(AgnosticTransform transform) {
+    return SwingTransformer.convert(transform).getDeterminant();
   }
 }

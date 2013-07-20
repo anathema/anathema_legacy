@@ -1,10 +1,13 @@
 package net.sf.anathema.platform.tree.view.draw;
 
 import net.sf.anathema.framework.ui.Coordinate;
+import net.sf.anathema.platform.tree.view.transform.AgnosticTransform;
+import net.sf.anathema.platform.tree.view.transform.Rotation;
+import net.sf.anathema.platform.tree.view.transform.SwingTransformer;
+import net.sf.anathema.platform.tree.view.transform.Translation;
 
 import java.awt.Polygon;
 import java.awt.Shape;
-import java.awt.geom.AffineTransform;
 
 import static java.lang.Math.atan2;
 
@@ -30,16 +33,17 @@ public class ArrowHead {
   }
 
   public void paint(Canvas graphics) {
-    AffineTransform transform = calculateTransformation();
-    Shape transformedShape = transform.createTransformedShape(ArrowShape);
+    AgnosticTransform transform = createTransformation();
+    Shape transformedShape = SwingTransformer.convert(transform).createTransformedShape(ArrowShape);
     graphics.fill(transformedShape);
   }
 
-  private AffineTransform calculateTransformation() {
-    AffineTransform transform = new AffineTransform();
+  private AgnosticTransform createTransformation() {
+    AgnosticTransform transform = new AgnosticTransform();
     double angle = atan2(ultimatePoint.y - penultimatePoint.y, ultimatePoint.x - penultimatePoint.x);
-    transform.translate(ultimatePoint.x, ultimatePoint.y);
-    transform.rotate((angle - Math.PI / 2d));
+    transform.add(new Translation(ultimatePoint.x, ultimatePoint.y));
+    transform.add(new Rotation(angle - Math.PI / 2d));
     return transform;
   }
+
 }
