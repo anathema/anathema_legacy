@@ -24,6 +24,7 @@ public class Polygon implements AgnosticShape {
     return testContainmentWithRaycasting(candidate);
   }
 
+  //*Adapted from http://www.ecse.rpi.edu/Homepages/wrf/Research/Short_Notes/pnpoly.html*/
   private boolean testContainmentWithRaycasting(Coordinate candidate) {
     int currentIndex = 0;
     int indexBefore = coordinates.count() - 1;
@@ -31,8 +32,10 @@ public class Polygon implements AgnosticShape {
     for (; currentIndex < coordinates.count(); currentIndex++) {
       Coordinate currentPoint = coordinates.get(currentIndex);
       Coordinate pointBefore = coordinates.get(indexBefore);
-      if ((currentPoint.y > candidate.y) != (pointBefore.y > candidate.y) &&
-              (candidate.x < (pointBefore.x - currentPoint.x) * (candidate.y - currentPoint.y) / (pointBefore.y - currentPoint.y) + currentPoint.x)) {
+      boolean isNotAboveOrBelowBothReferencePoints = (currentPoint.y > candidate.y) != (pointBefore.y > candidate.y);
+      boolean hasCrossedPolygonBoundary = isNotAboveOrBelowBothReferencePoints &&
+              (candidate.x < (pointBefore.x - currentPoint.x) * (candidate.y - currentPoint.y) / (pointBefore.y - currentPoint.y) + currentPoint.x);
+      if (hasCrossedPolygonBoundary) {
         isInside = !isInside;
       }
       indexBefore = currentIndex;
