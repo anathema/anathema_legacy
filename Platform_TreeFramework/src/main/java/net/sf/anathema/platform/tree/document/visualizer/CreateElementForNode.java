@@ -5,21 +5,18 @@ import net.sf.anathema.platform.tree.document.components.ILayer;
 import net.sf.anathema.platform.tree.document.components.IVisualizableNodeVisitor;
 import net.sf.anathema.platform.tree.document.components.VisualizableDummyNode;
 import net.sf.anathema.platform.tree.document.components.VisualizableNode;
+import net.sf.anathema.platform.tree.view.container.DefaultContainerCascade;
 
-public class CreateElementForNode<PARENT> implements IVisualizableNodeVisitor {
-  public static <PARENT> CreateElementForNode<PARENT> create(ILayer layer, TreePresentationProperties properties,
-                                                             PARENT cascadeElement, NodeAdderFactory<PARENT> factory) {
-    return new CreateElementForNode<>(layer, properties, cascadeElement, factory);
-  }
+public class CreateElementForNode implements IVisualizableNodeVisitor {
 
   private final ILayer layer;
-  private final PARENT parent;
+  private final DefaultContainerCascade parent;
   private final TreePresentationProperties properties;
 
-  private final NodeAdderFactory<PARENT> adderFactory;
+  private final NodeAdderFactory adderFactory;
 
-  private CreateElementForNode(ILayer layer, TreePresentationProperties properties, PARENT parent,
-                               NodeAdderFactory<PARENT> factory) {
+  public CreateElementForNode(ILayer layer, TreePresentationProperties properties, DefaultContainerCascade parent,
+                               NodeAdderFactory factory) {
     this.layer = layer;
     this.parent = parent;
     this.properties = properties;
@@ -33,7 +30,7 @@ public class CreateElementForNode<PARENT> implements IVisualizableNodeVisitor {
 
   @Override
   public void visitSingleNode(VisualizableNode visitedNode) {
-    NodeAdder<PARENT> adder = adderFactory.create(visitedNode.getId(), properties.getNodeDimension(),
+    NodeAdder adder = adderFactory.create(visitedNode.getId(), properties.getNodeDimension(),
             visitedNode.getPosition(), layer.getYPosition());
     adder.addTo(parent);
   }

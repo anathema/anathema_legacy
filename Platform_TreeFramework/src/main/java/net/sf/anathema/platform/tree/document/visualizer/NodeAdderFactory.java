@@ -2,7 +2,7 @@ package net.sf.anathema.platform.tree.document.visualizer;
 
 import net.sf.anathema.framework.ui.Area;
 
-public interface NodeAdderFactory<PARENT> {
+public interface NodeAdderFactory {
 
-  NodeAdder<PARENT> create(String id, Area dimension, int xPosition, int yPosition);
+  NodeAdder create(String id, Area dimension, int xPosition, int yPosition);
 }

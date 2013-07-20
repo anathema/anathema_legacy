@@ -29,7 +29,7 @@ public class SwingLayerCascadeCreator {
   private void addNodes(DefaultContainerCascade container, ILayer[] layers) {
     for (ILayer layer : layers) {
       for (IVisualizableNode node : layer.getNodes()) {
-        node.accept(CreateElementForNode.create(layer, properties, container, new CascadeNodeAdderFactory()));
+        node.accept(new CreateElementForNode(layer, properties, container, new CascadeNodeAdderFactory()));
       }
     }
   }

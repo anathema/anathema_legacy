@@ -1,6 +1,8 @@
 package net.sf.anathema.platform.tree.document.visualizer;
 
-public interface NodeAdder<PARENT> {
+import net.sf.anathema.platform.tree.view.container.DefaultContainerCascade;
 
-  void addTo(PARENT parent);
+public interface NodeAdder {
+
+  void addTo(DefaultContainerCascade parent);
 }
