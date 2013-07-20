@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.advance.overview.presenter;
 
 import net.sf.anathema.character.main.view.labelledvalue.IStyleableView;
+import net.sf.anathema.framework.ui.FontStyle;
 import net.sf.anathema.hero.points.overview.SpendingModel;
-import net.sf.anathema.lib.control.legality.FontStyle;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
 import net.sf.anathema.lib.control.legality.LegalityFontProvider;
 import net.sf.anathema.lib.control.legality.ValueLegalityState;

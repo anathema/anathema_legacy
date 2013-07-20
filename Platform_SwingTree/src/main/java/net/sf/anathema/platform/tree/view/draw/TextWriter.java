@@ -1,9 +1,10 @@
 package net.sf.anathema.platform.tree.view.draw;
 
+import net.sf.anathema.framework.ui.Coordinate;
+import net.sf.anathema.framework.ui.FontStyle;
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.lib.lang.StringUtilities;
 
-import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Polygon;
 import java.awt.Rectangle;
@@ -31,9 +32,8 @@ public class TextWriter {
 
   public void write(Canvas graphics) {
     graphics.setColor(textColor);
-    Font textFont = new Font("SansSerif", Font.PLAIN, TEXT_SIZE);
-    graphics.setFont(textFont);
-    FontMetrics textMetrics = graphics.getFontMetrics(textFont);
+    graphics.setFontStyle(FontStyle.Plain, TEXT_SIZE);
+    FontMetrics textMetrics = graphics.getFontMetrics();
     findBreaksIfNotAlreadyEstablished(textMetrics);
     Rectangle bounds = polygon.getBounds();
     for (int partIndex = 0; partIndex < parts.length; partIndex++) {
@@ -41,7 +41,7 @@ public class TextWriter {
       int centeredX = (int) (bounds.x + bounds.getWidth() / 2) - (textMetrics.stringWidth(part) / 2);
       int centeredY = (int) (bounds.y + bounds.getHeight() / 2) + (textMetrics.getHeight() / 2);
       int actualY = centeredY + +yCorrection(partIndex, parts.length);
-      graphics.drawString(part, centeredX, actualY);
+      graphics.drawString(part, new Coordinate(centeredX, actualY));
     }
   }
 

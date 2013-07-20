@@ -1,5 +1,7 @@
 package net.sf.anathema.lib.control.legality;
 
+import net.sf.anathema.framework.ui.FontStyle;
+
 public class LegalityFontProvider {
 
   public static final FontStyle NO_BONUS = FontStyle.Plain;

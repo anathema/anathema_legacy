@@ -1,4 +1,6 @@
-package net.sf.anathema.lib.control.legality;
+package net.sf.anathema.lib.gui;
+
+import net.sf.anathema.framework.ui.FontStyle;
 
 import java.awt.Font;
 

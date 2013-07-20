@@ -1,10 +1,9 @@
 package net.sf.anathema.platform.tree.view.draw;
 
-import com.google.common.collect.Lists;
+import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.framework.ui.Width;
 import net.sf.anathema.platform.tree.document.components.ExtensibleArrow;
-import org.apache.commons.lang3.ArrayUtils;
 
 import java.awt.Point;
 import java.awt.geom.Ellipse2D;
@@ -23,35 +22,26 @@ public class FlexibleArrow implements GraphicsElement, ExtensibleArrow {
 
   @Override
   public void paint(Canvas graphics) {
-    int[] xCoordinates = collectXCoordinates();
-    int[] yCoordinates = collectYCoordinates();
     graphics.setStrokeWidth(new Width(6));
     graphics.setColor(RGBColor.Black);
-    graphics.drawPolyline(xCoordinates, yCoordinates, xCoordinates.length);
+    List<Coordinate> coordinates = convertToCoordinates(points);
+    graphics.drawPolyline(coordinates);
     Ellipse2D bottom = createCircleAtBottom();
     graphics.fill(bottom);
     new ArrowHead(points.get(points.size() - 2), points.get(points.size() - 1)).paint(graphics);
   }
 
+  private List<Coordinate> convertToCoordinates(List<Point> points) {
+    List<Coordinate> coordinates = new ArrayList<>();
+    for (Point point : points) {
+      coordinates.add(new Coordinate(point.x, point.y));
+    }
+    return coordinates;
+  }
+
   private Ellipse2D createCircleAtBottom() {
     Point origin = points.get(0);
     return new Ellipse2D.Float(origin.x - RADIUS, origin.y - RADIUS, DIAMETER, DIAMETER);
-  }
-
-  private int[] collectXCoordinates() {
-    List<Integer> coordinates = Lists.newArrayList();
-    for (Point point : points) {
-      coordinates.add(point.x);
-    }
-    return ArrayUtils.toPrimitive(coordinates.toArray(new Integer[coordinates.size()]));
-  }
-
-  private int[] collectYCoordinates() {
-    List<Integer> coordinates = Lists.newArrayList();
-    for (Point point : points) {
-      coordinates.add(point.y);
-    }
-    return ArrayUtils.toPrimitive(coordinates.toArray(new Integer[coordinates.size()]));
   }
 
   public void moveBy(int x, int y) {
