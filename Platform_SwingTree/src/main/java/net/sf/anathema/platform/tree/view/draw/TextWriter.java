@@ -5,9 +5,10 @@ import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.framework.ui.FontStyle;
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.lib.lang.StringUtilities;
+import net.sf.anathema.platform.tree.display.shape.AgnosticShape;
+import net.sf.anathema.platform.tree.swing.SwingTransformer;
 
 import java.awt.Rectangle;
-import java.awt.Shape;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,16 +18,16 @@ public class TextWriter {
   private static final int LINE_HEIGHT = TEXT_SIZE + 1;
   private String text = "";
   private RGBColor textColor = RGBColor.Black;
-  private final Shape shape;
+  private final AgnosticShape shape;
   private String[] parts;
   private LineSuggestion lineSuggestion = new LineSuggestion();
 
-  public TextWriter(Shape shape, LineSuggestion lineSuggestion) {
+  public TextWriter(AgnosticShape shape, LineSuggestion lineSuggestion) {
     this(shape);
     this.lineSuggestion = lineSuggestion;
   }
 
-  public TextWriter(Shape shape) {
+  public TextWriter(AgnosticShape shape) {
     this.shape = shape;
   }
 
@@ -35,7 +36,7 @@ public class TextWriter {
     graphics.setFontStyle(FontStyle.Plain, TEXT_SIZE);
     Area textSize = graphics.measureText(text);
     findBreaksIfNotAlreadyEstablished(textSize);
-    Rectangle bounds = shape.getBounds();
+    Rectangle bounds = SwingTransformer.convert(shape).getBounds();
     for (int partIndex = 0; partIndex < parts.length; partIndex++) {
       String part = parts[partIndex];
       Area partSize = graphics.measureText(part);

@@ -15,7 +15,7 @@ public class FilledPolygon implements InteractiveGraphicsElement, AgnosticPolygo
   private final Polygon polygon = new Polygon();
   private RGBColor fill = RGBColor.Transparent;
   private RGBColor stroke = RGBColor.Black;
-  private final TextWriter textWriter = new TextWriter(SwingTransformer.convert(polygon));
+  private final TextWriter textWriter = new TextWriter(polygon);
 
   @Override
   public void paint(Canvas graphics) {
