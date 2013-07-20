@@ -10,15 +10,17 @@ import java.awt.Shape;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ButtonSpecialControl implements SpecialControl {
+public class ButtonSpecialControl implements SpecialControlTrigger {
 
   private Rectangle originalBounds = new Rectangle(0, 0, 0, 15);
-  private final JToggleButton button;
-  private final SpecialContentMap specialContent;
+  private final JToggleButton button = new JToggleButton();
+  private SpecialContentMap specialContent;
+  private JComponent parent;
 
-  public ButtonSpecialControl(String title, SpecialContentMap specialContent) {
+  @Override
+  public void init(String title, SpecialContentMap specialContent) {
     this.specialContent = specialContent;
-    this.button = new JToggleButton(title);
+    button.setText(title);
   }
 
   @Override
@@ -26,16 +28,6 @@ public class ButtonSpecialControl implements SpecialControl {
     Shape transformedShape = SwingTransformer.convert(transform).createTransformedShape(originalBounds);
     Rectangle transformedShapeBounds = transformedShape.getBounds();
     button.setBounds(transformedShapeBounds);
-  }
-
-  @Override
-  public void addTo(JComponent parent) {
-    parent.add(button);
-  }
-
-  @Override
-  public void remove(JComponent parent) {
-    parent.remove(button);
   }
 
   @Override
@@ -55,6 +47,15 @@ public class ButtonSpecialControl implements SpecialControl {
     originalBounds.setSize(width, 15);
   }
 
+  public void addTo(JComponent parent) {
+    parent.add(button);
+    this.parent = parent;
+  }
+
+  public void remove() {
+    parent.remove(parent);
+  }
+
   public void whenTriggeredShow(final net.sf.anathema.platform.tree.display.SpecialControl specialControl) {
     final PopupSpecialCharmContainer container = new PopupSpecialCharmContainer(button, specialContent);
     specialControl.showIn(container);
@@ -63,8 +64,7 @@ public class ButtonSpecialControl implements SpecialControl {
       public void actionPerformed(ActionEvent e) {
         if (button.isSelected()) {
           container.display();
-        }
-        else{
+        } else {
           container.hide();
         }
       }

@@ -11,9 +11,9 @@ import net.sf.anathema.platform.tree.display.SpecialControl;
 import net.sf.anathema.platform.tree.display.ToolTipProperties;
 import net.sf.anathema.platform.tree.view.container.Cascade;
 import net.sf.anathema.platform.tree.view.container.ProxyCascade;
-import net.sf.anathema.platform.tree.view.interaction.ButtonSpecialControl;
 import net.sf.anathema.platform.tree.view.interaction.DefaultScaler;
 import net.sf.anathema.platform.tree.view.interaction.SpecialContentMap;
+import net.sf.anathema.platform.tree.view.interaction.SpecialControlTrigger;
 import net.sf.anathema.platform.tree.view.interaction.ToolTipListener;
 import org.jmock.example.announcer.Announcer;
 
@@ -74,10 +74,10 @@ public class SwingTreeView implements ITreeView<Cascade> {
 
   @Override
   public void addSpecialControl(String nodeId, SpecialControl specialControl) {
-    ButtonSpecialControl control = new ButtonSpecialControl("Special", specialContent);
-    control.whenTriggeredShow(specialControl);
-    cascade.determinePositionFor(nodeId, control);
-    polygonPanel.add(control);
+    SpecialControlTrigger trigger = polygonPanel.addSpecialControl();
+    trigger.init("Special", specialContent);
+    trigger.whenTriggeredShow(specialControl);
+    cascade.determinePositionFor(nodeId, trigger);
   }
 
   @Override

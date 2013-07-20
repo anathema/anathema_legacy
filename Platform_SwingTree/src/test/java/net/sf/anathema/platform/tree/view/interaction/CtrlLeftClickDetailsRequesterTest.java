@@ -10,9 +10,10 @@ import net.sf.anathema.platform.tree.view.draw.PolygonMother;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.awt.Point;
 import java.awt.event.MouseEvent;
 
+import static net.sf.anathema.platform.tree.view.interaction.LeftClickTogglerTest.AnyCoordinate;
+import static net.sf.anathema.platform.tree.view.interaction.LeftClickTogglerTest.AnyPoint;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -20,7 +21,6 @@ import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
 
 public class CtrlLeftClickDetailsRequesterTest {
-  public static final Point AnyPoint = new Point(1, 2);
 
   private DefaultContainerCascade cascade = new DefaultContainerCascade();
   private FilledPolygon polygon = PolygonMother.squareAtOriginWithLength2();
@@ -33,7 +33,7 @@ public class CtrlLeftClickDetailsRequesterTest {
   @Before
   public void setUp() throws Exception {
     when(event.getPoint()).thenReturn(AnyPoint);
-    when(panel.onElementAtPoint(AnyPoint)).thenReturn(new ElementExecutor(polygon));
+    when(panel.onElementAtPoint(AnyCoordinate)).thenReturn(new ElementExecutor(polygon));
     cascade.add(identifiedPolygon);
   }
 

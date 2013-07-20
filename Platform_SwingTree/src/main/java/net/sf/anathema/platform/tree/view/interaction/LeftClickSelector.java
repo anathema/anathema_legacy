@@ -1,5 +1,6 @@
 package net.sf.anathema.platform.tree.view.interaction;
 
+import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.platform.tree.display.NodeInteractionListener;
 import net.sf.anathema.platform.tree.view.PolygonPanel;
 import net.sf.anathema.platform.tree.view.container.Cascade;
@@ -26,7 +27,7 @@ public class LeftClickSelector extends MouseAdapter {
       return;
     }
     Point point = e.getPoint();
-    polygonPanel.onElementAtPoint(point).perform(new NodeSelectionTrigger(cascade, interactionListener));
+    polygonPanel.onElementAtPoint(new Coordinate(point.x, point.y)).perform(new NodeSelectionTrigger(cascade, interactionListener));
     polygonPanel.refresh();
   }
 }

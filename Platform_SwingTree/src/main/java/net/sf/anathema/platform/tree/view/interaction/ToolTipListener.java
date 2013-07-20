@@ -1,9 +1,11 @@
 package net.sf.anathema.platform.tree.view.interaction;
 
+import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.platform.tree.display.ToolTipProperties;
 import net.sf.anathema.platform.tree.view.PolygonPanel;
 import net.sf.anathema.platform.tree.view.container.Cascade;
 
+import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 
@@ -18,7 +20,8 @@ public class ToolTipListener extends MouseMotionAdapter {
 
   @Override
   public void mouseMoved(MouseEvent e) {
-    polygonPanel.onElementAtPoint(e.getPoint()).perform(setToolTip).orFallBackTo(new NoTooltip());
+    Point point = e.getPoint();
+    polygonPanel.onElementAtPoint(new Coordinate(point.x, point.y)).perform(setToolTip).orFallBackTo(new NoTooltip());
   }
 
   private class NoTooltip implements Runnable {

@@ -1,5 +1,6 @@
 package net.sf.anathema.platform.tree.view;
 
+import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.platform.tree.swing.SwingGraphicsCanvas;
 import net.sf.anathema.platform.tree.view.draw.Canvas;
 import net.sf.anathema.platform.tree.view.draw.FilledPolygon;
@@ -11,7 +12,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.awt.Graphics2D;
-import java.awt.Point;
 import java.awt.geom.AffineTransform;
 
 import static java.awt.RenderingHints.KEY_ANTIALIASING;
@@ -153,7 +153,7 @@ public class PolygonPanelTest {
     InteractiveGraphicsElement polygon = PolygonMother.squareAtOriginWithLength2();
     polygonPanel.add(polygon);
     polygonPanel.translate(2, 2);
-    polygonPanel.onElementAtPoint(new Point(3, 3)).perform(new Closure() {
+    polygonPanel.onElementAtPoint(new Coordinate(3, 3)).perform(new Closure() {
       @Override
       public void execute(InteractiveGraphicsElement polygon) {
         //nothing to do

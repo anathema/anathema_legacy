@@ -11,10 +11,11 @@ import net.sf.anathema.platform.tree.swing.SwingGraphicsCanvas;
 import net.sf.anathema.platform.tree.view.draw.Canvas;
 import net.sf.anathema.platform.tree.view.draw.GraphicsElement;
 import net.sf.anathema.platform.tree.view.draw.InteractiveGraphicsElement;
+import net.sf.anathema.platform.tree.view.interaction.ButtonSpecialControl;
 import net.sf.anathema.platform.tree.view.interaction.Closure;
 import net.sf.anathema.platform.tree.view.interaction.ElementContainer;
 import net.sf.anathema.platform.tree.view.interaction.Executor;
-import net.sf.anathema.platform.tree.view.interaction.SpecialControl;
+import net.sf.anathema.platform.tree.view.interaction.SpecialControlTrigger;
 import net.sf.anathema.platform.tree.view.transform.SwingTransformer;
 
 import javax.swing.JComponent;
@@ -31,6 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static java.awt.Cursor.HAND_CURSOR;
+import static java.awt.Cursor.MOVE_CURSOR;
 import static java.awt.Cursor.getPredefinedCursor;
 import static java.awt.RenderingHints.KEY_ANTIALIASING;
 import static java.awt.RenderingHints.KEY_RENDERING;
@@ -43,7 +45,7 @@ public class SwingPolygonPanel extends JPanel implements PolygonPanel {
   private static final double MAX_ZOOM_IN_SCALE = 1.5d; //150%
   private AgnosticTransform transform = new AgnosticTransform();
   private ElementContainer container = new ElementContainer();
-  private final List<SpecialControl> specialControls = new ArrayList<>();
+  private final List<ButtonSpecialControl> specialControls = new ArrayList<>();
 
   public SwingPolygonPanel() {
     setLayout(null);
@@ -74,18 +76,20 @@ public class SwingPolygonPanel extends JPanel implements PolygonPanel {
   @Override
   public void revalidate() {
     if (specialControls != null) {
-      for (SpecialControl specialControl : specialControls) {
-        specialControl.transformThrough(transform);
+      for (SpecialControlTrigger specialControlTrigger : specialControls) {
+        specialControlTrigger.transformThrough(transform);
       }
     }
     super.revalidate();
   }
 
   @Override
-  public void add(SpecialControl control) {
-    specialControls.add(control);
-    control.transformOriginalCoordinates(transform);
-    control.addTo(this);
+  public SpecialControlTrigger addSpecialControl() {
+    ButtonSpecialControl specialControl = new ButtonSpecialControl();
+    specialControls.add(specialControl);
+    specialControl.transformOriginalCoordinates(transform);
+    specialControl.addTo(this);
+    return specialControl;
   }
 
   @Override
@@ -132,35 +136,36 @@ public class SwingPolygonPanel extends JPanel implements PolygonPanel {
   }
 
   @Override
-  public void changeCursor(Point point) {
-    Coordinate coordinate = getObjectCoordinatesFrom(point);
+  public void changeCursor(Coordinate screenCoordinates) {
+    Coordinate coordinate = getObjectCoordinatesFrom(screenCoordinates);
     container.onElementAtPoint(coordinate).perform(new SetHandCursor()).orFallBackTo(new SetDefaultCursor());
   }
 
   @Override
   public void clear() {
     container.clear();
-    for (SpecialControl specialControl : specialControls) {
-      specialControl.remove(this);
+    for (ButtonSpecialControl specialControl : specialControls) {
+      specialControl.remove();
     }
     specialControls.clear();
     repaint();
   }
 
   @Override
-  public Executor onElementAtPoint(Point point) {
-    Coordinate elementPoint = getObjectCoordinatesFrom(point);
+  public Executor onElementAtPoint(Coordinate screenCoordinates) {
+    Coordinate elementPoint = getObjectCoordinatesFrom(screenCoordinates);
     return container.onElementAtPoint(elementPoint);
   }
 
-  private Coordinate getObjectCoordinatesFrom(Point point) {
+  private Coordinate getObjectCoordinatesFrom(Coordinate point) {
     Point2D elementPoint = transformClickPointToObjectCoordinates(point);
     return new Coordinate(elementPoint.getX(), elementPoint.getY());
   }
 
-  private Point2D transformClickPointToObjectCoordinates(Point p) {
+  private Point2D transformClickPointToObjectCoordinates(Coordinate coordinate) {
     try {
-      return SwingTransformer.convert(transform).inverseTransform(p, p);
+      Point point = SwingTransformer.convert(coordinate);
+      return SwingTransformer.convert(transform).inverseTransform(point, point);
     } catch (NoninvertibleTransformException e1) {
       throw new RuntimeException(e1);
     }
@@ -179,6 +184,11 @@ public class SwingPolygonPanel extends JPanel implements PolygonPanel {
   @Override
   public void setBackground(RGBColor color) {
     setBackground(toAwtColor(color));
+  }
+
+  @Override
+  public void showMoveCursor() {
+    setCursor(Cursor.getPredefinedCursor(MOVE_CURSOR));
   }
 
   private void executeScaleIfBoundsAreNotBroken(AgnosticTransform scaleInstance) {

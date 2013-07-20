@@ -1,5 +1,6 @@
 package net.sf.anathema.platform.tree.view.interaction;
 
+import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.platform.tree.display.NodeInteractionListener;
 import net.sf.anathema.platform.tree.view.SwingPolygonPanel;
 import net.sf.anathema.platform.tree.view.container.Cascade;
@@ -19,6 +20,7 @@ import static org.mockito.Mockito.when;
 public class LeftClickTogglerTest {
 
   public static final Point AnyPoint = new Point(1, 2);
+  public static final Coordinate AnyCoordinate = new Coordinate(1, 2);
 
   private InteractiveGraphicsElement element = mock(InteractiveGraphicsElement.class);
   private SwingPolygonPanel panel = mock(SwingPolygonPanel.class);
@@ -30,7 +32,7 @@ public class LeftClickTogglerTest {
   @Before
   public void setUp() throws Exception {
     when(event.getPoint()).thenReturn(AnyPoint);
-    when(panel.onElementAtPoint(AnyPoint)).thenReturn(new ElementExecutor(element));
+    when(panel.onElementAtPoint(AnyCoordinate)).thenReturn(new ElementExecutor(element));
   }
 
   @Test
