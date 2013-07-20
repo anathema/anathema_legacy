@@ -12,7 +12,7 @@ public class SwingCascadeStrategy implements CascadeCreationStrategy<Cascade> {
 
   @Override
   public CascadeBuilder<ContainerCascade, Cascade> createCascadeBuilder(TreePresentationProperties properties) {
-    return new SwingCascadeBuilder();
+    return new AgnosticCascadeBuilder();
   }
 
   @Override

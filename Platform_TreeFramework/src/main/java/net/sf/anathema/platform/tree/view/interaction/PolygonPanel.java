@@ -1,15 +1,9 @@
-package net.sf.anathema.platform.tree.view;
+package net.sf.anathema.platform.tree.view.interaction;
 
 import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.platform.tree.view.draw.GraphicsElement;
 import net.sf.anathema.platform.tree.view.draw.InteractiveGraphicsElement;
-import net.sf.anathema.platform.tree.view.interaction.Executor;
-import net.sf.anathema.platform.tree.view.interaction.MouseClickClosure;
-import net.sf.anathema.platform.tree.view.interaction.MouseMotionClosure;
-import net.sf.anathema.platform.tree.view.interaction.MousePressClosure;
-import net.sf.anathema.platform.tree.view.interaction.MouseWheelClosure;
-import net.sf.anathema.platform.tree.view.interaction.SpecialControlTrigger;
 
 public interface PolygonPanel {
   double RECOMMENDED_DEFAULT_SCALE = 0.75d;

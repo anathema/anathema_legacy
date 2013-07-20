@@ -1,4 +1,4 @@
-package net.sf.anathema.platform.tree.view.transform;
+package net.sf.anathema.platform.tree.swing;
 
 import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.platform.tree.display.shape.AgnosticShape;

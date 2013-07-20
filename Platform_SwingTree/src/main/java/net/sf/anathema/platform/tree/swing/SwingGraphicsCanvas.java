@@ -10,7 +10,6 @@ import net.sf.anathema.lib.gui.SwingFontStyleMapping;
 import net.sf.anathema.platform.tree.display.shape.AgnosticShape;
 import net.sf.anathema.platform.tree.display.shape.TransformedShape;
 import net.sf.anathema.platform.tree.view.draw.Canvas;
-import net.sf.anathema.platform.tree.view.transform.SwingTransformer;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.awt.BasicStroke;

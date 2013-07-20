@@ -2,10 +2,10 @@ package net.sf.anathema.platform.tree.view.visualizer;
 
 import net.sf.anathema.framework.ui.Area;
 import net.sf.anathema.platform.tree.document.visualizer.IVisualizedGraph;
-import net.sf.anathema.platform.tree.view.SwingCascadeBuilder;
+import net.sf.anathema.platform.tree.view.AgnosticCascadeBuilder;
 import net.sf.anathema.platform.tree.view.container.DefaultContainerCascade;
 
-public class SwingGraph implements IVisualizedGraph<SwingCascadeBuilder> {
+public class SwingGraph implements IVisualizedGraph<AgnosticCascadeBuilder> {
   private final DefaultContainerCascade container;
   private final Area dimension;
   private final boolean containsSingleNode;
@@ -32,7 +32,7 @@ public class SwingGraph implements IVisualizedGraph<SwingCascadeBuilder> {
   }
 
   @Override
-  public void addTo(SwingCascadeBuilder builder) {
+  public void addTo(AgnosticCascadeBuilder builder) {
     builder.add(container);
   }
 }

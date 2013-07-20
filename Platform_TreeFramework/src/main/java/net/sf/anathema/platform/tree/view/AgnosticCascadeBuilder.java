@@ -5,7 +5,7 @@ import net.sf.anathema.platform.tree.view.container.AggregatedCascade;
 import net.sf.anathema.platform.tree.view.container.Cascade;
 import net.sf.anathema.platform.tree.view.container.ContainerCascade;
 
-public class SwingCascadeBuilder implements CascadeBuilder<ContainerCascade, Cascade> {
+public class AgnosticCascadeBuilder implements CascadeBuilder<ContainerCascade, Cascade> {
 
   private final AggregatedCascade aggregatedCascade = new AggregatedCascade();
 

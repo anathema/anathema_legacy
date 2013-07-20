@@ -8,12 +8,12 @@ import org.junit.Test;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-public class SwingCascadeBuilderTest {
+public class AgnosticCascadeBuilderTest {
 
   @Test
   public void createsCascadeWithAllElements() throws Exception {
     ContainerCascade cascade = mock(ContainerCascade.class);
-    SwingCascadeBuilder builder = new SwingCascadeBuilder();
+    AgnosticCascadeBuilder builder = new AgnosticCascadeBuilder();
     builder.add(cascade);
     Cascade result = builder.create();
     NodeProperties properties = mock(NodeProperties.class);

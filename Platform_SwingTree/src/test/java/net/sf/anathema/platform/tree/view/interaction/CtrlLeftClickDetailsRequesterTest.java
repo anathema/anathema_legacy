@@ -1,7 +1,6 @@
 package net.sf.anathema.platform.tree.view.interaction;
 
 import net.sf.anathema.platform.tree.display.NodeInteractionListener;
-import net.sf.anathema.platform.tree.view.PolygonPanel;
 import net.sf.anathema.platform.tree.view.SwingPolygonPanel;
 import net.sf.anathema.platform.tree.view.container.DefaultContainerCascade;
 import net.sf.anathema.platform.tree.view.container.IdentifiedPolygon;

@@ -1,7 +1,6 @@
 package net.sf.anathema.platform.tree.view.interaction;
 
 import net.sf.anathema.framework.ui.Coordinate;
-import net.sf.anathema.platform.tree.view.PolygonPanel;
 
 public class CursorChanger implements MouseMotionClosure {
   private final PolygonPanel polygonPanel;

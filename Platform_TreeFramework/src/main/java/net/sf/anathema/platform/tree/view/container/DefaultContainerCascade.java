@@ -4,9 +4,9 @@ import com.google.common.collect.Lists;
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.platform.tree.display.NodeProperties;
 import net.sf.anathema.platform.tree.display.draw.ShapeWithPosition;
-import net.sf.anathema.platform.tree.view.PolygonPanel;
-import net.sf.anathema.platform.tree.view.draw.FilledPolygon;
 import net.sf.anathema.platform.tree.view.draw.FlexibleArrow;
+import net.sf.anathema.platform.tree.view.draw.InteractiveGraphicsElement;
+import net.sf.anathema.platform.tree.view.interaction.PolygonPanel;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.List;
@@ -52,7 +52,7 @@ public class DefaultContainerCascade implements ContainerCascade {
   public void addTo(PolygonPanel panel) {
     for (IdentifiedPolygon node : nodes) {
       node.element.setText(node.id);
-      panel.add((FilledPolygon) node.element);
+      panel.add((InteractiveGraphicsElement) node.element);
     }
     for (FlexibleArrow edge : edges) {
       panel.add(edge);

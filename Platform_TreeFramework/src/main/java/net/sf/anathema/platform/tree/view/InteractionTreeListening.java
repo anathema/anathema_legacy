@@ -6,6 +6,7 @@ import net.sf.anathema.platform.tree.view.interaction.CtrlLeftClickDetailsReques
 import net.sf.anathema.platform.tree.view.interaction.CursorChanger;
 import net.sf.anathema.platform.tree.view.interaction.LeftClickPanner;
 import net.sf.anathema.platform.tree.view.interaction.LeftClickSelector;
+import net.sf.anathema.platform.tree.view.interaction.PolygonPanel;
 import net.sf.anathema.platform.tree.view.interaction.RightClickCenterer;
 import net.sf.anathema.platform.tree.view.interaction.RightClickResetter;
 import net.sf.anathema.platform.tree.view.interaction.WheelScaler;

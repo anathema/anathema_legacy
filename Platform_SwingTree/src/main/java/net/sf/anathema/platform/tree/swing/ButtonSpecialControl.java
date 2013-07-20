@@ -1,7 +1,9 @@
-package net.sf.anathema.platform.tree.view.interaction;
+package net.sf.anathema.platform.tree.swing;
 
 import net.sf.anathema.platform.tree.display.transform.AgnosticTransform;
-import net.sf.anathema.platform.tree.view.transform.SwingTransformer;
+import net.sf.anathema.platform.tree.view.interaction.PopupSpecialCharmContainer;
+import net.sf.anathema.platform.tree.view.interaction.SpecialContentMap;
+import net.sf.anathema.platform.tree.view.interaction.SpecialControlTrigger;
 
 import javax.swing.JComponent;
 import javax.swing.JToggleButton;

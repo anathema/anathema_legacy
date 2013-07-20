@@ -1,7 +1,6 @@
 package net.sf.anathema.platform.tree.view.interaction;
 
 import net.sf.anathema.framework.ui.Coordinate;
-import net.sf.anathema.platform.tree.view.PolygonPanel;
 
 public class WheelScaler implements MouseWheelClosure {
   private static final float PERCENTAGE_INCREMENT = 0.05f;  //    5%

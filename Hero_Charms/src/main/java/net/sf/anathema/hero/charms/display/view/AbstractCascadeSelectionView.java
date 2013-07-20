@@ -15,8 +15,8 @@ import net.sf.anathema.platform.tree.display.NodeProperties;
 import net.sf.anathema.platform.tree.display.ToolTipProperties;
 import net.sf.anathema.platform.tree.display.TreeRenderer;
 import net.sf.anathema.platform.tree.document.GenericCascadeFactory;
+import net.sf.anathema.platform.tree.swing.SwingTreeView;
 import net.sf.anathema.platform.tree.view.SwingCascadeStrategy;
-import net.sf.anathema.platform.tree.view.SwingTreeView;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;

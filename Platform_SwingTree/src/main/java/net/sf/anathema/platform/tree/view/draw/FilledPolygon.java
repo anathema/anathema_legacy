@@ -5,7 +5,7 @@ import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.platform.tree.display.draw.AgnosticPolygon;
 import net.sf.anathema.platform.tree.display.draw.ShapeWithPosition;
 import net.sf.anathema.platform.tree.display.shape.Polygon;
-import net.sf.anathema.platform.tree.view.transform.SwingTransformer;
+import net.sf.anathema.platform.tree.swing.SwingTransformer;
 import org.jmock.example.announcer.Announcer;
 
 import java.awt.Rectangle;

@@ -1,4 +1,4 @@
-package net.sf.anathema.platform.tree.view;
+package net.sf.anathema.platform.tree.swing;
 
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.platform.tree.display.CascadeLoadException;
@@ -9,6 +9,9 @@ import net.sf.anathema.platform.tree.display.NodeInteractionListener;
 import net.sf.anathema.platform.tree.display.NodeProperties;
 import net.sf.anathema.platform.tree.display.SpecialControl;
 import net.sf.anathema.platform.tree.display.ToolTipProperties;
+import net.sf.anathema.platform.tree.view.AggregatingInteractionListener;
+import net.sf.anathema.platform.tree.view.InteractionTreeListening;
+import net.sf.anathema.platform.tree.view.SwingPolygonPanel;
 import net.sf.anathema.platform.tree.view.container.Cascade;
 import net.sf.anathema.platform.tree.view.container.ProxyCascade;
 import net.sf.anathema.platform.tree.view.interaction.DefaultScaler;

@@ -1,6 +1,5 @@
 package net.sf.anathema.platform.tree.view.interaction;
 
-import net.sf.anathema.platform.tree.view.PolygonPanel;
 import net.sf.anathema.platform.tree.view.SwingPolygonPanel;
 import org.junit.Test;
 
