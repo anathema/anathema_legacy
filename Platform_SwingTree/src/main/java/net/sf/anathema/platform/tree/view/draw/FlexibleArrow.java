@@ -1,6 +1,7 @@
 package net.sf.anathema.platform.tree.view.draw;
 
 import net.sf.anathema.framework.ui.Coordinate;
+import net.sf.anathema.framework.ui.Coordinates;
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.framework.ui.Width;
 import net.sf.anathema.platform.tree.document.components.ExtensibleArrow;

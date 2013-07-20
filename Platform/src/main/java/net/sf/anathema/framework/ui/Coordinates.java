@@ -1,6 +1,4 @@
-package net.sf.anathema.platform.tree.view.draw;
-
-import net.sf.anathema.framework.ui.Coordinate;
+package net.sf.anathema.framework.ui;
 
 import java.util.ArrayList;
 import java.util.Iterator;
