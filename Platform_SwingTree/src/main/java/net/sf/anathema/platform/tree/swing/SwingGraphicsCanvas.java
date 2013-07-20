@@ -12,6 +12,7 @@ import net.sf.anathema.platform.tree.display.shape.AgnosticShape;
 import net.sf.anathema.platform.tree.display.shape.TransformedShape;
 import net.sf.anathema.platform.tree.view.draw.Canvas;
 import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.builder.EqualsBuilder;
 
 import java.awt.BasicStroke;
 import java.awt.Font;
@@ -104,5 +105,15 @@ public class SwingGraphicsCanvas implements Canvas {
       yCoordinates.add(coordinate.y);
     }
     return ArrayUtils.toPrimitive(yCoordinates.toArray(new Integer[yCoordinates.size()]));
+  }
+
+  @Override
+  public int hashCode() {
+    return graphics.hashCode();
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    return EqualsBuilder.reflectionEquals(this, obj);
   }
 }

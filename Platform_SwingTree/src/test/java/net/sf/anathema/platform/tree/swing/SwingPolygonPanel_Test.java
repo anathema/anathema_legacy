@@ -21,11 +21,11 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
 
-public class PolygonPanelTest {
+public class SwingPolygonPanel_Test {
 
-  private SwingPolygonPanel polygonPanel = new SwingPolygonPanel();
-  private Graphics2D graphics = mock(Graphics2D.class);
-  private Canvas canvas = new SwingGraphicsCanvas(graphics);
+  private final SwingPolygonPanel polygonPanel = new SwingPolygonPanel();
+  private final Graphics2D graphics = mock(Graphics2D.class);
+  private final Canvas canvas = new SwingGraphicsCanvas(graphics);
 
   @Before
   public void setUp() throws Exception {
