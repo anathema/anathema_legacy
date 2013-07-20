@@ -1,6 +1,4 @@
-package net.sf.anathema.platform.tree.view.transform;
-
-import net.sf.anathema.platform.tree.view.draw.TransformOperation;
+package net.sf.anathema.platform.tree.display.transform;
 
 public class CenterOn implements TransformOperation {
   public final int newCenterX;

@@ -1,10 +1,10 @@
 package net.sf.anathema.platform.tree.view.draw;
 
 import net.sf.anathema.framework.ui.Coordinate;
-import net.sf.anathema.platform.tree.view.transform.AgnosticTransform;
-import net.sf.anathema.platform.tree.view.transform.Rotation;
+import net.sf.anathema.platform.tree.display.transform.AgnosticTransform;
+import net.sf.anathema.platform.tree.display.transform.Rotation;
+import net.sf.anathema.platform.tree.display.transform.Translation;
 import net.sf.anathema.platform.tree.view.transform.SwingTransformer;
-import net.sf.anathema.platform.tree.view.transform.Translation;
 
 import java.awt.Polygon;
 import java.awt.Shape;

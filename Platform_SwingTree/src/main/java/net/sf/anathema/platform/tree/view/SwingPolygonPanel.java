@@ -2,6 +2,11 @@ package net.sf.anathema.platform.tree.view;
 
 import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.framework.ui.RGBColor;
+import net.sf.anathema.platform.tree.display.transform.AgnosticTransform;
+import net.sf.anathema.platform.tree.display.transform.CenterOn;
+import net.sf.anathema.platform.tree.display.transform.PreConcatenate;
+import net.sf.anathema.platform.tree.display.transform.Scale;
+import net.sf.anathema.platform.tree.display.transform.Translation;
 import net.sf.anathema.platform.tree.view.draw.Canvas;
 import net.sf.anathema.platform.tree.view.draw.GraphicsElement;
 import net.sf.anathema.platform.tree.view.draw.InteractiveGraphicsElement;
@@ -10,12 +15,7 @@ import net.sf.anathema.platform.tree.view.interaction.Closure;
 import net.sf.anathema.platform.tree.view.interaction.ElementContainer;
 import net.sf.anathema.platform.tree.view.interaction.Executor;
 import net.sf.anathema.platform.tree.view.interaction.SpecialControl;
-import net.sf.anathema.platform.tree.view.transform.AgnosticTransform;
-import net.sf.anathema.platform.tree.view.transform.CenterOn;
-import net.sf.anathema.platform.tree.view.transform.PreConcatenate;
-import net.sf.anathema.platform.tree.view.transform.Scale;
 import net.sf.anathema.platform.tree.view.transform.SwingTransformer;
-import net.sf.anathema.platform.tree.view.transform.Translation;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;

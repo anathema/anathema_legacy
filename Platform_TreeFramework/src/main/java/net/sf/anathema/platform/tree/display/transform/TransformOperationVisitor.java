@@ -1,4 +1,4 @@
-package net.sf.anathema.platform.tree.view.transform;
+package net.sf.anathema.platform.tree.display.transform;
 
 public interface TransformOperationVisitor {
   void visitPreConcatenate(PreConcatenate preConcatenate);

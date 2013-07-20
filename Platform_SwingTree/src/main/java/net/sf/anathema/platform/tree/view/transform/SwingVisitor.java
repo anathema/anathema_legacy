@@ -1,5 +1,12 @@
 package net.sf.anathema.platform.tree.view.transform;
 
+import net.sf.anathema.platform.tree.display.transform.CenterOn;
+import net.sf.anathema.platform.tree.display.transform.PreConcatenate;
+import net.sf.anathema.platform.tree.display.transform.Rotation;
+import net.sf.anathema.platform.tree.display.transform.Scale;
+import net.sf.anathema.platform.tree.display.transform.TransformOperationVisitor;
+import net.sf.anathema.platform.tree.display.transform.Translation;
+
 import java.awt.geom.AffineTransform;
 
 public class SwingVisitor implements TransformOperationVisitor {
