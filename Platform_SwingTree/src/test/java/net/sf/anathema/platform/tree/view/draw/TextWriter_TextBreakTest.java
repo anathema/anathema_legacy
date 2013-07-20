@@ -1,10 +1,11 @@
 package net.sf.anathema.platform.tree.view.draw;
 
+import net.sf.anathema.framework.ui.Area;
+import net.sf.anathema.platform.tree.swing.SwingGraphicsCanvas;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.awt.Font;
-import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.Polygon;
 
@@ -29,14 +30,14 @@ public class TextWriter_TextBreakTest {
 
   @Test
   public void breaksText() throws Exception {
-    when(lineSuggestion.suggestNumberOfLines(isA(FontMetrics.class), isA(String.class))).thenReturn(2);
+    when(lineSuggestion.suggestNumberOfLines(isA(Area.class))).thenReturn(2);
     writer.write(canvas);
     verify(graphics).drawString("Forceful", 50, 38);
   }
 
   @Test
   public void keepsBreaksOnceEstablished() throws Exception {
-    when(lineSuggestion.suggestNumberOfLines(isA(FontMetrics.class), isA(String.class))).thenReturn(2, 1);
+    when(lineSuggestion.suggestNumberOfLines(isA(Area.class))).thenReturn(2, 1);
     writer.write(canvas);
     writer.write(canvas);
     verify(graphics, times(2)).drawString("Forceful", 50, 38);

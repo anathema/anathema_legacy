@@ -2,6 +2,7 @@ package net.sf.anathema.platform.tree.view.draw;
 
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.lib.gui.swing.ColorUtilities;
+import net.sf.anathema.platform.tree.swing.SwingGraphicsCanvas;
 import org.junit.Before;
 import org.junit.Test;
 

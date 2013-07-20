@@ -1,8 +1,7 @@
-package net.sf.anathema.platform.tree.view.draw;
+package net.sf.anathema.platform.tree.display.draw;
 
 import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.framework.ui.RGBColor;
-import net.sf.anathema.platform.tree.view.interaction.ShapeWithPosition;
 
 public interface AgnosticPolygon {
   void whenToggledDo(Runnable runnable);

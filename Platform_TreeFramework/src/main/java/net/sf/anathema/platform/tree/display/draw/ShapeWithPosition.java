@@ -1,4 +1,4 @@
-package net.sf.anathema.platform.tree.view.interaction;
+package net.sf.anathema.platform.tree.display.draw;
 
 public interface ShapeWithPosition {
 

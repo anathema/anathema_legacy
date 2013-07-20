@@ -1,5 +1,6 @@
 package net.sf.anathema.platform.tree.view.interaction;
 
+import net.sf.anathema.platform.tree.display.draw.ShapeWithPosition;
 import net.sf.anathema.platform.tree.display.transform.AgnosticTransform;
 
 import javax.swing.JComponent;

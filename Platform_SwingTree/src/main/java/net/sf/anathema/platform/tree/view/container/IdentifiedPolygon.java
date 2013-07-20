@@ -1,6 +1,6 @@
 package net.sf.anathema.platform.tree.view.container;
 
-import net.sf.anathema.platform.tree.view.draw.AgnosticPolygon;
+import net.sf.anathema.platform.tree.display.draw.AgnosticPolygon;
 import net.sf.anathema.platform.tree.view.draw.FilledPolygon;
 
 public class IdentifiedPolygon {

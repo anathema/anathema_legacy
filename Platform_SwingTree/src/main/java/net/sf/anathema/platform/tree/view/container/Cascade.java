@@ -2,8 +2,8 @@ package net.sf.anathema.platform.tree.view.container;
 
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.platform.tree.display.NodeProperties;
+import net.sf.anathema.platform.tree.display.draw.ShapeWithPosition;
 import net.sf.anathema.platform.tree.view.PolygonPanel;
-import net.sf.anathema.platform.tree.view.interaction.ShapeWithPosition;
 
 public interface Cascade {
   void colorNode(String nodeId, RGBColor fillColor);

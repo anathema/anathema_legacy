@@ -1,6 +1,7 @@
-package net.sf.anathema.platform.tree.view.draw;
+package net.sf.anathema.platform.tree.swing;
 
 import com.google.common.collect.Lists;
+import net.sf.anathema.framework.ui.Area;
 import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.framework.ui.FontStyle;
 import net.sf.anathema.framework.ui.RGBColor;
@@ -8,6 +9,7 @@ import net.sf.anathema.framework.ui.Width;
 import net.sf.anathema.lib.gui.SwingFontStyleMapping;
 import net.sf.anathema.platform.tree.display.shape.AgnosticShape;
 import net.sf.anathema.platform.tree.display.shape.TransformedShape;
+import net.sf.anathema.platform.tree.view.draw.Canvas;
 import net.sf.anathema.platform.tree.view.transform.SwingTransformer;
 import org.apache.commons.lang3.ArrayUtils;
 
@@ -61,8 +63,9 @@ public class SwingGraphicsCanvas implements Canvas {
   }
 
   @Override
-  public FontMetrics getFontMetrics() {
-    return graphics.getFontMetrics(graphics.getFont());
+  public Area measureText(String text) {
+    FontMetrics metrics = graphics.getFontMetrics();
+    return new Area(metrics.getHeight(), metrics.stringWidth(text));
   }
 
   @Override

@@ -1,11 +1,11 @@
 package net.sf.anathema.platform.tree.view;
 
+import net.sf.anathema.platform.tree.swing.SwingGraphicsCanvas;
 import net.sf.anathema.platform.tree.view.draw.Canvas;
 import net.sf.anathema.platform.tree.view.draw.FilledPolygon;
 import net.sf.anathema.platform.tree.view.draw.FlexibleArrow;
 import net.sf.anathema.platform.tree.view.draw.InteractiveGraphicsElement;
 import net.sf.anathema.platform.tree.view.draw.PolygonMother;
-import net.sf.anathema.platform.tree.view.draw.SwingGraphicsCanvas;
 import net.sf.anathema.platform.tree.view.interaction.Closure;
 import org.junit.Before;
 import org.junit.Test;

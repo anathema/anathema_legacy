@@ -1,11 +1,11 @@
 package net.sf.anathema.platform.tree.view.draw;
 
+import net.sf.anathema.framework.ui.Area;
 import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.framework.ui.FontStyle;
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.lib.lang.StringUtilities;
 
-import java.awt.FontMetrics;
 import java.awt.Rectangle;
 import java.awt.Shape;
 import java.util.ArrayList;
@@ -33,26 +33,27 @@ public class TextWriter {
   public void write(Canvas graphics) {
     graphics.setColor(textColor);
     graphics.setFontStyle(FontStyle.Plain, TEXT_SIZE);
-    FontMetrics textMetrics = graphics.getFontMetrics();
-    findBreaksIfNotAlreadyEstablished(textMetrics);
+    Area textSize = graphics.measureText(text);
+    findBreaksIfNotAlreadyEstablished(textSize);
     Rectangle bounds = shape.getBounds();
     for (int partIndex = 0; partIndex < parts.length; partIndex++) {
       String part = parts[partIndex];
-      int centeredX = (int) (bounds.x + bounds.getWidth() / 2) - (textMetrics.stringWidth(part) / 2);
-      int centeredY = (int) (bounds.y + bounds.getHeight() / 2) + (textMetrics.getHeight() / 2);
+      Area partSize = graphics.measureText(part);
+      int centeredX = (int) (bounds.x + bounds.getWidth() / 2) - (partSize.width / 2);
+      int centeredY = (int) (bounds.y + bounds.getHeight() / 2) + (partSize.height / 2);
       int actualY = centeredY + +yCorrection(partIndex, parts.length);
       graphics.drawString(part, new Coordinate(centeredX, actualY));
     }
   }
 
-  private void findBreaksIfNotAlreadyEstablished(FontMetrics textMetrics) {
+  private void findBreaksIfNotAlreadyEstablished(Area textSize) {
     if (parts == null) {
-      parts = breakText(textMetrics);
+      int lines = lineSuggestion.suggestNumberOfLines(textSize);
+      parts = breakText(lines);
     }
   }
 
-  private String[] breakText(FontMetrics textMetrics) {
-    int lines = lineSuggestion.suggestNumberOfLines(textMetrics, text);
+  private String[] breakText(int lines) {
     String[] textNodes = new String[lines];
     List<Integer> wrap = new ArrayList<>();
     wrap.add(0);
