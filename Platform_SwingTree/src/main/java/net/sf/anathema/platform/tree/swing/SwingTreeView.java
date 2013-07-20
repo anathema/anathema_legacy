@@ -22,7 +22,7 @@ import org.jmock.example.announcer.Announcer;
 
 import javax.swing.JComponent;
 
-public class SwingTreeView implements ITreeView<Cascade> {
+public class SwingTreeView implements ITreeView {
 
   private final SwingPolygonPanel polygonPanel;
   private final Announcer<CascadeLoadedListener> loadListeners = Announcer.to(CascadeLoadedListener.class);

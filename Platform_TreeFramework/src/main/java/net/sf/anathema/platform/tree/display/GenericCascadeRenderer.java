@@ -4,23 +4,24 @@ import net.sf.anathema.graph.nodes.IRegularNode;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.platform.tree.document.CascadeFactory;
 import net.sf.anathema.platform.tree.document.visualizer.TreePresentationProperties;
+import net.sf.anathema.platform.tree.view.container.Cascade;
 
-public class GenericCascadeRenderer<G> implements TreeRenderer {
-  public static <G> GenericCascadeRenderer<G> CreateFor(ITreeView<G> treeView, CascadeFactory<G> cascadeFactory) {
-    return new GenericCascadeRenderer<>(treeView, cascadeFactory);
+public class GenericCascadeRenderer implements TreeRenderer {
+  public static GenericCascadeRenderer CreateFor(ITreeView treeView, CascadeFactory cascadeFactory) {
+    return new GenericCascadeRenderer(treeView, cascadeFactory);
   }
 
-  private final CascadeFactory<G> provider;
-  private final ITreeView<G> treeView;
+  private final CascadeFactory provider;
+  private final ITreeView treeView;
 
-  private GenericCascadeRenderer(ITreeView<G> treeView, CascadeFactory<G> cascadeFactory) {
+  private GenericCascadeRenderer(ITreeView treeView, CascadeFactory cascadeFactory) {
     this.treeView = treeView;
     this.provider = cascadeFactory;
   }
 
   @Override
   public void renderTree(boolean resetView, TreePresentationProperties presentationProperties, IRegularNode[] nodes) {
-    G cascade = provider.createCascade(nodes, presentationProperties);
+    Cascade cascade = provider.createCascade(nodes, presentationProperties);
     loadCascade(cascade, resetView);
   }
 
@@ -29,7 +30,7 @@ public class GenericCascadeRenderer<G> implements TreeRenderer {
     treeView.clear();
   }
 
-  private void loadCascade(G cascade, boolean resetView) {
+  private void loadCascade(Cascade cascade, boolean resetView) {
     try {
       treeView.loadCascade(cascade, resetView);
     } catch (CascadeLoadException e) {

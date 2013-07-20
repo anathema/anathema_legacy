@@ -1,8 +1,9 @@
 package net.sf.anathema.platform.tree.display;
 
 import net.sf.anathema.framework.ui.RGBColor;
+import net.sf.anathema.platform.tree.view.container.Cascade;
 
-public interface ITreeView<G> {
+public interface ITreeView {
   void addNodeInteractionListener(NodeInteractionListener listener);
 
   void setNodeBackgroundColor(String nodeId, RGBColor color);
@@ -13,7 +14,7 @@ public interface ITreeView<G> {
 
   void setCanvasBackground(RGBColor color);
 
-  void loadCascade(G cascade, boolean resetView) throws CascadeLoadException;
+  void loadCascade(Cascade cascade, boolean resetView) throws CascadeLoadException;
 
   void addSpecialControl(String nodeId, SpecialControl control);
 
