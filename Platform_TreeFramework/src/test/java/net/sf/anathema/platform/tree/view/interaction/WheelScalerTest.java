@@ -4,8 +4,8 @@ import net.sf.anathema.framework.ui.Coordinate;
 import org.junit.Test;
 import org.mockito.InOrder;
 
+import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyDouble;
-import static org.mockito.Matchers.anyInt;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.mock;
@@ -19,7 +19,7 @@ public class WheelScalerTest {
   public void triggersScaleOnPanelCenteredOnEvent() throws Exception {
     new WheelScaler(panel).mouseWheelMoved(5, new Coordinate(100, 120));
     InOrder inOrder = inOrder(panel);
-    inOrder.verify(panel).scaleToPoint(anyDouble(), new Coordinate(100, 120));
+    inOrder.verify(panel).scaleToPoint(anyDouble(), eq(new Coordinate(100, 120)));
   }
 
   @Test
@@ -44,11 +44,11 @@ public class WheelScalerTest {
   public void repaintsAfterTranslation() throws Exception {
     new WheelScaler(panel).mouseWheelMoved(5, new Coordinate(100, 120));
     InOrder inOrder = inOrder(panel);
-    inOrder.verify(panel).scaleToPoint(anyDouble(), new Coordinate(anyInt(), anyInt()));
+    inOrder.verify(panel).scaleToPoint(anyDouble(), any(Coordinate.class));
     inOrder.verify(panel).refresh();
   }
 
   private void scalesToAnyPoint(double scale) {
-    verify(panel).scaleToPoint(eq(scale), eq(new Coordinate(anyInt(), anyInt())));
+    verify(panel).scaleToPoint(eq(scale), any(Coordinate.class));
   }
 }
