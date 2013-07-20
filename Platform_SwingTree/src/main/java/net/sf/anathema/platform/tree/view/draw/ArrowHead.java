@@ -1,6 +1,7 @@
 package net.sf.anathema.platform.tree.view.draw;
 
-import java.awt.Point;
+import net.sf.anathema.framework.ui.Coordinate;
+
 import java.awt.Polygon;
 import java.awt.Shape;
 import java.awt.geom.AffineTransform;
@@ -20,10 +21,10 @@ public class ArrowHead {
     return arrowHead;
   }
 
-  private final Point penultimatePoint;
-  private final Point ultimatePoint;
+  private final Coordinate penultimatePoint;
+  private final Coordinate ultimatePoint;
 
-  public ArrowHead(Point penultimatePoint, Point ultimatePoint) {
+  public ArrowHead(Coordinate penultimatePoint, Coordinate ultimatePoint) {
     this.penultimatePoint = penultimatePoint;
     this.ultimatePoint = ultimatePoint;
   }

@@ -7,14 +7,13 @@ import net.sf.anathema.framework.ui.Width;
 
 import java.awt.FontMetrics;
 import java.awt.Shape;
-import java.util.List;
 
 public interface Canvas {
   void setStrokeWidth(Width width);
 
   void setColor(RGBColor color);
 
-  void drawPolyline(List<Coordinate> coordinates);
+  void drawPolyline(Iterable<Coordinate> coordinates);
 
   void fill(Shape shape);
 

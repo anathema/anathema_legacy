@@ -36,7 +36,7 @@ public class SwingGraphicsCanvas implements Canvas {
   }
 
   @Override
-  public void drawPolyline(List<Coordinate> coordinates) {
+  public void drawPolyline(Iterable<Coordinate> coordinates) {
     int[] xCoordinates = collectXCoordinates(coordinates);
     int[] yCoordinates = collectYCoordinates(coordinates);
     graphics.drawPolyline(xCoordinates, yCoordinates, xCoordinates.length);
@@ -59,7 +59,7 @@ public class SwingGraphicsCanvas implements Canvas {
 
   @Override
   public void drawString(String text, Coordinate coordinate) {
-    graphics.drawString(text, (int) coordinate.x, (int) coordinate.y);
+    graphics.drawString(text, coordinate.x, coordinate.y);
   }
 
   @SuppressWarnings("MagicConstant")
@@ -71,18 +71,18 @@ public class SwingGraphicsCanvas implements Canvas {
   }
 
 
-  private int[] collectXCoordinates(List<Coordinate> coordinates) {
+  private int[] collectXCoordinates(Iterable<Coordinate> coordinates) {
     List<Integer> xCoordinates = Lists.newArrayList();
-    for (Coordinate point : coordinates) {
-      xCoordinates.add((int) point.x);
+    for (Coordinate coordinate : coordinates) {
+      xCoordinates.add(coordinate.x);
     }
     return ArrayUtils.toPrimitive(xCoordinates.toArray(new Integer[xCoordinates.size()]));
   }
 
-  private int[] collectYCoordinates(List<Coordinate> coordinates) {
+  private int[] collectYCoordinates(Iterable<Coordinate> coordinates) {
     List<Integer> yCoordinates = Lists.newArrayList();
-    for (Coordinate point : coordinates) {
-      yCoordinates.add((int) point.y);
+    for (Coordinate coordinate : coordinates) {
+      yCoordinates.add(coordinate.y);
     }
     return ArrayUtils.toPrimitive(yCoordinates.toArray(new Integer[yCoordinates.size()]));
   }
