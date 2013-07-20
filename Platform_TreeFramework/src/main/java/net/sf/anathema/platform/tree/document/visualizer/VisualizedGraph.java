@@ -1,8 +1,9 @@
 package net.sf.anathema.platform.tree.document.visualizer;
 
 import net.sf.anathema.framework.ui.Area;
+import net.sf.anathema.platform.tree.view.AgnosticCascadeBuilder;
 
-public interface IVisualizedGraph<G> {
+public interface VisualizedGraph {
 
   Area getDimension();
 
@@ -10,5 +11,5 @@ public interface IVisualizedGraph<G> {
 
   void translateBy(double x, double y);
 
-  void addTo(G cascade);
+  void addTo(AgnosticCascadeBuilder cascade);
 }

@@ -12,38 +12,38 @@ import static org.mockito.Matchers.isA;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-public class SwingGraphTest {
+public class AgnosticVisualizedGraphTest {
 
   private final Area dimension = new Area();
   private final DefaultContainerCascade nodeContainer = mock(DefaultContainerCascade.class);
-  private final SwingGraph swingGraph = new SwingGraph(nodeContainer, dimension, false);
+  private final AgnosticVisualizedGraph agnosticVisualizedGraph = new AgnosticVisualizedGraph(nodeContainer, dimension, false);
 
   @Test
   public void isNoSingleNode() throws Exception {
-    assertThat(swingGraph.isSingleNode(), is(false));
+    assertThat(agnosticVisualizedGraph.isSingleNode(), is(false));
   }
 
   @Test
   public void isSingleNodeIfSoConstructed() throws Exception {
-    SwingGraph swingGraph = new SwingGraph(nodeContainer, dimension, true);
-    assertThat(swingGraph.isSingleNode(), is(true));
+    AgnosticVisualizedGraph agnosticVisualizedGraph = new AgnosticVisualizedGraph(nodeContainer, dimension, true);
+    assertThat(agnosticVisualizedGraph.isSingleNode(), is(true));
   }
 
   @Test
   public void translatesContainer() throws Exception {
-    swingGraph.translateBy(5, 7);
+    agnosticVisualizedGraph.translateBy(5, 7);
     verify(nodeContainer).moveBy(5, 7);
   }
 
   @Test
   public void hasGivenDimension() throws Exception {
-    assertThat(swingGraph.getDimension(), is(dimension));
+    assertThat(agnosticVisualizedGraph.getDimension(), is(dimension));
   }
 
   @Test
   public void addsSelfToCascade() throws Exception {
     AgnosticCascadeBuilder cascade = mock(AgnosticCascadeBuilder.class);
-    swingGraph.addTo(cascade);
+    agnosticVisualizedGraph.addTo(cascade);
     verify(cascade).add(isA(ContainerCascade.class));
   }
 }

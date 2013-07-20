@@ -2,9 +2,9 @@ package net.sf.anathema.platform.tree.view.visualizer;
 
 import net.sf.anathema.framework.ui.Area;
 import net.sf.anathema.platform.tree.document.components.ILayer;
-import net.sf.anathema.platform.tree.document.visualizer.IVisualizedGraph;
 import net.sf.anathema.platform.tree.document.visualizer.TreeDimensionCalculator;
 import net.sf.anathema.platform.tree.document.visualizer.TreePresentationProperties;
+import net.sf.anathema.platform.tree.document.visualizer.VisualizedGraph;
 import net.sf.anathema.platform.tree.document.visualizer.VisualizedGraphFactory;
 import net.sf.anathema.platform.tree.view.container.DefaultContainerCascade;
 
@@ -18,9 +18,9 @@ public class SwingGraphFactory implements VisualizedGraphFactory {
   }
 
   @Override
-  public IVisualizedGraph create(ILayer... layers) {
+  public VisualizedGraph create(ILayer... layers) {
     boolean singleNode = layers.length == 1 && layers[0].getNodes().length == 1;
-    return new SwingGraph(createCascade(layers), calculateSize(layers), singleNode);
+    return new AgnosticVisualizedGraph(createCascade(layers), calculateSize(layers), singleNode);
   }
 
   private Area calculateSize(ILayer... layers) {

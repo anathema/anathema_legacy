@@ -1,16 +1,16 @@
 package net.sf.anathema.platform.tree.view.visualizer;
 
 import net.sf.anathema.framework.ui.Area;
-import net.sf.anathema.platform.tree.document.visualizer.IVisualizedGraph;
+import net.sf.anathema.platform.tree.document.visualizer.VisualizedGraph;
 import net.sf.anathema.platform.tree.view.AgnosticCascadeBuilder;
 import net.sf.anathema.platform.tree.view.container.DefaultContainerCascade;
 
-public class SwingGraph implements IVisualizedGraph<AgnosticCascadeBuilder> {
+public class AgnosticVisualizedGraph implements VisualizedGraph {
   private final DefaultContainerCascade container;
   private final Area dimension;
   private final boolean containsSingleNode;
 
-  public SwingGraph(DefaultContainerCascade container, Area dimension, boolean containsSingleNode) {
+  public AgnosticVisualizedGraph(DefaultContainerCascade container, Area dimension, boolean containsSingleNode) {
     this.container = container;
     this.dimension = dimension;
     this.containsSingleNode = containsSingleNode;

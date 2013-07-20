@@ -4,7 +4,7 @@ import net.sf.anathema.graph.graph.IGraphTypeVisitor;
 import net.sf.anathema.graph.graph.IProperHierarchicalGraph;
 import net.sf.anathema.platform.tree.document.components.ILayer;
 import net.sf.anathema.platform.tree.document.visualizer.ICascadeVisualizer;
-import net.sf.anathema.platform.tree.document.visualizer.IVisualizedGraph;
+import net.sf.anathema.platform.tree.document.visualizer.VisualizedGraph;
 import net.sf.anathema.platform.tree.document.visualizer.VisualizedGraphFactory;
 
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.List;
 import static com.google.common.collect.Lists.newArrayList;
 
 public class HierarchicalGraphVisualizer {
-  private final List<IVisualizedGraph> visualizedGraphs = newArrayList();
+  private final List<VisualizedGraph> visualizedGraphs = newArrayList();
   private final PositionerFactory positionerFactory;
   private final VisualizedGraphFactory factoryForVisualizedGraphs;
 
@@ -22,7 +22,7 @@ public class HierarchicalGraphVisualizer {
     this.factoryForVisualizedGraphs = factoryForVisualizedGraphs;
   }
 
-  public List<IVisualizedGraph> visualizeGraphs(IProperHierarchicalGraph[] graphs) {
+  public List<VisualizedGraph> visualizeGraphs(IProperHierarchicalGraph[] graphs) {
     for (final IProperHierarchicalGraph graph : graphs) {
       graph.getType().accept(new IGraphTypeVisitor() {
         @Override
@@ -51,7 +51,7 @@ public class HierarchicalGraphVisualizer {
 
   private void add(ICascadeVisualizer visualizer) {
     ILayer[] layers = visualizer.buildTree();
-    IVisualizedGraph graph = factoryForVisualizedGraphs.create(layers);
+    VisualizedGraph graph = factoryForVisualizedGraphs.create(layers);
     visualizedGraphs.add(graph);
   }
 }
