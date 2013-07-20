@@ -18,6 +18,7 @@ public class FilledPolygon_GraphicsTest {
 
   FilledPolygon filledPolygon = new FilledPolygon();
   Graphics2D graphics = GraphicsMother.createForAnyFont();
+  private Canvas canvas = new SwingGraphicsCanvas(graphics);
 
   @Before
   public void createSquare() throws Exception {
@@ -30,7 +31,7 @@ public class FilledPolygon_GraphicsTest {
   @Test
   public void fillsWithSetColor() throws Exception {
     filledPolygon.fill(RGBColor.Pink);
-    filledPolygon.paint(graphics);
+    filledPolygon.paint(canvas);
     verify(graphics).setColor(Color.PINK);
   }
 
@@ -38,14 +39,14 @@ public class FilledPolygon_GraphicsTest {
   public void changesAlphaOfFill() throws Exception {
     filledPolygon.fill(RGBColor.Pink);
     filledPolygon.setAlpha(100);
-    filledPolygon.paint(graphics);
+    filledPolygon.paint(canvas);
     verify(graphics).setColor(ColorUtilities.getTransparentColor(Color.PINK, 100));
   }
 
   @Test
   public void changesAlphaOfStroke() throws Exception {
     filledPolygon.setAlpha(17);
-    filledPolygon.paint(graphics);
+    filledPolygon.paint(canvas);
     verify(graphics, atLeastOnce()).setColor(ColorUtilities.getTransparentColor(Color.BLACK, 17));
   }
 
@@ -53,7 +54,7 @@ public class FilledPolygon_GraphicsTest {
   public void writesSetTextAndSetsColor() throws Exception {
     filledPolygon.setAlpha(17);
     filledPolygon.setText("A");
-    filledPolygon.paint(graphics);
+    filledPolygon.paint(canvas);
     verify(graphics, atLeast(2)).setColor(ColorUtilities.getTransparentColor(Color.BLACK, 17));
     verify(graphics, atLeastOnce()).drawString(eq("A"), anyInt(), anyInt());
   }

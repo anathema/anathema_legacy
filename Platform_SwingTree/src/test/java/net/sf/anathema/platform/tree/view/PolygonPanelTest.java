@@ -1,9 +1,11 @@
 package net.sf.anathema.platform.tree.view;
 
+import net.sf.anathema.platform.tree.view.draw.Canvas;
 import net.sf.anathema.platform.tree.view.draw.FilledPolygon;
 import net.sf.anathema.platform.tree.view.draw.FlexibleArrow;
 import net.sf.anathema.platform.tree.view.draw.InteractiveGraphicsElement;
 import net.sf.anathema.platform.tree.view.draw.PolygonMother;
+import net.sf.anathema.platform.tree.view.draw.SwingGraphicsCanvas;
 import net.sf.anathema.platform.tree.view.interaction.Closure;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,6 +26,7 @@ public class PolygonPanelTest {
 
   private SwingPolygonPanel polygonPanel = new SwingPolygonPanel();
   private Graphics2D graphics = mock(Graphics2D.class);
+  private Canvas canvas = new SwingGraphicsCanvas(graphics);
 
   @Before
   public void setUp() throws Exception {
@@ -114,7 +117,7 @@ public class PolygonPanelTest {
     InteractiveGraphicsElement polygon = mock(FilledPolygon.class);
     polygonPanel.add(polygon);
     polygonPanel.paintComponent(graphics);
-    verify(polygon).paint(graphics);
+    verify(polygon).paint(canvas);
   }
 
   @Test
@@ -122,7 +125,7 @@ public class PolygonPanelTest {
     FlexibleArrow arrow = mock(FlexibleArrow.class);
     polygonPanel.add(arrow);
     polygonPanel.paintComponent(graphics);
-    verify(arrow).paint(graphics);
+    verify(arrow).paint(canvas);
   }
 
   @Test
@@ -132,8 +135,8 @@ public class PolygonPanelTest {
     polygonPanel.add(firstPolygon);
     polygonPanel.add(secondPolygon);
     polygonPanel.paintComponent(graphics);
-    verify(firstPolygon).paint(graphics);
-    verify(secondPolygon).paint(graphics);
+    verify(firstPolygon).paint(canvas);
+    verify(secondPolygon).paint(canvas);
   }
 
   @Test

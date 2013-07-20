@@ -1,16 +1,17 @@
 package net.sf.anathema.platform.tree.view.draw;
 
+import com.google.common.collect.ImmutableList;
+import net.sf.anathema.framework.ui.Coordinate;
+import net.sf.anathema.framework.ui.RGBColor;
+import net.sf.anathema.framework.ui.Width;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InOrder;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
+import java.util.List;
 
 import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyInt;
 import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -18,7 +19,7 @@ import static org.mockito.Mockito.verify;
 public class FlexibleArrowTest {
 
   FlexibleArrow arrow = new FlexibleArrow();
-  Graphics2D graphics = mock(Graphics2D.class);
+  Canvas graphics = mock(Canvas.class);
 
   @Before
   public void setUp() throws Exception {
@@ -29,23 +30,23 @@ public class FlexibleArrowTest {
   @Test
   public void connectsDots() throws Exception {
     arrow.paint(graphics);
-    verify(graphics).drawPolyline(new int[]{17, 6}, new int[]{6, 10}, 2);
+    verify(graphics).drawPolyline(ImmutableList.of(new Coordinate(17, 6), new Coordinate(6, 10)));
   }
 
   @Test
   public void drawsWide() throws Exception {
     arrow.paint(graphics);
     InOrder inOrder = inOrder(graphics);
-    inOrder.verify(graphics).setStroke(new BasicStroke(6));
-    inOrder.verify(graphics).drawPolyline(any(int[].class), any(int[].class), anyInt());
+    inOrder.verify(graphics).setStrokeWidth(new Width(6));
+    inOrder.verify(graphics).drawPolyline(any(List.class));
   }
 
   @Test
   public void drawsBlack() throws Exception {
     arrow.paint(graphics);
     InOrder inOrder = inOrder(graphics);
-    inOrder.verify(graphics).setColor(Color.BLACK);
-    inOrder.verify(graphics).drawPolyline(any(int[].class), any(int[].class), anyInt());
+    inOrder.verify(graphics).setColor(RGBColor.Black);
+    inOrder.verify(graphics).drawPolyline(any(List.class));
   }
 
   @Test
@@ -59,6 +60,6 @@ public class FlexibleArrowTest {
   public void movesPoints() throws Exception {
     arrow.moveBy(1, 2);
     arrow.paint(graphics);
-    verify(graphics).drawPolyline(new int[]{18, 7}, new int[]{8, 12}, 2);
+    verify(graphics).drawPolyline(ImmutableList.of(new Coordinate(17, 6), new Coordinate(6, 10)));
   }
 }

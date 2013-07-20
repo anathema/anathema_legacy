@@ -20,6 +20,7 @@ public class TextWriter_TextBreakTest {
   private TextWriter writer = new TextWriter(new Polygon(new int[]{0, 100}, new int[]{0, 100}, 2), lineSuggestion);
   private Font font = new Font("SansSerif", Font.PLAIN, 15);
   private Graphics2D graphics = GraphicsMother.createForFont(font);
+  private Canvas canvas = new SwingGraphicsCanvas(graphics);
 
   @Before
   public void setUp() throws Exception {
@@ -29,15 +30,15 @@ public class TextWriter_TextBreakTest {
   @Test
   public void breaksText() throws Exception {
     when(lineSuggestion.suggestNumberOfLines(isA(FontMetrics.class), isA(String.class))).thenReturn(2);
-    writer.write(graphics);
+    writer.write(canvas);
     verify(graphics).drawString("Forceful", 50, 38);
   }
 
   @Test
   public void keepsBreaksOnceEstablished() throws Exception {
     when(lineSuggestion.suggestNumberOfLines(isA(FontMetrics.class), isA(String.class))).thenReturn(2, 1);
-    writer.write(graphics);
-    writer.write(graphics);
+    writer.write(canvas);
+    writer.write(canvas);
     verify(graphics, times(2)).drawString("Forceful", 50, 38);
   }
 }
