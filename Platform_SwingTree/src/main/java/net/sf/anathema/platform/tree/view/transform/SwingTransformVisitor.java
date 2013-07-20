@@ -9,10 +9,10 @@ import net.sf.anathema.platform.tree.display.transform.Translation;
 
 import java.awt.geom.AffineTransform;
 
-public class SwingVisitor implements TransformOperationVisitor {
+public class SwingTransformVisitor implements TransformOperationVisitor {
   private AffineTransform affineTransform;
 
-  public SwingVisitor(AffineTransform affineTransform) {
+  public SwingTransformVisitor(AffineTransform affineTransform) {
     this.affineTransform = affineTransform;
   }
 

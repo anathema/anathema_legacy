@@ -2,10 +2,11 @@ package net.sf.anathema.platform.tree.view.draw;
 
 import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.framework.ui.RGBColor;
+import net.sf.anathema.platform.tree.display.shape.Polygon;
 import net.sf.anathema.platform.tree.view.interaction.ShapeWithPosition;
+import net.sf.anathema.platform.tree.view.transform.SwingTransformer;
 import org.jmock.example.announcer.Announcer;
 
-import java.awt.Polygon;
 import java.awt.Rectangle;
 
 public class FilledPolygon implements InteractiveGraphicsElement, AgnosticPolygon {
@@ -13,7 +14,7 @@ public class FilledPolygon implements InteractiveGraphicsElement, AgnosticPolygo
   private final Polygon polygon = new Polygon();
   private RGBColor fill = RGBColor.Transparent;
   private RGBColor stroke = RGBColor.Black;
-  private final TextWriter textWriter = new TextWriter(polygon);
+  private final TextWriter textWriter = new TextWriter(SwingTransformer.convert(polygon));
 
   @Override
   public void paint(Canvas graphics) {
@@ -24,7 +25,7 @@ public class FilledPolygon implements InteractiveGraphicsElement, AgnosticPolygo
 
   @Override
   public boolean contains(Coordinate point) {
-    return polygon.contains(point.x, point.y);
+    return SwingTransformer.convert(polygon).contains(point.x, point.y);
   }
 
   @Override
@@ -36,8 +37,8 @@ public class FilledPolygon implements InteractiveGraphicsElement, AgnosticPolygo
     polygon.addPoint(x, y);
   }
 
-  public void moveBy(int x, int y) {
-    polygon.translate(x, y);
+  public void moveBy(int dx, int dy) {
+    polygon.translate(dx, dy);
   }
 
   public void fill(RGBColor fill) {
@@ -60,7 +61,7 @@ public class FilledPolygon implements InteractiveGraphicsElement, AgnosticPolygo
   }
 
   public void position(ShapeWithPosition control) {
-    Rectangle bounds = polygon.getBounds();
+    Rectangle bounds = SwingTransformer.convert(polygon).getBounds();
     control.setPosition((int) bounds.getMinX(), (int) bounds.getMaxY() + 10);
     control.setWidth((int) bounds.getWidth());
   }

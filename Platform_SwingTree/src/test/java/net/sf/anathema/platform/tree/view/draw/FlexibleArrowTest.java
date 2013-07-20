@@ -4,11 +4,12 @@ import com.google.common.collect.ImmutableList;
 import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.framework.ui.Width;
+import net.sf.anathema.platform.tree.display.shape.Circle;
+import net.sf.anathema.platform.tree.display.shape.TransformedShape;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InOrder;
 
-import java.awt.geom.Ellipse2D;
 import java.util.List;
 
 import static org.mockito.Matchers.any;
@@ -33,6 +34,7 @@ public class FlexibleArrowTest {
     verify(graphics).drawPolyline(ImmutableList.of(new Coordinate(17, 6), new Coordinate(6, 10)));
   }
 
+  @SuppressWarnings("unchecked")
   @Test
   public void drawsWide() throws Exception {
     arrow.paint(graphics);
@@ -41,6 +43,7 @@ public class FlexibleArrowTest {
     inOrder.verify(graphics).drawPolyline(any(List.class));
   }
 
+  @SuppressWarnings("unchecked")
   @Test
   public void drawsBlack() throws Exception {
     arrow.paint(graphics);
@@ -52,8 +55,7 @@ public class FlexibleArrowTest {
   @Test
   public void hasDotAtBottom() throws Exception {
     arrow.paint(graphics);
-    Ellipse2D.Float circle = new Ellipse2D.Float(11, 0, 12, 12);
-    verify(graphics).fill(circle);
+    verify(graphics).fill(new TransformedShape(new Circle(11, 0, 12)));
   }
 
   @Test

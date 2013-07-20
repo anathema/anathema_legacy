@@ -4,9 +4,10 @@ import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.framework.ui.Coordinates;
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.framework.ui.Width;
+import net.sf.anathema.platform.tree.display.shape.AgnosticShape;
+import net.sf.anathema.platform.tree.display.shape.Circle;
+import net.sf.anathema.platform.tree.display.shape.TransformedShape;
 import net.sf.anathema.platform.tree.document.components.ExtensibleArrow;
-
-import java.awt.geom.Ellipse2D;
 
 public class FlexibleArrow implements GraphicsElement, ExtensibleArrow {
   private static final int RADIUS = 6;
@@ -23,14 +24,14 @@ public class FlexibleArrow implements GraphicsElement, ExtensibleArrow {
     canvas.setStrokeWidth(new Width(6));
     canvas.setColor(RGBColor.Black);
     canvas.drawPolyline(coordinates);
-    Ellipse2D bottom = createCircleAtBottom();
-    canvas.fill(bottom);
+    AgnosticShape bottom = createCircleAtBottom();
+    canvas.fill(new TransformedShape(bottom));
     new ArrowHead(coordinates.getPenultimatePoint(), coordinates.getUltimatePoint()).paint(canvas);
   }
 
-  private Ellipse2D createCircleAtBottom() {
+  private AgnosticShape createCircleAtBottom() {
     Coordinate origin = coordinates.getPointOfOrigin();
-    return new Ellipse2D.Float(origin.x - RADIUS, origin.y - RADIUS, DIAMETER, DIAMETER);
+    return new Circle(origin.x - RADIUS, origin.y - RADIUS, DIAMETER);
   }
 
   public void moveBy(int x, int y) {

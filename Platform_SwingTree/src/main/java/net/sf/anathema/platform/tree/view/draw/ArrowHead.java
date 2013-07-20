@@ -1,21 +1,20 @@
 package net.sf.anathema.platform.tree.view.draw;
 
 import net.sf.anathema.framework.ui.Coordinate;
+import net.sf.anathema.platform.tree.display.shape.AgnosticShape;
+import net.sf.anathema.platform.tree.display.shape.Polygon;
+import net.sf.anathema.platform.tree.display.shape.TransformedShape;
 import net.sf.anathema.platform.tree.display.transform.AgnosticTransform;
 import net.sf.anathema.platform.tree.display.transform.Rotation;
 import net.sf.anathema.platform.tree.display.transform.Translation;
-import net.sf.anathema.platform.tree.view.transform.SwingTransformer;
-
-import java.awt.Polygon;
-import java.awt.Shape;
 
 import static java.lang.Math.atan2;
 
 public class ArrowHead {
 
-  public static final Shape ArrowShape = createShape();
+  public static final AgnosticShape ArrowShape = createShape();
 
-  private static Shape createShape() {
+  private static AgnosticShape createShape() {
     Polygon arrowHead = new Polygon();
     arrowHead.addPoint(0, 7);
     arrowHead.addPoint(-14, -7);
@@ -34,7 +33,7 @@ public class ArrowHead {
 
   public void paint(Canvas graphics) {
     AgnosticTransform transform = createTransformation();
-    Shape transformedShape = SwingTransformer.convert(transform).createTransformedShape(ArrowShape);
+    TransformedShape transformedShape = new TransformedShape(ArrowShape, transform);
     graphics.fill(transformedShape);
   }
 
@@ -45,5 +44,4 @@ public class ArrowHead {
     transform.add(new Rotation(angle - Math.PI / 2d));
     return transform;
   }
-
 }

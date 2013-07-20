@@ -6,8 +6,8 @@ import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.lib.lang.StringUtilities;
 
 import java.awt.FontMetrics;
-import java.awt.Polygon;
 import java.awt.Rectangle;
+import java.awt.Shape;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,17 +17,17 @@ public class TextWriter {
   private static final int LINE_HEIGHT = TEXT_SIZE + 1;
   private String text = "";
   private RGBColor textColor = RGBColor.Black;
-  private final Polygon polygon;
+  private final Shape shape;
   private String[] parts;
   private LineSuggestion lineSuggestion = new LineSuggestion();
 
-  public TextWriter(Polygon polygon, LineSuggestion lineSuggestion) {
-    this(polygon);
+  public TextWriter(Shape shape, LineSuggestion lineSuggestion) {
+    this(shape);
     this.lineSuggestion = lineSuggestion;
   }
 
-  public TextWriter(Polygon polygon) {
-    this.polygon = polygon;
+  public TextWriter(Shape shape) {
+    this.shape = shape;
   }
 
   public void write(Canvas graphics) {
@@ -35,7 +35,7 @@ public class TextWriter {
     graphics.setFontStyle(FontStyle.Plain, TEXT_SIZE);
     FontMetrics textMetrics = graphics.getFontMetrics();
     findBreaksIfNotAlreadyEstablished(textMetrics);
-    Rectangle bounds = polygon.getBounds();
+    Rectangle bounds = shape.getBounds();
     for (int partIndex = 0; partIndex < parts.length; partIndex++) {
       String part = parts[partIndex];
       int centeredX = (int) (bounds.x + bounds.getWidth() / 2) - (textMetrics.stringWidth(part) / 2);

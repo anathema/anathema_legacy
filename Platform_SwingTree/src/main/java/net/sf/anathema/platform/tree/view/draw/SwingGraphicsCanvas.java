@@ -6,6 +6,9 @@ import net.sf.anathema.framework.ui.FontStyle;
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.framework.ui.Width;
 import net.sf.anathema.lib.gui.SwingFontStyleMapping;
+import net.sf.anathema.platform.tree.display.shape.AgnosticShape;
+import net.sf.anathema.platform.tree.display.shape.TransformedShape;
+import net.sf.anathema.platform.tree.view.transform.SwingTransformer;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.awt.BasicStroke;
@@ -13,6 +16,7 @@ import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.Shape;
+import java.awt.geom.AffineTransform;
 import java.util.List;
 
 import static net.sf.anathema.lib.gui.swing.ColorUtilities.toAwtColor;
@@ -43,13 +47,17 @@ public class SwingGraphicsCanvas implements Canvas {
   }
 
   @Override
-  public void fill(Shape shape) {
-    graphics.fill(shape);
+  public void fill(TransformedShape shape) {
+    AffineTransform swingTransform = SwingTransformer.convert(shape.transform);
+    Shape swingShape = SwingTransformer.convert(shape.shape);
+    Shape transformedShape = swingTransform.createTransformedShape(swingShape);
+    graphics.fill(transformedShape);
   }
 
   @Override
-  public void draw(Shape shape) {
-    graphics.draw(shape);
+  public void draw(AgnosticShape shape) {
+    Shape swingShape = SwingTransformer.convert(shape);
+    graphics.draw(swingShape);
   }
 
   @Override
