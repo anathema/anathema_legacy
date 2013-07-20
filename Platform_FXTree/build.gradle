@@ -1,0 +1,5 @@
+dependencies {
+  compile project(':Platform_TreeFramework')
+  compile project(':Platform_FX')
+  testCompile testDependencies
+}
