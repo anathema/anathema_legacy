@@ -9,13 +9,13 @@ import java.util.List;
 
 import static com.google.common.collect.Lists.newArrayList;
 
-public class ElementContainer implements Iterable<GraphicsElement>{
+public class ElementContainer implements Iterable<GraphicsElement> {
   private List<GraphicsElement> elements = newArrayList();
   private List<InteractiveGraphicsElement> interactiveElements = newArrayList();
 
   public void add(InteractiveGraphicsElement element) {
     interactiveElements.add(element);
-    elements.add(element);
+    add((GraphicsElement) element);
   }
 
   public void add(GraphicsElement element) {

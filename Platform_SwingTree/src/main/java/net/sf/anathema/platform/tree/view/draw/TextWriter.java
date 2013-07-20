@@ -5,7 +5,6 @@ import net.sf.anathema.lib.lang.StringUtilities;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
-import java.awt.Graphics2D;
 import java.awt.Polygon;
 import java.awt.Rectangle;
 import java.util.ArrayList;
@@ -30,7 +29,7 @@ public class TextWriter {
     this.polygon = polygon;
   }
 
-  public void write(Graphics2D graphics) {
+  public void write(Canvas graphics) {
     graphics.setColor(textColor);
     Font textFont = new Font("SansSerif", Font.PLAIN, TEXT_SIZE);
     graphics.setFont(textFont);

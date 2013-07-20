@@ -1,7 +1,6 @@
 package net.sf.anathema.platform.tree.view.draw;
 
 import java.awt.Color;
-import java.awt.Graphics2D;
 import java.awt.Shape;
 
 public class ShapeFiller {
@@ -13,7 +12,7 @@ public class ShapeFiller {
     this.color = color;
   }
 
-  public void fill(Graphics2D graphics) {
+  public void fill(Canvas graphics) {
     graphics.setColor(color);
     graphics.fill(shape);
   }

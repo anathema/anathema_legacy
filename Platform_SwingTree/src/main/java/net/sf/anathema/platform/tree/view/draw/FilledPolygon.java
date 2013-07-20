@@ -7,7 +7,6 @@ import net.sf.anathema.platform.tree.view.interaction.ShapeWithPosition;
 import org.jmock.example.announcer.Announcer;
 
 import java.awt.Color;
-import java.awt.Graphics2D;
 import java.awt.Polygon;
 import java.awt.Rectangle;
 
@@ -21,7 +20,7 @@ public class FilledPolygon implements InteractiveGraphicsElement, AgnosticPolygo
   private final TextWriter textWriter = new TextWriter(polygon);
 
   @Override
-  public void paint(Graphics2D graphics) {
+  public void paint(Canvas graphics) {
     new ShapeFiller(polygon, fill).fill(graphics);
     new ShapeDrawer(polygon, stroke).draw(graphics);
     textWriter.write(graphics);

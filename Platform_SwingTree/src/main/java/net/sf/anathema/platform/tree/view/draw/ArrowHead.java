@@ -1,6 +1,5 @@
 package net.sf.anathema.platform.tree.view.draw;
 
-import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Polygon;
 import java.awt.Shape;
@@ -29,7 +28,7 @@ public class ArrowHead {
     this.ultimatePoint = ultimatePoint;
   }
 
-  public void paint(Graphics2D graphics) {
+  public void paint(Canvas graphics) {
     AffineTransform transform = calculateTransformation();
     Shape transformedShape = transform.createTransformedShape(ArrowShape);
     graphics.fill(transformedShape);

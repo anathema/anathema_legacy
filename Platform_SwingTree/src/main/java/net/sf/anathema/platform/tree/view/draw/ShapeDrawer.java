@@ -2,7 +2,6 @@ package net.sf.anathema.platform.tree.view.draw;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
-import java.awt.Graphics2D;
 import java.awt.Shape;
 
 public class ShapeDrawer {
@@ -14,7 +13,7 @@ public class ShapeDrawer {
     this.stroke = stroke;
   }
 
-  public void draw(Graphics2D graphics) {
+  public void draw(Canvas graphics) {
     graphics.setColor(stroke);
     graphics.setStroke(new BasicStroke(4));
     graphics.draw(shape);

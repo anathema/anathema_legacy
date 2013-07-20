@@ -2,8 +2,10 @@ package net.sf.anathema.platform.tree.view;
 
 import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.framework.ui.RGBColor;
+import net.sf.anathema.platform.tree.view.draw.Canvas;
 import net.sf.anathema.platform.tree.view.draw.GraphicsElement;
 import net.sf.anathema.platform.tree.view.draw.InteractiveGraphicsElement;
+import net.sf.anathema.platform.tree.view.draw.SwingGraphicsCanvas;
 import net.sf.anathema.platform.tree.view.interaction.Closure;
 import net.sf.anathema.platform.tree.view.interaction.ElementContainer;
 import net.sf.anathema.platform.tree.view.interaction.Executor;
@@ -49,8 +51,9 @@ public class SwingPolygonPanel extends JPanel implements PolygonPanel {
     graphics.transform(transform);
     graphics.setRenderingHint(KEY_RENDERING, VALUE_RENDER_QUALITY);
     graphics.setRenderingHint(KEY_ANTIALIASING, VALUE_ANTIALIAS_ON);
+    Canvas canvas = new SwingGraphicsCanvas(graphics);
     for (GraphicsElement element : container) {
-      element.paint(graphics);
+      element.paint(canvas);
     }
   }
 
