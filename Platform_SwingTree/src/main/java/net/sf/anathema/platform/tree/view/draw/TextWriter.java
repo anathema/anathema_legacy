@@ -1,8 +1,8 @@
 package net.sf.anathema.platform.tree.view.draw;
 
+import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.lib.lang.StringUtilities;
 
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Polygon;
@@ -15,7 +15,7 @@ public class TextWriter {
   private static final int TEXT_SIZE = 15;
   private static final int LINE_HEIGHT = TEXT_SIZE + 1;
   private String text = "";
-  private Color textColor = Color.BLACK;
+  private RGBColor textColor = RGBColor.Black;
   private final Polygon polygon;
   private String[] parts;
   private LineSuggestion lineSuggestion = new LineSuggestion();
@@ -82,7 +82,7 @@ public class TextWriter {
     this.text = text;
   }
 
-  public void setStroke(Color stroke) {
+  public void setStroke(RGBColor stroke) {
     this.textColor = stroke;
   }
 }

@@ -2,21 +2,17 @@ package net.sf.anathema.platform.tree.view.draw;
 
 import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.framework.ui.RGBColor;
-import net.sf.anathema.lib.gui.swing.ColorUtilities;
 import net.sf.anathema.platform.tree.view.interaction.ShapeWithPosition;
 import org.jmock.example.announcer.Announcer;
 
-import java.awt.Color;
 import java.awt.Polygon;
 import java.awt.Rectangle;
-
-import static net.sf.anathema.lib.gui.swing.ColorUtilities.toAwtColor;
 
 public class FilledPolygon implements InteractiveGraphicsElement, AgnosticPolygon {
   private final Announcer<Runnable> toggleListeners = Announcer.to(Runnable.class);
   private final Polygon polygon = new Polygon();
-  private Color fill = ColorUtilities.getTransparency();
-  private Color stroke = Color.BLACK;
+  private RGBColor fill = RGBColor.Transparent;
+  private RGBColor stroke = RGBColor.Black;
   private final TextWriter textWriter = new TextWriter(polygon);
 
   @Override
@@ -45,13 +41,13 @@ public class FilledPolygon implements InteractiveGraphicsElement, AgnosticPolygo
   }
 
   public void fill(RGBColor fill) {
-    fillWithAwt(toAwtColor(fill));
+    this.fill = fill;
   }
 
   public void setAlpha(int alpha) {
-    Color original = fill;
-    fillWithAwt(ColorUtilities.getTransparentColor(original, alpha));
-    setStroke(ColorUtilities.getTransparentColor(stroke, alpha));
+    RGBColor original = fill;
+    this.fill = new RGBColor(original, alpha);
+    setStroke(new RGBColor(stroke, alpha));
   }
 
 
@@ -69,12 +65,8 @@ public class FilledPolygon implements InteractiveGraphicsElement, AgnosticPolygo
     control.setWidth((int) bounds.getWidth());
   }
 
-  public void setStroke(Color stroke) {
+  public void setStroke(RGBColor stroke) {
     this.stroke = stroke;
     textWriter.setStroke(stroke);
-  }
-
-  private void fillWithAwt(Color fill) {
-    this.fill = fill;
   }
 }

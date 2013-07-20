@@ -1,13 +1,14 @@
 package net.sf.anathema.platform.tree.view.draw;
 
-import java.awt.Color;
+import net.sf.anathema.framework.ui.RGBColor;
+
 import java.awt.Shape;
 
 public class ShapeFiller {
   private final Shape shape;
-  private final Color color;
+  private final RGBColor color;
 
-  public ShapeFiller(Shape shape, Color color) {
+  public ShapeFiller(Shape shape, RGBColor color) {
     this.shape = shape;
     this.color = color;
   }

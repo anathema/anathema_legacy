@@ -1,15 +1,16 @@
 package net.sf.anathema.platform.tree.view.draw;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
+import net.sf.anathema.framework.ui.RGBColor;
+import net.sf.anathema.framework.ui.Width;
+
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Shape;
 
 public interface Canvas {
-  void setStroke(BasicStroke basicStroke);
+  void setStrokeWidth(Width width);
 
-  void setColor(Color black);
+  void setColor(RGBColor color);
 
   void drawPolyline(int[] xCoordinates, int[] yCoordinates, int length);
 

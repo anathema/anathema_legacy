@@ -1,11 +1,15 @@
 package net.sf.anathema.platform.tree.view.draw;
 
+import net.sf.anathema.framework.ui.RGBColor;
+import net.sf.anathema.framework.ui.Width;
+
 import java.awt.BasicStroke;
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.Shape;
+
+import static net.sf.anathema.lib.gui.swing.ColorUtilities.toAwtColor;
 
 public class SwingGraphicsCanvas implements Canvas {
 
@@ -16,13 +20,13 @@ public class SwingGraphicsCanvas implements Canvas {
   }
 
   @Override
-  public void setStroke(BasicStroke basicStroke) {
-    graphics.setStroke(basicStroke);
+  public void setStrokeWidth(Width width) {
+    graphics.setStroke(new BasicStroke(width.width));
   }
 
   @Override
-  public void setColor(Color color) {
-    graphics.setColor(color);
+  public void setColor(RGBColor color) {
+    graphics.setColor(toAwtColor(color));
   }
 
   @Override
