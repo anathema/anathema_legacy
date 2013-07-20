@@ -8,8 +8,6 @@ import net.sf.anathema.platform.tree.display.shape.Polygon;
 import net.sf.anathema.platform.tree.swing.SwingTransformer;
 import org.jmock.example.announcer.Announcer;
 
-import java.awt.Rectangle;
-
 public class FilledPolygon implements InteractiveGraphicsElement, AgnosticPolygon {
   private final Announcer<Runnable> toggleListeners = Announcer.to(Runnable.class);
   private final Polygon polygon = new Polygon();
@@ -62,9 +60,7 @@ public class FilledPolygon implements InteractiveGraphicsElement, AgnosticPolygo
   }
 
   public void position(ShapeWithPosition control) {
-    Rectangle bounds = SwingTransformer.convert(polygon).getBounds();
-    control.setPosition((int) bounds.getMinX(), (int) bounds.getMaxY() + 10);
-    control.setWidth((int) bounds.getWidth());
+    control.placeBelow(polygon);
   }
 
   public void setStroke(RGBColor stroke) {

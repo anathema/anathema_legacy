@@ -1,5 +1,6 @@
 package net.sf.anathema.platform.tree.swing;
 
+import net.sf.anathema.platform.tree.display.shape.AgnosticShape;
 import net.sf.anathema.platform.tree.display.transform.AgnosticTransform;
 import net.sf.anathema.platform.tree.view.interaction.SpecialContentMap;
 import net.sf.anathema.platform.tree.view.interaction.SpecialControlTrigger;
@@ -38,16 +39,6 @@ public class ButtonSpecialControl implements SpecialControlTrigger {
     button.setBounds(originalBounds);
   }
 
-  @Override
-  public void setPosition(int x, int y) {
-    originalBounds.setLocation(x, y);
-  }
-
-  @Override
-  public void setWidth(int width) {
-    originalBounds.setSize(width, 15);
-  }
-
   public void addTo(JComponent parent) {
     parent.add(button);
     this.parent = parent;
@@ -70,5 +61,20 @@ public class ButtonSpecialControl implements SpecialControlTrigger {
         }
       }
     });
+  }
+
+  @Override
+  public void placeBelow(AgnosticShape shape) {
+    Rectangle bounds = SwingTransformer.convert(shape).getBounds();
+    setPosition((int) bounds.getMinX(), (int) bounds.getMaxY() + 10);
+    setWidth((int) bounds.getWidth());
+  }
+
+  public void setWidth(int width) {
+    originalBounds.setSize(width, 15);
+  }
+
+  public void setPosition(int x, int y) {
+    originalBounds.setLocation(x, y);
   }
 }
