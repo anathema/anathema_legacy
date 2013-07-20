@@ -10,7 +10,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.awt.Point;
-import java.awt.event.MouseEvent;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -24,37 +23,31 @@ public class LeftClickTogglerTest {
 
   private InteractiveGraphicsElement element = mock(InteractiveGraphicsElement.class);
   private SwingPolygonPanel panel = mock(SwingPolygonPanel.class);
-  private MouseEvent event = mock(MouseEvent.class);
   private NodeInteractionListener listener = mock(NodeInteractionListener.class);
   private Cascade cascade = new DefaultContainerCascade();
   private LeftClickSelector selector = new LeftClickSelector(cascade, panel, listener);
 
   @Before
   public void setUp() throws Exception {
-    when(event.getPoint()).thenReturn(AnyPoint);
     when(panel.onElementAtPoint(AnyCoordinate)).thenReturn(new ElementExecutor(element));
   }
 
   @Test
   public void informsListenerOfToggledElement() throws Exception {
-    when(event.getModifiers()).thenReturn(MouseEvent.BUTTON1_MASK);
-    selector.mouseClicked(event);
+    selector.mouseClicked(MouseButton.Left, MetaKey.NONE, AnyCoordinate, 1);
     verify(element).toggle();
     verify(panel).refresh();
   }
 
   @Test
   public void doesNothingOnRightClick() throws Exception {
-    when(event.getModifiers()).thenReturn(MouseEvent.BUTTON3_MASK);
-    selector.mouseClicked(event);
+    selector.mouseClicked(MouseButton.Right, MetaKey.NONE, AnyCoordinate, 1);
     verifyZeroInteractions(panel);
   }
 
   @Test
   public void doesNothingOnLeftClickWithControlPressed() throws Exception {
-    when(event.getModifiers()).thenReturn(MouseEvent.BUTTON1_MASK);
-    when(event.isControlDown()).thenReturn(true);
-    selector.mouseClicked(event);
+    selector.mouseClicked(MouseButton.Left, MetaKey.CTRL, AnyCoordinate, 1);
     verifyZeroInteractions(panel);
   }
 }

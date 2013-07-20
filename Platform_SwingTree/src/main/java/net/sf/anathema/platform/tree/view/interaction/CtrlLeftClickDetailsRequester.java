@@ -7,12 +7,7 @@ import net.sf.anathema.platform.tree.view.container.Cascade;
 import net.sf.anathema.platform.tree.view.container.NodeToggleListener;
 import net.sf.anathema.platform.tree.view.draw.InteractiveGraphicsElement;
 
-import javax.swing.SwingUtilities;
-import java.awt.Point;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
-public class CtrlLeftClickDetailsRequester extends MouseAdapter {
+public class CtrlLeftClickDetailsRequester implements MouseClickClosure {
   private final Cascade cascade;
   private final PolygonPanel polygonPanel;
   private final DetailsListener listener;
@@ -25,12 +20,11 @@ public class CtrlLeftClickDetailsRequester extends MouseAdapter {
   }
 
   @Override
-  public void mouseClicked(MouseEvent e) {
-    if (!SwingUtilities.isLeftMouseButton(e) || !e.isControlDown()) {
+  public void mouseClicked(MouseButton button, MetaKey key, Coordinate coordinate, int clickCount) {
+    if (button != MouseButton.Left || key != MetaKey.CTRL) {
       return;
     }
-    Point point = e.getPoint();
-    polygonPanel.onElementAtPoint(new Coordinate(point.x, point.y)).perform(new Closure() {
+    polygonPanel.onElementAtPoint(coordinate).perform(new Closure() {
       @Override
       public void execute(InteractiveGraphicsElement polygon) {
         cascade.addToggleListener(listener);

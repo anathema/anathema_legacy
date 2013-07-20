@@ -1,37 +1,36 @@
 package net.sf.anathema.platform.tree.view.interaction;
 
+import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.platform.tree.view.PolygonPanel;
 
-import javax.swing.SwingUtilities;
-import java.awt.Point;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
-public class LeftClickPanner extends MouseAdapter {
+public class LeftClickPanner implements MouseMotionClosure, MousePressClosure {
 
   private final PolygonPanel panel;
-  private Point start = new Point(0, 0);
+  private Coordinate start = new Coordinate(0, 0);
 
   public LeftClickPanner(PolygonPanel panel) {
     this.panel = panel;
   }
 
   @Override
-  public void mousePressed(MouseEvent e) {
-    this.start = e.getPoint();
+  public void mousePressed(Coordinate coordinate) {
+    this.start = coordinate;
   }
 
   @Override
-  public void mouseDragged(MouseEvent e) {
-    boolean leftMouseButton = SwingUtilities.isLeftMouseButton(e);
-    if (!leftMouseButton) {
+  public void mouseDragged(MouseButton button, Coordinate coordinate) {
+    if (button != MouseButton.Left) {
       return;
     }
-    Point dragPoint = e.getPoint();
-    int deltaX = dragPoint.x - this.start.x;
-    int deltaY = dragPoint.y - this.start.y;
+    int deltaX = coordinate.x - this.start.x;
+    int deltaY = coordinate.y - this.start.y;
     panel.translateRelativeToScale(deltaX, deltaY);
     panel.refresh();
-    this.start = dragPoint;
+    this.start = coordinate;
+  }
+
+  @Override
+  public void mouseMoved(Coordinate coordinate) {
+    //nothing to do
   }
 }

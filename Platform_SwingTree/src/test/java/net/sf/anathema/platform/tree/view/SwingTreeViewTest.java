@@ -142,6 +142,6 @@ public class SwingTreeViewTest {
 
   @Test
   public void registersListenersOnPanel() throws Exception {
-    verify(panel).addMouseListener(isA(LeftClickPanner.class));
+    verify(panel).addMousePressListener(isA(LeftClickPanner.class));
   }
 }

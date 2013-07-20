@@ -5,11 +5,11 @@ import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.platform.tree.view.draw.GraphicsElement;
 import net.sf.anathema.platform.tree.view.draw.InteractiveGraphicsElement;
 import net.sf.anathema.platform.tree.view.interaction.Executor;
+import net.sf.anathema.platform.tree.view.interaction.MouseClickClosure;
+import net.sf.anathema.platform.tree.view.interaction.MouseMotionClosure;
+import net.sf.anathema.platform.tree.view.interaction.MousePressClosure;
+import net.sf.anathema.platform.tree.view.interaction.MouseWheelClosure;
 import net.sf.anathema.platform.tree.view.interaction.SpecialControlTrigger;
-
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
-import java.awt.event.MouseWheelListener;
 
 public interface PolygonPanel {
   double RECOMMENDED_DEFAULT_SCALE = 0.75d;
@@ -24,7 +24,7 @@ public interface PolygonPanel {
 
   void scale(double scale);
 
-  void scaleToPoint(double scale, int x, int y);
+  void scaleToPoint(double scale, Coordinate coordinate);
 
   void translate(int x, int y);
 
@@ -38,13 +38,15 @@ public interface PolygonPanel {
 
   Executor onElementAtPoint(Coordinate screenCoordinates);
 
-  void centerOn(int x, int y);
+  void centerOn(Coordinate coordinate);
 
-  void addMouseListener(MouseListener listener);
+  void addMousePressListener(MousePressClosure listener);
 
-  void addMouseMotionListener(MouseMotionListener listener);
+  void addMouseClickListener(MouseClickClosure listener);
 
-  void addMouseWheelListener(MouseWheelListener listener);
+  void addMouseMotionListener(MouseMotionClosure listener);
+
+  void addMouseWheelListener(MouseWheelClosure listener);
 
   void setToolTipText(String toolTip);
 

@@ -76,7 +76,7 @@ public class PolygonPanelTest {
   @Test
   public void scalesToAGivenPoint() throws Exception {
     double factor = .50;
-    polygonPanel.scaleToPoint(factor, 100, 100);
+    polygonPanel.scaleToPoint(factor, new Coordinate(100, 100));
     polygonPanel.paintComponent(graphics);
     AffineTransform expected = new AffineTransform(0.5, 0, 0, 0.5, 50, 50);
     verify(graphics).transform(expected);
@@ -101,7 +101,7 @@ public class PolygonPanelTest {
 
   @Test
   public void centersOnPoint() throws Exception {
-    polygonPanel.centerOn(10, 10);
+    polygonPanel.centerOn(new Coordinate(10, 10));
     polygonPanel.paintComponent(graphics);
     verify(graphics).transform(AffineTransform.getTranslateInstance(40, 40));
   }

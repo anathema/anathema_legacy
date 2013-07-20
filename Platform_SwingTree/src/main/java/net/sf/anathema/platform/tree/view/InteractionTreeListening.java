@@ -23,12 +23,12 @@ public class InteractionTreeListening {
 
   public void initialize() {
     LeftClickPanner panner = new LeftClickPanner(polygonPanel);
-    polygonPanel.addMouseListener(panner);
+    polygonPanel.addMousePressListener(panner);
     polygonPanel.addMouseMotionListener(panner);
-    polygonPanel.addMouseListener(new LeftClickSelector(cascade, polygonPanel, interactionListener));
-    polygonPanel.addMouseListener(new CtrlLeftClickDetailsRequester(cascade, polygonPanel, interactionListener));
-    polygonPanel.addMouseListener(new RightClickResetter(polygonPanel));
-    polygonPanel.addMouseListener(new RightClickCenterer(polygonPanel));
+    polygonPanel.addMouseClickListener(new LeftClickSelector(cascade, polygonPanel, interactionListener));
+    polygonPanel.addMouseClickListener(new CtrlLeftClickDetailsRequester(cascade, polygonPanel, interactionListener));
+    polygonPanel.addMouseClickListener(new RightClickResetter(polygonPanel));
+    polygonPanel.addMouseClickListener(new RightClickCenterer(polygonPanel));
     polygonPanel.addMouseMotionListener(new CursorChanger(polygonPanel));
     polygonPanel.addMouseWheelListener(new WheelScaler(polygonPanel));
   }

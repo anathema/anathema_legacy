@@ -1,12 +1,9 @@
 package net.sf.anathema.platform.tree.view.interaction;
 
+import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.platform.tree.view.PolygonPanel;
 
-import javax.swing.SwingUtilities;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
-public class RightClickResetter extends MouseAdapter {
+public class RightClickResetter implements MouseClickClosure {
   private final PolygonPanel polygonPanel;
 
   public RightClickResetter(PolygonPanel polygonPanel) {
@@ -14,9 +11,11 @@ public class RightClickResetter extends MouseAdapter {
   }
 
   @Override
-  public void mouseClicked(MouseEvent e) {
-    boolean rightMouseButton = SwingUtilities.isRightMouseButton(e);
-    if (e.getClickCount() == 2 && rightMouseButton) {
+  public void mouseClicked(MouseButton button, MetaKey key, Coordinate coordinate, int clickCount) {
+    if (button != MouseButton.Right){
+      return;
+    }
+    if (clickCount == 2) {
       polygonPanel.resetTransformation();
       new DefaultScaler(polygonPanel).scale();
     }

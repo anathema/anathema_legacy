@@ -1,5 +1,7 @@
 package net.sf.anathema.framework.ui;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+
 public class Coordinate {
 
   public final int x;
@@ -21,5 +23,15 @@ public class Coordinate {
 
   public Coordinate translate(int dx, int dy) {
     return new Coordinate(x + dx, y + dy);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    return EqualsBuilder.reflectionEquals(this, obj);
+  }
+
+  @Override
+  public int hashCode() {
+    return x * y;
   }
 }

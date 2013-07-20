@@ -29,25 +29,25 @@ public class InteractionTreeListeningTest {
     listening.initialize();
     ArgumentCaptor<LeftClickPanner> captor = ArgumentCaptor.forClass(LeftClickPanner.class);
     verify(panel, atLeastOnce()).addMouseMotionListener(captor.capture());
-    verify(panel).addMouseListener(captor.getAllValues().get(0));
+    verify(panel).addMousePressListener(captor.getAllValues().get(0));
   }
 
   @Test
   public void addsToggleListenerForLeftClick() throws Exception {
     listening.initialize();
-    verify(panel).addMouseListener(isA(LeftClickSelector.class));
+    verify(panel).addMouseClickListener(isA(LeftClickSelector.class));
   }
 
   @Test
   public void addsResetListenerForRightClick() throws Exception {
     listening.initialize();
-    verify(panel).addMouseListener(isA(RightClickResetter.class));
+    verify(panel).addMouseClickListener(isA(RightClickResetter.class));
   }
 
   @Test
   public void addsCenterListenerForRightClick() throws Exception {
     listening.initialize();
-    verify(panel).addMouseListener(isA(RightClickCenterer.class));
+    verify(panel).addMouseClickListener(isA(RightClickCenterer.class));
   }
 
   @Test
@@ -65,6 +65,6 @@ public class InteractionTreeListeningTest {
   @Test
   public void addsDetailRequesterForCtrlLeftClick() throws Exception {
     listening.initialize();
-    verify(panel).addMouseListener(isA(CtrlLeftClickDetailsRequester.class));
+    verify(panel).addMouseClickListener(isA(CtrlLeftClickDetailsRequester.class));
   }
 }

@@ -15,16 +15,28 @@ import net.sf.anathema.platform.tree.view.interaction.ButtonSpecialControl;
 import net.sf.anathema.platform.tree.view.interaction.Closure;
 import net.sf.anathema.platform.tree.view.interaction.ElementContainer;
 import net.sf.anathema.platform.tree.view.interaction.Executor;
+import net.sf.anathema.platform.tree.view.interaction.MetaKey;
+import net.sf.anathema.platform.tree.view.interaction.MouseButton;
+import net.sf.anathema.platform.tree.view.interaction.MouseClickClosure;
+import net.sf.anathema.platform.tree.view.interaction.MouseMotionClosure;
+import net.sf.anathema.platform.tree.view.interaction.MousePressClosure;
+import net.sf.anathema.platform.tree.view.interaction.MouseWheelClosure;
 import net.sf.anathema.platform.tree.view.interaction.SpecialControlTrigger;
 import net.sf.anathema.platform.tree.view.transform.SwingTransformer;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.NoninvertibleTransformException;
 import java.awt.geom.Point2D;
@@ -110,11 +122,11 @@ public class SwingPolygonPanel extends JPanel implements PolygonPanel {
   }
 
   @Override
-  public void scaleToPoint(double scale, int x, int y) {
+  public void scaleToPoint(double scale, Coordinate coordinate) {
     AgnosticTransform scaleTransform = new AgnosticTransform();
-    scaleTransform.add(new Translation(x, y));
+    scaleTransform.add(new Translation(coordinate.x, coordinate.y));
     scaleTransform.add(new Scale(scale));
-    scaleTransform.add(new Translation(-x, -y));
+    scaleTransform.add(new Translation(-coordinate.x, -coordinate.y));
     executeScaleIfBoundsAreNotBroken(scaleTransform);
   }
 
@@ -172,13 +184,76 @@ public class SwingPolygonPanel extends JPanel implements PolygonPanel {
   }
 
   @Override
-  public void centerOn(int x, int y) {
+  public void centerOn(Coordinate coordinate) {
     int xCenter = getWidth() / 2;
     int yCenter = getHeight() / 2;
-    int newCenterX = xCenter - x;
-    int newCenterY = yCenter - y;
+    int newCenterX = xCenter - coordinate.x;
+    int newCenterY = yCenter - coordinate.x;
     transform.add(new CenterOn(newCenterX, newCenterY));
     repaint();
+  }
+
+  @Override
+  public void addMousePressListener(final MousePressClosure listener) {
+    addMouseListener(new MouseAdapter() {
+      @Override
+      public void mousePressed(MouseEvent e) {
+        listener.mousePressed(new Coordinate(e.getX(), e.getY()));
+      }
+    });
+  }
+
+  @Override
+  public void addMouseClickListener(final MouseClickClosure listener) {
+    addMouseListener(new MouseAdapter() {
+      @Override
+      public void mouseClicked(MouseEvent e) {
+        MouseButton button = determineMouseButton(e);
+        MetaKey key;
+        if (e.isControlDown()) {
+          key = MetaKey.CTRL;
+        } else {
+          key = MetaKey.NONE;
+        }
+        listener.mouseClicked(button, key, new Coordinate(e.getX(), e.getY()), e.getClickCount());
+      }
+    });
+  }
+
+  @Override
+  public void addMouseWheelListener(final MouseWheelClosure listener) {
+    addMouseWheelListener(new MouseWheelListener() {
+      @Override
+      public void mouseWheelMoved(MouseWheelEvent e) {
+        listener.mouseWheelMoved(e.getWheelRotation(), new Coordinate(e.getX(), e.getY()));
+      }
+    });
+  }
+
+  @Override
+  public void addMouseMotionListener(final MouseMotionClosure listener) {
+    addMouseMotionListener(new MouseMotionListener() {
+      @Override
+      public void mouseDragged(MouseEvent e) {
+        MouseButton button = determineMouseButton(e);
+        listener.mouseDragged(button, new Coordinate(e.getX(), e.getY()));
+      }
+
+      @Override
+      public void mouseMoved(MouseEvent e) {
+        listener.mouseMoved(new Coordinate(e.getX(), e.getY()));
+      }
+    });
+  }
+
+  private MouseButton determineMouseButton(MouseEvent e) {
+    MouseButton button;
+    if (SwingUtilities.isLeftMouseButton(e)) {
+      button = MouseButton.Left;
+    } else {
+      button = MouseButton.Right;
+    }
+    return button;
   }
 
   @Override

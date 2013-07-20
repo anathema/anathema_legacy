@@ -6,23 +6,18 @@ import org.junit.Test;
 import org.mockito.InOrder;
 import org.mockito.Mockito;
 
-import java.awt.event.MouseEvent;
-
+import static net.sf.anathema.platform.tree.view.interaction.LeftClickTogglerTest.AnyCoordinate;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verifyZeroInteractions;
-import static org.mockito.Mockito.when;
 
 public class RightClickResetterTest {
 
   private PolygonPanel panel = mock(SwingPolygonPanel.class);
-  private MouseEvent event = mock(MouseEvent.class);
   private RightClickResetter resetter = new RightClickResetter(panel);
 
   @Test
   public void resetsTransformationAndZoomsOutALittleOnRightDoubleClick() throws Exception {
-    when(event.getModifiers()).thenReturn(MouseEvent.BUTTON3_MASK);
-    when(event.getClickCount()).thenReturn(2);
-    resetter.mouseClicked(event);
+    resetter.mouseClicked(MouseButton.Right, MetaKey.NONE, AnyCoordinate,2);
     InOrder inOrder = Mockito.inOrder(panel);
     inOrder.verify(panel).resetTransformation();
     inOrder.verify(panel).scale(0.75);
@@ -30,17 +25,13 @@ public class RightClickResetterTest {
 
   @Test
   public void doesNothingOnSingleClick() throws Exception {
-    when(event.getModifiers()).thenReturn(MouseEvent.BUTTON3_MASK);
-    when(event.getClickCount()).thenReturn(1);
-    resetter.mouseClicked(event);
+    resetter.mouseClicked(MouseButton.Right, MetaKey.NONE, AnyCoordinate, 1);
     verifyZeroInteractions(panel);
   }
 
   @Test
   public void doesNothingOnLeftClick() throws Exception {
-    when(event.getModifiers()).thenReturn(MouseEvent.BUTTON1_MASK);
-    when(event.getClickCount()).thenReturn(2);
-    resetter.mouseClicked(event);
+    resetter.mouseClicked(MouseButton.Left, MetaKey.NONE, AnyCoordinate, 2);
     verifyZeroInteractions(panel);
   }
 }
