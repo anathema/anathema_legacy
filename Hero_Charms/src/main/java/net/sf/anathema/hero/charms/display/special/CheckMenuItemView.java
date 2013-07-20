@@ -2,7 +2,7 @@ package net.sf.anathema.hero.charms.display.special;
 
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;
-import net.sf.anathema.platform.tree.view.interaction.SpecialContent;
+import net.sf.anathema.platform.tree.swing.SpecialContent;
 
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JComponent;
