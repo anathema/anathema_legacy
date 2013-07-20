@@ -3,7 +3,6 @@ package net.sf.anathema.platform.tree.view.container;
 import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.platform.tree.display.NodeProperties;
-import net.sf.anathema.platform.tree.swing.SwingPolygonPanel;
 import net.sf.anathema.platform.tree.view.draw.FilledPolygon;
 import net.sf.anathema.platform.tree.view.draw.FlexibleArrow;
 import net.sf.anathema.platform.tree.view.interaction.PolygonPanel;
@@ -90,14 +89,14 @@ public class DefaultContainerCascadeTest {
 
   @Test
   public void addsNodeToPanel() throws Exception {
-    PolygonPanel panel = mock(SwingPolygonPanel.class);
+    PolygonPanel panel = mock(PolygonPanel.class);
     container.addTo(panel);
     verify(panel).add(polygon1);
   }
 
   @Test
   public void addsOtherElementsToPanel() throws Exception {
-    PolygonPanel panel = mock(SwingPolygonPanel.class);
+    PolygonPanel panel = mock(PolygonPanel.class);
     FlexibleArrow element = mock(FlexibleArrow.class);
     container.add(element);
     container.addTo(panel);
@@ -106,14 +105,14 @@ public class DefaultContainerCascadeTest {
 
   @Test
   public void setsNodeIdAsTextOnPolygon() throws Exception {
-    PolygonPanel panel = mock(SwingPolygonPanel.class);
+    PolygonPanel panel = mock(PolygonPanel.class);
     container.addTo(panel);
     verify(polygon1).setText("X");
   }
 
   @Test
   public void setsTextBeforeAdding() throws Exception {
-    PolygonPanel panel = mock(SwingPolygonPanel.class);
+    PolygonPanel panel = mock(PolygonPanel.class);
     container.addTo(panel);
     InOrder inOrder = inOrder(panel, polygon1);
     inOrder.verify(polygon1).setText(anyString());

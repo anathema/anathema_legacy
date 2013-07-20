@@ -1,7 +1,6 @@
 package net.sf.anathema.platform.tree.view.interaction;
 
 import net.sf.anathema.framework.ui.Coordinate;
-import net.sf.anathema.platform.tree.swing.SwingPolygonPanel;
 import org.junit.Test;
 import org.mockito.InOrder;
 
@@ -14,7 +13,7 @@ import static org.mockito.Mockito.verify;
 
 public class WheelScalerTest {
 
-  SwingPolygonPanel panel = mock(SwingPolygonPanel.class);
+  PolygonPanel panel = mock(PolygonPanel.class);
 
   @Test
   public void triggersScaleOnPanelCenteredOnEvent() throws Exception {

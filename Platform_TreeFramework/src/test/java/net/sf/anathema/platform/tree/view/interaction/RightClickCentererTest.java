@@ -1,6 +1,5 @@
 package net.sf.anathema.platform.tree.view.interaction;
 
-import net.sf.anathema.platform.tree.swing.SwingPolygonPanel;
 import org.junit.Test;
 
 import static net.sf.anathema.platform.tree.view.interaction.LeftClickTogglerTest.AnyCoordinate;
@@ -10,7 +9,7 @@ import static org.mockito.Mockito.verifyZeroInteractions;
 
 public class RightClickCentererTest {
 
-  PolygonPanel panel = mock(SwingPolygonPanel.class);
+  PolygonPanel panel = mock(PolygonPanel.class);
   RightClickCenterer centerer = new RightClickCenterer(panel);
 
   @Test

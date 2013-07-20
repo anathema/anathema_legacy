@@ -1,12 +1,12 @@
 package net.sf.anathema.platform.tree.view;
 
 import net.sf.anathema.platform.tree.display.NodeInteractionListener;
-import net.sf.anathema.platform.tree.swing.SwingPolygonPanel;
 import net.sf.anathema.platform.tree.view.container.Cascade;
 import net.sf.anathema.platform.tree.view.interaction.CtrlLeftClickDetailsRequester;
 import net.sf.anathema.platform.tree.view.interaction.CursorChanger;
 import net.sf.anathema.platform.tree.view.interaction.LeftClickPanner;
 import net.sf.anathema.platform.tree.view.interaction.LeftClickSelector;
+import net.sf.anathema.platform.tree.view.interaction.PolygonPanel;
 import net.sf.anathema.platform.tree.view.interaction.RightClickCenterer;
 import net.sf.anathema.platform.tree.view.interaction.RightClickResetter;
 import net.sf.anathema.platform.tree.view.interaction.WheelScaler;
@@ -20,7 +20,7 @@ import static org.mockito.Mockito.verify;
 
 public class InteractionTreeListeningTest {
 
-  SwingPolygonPanel panel = mock(SwingPolygonPanel.class);
+  PolygonPanel panel = mock(PolygonPanel.class);
   private Cascade cascade = mock(Cascade.class);
   private NodeInteractionListener interactionListener = mock(NodeInteractionListener.class);
   InteractionTreeListening listening = new InteractionTreeListening(cascade, panel, interactionListener);

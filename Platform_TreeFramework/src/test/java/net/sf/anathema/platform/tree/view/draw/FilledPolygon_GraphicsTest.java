@@ -1,25 +1,21 @@
 package net.sf.anathema.platform.tree.view.draw;
 
+import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.framework.ui.RGBColor;
-import net.sf.anathema.lib.gui.swing.ColorUtilities;
-import net.sf.anathema.platform.tree.swing.SwingGraphicsCanvas;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
-
-import static org.mockito.Matchers.anyInt;
+import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.atLeastOnce;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 public class FilledPolygon_GraphicsTest {
 
-  FilledPolygon filledPolygon = new FilledPolygon();
-  Graphics2D graphics = GraphicsMother.createForAnyFont();
-  private Canvas canvas = new SwingGraphicsCanvas(graphics);
+  private final FilledPolygon filledPolygon = new FilledPolygon();
+  private final Canvas canvas = mock(Canvas.class);
 
   @Before
   public void createSquare() throws Exception {
@@ -33,7 +29,7 @@ public class FilledPolygon_GraphicsTest {
   public void fillsWithSetColor() throws Exception {
     filledPolygon.fill(RGBColor.Pink);
     filledPolygon.paint(canvas);
-    verify(graphics).setColor(Color.PINK);
+    verify(canvas).setColor(RGBColor.Pink);
   }
 
   @Test
@@ -41,14 +37,14 @@ public class FilledPolygon_GraphicsTest {
     filledPolygon.fill(RGBColor.Pink);
     filledPolygon.setAlpha(100);
     filledPolygon.paint(canvas);
-    verify(graphics).setColor(ColorUtilities.getTransparentColor(Color.PINK, 100));
+    verify(canvas).setColor(new RGBColor(RGBColor.Pink, 100));
   }
 
   @Test
   public void changesAlphaOfStroke() throws Exception {
     filledPolygon.setAlpha(17);
     filledPolygon.paint(canvas);
-    verify(graphics, atLeastOnce()).setColor(ColorUtilities.getTransparentColor(Color.BLACK, 17));
+    verify(canvas, atLeastOnce()).setColor(new RGBColor(RGBColor.Black, 17));
   }
 
   @Test
@@ -56,7 +52,7 @@ public class FilledPolygon_GraphicsTest {
     filledPolygon.setAlpha(17);
     filledPolygon.setText("A");
     filledPolygon.paint(canvas);
-    verify(graphics, atLeast(2)).setColor(ColorUtilities.getTransparentColor(Color.BLACK, 17));
-    verify(graphics, atLeastOnce()).drawString(eq("A"), anyInt(), anyInt());
+    verify(canvas, atLeast(2)).setColor(new RGBColor(RGBColor.Black, 17));
+    verify(canvas, atLeastOnce()).drawString(eq("A"), any(Coordinate.class));
   }
 }

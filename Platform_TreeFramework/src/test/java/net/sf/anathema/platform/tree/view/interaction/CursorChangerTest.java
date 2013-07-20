@@ -1,6 +1,5 @@
 package net.sf.anathema.platform.tree.view.interaction;
 
-import net.sf.anathema.platform.tree.swing.SwingPolygonPanel;
 import org.junit.Test;
 
 import static net.sf.anathema.platform.tree.view.interaction.LeftClickTogglerTest.AnyCoordinate;
@@ -8,7 +7,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 public class CursorChangerTest {
-  SwingPolygonPanel panel = mock(SwingPolygonPanel.class);
+  PolygonPanel panel = mock(PolygonPanel.class);
 
   @Test
   public void changesCursorOnPanel() throws Exception {

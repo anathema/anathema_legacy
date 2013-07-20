@@ -1,6 +1,5 @@
 package net.sf.anathema.platform.tree.view.interaction;
 
-import net.sf.anathema.platform.tree.swing.SwingPolygonPanel;
 import org.junit.Test;
 import org.mockito.InOrder;
 import org.mockito.Mockito;
@@ -11,7 +10,7 @@ import static org.mockito.Mockito.verifyZeroInteractions;
 
 public class RightClickResetterTest {
 
-  private PolygonPanel panel = mock(SwingPolygonPanel.class);
+  private PolygonPanel panel = mock(PolygonPanel.class);
   private RightClickResetter resetter = new RightClickResetter(panel);
 
   @Test

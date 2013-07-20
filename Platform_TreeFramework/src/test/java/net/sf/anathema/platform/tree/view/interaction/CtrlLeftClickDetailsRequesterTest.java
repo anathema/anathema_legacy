@@ -1,7 +1,6 @@
 package net.sf.anathema.platform.tree.view.interaction;
 
 import net.sf.anathema.platform.tree.display.NodeInteractionListener;
-import net.sf.anathema.platform.tree.swing.SwingPolygonPanel;
 import net.sf.anathema.platform.tree.view.container.DefaultContainerCascade;
 import net.sf.anathema.platform.tree.view.container.IdentifiedPolygon;
 import net.sf.anathema.platform.tree.view.draw.FilledPolygon;
@@ -21,7 +20,7 @@ public class CtrlLeftClickDetailsRequesterTest {
   private DefaultContainerCascade cascade = new DefaultContainerCascade();
   private FilledPolygon polygon = PolygonMother.squareAtOriginWithLength2();
   private IdentifiedPolygon identifiedPolygon = new IdentifiedPolygon(polygon, "X");
-  private PolygonPanel panel = mock(SwingPolygonPanel.class);
+  private PolygonPanel panel = mock(PolygonPanel.class);
   private NodeInteractionListener listener = mock(NodeInteractionListener.class);
   private CtrlLeftClickDetailsRequester requester = new CtrlLeftClickDetailsRequester(cascade, panel, listener);
 
