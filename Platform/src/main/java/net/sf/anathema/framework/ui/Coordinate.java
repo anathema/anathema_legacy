@@ -34,4 +34,12 @@ public class Coordinate {
   public int hashCode() {
     return x * y;
   }
+
+  @Override
+  public String toString() {
+    return "Coordinate{" +
+            "x=" + x +
+            ", y=" + y +
+            '}';
+  }
 }
