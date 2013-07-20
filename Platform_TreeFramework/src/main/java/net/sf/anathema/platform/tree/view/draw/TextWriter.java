@@ -4,11 +4,10 @@ import net.sf.anathema.framework.ui.Area;
 import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.framework.ui.FontStyle;
 import net.sf.anathema.framework.ui.RGBColor;
+import net.sf.anathema.framework.ui.Rectangle;
 import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.platform.tree.display.shape.AgnosticShape;
-import net.sf.anathema.platform.tree.swing.SwingTransformer;
 
-import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,12 +35,12 @@ public class TextWriter {
     graphics.setFontStyle(FontStyle.Plain, TEXT_SIZE);
     Area textSize = graphics.measureText(text);
     findBreaksIfNotAlreadyEstablished(textSize);
-    Rectangle bounds = SwingTransformer.convert(shape).getBounds();
+    Rectangle bounds = graphics.calculateBounds(shape);
     for (int partIndex = 0; partIndex < parts.length; partIndex++) {
       String part = parts[partIndex];
       Area partSize = graphics.measureText(part);
-      int centeredX = (int) (bounds.x + bounds.getWidth() / 2) - (partSize.width / 2);
-      int centeredY = (int) (bounds.y + bounds.getHeight() / 2) + (partSize.height / 2);
+      int centeredX = bounds.origin.x + bounds.area.width / 2 - (partSize.width / 2);
+      int centeredY = bounds.origin.y + bounds.area.height / 2 + (partSize.height / 2);
       int actualY = centeredY + +yCorrection(partIndex, parts.length);
       graphics.drawString(part, new Coordinate(centeredX, actualY));
     }

@@ -4,6 +4,7 @@ import net.sf.anathema.framework.ui.Area;
 import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.framework.ui.FontStyle;
 import net.sf.anathema.framework.ui.RGBColor;
+import net.sf.anathema.framework.ui.Rectangle;
 import net.sf.anathema.framework.ui.Width;
 import net.sf.anathema.platform.tree.display.shape.AgnosticShape;
 import net.sf.anathema.platform.tree.display.shape.TransformedShape;
@@ -24,4 +25,6 @@ public interface Canvas {
   void drawString(String text, Coordinate coordinate);
 
   void setFontStyle(FontStyle style, int textSize);
+
+  Rectangle calculateBounds(AgnosticShape shape);
 }

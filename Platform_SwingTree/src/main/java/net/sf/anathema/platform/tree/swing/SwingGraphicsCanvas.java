@@ -5,6 +5,7 @@ import net.sf.anathema.framework.ui.Area;
 import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.framework.ui.FontStyle;
 import net.sf.anathema.framework.ui.RGBColor;
+import net.sf.anathema.framework.ui.Rectangle;
 import net.sf.anathema.framework.ui.Width;
 import net.sf.anathema.lib.gui.SwingFontStyleMapping;
 import net.sf.anathema.platform.tree.display.shape.AgnosticShape;
@@ -78,6 +79,14 @@ public class SwingGraphicsCanvas implements Canvas {
     int swingStyle = SwingFontStyleMapping.map(style);
     Font textFont = new Font("SansSerif", swingStyle, textSize);
     graphics.setFont(textFont);
+  }
+
+  @Override
+  public Rectangle calculateBounds(AgnosticShape shape) {
+    java.awt.Rectangle bounds = SwingTransformer.convert(shape).getBounds();
+    Area area = new Area(bounds.width, bounds.height);
+    Coordinate origin = new Coordinate(bounds.getX(), bounds.getY());
+    return new Rectangle(origin, area);
   }
 
 
