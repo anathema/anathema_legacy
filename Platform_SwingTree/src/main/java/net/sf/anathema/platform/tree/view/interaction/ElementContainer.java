@@ -1,9 +1,9 @@
 package net.sf.anathema.platform.tree.view.interaction;
 
+import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.platform.tree.view.draw.GraphicsElement;
 import net.sf.anathema.platform.tree.view.draw.InteractiveGraphicsElement;
 
-import java.awt.geom.Point2D;
 import java.util.Iterator;
 import java.util.List;
 
@@ -22,7 +22,7 @@ public class ElementContainer implements Iterable<GraphicsElement>{
     elements.add(element);
   }
 
-  public Executor onElementAtPoint(Point2D point) {
+  public Executor onElementAtPoint(Coordinate point) {
     for (InteractiveGraphicsElement element : interactiveElements)
       if (element.contains(point)) {
         return new ElementExecutor(element);

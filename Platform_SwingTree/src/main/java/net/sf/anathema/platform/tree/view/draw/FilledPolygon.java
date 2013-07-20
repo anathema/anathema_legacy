@@ -1,5 +1,7 @@
 package net.sf.anathema.platform.tree.view.draw;
 
+import net.sf.anathema.framework.ui.Coordinate;
+import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.lib.gui.swing.ColorUtilities;
 import net.sf.anathema.platform.tree.view.interaction.SpecialControl;
 import org.jmock.example.announcer.Announcer;
@@ -8,9 +10,10 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Polygon;
 import java.awt.Rectangle;
-import java.awt.geom.Point2D;
 
-public class FilledPolygon implements InteractiveGraphicsElement {
+import static net.sf.anathema.lib.gui.swing.ColorUtilities.toAwtColor;
+
+public class FilledPolygon implements InteractiveGraphicsElement, AgnosticPolygon {
   private final Announcer<Runnable> toggleListeners = Announcer.to(Runnable.class);
   private final Polygon polygon = new Polygon();
   private Color fill = ColorUtilities.getTransparency();
@@ -25,8 +28,8 @@ public class FilledPolygon implements InteractiveGraphicsElement {
   }
 
   @Override
-  public boolean contains(Point2D p) {
-    return polygon.contains(p);
+  public boolean contains(Coordinate point) {
+    return polygon.contains(point.x, point.y);
   }
 
   @Override
@@ -42,15 +45,16 @@ public class FilledPolygon implements InteractiveGraphicsElement {
     polygon.translate(x, y);
   }
 
-  public void fill(Color fill) {
-    this.fill = fill;
+  public void fill(RGBColor fill) {
+    fillWithAwt(toAwtColor(fill));
   }
 
   public void setAlpha(int alpha) {
     Color original = fill;
-    fill(ColorUtilities.getTransparentColor(original, alpha));
+    fillWithAwt(ColorUtilities.getTransparentColor(original, alpha));
     setStroke(ColorUtilities.getTransparentColor(stroke, alpha));
   }
+
 
   public void whenToggledDo(Runnable runnable) {
     toggleListeners.addListener(runnable);
@@ -69,5 +73,9 @@ public class FilledPolygon implements InteractiveGraphicsElement {
   public void setStroke(Color stroke) {
     this.stroke = stroke;
     textWriter.setStroke(stroke);
+  }
+
+  private void fillWithAwt(Color fill) {
+    this.fill = fill;
   }
 }

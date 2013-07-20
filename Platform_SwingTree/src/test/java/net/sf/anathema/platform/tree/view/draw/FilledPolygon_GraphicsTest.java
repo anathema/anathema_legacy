@@ -1,5 +1,6 @@
 package net.sf.anathema.platform.tree.view.draw;
 
+import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.lib.gui.swing.ColorUtilities;
 import org.junit.Before;
 import org.junit.Test;
@@ -28,17 +29,17 @@ public class FilledPolygon_GraphicsTest {
 
   @Test
   public void fillsWithSetColor() throws Exception {
-    filledPolygon.fill(Color.DARK_GRAY);
+    filledPolygon.fill(RGBColor.Pink);
     filledPolygon.paint(graphics);
-    verify(graphics).setColor(Color.DARK_GRAY);
+    verify(graphics).setColor(Color.PINK);
   }
 
   @Test
   public void changesAlphaOfFill() throws Exception {
-    filledPolygon.fill(Color.DARK_GRAY);
+    filledPolygon.fill(RGBColor.Pink);
     filledPolygon.setAlpha(100);
     filledPolygon.paint(graphics);
-    verify(graphics).setColor(ColorUtilities.getTransparentColor(Color.DARK_GRAY, 100));
+    verify(graphics).setColor(ColorUtilities.getTransparentColor(Color.PINK, 100));
   }
 
   @Test

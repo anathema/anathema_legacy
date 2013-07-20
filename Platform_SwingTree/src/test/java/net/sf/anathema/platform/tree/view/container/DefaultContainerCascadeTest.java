@@ -1,5 +1,6 @@
 package net.sf.anathema.platform.tree.view.container;
 
+import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.platform.tree.display.NodeProperties;
 import net.sf.anathema.platform.tree.view.PolygonPanel;
@@ -10,9 +11,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InOrder;
 import org.mockito.Matchers;
-
-import java.awt.Color;
-import java.awt.Point;
 
 import static net.sf.anathema.platform.tree.view.draw.PolygonMother.squareAtOriginWithLength2;
 import static org.hamcrest.CoreMatchers.is;
@@ -45,7 +43,7 @@ public class DefaultContainerCascadeTest {
     IdentifiedPolygon node = new IdentifiedPolygon(squareAtOriginWithLength2(), "Z");
     container.add(node);
     container.moveBy(5.5, 7.5);
-    assertThat(node.element.contains(new Point(6, 8)), is(true));
+    assertThat(node.element.contains(new Coordinate(6, 8)), is(true));
   }
 
   @Test
@@ -69,13 +67,13 @@ public class DefaultContainerCascadeTest {
   @Test
   public void fillsNodeWithId() throws Exception {
     container.colorNode("X", RGBColor.Blue);
-    verify(polygon1).fill(Color.BLUE);
+    verify(polygon1).fill(RGBColor.Blue);
   }
 
   @Test
   public void doesNotFillNodeWithDifferentId() throws Exception {
     container.colorNode("Y", RGBColor.Blue);
-    verify(polygon1, never()).fill(Matchers.any(Color.class));
+    verify(polygon1, never()).fill(Matchers.any(RGBColor.class));
   }
 
   @Test

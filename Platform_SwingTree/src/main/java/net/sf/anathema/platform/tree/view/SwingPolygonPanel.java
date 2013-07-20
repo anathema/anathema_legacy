@@ -1,5 +1,6 @@
 package net.sf.anathema.platform.tree.view;
 
+import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.platform.tree.view.draw.GraphicsElement;
 import net.sf.anathema.platform.tree.view.draw.InteractiveGraphicsElement;
@@ -121,8 +122,8 @@ public class SwingPolygonPanel extends JPanel implements PolygonPanel {
 
   @Override
   public void changeCursor(Point point) {
-    Point2D elementPoint = transformClickPointToObjectCoordinates(point);
-    container.onElementAtPoint(elementPoint).perform(new SetHandCursor()).orFallBackTo(new SetDefaultCursor());
+    Coordinate coordinate = getObjectCoordinatesFrom(point);
+    container.onElementAtPoint(coordinate).perform(new SetHandCursor()).orFallBackTo(new SetDefaultCursor());
   }
 
   @Override
@@ -137,8 +138,13 @@ public class SwingPolygonPanel extends JPanel implements PolygonPanel {
 
   @Override
   public Executor onElementAtPoint(Point point) {
-    Point2D elementPoint = transformClickPointToObjectCoordinates(point);
+    Coordinate elementPoint = getObjectCoordinatesFrom(point);
     return container.onElementAtPoint(elementPoint);
+  }
+
+  private Coordinate getObjectCoordinatesFrom(Point point) {
+    Point2D elementPoint = transformClickPointToObjectCoordinates(point);
+    return new Coordinate(elementPoint.getX(), elementPoint.getY());
   }
 
   private Point2D transformClickPointToObjectCoordinates(Point p) {

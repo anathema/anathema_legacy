@@ -4,13 +4,12 @@ import com.google.common.collect.Lists;
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.platform.tree.display.NodeProperties;
 import net.sf.anathema.platform.tree.view.PolygonPanel;
+import net.sf.anathema.platform.tree.view.draw.FilledPolygon;
 import net.sf.anathema.platform.tree.view.draw.FlexibleArrow;
 import net.sf.anathema.platform.tree.view.interaction.SpecialControl;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.List;
-
-import static net.sf.anathema.lib.gui.swing.ColorUtilities.toAwtColor;
 
 public class DefaultContainerCascade implements ContainerCascade {
   private final Announcer<NodeToggleListener> listeners = Announcer.to(NodeToggleListener.class);
@@ -35,7 +34,7 @@ public class DefaultContainerCascade implements ContainerCascade {
   public void colorNode(String nodeId, RGBColor fillColor) {
     for (IdentifiedPolygon node : nodes) {
       if (node.id.equals(nodeId)) {
-        node.element.fill(toAwtColor(fillColor));
+        node.element.fill(fillColor);
       }
     }
   }
@@ -53,7 +52,7 @@ public class DefaultContainerCascade implements ContainerCascade {
   public void addTo(PolygonPanel panel) {
     for (IdentifiedPolygon node : nodes) {
       node.element.setText(node.id);
-      panel.add(node.element);
+      panel.add((FilledPolygon) node.element);
     }
     for (FlexibleArrow edge : edges) {
       panel.add(edge);

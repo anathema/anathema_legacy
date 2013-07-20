@@ -1,12 +1,11 @@
 package net.sf.anathema.platform.tree.view.interaction;
 
 import com.google.common.collect.Iterables;
+import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.platform.tree.view.draw.GraphicsElement;
 import net.sf.anathema.platform.tree.view.draw.InteractiveGraphicsElement;
 import net.sf.anathema.platform.tree.view.draw.PolygonMother;
 import org.junit.Test;
-
-import java.awt.Point;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -23,7 +22,7 @@ public class ElementContainerTest {
     InteractiveGraphicsElement polygon = PolygonMother.squareAtOriginWithLength2();
     container.add(polygon);
     Closure closure = mock(Closure.class);
-    container.onElementAtPoint(new Point(1, 1)).perform(closure);
+    container.onElementAtPoint(new Coordinate(1, 1)).perform(closure);
     verify(closure).execute(polygon);
   }
 
@@ -33,7 +32,7 @@ public class ElementContainerTest {
     container.add(polygon);
     Closure closure = mock(Closure.class);
     Runnable defaultAction = mock(Runnable.class);
-    container.onElementAtPoint(new Point(3, 3)).perform(closure).orFallBackTo(defaultAction);
+    container.onElementAtPoint(new Coordinate(3, 3)).perform(closure).orFallBackTo(defaultAction);
     verify(defaultAction).run();
   }
 
@@ -64,7 +63,7 @@ public class ElementContainerTest {
     InteractiveGraphicsElement element = PolygonMother.squareAtOriginWithLength2();
     container.add(element);
     container.clear();
-    container.onElementAtPoint(new Point(1, 1)).perform(new Closure() {
+    container.onElementAtPoint(new Coordinate(1, 1)).perform(new Closure() {
       @Override
       public void execute(InteractiveGraphicsElement polygon) {
         fail();

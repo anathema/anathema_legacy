@@ -1,9 +1,9 @@
 package net.sf.anathema.platform.tree.view.draw;
 
-import java.awt.geom.Point2D;
+import net.sf.anathema.framework.ui.Coordinate;
 
 public interface InteractiveGraphicsElement extends GraphicsElement {
-  boolean contains(Point2D p);
+  boolean contains(Coordinate p);
 
   void toggle();
 }
