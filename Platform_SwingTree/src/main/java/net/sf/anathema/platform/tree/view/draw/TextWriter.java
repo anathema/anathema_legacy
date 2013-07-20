@@ -45,16 +45,6 @@ public class TextWriter {
     }
   }
 
-  private int yCorrection(int currentLine, int numberOfLines) {
-    if (numberOfLines == 1) {
-      return -4;
-    }
-    if (numberOfLines == 2) {
-      return 4 + ((currentLine - 1) * LINE_HEIGHT);
-    }
-    return -4 + ((currentLine - 1) * LINE_HEIGHT);
-  }
-
   private void findBreaksIfNotAlreadyEstablished(FontMetrics textMetrics) {
     if (parts == null) {
       parts = breakText(textMetrics);
@@ -76,6 +66,16 @@ public class TextWriter {
       textNodes[index] = text.substring(startIndex, runLength).trim();
     }
     return textNodes;
+  }
+
+  private int yCorrection(int currentLine, int numberOfLines) {
+    if (numberOfLines == 1) {
+      return -4;
+    }
+    if (numberOfLines == 2) {
+      return 4 + ((currentLine - 1) * LINE_HEIGHT);
+    }
+    return -4 + ((currentLine - 1) * LINE_HEIGHT);
   }
 
   public void setText(String text) {
