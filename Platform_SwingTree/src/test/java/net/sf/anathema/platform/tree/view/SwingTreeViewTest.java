@@ -4,6 +4,7 @@ import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.platform.tree.display.CascadeLoadedListener;
 import net.sf.anathema.platform.tree.display.NodeProperties;
 import net.sf.anathema.platform.tree.display.ToolTipProperties;
+import net.sf.anathema.platform.tree.swing.SwingPolygonPanel;
 import net.sf.anathema.platform.tree.swing.SwingTreeView;
 import net.sf.anathema.platform.tree.view.container.Cascade;
 import net.sf.anathema.platform.tree.view.interaction.LeftClickPanner;

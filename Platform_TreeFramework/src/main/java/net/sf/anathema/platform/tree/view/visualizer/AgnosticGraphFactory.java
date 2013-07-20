@@ -8,11 +8,11 @@ import net.sf.anathema.platform.tree.document.visualizer.VisualizedGraph;
 import net.sf.anathema.platform.tree.document.visualizer.VisualizedGraphFactory;
 import net.sf.anathema.platform.tree.view.container.DefaultContainerCascade;
 
-public class SwingGraphFactory implements VisualizedGraphFactory {
+public class AgnosticGraphFactory implements VisualizedGraphFactory {
   private TreeDimensionCalculator calculator;
   private final TreePresentationProperties properties;
 
-  public SwingGraphFactory(TreePresentationProperties properties) {
+  public AgnosticGraphFactory(TreePresentationProperties properties) {
     this.properties = properties;
     this.calculator = new TreeDimensionCalculator(properties);
   }
@@ -28,6 +28,6 @@ public class SwingGraphFactory implements VisualizedGraphFactory {
   }
 
   private DefaultContainerCascade createCascade(ILayer... layers) {
-    return new SwingLayerCascadeCreator(properties).create(layers);
+    return new LayerCascadeCreator(properties).create(layers);
   }
 }

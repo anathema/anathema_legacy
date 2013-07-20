@@ -14,11 +14,11 @@ import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class SwingGraphFactoryTest {
+public class AgnosticGraphFactoryTest {
 
   private final TreePresentationProperties properties = mock(TreePresentationProperties.class);
   private final ILayer layer = mock(ILayer.class);
-  private final SwingGraphFactory factory = new SwingGraphFactory(properties);
+  private final AgnosticGraphFactory factory = new AgnosticGraphFactory(properties);
 
   @Before
   public void setUp() throws Exception {

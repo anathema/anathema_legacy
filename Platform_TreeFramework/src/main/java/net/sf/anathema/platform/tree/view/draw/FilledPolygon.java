@@ -5,7 +5,6 @@ import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.platform.tree.display.draw.AgnosticPolygon;
 import net.sf.anathema.platform.tree.display.draw.ShapeWithPosition;
 import net.sf.anathema.platform.tree.display.shape.Polygon;
-import net.sf.anathema.platform.tree.swing.SwingTransformer;
 import org.jmock.example.announcer.Announcer;
 
 public class FilledPolygon implements InteractiveGraphicsElement, AgnosticPolygon {
@@ -24,7 +23,7 @@ public class FilledPolygon implements InteractiveGraphicsElement, AgnosticPolygo
 
   @Override
   public boolean contains(Coordinate point) {
-    return SwingTransformer.convert(polygon).contains(point.x, point.y);
+    return polygon.contains(point);
   }
 
   @Override

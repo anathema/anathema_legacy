@@ -37,4 +37,12 @@ public class Coordinates implements Iterable<Coordinate> {
   public Coordinate getUltimatePoint() {
     return coordinates.get(coordinates.size() - 1);
   }
+
+  public int count() {
+    return coordinates.size();
+  }
+
+  public Coordinate get(int index) {
+    return coordinates.get(index);
+  }
 }

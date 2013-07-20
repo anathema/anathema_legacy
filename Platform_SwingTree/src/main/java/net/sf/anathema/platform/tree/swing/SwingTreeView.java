@@ -11,7 +11,6 @@ import net.sf.anathema.platform.tree.display.SpecialControl;
 import net.sf.anathema.platform.tree.display.ToolTipProperties;
 import net.sf.anathema.platform.tree.view.AggregatingInteractionListener;
 import net.sf.anathema.platform.tree.view.InteractionTreeListening;
-import net.sf.anathema.platform.tree.view.SwingPolygonPanel;
 import net.sf.anathema.platform.tree.view.container.Cascade;
 import net.sf.anathema.platform.tree.view.container.ProxyCascade;
 import net.sf.anathema.platform.tree.view.interaction.DefaultScaler;

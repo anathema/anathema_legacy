@@ -16,7 +16,7 @@ import net.sf.anathema.platform.tree.display.ToolTipProperties;
 import net.sf.anathema.platform.tree.display.TreeRenderer;
 import net.sf.anathema.platform.tree.document.GenericCascadeFactory;
 import net.sf.anathema.platform.tree.swing.SwingTreeView;
-import net.sf.anathema.platform.tree.view.SwingCascadeStrategy;
+import net.sf.anathema.platform.tree.view.AgnosticCascadeStrategy;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -120,7 +120,7 @@ public abstract class AbstractCascadeSelectionView implements CascadeSelectionVi
   @SuppressWarnings("unchecked")
   @Override
   public TreeRenderer getCharmTreeRenderer() {
-    return GenericCascadeRenderer.CreateFor(swingTreeView, new GenericCascadeFactory(new SwingCascadeStrategy()));
+    return GenericCascadeRenderer.CreateFor(swingTreeView, new GenericCascadeFactory(new AgnosticCascadeStrategy()));
   }
 
   @Override

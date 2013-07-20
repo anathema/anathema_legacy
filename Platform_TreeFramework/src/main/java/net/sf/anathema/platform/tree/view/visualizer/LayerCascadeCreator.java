@@ -12,10 +12,10 @@ import net.sf.anathema.platform.tree.document.visualizer.TreePresentationPropert
 import net.sf.anathema.platform.tree.view.container.DefaultContainerCascade;
 import net.sf.anathema.platform.tree.view.draw.FlexibleArrow;
 
-public class SwingLayerCascadeCreator {
+public class LayerCascadeCreator {
   private final TreePresentationProperties properties;
 
-  public SwingLayerCascadeCreator(TreePresentationProperties properties) {
+  public LayerCascadeCreator(TreePresentationProperties properties) {
     this.properties = properties;
   }
 

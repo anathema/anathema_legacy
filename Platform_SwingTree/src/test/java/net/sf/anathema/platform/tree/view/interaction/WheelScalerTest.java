@@ -1,7 +1,7 @@
 package net.sf.anathema.platform.tree.view.interaction;
 
 import net.sf.anathema.framework.ui.Coordinate;
-import net.sf.anathema.platform.tree.view.SwingPolygonPanel;
+import net.sf.anathema.platform.tree.swing.SwingPolygonPanel;
 import org.junit.Test;
 import org.mockito.InOrder;
 

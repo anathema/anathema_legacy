@@ -1,4 +1,4 @@
-package net.sf.anathema.platform.tree.view;
+package net.sf.anathema.platform.tree.swing;
 
 import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.framework.ui.RGBColor;
@@ -7,9 +7,6 @@ import net.sf.anathema.platform.tree.display.transform.CenterOn;
 import net.sf.anathema.platform.tree.display.transform.PreConcatenate;
 import net.sf.anathema.platform.tree.display.transform.Scale;
 import net.sf.anathema.platform.tree.display.transform.Translation;
-import net.sf.anathema.platform.tree.swing.ButtonSpecialControl;
-import net.sf.anathema.platform.tree.swing.SwingGraphicsCanvas;
-import net.sf.anathema.platform.tree.swing.SwingTransformer;
 import net.sf.anathema.platform.tree.view.draw.Canvas;
 import net.sf.anathema.platform.tree.view.draw.GraphicsElement;
 import net.sf.anathema.platform.tree.view.draw.InteractiveGraphicsElement;

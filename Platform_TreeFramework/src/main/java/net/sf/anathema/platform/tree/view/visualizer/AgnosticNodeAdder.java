@@ -4,12 +4,12 @@ import net.sf.anathema.platform.tree.document.visualizer.NodeAdder;
 import net.sf.anathema.platform.tree.view.container.DefaultContainerCascade;
 import net.sf.anathema.platform.tree.view.container.IdentifiedPolygon;
 
-public class SwingNodeAdder implements NodeAdder {
+public class AgnosticNodeAdder implements NodeAdder {
   private final String id;
   private final int xPosition;
   private final int yPosition;
 
-  public SwingNodeAdder(String id, int xPosition, int yPosition) {
+  public AgnosticNodeAdder(String id, int xPosition, int yPosition) {
     this.id = id;
     this.xPosition = xPosition;
     this.yPosition = yPosition;

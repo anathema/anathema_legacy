@@ -1,7 +1,6 @@
-package net.sf.anathema.platform.tree.view;
+package net.sf.anathema.platform.tree.swing;
 
 import net.sf.anathema.framework.ui.Coordinate;
-import net.sf.anathema.platform.tree.swing.SwingGraphicsCanvas;
 import net.sf.anathema.platform.tree.view.draw.Canvas;
 import net.sf.anathema.platform.tree.view.draw.FilledPolygon;
 import net.sf.anathema.platform.tree.view.draw.FlexibleArrow;

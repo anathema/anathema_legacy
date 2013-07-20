@@ -2,7 +2,7 @@ package net.sf.anathema.platform.tree.view.interaction;
 
 import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.platform.tree.display.NodeInteractionListener;
-import net.sf.anathema.platform.tree.view.SwingPolygonPanel;
+import net.sf.anathema.platform.tree.swing.SwingPolygonPanel;
 import net.sf.anathema.platform.tree.view.container.Cascade;
 import net.sf.anathema.platform.tree.view.container.DefaultContainerCascade;
 import net.sf.anathema.platform.tree.view.draw.InteractiveGraphicsElement;
