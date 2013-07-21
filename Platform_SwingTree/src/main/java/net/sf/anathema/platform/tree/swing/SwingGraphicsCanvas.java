@@ -66,7 +66,7 @@ public class SwingGraphicsCanvas implements Canvas {
   @Override
   public Area measureText(String text) {
     FontMetrics metrics = graphics.getFontMetrics();
-    return new Area(metrics.getHeight(), metrics.stringWidth(text));
+    return new Area(metrics.stringWidth(text), metrics.getHeight());
   }
 
   @Override
