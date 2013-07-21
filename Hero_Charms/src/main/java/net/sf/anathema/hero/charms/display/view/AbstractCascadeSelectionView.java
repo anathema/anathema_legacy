@@ -8,6 +8,7 @@ import net.sf.anathema.lib.gui.ui.ConfigurableListCellRenderer;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
 import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.platform.tree.display.AgnosticTreeView;
 import net.sf.anathema.platform.tree.display.CascadeLoadedListener;
 import net.sf.anathema.platform.tree.display.GenericCascadeRenderer;
 import net.sf.anathema.platform.tree.display.NodeProperties;
@@ -15,7 +16,7 @@ import net.sf.anathema.platform.tree.display.ToolTipProperties;
 import net.sf.anathema.platform.tree.display.TreeRenderer;
 import net.sf.anathema.platform.tree.display.TreeView;
 import net.sf.anathema.platform.tree.document.GenericCascadeFactory;
-import net.sf.anathema.platform.tree.swing.SwingTreeView;
+import net.sf.anathema.platform.tree.swing.SwingPolygonPanel;
 import net.sf.anathema.platform.tree.view.AgnosticCascadeStrategy;
 
 import javax.swing.JComponent;
@@ -37,21 +38,18 @@ public abstract class AbstractCascadeSelectionView implements CascadeSelectionVi
   private final JPanel selectionPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(4).fillX()));
   private IChangeableJComboBox<Identifier> groupComboBox;
   private IChangeableJComboBox<Identifier> typeComboBox;
-  private final SwingTreeView swingTreeView;
-
-  public AbstractCascadeSelectionView() {
-    this.swingTreeView = new SwingTreeView();
-  }
+  private final SwingPolygonPanel viewComponent = new SwingPolygonPanel();
+  private final AgnosticTreeView treeView = new AgnosticTreeView(viewComponent);
 
   public void initGui(final ToolTipProperties treeProperties, final NodeProperties properties) {
     CascadeLoadedListener listener = new CascadeLoadedListener() {
       @Override
       public void cascadeLoaded() {
-        swingTreeView.initNodeNames(properties);
+        treeView.initNodeNames(properties);
       }
     };
-    swingTreeView.initToolTips(treeProperties);
-    swingTreeView.addCascadeLoadedListener(listener);
+    treeView.initToolTips(treeProperties);
+    treeView.addCascadeLoadedListener(listener);
   }
 
   @Override
@@ -114,18 +112,18 @@ public abstract class AbstractCascadeSelectionView implements CascadeSelectionVi
   }
 
   protected final TreeView getCharmTreeView() {
-    return swingTreeView;
+    return treeView;
   }
 
   @SuppressWarnings("unchecked")
   @Override
   public TreeRenderer getCharmTreeRenderer() {
-    return GenericCascadeRenderer.CreateFor(swingTreeView, new GenericCascadeFactory(new AgnosticCascadeStrategy()));
+    return GenericCascadeRenderer.CreateFor(treeView, new GenericCascadeFactory(new AgnosticCascadeStrategy()));
   }
 
   @Override
   public final void addCascadeLoadedListener(CascadeLoadedListener cascadeListener) {
-    swingTreeView.addCascadeLoadedListener(cascadeListener);
+    treeView.addCascadeLoadedListener(cascadeListener);
   }
 
   protected void unselect() {
@@ -134,7 +132,7 @@ public abstract class AbstractCascadeSelectionView implements CascadeSelectionVi
   }
 
   protected JComponent getCharmComponent() {
-    return swingTreeView.getComponent();
+    return viewComponent.getComponent();
   }
 
   @Override

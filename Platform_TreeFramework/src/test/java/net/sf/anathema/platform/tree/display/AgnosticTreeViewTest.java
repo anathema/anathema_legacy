@@ -1,11 +1,9 @@
-package net.sf.anathema.platform.tree.swing;
+package net.sf.anathema.platform.tree.display;
 
 import net.sf.anathema.framework.ui.RGBColor;
-import net.sf.anathema.platform.tree.display.CascadeLoadedListener;
-import net.sf.anathema.platform.tree.display.NodeProperties;
-import net.sf.anathema.platform.tree.display.ToolTipProperties;
 import net.sf.anathema.platform.tree.view.container.Cascade;
 import net.sf.anathema.platform.tree.view.interaction.LeftClickPanner;
+import net.sf.anathema.platform.tree.view.interaction.PolygonPanel;
 import net.sf.anathema.platform.tree.view.interaction.ToolTipListener;
 import org.junit.Test;
 import org.mockito.InOrder;
@@ -20,17 +18,11 @@ import static org.mockito.Mockito.reset;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyZeroInteractions;
 
-public class SwingTreeViewTest {
+public class AgnosticTreeViewTest {
 
-  private final SwingPolygonPanel panel = mock(SwingPolygonPanel.class);
-  private final SwingTreeView swingTreeView = new SwingTreeView(panel);
+  private final PolygonPanel panel = mock(PolygonPanel.class);
+  private final AgnosticTreeView swingTreeView = new AgnosticTreeView(panel);
   Cascade cascade = mock(Cascade.class);
-
-  @Test
-  public void hasPolygonPanelAsComponent() throws Exception {
-    swingTreeView.getComponent();
-    verify(panel).getComponent();
-  }
 
   @Test
   public void setsBackgroundColorOnCorrespondingNode() throws Exception {

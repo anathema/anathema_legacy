@@ -1,39 +1,26 @@
-package net.sf.anathema.platform.tree.swing;
+package net.sf.anathema.platform.tree.display;
 
 import net.sf.anathema.framework.ui.RGBColor;
-import net.sf.anathema.platform.tree.display.CascadeLoadException;
-import net.sf.anathema.platform.tree.display.CascadeLoadedListener;
-import net.sf.anathema.platform.tree.display.ContentFactory;
-import net.sf.anathema.platform.tree.display.NodeInteractionListener;
-import net.sf.anathema.platform.tree.display.NodeProperties;
-import net.sf.anathema.platform.tree.display.SpecialControl;
-import net.sf.anathema.platform.tree.display.ToolTipProperties;
-import net.sf.anathema.platform.tree.display.TreeView;
 import net.sf.anathema.platform.tree.view.AggregatingInteractionListener;
 import net.sf.anathema.platform.tree.view.InteractionTreeListening;
 import net.sf.anathema.platform.tree.view.container.Cascade;
 import net.sf.anathema.platform.tree.view.container.ProxyCascade;
 import net.sf.anathema.platform.tree.view.interaction.DefaultScaler;
+import net.sf.anathema.platform.tree.view.interaction.PolygonPanel;
 import net.sf.anathema.platform.tree.view.interaction.SpecialContentMap;
 import net.sf.anathema.platform.tree.view.interaction.SpecialControlTrigger;
 import net.sf.anathema.platform.tree.view.interaction.ToolTipListener;
 import org.jmock.example.announcer.Announcer;
 
-import javax.swing.JComponent;
+public class AgnosticTreeView implements TreeView {
 
-public class SwingTreeView implements TreeView {
-
-  private final SwingPolygonPanel polygonPanel;
+  private final PolygonPanel polygonPanel;
   private final Announcer<CascadeLoadedListener> loadListeners = Announcer.to(CascadeLoadedListener.class);
   private final AggregatingInteractionListener allInteractionListeners = new AggregatingInteractionListener();
   private final ProxyCascade cascade = new ProxyCascade();
   private final SpecialContentMap specialContent = new SpecialContentMap();
 
-  public SwingTreeView() {
-    this(new SwingPolygonPanel());
-  }
-
-  public SwingTreeView(SwingPolygonPanel polygonPanel) {
+  public AgnosticTreeView(PolygonPanel polygonPanel) {
     this.polygonPanel = polygonPanel;
     new InteractionTreeListening(cascade, polygonPanel, allInteractionListeners).initialize();
   }
@@ -102,9 +89,5 @@ public class SwingTreeView implements TreeView {
   @Override
   public void registerSpecialType(Class contentClass, ContentFactory factory) {
     specialContent.put(contentClass, factory);
-  }
-
-  public JComponent getComponent() {
-    return polygonPanel.getComponent();
   }
 }
