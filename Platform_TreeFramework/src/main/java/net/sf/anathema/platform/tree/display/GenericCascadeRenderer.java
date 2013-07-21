@@ -7,14 +7,11 @@ import net.sf.anathema.platform.tree.document.visualizer.TreePresentationPropert
 import net.sf.anathema.platform.tree.view.container.Cascade;
 
 public class GenericCascadeRenderer implements TreeRenderer {
-  public static GenericCascadeRenderer CreateFor(TreeView treeView, CascadeFactory cascadeFactory) {
-    return new GenericCascadeRenderer(treeView, cascadeFactory);
-  }
 
   private final CascadeFactory provider;
   private final TreeView treeView;
 
-  private GenericCascadeRenderer(TreeView treeView, CascadeFactory cascadeFactory) {
+  public GenericCascadeRenderer(TreeView treeView, CascadeFactory cascadeFactory) {
     this.treeView = treeView;
     this.provider = cascadeFactory;
   }

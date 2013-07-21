@@ -123,10 +123,9 @@ public abstract class AbstractCascadeSelectionView implements CascadeSelectionVi
     return treeView;
   }
 
-  @SuppressWarnings("unchecked")
   @Override
   public TreeRenderer getCharmTreeRenderer() {
-    return GenericCascadeRenderer.CreateFor(treeView, new GenericCascadeFactory(new AgnosticCascadeStrategy()));
+    return new GenericCascadeRenderer(treeView, new GenericCascadeFactory(new AgnosticCascadeStrategy()));
   }
 
   @Override
