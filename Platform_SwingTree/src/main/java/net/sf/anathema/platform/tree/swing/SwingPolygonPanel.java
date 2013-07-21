@@ -7,6 +7,7 @@ import net.sf.anathema.platform.tree.display.transform.CenterOn;
 import net.sf.anathema.platform.tree.display.transform.PreConcatenate;
 import net.sf.anathema.platform.tree.display.transform.Scale;
 import net.sf.anathema.platform.tree.display.transform.Translation;
+import net.sf.anathema.platform.tree.view.MouseBorderClosure;
 import net.sf.anathema.platform.tree.view.draw.Canvas;
 import net.sf.anathema.platform.tree.view.draw.GraphicsElement;
 import net.sf.anathema.platform.tree.view.draw.InteractiveGraphicsElement;
@@ -25,6 +26,7 @@ import net.sf.anathema.platform.tree.view.interaction.SpecialControlTrigger;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+import javax.swing.ToolTipManager;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Graphics;
@@ -229,6 +231,21 @@ public class SwingPolygonPanel extends JPanel implements PolygonPanel {
   }
 
   @Override
+  public void addMouseBorderListener(final MouseBorderClosure listener) {
+    addMouseListener(new MouseAdapter() {
+      @Override
+      public void mouseEntered(MouseEvent e) {
+        listener.mouseEntered();
+      }
+
+      @Override
+      public void mouseExited(MouseEvent e) {
+        listener.mouseExited();
+      }
+    });
+  }
+
+  @Override
   public void addMouseMotionListener(final MouseMotionClosure listener) {
     addMouseMotionListener(new MouseMotionListener() {
       @Override
@@ -262,6 +279,12 @@ public class SwingPolygonPanel extends JPanel implements PolygonPanel {
   @Override
   public void showMoveCursor() {
     setCursor(Cursor.getPredefinedCursor(MOVE_CURSOR));
+  }
+
+  @Override
+  public void resetAllTooltips() {
+    ToolTipManager.sharedInstance().setEnabled(false);
+    ToolTipManager.sharedInstance().setEnabled(true);
   }
 
   private void executeScaleIfBoundsAreNotBroken(AgnosticTransform scaleInstance) {

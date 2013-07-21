@@ -2,6 +2,7 @@ package net.sf.anathema.hero.charms.display.view;
 
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
+import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.ui.ConfigurableListCellRenderer;
@@ -18,24 +19,24 @@ import net.sf.anathema.platform.tree.display.TreeView;
 import net.sf.anathema.platform.tree.document.GenericCascadeFactory;
 import net.sf.anathema.platform.tree.swing.SwingPolygonPanel;
 import net.sf.anathema.platform.tree.view.AgnosticCascadeStrategy;
+import net.sf.anathema.platform.tree.view.MouseBorderClosure;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
-import javax.swing.ToolTipManager;
 import javax.swing.border.TitledBorder;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 import static net.sf.anathema.lib.gui.swing.GuiUtilities.calculateComboBoxSize;
 
-public abstract class AbstractCascadeSelectionView implements CascadeSelectionView {
+public abstract class AbstractCascadeSelectionView implements CascadeSelectionView, IView {
 
   private final JPanel selectionPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(4).fillX()));
+  private JPanel content = new JPanel(new MigLayout(fillWithoutInsets().wrapAfter(1)));
   private IChangeableJComboBox<Identifier> groupComboBox;
   private IChangeableJComboBox<Identifier> typeComboBox;
   private final SwingPolygonPanel viewComponent = new SwingPolygonPanel();
@@ -50,6 +51,13 @@ public abstract class AbstractCascadeSelectionView implements CascadeSelectionVi
     };
     treeView.initToolTips(treeProperties);
     treeView.addCascadeLoadedListener(listener);
+    content.add(getSelectionComponent(), new CC().growX());
+    content.add(viewComponent.getComponent(), new CC().grow().push());
+  }
+
+  @Override
+  public JComponent getComponent() {
+    return content;
   }
 
   @Override
@@ -131,17 +139,17 @@ public abstract class AbstractCascadeSelectionView implements CascadeSelectionVi
     groupComboBox.setSelectedObject(null);
   }
 
-  protected JComponent getCharmComponent() {
-    return viewComponent.getComponent();
-  }
-
   @Override
   public void whenCursorLeavesCharmAreaResetAllPopups() {
-    getCharmComponent().addMouseListener(new MouseAdapter() {
+    viewComponent.addMouseBorderListener(new MouseBorderClosure() {
       @Override
-      public void mouseExited(MouseEvent e) {
-        ToolTipManager.sharedInstance().setEnabled(false);
-        ToolTipManager.sharedInstance().setEnabled(true);
+      public void mouseEntered() {
+        //nothing to do
+      }
+
+      @Override
+      public void mouseExited() {
+        viewComponent.resetAllTooltips();
       }
     });
   }
