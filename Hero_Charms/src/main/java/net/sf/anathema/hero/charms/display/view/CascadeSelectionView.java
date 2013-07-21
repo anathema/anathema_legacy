@@ -1,14 +1,16 @@
 package net.sf.anathema.hero.charms.display.view;
 
+import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.platform.tree.display.CascadeLoadedListener;
+import net.sf.anathema.platform.tree.display.NodeInteractionListener;
 import net.sf.anathema.platform.tree.display.NodeProperties;
 import net.sf.anathema.platform.tree.display.ToolTipProperties;
 import net.sf.anathema.platform.tree.display.TreeRenderer;
 
-public interface CascadeSelectionView {
+public interface CascadeSelectionView extends SpecialCharmViewContainer {
 
   TreeRenderer getCharmTreeRenderer();
 
@@ -29,4 +31,10 @@ public interface CascadeSelectionView {
   void initGui(ToolTipProperties treeProperties, NodeProperties properties);
 
   void whenCursorLeavesCharmAreaResetAllPopups();
+
+  void colorNode(String charmId, RGBColor color);
+
+  void setBackgroundColor(RGBColor color);
+
+  void addCharmInteractionListener(NodeInteractionListener listener);
 }

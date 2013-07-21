@@ -31,14 +31,8 @@ public class AgnosticTreeView implements TreeView {
   }
 
   @Override
-  public void setNodeBackgroundColor(String nodeId, RGBColor color) {
+  public void colorNode(String nodeId, RGBColor color) {
     cascade.colorNode(nodeId, color);
-    polygonPanel.refresh();
-  }
-
-  @Override
-  public void setNodeAlpha(String nodeId, int alpha) {
-    cascade.setNodeAlpha(nodeId, alpha);
     polygonPanel.refresh();
   }
 

@@ -6,9 +6,7 @@ import net.sf.anathema.platform.tree.view.container.Cascade;
 public interface TreeView {
   void addNodeInteractionListener(NodeInteractionListener listener);
 
-  void setNodeBackgroundColor(String nodeId, RGBColor color);
-
-  void setNodeAlpha(String nodeId, int alpha);
+  void colorNode(String nodeId, RGBColor color);
 
   void addCascadeLoadedListener(CascadeLoadedListener listener);
 

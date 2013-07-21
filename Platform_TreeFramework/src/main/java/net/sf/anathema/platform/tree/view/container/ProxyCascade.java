@@ -18,11 +18,6 @@ public class ProxyCascade implements Cascade {
   }
 
   @Override
-  public void setNodeAlpha(String nodeId, int alpha) {
-    delegate.setNodeAlpha(nodeId, alpha);
-  }
-
-  @Override
   public void addTo(PolygonPanel panel) {
     delegate.addTo(panel);
   }

@@ -56,19 +56,6 @@ public class AggregatedCascadeTest {
   }
 
   @Test
-  public void forwardsAlphaChange() throws Exception {
-    when(child.hasNode("X")).thenReturn(true);
-    cascade.setNodeAlpha("X", 17);
-    verify(child).setNodeAlpha("X", 17);
-  }
-
-  @Test
-  public void doesNotForwardAlphaChangeToDifferentChild() throws Exception {
-    cascade.setNodeAlpha("X", 17);
-    verify(child, never()).setNodeAlpha("X", 17);
-  }
-
-  @Test
   public void forwardsRequestForInitializationToAllChildren() throws Exception {
     NodeProperties properties = mock(NodeProperties.class);
     cascade.initNodeNames(properties);

@@ -11,6 +11,7 @@ import org.junit.Test;
 import org.mockito.InOrder;
 import org.mockito.Matchers;
 
+import static net.sf.anathema.framework.ui.RGBColor.Black;
 import static net.sf.anathema.platform.tree.view.draw.PolygonMother.squareAtOriginWithLength2;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -77,13 +78,13 @@ public class DefaultContainerCascadeTest {
 
   @Test
   public void alphasNodeWithId() throws Exception {
-    container.setNodeAlpha("X", 111);
+    container.colorNode("X", new RGBColor(Black, 111));
     verify(polygon1).setAlpha(111);
   }
 
   @Test
   public void doesNotAlphaNodeWithDifferentId() throws Exception {
-    container.setNodeAlpha("Y", 10);
+    container.colorNode("Y", new RGBColor(Black, 111));
     verify(polygon1, never()).setAlpha(anyInt());
   }
 

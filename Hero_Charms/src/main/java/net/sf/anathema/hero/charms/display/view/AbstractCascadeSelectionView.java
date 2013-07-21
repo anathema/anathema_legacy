@@ -3,6 +3,7 @@ package net.sf.anathema.hero.charms.display.view;
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.framework.swing.IView;
+import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.ui.ConfigurableListCellRenderer;
@@ -11,11 +12,13 @@ import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.platform.tree.display.AgnosticTreeView;
 import net.sf.anathema.platform.tree.display.CascadeLoadedListener;
+import net.sf.anathema.platform.tree.display.ContentFactory;
 import net.sf.anathema.platform.tree.display.GenericCascadeRenderer;
+import net.sf.anathema.platform.tree.display.ISpecialNodeView;
+import net.sf.anathema.platform.tree.display.NodeInteractionListener;
 import net.sf.anathema.platform.tree.display.NodeProperties;
 import net.sf.anathema.platform.tree.display.ToolTipProperties;
 import net.sf.anathema.platform.tree.display.TreeRenderer;
-import net.sf.anathema.platform.tree.display.TreeView;
 import net.sf.anathema.platform.tree.document.GenericCascadeFactory;
 import net.sf.anathema.platform.tree.swing.SwingPolygonPanel;
 import net.sf.anathema.platform.tree.view.AgnosticCascadeStrategy;
@@ -33,7 +36,7 @@ import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 import static net.sf.anathema.lib.gui.swing.GuiUtilities.calculateComboBoxSize;
 
-public abstract class AbstractCascadeSelectionView implements CascadeSelectionView, IView {
+public class AbstractCascadeSelectionView implements CascadeSelectionView, IView {
 
   private final JPanel selectionPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(4).fillX()));
   private JPanel content = new JPanel(new MigLayout(fillWithoutInsets().wrapAfter(1)));
@@ -51,8 +54,9 @@ public abstract class AbstractCascadeSelectionView implements CascadeSelectionVi
     };
     treeView.initToolTips(treeProperties);
     treeView.addCascadeLoadedListener(listener);
-    content.add(getSelectionComponent(), new CC().growX());
+    content.add(selectionPanel, new CC().growX());
     content.add(viewComponent.getComponent(), new CC().grow().push());
+    treeView.setCanvasBackground(RGBColor.White);
   }
 
   @Override
@@ -115,14 +119,6 @@ public abstract class AbstractCascadeSelectionView implements CascadeSelectionVi
     selectionPanel.add(help, new CC().growX().pushX());
   }
 
-  protected final JComponent getSelectionComponent() {
-    return selectionPanel;
-  }
-
-  protected final TreeView getCharmTreeView() {
-    return treeView;
-  }
-
   @Override
   public TreeRenderer getCharmTreeRenderer() {
     return new GenericCascadeRenderer(treeView, new GenericCascadeFactory(new AgnosticCascadeStrategy()));
@@ -133,9 +129,31 @@ public abstract class AbstractCascadeSelectionView implements CascadeSelectionVi
     treeView.addCascadeLoadedListener(cascadeListener);
   }
 
-  protected void unselect() {
-    typeComboBox.setSelectedObject(null);
-    groupComboBox.setSelectedObject(null);
+  @Override
+  public void colorNode(String charmId, RGBColor color) {
+    treeView.colorNode(charmId, color);
+  }
+
+  @Override
+  public void addCharmInteractionListener(NodeInteractionListener listener) {
+    treeView.addNodeInteractionListener(listener);
+  }
+
+  @Override
+  public void setSpecialCharmViewVisible(ISpecialNodeView charmView, boolean visible) {
+    if (visible) {
+      treeView.addSpecialControl(charmView.getNodeId(), charmView);
+    }
+  }
+
+  @Override
+  public void setBackgroundColor(RGBColor color) {
+    treeView.setCanvasBackground(color);
+  }
+
+  @Override
+  public void registerSpecialType(Class contentClass, ContentFactory factory) {
+    treeView.registerSpecialType(contentClass, factory);
   }
 
   @Override

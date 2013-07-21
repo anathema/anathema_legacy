@@ -1,16 +1,16 @@
 package net.sf.anathema.cascades.presenter;
 
 import net.sf.anathema.cascades.module.CascadeViewFactory;
-import net.sf.anathema.cascades.presenter.view.CascadeView;
-import net.sf.anathema.hero.charms.compiler.CharmCache;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
-import net.sf.anathema.hero.charms.display.presenter.CharmDisplayPropertiesMap;
-import net.sf.anathema.hero.charms.display.view.DefaultNodeProperties;
-import net.sf.anathema.hero.charms.model.GroupCharmTree;
 import net.sf.anathema.character.main.type.CharacterTypes;
+import net.sf.anathema.hero.charms.compiler.CharmCache;
 import net.sf.anathema.hero.charms.display.coloring.CharmDye;
 import net.sf.anathema.hero.charms.display.coloring.ConfigurableCharmDye;
+import net.sf.anathema.hero.charms.display.presenter.CharmDisplayPropertiesMap;
 import net.sf.anathema.hero.charms.display.tree.AbstractCascadePresenter;
+import net.sf.anathema.hero.charms.display.view.CascadeSelectionView;
+import net.sf.anathema.hero.charms.display.view.DefaultNodeProperties;
+import net.sf.anathema.hero.charms.model.GroupCharmTree;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
@@ -25,7 +25,7 @@ public class CascadePresenterImpl extends AbstractCascadePresenter implements Ca
     CharmCache cache = environment.getDataSet(CharmCache.class);
     CascadeCharmTreeViewProperties viewProperties = new CascadeCharmTreeViewProperties(resources, magicDescriptionProvider, cache);
     DefaultNodeProperties nodeProperties = new DefaultNodeProperties(resources, viewProperties, viewProperties);
-    CascadeView view = factory.createCascadeView(viewProperties, nodeProperties);
+    CascadeSelectionView view = factory.createCascadeView(viewProperties, nodeProperties);
     view.initGui(viewProperties, nodeProperties);
     CharmDisplayPropertiesMap charmDisplayPropertiesMap = new CharmDisplayPropertiesMap(environment.getObjectFactory());
     CascadeCharmGroupChangeListener selectionListener = new CascadeCharmGroupChangeListener(view, viewProperties, charmDisplayPropertiesMap);

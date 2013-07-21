@@ -35,15 +35,7 @@ public class DefaultContainerCascade implements ContainerCascade {
     for (IdentifiedPolygon node : nodes) {
       if (node.id.equals(nodeId)) {
         node.element.fill(fillColor);
-      }
-    }
-  }
-
-  @Override
-  public void setNodeAlpha(String nodeId, int alpha) {
-    for (IdentifiedPolygon node : nodes) {
-      if (node.id.equals(nodeId)) {
-        node.element.setAlpha(alpha);
+        node.element.setAlpha(fillColor.alpha);
       }
     }
   }

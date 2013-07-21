@@ -21,15 +21,6 @@ public class AggregatedCascade implements Cascade {
   }
 
   @Override
-  public void setNodeAlpha(String nodeId, int alpha) {
-    for (ContainerCascade cascade : cascades) {
-      if (cascade.hasNode(nodeId)) {
-        cascade.setNodeAlpha(nodeId, alpha);
-      }
-    }
-  }
-
-  @Override
   public void addTo(PolygonPanel panel) {
     for (Cascade cascade : cascades) {
       cascade.addTo(panel);

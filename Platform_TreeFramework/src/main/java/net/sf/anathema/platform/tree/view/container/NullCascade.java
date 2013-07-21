@@ -12,11 +12,6 @@ public class NullCascade implements Cascade {
   }
 
   @Override
-  public void setNodeAlpha(String nodeId, int alpha) {
-    //nothing to do
-  }
-
-  @Override
   public void addTo(PolygonPanel panel) {
     //nothing to do
   }

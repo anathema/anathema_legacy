@@ -9,7 +9,6 @@ import org.junit.Test;
 import org.mockito.InOrder;
 import org.mockito.Matchers;
 
-import static org.mockito.Matchers.anyInt;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Matchers.isA;
 import static org.mockito.Mockito.inOrder;
@@ -27,14 +26,14 @@ public class AgnosticTreeViewTest {
   @Test
   public void setsBackgroundColorOnCorrespondingNode() throws Exception {
     swingTreeView.loadCascade(cascade, true);
-    swingTreeView.setNodeBackgroundColor("ID", RGBColor.White);
+    swingTreeView.colorNode("ID", RGBColor.White);
     verify(cascade).colorNode("ID", RGBColor.White);
   }
 
   @Test
   public void triggersRepaintAfterColoring() throws Exception {
     swingTreeView.loadCascade(cascade, true);
-    swingTreeView.setNodeBackgroundColor("ID", RGBColor.White);
+    swingTreeView.colorNode("ID", RGBColor.White);
     InOrder inOrder = inOrder(cascade, panel);
     inOrder.verify(cascade).colorNode(anyString(), Matchers.any(RGBColor.class));
     inOrder.verify(panel).refresh();
@@ -44,22 +43,6 @@ public class AgnosticTreeViewTest {
   public void setsBackgroundFillOnPolygonPanel() throws Exception {
     swingTreeView.setCanvasBackground(RGBColor.Red);
     verify(panel).setBackground(RGBColor.Red);
-  }
-
-  @Test
-  public void setAlphaOnCorrespondingNode() throws Exception {
-    swingTreeView.loadCascade(cascade, true);
-    swingTreeView.setNodeAlpha("ID", 120);
-    verify(cascade).setNodeAlpha("ID", 120);
-  }
-
-  @Test
-  public void triggersRepaintAfterChangingTransparency() throws Exception {
-    swingTreeView.loadCascade(cascade, true);
-    swingTreeView.setNodeAlpha("ID", 100);
-    InOrder inOrder = inOrder(cascade, panel);
-    inOrder.verify(cascade).setNodeAlpha(anyString(), anyInt());
-    inOrder.verify(panel).refresh();
   }
 
   @Test
@@ -111,7 +94,7 @@ public class AgnosticTreeViewTest {
     swingTreeView.loadCascade(cascade, true);
     swingTreeView.clear();
     reset(cascade);
-    swingTreeView.setNodeAlpha("X", 124);
+    swingTreeView.colorNode("X", RGBColor.Black);
     verifyZeroInteractions(cascade);
   }
 
