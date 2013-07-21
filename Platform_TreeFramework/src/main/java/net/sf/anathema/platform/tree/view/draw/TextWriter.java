@@ -41,7 +41,7 @@ public class TextWriter {
       Area partSize = graphics.measureText(part);
       int centeredX = bounds.origin.x + bounds.area.width / 2 - (partSize.width / 2);
       int centeredY = bounds.origin.y + bounds.area.height / 2 + (partSize.height / 2);
-      int actualY = centeredY + +yCorrection(partIndex, parts.length);
+      int actualY = centeredY + yCorrection(partIndex, parts.length);
       graphics.drawString(part, new Coordinate(centeredX, actualY));
     }
   }

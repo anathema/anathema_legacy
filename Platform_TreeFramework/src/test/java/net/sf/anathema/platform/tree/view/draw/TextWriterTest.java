@@ -4,22 +4,24 @@ import net.sf.anathema.framework.ui.Area;
 import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.framework.ui.FontStyle;
 import net.sf.anathema.framework.ui.RGBColor;
+import net.sf.anathema.framework.ui.Rectangle;
 import net.sf.anathema.platform.tree.display.shape.AgnosticShape;
 import net.sf.anathema.platform.tree.display.shape.Polygon;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
-import static net.sf.anathema.platform.tree.view.draw.FilledPolygon_GraphicsTest.ANY_AREA_WITH_CONTENT;
-import static net.sf.anathema.platform.tree.view.draw.FilledPolygon_GraphicsTest.ANY_RECTANGLE;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-@Ignore
 public class TextWriterTest {
+
+  private static final int SHAPE_WIDTH = 100;
+  private static final int SHAPE_HEIGHT = 100;
+  public static final int TEXT_WIDTH = 50;
+  public static final int TEXT_HEIGHT = 15;
 
   private final Polygon shape = new Polygon();
   private final LineSuggestion suggestion = mock(LineSuggestion.class);
@@ -29,7 +31,7 @@ public class TextWriterTest {
   @Before
   public void createShape() throws Exception {
     shape.addPoint(0, 0);
-    shape.addPoint(100, 100);
+    shape.addPoint(SHAPE_WIDTH, SHAPE_HEIGHT);
   }
 
   @Before
@@ -45,15 +47,17 @@ public class TextWriterTest {
 
   @Before
   public void configureCanvas() throws Exception {
-    when(canvas.measureText(anyString())).thenReturn(ANY_AREA_WITH_CONTENT);
-    when(canvas.calculateBounds(any(AgnosticShape.class))).thenReturn(ANY_RECTANGLE);
+    when(canvas.measureText(anyString())).thenReturn(new Area(TEXT_WIDTH, TEXT_HEIGHT));
+    when(canvas.calculateBounds(any(AgnosticShape.class))).thenReturn(new Rectangle(new Coordinate(0, 0), new Area(SHAPE_WIDTH, SHAPE_HEIGHT)));
   }
 
 
   @Test
   public void writesGivenText() throws Exception {
     writer.write(canvas);
-    verify(canvas).drawString("ABC", new Coordinate(50, 46));
+    int expectedX = SHAPE_WIDTH / 2 - TEXT_WIDTH / 2;
+    int expectedY = 53;
+    verify(canvas).drawString("ABC", new Coordinate(expectedX, expectedY));
   }
 
   @Test
