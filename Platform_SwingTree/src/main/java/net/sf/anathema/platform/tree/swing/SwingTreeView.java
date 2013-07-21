@@ -4,11 +4,11 @@ import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.platform.tree.display.CascadeLoadException;
 import net.sf.anathema.platform.tree.display.CascadeLoadedListener;
 import net.sf.anathema.platform.tree.display.ContentFactory;
-import net.sf.anathema.platform.tree.display.ITreeView;
 import net.sf.anathema.platform.tree.display.NodeInteractionListener;
 import net.sf.anathema.platform.tree.display.NodeProperties;
 import net.sf.anathema.platform.tree.display.SpecialControl;
 import net.sf.anathema.platform.tree.display.ToolTipProperties;
+import net.sf.anathema.platform.tree.display.TreeView;
 import net.sf.anathema.platform.tree.view.AggregatingInteractionListener;
 import net.sf.anathema.platform.tree.view.InteractionTreeListening;
 import net.sf.anathema.platform.tree.view.container.Cascade;
@@ -21,7 +21,7 @@ import org.jmock.example.announcer.Announcer;
 
 import javax.swing.JComponent;
 
-public class SwingTreeView implements ITreeView {
+public class SwingTreeView implements TreeView {
 
   private final SwingPolygonPanel polygonPanel;
   private final Announcer<CascadeLoadedListener> loadListeners = Announcer.to(CascadeLoadedListener.class);

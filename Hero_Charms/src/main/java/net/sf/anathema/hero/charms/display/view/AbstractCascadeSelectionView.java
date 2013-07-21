@@ -10,10 +10,10 @@ import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.platform.tree.display.CascadeLoadedListener;
 import net.sf.anathema.platform.tree.display.GenericCascadeRenderer;
-import net.sf.anathema.platform.tree.display.ITreeView;
 import net.sf.anathema.platform.tree.display.NodeProperties;
 import net.sf.anathema.platform.tree.display.ToolTipProperties;
 import net.sf.anathema.platform.tree.display.TreeRenderer;
+import net.sf.anathema.platform.tree.display.TreeView;
 import net.sf.anathema.platform.tree.document.GenericCascadeFactory;
 import net.sf.anathema.platform.tree.swing.SwingTreeView;
 import net.sf.anathema.platform.tree.view.AgnosticCascadeStrategy;
@@ -113,7 +113,7 @@ public abstract class AbstractCascadeSelectionView implements CascadeSelectionVi
     return selectionPanel;
   }
 
-  protected final ITreeView getCharmTreeView() {
+  protected final TreeView getCharmTreeView() {
     return swingTreeView;
   }
 

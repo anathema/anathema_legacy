@@ -3,7 +3,7 @@ package net.sf.anathema.platform.tree.display;
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.platform.tree.view.container.Cascade;
 
-public interface ITreeView {
+public interface TreeView {
   void addNodeInteractionListener(NodeInteractionListener listener);
 
   void setNodeBackgroundColor(String nodeId, RGBColor color);
