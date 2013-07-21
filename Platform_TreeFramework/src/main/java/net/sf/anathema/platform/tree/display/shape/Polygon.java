@@ -33,10 +33,10 @@ public class Polygon implements AgnosticShape {
     for (; currentIndex < coordinates.count(); currentIndex++) {
       Coordinate currentPoint = coordinates.get(currentIndex);
       Coordinate pointBefore = coordinates.get(indexBefore);
-      boolean isNotAboveOrBelowBothReferencePoints = (currentPoint.y > candidate.y) != (pointBefore.y > candidate.y);
-      boolean hasCrossedPolygonBoundary = isNotAboveOrBelowBothReferencePoints &&
-              (candidate.x < (pointBefore.x - currentPoint.x) * (candidate.y - currentPoint.y) / (pointBefore.y - currentPoint.y) + currentPoint.x);
-      if (hasCrossedPolygonBoundary) {
+      boolean isVerticallyBetweenBothReferencePoints = (currentPoint.y > candidate.y) != (pointBefore.y > candidate.y);
+      boolean intersectsWithLineThroughBothReferencePoints = candidate.x < (pointBefore.x - currentPoint.x) * (candidate.y - currentPoint.y) / (pointBefore.y - currentPoint.y) + currentPoint.x;
+      boolean intersectsPolygonBoundary = isVerticallyBetweenBothReferencePoints && intersectsWithLineThroughBothReferencePoints;
+      if (intersectsPolygonBoundary) {
         isInside = !isInside;
       }
       indexBefore = currentIndex;
