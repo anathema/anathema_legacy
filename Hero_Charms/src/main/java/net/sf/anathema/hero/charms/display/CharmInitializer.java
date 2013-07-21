@@ -8,7 +8,7 @@ import net.sf.anathema.hero.charms.display.model.CharmDisplayModel;
 import net.sf.anathema.hero.charms.display.presenter.CharmDescriptionProviderExtractor;
 import net.sf.anathema.hero.charms.display.presenter.CharmDisplayPropertiesMap;
 import net.sf.anathema.hero.charms.display.tree.CharacterCharmTreePresenter;
-import net.sf.anathema.hero.charms.display.view.CascadeSelectionView;
+import net.sf.anathema.hero.charms.display.view.CharmView;
 import net.sf.anathema.hero.charms.model.CharmsModelFetcher;
 import net.sf.anathema.hero.display.presenter.HeroModelInitializer;
 import net.sf.anathema.hero.display.presenter.RegisteredInitializer;
@@ -40,7 +40,7 @@ public class CharmInitializer implements HeroModelInitializer {
     CharmDisplayPropertiesMap propertiesMap = new CharmDisplayPropertiesMap(applicationModel.getObjectFactory());
     TreePresentationProperties presentationProperties = propertiesMap.getDisplayProperties(characterType);
     String header = resources.getString("CardView.CharmConfiguration.CharmSelection.Title");
-    CascadeSelectionView charmView = sectionView.addView(header, CascadeSelectionView.class, characterType);
+    CharmView charmView = sectionView.addView(header, CharmView.class, characterType);
     CharacterCharmTreePresenter treePresenter = new CharacterCharmTreePresenter(resources, charmView, model, presentationProperties, propertiesMap);
     treePresenter.initPresentation();
     //MagicDetailPresenter detailPresenter = createMagicDetailPresenter();

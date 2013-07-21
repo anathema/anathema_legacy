@@ -10,7 +10,7 @@ import net.sf.anathema.platform.tree.display.NodeProperties;
 import net.sf.anathema.platform.tree.display.ToolTipProperties;
 import net.sf.anathema.platform.tree.display.TreeRenderer;
 
-public interface CascadeSelectionView extends SpecialCharmViewContainer {
+public interface CharmView extends SpecialCharmViewContainer {
 
   TreeRenderer getCharmTreeRenderer();
 

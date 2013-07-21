@@ -36,7 +36,7 @@ import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 import static net.sf.anathema.lib.gui.swing.GuiUtilities.calculateComboBoxSize;
 
-public class AbstractCascadeSelectionView implements CascadeSelectionView, IView {
+public class SwingCharmView implements CharmView, IView {
 
   private final JPanel selectionPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(4).fillX()));
   private JPanel content = new JPanel(new MigLayout(fillWithoutInsets().wrapAfter(1)));

@@ -8,7 +8,7 @@ import net.sf.anathema.hero.charms.display.coloring.CharmDye;
 import net.sf.anathema.hero.charms.display.coloring.ConfigurableCharmDye;
 import net.sf.anathema.hero.charms.display.presenter.CharmDisplayPropertiesMap;
 import net.sf.anathema.hero.charms.display.tree.AbstractCascadePresenter;
-import net.sf.anathema.hero.charms.display.view.CascadeSelectionView;
+import net.sf.anathema.hero.charms.display.view.CharmView;
 import net.sf.anathema.hero.charms.display.view.DefaultNodeProperties;
 import net.sf.anathema.hero.charms.model.GroupCharmTree;
 import net.sf.anathema.hero.framework.HeroEnvironment;
@@ -25,7 +25,7 @@ public class CascadePresenterImpl extends AbstractCascadePresenter implements Ca
     CharmCache cache = environment.getDataSet(CharmCache.class);
     CascadeCharmTreeViewProperties viewProperties = new CascadeCharmTreeViewProperties(resources, magicDescriptionProvider, cache);
     DefaultNodeProperties nodeProperties = new DefaultNodeProperties(resources, viewProperties, viewProperties);
-    CascadeSelectionView view = factory.createCascadeView(viewProperties, nodeProperties);
+    CharmView view = factory.createCascadeView(viewProperties, nodeProperties);
     view.initGui(viewProperties, nodeProperties);
     CharmDisplayPropertiesMap charmDisplayPropertiesMap = new CharmDisplayPropertiesMap(environment.getObjectFactory());
     CascadeCharmGroupChangeListener selectionListener = new CascadeCharmGroupChangeListener(view, viewProperties, charmDisplayPropertiesMap);

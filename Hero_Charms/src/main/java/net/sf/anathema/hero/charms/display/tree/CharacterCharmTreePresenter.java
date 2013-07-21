@@ -10,7 +10,7 @@ import net.sf.anathema.hero.charms.display.special.CharacterSpecialCharmPresente
 import net.sf.anathema.hero.charms.display.special.CommonSpecialCharmList;
 import net.sf.anathema.hero.charms.display.special.SpecialCharmViewBuilder;
 import net.sf.anathema.hero.charms.display.special.SwingSpecialCharmViewBuilder;
-import net.sf.anathema.hero.charms.display.view.CascadeSelectionView;
+import net.sf.anathema.hero.charms.display.view.CharmView;
 import net.sf.anathema.hero.charms.display.view.DefaultNodeProperties;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.charms.model.GroupCharmTree;
@@ -22,10 +22,10 @@ import net.sf.anathema.platform.tree.document.visualizer.TreePresentationPropert
 
 public class CharacterCharmTreePresenter extends AbstractCascadePresenter {
 
-  private final CascadeSelectionView view;
+  private final CharmView view;
   private final CharmDisplayModel model;
 
-  public CharacterCharmTreePresenter(Resources resources, CascadeSelectionView view, CharmDisplayModel charmModel,
+  public CharacterCharmTreePresenter(Resources resources, CharmView view, CharmDisplayModel charmModel,
                                      TreePresentationProperties presentationProperties, CharmDisplayPropertiesMap displayPropertiesMap) {
     super(resources);
     this.model = charmModel;
