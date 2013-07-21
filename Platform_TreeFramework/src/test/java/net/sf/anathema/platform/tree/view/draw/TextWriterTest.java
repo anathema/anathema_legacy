@@ -7,6 +7,7 @@ import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.platform.tree.display.shape.AgnosticShape;
 import net.sf.anathema.platform.tree.display.shape.Polygon;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static net.sf.anathema.platform.tree.view.draw.FilledPolygon_GraphicsTest.ANY_AREA_WITH_CONTENT;
@@ -17,6 +18,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+@Ignore
 public class TextWriterTest {
 
   private final Polygon shape = new Polygon();

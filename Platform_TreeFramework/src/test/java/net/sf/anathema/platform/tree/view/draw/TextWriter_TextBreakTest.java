@@ -5,6 +5,7 @@ import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.platform.tree.display.shape.AgnosticShape;
 import net.sf.anathema.platform.tree.display.shape.Polygon;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static net.sf.anathema.platform.tree.view.draw.FilledPolygon_GraphicsTest.ANY_AREA_WITH_CONTENT;
@@ -16,6 +17,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+@Ignore
 public class TextWriter_TextBreakTest {
 
   private LineSuggestion lineSuggestion = mock(LineSuggestion.class);
