@@ -56,8 +56,8 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
     interactionPresenter.initPresentation();
   }
 
-  protected void addTreeView(Resources resources, CharmView view, SpecialCharmSet specialCharmSet,
-                             MagicDescriptionProvider magicDescriptionProvider, CharmIdMap charmIdMap) {
+  protected void addTreeView(SpecialCharmSet specialCharmSet, MagicDescriptionProvider magicDescriptionProvider,
+                             CharmIdMap charmIdMap) {
     DefaultFunctionalNodeProperties functionalNodeProperties = new DefaultFunctionalNodeProperties();
     DefaultNodePresentationProperties nodeProperties = new DefaultNodePresentationProperties(resources,
             functionalNodeProperties, charmIdMap);

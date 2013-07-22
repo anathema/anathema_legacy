@@ -28,7 +28,7 @@ public class CharmCascadePerspective implements Perspective {
     CharmCascadeModuleView view = new CharmCascadeModuleView();
     HeroEnvironment characterGenerics = HeroEnvironmentExtractor.getGenerics(applicationModel);
     MagicDescriptionProvider magicDescriptionProvider = getCharmDescriptionProvider(applicationModel, resources);
-    new CascadePresenterImpl(resources, characterGenerics, view, magicDescriptionProvider).initPresentation();
+    new CascadePresenterImpl(resources, characterGenerics, view.createCascadeView(), magicDescriptionProvider).initPresentation();
     container.setSwingContent(view.getComponent());
   }
 

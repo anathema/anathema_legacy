@@ -1,6 +1,5 @@
 package net.sf.anathema.cascades.presenter;
 
-import net.sf.anathema.cascades.module.CascadeViewFactory;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.hero.charms.compiler.CharmCache;
@@ -18,13 +17,11 @@ public class CascadePresenterImpl extends AbstractCascadePresenter implements Ca
 
   private final CharmTreeIdentifierMap treeIdentifierMap = new CharmTreeIdentifierMap();
 
-  public CascadePresenterImpl(Resources resources, HeroEnvironment environment, CascadeViewFactory factory,
+  public CascadePresenterImpl(Resources resources, HeroEnvironment environment, CharmView view,
                               MagicDescriptionProvider magicDescriptionProvider) {
     super(resources);
     CharmCache cache = environment.getDataSet(CharmCache.class);
-    CharmView view = factory.createCascadeView();
     CascadeSpecialCharmSet specialCharmSet = new CascadeSpecialCharmSet(cache);
-    addTreeView(resources, view, specialCharmSet, magicDescriptionProvider, cache);
     CharmDisplayPropertiesMap charmDisplayPropertiesMap = new CharmDisplayPropertiesMap(environment.getObjectFactory());
     CascadeCharmGroupChangeListener selectionListener = new CascadeCharmGroupChangeListener(view, specialCharmSet,
             charmDisplayPropertiesMap);
@@ -32,6 +29,7 @@ public class CascadePresenterImpl extends AbstractCascadePresenter implements Ca
     setCharmTypes(new CascadeCharmTypes(characterTypes, cache.getCharmProvider()));
     setChangeListener(selectionListener);
     setView(view);
+    addTreeView(specialCharmSet, magicDescriptionProvider, cache);
     CharmDye dye = new ConfigurableCharmDye(selectionListener, new CascadeColoringStrategy(view));
     setCharmDye(dye);
     setCharmGroups(new CascadeGroupCollection(cache.getCharmProvider(), characterTypes, treeIdentifierMap));

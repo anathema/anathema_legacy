@@ -36,7 +36,6 @@ public class CharacterCharmTreePresenter extends AbstractCascadePresenter {
     this.view = view;
     this.charmIdMap = charmIdMap;
     CharmsModel charmConfiguration = model.getCharmModel();
-    addTreeView(resources, view);
     CharacterCharmGroupChangeListener charmGroupChangeListener = new CharacterCharmGroupChangeListener(
             charmConfiguration, view.getCharmTreeRenderer(), displayPropertiesMap);
     ConfigurableCharmDye colorist = new ConfigurableCharmDye(charmGroupChangeListener,
@@ -44,6 +43,7 @@ public class CharacterCharmTreePresenter extends AbstractCascadePresenter {
     setCharmTypes(new CharacterCharmTypes(charmModel));
     setChangeListener(charmGroupChangeListener);
     setView(view);
+    addTreeView(resources, view);
     SpecialCharmViewBuilder specialViewBuilder = createSpecialCharmViewBuilder(resources, charmConfiguration);
     SpecialCharmList specialCharmList = new CommonSpecialCharmList(view, specialViewBuilder);
     setSpecialPresenter(new CharacterSpecialCharmPresenter(charmGroupChangeListener, charmModel, specialCharmList));
@@ -57,7 +57,7 @@ public class CharacterCharmTreePresenter extends AbstractCascadePresenter {
   private void addTreeView(Resources resources, CharmView view) {
     CharacterSpecialCharmSet specialCharmSet = new CharacterSpecialCharmSet(model);
     MagicDescriptionProvider magicDescriptionProvider = model.getMagicDescriptionProvider();
-    addTreeView(resources, view, specialCharmSet, magicDescriptionProvider, charmIdMap);
+    addTreeView(specialCharmSet, magicDescriptionProvider, charmIdMap);
   }
 
   private SpecialCharmViewBuilder createSpecialCharmViewBuilder(Resources resources, CharmsModel charmConfiguration) {
