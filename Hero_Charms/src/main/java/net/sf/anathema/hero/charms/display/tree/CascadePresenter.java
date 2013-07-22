@@ -1,6 +1,7 @@
 package net.sf.anathema.hero.charms.display.tree;
 
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
+import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.hero.advance.overview.presenter.SelectIdentifierConfiguration;
 import net.sf.anathema.hero.charms.display.coloring.CharmDye;
 import net.sf.anathema.hero.charms.display.model.CharmTypes;
@@ -23,6 +24,7 @@ import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.platform.tree.display.CascadeLoadedListener;
+import net.sf.anathema.platform.tree.display.TreeView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -56,7 +58,6 @@ public class CascadePresenter {
     ObjectSelectionView<Identifier> groupSelector = createCharmGroupSelector();
     addTreeView();
     initListening(typeSelector, groupSelector);
-    listenForCascadeLoading();
     specialCharmPresenter.initPresentation();
     view.whenCursorLeavesCharmAreaResetAllPopups();
     createHelpText();
@@ -66,11 +67,20 @@ public class CascadePresenter {
 
   private void addTreeView() {
     DefaultFunctionalNodeProperties functionalNodeProperties = new DefaultFunctionalNodeProperties();
-    DefaultNodePresentationProperties nodeProperties = new DefaultNodePresentationProperties(resources,
-            functionalNodeProperties, charmIdMap);
-    DefaultTooltipProperties tooltipProperties = new DefaultTooltipProperties(functionalNodeProperties, charmIdMap,
-            resources, magicDescriptionProvider, specialCharmSet);
-    view.addTreeView(tooltipProperties, nodeProperties);
+    final TreeView treeView = view.addTreeView();
+    treeView.loadNodeNamesFrom(new DefaultNodePresentationProperties(resources, functionalNodeProperties, charmIdMap));
+    treeView.setCanvasBackground(RGBColor.White);
+    treeView.initToolTips(
+            new DefaultTooltipProperties(functionalNodeProperties, charmIdMap, resources, magicDescriptionProvider,
+                    specialCharmSet));
+    treeView.addCascadeLoadedListener(new CascadeLoadedListener() {
+      @Override
+      public void cascadeLoaded() {
+        treeView.initNodeNames();
+        dye.setCharmVisuals();
+        specialCharmPresenter.showSpecialViews();
+      }
+    });
   }
 
   private void initListening(final ObjectSelectionView<Identifier> typeSelector,
@@ -86,21 +96,6 @@ public class CascadePresenter {
       public void valueChanged(Identifier newValue) {
         changeListener.valueChanged(newValue, typeSelector.getSelectedObject());
 
-      }
-    });
-  }
-
-  private void listenForCascadeLoading() {
-    view.addCascadeLoadedListener(new CascadeLoadedListener() {
-      @Override
-      public void cascadeLoaded() {
-        dye.setCharmVisuals();
-      }
-    });
-    view.addCascadeLoadedListener(new CascadeLoadedListener() {
-      @Override
-      public void cascadeLoaded() {
-        specialCharmPresenter.showSpecialViews();
       }
     });
   }

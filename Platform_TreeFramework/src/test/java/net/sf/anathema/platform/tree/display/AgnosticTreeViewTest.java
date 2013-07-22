@@ -102,7 +102,7 @@ public class AgnosticTreeViewTest {
   public void initializesNodeNamesOnCascadesAndRepaints() throws Exception {
     NodePresentationProperties properties = mock(NodePresentationProperties.class);
     swingTreeView.loadCascade(cascade, true);
-    swingTreeView.initNodeNames(properties);
+    swingTreeView.initNodeNames();
     InOrder inOrder = inOrder(cascade, panel);
     inOrder.verify(cascade).initNodeNames(properties);
     inOrder.verify(panel).refresh();

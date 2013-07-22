@@ -8,13 +8,10 @@ import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.platform.tree.display.AgnosticTreeView;
-import net.sf.anathema.platform.tree.display.CascadeLoadedListener;
 import net.sf.anathema.platform.tree.display.ContentFactory;
 import net.sf.anathema.platform.tree.display.GenericCascadeRenderer;
 import net.sf.anathema.platform.tree.display.ISpecialNodeView;
 import net.sf.anathema.platform.tree.display.NodeInteractionListener;
-import net.sf.anathema.platform.tree.display.NodePresentationProperties;
-import net.sf.anathema.platform.tree.display.ToolTipProperties;
 import net.sf.anathema.platform.tree.display.TreeRenderer;
 import net.sf.anathema.platform.tree.display.TreeView;
 import net.sf.anathema.platform.tree.document.GenericCascadeFactory;
@@ -43,16 +40,7 @@ public class SwingCharmView implements CharmView, IView {
     content.add(viewComponent.getComponent(), new CC().grow().push());
   }
 
-  public TreeView addTreeView(final ToolTipProperties treeProperties, final NodePresentationProperties properties) {
-    CascadeLoadedListener listener = new CascadeLoadedListener() {
-      @Override
-      public void cascadeLoaded() {
-        treeView.initNodeNames(properties);
-      }
-    };
-    treeView.initToolTips(treeProperties);
-    treeView.addCascadeLoadedListener(listener);
-    treeView.setCanvasBackground(RGBColor.White);
+  public TreeView addTreeView() {
     return treeView;
   }
 
@@ -89,11 +77,6 @@ public class SwingCharmView implements CharmView, IView {
   @Override
   public TreeRenderer getCharmTreeRenderer() {
     return new GenericCascadeRenderer(treeView, new GenericCascadeFactory(new AgnosticCascadeStrategy()));
-  }
-
-  @Override
-  public final void addCascadeLoadedListener(CascadeLoadedListener cascadeListener) {
-    treeView.addCascadeLoadedListener(cascadeListener);
   }
 
   @Override

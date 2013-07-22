@@ -10,13 +10,13 @@ import net.sf.anathema.platform.tree.document.visualizer.TreePresentationPropert
 
 public class CascadeCharmGroupChangeListener extends AbstractCharmGroupChangeListener {
 
-  private final CharmView cascadeView;
+  private final CharmView charmView;
   private final CascadeSpecialCharmSet specialCharmSet;
 
-  public CascadeCharmGroupChangeListener(CharmView cascadeView, CascadeSpecialCharmSet specialCharmSet,
+  public CascadeCharmGroupChangeListener(CharmView charmView, CascadeSpecialCharmSet specialCharmSet,
                                          CharmDisplayPropertiesMap charmDisplayPropertiesMap) {
-    super(new FriendlyCharmGroupArbitrator(), cascadeView.getCharmTreeRenderer(), charmDisplayPropertiesMap);
-    this.cascadeView = cascadeView;
+    super(new FriendlyCharmGroupArbitrator(), charmView.getCharmTreeRenderer(), charmDisplayPropertiesMap);
+    this.charmView = charmView;
     this.specialCharmSet = specialCharmSet;
   }
 
@@ -24,7 +24,7 @@ public class CascadeCharmGroupChangeListener extends AbstractCharmGroupChangeLis
   protected final void modifyCharmVisuals(Identifier type) {
     specialCharmSet.setType(type);
     RGBColor color = findColor(type);
-    cascadeView.setBackgroundColor(color);
+    charmView.setBackgroundColor(color);
   }
 
   private RGBColor findColor(Identifier type) {

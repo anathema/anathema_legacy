@@ -9,7 +9,6 @@ import net.sf.anathema.hero.charms.model.CharmsModel;
 
 public class CharacterColoringStrategy implements CharmColoring {
 
-
   private static final int MAXIMUM_OPACITY = 255;
   private static final int REDUCED_OPACITY = 70;
   private static final RGBColor UNSELECTED_COLOR = RGBColor.White;

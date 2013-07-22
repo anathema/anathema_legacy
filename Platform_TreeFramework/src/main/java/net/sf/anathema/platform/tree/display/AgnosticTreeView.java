@@ -19,6 +19,7 @@ public class AgnosticTreeView implements TreeView {
   private final AggregatingInteractionListener allInteractionListeners = new AggregatingInteractionListener();
   private final ProxyCascade cascade = new ProxyCascade();
   private final SpecialContentMap specialContent = new SpecialContentMap();
+  private NodePresentationProperties nodePresentationProperties;
 
   public AgnosticTreeView(PolygonPanel polygonPanel) {
     this.polygonPanel = polygonPanel;
@@ -64,13 +65,19 @@ public class AgnosticTreeView implements TreeView {
   }
 
   @Override
-  public void initNodeNames(NodePresentationProperties properties) {
-    cascade.initNodeNames(properties);
+  public void initNodeNames() {
+    cascade.initNodeNames(nodePresentationProperties);
     polygonPanel.refresh();
   }
 
+  @Override
   public void initToolTips(ToolTipProperties properties) {
     polygonPanel.addMouseMotionListener(new ToolTipListener(properties, polygonPanel, cascade));
+  }
+
+  @Override
+  public void loadNodeNamesFrom(NodePresentationProperties nodePresentationProperties) {
+    this.nodePresentationProperties = nodePresentationProperties;
   }
 
   @Override
