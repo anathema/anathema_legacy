@@ -9,9 +9,6 @@ import net.sf.anathema.hero.charms.display.coloring.ConfigurableCharmDye;
 import net.sf.anathema.hero.charms.display.presenter.CharmDisplayPropertiesMap;
 import net.sf.anathema.hero.charms.display.tree.AbstractCascadePresenter;
 import net.sf.anathema.hero.charms.display.view.CharmView;
-import net.sf.anathema.hero.charms.display.view.DefaultFunctionalNodeProperties;
-import net.sf.anathema.hero.charms.display.view.DefaultNodePresentationProperties;
-import net.sf.anathema.hero.charms.display.view.DefaultTooltipProperties;
 import net.sf.anathema.hero.charms.model.GroupCharmTree;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.lib.resources.Resources;
@@ -26,7 +23,8 @@ public class CascadePresenterImpl extends AbstractCascadePresenter implements Ca
     super(resources);
     CharmCache cache = environment.getDataSet(CharmCache.class);
     CharmView view = factory.createCascadeView();
-    CascadeSpecialCharmSet specialCharmSet = addTreeView(resources, magicDescriptionProvider, cache, view);
+    CascadeSpecialCharmSet specialCharmSet = new CascadeSpecialCharmSet(cache);
+    addTreeView(resources, view, specialCharmSet, magicDescriptionProvider, cache);
     CharmDisplayPropertiesMap charmDisplayPropertiesMap = new CharmDisplayPropertiesMap(environment.getObjectFactory());
     CascadeCharmGroupChangeListener selectionListener = new CascadeCharmGroupChangeListener(view, specialCharmSet,
             charmDisplayPropertiesMap);
@@ -39,17 +37,6 @@ public class CascadePresenterImpl extends AbstractCascadePresenter implements Ca
     setCharmGroups(new CascadeGroupCollection(cache.getCharmProvider(), characterTypes, treeIdentifierMap));
   }
 
-  private CascadeSpecialCharmSet addTreeView(Resources resources, MagicDescriptionProvider magicDescriptionProvider,
-                                             CharmCache cache, CharmView view) {
-    DefaultFunctionalNodeProperties functionalNodeProperties = new DefaultFunctionalNodeProperties();
-    DefaultNodePresentationProperties nodeProperties = new DefaultNodePresentationProperties(resources,
-            functionalNodeProperties, cache);
-    CascadeSpecialCharmSet specialCharmSet = new CascadeSpecialCharmSet(cache);
-    DefaultTooltipProperties tooltipProperties = new DefaultTooltipProperties(functionalNodeProperties, cache,
-            resources, magicDescriptionProvider, specialCharmSet);
-    view.addTreeView(tooltipProperties, nodeProperties);
-    return specialCharmSet;
-  }
 
   @Override
   protected GroupCharmTree getCharmTree(Identifier type) {

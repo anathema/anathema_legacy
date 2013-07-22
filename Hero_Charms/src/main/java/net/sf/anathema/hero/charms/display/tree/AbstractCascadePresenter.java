@@ -1,13 +1,19 @@
 package net.sf.anathema.hero.charms.display.tree;
 
+import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.hero.advance.overview.presenter.SelectIdentifierConfiguration;
 import net.sf.anathema.hero.charms.display.coloring.CharmDye;
 import net.sf.anathema.hero.charms.display.model.CharmTypes;
 import net.sf.anathema.hero.charms.display.special.NullSpecialCharmPresenter;
 import net.sf.anathema.hero.charms.display.special.SpecialCharmViewPresenter;
 import net.sf.anathema.hero.charms.display.view.CharmView;
+import net.sf.anathema.hero.charms.display.view.DefaultFunctionalNodeProperties;
+import net.sf.anathema.hero.charms.display.view.DefaultNodePresentationProperties;
+import net.sf.anathema.hero.charms.display.view.DefaultTooltipProperties;
 import net.sf.anathema.hero.charms.display.view.ICharmGroupChangeListener;
+import net.sf.anathema.hero.charms.display.view.SpecialCharmSet;
 import net.sf.anathema.hero.charms.model.CharmGroupCollection;
+import net.sf.anathema.hero.charms.model.CharmIdMap;
 import net.sf.anathema.hero.charms.model.GroupCharmTree;
 import net.sf.anathema.hero.charms.model.ICharmGroup;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
@@ -48,6 +54,16 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
     createHelpText();
     alienPresenter.initPresentation(typeSelector);
     interactionPresenter.initPresentation();
+  }
+
+  protected void addTreeView(Resources resources, CharmView view, SpecialCharmSet specialCharmSet,
+                             MagicDescriptionProvider magicDescriptionProvider, CharmIdMap charmIdMap) {
+    DefaultFunctionalNodeProperties functionalNodeProperties = new DefaultFunctionalNodeProperties();
+    DefaultNodePresentationProperties nodeProperties = new DefaultNodePresentationProperties(resources,
+            functionalNodeProperties, charmIdMap);
+    DefaultTooltipProperties tooltipProperties = new DefaultTooltipProperties(functionalNodeProperties, charmIdMap,
+            resources, magicDescriptionProvider, specialCharmSet);
+    view.addTreeView(tooltipProperties, nodeProperties);
   }
 
   private void initListening(final ObjectSelectionView<Identifier> typeSelector,

@@ -1,5 +1,6 @@
 package net.sf.anathema.hero.charms.display.tree;
 
+import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.hero.charms.display.coloring.CharacterColoringStrategy;
 import net.sf.anathema.hero.charms.display.coloring.ConfigurableCharmDye;
 import net.sf.anathema.hero.charms.display.model.CharacterCharmTypes;
@@ -12,8 +13,6 @@ import net.sf.anathema.hero.charms.display.special.SpecialCharmViewBuilder;
 import net.sf.anathema.hero.charms.display.special.SwingSpecialCharmViewBuilder;
 import net.sf.anathema.hero.charms.display.view.CharmView;
 import net.sf.anathema.hero.charms.display.view.DefaultFunctionalNodeProperties;
-import net.sf.anathema.hero.charms.display.view.DefaultNodePresentationProperties;
-import net.sf.anathema.hero.charms.display.view.DefaultTooltipProperties;
 import net.sf.anathema.hero.charms.model.CharmIdMap;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.charms.model.GroupCharmTree;
@@ -56,12 +55,9 @@ public class CharacterCharmTreePresenter extends AbstractCascadePresenter {
   }
 
   private void addTreeView(Resources resources, CharmView view) {
-    DefaultFunctionalNodeProperties functionalNodeProperties = new DefaultFunctionalNodeProperties();
-    DefaultNodePresentationProperties nodeProperties = new DefaultNodePresentationProperties(resources,
-            functionalNodeProperties, charmIdMap);
-    DefaultTooltipProperties tooltipProperties = new DefaultTooltipProperties(functionalNodeProperties, charmIdMap,
-            resources, model.getMagicDescriptionProvider(), new CharacterSpecialCharmSet(model));
-    view.addTreeView(tooltipProperties, nodeProperties);
+    CharacterSpecialCharmSet specialCharmSet = new CharacterSpecialCharmSet(model);
+    MagicDescriptionProvider magicDescriptionProvider = model.getMagicDescriptionProvider();
+    addTreeView(resources, view, specialCharmSet, magicDescriptionProvider, charmIdMap);
   }
 
   private SpecialCharmViewBuilder createSpecialCharmViewBuilder(Resources resources, CharmsModel charmConfiguration) {
