@@ -28,9 +28,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public abstract class AbstractCascadePresenter implements ICascadeSelectionPresenter {
+public class AbstractCascadePresenter implements ICascadeSelectionPresenter {
 
   private final Resources resources;
+  private CharmTreeMap charmTreeMap;
   private ICharmGroupChangeListener changeListener;
   private CharmView view;
   private CharmDye dye;
@@ -40,8 +41,9 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
   private AlienCharmPresenter alienPresenter = new NullAlienCharmPresenter();
   private CharmInteractionPresenter interactionPresenter = new NullInteractionPresenter();
 
-  public AbstractCascadePresenter(Resources resources) {
+  public AbstractCascadePresenter(Resources resources, CharmTreeMap charmTreeMap) {
     this.resources = resources;
+    this.charmTreeMap = charmTreeMap;
   }
 
   public void initPresentation() {
@@ -157,7 +159,7 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
       groupSelector.setObjects(new Identifier[0]);
       return;
     }
-    GroupCharmTree charmTree = getCharmTree(cascadeType);
+    GroupCharmTree charmTree = charmTreeMap.getCharmTree(cascadeType);
     if (charmTree == null) {
       groupSelector.setObjects(new Identifier[0]);
       return;
@@ -167,8 +169,6 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
     groupSelector.setObjects(sortedGroups.toArray(new ICharmGroup[sortedGroups.size()]));
     specialCharmPresenter.showSpecialViews();
   }
-
-  protected abstract GroupCharmTree getCharmTree(Identifier type);
 
   protected void setAlienCharmPresenter(AlienCharmPresenter presenter) {
     this.alienPresenter = presenter;
