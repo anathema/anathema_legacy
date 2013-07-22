@@ -4,6 +4,6 @@ dependencies {
     compile project(':Character_Main_FX')
     compile project(':Character_Main_Swing')
     compile project(':Engine_Exalted')
-    testCompile ext.testDependencies
+    testCompile testDependencies
     testCompile project(path: ':Character_Main', configuration: 'tests')
 }

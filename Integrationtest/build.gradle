@@ -1,6 +1,6 @@
 dependencies {
-  testCompile ext.testDependencies
-  testCompile ext.integrationTestDependencies
+  testCompile testDependencies
+  testCompile integrationTestDependencies
   testCompile project(path:':Engine_Character', configuration:'tests')
   //For testing, all projects need to be compiled against.
   project.parent.subprojects.each {

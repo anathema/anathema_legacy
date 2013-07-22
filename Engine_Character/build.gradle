@@ -1,8 +1,8 @@
 dependencies {
     compile 'org.apache.commons:commons-lang3:3.1'
     compile 'com.google.guava:guava:12.0'
-    testCompile ext.testDependencies
-    testCompile ext.integrationTestDependencies
+    testCompile testDependencies
+    testCompile integrationTestDependencies
 }
 
 apply from: "../gradle/cucumber.gradle"

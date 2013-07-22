@@ -7,7 +7,7 @@ dependencies {
     compile project(':Hero_Spiritual')
     compile project(':Hero_Sheet')
     compile project(':Hero_Traits')
-    testCompile ext.testDependencies
+    testCompile testDependencies
     testCompile project(path: ':Platform', configuration: 'tests')
     testCompile project(path: ':Character_Main', configuration: 'tests')
     testCompile project(path: ':Hero_Abilities', configuration: 'tests')

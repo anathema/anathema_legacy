@@ -1,7 +1,7 @@
 dependencies {
     compile project(':Engine_Character')
-    testCompile ext.testDependencies
-    testCompile ext.integrationTestDependencies
+    testCompile testDependencies
+    testCompile integrationTestDependencies
 }
 
 apply from: "../gradle/cucumber.gradle"

@@ -11,12 +11,12 @@ dependencies {
     compile 'com.google.guava:guava:14.0'
     compile 'xml-apis:xml-apis:1.3.04' //dom4j doesn't need these, but pulls an older version anyway
     compile 'com.miglayout:miglayout-core:4.2'
-    testCompile ext.testDependencies
+    testCompile testDependencies
 }
 
 task writeVersionProperties << {
     String versionDate = new Date().format('MM/dd/yy')
-    String versionString = parent.ext.versionString
+    String versionString = parent.versionString
     def versionFile = new File(project.sourceSets.main.output.resourcesDir, "version.properties")
     versionFile.parentFile.mkdirs()
     versionFile.createNewFile()

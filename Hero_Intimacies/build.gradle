@@ -3,5 +3,5 @@ dependencies {
     compile project(':Hero_Experience')
     compile project(':Hero_Spiritual')
     compile project(':Hero_Sheet')
-    testCompile ext.testDependencies
+    testCompile testDependencies
 }

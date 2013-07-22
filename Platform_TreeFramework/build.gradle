@@ -1,5 +1,5 @@
 dependencies {
   compile project(':Platform')
   compile project(':GraphLayout')
-  testCompile ext.testDependencies
+  testCompile testDependencies
 }
