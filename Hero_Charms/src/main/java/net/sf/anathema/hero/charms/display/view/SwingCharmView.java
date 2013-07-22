@@ -16,6 +16,7 @@ import net.sf.anathema.platform.tree.display.NodeInteractionListener;
 import net.sf.anathema.platform.tree.display.NodeProperties;
 import net.sf.anathema.platform.tree.display.ToolTipProperties;
 import net.sf.anathema.platform.tree.display.TreeRenderer;
+import net.sf.anathema.platform.tree.display.TreeView;
 import net.sf.anathema.platform.tree.document.GenericCascadeFactory;
 import net.sf.anathema.platform.tree.swing.SwingPolygonPanel;
 import net.sf.anathema.platform.tree.view.AgnosticCascadeStrategy;
@@ -33,11 +34,16 @@ import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 public class SwingCharmView implements CharmView, IView {
 
   private final JPanel selectionPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(4).fillX()));
-  private JPanel content = new JPanel(new MigLayout(fillWithoutInsets().wrapAfter(1)));
+  private final JPanel content = new JPanel(new MigLayout(fillWithoutInsets().wrapAfter(1)));
   private final SwingPolygonPanel viewComponent = new SwingPolygonPanel();
   private final AgnosticTreeView treeView = new AgnosticTreeView(viewComponent);
 
-  public void initGui(final ToolTipProperties treeProperties, final NodeProperties properties) {
+  public SwingCharmView() {
+    content.add(selectionPanel, new CC().growX());
+    content.add(viewComponent.getComponent(), new CC().grow().push());
+  }
+
+  public TreeView addTreeView(final ToolTipProperties treeProperties, final NodeProperties properties) {
     CascadeLoadedListener listener = new CascadeLoadedListener() {
       @Override
       public void cascadeLoaded() {
@@ -46,9 +52,8 @@ public class SwingCharmView implements CharmView, IView {
     };
     treeView.initToolTips(treeProperties);
     treeView.addCascadeLoadedListener(listener);
-    content.add(selectionPanel, new CC().growX());
-    content.add(viewComponent.getComponent(), new CC().grow().push());
     treeView.setCanvasBackground(RGBColor.White);
+    return treeView;
   }
 
   @Override

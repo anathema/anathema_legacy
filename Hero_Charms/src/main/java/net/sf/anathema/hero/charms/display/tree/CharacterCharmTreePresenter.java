@@ -29,12 +29,12 @@ public class CharacterCharmTreePresenter extends AbstractCascadePresenter {
                                      TreePresentationProperties presentationProperties, CharmDisplayPropertiesMap displayPropertiesMap) {
     super(resources);
     this.model = charmModel;
+    this.view = view;
     CharmsModel charmConfiguration = model.getCharmModel();
     CharacterCharmTreeViewProperties viewProperties =
             new CharacterCharmTreeViewProperties(resources, charmConfiguration, model.getMagicDescriptionProvider());
     DefaultNodeProperties nodeProperties = new DefaultNodeProperties(resources, viewProperties, viewProperties);
-    this.view = view;
-    view.initGui(viewProperties, nodeProperties);
+    view.addTreeView(viewProperties, nodeProperties);
     CharacterCharmGroupChangeListener charmGroupChangeListener =
             new CharacterCharmGroupChangeListener(charmConfiguration, view.getCharmTreeRenderer(), displayPropertiesMap);
     ConfigurableCharmDye colorist = new ConfigurableCharmDye(charmGroupChangeListener, new CharacterColoringStrategy(presentationProperties.getColor(), view, model));

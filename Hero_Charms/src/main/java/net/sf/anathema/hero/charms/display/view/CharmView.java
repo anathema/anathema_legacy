@@ -9,6 +9,7 @@ import net.sf.anathema.platform.tree.display.NodeInteractionListener;
 import net.sf.anathema.platform.tree.display.NodeProperties;
 import net.sf.anathema.platform.tree.display.ToolTipProperties;
 import net.sf.anathema.platform.tree.display.TreeRenderer;
+import net.sf.anathema.platform.tree.display.TreeView;
 
 public interface CharmView extends SpecialCharmViewContainer {
 
@@ -24,7 +25,7 @@ public interface CharmView extends SpecialCharmViewContainer {
 
   void addCharmCascadeHelp(String helpText);
 
-  void initGui(ToolTipProperties treeProperties, NodeProperties properties);
+  TreeView addTreeView(ToolTipProperties treeProperties, NodeProperties properties);
 
   void whenCursorLeavesCharmAreaResetAllPopups();
 
