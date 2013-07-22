@@ -81,6 +81,7 @@ public class CascadePresenter {
         specialCharmPresenter.showSpecialViews();
       }
     });
+    changeListener.operateOn(treeView);
   }
 
   private void initListening(final ObjectSelectionView<Identifier> typeSelector,

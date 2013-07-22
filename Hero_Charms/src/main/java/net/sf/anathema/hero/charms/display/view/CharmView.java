@@ -27,7 +27,5 @@ public interface CharmView extends SpecialCharmViewContainer {
 
   void colorNode(String charmId, RGBColor color);
 
-  void setBackgroundColor(RGBColor color);
-
   void addCharmInteractionListener(NodeInteractionListener listener);
 }

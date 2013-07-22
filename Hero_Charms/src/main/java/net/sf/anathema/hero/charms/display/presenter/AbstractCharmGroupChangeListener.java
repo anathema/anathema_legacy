@@ -9,6 +9,7 @@ import net.sf.anathema.graph.nodes.IRegularNode;
 import net.sf.anathema.hero.charms.display.view.ICharmGroupChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.platform.tree.display.TreeRenderer;
+import net.sf.anathema.platform.tree.display.TreeView;
 import net.sf.anathema.platform.tree.document.visualizer.TreePresentationProperties;
 
 import java.util.ArrayList;
@@ -37,6 +38,11 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
   @Override
   public final void valueChanged(Object cascade, Object type) {
     loadCharmTree((ICharmGroup) cascade, (Identifier) type);
+  }
+
+  @Override
+  public void operateOn(TreeView treeView) {
+    //nothing to do
   }
 
   private void loadCharmTree(ICharmGroup charmGroup, Identifier type) {
@@ -94,11 +100,6 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
   }
 
   protected abstract void modifyCharmVisuals(Identifier type);
-
-  @Override
-  public void reselect() {
-    valueChanged(getCurrentGroup(), currentType);
-  }
 
   @Override
   public boolean hasGroupSelected() {

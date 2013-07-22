@@ -97,11 +97,6 @@ public class SwingCharmView implements CharmView, IView {
   }
 
   @Override
-  public void setBackgroundColor(RGBColor color) {
-    treeView.setCanvasBackground(color);
-  }
-
-  @Override
   public void registerSpecialType(Class contentClass, ContentFactory factory) {
     treeView.registerSpecialType(contentClass, factory);
   }

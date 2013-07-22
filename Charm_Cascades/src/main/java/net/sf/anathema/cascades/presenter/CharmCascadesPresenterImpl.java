@@ -33,8 +33,8 @@ public class CharmCascadesPresenterImpl {
   public void initPresentation() {
     CascadeSpecialCharmSet specialCharmSet = new CascadeSpecialCharmSet(cache);
     CharmDisplayPropertiesMap charmDisplayPropertiesMap = new CharmDisplayPropertiesMap(objectFactory);
-    CascadeCharmGroupChangeListener selectionListener = new CascadeCharmGroupChangeListener(view, specialCharmSet,
-            charmDisplayPropertiesMap);
+    CascadeCharmGroupChangeListener selectionListener = new CascadeCharmGroupChangeListener(view.getCharmTreeRenderer(),
+            specialCharmSet, charmDisplayPropertiesMap);
     cascadePresenter.setCharmTreeMap(identifierMap);
     cascadePresenter.setCharmTypes(new CascadeCharmTypes(characterTypes, cache.getCharmProvider()));
     cascadePresenter.setChangeListener(selectionListener);
