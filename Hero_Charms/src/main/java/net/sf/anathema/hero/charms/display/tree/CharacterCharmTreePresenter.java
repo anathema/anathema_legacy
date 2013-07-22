@@ -24,12 +24,25 @@ public class CharacterCharmTreePresenter {
 
   private final CharmView view;
   private final CascadePresenter cascadePresenter;
+  private final Resources resources;
+  private CharmDisplayModel model;
+  private TreePresentationProperties presentationProperties;
+  private CharmDisplayPropertiesMap displayPropertiesMap;
+  private final CharmIdMap charmIdMap;
 
   public CharacterCharmTreePresenter(Resources resources, CharmView view, CharmDisplayModel model,
                                      TreePresentationProperties presentationProperties,
                                      CharmDisplayPropertiesMap displayPropertiesMap, CharmIdMap charmIdMap) {
+    this.resources = resources;
+    this.model = model;
+    this.presentationProperties = presentationProperties;
+    this.displayPropertiesMap = displayPropertiesMap;
+    this.charmIdMap = charmIdMap;
     this.cascadePresenter = new CascadePresenter(resources, new CharacterCharmTreeMap(model));
     this.view = view;
+  }
+
+  public void initPresentation() {
     CharmsModel charmConfiguration = model.getCharmModel();
     CharacterCharmGroupChangeListener charmGroupChangeListener = new CharacterCharmGroupChangeListener(
             charmConfiguration, view.getCharmTreeRenderer(), displayPropertiesMap);
@@ -40,7 +53,8 @@ public class CharacterCharmTreePresenter {
     cascadePresenter.setView(view);
     SpecialCharmViewBuilder specialViewBuilder = new SwingSpecialCharmViewBuilder(resources, charmConfiguration);
     SpecialCharmList specialCharmList = new CommonSpecialCharmList(view, specialViewBuilder);
-    cascadePresenter.setSpecialPresenter(new CharacterSpecialCharmPresenter(charmGroupChangeListener, model, specialCharmList));
+    cascadePresenter.setSpecialPresenter(
+            new CharacterSpecialCharmPresenter(charmGroupChangeListener, model, specialCharmList));
     cascadePresenter.setCharmDye(colorist);
     cascadePresenter.setAlienCharmPresenter(new CharacterAlienCharmPresenter(model));
     cascadePresenter.setInteractionPresenter(
@@ -49,9 +63,6 @@ public class CharacterCharmTreePresenter {
     CharacterSpecialCharmSet specialCharmSet = new CharacterSpecialCharmSet(model);
     MagicDescriptionProvider magicDescriptionProvider = model.getMagicDescriptionProvider();
     cascadePresenter.addTreeView(specialCharmSet, magicDescriptionProvider, charmIdMap);
-  }
-
-  public void initPresentation() {
     cascadePresenter.initPresentation();
   }
 

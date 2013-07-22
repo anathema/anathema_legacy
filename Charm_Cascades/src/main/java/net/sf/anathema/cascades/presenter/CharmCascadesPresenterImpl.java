@@ -9,31 +9,41 @@ import net.sf.anathema.hero.charms.display.presenter.CharmDisplayPropertiesMap;
 import net.sf.anathema.hero.charms.display.tree.CascadePresenter;
 import net.sf.anathema.hero.charms.display.view.CharmView;
 import net.sf.anathema.hero.framework.HeroEnvironment;
+import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.lib.resources.Resources;
 
 public class CharmCascadesPresenterImpl {
   private final CascadePresenter cascadePresenter;
+  private final CharmCache cache;
+  private final ObjectFactory objectFactory;
+  private final CharacterTypes characterTypes;
+  private final CharmView view;
+  private final MagicDescriptionProvider magicDescriptionProvider;
+  private final CharmTreeIdentifierMap identifierMap;
 
   public CharmCascadesPresenterImpl(Resources resources, HeroEnvironment environment, CharmView view,
                                     MagicDescriptionProvider magicDescriptionProvider,
                                     CharmTreeIdentifierMap identifierMap) {
+    this.view = view;
+    this.magicDescriptionProvider = magicDescriptionProvider;
+    this.identifierMap = identifierMap;
     this.cascadePresenter = new CascadePresenter(resources, identifierMap);
-    CharmCache cache = environment.getDataSet(CharmCache.class);
-    CascadeSpecialCharmSet specialCharmSet = new CascadeSpecialCharmSet(cache);
-    CharmDisplayPropertiesMap charmDisplayPropertiesMap = new CharmDisplayPropertiesMap(environment.getObjectFactory());
-    CascadeCharmGroupChangeListener selectionListener = new CascadeCharmGroupChangeListener(view, specialCharmSet,
-            charmDisplayPropertiesMap);
-    CharacterTypes characterTypes = environment.getCharacterTypes();
-    cascadePresenter.setCharmTypes(new CascadeCharmTypes(characterTypes, cache.getCharmProvider()));
-    cascadePresenter.setChangeListener(selectionListener);
-    cascadePresenter.setView(view);
-    CharmDye dye = new ConfigurableCharmDye(selectionListener, new CascadeColoringStrategy(view));
-    cascadePresenter.setCharmDye(dye);
-    cascadePresenter.setCharmGroups(new CascadeGroupCollection(cache.getCharmProvider(), characterTypes, identifierMap));
-    cascadePresenter.addTreeView(specialCharmSet, magicDescriptionProvider, cache);
+    this.cache = environment.getDataSet(CharmCache.class);
+    this.objectFactory = environment.getObjectFactory();
+    this.characterTypes = environment.getCharacterTypes();
   }
 
   public void initPresentation() {
+    CascadeSpecialCharmSet specialCharmSet = new CascadeSpecialCharmSet(cache);
+    CharmDisplayPropertiesMap charmDisplayPropertiesMap = new CharmDisplayPropertiesMap(objectFactory);
+    CascadeCharmGroupChangeListener selectionListener = new CascadeCharmGroupChangeListener(view, specialCharmSet,
+            charmDisplayPropertiesMap);
+    cascadePresenter.setCharmTypes(new CascadeCharmTypes(characterTypes, cache.getCharmProvider()));
+    cascadePresenter.setChangeListener(selectionListener);
+    cascadePresenter.setView(view);
+    cascadePresenter.setCharmDye(new ConfigurableCharmDye(selectionListener, new CascadeColoringStrategy(view)));
+    cascadePresenter.setCharmGroups(new CascadeGroupCollection(cache.getCharmProvider(), characterTypes, identifierMap));
+    cascadePresenter.addTreeView(specialCharmSet, magicDescriptionProvider, cache);
     cascadePresenter.initPresentation();
   }
 }
