@@ -7,7 +7,7 @@ import net.sf.anathema.character.equipment.character.IEquipmentStringBuilder;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.dummy.DemoMeleeWeapon;
 import net.sf.anathema.character.equipment.dummy.DummyEquipmentObject;
-import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 import net.sf.anathema.character.main.library.trait.specialties.Specialty;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.framework.resources.LocaleResources;

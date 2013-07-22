@@ -1,28 +1,23 @@
 package net.sf.anathema.hero.charms.model.special;
 
-import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charm.CharmLearnAdapter;
-import net.sf.anathema.character.main.magic.model.charm.IExtendedCharmLearnableArbitrator;
-import net.sf.anathema.character.main.magic.model.charm.ILearningCharmGroup;
-import net.sf.anathema.character.main.magic.model.charm.special.CharmSpecialsModel;
-import net.sf.anathema.character.main.magic.model.charm.special.IMultiLearnableCharm;
-import net.sf.anathema.character.main.magic.model.charm.special.IMultipleEffectCharm;
-import net.sf.anathema.character.main.magic.model.charm.special.IOxBodyTechniqueCharm;
-import net.sf.anathema.character.main.magic.model.charm.special.IPainToleranceCharm;
-import net.sf.anathema.character.main.magic.model.charm.special.IPrerequisiteModifyingCharm;
-import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
-import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmLearnListener;
-import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmManager;
-import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmVisitor;
-import net.sf.anathema.character.main.magic.model.charm.special.ISubEffectCharm;
-import net.sf.anathema.character.main.magic.model.charm.special.ITraitCapModifyingCharm;
-import net.sf.anathema.character.main.magic.model.charm.special.IUpgradableCharm;
-import net.sf.anathema.character.main.magic.model.charm.special.MultipleEffectCharmConfiguration;
+import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.hero.charms.model.learn.CharmLearnAdapter;
+import net.sf.anathema.hero.charms.model.learn.IExtendedCharmLearnableArbitrator;
+import net.sf.anathema.hero.charms.model.learn.ILearningCharmGroup;
+import net.sf.anathema.hero.charms.model.special.multilearn.IMultiLearnableCharm;
+import net.sf.anathema.hero.charms.model.special.subeffects.IMultipleEffectCharm;
+import net.sf.anathema.hero.charms.model.special.oxbody.IOxBodyTechniqueCharm;
+import net.sf.anathema.hero.charms.model.special.paintolerance.IPainToleranceCharm;
+import net.sf.anathema.hero.charms.model.special.prerequisite.IPrerequisiteModifyingCharm;
+import net.sf.anathema.hero.charms.model.special.subeffects.ISubEffectCharm;
+import net.sf.anathema.hero.charms.model.special.traitcap.ITraitCapModifyingCharm;
+import net.sf.anathema.hero.charms.model.special.upgradable.IUpgradableCharm;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.hero.charms.display.special.CharmSpecialistImpl;
 import net.sf.anathema.hero.charms.model.CharmsModel;
-import net.sf.anathema.hero.charms.model.special.multilearn.MultiLearnableCharmConfiguration;
+import net.sf.anathema.hero.charms.model.special.multilearn.MultiLearnableCharmSpecialsImpl;
 import net.sf.anathema.hero.charms.model.special.oxbody.OxBodyTechniqueSpecialsImpl;
+import net.sf.anathema.hero.charms.model.special.subeffects.MultipleEffectCharmSpecialsImpl;
 import net.sf.anathema.hero.charms.model.special.subeffects.SubEffectCharmSpecialsImpl;
 import net.sf.anathema.hero.charms.model.special.traitcap.TraitCapModifyingCharmConfiguration;
 import net.sf.anathema.hero.charms.model.special.upgradable.UpgradableCharmConfiguration;
@@ -105,7 +100,7 @@ public class SpecialCharmManager implements ISpecialCharmManager {
   }
 
   private void registerEffectMultilearnableCharm(IMultipleEffectCharm visited, Charm charm, ILearningCharmGroup group) {
-    MultipleEffectCharmConfiguration configuration = new MultipleEffectCharmConfiguration(specialist, charm, visited, arbitrator);
+    MultipleEffectCharmSpecialsImpl configuration = new MultipleEffectCharmSpecialsImpl(specialist, charm, visited, arbitrator);
     addSpecialCharmConfiguration(charm, group, configuration, true, true);
   }
 
@@ -115,7 +110,7 @@ public class SpecialCharmManager implements ISpecialCharmManager {
   }
 
   private void registerMultiLearnableCharm(IMultiLearnableCharm visitedCharm, Charm charm, ILearningCharmGroup group) {
-    MultiLearnableCharmConfiguration configuration = new MultiLearnableCharmConfiguration(hero, charmsModel, charm, visitedCharm, arbitrator);
+    MultiLearnableCharmSpecialsImpl configuration = new MultiLearnableCharmSpecialsImpl(hero, charmsModel, charm, visitedCharm, arbitrator);
     addSpecialCharmConfiguration(charm, group, configuration, true, true);
   }
 

@@ -2,8 +2,8 @@ package net.sf.anathema.character.main.magic.parser.charms;
 
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
-import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charm.CharmImpl;
+import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.character.main.magic.charm.CharmImpl;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Document;
 import org.dom4j.Element;
@@ -12,10 +12,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.ATTRIB_ID;
-import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.TAG_ALTERNATIVE;
-import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.TAG_ALTERNATIVES;
-import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.TAG_CHARM_REFERENCE;
+import static net.sf.anathema.character.main.magic.charm.ICharmXMLConstants.ATTRIB_ID;
+import static net.sf.anathema.character.main.magic.charm.ICharmXMLConstants.TAG_ALTERNATIVE;
+import static net.sf.anathema.character.main.magic.charm.ICharmXMLConstants.TAG_ALTERNATIVES;
+import static net.sf.anathema.character.main.magic.charm.ICharmXMLConstants.TAG_CHARM_REFERENCE;
 import static net.sf.anathema.lib.lang.ArrayUtilities.getFirst;
 
 public class CharmAlternativeBuilder {

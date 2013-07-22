@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.xml.magic;
 
-import net.sf.anathema.character.main.magic.model.spells.CircleType;
+import net.sf.anathema.character.main.magic.spells.CircleType;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.magic.CustomizableFreePicksPredicate;
 import net.sf.anathema.character.main.template.magic.ISpellMagicTemplate;

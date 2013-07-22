@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.magic.parser;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants;
+import net.sf.anathema.character.main.magic.charm.ICharmXMLConstants;
 import net.sf.anathema.character.main.magic.parser.charms.CharmPrerequisiteList;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.AttributeRequirementBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.CharmPrerequisiteBuilder;

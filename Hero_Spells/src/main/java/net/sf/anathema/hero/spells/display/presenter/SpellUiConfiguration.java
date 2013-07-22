@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.spells.display.presenter;
 
-import net.sf.anathema.character.main.magic.model.spells.Spell;
+import net.sf.anathema.character.main.magic.spells.Spell;
 import net.sf.anathema.lib.gui.AbstractUIConfiguration;
 import net.sf.anathema.lib.gui.ConfigurableTooltip;
 import net.sf.anathema.lib.resources.Resources;

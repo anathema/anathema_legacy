@@ -1,18 +1,18 @@
 package net.sf.anathema.character.main.magic.parser.charms;
 
-import net.sf.anathema.character.main.magic.model.charm.CharmException;
-import net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants;
-import net.sf.anathema.character.main.magic.model.charm.duration.IDuration;
-import net.sf.anathema.character.main.magic.model.charm.duration.QualifiedAmountDuration;
-import net.sf.anathema.character.main.magic.model.charm.duration.SimpleDuration;
-import net.sf.anathema.character.main.magic.model.charm.duration.UntilEventDuration;
+import net.sf.anathema.character.main.magic.charm.CharmException;
+import net.sf.anathema.character.main.magic.charm.ICharmXMLConstants;
+import net.sf.anathema.character.main.magic.charm.duration.Duration;
+import net.sf.anathema.character.main.magic.charm.duration.QualifiedAmountDuration;
+import net.sf.anathema.character.main.magic.charm.duration.SimpleDuration;
+import net.sf.anathema.character.main.magic.charm.duration.UntilEventDuration;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
 public class DurationBuilder {
 
-  public IDuration buildDuration(Element durationElement) throws PersistenceException {
+  public Duration buildDuration(Element durationElement) throws PersistenceException {
     if (durationElement == null) {
       throw new CharmException("Duration not specified for Charm");
     }

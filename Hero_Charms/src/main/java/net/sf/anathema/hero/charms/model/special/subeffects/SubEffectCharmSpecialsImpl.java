@@ -1,14 +1,10 @@
 package net.sf.anathema.hero.charms.model.special.subeffects;
 
-import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charm.CharmSpecialist;
-import net.sf.anathema.character.main.magic.model.charm.special.ISubEffectCharm;
-import net.sf.anathema.character.main.magic.model.charm.special.MultipleEffectCharmConfiguration;
-import net.sf.anathema.character.main.magic.model.charm.special.SubEffect;
-import net.sf.anathema.character.main.magic.model.charm.special.SubEffectCharmSpecials;
-import net.sf.anathema.character.main.magic.model.charm.IExtendedCharmLearnableArbitrator;
+import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.hero.charms.model.special.CharmSpecialist;
+import net.sf.anathema.hero.charms.model.learn.IExtendedCharmLearnableArbitrator;
 
-public class SubEffectCharmSpecialsImpl extends MultipleEffectCharmConfiguration implements SubEffectCharmSpecials {
+public class SubEffectCharmSpecialsImpl extends MultipleEffectCharmSpecialsImpl implements SubEffectCharmSpecials {
 
   private final double pointCost;
 

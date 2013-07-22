@@ -3,7 +3,7 @@ package net.sf.anathema.hero.equipment.model;
 import net.sf.anathema.character.equipment.character.EquipmentHeroEvaluator;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
-import net.sf.anathema.character.main.equipment.ArtifactAttuneType;
+import net.sf.anathema.hero.equipment.sheet.content.stats.ArtifactAttuneType;
 import net.sf.anathema.character.main.library.trait.specialties.Specialty;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.types.AbilityType;
@@ -13,9 +13,9 @@ import net.sf.anathema.hero.equipment.SpecialtiesCollectionImpl;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.control.ChangeListener;
 
-import static net.sf.anathema.character.main.equipment.ArtifactAttuneType.FullyAttuned;
-import static net.sf.anathema.character.main.equipment.ArtifactAttuneType.Unattuned;
-import static net.sf.anathema.character.main.equipment.ArtifactAttuneType.UnharmoniouslyAttuned;
+import static net.sf.anathema.hero.equipment.sheet.content.stats.ArtifactAttuneType.FullyAttuned;
+import static net.sf.anathema.hero.equipment.sheet.content.stats.ArtifactAttuneType.Unattuned;
+import static net.sf.anathema.hero.equipment.sheet.content.stats.ArtifactAttuneType.UnharmoniouslyAttuned;
 
 public class EquipmentHeroEvaluatorImpl implements EquipmentHeroEvaluator {
 

@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.template.magic;
 
-import net.sf.anathema.character.main.magic.model.magic.Magic;
+import net.sf.anathema.character.main.magic.basic.Magic;
 
 public interface IMagicTemplate {
 

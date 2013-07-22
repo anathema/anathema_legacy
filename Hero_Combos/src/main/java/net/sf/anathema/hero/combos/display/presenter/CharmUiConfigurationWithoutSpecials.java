@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.combos.display.presenter;
 
-import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charmtree.builder.MagicDisplayLabeler;
-import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.CharmTooltipBuilder;
+import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.hero.charms.display.MagicDisplayLabeler;
+import net.sf.anathema.hero.charms.display.tooltip.CharmTooltipBuilder;
 import net.sf.anathema.lib.gui.AbstractUIConfiguration;
 import net.sf.anathema.lib.gui.ConfigurableTooltip;
 import net.sf.anathema.lib.resources.Resources;

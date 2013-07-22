@@ -1,5 +1,5 @@
 dependencies {
     compile project(':Character_Main')
     compile project(':Character_Main_Impl')
-    testCompile parent.ext.testDependencies
+    testCompile ext.testDependencies
 }

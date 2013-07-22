@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.magic.parser;
 
-import net.sf.anathema.character.main.magic.model.charm.CharmException;
+import net.sf.anathema.character.main.magic.charm.CharmException;
 import net.sf.anathema.character.main.magic.parser.charms.IIdStringBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.IdStringBuilder;
 import net.sf.anathema.lib.xml.DocumentUtilities;

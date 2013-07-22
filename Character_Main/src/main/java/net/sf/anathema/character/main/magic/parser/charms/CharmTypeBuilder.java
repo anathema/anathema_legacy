@@ -1,28 +1,28 @@
 package net.sf.anathema.character.main.magic.parser.charms;
 
 import com.google.common.base.Strings;
-import net.sf.anathema.character.main.magic.model.charm.CharmException;
-import net.sf.anathema.character.main.magic.model.charm.ICharmTypeVisitor;
-import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
-import net.sf.anathema.character.main.magic.model.charm.type.CharmTypeModel;
-import net.sf.anathema.character.main.magic.model.charm.type.ICharmTypeModel;
-import net.sf.anathema.character.main.magic.model.charm.type.ISimpleSpecialsModel;
-import net.sf.anathema.character.main.magic.model.charm.type.ITypeSpecialsModel;
-import net.sf.anathema.character.main.magic.model.charm.type.ReflexiveSpecialsModel;
-import net.sf.anathema.character.main.magic.model.charm.type.SimpleSpecialsModel;
-import net.sf.anathema.character.main.magic.model.charm.type.TurnType;
+import net.sf.anathema.character.main.magic.charm.CharmException;
+import net.sf.anathema.character.main.magic.charm.type.ICharmTypeVisitor;
+import net.sf.anathema.character.main.magic.charm.type.CharmType;
+import net.sf.anathema.character.main.magic.charm.type.CharmTypeModel;
+import net.sf.anathema.character.main.magic.charm.type.ICharmTypeModel;
+import net.sf.anathema.character.main.magic.charm.type.ISimpleSpecialsModel;
+import net.sf.anathema.character.main.magic.charm.type.ITypeSpecialsModel;
+import net.sf.anathema.character.main.magic.charm.type.ReflexiveSpecialsModel;
+import net.sf.anathema.character.main.magic.charm.type.SimpleSpecialsModel;
+import net.sf.anathema.character.main.magic.charm.type.TurnType;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
-import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.ATTRIB_DEFENSE;
-import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.ATTRIB_PRIMARY_STEP;
-import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.ATTRIB_SECONDARY_STEP;
-import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.ATTRIB_SPEED;
-import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.ATTRIB_TURN_TYPE;
-import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.ATTRIB_TYPE;
-import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.TAG_CHARMTYPE;
-import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.TAG_SPECIAL;
+import static net.sf.anathema.character.main.magic.charm.ICharmXMLConstants.ATTRIB_DEFENSE;
+import static net.sf.anathema.character.main.magic.charm.ICharmXMLConstants.ATTRIB_PRIMARY_STEP;
+import static net.sf.anathema.character.main.magic.charm.ICharmXMLConstants.ATTRIB_SECONDARY_STEP;
+import static net.sf.anathema.character.main.magic.charm.ICharmXMLConstants.ATTRIB_SPEED;
+import static net.sf.anathema.character.main.magic.charm.ICharmXMLConstants.ATTRIB_TURN_TYPE;
+import static net.sf.anathema.character.main.magic.charm.ICharmXMLConstants.ATTRIB_TYPE;
+import static net.sf.anathema.character.main.magic.charm.ICharmXMLConstants.TAG_CHARMTYPE;
+import static net.sf.anathema.character.main.magic.charm.ICharmXMLConstants.TAG_SPECIAL;
 
 public class CharmTypeBuilder {
 

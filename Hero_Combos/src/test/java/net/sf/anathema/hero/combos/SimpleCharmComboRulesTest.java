@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.combos;
 
-import net.sf.anathema.character.main.dummy.DummyCharmUtilities;
-import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
+import net.sf.anathema.hero.dummy.DummyCharmUtilities;
+import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.character.main.magic.charm.type.CharmType;
 import net.sf.anathema.hero.combos.model.ComboRules;
 import net.sf.anathema.hero.combos.model.rules.SimpleCharmComboRules;
 import org.junit.Test;

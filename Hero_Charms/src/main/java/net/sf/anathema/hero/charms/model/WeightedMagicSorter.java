@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.charms.model;
 
-import net.sf.anathema.character.main.magic.model.magic.Magic;
+import net.sf.anathema.character.main.magic.basic.Magic;
 import net.sf.anathema.lib.compare.WeightedObject;
 import net.sf.anathema.lib.compare.WeightedObjectSorter;
 

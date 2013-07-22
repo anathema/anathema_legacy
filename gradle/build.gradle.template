@@ -2,6 +2,6 @@ dependencies {
 //  Insert your dependencies here like this:
 //  compile project(':Character_Equipment')
 //  compile project(':Character_Main')
-  testCompile parent.ext.testDependencies //includes JUnit etc.
+  testCompile ext.testDependencies //includes JUnit etc.
 //  testCompile project(path: ':Platform', configuration: 'tests')
 }

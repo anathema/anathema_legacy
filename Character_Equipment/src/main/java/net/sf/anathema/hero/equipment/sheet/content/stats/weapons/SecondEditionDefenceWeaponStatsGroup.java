@@ -3,7 +3,7 @@ package net.sf.anathema.hero.equipment.sheet.content.stats.weapons;
 import net.sf.anathema.character.equipment.character.EquipmentHeroEvaluator;
 import net.sf.anathema.character.equipment.character.EquipmentOptionsProvider;
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
-import net.sf.anathema.character.main.equipment.weapon.IWeaponStats;
+import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IWeaponStats;
 import net.sf.anathema.character.main.traits.types.AttributeType;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.traits.TraitMap;

@@ -25,7 +25,7 @@ task publishAsFullRelease
 publishAsFullRelease.group = 'Release'
 publishAsFullRelease.description = "Builds & uploads the release's artifacts to Anathema's update server. [Requires registered credentials]"
 
-prepareFullRelease.dependsOn "release"
+prepareFullRelease.dependsOn "build"
 uploadFullRelease.dependsOn prepareFullRelease
 finishFullRelease.dependsOn uploadFullRelease
 publishAsFullRelease.dependsOn finishFullRelease

@@ -4,7 +4,7 @@ import net.sf.anathema.character.equipment.creation.model.EquipmentStatisticsCre
 import net.sf.anathema.character.equipment.creation.model.WeaponTag;
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsModel;
-import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 import net.sf.anathema.equipment.core.MaterialComposition;
 
 import static net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType.Artifact;

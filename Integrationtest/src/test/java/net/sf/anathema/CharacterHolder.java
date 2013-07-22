@@ -1,5 +1,6 @@
 package net.sf.anathema;
 
+import com.google.inject.Singleton;
 import net.sf.anathema.character.main.Character;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.hero.charms.model.CharmsModel;
@@ -9,6 +10,7 @@ import net.sf.anathema.hero.concept.HeroConceptFetcher;
 import net.sf.anathema.hero.traits.TraitMap;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
 
+@Singleton
 public class CharacterHolder {
   private Character character;
 

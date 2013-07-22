@@ -1,6 +1,6 @@
 dependencies {
-  testCompile parent.ext.testDependencies
-  testCompile parent.ext.integrationTestDependencies
+  testCompile ext.testDependencies
+  testCompile ext.integrationTestDependencies
   testCompile project(path:':Engine_Character', configuration:'tests')
   //For testing, all projects need to be compiled against.
   project.parent.subprojects.each {
@@ -12,4 +12,10 @@ dependencies {
 
 private boolean isRelevant(project) {
   return project.name != "Anathema" && project.name != "Integrationtest"
+}
+
+apply from: "../gradle/cucumber.gradle"
+
+test {
+    exclude "**"
 }

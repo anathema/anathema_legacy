@@ -1,11 +1,11 @@
 package net.sf.anathema.hero.magic.model.charms;
 
-import net.sf.anathema.character.main.dummy.DummyCharm;
-import net.sf.anathema.character.main.magic.cache.CharmProvider;
-import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charmtree.MartialArtsCharmTree;
-import net.sf.anathema.character.main.magic.model.magic.attribute.MagicAttributeImpl;
-import net.sf.anathema.charms.MartialArtsLevel;
+import net.sf.anathema.hero.dummy.DummyCharm;
+import net.sf.anathema.hero.charms.compiler.CharmProvider;
+import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.hero.charms.model.options.MartialArtsCharmTree;
+import net.sf.anathema.character.main.magic.basic.attribute.MagicAttributeImpl;
+import net.sf.anathema.character.main.magic.charm.martial.MartialArtsLevel;
 import org.junit.Test;
 
 import static org.mockito.Mockito.mock;

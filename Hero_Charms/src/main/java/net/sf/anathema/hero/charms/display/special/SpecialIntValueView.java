@@ -4,7 +4,7 @@ import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.main.library.trait.view.TraitView;
 import net.sf.anathema.framework.value.IntValueView;
 import net.sf.anathema.lib.control.IntValueChangedListener;
-import net.sf.anathema.platform.tree.view.interaction.SpecialContent;
+import net.sf.anathema.platform.tree.swing.SpecialContent;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;

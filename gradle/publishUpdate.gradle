@@ -51,7 +51,7 @@ task publishAsUpdate
 publishAsUpdate.group = 'Release'
 publishAsUpdate.description = "Builds & uploads the update artifacts to Anathema's update server. [Requires registered credentials]"
 
-copyFilesForUpdate.dependsOn "buildZip"
+copyFilesForUpdate.dependsOn "copyAnathemaModules", "copyExternalDependencies"
 buildFileListForUpdate.dependsOn copyFilesForUpdate
 uploadUpdate.dependsOn prepareUpdate, buildFileListForUpdate
 finishUpdate.dependsOn uploadUpdate

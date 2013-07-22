@@ -28,11 +28,20 @@ public class RGBColor {
     this.alpha = color.alpha;
   }
 
+  public RGBColor(RGBColor color, int newAlpha) {
+    this.red = color.red;
+    this.green = color.green;
+    this.blue = color.blue;
+    this.alpha = newAlpha;
+  }
+
+
   public static final RGBColor White = new RGBColor(255, 255, 255);
   public static final RGBColor Pink = new RGBColor(255, 175, 175);
   public static final RGBColor Red = new RGBColor(255, 0, 0);
   public static final RGBColor Blue = new RGBColor(0, 0, 255);
   public static final RGBColor Black = new RGBColor(0, 0, 0);
+  public static final RGBColor Transparent = new RGBColor(0, 0, 0, 0);
 
   private static final double FACTOR = 0.7;
 

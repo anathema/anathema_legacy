@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.magic.model.charms;
 
-import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charm.CharmGroup;
+import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.hero.charms.model.CharmGroup;
 import net.sf.anathema.hero.dummy.DummyExaltCharacterType;
 import org.junit.Test;
 

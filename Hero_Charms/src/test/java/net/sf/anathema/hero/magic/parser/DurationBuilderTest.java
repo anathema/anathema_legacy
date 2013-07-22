@@ -1,10 +1,10 @@
 package net.sf.anathema.hero.magic.parser;
 
-import net.sf.anathema.character.main.magic.model.charm.CharmException;
-import net.sf.anathema.character.main.magic.model.charm.duration.IDuration;
-import net.sf.anathema.character.main.magic.model.charm.duration.QualifiedAmountDuration;
-import net.sf.anathema.character.main.magic.model.charm.duration.SimpleDuration;
-import net.sf.anathema.character.main.magic.model.charm.duration.UntilEventDuration;
+import net.sf.anathema.character.main.magic.charm.CharmException;
+import net.sf.anathema.character.main.magic.charm.duration.Duration;
+import net.sf.anathema.character.main.magic.charm.duration.QualifiedAmountDuration;
+import net.sf.anathema.character.main.magic.charm.duration.SimpleDuration;
+import net.sf.anathema.character.main.magic.charm.duration.UntilEventDuration;
 import net.sf.anathema.character.main.magic.parser.charms.DurationBuilder;
 import net.sf.anathema.lib.exception.PersistenceException;
 import org.dom4j.Element;
@@ -23,7 +23,7 @@ public class DurationBuilderTest {
     Element durationElement = getDurationElement();
     String text = "One Tudeldu";
     durationElement.addAttribute("duration", text);
-    IDuration duration = builder.buildDuration(durationElement);
+    Duration duration = builder.buildDuration(durationElement);
     assertFalse(duration == SimpleDuration.INSTANT_DURATION);
     assertFalse(duration == SimpleDuration.PERMANENT_DURATION);
     assertEquals(text, ((SimpleDuration) duration).getText());
@@ -38,7 +38,7 @@ public class DurationBuilderTest {
     Element durationElement = getDurationElement();
     String text = "Instant";
     durationElement.addAttribute("duration", text);
-    IDuration duration = builder.buildDuration(durationElement);
+    Duration duration = builder.buildDuration(durationElement);
     assertEquals(SimpleDuration.INSTANT_DURATION, duration);
   }
 
@@ -47,7 +47,7 @@ public class DurationBuilderTest {
     Element durationElement = getDurationElement();
     String text = "Permanent";
     durationElement.addAttribute("duration", text);
-    IDuration duration = builder.buildDuration(durationElement);
+    Duration duration = builder.buildDuration(durationElement);
     assertEquals(SimpleDuration.PERMANENT_DURATION, duration);
   }
 
@@ -58,7 +58,7 @@ public class DurationBuilderTest {
     String unit = "that unit";
     durationElement.addAttribute("amount", amount);
     durationElement.addAttribute("unit", unit);
-    IDuration duration = builder.buildDuration(durationElement);
+    Duration duration = builder.buildDuration(durationElement);
     assertEquals(new QualifiedAmountDuration(amount, unit), duration);
   }
 
@@ -67,7 +67,7 @@ public class DurationBuilderTest {
     Element durationElement = getDurationElement();
     String event = "an event";
     durationElement.addAttribute("event", event);
-    IDuration duration = builder.buildDuration(durationElement);
+    Duration duration = builder.buildDuration(durationElement);
     assertEquals(new UntilEventDuration(event), duration);
   }
 

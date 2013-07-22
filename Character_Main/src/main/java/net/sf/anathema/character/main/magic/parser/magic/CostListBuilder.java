@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.magic.parser.magic;
 
-import net.sf.anathema.character.main.magic.model.magic.cost.CostList;
-import net.sf.anathema.character.main.magic.model.magic.cost.ICost;
-import net.sf.anathema.character.main.magic.model.magic.cost.ICostList;
-import net.sf.anathema.character.main.magic.model.magic.cost.IHealthCost;
+import net.sf.anathema.character.main.magic.basic.cost.Cost;
+import net.sf.anathema.character.main.magic.basic.cost.CostList;
+import net.sf.anathema.character.main.magic.basic.cost.ICostList;
+import net.sf.anathema.character.main.magic.basic.cost.IHealthCost;
 import net.sf.anathema.character.main.magic.parser.charms.HealthCostBuilder;
 import net.sf.anathema.lib.exception.PersistenceException;
 import org.dom4j.Element;
@@ -16,10 +16,10 @@ public class CostListBuilder implements ICostListBuilder {
   @Override
   public ICostList buildCostList(Element costListElement) throws PersistenceException {
     try {
-      ICost essenceCost = costBuilder.buildCost(costListElement.element("essence"));
-      ICost willpowerCost = costBuilder.buildCost(costListElement.element("willpower"));
+      Cost essenceCost = costBuilder.buildCost(costListElement.element("essence"));
+      Cost willpowerCost = costBuilder.buildCost(costListElement.element("willpower"));
       IHealthCost healthCost = healthCostBuilder.buildCost(costListElement.element("health"));
-      ICost xpCost = costBuilder.buildCost(costListElement.element("experience"));
+      Cost xpCost = costBuilder.buildCost(costListElement.element("experience"));
       return new CostList(essenceCost, willpowerCost, healthCost, xpCost);
     } catch (Exception e) {
       return new CostList(null, null, null, null);

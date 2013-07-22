@@ -1,10 +1,10 @@
 package net.sf.anathema.hero.dummy.magic;
 
-import net.sf.anathema.character.main.magic.model.magic.attribute.MagicAttribute;
-import net.sf.anathema.character.main.magic.model.magic.cost.ICostList;
-import net.sf.anathema.character.main.magic.model.spells.CircleType;
-import net.sf.anathema.character.main.magic.model.spells.Spell;
-import net.sf.anathema.character.main.magic.parser.magic.IExaltedSourceBook;
+import net.sf.anathema.character.main.magic.basic.attribute.MagicAttribute;
+import net.sf.anathema.character.main.magic.basic.cost.ICostList;
+import net.sf.anathema.character.main.magic.basic.source.SourceBook;
+import net.sf.anathema.character.main.magic.spells.CircleType;
+import net.sf.anathema.character.main.magic.spells.Spell;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
@@ -32,12 +32,12 @@ public class DummySpell implements Spell {
   }
 
   @Override
-  public IExaltedSourceBook[] getSources() {
+  public SourceBook[] getSources() {
     throw new NotYetImplementedException();
   }
   
   @Override
-  public IExaltedSourceBook getPrimarySource() {
+  public SourceBook getPrimarySource() {
 	throw new NotYetImplementedException();
   }
 

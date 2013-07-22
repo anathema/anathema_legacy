@@ -2,7 +2,7 @@ package net.sf.anathema.character.equipment.item;
 
 import net.sf.anathema.character.equipment.item.model.StatsEditor;
 import net.sf.anathema.character.equipment.item.view.ToolListView;
-import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ChangeListener;

@@ -5,7 +5,7 @@ import net.sf.anathema.character.equipment.character.EquipmentOptionsProvider;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItemCollection;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
-import net.sf.anathema.character.main.equipment.weapon.IArmourStats;
+import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IArmourStats;
 import net.sf.anathema.equipment.core.MagicalMaterial;
 import net.sf.anathema.equipment.core.MaterialComposition;
 import net.sf.anathema.hero.model.HeroModel;

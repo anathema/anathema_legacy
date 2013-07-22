@@ -2,8 +2,8 @@ package net.sf.anathema.hero.equipment.display.presenter;
 
 import net.sf.anathema.character.equipment.character.EquipmentHeroEvaluator;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
-import net.sf.anathema.character.main.equipment.ArtifactAttuneType;
-import net.sf.anathema.character.main.equipment.ArtifactStats;
+import net.sf.anathema.hero.equipment.sheet.content.stats.ArtifactAttuneType;
+import net.sf.anathema.hero.equipment.sheet.content.stats.ArtifactStats;
 
 public class ArtifactPresentationStrategy implements StatsPresentationStrategy {
   private final ArtifactStats stats;

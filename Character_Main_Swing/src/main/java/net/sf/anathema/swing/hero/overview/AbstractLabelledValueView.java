@@ -1,8 +1,8 @@
 package net.sf.anathema.swing.hero.overview;
 
+import net.sf.anathema.framework.ui.FontStyle;
 import net.sf.anathema.framework.ui.RGBColor;
-import net.sf.anathema.lib.control.legality.FontStyle;
-import net.sf.anathema.lib.control.legality.SwingFontStyleMapping;
+import net.sf.anathema.lib.gui.SwingFontStyleMapping;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;

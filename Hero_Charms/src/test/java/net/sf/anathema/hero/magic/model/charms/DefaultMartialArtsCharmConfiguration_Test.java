@@ -1,11 +1,11 @@
 package net.sf.anathema.hero.magic.model.charms;
 
-import net.sf.anathema.character.main.dummy.DummyCharm;
-import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charm.CharmAttributeList;
-import net.sf.anathema.character.main.magic.model.charm.ILearningCharmGroup;
-import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnArbitrator;
-import net.sf.anathema.hero.charms.model.MartialArtsLearnModelImpl;
+import net.sf.anathema.hero.dummy.DummyCharm;
+import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.character.main.magic.charm.CharmAttributeList;
+import net.sf.anathema.hero.charms.model.learn.ILearningCharmGroup;
+import net.sf.anathema.character.main.magic.charm.ICharmLearnArbitrator;
+import net.sf.anathema.hero.charms.model.learn.MartialArtsLearnModelImpl;
 import net.sf.anathema.hero.magic.dummy.DummyCharmsModel;
 import net.sf.anathema.hero.advance.experience.ExperiencePointConfiguration;
 import net.sf.anathema.hero.experience.ExperienceModel;

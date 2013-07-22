@@ -1,10 +1,10 @@
 package net.sf.anathema.hero.spells.sheet.content;
 
 import com.google.common.base.Function;
-import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.IMagicSourceStringBuilder;
-import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.source.MagicSourceContributor;
-import net.sf.anathema.character.main.magic.model.spells.Spell;
-import net.sf.anathema.character.main.magic.sheet.content.IMagicStats;
+import net.sf.anathema.hero.charms.display.tooltip.IMagicSourceStringBuilder;
+import net.sf.anathema.hero.charms.display.tooltip.source.MagicSourceContributor;
+import net.sf.anathema.character.main.magic.spells.Spell;
+import net.sf.anathema.hero.charms.sheet.content.IMagicStats;
 import net.sf.anathema.hero.charms.sheet.content.stats.AbstractCharmStats;
 import net.sf.anathema.hero.charms.sheet.content.stats.AbstractMagicStats;
 import net.sf.anathema.lib.resources.Resources;

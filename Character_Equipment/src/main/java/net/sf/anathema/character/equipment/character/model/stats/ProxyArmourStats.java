@@ -13,7 +13,7 @@ import net.sf.anathema.character.equipment.character.model.stats.modification.ma
 import net.sf.anathema.character.equipment.character.model.stats.modification.material.MaterialMobilityPenaltyModifier;
 import net.sf.anathema.character.equipment.character.model.stats.modification.material.MaterialSoakModifier;
 import net.sf.anathema.character.equipment.character.model.stats.modification.modifier.AttunementModifier;
-import net.sf.anathema.character.main.equipment.weapon.IArmourStats;
+import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IArmourStats;
 import net.sf.anathema.character.main.util.IProxy;
 import net.sf.anathema.hero.health.HealthType;
 import net.sf.anathema.lib.util.Identifier;

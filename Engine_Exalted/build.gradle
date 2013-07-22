@@ -1,5 +1,11 @@
 dependencies {
     compile project(':Engine_Character')
-    testCompile parent.ext.testDependencies
-    testCompile parent.ext.integrationTestDependencies
+    testCompile ext.testDependencies
+    testCompile ext.integrationTestDependencies
+}
+
+apply from: "../gradle/cucumber.gradle"
+
+test {
+    exclude "**/integration/**"
 }

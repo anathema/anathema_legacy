@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.dummy.template;
 
-import net.sf.anathema.character.main.magic.model.magic.Magic;
+import net.sf.anathema.character.main.magic.basic.Magic;
 import net.sf.anathema.character.main.template.ConfiguredModel;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITemplateType;

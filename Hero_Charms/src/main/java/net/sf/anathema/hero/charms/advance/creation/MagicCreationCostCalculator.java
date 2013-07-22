@@ -1,11 +1,11 @@
 package net.sf.anathema.hero.charms.advance.creation;
 
-import net.sf.anathema.character.main.magic.model.magic.Magic;
+import net.sf.anathema.character.main.magic.basic.Magic;
 import net.sf.anathema.hero.charms.advance.costs.CostAnalyzer;
 import net.sf.anathema.hero.charms.advance.costs.MagicCosts;
 import net.sf.anathema.hero.charms.model.WeightedMagicSorter;
 import net.sf.anathema.hero.charms.template.advance.MagicPointsTemplate;
-import net.sf.anathema.charms.MartialArtsLevel;
+import net.sf.anathema.character.main.magic.charm.martial.MartialArtsLevel;
 import net.sf.anathema.hero.points.HeroBonusPointCalculator;
 
 import java.util.HashSet;

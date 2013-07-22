@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.charms.model.options;
 
-import net.sf.anathema.character.main.magic.cache.CharmProvider;
+import net.sf.anathema.hero.charms.compiler.CharmProvider;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.type.CharacterTypes;
 

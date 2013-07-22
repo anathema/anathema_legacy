@@ -1,0 +1,28 @@
+import org.ajoberstar.gradle.git.tasks.GitTag;
+import org.ajoberstar.gradle.git.tasks.GitPush;
+
+buildscript {
+    repositories { mavenCentral() }
+    dependencies { classpath 'org.ajoberstar:gradle-git:0.4.0' }
+}
+
+task tagVersion(type: GitTag) {
+    message = "Version ${versionString}"
+    tagName = "v${versionString}"
+    force = true
+}
+
+// If you use ssh for git, your github ssh key-auth passphrase will be prompted for.
+// If you use https for git, your github username and password will be prompted for, or can be entered at the command line like so:
+// gradlew tag -Pgithub.credentials.username=MyUsernameHere -Pgithub.credentials.password=MyPasswordHere
+task tagPush(type: GitPush) {
+    pushTags = true
+}
+
+task tag
+
+tag.group = 'Release'
+tag.description = 'Tags the release and pushes the tag to github. [Requires contributor status]'
+
+tagPush.dependsOn tagVersion
+tag.dependsOn tagVersion, tagPush

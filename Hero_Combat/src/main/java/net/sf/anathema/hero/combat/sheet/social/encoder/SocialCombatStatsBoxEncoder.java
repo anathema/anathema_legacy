@@ -5,7 +5,7 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPTable;
-import net.sf.anathema.character.main.equipment.HeroStatsModifiers;
+import net.sf.anathema.character.main.util.HeroStatsModifiers;
 import net.sf.anathema.character.main.library.trait.specialties.HighestSpecialty;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.util.CharacterUtilities;

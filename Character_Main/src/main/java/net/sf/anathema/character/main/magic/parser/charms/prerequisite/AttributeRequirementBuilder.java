@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.magic.parser.charms.prerequisite;
 
-import net.sf.anathema.character.main.magic.model.charm.CharmException;
-import net.sf.anathema.character.main.magic.model.charm.IndirectCharmRequirement;
-import net.sf.anathema.character.main.magic.model.charmtree.CharmAttributeRequirement;
-import net.sf.anathema.character.main.magic.model.magic.attribute.MagicAttributeImpl;
+import net.sf.anathema.character.main.magic.charm.CharmException;
+import net.sf.anathema.character.main.magic.charm.requirements.IndirectCharmRequirement;
+import net.sf.anathema.character.main.magic.charm.requirements.CharmAttributeRequirement;
+import net.sf.anathema.character.main.magic.basic.attribute.MagicAttributeImpl;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
@@ -11,9 +11,9 @@ import org.dom4j.Element;
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.ATTRIB_ATTRIBUTE;
-import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.ATTRIB_COUNT;
-import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.TAG_CHARM_ATTRIBUTE_REQUIREMENT;
+import static net.sf.anathema.character.main.magic.charm.ICharmXMLConstants.ATTRIB_ATTRIBUTE;
+import static net.sf.anathema.character.main.magic.charm.ICharmXMLConstants.ATTRIB_COUNT;
+import static net.sf.anathema.character.main.magic.charm.ICharmXMLConstants.TAG_CHARM_ATTRIBUTE_REQUIREMENT;
 
 public class AttributeRequirementBuilder implements IAttributeRequirementBuilder {
 

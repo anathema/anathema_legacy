@@ -1,0 +1,25 @@
+task copyAnathemaModules(type: Copy) {
+    dependsOn subprojects.assemble
+    subprojects.each {
+        it.tasks.withType(Jar).each { archiveTask ->
+            from archiveTask.archivePath
+        }
+    }
+    into pluginsDir
+    exclude "**/anathema.jar"
+}
+
+task copyExternalDependencies(type: Copy) {
+    from {
+        Set allDependencies = []
+        subprojects.each { project ->
+            def moduleDependencies = project.configurations.compile.findAll { File dependency ->
+                return dependency.absolutePath.contains('cache')
+            }
+            allDependencies.addAll moduleDependencies
+        }
+        return allDependencies
+    }
+    into dependenciesDir
+    exclude "**/jfxrt.jar"
+}

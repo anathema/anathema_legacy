@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.magic.sheet;
 
-import net.sf.anathema.character.main.dummy.DummyCharm;
-import net.sf.anathema.character.main.magic.model.charm.Charm;
+import net.sf.anathema.hero.dummy.DummyCharm;
+import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.hero.dummy.DummyGenericTrait;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.traits.types.AbilityType;

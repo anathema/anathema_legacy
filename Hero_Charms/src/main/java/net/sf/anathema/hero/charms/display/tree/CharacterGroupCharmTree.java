@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.charms.display.tree;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
-import net.sf.anathema.character.main.magic.model.charmtree.GroupCharmTree;
+import net.sf.anathema.hero.charms.model.ICharmGroup;
+import net.sf.anathema.hero.charms.model.GroupCharmTree;
 import net.sf.anathema.hero.charms.display.model.CharmDisplayModel;
 import net.sf.anathema.lib.util.Identifier;
 

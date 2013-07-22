@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.template.parser;
 
-import net.sf.anathema.character.main.dummy.DummyCharmUtilities;
-import net.sf.anathema.character.main.magic.model.spells.CircleType;
+import net.sf.anathema.hero.dummy.DummyCharmUtilities;
+import net.sf.anathema.character.main.magic.spells.CircleType;
 import net.sf.anathema.character.main.xml.magic.GenericMagicTemplate;
 import net.sf.anathema.character.main.xml.magic.GenericMagicTemplateParser;
 import net.sf.anathema.hero.dummy.template.DummyXmlTemplateRegistry;

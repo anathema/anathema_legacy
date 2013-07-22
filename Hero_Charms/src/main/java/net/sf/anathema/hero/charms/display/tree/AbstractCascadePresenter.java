@@ -1,15 +1,15 @@
 package net.sf.anathema.hero.charms.display.tree;
 
-import net.sf.anathema.hero.charms.display.view.CascadeSelectionView;
-import net.sf.anathema.hero.charms.display.view.ICharmGroupChangeListener;
-import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
-import net.sf.anathema.character.main.magic.model.charmtree.GroupCharmTree;
 import net.sf.anathema.hero.advance.overview.presenter.SelectIdentifierConfiguration;
 import net.sf.anathema.hero.charms.display.coloring.CharmDye;
+import net.sf.anathema.hero.charms.display.model.CharmTypes;
 import net.sf.anathema.hero.charms.display.special.NullSpecialCharmPresenter;
 import net.sf.anathema.hero.charms.display.special.SpecialCharmViewPresenter;
+import net.sf.anathema.hero.charms.display.view.CharmView;
+import net.sf.anathema.hero.charms.display.view.ICharmGroupChangeListener;
 import net.sf.anathema.hero.charms.model.CharmGroupCollection;
-import net.sf.anathema.hero.charms.display.model.CharmTypes;
+import net.sf.anathema.hero.charms.model.GroupCharmTree;
+import net.sf.anathema.hero.charms.model.ICharmGroup;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
@@ -25,7 +25,7 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
 
   private final Resources resources;
   private ICharmGroupChangeListener changeListener;
-  private CascadeSelectionView view;
+  private CharmView view;
   private CharmDye dye;
   private CharmTypes charmTypes;
   protected CharmGroupCollection charmGroups;
@@ -103,7 +103,7 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
     this.specialCharmPresenter = presenter;
   }
 
-  protected void setView(CascadeSelectionView view) {
+  protected void setView(CharmView view) {
     this.view = view;
   }
 

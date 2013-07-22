@@ -4,6 +4,6 @@ dependencies {
     compile project(':Platform_SwingTree')
     compile project(':GraphLayout')
     compile project(':Namegenerator')
-    testCompile parent.ext.testDependencies
+    testCompile ext.testDependencies
     testCompile project(path: ':Platform', configuration: 'tests')
 }

@@ -1,13 +1,11 @@
 package net.sf.anathema.hero.charms.model.options;
 
-import net.sf.anathema.character.main.magic.cache.CharmProvider;
-import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charm.CharmHasSameTypeAsCharacter;
-import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
-import net.sf.anathema.character.main.magic.model.charm.GroupedCharmIdMap;
-import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
-import net.sf.anathema.character.main.magic.model.charmtree.CharmTree;
-import net.sf.anathema.character.main.magic.model.charmtree.ICharmTree;
+import net.sf.anathema.hero.charms.compiler.CharmProvider;
+import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.hero.charms.model.CharmHasSameTypeAsCharacter;
+import net.sf.anathema.hero.charms.model.CharmIdMap;
+import net.sf.anathema.hero.charms.model.GroupedCharmIdMap;
+import net.sf.anathema.hero.charms.model.ICharmGroup;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.hero.charms.display.presenter.CharmGroupArbitrator;
@@ -23,7 +21,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static net.sf.anathema.character.main.magic.model.charm.CharmAttributeList.EXCLUSIVE_ATTRIBUTE;
+import static net.sf.anathema.character.main.magic.charm.CharmAttributeList.EXCLUSIVE_ATTRIBUTE;
 
 public class NonMartialArtsOptions implements CharmIdMap, CharmGroupArbitrator {
 
@@ -31,7 +29,7 @@ public class NonMartialArtsOptions implements CharmIdMap, CharmGroupArbitrator {
   private CharmProvider charmProvider;
   private CharmsRules charmsRules;
   private final CharacterTypeList availableTypes;
-  private final Map<Identifier, ICharmTree> treesByType = new HashMap<>();
+  private final Map<Identifier, CharmTree> treesByType = new HashMap<>();
   private Hero hero;
 
   public NonMartialArtsOptions(Hero hero, CharacterTypes characterTypes, CharmProvider charmProvider, CharmsRules charmsRules) {
@@ -44,7 +42,7 @@ public class NonMartialArtsOptions implements CharmIdMap, CharmGroupArbitrator {
     initCharmTreesForAvailableTypes();
   }
 
-  public ICharmTree getCharmTrees(CharacterType type) {
+  public CharmTree getCharmTrees(CharacterType type) {
     return treesByType.get(type);
   }
 
@@ -96,7 +94,7 @@ public class NonMartialArtsOptions implements CharmIdMap, CharmGroupArbitrator {
   private void initCharmTreesForAvailableTypes() {
     for (CharacterType type : availableTypes) {
       Charm[] charms = charmProvider.getCharms(type);
-      treesByType.put(type, new CharmTree(charms));
+      treesByType.put(type, new CharmTreeImpl(charms));
     }
   }
 

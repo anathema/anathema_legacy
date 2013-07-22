@@ -1,15 +1,14 @@
 package net.sf.anathema.hero.charms.model.options;
 
-import net.sf.anathema.character.main.magic.cache.CharmProvider;
-import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
-import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
-import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnableArbitrator;
-import net.sf.anathema.character.main.magic.model.charmtree.MartialArtsCharmTree;
+import net.sf.anathema.hero.charms.compiler.CharmProvider;
+import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.hero.charms.model.CharmIdMap;
+import net.sf.anathema.hero.charms.model.ICharmGroup;
+import net.sf.anathema.hero.charms.model.learn.ICharmLearnableArbitrator;
 import net.sf.anathema.hero.charms.model.rules.CharmsRules;
-import net.sf.anathema.charms.MartialArtsLevel;
+import net.sf.anathema.character.main.magic.charm.martial.MartialArtsLevel;
 
-import static net.sf.anathema.charms.MartialArtsUtilities.isMartialArts;
+import static net.sf.anathema.character.main.magic.charm.martial.MartialArtsUtilities.isMartialArts;
 
 public class MartialArtsOptions implements CharmIdMap, ICharmLearnableArbitrator {
 

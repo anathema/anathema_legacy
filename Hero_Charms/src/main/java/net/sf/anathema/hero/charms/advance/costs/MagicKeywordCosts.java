@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.charms.advance.costs;
 
-import net.sf.anathema.character.main.magic.model.magic.attribute.MagicAttribute;
+import net.sf.anathema.character.main.magic.basic.attribute.MagicAttribute;
 
 import java.util.HashMap;
 import java.util.Map;

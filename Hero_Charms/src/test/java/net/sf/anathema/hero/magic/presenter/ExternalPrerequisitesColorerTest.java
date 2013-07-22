@@ -1,10 +1,10 @@
 package net.sf.anathema.hero.magic.presenter;
 
-import net.sf.anathema.character.main.dummy.DummyCharm;
+import net.sf.anathema.hero.dummy.DummyCharm;
 import net.sf.anathema.hero.charms.display.presenter.CharmGroupInformer;
-import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charm.CharmGroup;
-import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
+import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.hero.charms.model.CharmGroup;
+import net.sf.anathema.hero.charms.model.ICharmGroup;
 import net.sf.anathema.hero.dummy.DummyMundaneCharacterType;
 import net.sf.anathema.hero.charms.display.coloring.CharmColoring;
 import net.sf.anathema.hero.charms.display.coloring.ExternalPrerequisitesColorer;

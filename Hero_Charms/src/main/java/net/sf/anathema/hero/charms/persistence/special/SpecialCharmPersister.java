@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.charms.persistence.special;
 
-import net.sf.anathema.character.main.magic.model.charm.special.CharmSpecialsModel;
+import net.sf.anathema.hero.charms.model.special.CharmSpecialsModel;
 
 public interface SpecialCharmPersister {
 

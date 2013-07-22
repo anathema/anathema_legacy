@@ -3,7 +3,7 @@ package net.sf.anathema.cards.data.providers;
 import net.sf.anathema.cards.data.ICardData;
 import net.sf.anathema.cards.data.SpellCardData;
 import net.sf.anathema.cards.layout.ICardReportResourceProvider;
-import net.sf.anathema.character.main.magic.model.spells.Spell;
+import net.sf.anathema.character.main.magic.spells.Spell;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.model.Hero;

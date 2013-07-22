@@ -1,14 +1,14 @@
 package net.sf.anathema.character.main.magic.parser.spells;
 
-import net.sf.anathema.character.main.magic.model.magic.cost.ICostList;
-import net.sf.anathema.character.main.magic.model.magic.source.ISourceList;
-import net.sf.anathema.character.main.magic.model.magic.source.SourceList;
-import net.sf.anathema.character.main.magic.model.spells.CircleType;
-import net.sf.anathema.character.main.magic.model.spells.Spell;
-import net.sf.anathema.character.main.magic.model.spells.SpellImpl;
+import net.sf.anathema.character.main.magic.basic.cost.ICostList;
+import net.sf.anathema.character.main.magic.basic.source.ISourceList;
+import net.sf.anathema.character.main.magic.basic.source.SourceBook;
+import net.sf.anathema.character.main.magic.basic.source.SourceList;
+import net.sf.anathema.character.main.magic.spells.CircleType;
+import net.sf.anathema.character.main.magic.spells.Spell;
+import net.sf.anathema.character.main.magic.spells.SpellImpl;
 import net.sf.anathema.character.main.magic.parser.magic.CostListBuilder;
 import net.sf.anathema.character.main.magic.parser.magic.ICostListBuilder;
-import net.sf.anathema.character.main.magic.parser.magic.IExaltedSourceBook;
 import net.sf.anathema.character.main.magic.parser.magic.SourceBuilder;
 import net.sf.anathema.lib.exception.PersistenceException;
 import org.dom4j.Document;
@@ -48,9 +48,9 @@ public class SpellBuilder {
   }
 
   private ISourceList buildSource(Element spellElement) {
-    IExaltedSourceBook[] sources = sourceBuilder.buildSourceList(spellElement);
+    SourceBook[] sources = sourceBuilder.buildSourceList(spellElement);
     SourceList sourceList = new SourceList();
-    for (IExaltedSourceBook source : sources) {
+    for (SourceBook source : sources) {
       sourceList.addSource(source);
     }
     return sourceList;

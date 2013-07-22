@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.equipment.sheet.rendering.panoply;
 
 import com.itextpdf.text.pdf.PdfPTable;
-import net.sf.anathema.character.main.equipment.weapon.IArmourStats;
+import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IArmourStats;
 import net.sf.anathema.hero.equipment.sheet.content.ArmourContent;
 import net.sf.anathema.hero.equipment.sheet.content.stats.armour.IArmourStatsGroup;
 import net.sf.anathema.hero.equipment.sheet.rendering.EquipmentTableEncoder;

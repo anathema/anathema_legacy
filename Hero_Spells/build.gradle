@@ -1,4 +1,6 @@
 dependencies {
   compile project(':Hero_Charms')
-  testCompile parent.ext.testDependencies //includes JUnit etc.
+  testCompile ext.testDependencies //includes JUnit etc.
+  testCompile project(path: ':Character_Main', configuration: 'tests')
+  testCompile project(path: ':Hero_Charms', configuration: 'tests')
 }

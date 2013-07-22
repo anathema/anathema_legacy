@@ -1,5 +1,5 @@
 dependencies {
     compile project(':Character_Main')
     compile project(':Platform_FX')
-    testCompile parent.ext.testDependencies
+    testCompile ext.testDependencies
 }

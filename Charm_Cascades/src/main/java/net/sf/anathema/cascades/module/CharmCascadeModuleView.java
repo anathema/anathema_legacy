@@ -3,8 +3,9 @@ package net.sf.anathema.cascades.module;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
-import net.sf.anathema.cascades.view.SwingCascadeView;
 import net.sf.anathema.framework.swing.IView;
+import net.sf.anathema.hero.charms.display.view.CharmView;
+import net.sf.anathema.hero.charms.display.view.SwingCharmView;
 import net.sf.anathema.platform.tree.display.NodeProperties;
 import net.sf.anathema.platform.tree.display.ToolTipProperties;
 
@@ -15,8 +16,8 @@ public class CharmCascadeModuleView implements CascadeViewFactory, IView {
   private final JPanel panel = new JPanel(new MigLayout(new LC().wrapAfter(1).fill().insets("2")));
 
   @Override
-  public SwingCascadeView createCascadeView(ToolTipProperties properties, NodeProperties nodeProperties) {
-    SwingCascadeView view = new SwingCascadeView();
+  public CharmView createCascadeView(ToolTipProperties properties, NodeProperties nodeProperties) {
+    SwingCharmView view = new SwingCharmView();
     view.initGui(properties, nodeProperties);
     panel.add(view.getComponent(), new CC().grow().push());
     return view;

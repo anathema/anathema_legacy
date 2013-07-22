@@ -1,11 +1,12 @@
 package net.sf.anathema.hero.magic.model.charms;
 
-import net.sf.anathema.character.main.dummy.DummyCharm;
-import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charm.special.IMultiLearnableCharm;
-import net.sf.anathema.character.main.magic.model.charm.special.StaticMultiLearnableCharm;
-import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnableArbitrator;
+import net.sf.anathema.hero.dummy.DummyCharm;
+import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.hero.charms.model.special.multilearn.IMultiLearnableCharm;
+import net.sf.anathema.hero.charms.model.special.multilearn.StaticMultiLearnableCharm;
+import net.sf.anathema.hero.charms.model.learn.ICharmLearnableArbitrator;
 import net.sf.anathema.hero.BasicCharacterTestCase;
+import net.sf.anathema.hero.charms.model.special.multilearn.MultiLearnableCharmSpecialsImpl;
 import net.sf.anathema.hero.dummy.DummyHero;
 import net.sf.anathema.hero.magic.dummy.DummyCharmsModel;
 import net.sf.anathema.hero.magic.dummy.DummyLearnableArbitrator;
@@ -13,7 +14,6 @@ import net.sf.anathema.character.main.traits.context.CreationTraitValueStrategy;
 import net.sf.anathema.character.main.traits.context.ExperiencedTraitValueStrategy;
 import net.sf.anathema.character.main.traits.context.ProxyTraitValueStrategy;
 import net.sf.anathema.hero.charms.model.CharmsModel;
-import net.sf.anathema.hero.charms.model.special.multilearn.MultiLearnableCharmConfiguration;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -27,13 +27,13 @@ public class MultiLearnableCharmConfigurationTest {
   private IMultiLearnableCharm specialCharm = new StaticMultiLearnableCharm("id", 5);
   private ICharmLearnableArbitrator arbitrator = new DummyLearnableArbitrator("id");
   private DummyHero hero = new DummyHero();
-  private MultiLearnableCharmConfiguration configuration;
+  private MultiLearnableCharmSpecialsImpl configuration;
   private ProxyTraitValueStrategy valueStrategy = new ProxyTraitValueStrategy(new CreationTraitValueStrategy());
 
   @Before
   public void setUp() throws Exception {
     hero = new BasicCharacterTestCase().createModelContextWithEssence2(valueStrategy);
-    configuration = new MultiLearnableCharmConfiguration(hero, config, charm, specialCharm, arbitrator);
+    configuration = new MultiLearnableCharmSpecialsImpl(hero, config, charm, specialCharm, arbitrator);
   }
 
   @Test

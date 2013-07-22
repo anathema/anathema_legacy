@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.combat.model.social;
 
-import net.sf.anathema.character.main.equipment.HeroStatsModifiers;
+import net.sf.anathema.character.main.util.HeroStatsModifiers;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.types.AttributeType;
 import net.sf.anathema.character.main.util.CharacterUtilities;

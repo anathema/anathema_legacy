@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.combos.model;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
+import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.character.main.magic.charm.type.CharmType;
 import net.sf.anathema.hero.combos.display.presenter.Combo;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;

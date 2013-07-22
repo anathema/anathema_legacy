@@ -2,8 +2,8 @@ package net.sf.anathema.fx.hero.overview;
 
 import com.google.common.base.Joiner;
 import javafx.scene.control.Label;
+import net.sf.anathema.framework.ui.FontStyle;
 import net.sf.anathema.framework.ui.RGBColor;
-import net.sf.anathema.lib.control.legality.FontStyle;
 
 public class FontStyler {
   private final Label[] labels;

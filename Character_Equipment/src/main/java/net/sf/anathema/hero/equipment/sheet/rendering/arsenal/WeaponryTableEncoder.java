@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.equipment.sheet.rendering.arsenal;
 
-import net.sf.anathema.character.main.equipment.weapon.IWeaponStats;
+import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IWeaponStats;
 import net.sf.anathema.hero.equipment.sheet.rendering.EquipmentTableEncoder;
 import net.sf.anathema.hero.sheet.pdf.content.stats.FixedLineStatsContent;
 

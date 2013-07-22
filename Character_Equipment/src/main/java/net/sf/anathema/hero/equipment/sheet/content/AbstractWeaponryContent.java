@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.equipment.sheet.content;
 
-import net.sf.anathema.character.main.equipment.weapon.IWeaponStats;
+import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IWeaponStats;
 import net.sf.anathema.hero.equipment.sheet.content.stats.EquipmentNameStatsGroup;
 import net.sf.anathema.hero.equipment.sheet.content.stats.IEquipmentStatsGroup;
 import net.sf.anathema.hero.equipment.sheet.content.stats.weapons.AbstractDefenceWeaponStatsGroup;
