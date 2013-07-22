@@ -5,13 +5,11 @@ import net.sf.anathema.hero.charms.display.presenter.CharmDisplayPropertiesMap;
 import net.sf.anathema.hero.charms.display.presenter.CharmGroupArbitrator;
 import net.sf.anathema.hero.charms.model.learn.ILearningCharmGroup;
 import net.sf.anathema.lib.util.Identifier;
-import net.sf.anathema.platform.tree.display.TreeRenderer;
 
 public class CharacterCharmGroupChangeListener extends AbstractCharmGroupChangeListener {
 
-  public CharacterCharmGroupChangeListener(CharmGroupArbitrator arbitrator, TreeRenderer treeRenderer,
-                                           CharmDisplayPropertiesMap displayPropertiesMap) {
-    super(arbitrator, treeRenderer, displayPropertiesMap);
+  public CharacterCharmGroupChangeListener(CharmGroupArbitrator arbitrator, CharmDisplayPropertiesMap displayPropertiesMap) {
+    super(arbitrator, displayPropertiesMap);
   }
 
   @Override

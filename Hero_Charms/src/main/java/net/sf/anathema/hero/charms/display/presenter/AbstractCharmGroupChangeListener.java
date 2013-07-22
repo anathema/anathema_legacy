@@ -1,16 +1,18 @@
 package net.sf.anathema.hero.charms.display.presenter;
 
 import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.hero.charms.model.ICharmGroup;
-import net.sf.anathema.hero.charms.display.node.CharmGraphNodeBuilder;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.graph.nodes.IIdentifiedRegularNode;
 import net.sf.anathema.graph.nodes.IRegularNode;
+import net.sf.anathema.hero.charms.display.node.CharmGraphNodeBuilder;
 import net.sf.anathema.hero.charms.display.view.ICharmGroupChangeListener;
+import net.sf.anathema.hero.charms.model.ICharmGroup;
 import net.sf.anathema.lib.util.Identifier;
-import net.sf.anathema.platform.tree.display.TreeRenderer;
 import net.sf.anathema.platform.tree.display.TreeView;
+import net.sf.anathema.platform.tree.document.GenericCascadeFactory;
 import net.sf.anathema.platform.tree.document.visualizer.TreePresentationProperties;
+import net.sf.anathema.platform.tree.view.AgnosticCascadeStrategy;
+import net.sf.anathema.platform.tree.view.container.Cascade;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -23,14 +25,12 @@ import java.util.Set;
 public abstract class AbstractCharmGroupChangeListener implements ICharmGroupChangeListener, CharmGroupInformer {
 
   private final CharmGroupArbitrator arbitrator;
-  private final TreeRenderer treeRenderer;
   private ICharmGroup currentGroup;
   private Identifier currentType;
   private final CharmDisplayPropertiesMap displayPropertiesMap;
+  private TreeView treeView;
 
-  public AbstractCharmGroupChangeListener(CharmGroupArbitrator arbitrator, TreeRenderer treeRenderer,
-                                          CharmDisplayPropertiesMap charmDisplayPropertiesMap) {
-    this.treeRenderer = treeRenderer;
+  public AbstractCharmGroupChangeListener(CharmGroupArbitrator arbitrator, CharmDisplayPropertiesMap charmDisplayPropertiesMap) {
     this.arbitrator = arbitrator;
     this.displayPropertiesMap = charmDisplayPropertiesMap;
   }
@@ -42,21 +42,24 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
 
   @Override
   public void operateOn(TreeView treeView) {
-    //nothing to do
+    this.treeView = treeView;
   }
 
   private void loadCharmTree(ICharmGroup charmGroup, Identifier type) {
-    boolean resetView = !(currentGroup != null && currentGroup.equals(charmGroup) && currentType != null && currentType.equals(type));
+    boolean resetView = !(currentGroup != null && currentGroup.equals(
+            charmGroup) && currentType != null && currentType.equals(type));
     this.currentGroup = charmGroup;
     this.currentType = type;
     modifyCharmVisuals(type);
     if (charmGroup == null) {
-      treeRenderer.clearView();
+      treeView.clear();
     } else {
-      TreePresentationProperties presentationProperties = getDisplayProperties(charmGroup);
       Set<Charm> charms = getDisplayCharms(charmGroup);
       IRegularNode[] nodesToShow = prepareNodes(charms);
-      treeRenderer.renderTree(resetView, presentationProperties, nodesToShow);
+      GenericCascadeFactory cascadeFactory = new GenericCascadeFactory(new AgnosticCascadeStrategy());
+      TreePresentationProperties presentationProperties = getDisplayProperties(charmGroup);
+      Cascade cascade = cascadeFactory.createCascade(nodesToShow, presentationProperties);
+      treeView.loadCascade(cascade, resetView);
     }
   }
 
@@ -104,5 +107,9 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
   @Override
   public boolean hasGroupSelected() {
     return getCurrentGroup() != null;
+  }
+
+  protected TreeView getTreeView() {
+    return treeView;
   }
 }

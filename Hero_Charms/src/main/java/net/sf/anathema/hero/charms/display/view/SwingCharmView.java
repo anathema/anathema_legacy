@@ -8,13 +8,9 @@ import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.platform.tree.display.AgnosticTreeView;
 import net.sf.anathema.platform.tree.display.ContentFactory;
-import net.sf.anathema.platform.tree.display.GenericCascadeRenderer;
 import net.sf.anathema.platform.tree.display.ISpecialNodeView;
-import net.sf.anathema.platform.tree.display.TreeRenderer;
 import net.sf.anathema.platform.tree.display.TreeView;
-import net.sf.anathema.platform.tree.document.GenericCascadeFactory;
 import net.sf.anathema.platform.tree.swing.SwingPolygonPanel;
-import net.sf.anathema.platform.tree.view.AgnosticCascadeStrategy;
 import net.sf.anathema.platform.tree.view.MouseBorderClosure;
 
 import javax.swing.JComponent;
@@ -70,11 +66,6 @@ public class SwingCharmView implements CharmView, IView {
   public void addCharmCascadeHelp(String helpText) {
     JLabel help = new JLabel(helpText);
     selectionPanel.add(help, new CC().growX().pushX());
-  }
-
-  @Override
-  public TreeRenderer getCharmTreeRenderer() {
-    return new GenericCascadeRenderer(treeView, new GenericCascadeFactory(new AgnosticCascadeStrategy()));
   }
 
   @Override

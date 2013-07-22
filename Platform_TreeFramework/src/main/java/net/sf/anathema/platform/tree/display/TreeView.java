@@ -12,7 +12,7 @@ public interface TreeView {
 
   void setCanvasBackground(RGBColor color);
 
-  void loadCascade(Cascade cascade, boolean resetView) throws CascadeLoadException;
+  void loadCascade(Cascade cascade, boolean resetView);
 
   void addSpecialControl(String nodeId, SpecialControl control);
 

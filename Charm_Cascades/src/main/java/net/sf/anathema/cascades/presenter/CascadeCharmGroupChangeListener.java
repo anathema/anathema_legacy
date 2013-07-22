@@ -5,18 +5,15 @@ import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.hero.charms.display.presenter.AbstractCharmGroupChangeListener;
 import net.sf.anathema.hero.charms.display.presenter.CharmDisplayPropertiesMap;
 import net.sf.anathema.lib.util.Identifier;
-import net.sf.anathema.platform.tree.display.TreeRenderer;
-import net.sf.anathema.platform.tree.display.TreeView;
 import net.sf.anathema.platform.tree.document.visualizer.TreePresentationProperties;
 
 public class CascadeCharmGroupChangeListener extends AbstractCharmGroupChangeListener {
 
   private final CascadeSpecialCharmSet specialCharmSet;
-  private TreeView treeView;
 
-  public CascadeCharmGroupChangeListener(TreeRenderer treeRenderer, CascadeSpecialCharmSet specialCharmSet,
+  public CascadeCharmGroupChangeListener(CascadeSpecialCharmSet specialCharmSet,
                                          CharmDisplayPropertiesMap charmDisplayPropertiesMap) {
-    super(new FriendlyCharmGroupArbitrator(), treeRenderer, charmDisplayPropertiesMap);
+    super(new FriendlyCharmGroupArbitrator(), charmDisplayPropertiesMap);
     this.specialCharmSet = specialCharmSet;
   }
 
@@ -24,12 +21,7 @@ public class CascadeCharmGroupChangeListener extends AbstractCharmGroupChangeLis
   protected final void modifyCharmVisuals(Identifier type) {
     specialCharmSet.setType(type);
     RGBColor color = findColor(type);
-    treeView.setCanvasBackground(color);
-  }
-
-  @Override
-  public void operateOn(TreeView treeView) {
-    this.treeView = treeView;
+    getTreeView().setCanvasBackground(color);
   }
 
   private RGBColor findColor(Identifier type) {

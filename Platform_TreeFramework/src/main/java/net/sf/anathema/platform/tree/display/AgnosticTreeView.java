@@ -48,7 +48,7 @@ public class AgnosticTreeView implements TreeView {
   }
 
   @Override
-  public void loadCascade(Cascade newCascade, boolean resetView) throws CascadeLoadException {
+  public void loadCascade(Cascade newCascade, boolean resetView) {
     clear();
     cascade.setDelegate(newCascade);
     cascade.addTo(polygonPanel);

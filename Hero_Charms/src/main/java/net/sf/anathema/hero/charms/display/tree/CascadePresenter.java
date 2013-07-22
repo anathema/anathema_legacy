@@ -98,7 +98,6 @@ public class CascadePresenter {
       @Override
       public void valueChanged(Identifier newValue) {
         changeListener.valueChanged(newValue, typeSelector.getSelectedObject());
-
       }
     });
   }
