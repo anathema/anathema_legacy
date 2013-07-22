@@ -1,13 +1,10 @@
 package net.sf.anathema.lib.gui.swing;
 
-import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
-
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 import javax.swing.JTable;
-import javax.swing.ListCellRenderer;
 import javax.swing.SwingUtilities;
 import javax.swing.table.TableCellEditor;
 import java.awt.Component;
@@ -294,11 +291,5 @@ public class GuiUtilities {
         throw new RuntimeException(e);
       }
     }
-  }
-
-  public static Dimension calculateComboBoxSize(Object[] objects, ListCellRenderer renderer) {
-    ChangeableJComboBox<Object> box = new ChangeableJComboBox<>(objects);
-    box.setRenderer(renderer);
-    return box.getPreferredSize();
   }
 }

@@ -45,7 +45,7 @@ public class CharacterCharmTreePresenter extends AbstractCascadePresenter {
     SpecialCharmList specialCharmList = new CommonSpecialCharmList(view, specialViewBuilder);
     setSpecialPresenter(new CharacterSpecialCharmPresenter(charmGroupChangeListener, charmModel, specialCharmList));
     setCharmDye(colorist);
-    setAlienCharmPresenter(new CharacterAlienCharmPresenter(model, view));
+    setAlienCharmPresenter(new CharacterAlienCharmPresenter(model));
     setInteractionPresenter(new LearnInteractionPresenter(model, view, viewProperties, colorist));
     setCharmGroups(new CharacterGroupCollection(model));
   }

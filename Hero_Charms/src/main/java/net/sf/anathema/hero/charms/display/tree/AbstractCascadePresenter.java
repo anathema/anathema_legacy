@@ -13,6 +13,7 @@ import net.sf.anathema.hero.charms.model.ICharmGroup;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
+import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.platform.tree.display.CascadeLoadedListener;
@@ -38,22 +39,30 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
   }
 
   public void initPresentation() {
-    createCharmTypeSelector();
+    ObjectSelectionView<Identifier> typeSelector = createCharmTypeSelector();
+    ObjectSelectionView<Identifier> groupSelector = createCharmGroupSelector();
+    initListening(typeSelector, groupSelector);
     listenForCascadeLoading();
-    initCharmTypeSelectionListening();
     specialCharmPresenter.initPresentation();
     view.whenCursorLeavesCharmAreaResetAllPopups();
-    createCharmGroupSelector();
     createHelpText();
-    alienPresenter.initPresentation();
+    alienPresenter.initPresentation(typeSelector);
     interactionPresenter.initPresentation();
   }
 
-  private void initCharmTypeSelectionListening() {
-    view.addCharmTypeSelectionListener(new ObjectValueListener<Identifier>() {
+  private void initListening(final ObjectSelectionView<Identifier> typeSelector,
+                             final ObjectSelectionView<Identifier> groupSelector) {
+    typeSelector.addObjectSelectionChangedListener(new ObjectValueListener<Identifier>() {
       @Override
       public void valueChanged(Identifier cascadeType) {
-        handleTypeSelectionChange(cascadeType);
+        handleTypeSelectionChange(cascadeType, groupSelector);
+      }
+    });
+    groupSelector.addObjectSelectionChangedListener(new ObjectValueListener<Identifier>() {
+      @Override
+      public void valueChanged(Identifier newValue) {
+        changeListener.valueChanged(newValue, typeSelector.getSelectedObject());
+
       }
     });
   }
@@ -77,16 +86,24 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
     return resources;
   }
 
-  protected void createCharmGroupSelector() {
-    ICharmGroup[] allGroups = charmGroups.getCharmGroups();
-    AgnosticUIConfiguration config = new SelectIdentifierConfiguration(resources);
-    view.addCharmGroupSelector(getResources().getString("CardView.CharmConfiguration.AlienCharms.CharmGroup"), config, changeListener,
-            allGroups);
+  private ObjectSelectionView<Identifier> createCharmTypeSelector() {
+    Identifier[] types = charmTypes.getCurrentCharmTypes();
+    String title = getResources().getString("CharmTreeView.GUI.CharmType");
+    SelectIdentifierConfiguration<Identifier> config = new SelectIdentifierConfiguration<>(resources);
+    ObjectSelectionView<Identifier> typeSelector = view.addSelectionView(title, config);
+    typeSelector.setObjects(types);
+    typeSelector.setSelectedObject(null);
+    return typeSelector;
   }
 
-  protected void createCharmTypeSelector() {
-    Identifier[] types = charmTypes.getCurrentCharmTypes();
-    view.addCharmTypeSelector(getResources().getString("CharmTreeView.GUI.CharmType"), types, new SelectIdentifierConfiguration(resources));
+  private ObjectSelectionView<Identifier> createCharmGroupSelector() {
+    ICharmGroup[] allGroups = charmGroups.getCharmGroups();
+    AgnosticUIConfiguration<Identifier> config = new SelectIdentifierConfiguration<>(resources);
+    String title = getResources().getString("CardView.CharmConfiguration.AlienCharms.CharmGroup");
+    ObjectSelectionView<Identifier> selector = view.addSelectionViewAndSizeItFor(title, config, allGroups);
+    selector.setObjects(allGroups);
+    selector.setSelectedObject(null);
+    return selector;
   }
 
   private void createHelpText() {
@@ -119,19 +136,19 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
     this.charmTypes = types;
   }
 
-  private void handleTypeSelectionChange(Identifier cascadeType) {
+  private void handleTypeSelectionChange(Identifier cascadeType, ObjectSelectionView<Identifier> groupSelector) {
     if (cascadeType == null) {
-      view.fillCharmGroupBox(new Identifier[0]);
+      groupSelector.setObjects(new Identifier[0]);
       return;
     }
     GroupCharmTree charmTree = getCharmTree(cascadeType);
     if (charmTree == null) {
-      view.fillCharmGroupBox(new Identifier[0]);
+      groupSelector.setObjects(new Identifier[0]);
       return;
     }
     ICharmGroup[] allCharmGroups = charmTree.getAllCharmGroups();
     List<ICharmGroup> sortedGroups = sortCharmGroups(allCharmGroups);
-    view.fillCharmGroupBox(sortedGroups.toArray(new ICharmGroup[sortedGroups.size()]));
+    groupSelector.setObjects(sortedGroups.toArray(new ICharmGroup[sortedGroups.size()]));
     specialCharmPresenter.showSpecialViews();
   }
 

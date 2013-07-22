@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.charms.display.view;
 
 import net.sf.anathema.framework.ui.RGBColor;
-import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
+import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.platform.tree.display.CascadeLoadedListener;
 import net.sf.anathema.platform.tree.display.NodeInteractionListener;
@@ -16,15 +16,11 @@ public interface CharmView extends SpecialCharmViewContainer {
 
   void addCascadeLoadedListener(CascadeLoadedListener listener);
 
-  void addCharmTypeSelector(String title, Identifier[] types, AgnosticUIConfiguration uiConfig);
+  ObjectSelectionView<Identifier> addSelectionView(String title, AgnosticUIConfiguration<Identifier> uiConfig);
 
-  void addCharmTypeSelectionListener(ObjectValueListener<Identifier> selectionListener);
+  ObjectSelectionView<Identifier> addSelectionViewAndSizeItFor(String title, AgnosticUIConfiguration<Identifier> uiConfig,
+                                                               Identifier[] objects);
 
-  void fillCharmGroupBox(Identifier[] charmGroups);
-
-  void fillCharmTypeBox(Identifier[] cascadeTypes);
-
-  void addCharmGroupSelector(String title, AgnosticUIConfiguration uiConfig, ICharmGroupChangeListener selectionListener, Identifier[] allPotentialGroups);
 
   void addCharmCascadeHelp(String helpText);
 
