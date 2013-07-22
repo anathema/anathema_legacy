@@ -2,7 +2,7 @@ package net.sf.anathema.platform.tree.view.container;
 
 import com.google.common.collect.Lists;
 import net.sf.anathema.framework.ui.RGBColor;
-import net.sf.anathema.platform.tree.display.NodeProperties;
+import net.sf.anathema.platform.tree.display.NodePresentationProperties;
 import net.sf.anathema.platform.tree.display.draw.ShapeWithPosition;
 import net.sf.anathema.platform.tree.view.draw.FlexibleArrow;
 import net.sf.anathema.platform.tree.view.draw.InteractiveGraphicsElement;
@@ -62,7 +62,7 @@ public class DefaultContainerCascade implements ContainerCascade {
   }
 
   @Override
-  public void initNodeNames(NodeProperties properties) {
+  public void initNodeNames(NodePresentationProperties properties) {
     for (IdentifiedPolygon node : nodes) {
       String nodeName = properties.getNodeText(node.id);
       node.element.setText(nodeName);

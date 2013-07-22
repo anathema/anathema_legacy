@@ -11,7 +11,8 @@ import net.sf.anathema.hero.charms.display.special.CommonSpecialCharmList;
 import net.sf.anathema.hero.charms.display.special.SpecialCharmViewBuilder;
 import net.sf.anathema.hero.charms.display.special.SwingSpecialCharmViewBuilder;
 import net.sf.anathema.hero.charms.display.view.CharmView;
-import net.sf.anathema.hero.charms.display.view.DefaultNodeProperties;
+import net.sf.anathema.hero.charms.display.view.DefaultFunctionalNodeProperties;
+import net.sf.anathema.hero.charms.display.view.DefaultNodePresentationProperties;
 import net.sf.anathema.hero.charms.display.view.DefaultTooltipProperties;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.charms.model.GroupCharmTree;
@@ -27,20 +28,17 @@ public class CharacterCharmTreePresenter extends AbstractCascadePresenter {
   private final CharmDisplayModel model;
 
   public CharacterCharmTreePresenter(Resources resources, CharmView view, CharmDisplayModel charmModel,
-                                     TreePresentationProperties presentationProperties, CharmDisplayPropertiesMap displayPropertiesMap) {
+                                     TreePresentationProperties presentationProperties,
+                                     CharmDisplayPropertiesMap displayPropertiesMap) {
     super(resources);
     this.model = charmModel;
     this.view = view;
     CharmsModel charmConfiguration = model.getCharmModel();
-    CharacterCharmTreeViewProperties viewProperties =
-            new CharacterCharmTreeViewProperties(charmConfiguration);
-    DefaultNodeProperties nodeProperties = new DefaultNodeProperties(resources, viewProperties, viewProperties);
-    DefaultTooltipProperties tooltipProperties = new DefaultTooltipProperties(viewProperties, viewProperties, resources,
-            model.getMagicDescriptionProvider(), new CharacterSpecialCharmSet(model));
-    view.addTreeView(tooltipProperties, nodeProperties);
-    CharacterCharmGroupChangeListener charmGroupChangeListener =
-            new CharacterCharmGroupChangeListener(charmConfiguration, view.getCharmTreeRenderer(), displayPropertiesMap);
-    ConfigurableCharmDye colorist = new ConfigurableCharmDye(charmGroupChangeListener, new CharacterColoringStrategy(presentationProperties.getColor(), view, model));
+    addTreeView(resources, view, charmConfiguration);
+    CharacterCharmGroupChangeListener charmGroupChangeListener = new CharacterCharmGroupChangeListener(
+            charmConfiguration, view.getCharmTreeRenderer(), displayPropertiesMap);
+    ConfigurableCharmDye colorist = new ConfigurableCharmDye(charmGroupChangeListener,
+            new CharacterColoringStrategy(presentationProperties.getColor(), view, model));
     setCharmTypes(new CharacterCharmTypes(charmModel));
     setChangeListener(charmGroupChangeListener);
     setView(view);
@@ -49,8 +47,19 @@ public class CharacterCharmTreePresenter extends AbstractCascadePresenter {
     setSpecialPresenter(new CharacterSpecialCharmPresenter(charmGroupChangeListener, charmModel, specialCharmList));
     setCharmDye(colorist);
     setAlienCharmPresenter(new CharacterAlienCharmPresenter(model));
-    setInteractionPresenter(new LearnInteractionPresenter(model, view, viewProperties, colorist));
+    setInteractionPresenter(
+            new LearnInteractionPresenter(model, view, new DefaultFunctionalNodeProperties(), colorist));
     setCharmGroups(new CharacterGroupCollection(model));
+  }
+
+  private void addTreeView(Resources resources, CharmView view, CharmsModel charmConfiguration) {
+    DefaultFunctionalNodeProperties functionalNodeProperties = new DefaultFunctionalNodeProperties();
+    CharacterCharmIdMap viewProperties = new CharacterCharmIdMap(charmConfiguration, functionalNodeProperties);
+    DefaultNodePresentationProperties nodeProperties = new DefaultNodePresentationProperties(resources,
+            functionalNodeProperties, viewProperties);
+    DefaultTooltipProperties tooltipProperties = new DefaultTooltipProperties(functionalNodeProperties, viewProperties,
+            resources, model.getMagicDescriptionProvider(), new CharacterSpecialCharmSet(model));
+    view.addTreeView(tooltipProperties, nodeProperties);
   }
 
   private SpecialCharmViewBuilder createSpecialCharmViewBuilder(Resources resources, CharmsModel charmConfiguration) {

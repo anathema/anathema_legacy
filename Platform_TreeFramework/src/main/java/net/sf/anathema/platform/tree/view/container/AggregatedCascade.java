@@ -2,7 +2,7 @@ package net.sf.anathema.platform.tree.view.container;
 
 import com.google.common.collect.Lists;
 import net.sf.anathema.framework.ui.RGBColor;
-import net.sf.anathema.platform.tree.display.NodeProperties;
+import net.sf.anathema.platform.tree.display.NodePresentationProperties;
 import net.sf.anathema.platform.tree.display.draw.ShapeWithPosition;
 import net.sf.anathema.platform.tree.view.interaction.PolygonPanel;
 
@@ -42,7 +42,7 @@ public class AggregatedCascade implements Cascade {
   }
 
   @Override
-  public void initNodeNames(NodeProperties properties) {
+  public void initNodeNames(NodePresentationProperties properties) {
     for (Cascade cascade : cascades) {
       cascade.initNodeNames(properties);
     }

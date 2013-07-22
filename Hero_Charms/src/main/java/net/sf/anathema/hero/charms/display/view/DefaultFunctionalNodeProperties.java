@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.charms.display.view;
 
-public abstract class AbstractCharmTreeViewProperties implements ICharmTreeViewProperties {
+public class DefaultFunctionalNodeProperties implements FunctionalNodeProperties {
 
   @Override
   public final boolean isRequirementNode(final String nodeId) {

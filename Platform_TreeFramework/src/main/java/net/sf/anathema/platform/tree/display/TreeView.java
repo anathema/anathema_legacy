@@ -16,7 +16,7 @@ public interface TreeView {
 
   void addSpecialControl(String nodeId, SpecialControl control);
 
-  void initNodeNames(NodeProperties properties);
+  void initNodeNames(NodePresentationProperties properties);
 
   void clear();
 

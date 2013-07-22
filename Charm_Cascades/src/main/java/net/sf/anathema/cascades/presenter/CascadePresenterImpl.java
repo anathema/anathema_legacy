@@ -9,7 +9,8 @@ import net.sf.anathema.hero.charms.display.coloring.ConfigurableCharmDye;
 import net.sf.anathema.hero.charms.display.presenter.CharmDisplayPropertiesMap;
 import net.sf.anathema.hero.charms.display.tree.AbstractCascadePresenter;
 import net.sf.anathema.hero.charms.display.view.CharmView;
-import net.sf.anathema.hero.charms.display.view.DefaultNodeProperties;
+import net.sf.anathema.hero.charms.display.view.DefaultFunctionalNodeProperties;
+import net.sf.anathema.hero.charms.display.view.DefaultNodePresentationProperties;
 import net.sf.anathema.hero.charms.display.view.DefaultTooltipProperties;
 import net.sf.anathema.hero.charms.model.GroupCharmTree;
 import net.sf.anathema.hero.framework.HeroEnvironment;
@@ -24,13 +25,8 @@ public class CascadePresenterImpl extends AbstractCascadePresenter implements Ca
                               MagicDescriptionProvider magicDescriptionProvider) {
     super(resources);
     CharmCache cache = environment.getDataSet(CharmCache.class);
-    CascadeCharmTreeViewProperties viewProperties = new CascadeCharmTreeViewProperties(cache);
-    DefaultNodeProperties nodeProperties = new DefaultNodeProperties(resources, viewProperties, viewProperties);
-    CascadeSpecialCharmSet specialCharmSet = new CascadeSpecialCharmSet(cache);
-    DefaultTooltipProperties tooltipProperties = new DefaultTooltipProperties(viewProperties, viewProperties, resources,
-            magicDescriptionProvider, specialCharmSet);
     CharmView view = factory.createCascadeView();
-    view.addTreeView(tooltipProperties, nodeProperties);
+    CascadeSpecialCharmSet specialCharmSet = addTreeView(resources, magicDescriptionProvider, cache, view);
     CharmDisplayPropertiesMap charmDisplayPropertiesMap = new CharmDisplayPropertiesMap(environment.getObjectFactory());
     CascadeCharmGroupChangeListener selectionListener = new CascadeCharmGroupChangeListener(view, specialCharmSet,
             charmDisplayPropertiesMap);
@@ -41,6 +37,19 @@ public class CascadePresenterImpl extends AbstractCascadePresenter implements Ca
     CharmDye dye = new ConfigurableCharmDye(selectionListener, new CascadeColoringStrategy(view));
     setCharmDye(dye);
     setCharmGroups(new CascadeGroupCollection(cache.getCharmProvider(), characterTypes, treeIdentifierMap));
+  }
+
+  private CascadeSpecialCharmSet addTreeView(Resources resources, MagicDescriptionProvider magicDescriptionProvider,
+                                             CharmCache cache, CharmView view) {
+    DefaultFunctionalNodeProperties functionalNodeProperties = new DefaultFunctionalNodeProperties();
+    CascadeCharmIdMap viewProperties = new CascadeCharmIdMap(cache);
+    DefaultNodePresentationProperties nodeProperties = new DefaultNodePresentationProperties(resources,
+            functionalNodeProperties, viewProperties);
+    CascadeSpecialCharmSet specialCharmSet = new CascadeSpecialCharmSet(cache);
+    DefaultTooltipProperties tooltipProperties = new DefaultTooltipProperties(functionalNodeProperties, viewProperties,
+            resources, magicDescriptionProvider, specialCharmSet);
+    view.addTreeView(tooltipProperties, nodeProperties);
+    return specialCharmSet;
   }
 
   @Override

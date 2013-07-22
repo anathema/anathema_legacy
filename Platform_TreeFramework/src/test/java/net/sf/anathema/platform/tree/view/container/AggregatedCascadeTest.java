@@ -1,7 +1,7 @@
 package net.sf.anathema.platform.tree.view.container;
 
 import net.sf.anathema.framework.ui.RGBColor;
-import net.sf.anathema.platform.tree.display.NodeProperties;
+import net.sf.anathema.platform.tree.display.NodePresentationProperties;
 import net.sf.anathema.platform.tree.view.interaction.PolygonPanel;
 import org.junit.Before;
 import org.junit.Test;
@@ -57,7 +57,7 @@ public class AggregatedCascadeTest {
 
   @Test
   public void forwardsRequestForInitializationToAllChildren() throws Exception {
-    NodeProperties properties = mock(NodeProperties.class);
+    NodePresentationProperties properties = mock(NodePresentationProperties.class);
     cascade.initNodeNames(properties);
     verify(child).initNodeNames(properties);
   }

@@ -3,7 +3,7 @@ package net.sf.anathema.hero.charms.display.tree;
 import net.sf.anathema.hero.charms.display.coloring.CharmDye;
 import net.sf.anathema.hero.charms.display.model.CharmDisplayModel;
 import net.sf.anathema.hero.charms.display.view.CharmView;
-import net.sf.anathema.hero.charms.display.view.ICharmTreeViewProperties;
+import net.sf.anathema.hero.charms.display.view.FunctionalNodeProperties;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.charms.model.learn.ICharmLearnListener;
 import net.sf.anathema.hero.charms.model.learn.ILearningCharmGroup;
@@ -14,10 +14,10 @@ public class LearnInteractionPresenter implements CharmInteractionPresenter {
 
   private CharmView view;
   private CharmDisplayModel model;
-  private ICharmTreeViewProperties viewProperties;
+  private FunctionalNodeProperties viewProperties;
   private CharmDye dye;
 
-  public LearnInteractionPresenter(CharmDisplayModel model, CharmView view, ICharmTreeViewProperties viewProperties, CharmDye dye) {
+  public LearnInteractionPresenter(CharmDisplayModel model, CharmView view, FunctionalNodeProperties viewProperties, CharmDye dye) {
     this.model = model;
     this.view = view;
     this.viewProperties = viewProperties;

@@ -64,7 +64,7 @@ public class AgnosticTreeView implements TreeView {
   }
 
   @Override
-  public void initNodeNames(NodeProperties properties) {
+  public void initNodeNames(NodePresentationProperties properties) {
     cascade.initNodeNames(properties);
     polygonPanel.refresh();
   }

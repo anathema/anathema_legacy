@@ -6,7 +6,7 @@ import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.platform.tree.display.CascadeLoadedListener;
 import net.sf.anathema.platform.tree.display.NodeInteractionListener;
-import net.sf.anathema.platform.tree.display.NodeProperties;
+import net.sf.anathema.platform.tree.display.NodePresentationProperties;
 import net.sf.anathema.platform.tree.display.ToolTipProperties;
 import net.sf.anathema.platform.tree.display.TreeRenderer;
 import net.sf.anathema.platform.tree.display.TreeView;
@@ -25,7 +25,7 @@ public interface CharmView extends SpecialCharmViewContainer {
 
   void addCharmCascadeHelp(String helpText);
 
-  TreeView addTreeView(ToolTipProperties treeProperties, NodeProperties properties);
+  TreeView addTreeView(ToolTipProperties treeProperties, NodePresentationProperties properties);
 
   void whenCursorLeavesCharmAreaResetAllPopups();
 

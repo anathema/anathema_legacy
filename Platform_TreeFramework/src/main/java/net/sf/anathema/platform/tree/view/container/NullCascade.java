@@ -1,7 +1,7 @@
 package net.sf.anathema.platform.tree.view.container;
 
 import net.sf.anathema.framework.ui.RGBColor;
-import net.sf.anathema.platform.tree.display.NodeProperties;
+import net.sf.anathema.platform.tree.display.NodePresentationProperties;
 import net.sf.anathema.platform.tree.display.draw.ShapeWithPosition;
 import net.sf.anathema.platform.tree.view.interaction.PolygonPanel;
 
@@ -27,7 +27,7 @@ public class NullCascade implements Cascade {
   }
 
   @Override
-  public void initNodeNames(NodeProperties properties) {
+  public void initNodeNames(NodePresentationProperties properties) {
     //nothing to do
   }
 

@@ -6,20 +6,20 @@ import net.sf.anathema.hero.charms.model.CharmIdMap;
 import net.sf.anathema.hero.charms.display.MagicDisplayLabeler;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.platform.tree.display.NodeProperties;
+import net.sf.anathema.platform.tree.display.NodePresentationProperties;
 
 import static java.text.MessageFormat.format;
 
-public class DefaultNodeProperties implements NodeProperties {
+public class DefaultNodePresentationProperties implements NodePresentationProperties {
 
-  private static final Logger logger = Logger.getLogger(DefaultNodeProperties.class);
+  private static final Logger logger = Logger.getLogger(DefaultNodePresentationProperties.class);
 
-  private final ICharmTreeViewProperties properties;
+  private final FunctionalNodeProperties properties;
   private final MagicDisplayLabeler charmLabeler;
   private final Resources resources;
   private final CharmIdMap map;
 
-  public DefaultNodeProperties(Resources resources, ICharmTreeViewProperties properties, CharmIdMap map) {
+  public DefaultNodePresentationProperties(Resources resources, FunctionalNodeProperties properties, CharmIdMap map) {
     this.properties = properties;
     this.resources = resources;
     this.map = map;
@@ -40,10 +40,10 @@ public class DefaultNodeProperties implements NodeProperties {
   }
 
   private String textForRequirementNode(String nodeId) {
-    String requirementWithCount = nodeId.replaceFirst(ICharmTreeViewProperties.REQUIREMENT + ".", "");
+    String requirementWithCount = nodeId.replaceFirst(FunctionalNodeProperties.REQUIREMENT + ".", "");
     String[] strings = requirementWithCount.split("\\.");
     int requirementCount = Integer.parseInt(strings[1]);
-    String requirementName = resources.getString(ICharmTreeViewProperties.REQUIREMENT + "." + strings[0]);
+    String requirementName = resources.getString(FunctionalNodeProperties.REQUIREMENT + "." + strings[0]);
     String charmString = resources.getString(requirementCount == 1 ? "Charms.Charm.Single" : "Charms.Charm.Multiple");
     return resources.getString("Requirement.Message", requirementCount, requirementName, charmString);
   }

@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.charms.display.view;
 
-public interface ICharmTreeViewProperties {
+public interface FunctionalNodeProperties {
 
   String REQUIREMENT = "Requirement";
 

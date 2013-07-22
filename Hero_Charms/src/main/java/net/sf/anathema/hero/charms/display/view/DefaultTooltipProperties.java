@@ -12,12 +12,12 @@ import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.platform.tree.display.ToolTipProperties;
 
 public class DefaultTooltipProperties implements ToolTipProperties {
-  private final ICharmTreeViewProperties treeProperties;
+  private final FunctionalNodeProperties treeProperties;
   private final CharmIdMap map;
   private final CharmTooltipBuilderImpl tooltipTextProvider;
   private SpecialCharmSet specialCharmSet;
 
-  public DefaultTooltipProperties(ICharmTreeViewProperties treeProperties, CharmIdMap map, Resources resources,
+  public DefaultTooltipProperties(FunctionalNodeProperties treeProperties, CharmIdMap map, Resources resources,
                                   MagicDescriptionProvider magicDescriptionProvider, SpecialCharmSet specialCharmSet) {
     this.treeProperties = treeProperties;
     this.map = map;

@@ -13,7 +13,7 @@ import net.sf.anathema.platform.tree.display.ContentFactory;
 import net.sf.anathema.platform.tree.display.GenericCascadeRenderer;
 import net.sf.anathema.platform.tree.display.ISpecialNodeView;
 import net.sf.anathema.platform.tree.display.NodeInteractionListener;
-import net.sf.anathema.platform.tree.display.NodeProperties;
+import net.sf.anathema.platform.tree.display.NodePresentationProperties;
 import net.sf.anathema.platform.tree.display.ToolTipProperties;
 import net.sf.anathema.platform.tree.display.TreeRenderer;
 import net.sf.anathema.platform.tree.display.TreeView;
@@ -43,7 +43,7 @@ public class SwingCharmView implements CharmView, IView {
     content.add(viewComponent.getComponent(), new CC().grow().push());
   }
 
-  public TreeView addTreeView(final ToolTipProperties treeProperties, final NodeProperties properties) {
+  public TreeView addTreeView(final ToolTipProperties treeProperties, final NodePresentationProperties properties) {
     CascadeLoadedListener listener = new CascadeLoadedListener() {
       @Override
       public void cascadeLoaded() {

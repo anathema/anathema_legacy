@@ -2,7 +2,7 @@ package net.sf.anathema.platform.tree.view.container;
 
 import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.framework.ui.RGBColor;
-import net.sf.anathema.platform.tree.display.NodeProperties;
+import net.sf.anathema.platform.tree.display.NodePresentationProperties;
 import net.sf.anathema.platform.tree.view.draw.FilledPolygon;
 import net.sf.anathema.platform.tree.view.draw.FlexibleArrow;
 import net.sf.anathema.platform.tree.view.interaction.PolygonPanel;
@@ -145,7 +145,7 @@ public class DefaultContainerCascadeTest {
 
   @Test
   public void setsInternationalizedNamesOnElements() throws Exception {
-    NodeProperties properties = mock(NodeProperties.class);
+    NodePresentationProperties properties = mock(NodePresentationProperties.class);
     when(properties.getNodeText("X")).thenReturn("XNAME");
     container.initNodeNames(properties);
     verify(polygon1).setText("XNAME");
