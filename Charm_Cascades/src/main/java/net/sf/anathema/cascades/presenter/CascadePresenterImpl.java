@@ -23,12 +23,14 @@ public class CascadePresenterImpl extends AbstractCascadePresenter implements Ca
                               MagicDescriptionProvider magicDescriptionProvider) {
     super(resources);
     CharmCache cache = environment.getDataSet(CharmCache.class);
-    CascadeCharmTreeViewProperties viewProperties = new CascadeCharmTreeViewProperties(resources, magicDescriptionProvider, cache);
+    CascadeCharmTreeViewProperties viewProperties = new CascadeCharmTreeViewProperties(resources,
+            magicDescriptionProvider, cache);
     DefaultNodeProperties nodeProperties = new DefaultNodeProperties(resources, viewProperties, viewProperties);
-    CharmView view = factory.createCascadeView(viewProperties, nodeProperties);
+    CharmView view = factory.createCascadeView();
     view.initGui(viewProperties, nodeProperties);
     CharmDisplayPropertiesMap charmDisplayPropertiesMap = new CharmDisplayPropertiesMap(environment.getObjectFactory());
-    CascadeCharmGroupChangeListener selectionListener = new CascadeCharmGroupChangeListener(view, viewProperties, charmDisplayPropertiesMap);
+    CascadeCharmGroupChangeListener selectionListener = new CascadeCharmGroupChangeListener(view, viewProperties,
+            charmDisplayPropertiesMap);
     CharacterTypes characterTypes = environment.getCharacterTypes();
     setCharmTypes(new CascadeCharmTypes(characterTypes, cache.getCharmProvider()));
     setChangeListener(selectionListener);
