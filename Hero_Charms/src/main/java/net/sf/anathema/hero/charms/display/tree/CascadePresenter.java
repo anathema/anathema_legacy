@@ -32,6 +32,8 @@ public class CascadePresenter {
 
   private final Resources resources;
   private CharmTreeMap charmTreeMap;
+  private CharmIdMap charmIdMap;
+  private MagicDescriptionProvider magicDescriptionProvider;
   private ICharmGroupChangeListener changeListener;
   private CharmView view;
   private CharmDye dye;
@@ -40,13 +42,18 @@ public class CascadePresenter {
   private SpecialCharmViewPresenter specialCharmPresenter = new NullSpecialCharmPresenter();
   private AlienCharmPresenter alienPresenter = new NullAlienCharmPresenter();
   private CharmInteractionPresenter interactionPresenter = new NullInteractionPresenter();
+  private SpecialCharmSet specialCharmSet;
 
-  public CascadePresenter(Resources resources, CharmTreeMap charmTreeMap) {
+  public CascadePresenter(Resources resources, CharmTreeMap charmTreeMap, CharmIdMap charmIdMap,
+                          MagicDescriptionProvider magicDescriptionProvider) {
     this.resources = resources;
     this.charmTreeMap = charmTreeMap;
+    this.charmIdMap = charmIdMap;
+    this.magicDescriptionProvider = magicDescriptionProvider;
   }
 
   public void initPresentation() {
+    addTreeView();
     ObjectSelectionView<Identifier> typeSelector = createCharmTypeSelector();
     ObjectSelectionView<Identifier> groupSelector = createCharmGroupSelector();
     initListening(typeSelector, groupSelector);
@@ -58,8 +65,7 @@ public class CascadePresenter {
     interactionPresenter.initPresentation();
   }
 
-  public void addTreeView(SpecialCharmSet specialCharmSet, MagicDescriptionProvider magicDescriptionProvider,
-                          CharmIdMap charmIdMap) {
+  private void addTreeView() {
     DefaultFunctionalNodeProperties functionalNodeProperties = new DefaultFunctionalNodeProperties();
     DefaultNodePresentationProperties nodeProperties = new DefaultNodePresentationProperties(resources,
             functionalNodeProperties, charmIdMap);
@@ -180,5 +186,9 @@ public class CascadePresenter {
 
   public void setCharmGroups(CharmGroupCollection charmGroups) {
     this.charmGroups = charmGroups;
+  }
+
+  public void setSpecialCharmSet(SpecialCharmSet specialCharmSet) {
+    this.specialCharmSet = specialCharmSet;
   }
 }

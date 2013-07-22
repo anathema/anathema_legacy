@@ -28,17 +28,16 @@ public class CharacterCharmTreePresenter {
   private CharmDisplayModel model;
   private TreePresentationProperties presentationProperties;
   private CharmDisplayPropertiesMap displayPropertiesMap;
-  private final CharmIdMap charmIdMap;
 
   public CharacterCharmTreePresenter(Resources resources, CharmView view, CharmDisplayModel model,
                                      TreePresentationProperties presentationProperties,
-                                     CharmDisplayPropertiesMap displayPropertiesMap, CharmIdMap charmIdMap) {
+                                     CharmDisplayPropertiesMap displayPropertiesMap, CharmIdMap charmIdMap,
+                                     MagicDescriptionProvider magicDescriptionProvider) {
     this.resources = resources;
     this.model = model;
     this.presentationProperties = presentationProperties;
     this.displayPropertiesMap = displayPropertiesMap;
-    this.charmIdMap = charmIdMap;
-    this.cascadePresenter = new CascadePresenter(resources, new CharacterCharmTreeMap(model));
+    this.cascadePresenter = new CascadePresenter(resources, new CharacterCharmTreeMap(model), charmIdMap, magicDescriptionProvider);
     this.view = view;
   }
 
@@ -60,9 +59,7 @@ public class CharacterCharmTreePresenter {
     cascadePresenter.setInteractionPresenter(
             new LearnInteractionPresenter(model, view, new DefaultFunctionalNodeProperties(), colorist));
     cascadePresenter.setCharmGroups(new CharacterGroupCollection(model));
-    CharacterSpecialCharmSet specialCharmSet = new CharacterSpecialCharmSet(model);
-    MagicDescriptionProvider magicDescriptionProvider = model.getMagicDescriptionProvider();
-    cascadePresenter.addTreeView(specialCharmSet, magicDescriptionProvider, charmIdMap);
+    cascadePresenter.setSpecialCharmSet(new CharacterSpecialCharmSet(model));
     cascadePresenter.initPresentation();
   }
 
