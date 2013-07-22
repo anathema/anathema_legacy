@@ -1,21 +1,24 @@
 archivesBaseName= 'anathema'
 
 apply plugin:'application'
-mainClassName = "net.sf.anathema.AnathemaBootLoader"
+mainClassName = "net.sf.anathema.Anathema"
 
 jar {
   manifest {
     attributes(
       'Built-By': System.getProperty("user.name"),
-      'Main-Class': 'net.sf.anathema.AnathemaBootLoader',
+      'Main-Class': 'net.sf.anathema.Anathema',
       'SplashScreen-Image': 'icons/core/AnathemaSplashNew.png'
     )
   }
 }
 
 dependencies {
+  compile project(':Platform')
+  compile project(':Platform_Swing')
+  
   //For development, all projects need to be on the classpath at runtime.
-  project.parent.subprojects.each {
+  parent.subprojects.each {
       if (isRelevant(it)){
         runtime project(":${it.name}")
       }

@@ -19,7 +19,7 @@ Set Up
 Development
 ===========
 ### Launching Anathema (IDE)###
-Launch ``net.sf.anathema.AnathemaBootLoader``
+Launch ``net.sf.anathema.Anathema``
 
 ### Launching Anathema (Command Prompt)###
 Run `gradlew run`

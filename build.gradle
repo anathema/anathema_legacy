@@ -267,7 +267,7 @@ task compileLauncherMac << {
             signature: "????", //opt
             //copyright: blah , //opt
             applicationCategory: "public.app-category.utilities", //opt
-            mainclassname: "net/sf/anathema/AnathemaBootLoader"
+            mainclassname: "net/sf/anathema/Anathema"
     ) {
 
         runtime(dir: "build/jre/mac64/jre${jreVersion}/Contents/Home")  //opt

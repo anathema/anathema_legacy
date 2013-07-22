@@ -11,13 +11,23 @@ import net.sf.anathema.initialization.GuiInitializer;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.lib.logging.Logger;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.file.Paths;
+import java.net.URLClassLoader;
+import java.util.Properties;
+import java.lang.reflect.Method;
+
 import javax.swing.SwingUtilities;
 
 public class Anathema {
 
-  /*Called by the boot loader using reflection.*/
-  @SuppressWarnings("UnusedDeclaration")
-  public void startApplication() throws Exception {
+  public static void main( String [] args ) {
+    Anathema app = new Anathema();
+  }
+  
+  public Anathema() {
     Logger.getLogger(Anathema.class).info("Launching Anathema");
     IInitializationPreferences initializationPreferences = loadPreferences();
     prepareEnvironment(initializationPreferences);
@@ -29,11 +39,15 @@ public class Anathema {
     return InitializationPreferences.getDefaultPreferences();
   }
 
-  private void prepareEnvironment(IInitializationPreferences initializationPreferences) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+  private void prepareEnvironment(IInitializationPreferences initializationPreferences) {
     displayStatus("Preparing Environment...");
-    LocaleEnvironment.initLocale(initializationPreferences);
-    SwingEnvironment.initLookAndFeel(initializationPreferences);
-    SwingEnvironment.initTooltipManager(initializationPreferences);
+    try {
+      LocaleEnvironment.initLocale(initializationPreferences);
+      SwingEnvironment.initLookAndFeel(initializationPreferences);
+      SwingEnvironment.initTooltipManager(initializationPreferences);
+    } catch( ClassNotFoundException | InstantiationException | IllegalAccessException e ) {
+      Logger.getLogger(Anathema.class).error( "Could not prepare environment. ", e);
+    }
   }
 
   private void showMainFrame(final IInitializationPreferences initializationPreferences) {
@@ -60,4 +74,5 @@ public class Anathema {
   private void displayStatus(String message) {
     ProxySplashscreen.getInstance().displayStatusMessage(message);
   }
+
 }
