@@ -37,7 +37,7 @@ public class CharacterCharmTreePresenter {
     this.model = model;
     this.presentationProperties = presentationProperties;
     this.displayPropertiesMap = displayPropertiesMap;
-    this.cascadePresenter = new CascadePresenter(resources, new CharacterCharmTreeMap(model), charmIdMap, magicDescriptionProvider);
+    this.cascadePresenter = new CascadePresenter(resources, charmIdMap, magicDescriptionProvider);
     this.view = view;
   }
 
@@ -47,6 +47,7 @@ public class CharacterCharmTreePresenter {
             charmConfiguration, view.getCharmTreeRenderer(), displayPropertiesMap);
     ConfigurableCharmDye colorist = new ConfigurableCharmDye(charmGroupChangeListener,
             new CharacterColoringStrategy(presentationProperties.getColor(), view, model));
+    cascadePresenter.setCharmTreeMap(new CharacterCharmTreeMap(model));
     cascadePresenter.setCharmTypes(new CharacterCharmTypes(model));
     cascadePresenter.setChangeListener(charmGroupChangeListener);
     cascadePresenter.setView(view);

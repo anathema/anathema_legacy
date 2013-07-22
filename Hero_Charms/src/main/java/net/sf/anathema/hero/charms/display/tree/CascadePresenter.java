@@ -44,18 +44,17 @@ public class CascadePresenter {
   private CharmInteractionPresenter interactionPresenter = new NullInteractionPresenter();
   private SpecialCharmSet specialCharmSet;
 
-  public CascadePresenter(Resources resources, CharmTreeMap charmTreeMap, CharmIdMap charmIdMap,
+  public CascadePresenter(Resources resources, CharmIdMap charmIdMap,
                           MagicDescriptionProvider magicDescriptionProvider) {
     this.resources = resources;
-    this.charmTreeMap = charmTreeMap;
     this.charmIdMap = charmIdMap;
     this.magicDescriptionProvider = magicDescriptionProvider;
   }
 
   public void initPresentation() {
-    addTreeView();
     ObjectSelectionView<Identifier> typeSelector = createCharmTypeSelector();
     ObjectSelectionView<Identifier> groupSelector = createCharmGroupSelector();
+    addTreeView();
     initListening(typeSelector, groupSelector);
     listenForCascadeLoading();
     specialCharmPresenter.initPresentation();
@@ -190,5 +189,9 @@ public class CascadePresenter {
 
   public void setSpecialCharmSet(SpecialCharmSet specialCharmSet) {
     this.specialCharmSet = specialCharmSet;
+  }
+
+  public void setCharmTreeMap(CharmTreeMap charmTreeMap) {
+    this.charmTreeMap = charmTreeMap;
   }
 }

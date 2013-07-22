@@ -25,7 +25,7 @@ public class CharmCascadesPresenterImpl {
     this.view = view;
     this.identifierMap = identifierMap;
     this.cache = environment.getDataSet(CharmCache.class);
-    this.cascadePresenter = new CascadePresenter(resources, identifierMap, cache, magicDescriptionProvider);
+    this.cascadePresenter = new CascadePresenter(resources, cache, magicDescriptionProvider);
     this.objectFactory = environment.getObjectFactory();
     this.characterTypes = environment.getCharacterTypes();
   }
@@ -35,11 +35,13 @@ public class CharmCascadesPresenterImpl {
     CharmDisplayPropertiesMap charmDisplayPropertiesMap = new CharmDisplayPropertiesMap(objectFactory);
     CascadeCharmGroupChangeListener selectionListener = new CascadeCharmGroupChangeListener(view, specialCharmSet,
             charmDisplayPropertiesMap);
+    cascadePresenter.setCharmTreeMap(identifierMap);
     cascadePresenter.setCharmTypes(new CascadeCharmTypes(characterTypes, cache.getCharmProvider()));
     cascadePresenter.setChangeListener(selectionListener);
     cascadePresenter.setView(view);
     cascadePresenter.setCharmDye(new ConfigurableCharmDye(selectionListener, new CascadeColoringStrategy(view)));
-    cascadePresenter.setCharmGroups(new CascadeGroupCollection(cache.getCharmProvider(), characterTypes, identifierMap));
+    cascadePresenter.setCharmGroups(
+            new CascadeGroupCollection(cache.getCharmProvider(), characterTypes, identifierMap));
     cascadePresenter.setSpecialCharmSet(specialCharmSet);
     cascadePresenter.initPresentation();
   }
