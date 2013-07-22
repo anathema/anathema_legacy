@@ -5,6 +5,7 @@ import net.sf.anathema.hero.charms.model.special.ISpecialCharm;
 import net.sf.anathema.hero.charms.display.model.CharmDisplayModel;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.charms.model.special.SpecialCharmList;
+import net.sf.anathema.platform.tree.display.TreeView;
 
 public class CharacterSpecialCharmPresenter implements SpecialCharmViewPresenter {
   private final SpecialCharmList list;
@@ -32,6 +33,11 @@ public class CharacterSpecialCharmPresenter implements SpecialCharmViewPresenter
       return;
     }
     list.showViews();
+  }
+
+  @Override
+  public void operateOn(TreeView treeView) {
+    list.operateOn(treeView);
   }
 
   private CharmsModel getCharmConfiguration() {

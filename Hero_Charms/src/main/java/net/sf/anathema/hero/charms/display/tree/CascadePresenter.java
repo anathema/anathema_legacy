@@ -84,6 +84,7 @@ public class CascadePresenter {
     changeListener.operateOn(treeView);
     dye.operateOn(treeView);
     interactionPresenter.operateOn(treeView);
+    specialCharmPresenter.operateOn(treeView);
   }
 
   private void initListening(final ObjectSelectionView<Identifier> typeSelector,

@@ -8,7 +8,6 @@ import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.platform.tree.display.AgnosticTreeView;
 import net.sf.anathema.platform.tree.display.ContentFactory;
-import net.sf.anathema.platform.tree.display.ISpecialNodeView;
 import net.sf.anathema.platform.tree.display.TreeView;
 import net.sf.anathema.platform.tree.swing.SwingPolygonPanel;
 import net.sf.anathema.platform.tree.view.MouseBorderClosure;
@@ -66,13 +65,6 @@ public class SwingCharmView implements CharmView, IView {
   public void addCharmCascadeHelp(String helpText) {
     JLabel help = new JLabel(helpText);
     selectionPanel.add(help, new CC().growX().pushX());
-  }
-
-  @Override
-  public void setSpecialCharmViewVisible(ISpecialNodeView charmView, boolean visible) {
-    if (visible) {
-      treeView.addSpecialControl(charmView.getNodeId(), charmView);
-    }
   }
 
   @Override

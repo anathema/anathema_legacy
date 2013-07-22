@@ -2,22 +2,21 @@ package net.sf.anathema.hero.charms.display.special;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
-import net.sf.anathema.hero.charms.display.view.SpecialCharmViewContainer;
 import net.sf.anathema.hero.charms.model.special.ISpecialCharm;
 import net.sf.anathema.hero.charms.model.special.SpecialCharmList;
 import net.sf.anathema.platform.tree.display.ISpecialNodeView;
+import net.sf.anathema.platform.tree.display.TreeView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CommonSpecialCharmList implements SpecialCharmList {
   private final List<ISpecialNodeView> specialCharmViews = new ArrayList<>();
-  private final SpecialCharmViewContainer container;
   private final SpecialCharmViewBuilder builder;
   private Predicate<String> visibilityPredicate = Predicates.alwaysFalse();
+  private TreeView treeView;
 
-  public CommonSpecialCharmList(SpecialCharmViewContainer container, SpecialCharmViewBuilder specialViewBuilder) {
-    this.container = container;
+  public CommonSpecialCharmList(SpecialCharmViewBuilder specialViewBuilder) {
     this.builder = specialViewBuilder;
   }
 
@@ -35,13 +34,20 @@ public class CommonSpecialCharmList implements SpecialCharmList {
   public void showViews() {
     for (ISpecialNodeView charmView : specialCharmViews) {
       boolean isVisible = isVisible(charmView);
-      container.setSpecialCharmViewVisible(charmView, isVisible);
+      if (isVisible){
+        treeView.addSpecialControl(charmView.getNodeId(), charmView);
+      }
     }
   }
 
   @Override
   public void setVisibilityPredicate(Predicate<String> predicate) {
     this.visibilityPredicate = predicate;
+  }
+
+  @Override
+  public void operateOn(TreeView treeView) {
+    this.treeView = treeView;
   }
 
   private boolean isVisible(ISpecialNodeView charmView) {

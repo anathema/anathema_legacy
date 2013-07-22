@@ -51,7 +51,7 @@ public class CharacterCharmTreePresenter {
     cascadePresenter.setChangeListener(charmGroupChangeListener);
     cascadePresenter.setView(view);
     SpecialCharmViewBuilder specialViewBuilder = new SwingSpecialCharmViewBuilder(resources, charmConfiguration);
-    SpecialCharmList specialCharmList = new CommonSpecialCharmList(view, specialViewBuilder);
+    SpecialCharmList specialCharmList = new CommonSpecialCharmList(specialViewBuilder);
     cascadePresenter.setSpecialPresenter(
             new CharacterSpecialCharmPresenter(charmGroupChangeListener, model, specialCharmList));
     cascadePresenter.setCharmDye(colorist);
