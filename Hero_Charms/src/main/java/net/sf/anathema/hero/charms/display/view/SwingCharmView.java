@@ -3,7 +3,6 @@ package net.sf.anathema.hero.charms.display.view;
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.framework.swing.IView;
-import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.util.Identifier;
@@ -11,7 +10,6 @@ import net.sf.anathema.platform.tree.display.AgnosticTreeView;
 import net.sf.anathema.platform.tree.display.ContentFactory;
 import net.sf.anathema.platform.tree.display.GenericCascadeRenderer;
 import net.sf.anathema.platform.tree.display.ISpecialNodeView;
-import net.sf.anathema.platform.tree.display.NodeInteractionListener;
 import net.sf.anathema.platform.tree.display.TreeRenderer;
 import net.sf.anathema.platform.tree.display.TreeView;
 import net.sf.anathema.platform.tree.document.GenericCascadeFactory;
@@ -77,16 +75,6 @@ public class SwingCharmView implements CharmView, IView {
   @Override
   public TreeRenderer getCharmTreeRenderer() {
     return new GenericCascadeRenderer(treeView, new GenericCascadeFactory(new AgnosticCascadeStrategy()));
-  }
-
-  @Override
-  public void colorNode(String charmId, RGBColor color) {
-    treeView.colorNode(charmId, color);
-  }
-
-  @Override
-  public void addCharmInteractionListener(NodeInteractionListener listener) {
-    treeView.addNodeInteractionListener(listener);
   }
 
   @Override

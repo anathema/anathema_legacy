@@ -17,7 +17,6 @@ import net.sf.anathema.hero.charms.model.CharmIdMap;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.charms.model.special.SpecialCharmList;
 import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.magic.description.display.ShowMagicDetailListener;
 import net.sf.anathema.platform.tree.document.visualizer.TreePresentationProperties;
 
 public class CharacterCharmTreePresenter {
@@ -46,7 +45,7 @@ public class CharacterCharmTreePresenter {
     CharacterCharmGroupChangeListener charmGroupChangeListener = new CharacterCharmGroupChangeListener(
             charmConfiguration, view.getCharmTreeRenderer(), displayPropertiesMap);
     ConfigurableCharmDye colorist = new ConfigurableCharmDye(charmGroupChangeListener,
-            new CharacterColoringStrategy(presentationProperties.getColor(), view, model));
+            new CharacterColoringStrategy(presentationProperties.getColor(), model));
     cascadePresenter.setCharmTreeMap(new CharacterCharmTreeMap(model));
     cascadePresenter.setCharmTypes(new CharacterCharmTypes(model));
     cascadePresenter.setChangeListener(charmGroupChangeListener);
@@ -58,14 +57,9 @@ public class CharacterCharmTreePresenter {
     cascadePresenter.setCharmDye(colorist);
     cascadePresenter.setAlienCharmPresenter(new CharacterAlienCharmPresenter(model));
     cascadePresenter.setInteractionPresenter(
-            new LearnInteractionPresenter(model, view, new DefaultFunctionalNodeProperties(), colorist));
+            new LearnInteractionPresenter(model, new DefaultFunctionalNodeProperties(), colorist));
     cascadePresenter.setCharmGroups(new CharacterGroupCollection(model));
     cascadePresenter.setSpecialCharmSet(new CharacterSpecialCharmSet(model));
     cascadePresenter.initPresentation();
-  }
-
-  @SuppressWarnings("UnusedDeclaration")
-  public void addShowDetailListener(ShowMagicDetailListener listener) {
-    view.addCharmInteractionListener(new ShowDetailInteractionListener(listener));
   }
 }

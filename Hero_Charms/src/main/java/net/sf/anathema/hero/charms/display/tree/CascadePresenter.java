@@ -82,6 +82,8 @@ public class CascadePresenter {
       }
     });
     changeListener.operateOn(treeView);
+    dye.operateOn(treeView);
+    interactionPresenter.operateOn(treeView);
   }
 
   private void initListening(final ObjectSelectionView<Identifier> typeSelector,

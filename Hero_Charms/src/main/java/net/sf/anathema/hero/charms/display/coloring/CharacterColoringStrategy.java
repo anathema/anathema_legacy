@@ -4,8 +4,8 @@ import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.charm.requirements.IndirectCharmRequirement;
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.hero.charms.display.model.CharmDisplayModel;
-import net.sf.anathema.hero.charms.display.view.CharmView;
 import net.sf.anathema.hero.charms.model.CharmsModel;
+import net.sf.anathema.platform.tree.display.TreeView;
 
 public class CharacterColoringStrategy implements CharmColoring {
 
@@ -14,12 +14,11 @@ public class CharacterColoringStrategy implements CharmColoring {
   private static final RGBColor UNSELECTED_COLOR = RGBColor.White;
 
   private final RGBColor characterColor;
-  private final CharmView view;
   private final CharmDisplayModel model;
+  private TreeView treeView;
 
-  public CharacterColoringStrategy(RGBColor characterColor, CharmView view, CharmDisplayModel model) {
+  public CharacterColoringStrategy(RGBColor characterColor, CharmDisplayModel model) {
     this.characterColor = characterColor;
-    this.view = view;
     this.model = model;
   }
 
@@ -28,7 +27,7 @@ public class CharacterColoringStrategy implements CharmColoring {
     String id = charm.getId();
     RGBColor color = getCharmConfiguration().isLearned(charm) ? characterColor : UNSELECTED_COLOR;
     int opacity = getCharmConfiguration().isLearnable(charm) ? MAXIMUM_OPACITY : REDUCED_OPACITY;
-    view.colorNode(id, new RGBColor(color, opacity));
+    treeView.colorNode(id, new RGBColor(color, opacity));
   }
 
   @Override
@@ -36,7 +35,12 @@ public class CharacterColoringStrategy implements CharmColoring {
     String id = requirement.getStringRepresentation();
     boolean fulfilled = requirement.isFulfilled(getCharmConfiguration().getLearnedCharms(true));
     RGBColor color = fulfilled ? characterColor.brighter() : UNSELECTED_COLOR;
-    view.colorNode(id, new RGBColor(color, MAXIMUM_OPACITY));
+    treeView.colorNode(id, new RGBColor(color, MAXIMUM_OPACITY));
+  }
+
+  @Override
+  public void operateOn(TreeView treeView) {
+    this.treeView = treeView;
   }
 
   private CharmsModel getCharmConfiguration() {

@@ -39,7 +39,7 @@ public class CharmCascadesPresenterImpl {
     cascadePresenter.setCharmTypes(new CascadeCharmTypes(characterTypes, cache.getCharmProvider()));
     cascadePresenter.setChangeListener(selectionListener);
     cascadePresenter.setView(view);
-    cascadePresenter.setCharmDye(new ConfigurableCharmDye(selectionListener, new CascadeColoringStrategy(view)));
+    cascadePresenter.setCharmDye(new ConfigurableCharmDye(selectionListener, new CascadeColoringStrategy()));
     cascadePresenter.setCharmGroups(
             new CascadeGroupCollection(cache.getCharmProvider(), characterTypes, identifierMap));
     cascadePresenter.setSpecialCharmSet(specialCharmSet);

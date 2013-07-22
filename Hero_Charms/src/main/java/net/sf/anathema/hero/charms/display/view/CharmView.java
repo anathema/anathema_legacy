@@ -10,7 +10,7 @@ import net.sf.anathema.platform.tree.display.TreeView;
 
 public interface CharmView extends SpecialCharmViewContainer {
 
-  TreeRenderer getCharmTreeRenderer();
+  TreeView addTreeView();
 
   ObjectSelectionView<Identifier> addSelectionView(String title, AgnosticUIConfiguration<Identifier> uiConfig);
 
@@ -18,14 +18,9 @@ public interface CharmView extends SpecialCharmViewContainer {
                                                                AgnosticUIConfiguration<Identifier> uiConfig,
                                                                Identifier[] objects);
 
-  TreeView addTreeView();
+  TreeRenderer getCharmTreeRenderer();
 
   void addCharmCascadeHelp(String helpText);
 
-
   void whenCursorLeavesCharmAreaResetAllPopups();
-
-  void colorNode(String charmId, RGBColor color);
-
-  void addCharmInteractionListener(NodeInteractionListener listener);
 }
