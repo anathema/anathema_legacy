@@ -26,7 +26,7 @@ public class CharmCacheImpl implements CharmCache {
   }
 
   @Override
-  public Charm getCharm(String charmId) {
+  public Charm getCharmById(String charmId) {
     return charmsById.get(charmId);
   }
 

@@ -42,11 +42,10 @@ public class CascadePresenterImpl extends AbstractCascadePresenter implements Ca
   private CascadeSpecialCharmSet addTreeView(Resources resources, MagicDescriptionProvider magicDescriptionProvider,
                                              CharmCache cache, CharmView view) {
     DefaultFunctionalNodeProperties functionalNodeProperties = new DefaultFunctionalNodeProperties();
-    CascadeCharmIdMap viewProperties = new CascadeCharmIdMap(cache);
     DefaultNodePresentationProperties nodeProperties = new DefaultNodePresentationProperties(resources,
-            functionalNodeProperties, viewProperties);
+            functionalNodeProperties, cache);
     CascadeSpecialCharmSet specialCharmSet = new CascadeSpecialCharmSet(cache);
-    DefaultTooltipProperties tooltipProperties = new DefaultTooltipProperties(functionalNodeProperties, viewProperties,
+    DefaultTooltipProperties tooltipProperties = new DefaultTooltipProperties(functionalNodeProperties, cache,
             resources, magicDescriptionProvider, specialCharmSet);
     view.addTreeView(tooltipProperties, nodeProperties);
     return specialCharmSet;

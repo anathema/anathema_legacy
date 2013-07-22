@@ -4,6 +4,7 @@ import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.view.SectionView;
 import net.sf.anathema.framework.IApplicationModel;
+import net.sf.anathema.hero.charms.compiler.CharmCache;
 import net.sf.anathema.hero.charms.display.model.CharmDisplayModel;
 import net.sf.anathema.hero.charms.display.presenter.CharmDescriptionProviderExtractor;
 import net.sf.anathema.hero.charms.display.presenter.CharmDisplayPropertiesMap;
@@ -13,6 +14,7 @@ import net.sf.anathema.hero.charms.model.CharmsModelFetcher;
 import net.sf.anathema.hero.display.presenter.HeroModelInitializer;
 import net.sf.anathema.hero.display.presenter.RegisteredInitializer;
 import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.platform.CharacterGenericsExtension;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.platform.tree.document.visualizer.TreePresentationProperties;
@@ -41,9 +43,16 @@ public class CharmInitializer implements HeroModelInitializer {
     TreePresentationProperties presentationProperties = propertiesMap.getDisplayProperties(characterType);
     String header = resources.getString("CardView.CharmConfiguration.CharmSelection.Title");
     CharmView charmView = sectionView.addView(header, CharmView.class, characterType);
-    CharacterCharmTreePresenter treePresenter = new CharacterCharmTreePresenter(resources, charmView, model, presentationProperties, propertiesMap);
+    CharmCache charmCache = getCharmCache();
+    CharacterCharmTreePresenter treePresenter = new CharacterCharmTreePresenter(resources, charmView, model, presentationProperties, propertiesMap, charmCache);
     treePresenter.initPresentation();
     //MagicDetailPresenter detailPresenter = createMagicDetailPresenter();
     //new MagicAndDetailPresenter(detailPresenter, treePresenter).initPresentation();
+  }
+
+  private CharmCache getCharmCache() {
+    CharacterGenericsExtension extension = (CharacterGenericsExtension) applicationModel.getExtensionPointRegistry().get(
+            CharacterGenericsExtension.ID);
+    return extension.getEnvironment().getDataSet(CharmCache.class);
   }
 }

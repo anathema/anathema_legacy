@@ -14,6 +14,7 @@ import net.sf.anathema.hero.charms.display.view.CharmView;
 import net.sf.anathema.hero.charms.display.view.DefaultFunctionalNodeProperties;
 import net.sf.anathema.hero.charms.display.view.DefaultNodePresentationProperties;
 import net.sf.anathema.hero.charms.display.view.DefaultTooltipProperties;
+import net.sf.anathema.hero.charms.model.CharmIdMap;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.charms.model.GroupCharmTree;
 import net.sf.anathema.hero.charms.model.special.SpecialCharmList;
@@ -25,16 +26,18 @@ import net.sf.anathema.platform.tree.document.visualizer.TreePresentationPropert
 public class CharacterCharmTreePresenter extends AbstractCascadePresenter {
 
   private final CharmView view;
+  private final CharmIdMap charmIdMap;
   private final CharmDisplayModel model;
 
   public CharacterCharmTreePresenter(Resources resources, CharmView view, CharmDisplayModel charmModel,
                                      TreePresentationProperties presentationProperties,
-                                     CharmDisplayPropertiesMap displayPropertiesMap) {
+                                     CharmDisplayPropertiesMap displayPropertiesMap, CharmIdMap charmIdMap) {
     super(resources);
     this.model = charmModel;
     this.view = view;
+    this.charmIdMap = charmIdMap;
     CharmsModel charmConfiguration = model.getCharmModel();
-    addTreeView(resources, view, charmConfiguration);
+    addTreeView(resources, view);
     CharacterCharmGroupChangeListener charmGroupChangeListener = new CharacterCharmGroupChangeListener(
             charmConfiguration, view.getCharmTreeRenderer(), displayPropertiesMap);
     ConfigurableCharmDye colorist = new ConfigurableCharmDye(charmGroupChangeListener,
@@ -52,12 +55,11 @@ public class CharacterCharmTreePresenter extends AbstractCascadePresenter {
     setCharmGroups(new CharacterGroupCollection(model));
   }
 
-  private void addTreeView(Resources resources, CharmView view, CharmsModel charmConfiguration) {
+  private void addTreeView(Resources resources, CharmView view) {
     DefaultFunctionalNodeProperties functionalNodeProperties = new DefaultFunctionalNodeProperties();
-    CharacterCharmIdMap viewProperties = new CharacterCharmIdMap(charmConfiguration, functionalNodeProperties);
     DefaultNodePresentationProperties nodeProperties = new DefaultNodePresentationProperties(resources,
-            functionalNodeProperties, viewProperties);
-    DefaultTooltipProperties tooltipProperties = new DefaultTooltipProperties(functionalNodeProperties, viewProperties,
+            functionalNodeProperties, charmIdMap);
+    DefaultTooltipProperties tooltipProperties = new DefaultTooltipProperties(functionalNodeProperties, charmIdMap,
             resources, model.getMagicDescriptionProvider(), new CharacterSpecialCharmSet(model));
     view.addTreeView(tooltipProperties, nodeProperties);
   }
