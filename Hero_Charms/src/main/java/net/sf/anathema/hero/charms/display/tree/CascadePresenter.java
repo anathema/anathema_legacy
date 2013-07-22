@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class AbstractCascadePresenter implements ICascadeSelectionPresenter {
+public class CascadePresenter {
 
   private final Resources resources;
   private CharmTreeMap charmTreeMap;
@@ -41,7 +41,7 @@ public class AbstractCascadePresenter implements ICascadeSelectionPresenter {
   private AlienCharmPresenter alienPresenter = new NullAlienCharmPresenter();
   private CharmInteractionPresenter interactionPresenter = new NullInteractionPresenter();
 
-  public AbstractCascadePresenter(Resources resources, CharmTreeMap charmTreeMap) {
+  public CascadePresenter(Resources resources, CharmTreeMap charmTreeMap) {
     this.resources = resources;
     this.charmTreeMap = charmTreeMap;
   }
@@ -58,8 +58,8 @@ public class AbstractCascadePresenter implements ICascadeSelectionPresenter {
     interactionPresenter.initPresentation();
   }
 
-  protected void addTreeView(SpecialCharmSet specialCharmSet, MagicDescriptionProvider magicDescriptionProvider,
-                             CharmIdMap charmIdMap) {
+  public void addTreeView(SpecialCharmSet specialCharmSet, MagicDescriptionProvider magicDescriptionProvider,
+                          CharmIdMap charmIdMap) {
     DefaultFunctionalNodeProperties functionalNodeProperties = new DefaultFunctionalNodeProperties();
     DefaultNodePresentationProperties nodeProperties = new DefaultNodePresentationProperties(resources,
             functionalNodeProperties, charmIdMap);
@@ -138,19 +138,19 @@ public class AbstractCascadePresenter implements ICascadeSelectionPresenter {
     this.specialCharmPresenter = presenter;
   }
 
-  protected void setView(CharmView view) {
+  public void setView(CharmView view) {
     this.view = view;
   }
 
-  protected void setChangeListener(ICharmGroupChangeListener charmGroupChangeListener) {
+  public void setChangeListener(ICharmGroupChangeListener charmGroupChangeListener) {
     this.changeListener = charmGroupChangeListener;
   }
 
-  protected void setCharmDye(CharmDye dye) {
+  public void setCharmDye(CharmDye dye) {
     this.dye = dye;
   }
 
-  protected void setCharmTypes(CharmTypes types) {
+  public void setCharmTypes(CharmTypes types) {
     this.charmTypes = types;
   }
 
