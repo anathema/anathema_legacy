@@ -97,22 +97,17 @@ public class ListSelectionView<T> implements FxObjectSelectionView<T> {
   }
 
   @Override
-  public void setEnabled(boolean enabled) {
-    list.setDisable(!enabled);
+  public void setEnabled(final boolean enabled) {
+    FxThreading.runOnCorrectThread(new Runnable() {
+      @Override
+      public void run() {
+        list.setDisable(!enabled);
+      }
+    });
   }
 
   @Override
   public Node getNode() {
     return pane;
-  }
-
-  private void waitForContent() {
-    try {
-      while (pane == null) {
-        Thread.sleep(50);
-      }
-    } catch (InterruptedException e) {
-      throw new RuntimeException(e);
-    }
   }
 }
