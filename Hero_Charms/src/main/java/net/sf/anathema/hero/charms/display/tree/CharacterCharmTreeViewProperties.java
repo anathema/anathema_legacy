@@ -1,20 +1,15 @@
 package net.sf.anathema.hero.charms.display.tree;
 
-import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
-import net.sf.anathema.hero.charms.display.view.AbstractCharmTreeViewProperties;
-import net.sf.anathema.hero.charms.model.special.NullSpecialCharm;
 import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.hero.charms.display.view.AbstractCharmTreeViewProperties;
 import net.sf.anathema.hero.charms.model.CharmIdMap;
-import net.sf.anathema.hero.charms.model.special.ISpecialCharm;
 import net.sf.anathema.hero.charms.model.CharmsModel;
-import net.sf.anathema.lib.resources.Resources;
 
 public class CharacterCharmTreeViewProperties extends AbstractCharmTreeViewProperties implements CharmIdMap {
 
   private final CharmsModel configuration;
 
-  public CharacterCharmTreeViewProperties(Resources resources, CharmsModel configuration, MagicDescriptionProvider magicDescriptionProvider) {
-    super(resources, magicDescriptionProvider);
+  public CharacterCharmTreeViewProperties(CharmsModel configuration) {
     this.configuration = configuration;
   }
 
@@ -26,13 +21,4 @@ public class CharacterCharmTreeViewProperties extends AbstractCharmTreeViewPrope
     return configuration.getCharmById(id);
   }
 
-  @Override
-  protected ISpecialCharm getSpecialCharm(String charmId) {
-    for (ISpecialCharm special : configuration.getSpecialCharms()) {
-      if (special.getCharmId().equals(charmId)) {
-        return special;
-      }
-    }
-    return new NullSpecialCharm();
-  }
 }

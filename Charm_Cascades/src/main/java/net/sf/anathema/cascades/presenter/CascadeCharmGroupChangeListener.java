@@ -11,17 +11,18 @@ import net.sf.anathema.platform.tree.document.visualizer.TreePresentationPropert
 public class CascadeCharmGroupChangeListener extends AbstractCharmGroupChangeListener {
 
   private final CharmView cascadeView;
-  private final CascadeCharmTreeViewProperties viewProperties;
+  private final CascadeSpecialCharmSet specialCharmSet;
 
-  public CascadeCharmGroupChangeListener(CharmView cascadeView, CascadeCharmTreeViewProperties viewProperties, CharmDisplayPropertiesMap charmDisplayPropertiesMap) {
+  public CascadeCharmGroupChangeListener(CharmView cascadeView, CascadeSpecialCharmSet specialCharmSet,
+                                         CharmDisplayPropertiesMap charmDisplayPropertiesMap) {
     super(new FriendlyCharmGroupArbitrator(), cascadeView.getCharmTreeRenderer(), charmDisplayPropertiesMap);
     this.cascadeView = cascadeView;
-    this.viewProperties = viewProperties;
+    this.specialCharmSet = specialCharmSet;
   }
 
   @Override
   protected final void modifyCharmVisuals(Identifier type) {
-    viewProperties.setCharmType(type);
+    specialCharmSet.setType(type);
     RGBColor color = findColor(type);
     cascadeView.setBackgroundColor(color);
   }

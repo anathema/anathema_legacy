@@ -12,6 +12,7 @@ import net.sf.anathema.hero.charms.display.special.SpecialCharmViewBuilder;
 import net.sf.anathema.hero.charms.display.special.SwingSpecialCharmViewBuilder;
 import net.sf.anathema.hero.charms.display.view.CharmView;
 import net.sf.anathema.hero.charms.display.view.DefaultNodeProperties;
+import net.sf.anathema.hero.charms.display.view.DefaultTooltipProperties;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.charms.model.GroupCharmTree;
 import net.sf.anathema.hero.charms.model.special.SpecialCharmList;
@@ -32,9 +33,11 @@ public class CharacterCharmTreePresenter extends AbstractCascadePresenter {
     this.view = view;
     CharmsModel charmConfiguration = model.getCharmModel();
     CharacterCharmTreeViewProperties viewProperties =
-            new CharacterCharmTreeViewProperties(resources, charmConfiguration, model.getMagicDescriptionProvider());
+            new CharacterCharmTreeViewProperties(charmConfiguration);
     DefaultNodeProperties nodeProperties = new DefaultNodeProperties(resources, viewProperties, viewProperties);
-    view.addTreeView(viewProperties, nodeProperties);
+    DefaultTooltipProperties tooltipProperties = new DefaultTooltipProperties(viewProperties, viewProperties, resources,
+            model.getMagicDescriptionProvider(), new CharacterSpecialCharmSet(model));
+    view.addTreeView(tooltipProperties, nodeProperties);
     CharacterCharmGroupChangeListener charmGroupChangeListener =
             new CharacterCharmGroupChangeListener(charmConfiguration, view.getCharmTreeRenderer(), displayPropertiesMap);
     ConfigurableCharmDye colorist = new ConfigurableCharmDye(charmGroupChangeListener, new CharacterColoringStrategy(presentationProperties.getColor(), view, model));
