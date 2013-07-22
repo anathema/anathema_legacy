@@ -1,6 +1,5 @@
 package net.sf.anathema.character.equipment.item.view.fx;
 
-import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.Node;
@@ -9,6 +8,7 @@ import net.sf.anathema.equipment.core.ItemCost;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.selection.ISelectionIntValueChangedListener;
 import net.sf.anathema.platform.fx.FxObjectSelectionView;
+import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.platform.fx.dot.DotSelectionSpinner;
 import net.sf.anathema.platform.fx.selection.SelectionViewFactory;
 import org.jmock.example.announcer.Announcer;
@@ -29,7 +29,7 @@ public class FxCostSelectionView implements CostSelectionView {
 
   public FxCostSelectionView(final String text, SelectionViewFactory viewFactory) {
     selectionViewFactory = viewFactory;
-    Platform.runLater(new Runnable() {
+    FxThreading.runOnCorrectThread(new Runnable() {
       @Override
       public void run() {
         selection = selectionViewFactory.create(text, new SimpleUiConfiguration());
@@ -43,7 +43,7 @@ public class FxCostSelectionView implements CostSelectionView {
 
   @Override
   public void setValue(final ItemCost cost) {
-    Platform.runLater(new Runnable() {
+    FxThreading.runOnCorrectThread(new Runnable() {
       @Override
       public void run() {
         if (cost == null) {
@@ -70,7 +70,7 @@ public class FxCostSelectionView implements CostSelectionView {
 
   @Override
   public void setSelectableBackgrounds(final String[] backgrounds) {
-    Platform.runLater(new Runnable() {
+    FxThreading.runOnCorrectThread(new Runnable() {
       @Override
       public void run() {
         selection.setObjects(backgrounds);

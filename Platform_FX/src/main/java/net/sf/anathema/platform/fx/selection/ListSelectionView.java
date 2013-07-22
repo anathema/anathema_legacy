@@ -77,9 +77,13 @@ public class ListSelectionView<T> implements FxObjectSelectionView<T> {
   }
 
   @Override
-  public void setObjects(T[] objects) {
-    waitForContent();
-    list.setItems(new ObservableListWrapper<>(Arrays.asList(objects)));
+  public void setObjects(final T[] objects) {
+    FxThreading.runOnCorrectThread(new Runnable() {
+      @Override
+      public void run() {
+        list.setItems(new ObservableListWrapper<>(Arrays.asList(objects)));
+      }
+    });
   }
 
   @Override
