@@ -43,7 +43,7 @@ public class PerspectiveSelectionBar {
   }
 
   public void selectFirstButton() {
-    JToggleButton button = (JToggleButton) toolbar.getComponent(0);
-    button.setSelected(true);
+    JToggleButton button = (JToggleButton) toolbar.getComponentAtIndex(0);
+    if(button != null) button.setSelected(true);
   }
 }
