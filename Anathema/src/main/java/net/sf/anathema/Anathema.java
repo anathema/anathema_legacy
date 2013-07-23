@@ -11,14 +11,6 @@ import net.sf.anathema.initialization.GuiInitializer;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.lib.logging.Logger;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.nio.file.Paths;
-import java.net.URLClassLoader;
-import java.util.Properties;
-import java.lang.reflect.Method;
-
 import javax.swing.SwingUtilities;
 
 public class Anathema {
