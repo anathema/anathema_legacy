@@ -134,6 +134,7 @@ task prepareWinJRE(type: Copy) {
     def target = new File('build/jre/win32');
     into target
     from { zipTree(configurations.jreWin.singleFile) }
+    exclude '**/jfxrt.jar' //this goes away with java 8
     onlyIf { !target.exists() }
     doLast {
         ant.delete(includeemptydirs: true, quiet: true) {
@@ -146,6 +147,7 @@ task prepareMacJRE(type: Copy) {
     def target = new File('build/jre/mac64');
     into target
     from { zipTree(configurations.jreMac.singleFile) }
+    exclude '**/jfxrt.jar' //this goes away with java 8
     onlyIf { !target.exists() }
     doLast {
         ant.delete(includeemptydirs: true, quiet: true) {
@@ -186,7 +188,6 @@ task assembleZip(type: Zip) {
     from 'Anathema/build/libs'
     into('lib') {
         from(dependenciesDir)
-        from(pluginsDir)
     }
     from("Development_Distribution/Linux") {
         include 'anathema.sh'
@@ -285,7 +286,6 @@ task compileLauncherMac << {
         classpath(dir: "Anathema/build/libs/") // Anathema.jar
         classpath(file: "Anathema/src/main/resources/icons/core/AnathemaSplashNew.png")
         classpath(dir: "${buildDir}/dependencies/")
-        classpath(dir: "${buildDir}/plugins/")
 
         option(value: "-splash:\$APP_ROOT/Contents/Java/AnathemaSplashNew.png")
         option(value: "-Dapple.laf-useScreenMenuBar=true")
@@ -318,8 +318,7 @@ task assembleMac(type: Zip) {
 // Release Dependencies
 [compileLauncherWin, compileLauncherMac, assembleZip].each {
     it.dependsOn ':Anathema:jar'
-    it.dependsOn copyExternalDependencies
-    it.dependsOn copyAnathemaModules
+    it.dependsOn copyAllDependencies
     it.dependsOn generateChangelog
 }
 
