@@ -97,17 +97,5 @@ public class UpdateAction implements Command {
     public ConfigureAnathema(UpdateSystem updateSystem) {
       this.updateSystem = updateSystem;
     }
-
-    @Override
-    public void finishedInstallation() {
-      try {
-        File folderForVersionToRun = updateSystem.getFolderForVersionToRun();
-        Properties properties = new Properties();
-        properties.setProperty("library.folder", FilenameUtils.separatorsToUnix(folderForVersionToRun.getAbsolutePath()));
-        new PropertiesSaver("anathema.properties").save(properties);
-      } catch (IOException e) {
-        //handle exception
-      }
-    }
   }
 }
