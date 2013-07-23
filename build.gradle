@@ -282,7 +282,7 @@ task compileLauncherMac << {
 
         runtime(dir: "build/jre/mac64/jre${jreVersion}/Contents/Home")  //opt
 
-        classpath(dir: "Anathema/build/libs/")
+        classpath(dir: "Anathema/build/libs/") // Anathema.jar
         classpath(file: "Anathema/src/main/resources/icons/core/AnathemaSplashNew.png")
         classpath(dir: "${buildDir}/dependencies/")
         classpath(dir: "${buildDir}/plugins/")

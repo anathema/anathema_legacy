@@ -99,7 +99,7 @@ Section -Anathema SEC0000
     File /r ..\..\..\${JRE_PATH}\*
     SetOutPath $INSTDIR
     File ..\..\..\Anathema\build\libs\Anathema.jar
-    File ..\..\..\build\launcher\anathema.exe
+    File ..\..\..\build\launcher\Anathema.exe
     File ..\..\..\Development_Documentation\Distribution\English\license.txt
     File /oname=release_notes.txt ..\..\..\Development_Documentation\Distribution\English\versions.md
     WriteRegStr HKLM "${REGKEY}\Components" Anathema 1
@@ -114,7 +114,7 @@ Section -post SEC0001
     WriteUninstaller $INSTDIR\uninstall.exe
     !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
     CreateDirectory $SMPROGRAMS\$StartMenuGroup
-    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\$(^Name).lnk" $INSTDIR\anathema.exe
+    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\$(^Name).lnk" $INSTDIR\Anathema.exe
     CreateShortcut "$SMPROGRAMS\$StartMenuGroup\$(^UninstallLink).lnk" $INSTDIR\uninstall.exe
     !insertmacro MUI_STARTMENU_WRITE_END
     WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" DisplayName "$(^Name)"
@@ -145,8 +145,8 @@ Section /o -un.Anathema UNSEC0000
     RmDir /r /REBOOTOK $PROFILE\.anathema
     RmDir /r /REBOOTOK $INSTDIR\lib
     RmDir /r /REBOOTOK $INSTDIR\jre
-    Delete /REBOOTOK $INSTDIR\anathema.jar
-    Delete /REBOOTOK $INSTDIR\anathema.exe
+    Delete /REBOOTOK $INSTDIR\Anathema.jar
+    Delete /REBOOTOK $INSTDIR\Anathema.exe
     Delete /REBOOTOK $INSTDIR\license.txt
     Delete /REBOOTOK $INSTDIR\release_notes.txt
     Delete /REBOOTOK $INSTDIR\anathema.properties
