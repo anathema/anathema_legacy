@@ -7,7 +7,6 @@ import net.sf.anathema.platform.tree.display.transform.CenterOn;
 import net.sf.anathema.platform.tree.display.transform.PreConcatenate;
 import net.sf.anathema.platform.tree.display.transform.Scale;
 import net.sf.anathema.platform.tree.display.transform.ScaleVisitor;
-import net.sf.anathema.platform.tree.display.transform.TransformOperation;
 import net.sf.anathema.platform.tree.display.transform.Translation;
 import net.sf.anathema.platform.tree.view.MouseBorderClosure;
 import net.sf.anathema.platform.tree.view.draw.Canvas;
@@ -323,9 +322,7 @@ public class SwingPolygonPanel extends JPanel implements PolygonPanel {
 
   private double getScale(AgnosticTransform transform) {
     ScaleVisitor visitor = new ScaleVisitor();
-    for (TransformOperation transformOperation : transform) {
-      transformOperation.accept(visitor);
-    }
+    transform.visitOperations(visitor);
     return visitor.getScale();
   }
 }

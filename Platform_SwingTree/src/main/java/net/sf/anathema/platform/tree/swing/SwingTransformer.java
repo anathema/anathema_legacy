@@ -13,13 +13,11 @@ public class SwingTransformer {
   public static AffineTransform convert(AgnosticTransform transform) {
     final AffineTransform affineTransform = new AffineTransform();
     SwingTransformVisitor visitor = new SwingTransformVisitor(affineTransform);
-    for (TransformOperation operation : transform) {
-      operation.accept(visitor);
-    }
+    transform.visitOperations(visitor);
     return affineTransform;
   }
 
-  public static Shape convert(AgnosticShape shape){
+  public static Shape convert(AgnosticShape shape) {
     SwingShapeVisitor visitor = new SwingShapeVisitor();
     shape.accept(visitor);
     return visitor.getShape();

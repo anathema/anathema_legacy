@@ -32,9 +32,7 @@ public class ScaleVisitorTest {
   }
 
   private double calculateScale() {
-    for (TransformOperation transformOperation : transform) {
-      transformOperation.accept(visitor);
-    }
+    transform.visitOperations(visitor);
     return visitor.getScale();
   }
 

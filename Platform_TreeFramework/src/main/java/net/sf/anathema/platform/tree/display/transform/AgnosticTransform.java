@@ -3,10 +3,9 @@ package net.sf.anathema.platform.tree.display.transform;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-public class AgnosticTransform implements Iterable<TransformOperation> {
+public class AgnosticTransform {
 
   private List<TransformOperation> operations = new ArrayList<>();
 
@@ -14,9 +13,10 @@ public class AgnosticTransform implements Iterable<TransformOperation> {
     operations.add(operation);
   }
 
-  @Override
-  public Iterator<TransformOperation> iterator() {
-    return operations.iterator();
+  public void visitOperations(TransformOperationVisitor visitor) {
+    for (TransformOperation operation : operations) {
+      operation.accept(visitor);
+    }
   }
 
   public void setToIdentity() {

@@ -5,9 +5,7 @@ public class ScaleVisitor implements TransformOperationVisitor {
 
   @Override
   public void visitPreConcatenate(PreConcatenate preConcatenate) {
-    for (TransformOperation transformOperation : preConcatenate.scaleInstance) {
-      transformOperation.accept(this);
-    }
+    preConcatenate.scaleInstance.visitOperations(this);
   }
 
   @Override
