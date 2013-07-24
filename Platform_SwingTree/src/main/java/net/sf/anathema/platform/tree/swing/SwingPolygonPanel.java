@@ -6,6 +6,8 @@ import net.sf.anathema.platform.tree.display.transform.AgnosticTransform;
 import net.sf.anathema.platform.tree.display.transform.CenterOn;
 import net.sf.anathema.platform.tree.display.transform.PreConcatenate;
 import net.sf.anathema.platform.tree.display.transform.Scale;
+import net.sf.anathema.platform.tree.display.transform.ScaleVisitor;
+import net.sf.anathema.platform.tree.display.transform.TransformOperation;
 import net.sf.anathema.platform.tree.display.transform.Translation;
 import net.sf.anathema.platform.tree.view.MouseBorderClosure;
 import net.sf.anathema.platform.tree.view.draw.Canvas;
@@ -137,7 +139,7 @@ public class SwingPolygonPanel extends JPanel implements PolygonPanel {
 
   @Override
   public void translateRelativeToScale(int x, int y) {
-    double scale = Math.sqrt(getScaleSquared(transform));
+    double scale = getScale(transform);
     transform.add(new Translation(x / scale, y / scale));
   }
 
@@ -290,10 +292,9 @@ public class SwingPolygonPanel extends JPanel implements PolygonPanel {
   private void executeScaleIfBoundsAreNotBroken(AgnosticTransform scaleInstance) {
     AgnosticTransform copy = transform.createCopy();
     copy.add(new PreConcatenate(scaleInstance));
-    double determinant = getScaleSquared(copy);
-    double maxZoomOutDeterminant = MAX_ZOOM_OUT_SCALE * MAX_ZOOM_OUT_SCALE;
-    double maxZoomInDeterminant = MAX_ZOOM_IN_SCALE * MAX_ZOOM_IN_SCALE;
-    if (maxZoomOutDeterminant <= determinant && determinant <= maxZoomInDeterminant) {
+    double newScale = getScale(copy);
+    boolean isScaleAllowed = MAX_ZOOM_OUT_SCALE <= newScale && newScale <= MAX_ZOOM_IN_SCALE;
+    if (isScaleAllowed) {
       transform.add(new PreConcatenate(scaleInstance));
     }
   }
@@ -308,6 +309,7 @@ public class SwingPolygonPanel extends JPanel implements PolygonPanel {
     public void run() {
       setCursor(Cursor.getDefaultCursor());
     }
+
   }
 
   private class SetHandCursor implements Closure {
@@ -316,9 +318,14 @@ public class SwingPolygonPanel extends JPanel implements PolygonPanel {
     public void execute(InteractiveGraphicsElement polygon) {
       setCursor(getPredefinedCursor(HAND_CURSOR));
     }
+
   }
 
-  private double getScaleSquared(AgnosticTransform transform) {
-    return SwingTransformer.convert(transform).getDeterminant();
+  private double getScale(AgnosticTransform transform) {
+    ScaleVisitor visitor = new ScaleVisitor();
+    for (TransformOperation transformOperation : transform) {
+      transformOperation.accept(visitor);
+    }
+    return visitor.getScale();
   }
 }
