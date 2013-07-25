@@ -2,7 +2,6 @@ package net.sf.anathema.platform.tree.view.interaction;
 
 import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.framework.ui.RGBColor;
-import net.sf.anathema.platform.tree.view.MouseBorderClosure;
 import net.sf.anathema.platform.tree.view.draw.GraphicsElement;
 import net.sf.anathema.platform.tree.view.draw.InteractiveGraphicsElement;
 
@@ -43,13 +42,9 @@ public interface PolygonPanel {
 
   void addMouseWheelListener(MouseWheelClosure listener);
 
-  void addMouseBorderListener(MouseBorderClosure listener);
-
   void setToolTipText(String toolTip);
 
   void setBackground(RGBColor color);
 
   void showMoveCursor();
-
-  void resetAllTooltips();
 }

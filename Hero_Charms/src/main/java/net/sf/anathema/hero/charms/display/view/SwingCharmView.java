@@ -9,6 +9,7 @@ import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.platform.tree.display.AgnosticTreeView;
 import net.sf.anathema.platform.tree.display.ContentFactory;
 import net.sf.anathema.platform.tree.display.TreeView;
+import net.sf.anathema.platform.tree.display.AgnosticPolygonPanel;
 import net.sf.anathema.platform.tree.swing.SwingPolygonPanel;
 import net.sf.anathema.platform.tree.view.MouseBorderClosure;
 
@@ -26,7 +27,7 @@ public class SwingCharmView implements CharmView, IView {
   private final JPanel selectionPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(4).fillX()));
   private final JPanel content = new JPanel(new MigLayout(fillWithoutInsets().wrapAfter(1)));
   private final SwingPolygonPanel viewComponent = new SwingPolygonPanel();
-  private final AgnosticTreeView treeView = new AgnosticTreeView(viewComponent);
+  private final AgnosticTreeView treeView = new AgnosticTreeView(new AgnosticPolygonPanel(viewComponent));
 
   public SwingCharmView() {
     content.add(selectionPanel, new CC().growX());

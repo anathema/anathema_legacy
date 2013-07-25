@@ -2,12 +2,8 @@ package net.sf.anathema.platform.tree.swing;
 
 import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.framework.ui.RGBColor;
+import net.sf.anathema.platform.tree.display.DisplayPolygonPanel;
 import net.sf.anathema.platform.tree.display.transform.AgnosticTransform;
-import net.sf.anathema.platform.tree.display.transform.CenterOn;
-import net.sf.anathema.platform.tree.display.transform.PreConcatenate;
-import net.sf.anathema.platform.tree.display.transform.Scale;
-import net.sf.anathema.platform.tree.display.transform.ScaleVisitor;
-import net.sf.anathema.platform.tree.display.transform.Translation;
 import net.sf.anathema.platform.tree.view.MouseBorderClosure;
 import net.sf.anathema.platform.tree.view.draw.Canvas;
 import net.sf.anathema.platform.tree.view.draw.GraphicsElement;
@@ -21,7 +17,6 @@ import net.sf.anathema.platform.tree.view.interaction.MouseClickClosure;
 import net.sf.anathema.platform.tree.view.interaction.MouseMotionClosure;
 import net.sf.anathema.platform.tree.view.interaction.MousePressClosure;
 import net.sf.anathema.platform.tree.view.interaction.MouseWheelClosure;
-import net.sf.anathema.platform.tree.view.interaction.PolygonPanel;
 import net.sf.anathema.platform.tree.view.interaction.SpecialControlTrigger;
 
 import javax.swing.JComponent;
@@ -53,9 +48,7 @@ import static java.awt.RenderingHints.VALUE_ANTIALIAS_ON;
 import static java.awt.RenderingHints.VALUE_RENDER_QUALITY;
 import static net.sf.anathema.lib.gui.swing.ColorUtilities.toAwtColor;
 
-public class SwingPolygonPanel extends JPanel implements PolygonPanel {
-  private static final double MAX_ZOOM_OUT_SCALE = 0.3d; //30%
-  private static final double MAX_ZOOM_IN_SCALE = 1.5d; //150%
+public class SwingPolygonPanel extends JPanel implements DisplayPolygonPanel {
   private AgnosticTransform transform = new AgnosticTransform();
   private ElementContainer container = new ElementContainer();
   private final List<ButtonSpecialControl> specialControls = new ArrayList<>();
@@ -116,39 +109,6 @@ public class SwingPolygonPanel extends JPanel implements PolygonPanel {
   }
 
   @Override
-  public void scale(double scale) {
-    AgnosticTransform scaleTransform = new AgnosticTransform();
-    scaleTransform.add(new Scale(scale));
-    executeScaleIfBoundsAreNotBroken(scaleTransform);
-  }
-
-  @Override
-  public void scaleToPoint(double scale, Coordinate coordinate) {
-    AgnosticTransform scaleTransform = new AgnosticTransform();
-    scaleTransform.add(new Translation(coordinate.x, coordinate.y));
-    scaleTransform.add(new Scale(scale));
-    scaleTransform.add(new Translation(-coordinate.x, -coordinate.y));
-    executeScaleIfBoundsAreNotBroken(scaleTransform);
-  }
-
-  @Override
-  public void translate(int x, int y) {
-    transform.add(new Translation(x, y));
-  }
-
-  @Override
-  public void translateRelativeToScale(int x, int y) {
-    double scale = getScale(transform);
-    transform.add(new Translation(x / scale, y / scale));
-  }
-
-  @Override
-  public void resetTransformation() {
-    transform.setToIdentity();
-    repaint();
-  }
-
-  @Override
   public void changeCursor(Coordinate screenCoordinates) {
     Coordinate coordinate = getObjectCoordinatesFrom(screenCoordinates);
     container.onElementAtPoint(coordinate).perform(new SetHandCursor()).orFallBackTo(new SetDefaultCursor());
@@ -182,16 +142,6 @@ public class SwingPolygonPanel extends JPanel implements PolygonPanel {
     } catch (NoninvertibleTransformException e1) {
       throw new RuntimeException(e1);
     }
-  }
-
-  @Override
-  public void centerOn(Coordinate coordinate) {
-    int xCenter = getWidth() / 2;
-    int yCenter = getHeight() / 2;
-    int newCenterX = xCenter - coordinate.x;
-    int newCenterY = yCenter - coordinate.x;
-    transform.add(new CenterOn(newCenterX, newCenterY));
-    repaint();
   }
 
   @Override
@@ -288,41 +238,28 @@ public class SwingPolygonPanel extends JPanel implements PolygonPanel {
     ToolTipManager.sharedInstance().setEnabled(true);
   }
 
-  private void executeScaleIfBoundsAreNotBroken(AgnosticTransform scaleInstance) {
-    AgnosticTransform copy = transform.createCopy();
-    copy.add(new PreConcatenate(scaleInstance));
-    double newScale = getScale(copy);
-    boolean isScaleAllowed = MAX_ZOOM_OUT_SCALE <= newScale && newScale <= MAX_ZOOM_IN_SCALE;
-    if (isScaleAllowed) {
-      transform.add(new PreConcatenate(scaleInstance));
-    }
-  }
-
+  @Override
   public JComponent getComponent() {
     return this;
   }
 
-  private class SetDefaultCursor implements Runnable {
+  @Override
+  public void setTransformation(AgnosticTransform transform) {
+    this.transform = transform;
+    repaint();
+  }
 
+  private class SetDefaultCursor implements Runnable {
     @Override
     public void run() {
       setCursor(Cursor.getDefaultCursor());
     }
-
   }
 
   private class SetHandCursor implements Closure {
-
     @Override
     public void execute(InteractiveGraphicsElement polygon) {
       setCursor(getPredefinedCursor(HAND_CURSOR));
     }
-
-  }
-
-  private double getScale(AgnosticTransform transform) {
-    ScaleVisitor visitor = new ScaleVisitor();
-    transform.visitOperations(visitor);
-    return visitor.getScale();
   }
 }

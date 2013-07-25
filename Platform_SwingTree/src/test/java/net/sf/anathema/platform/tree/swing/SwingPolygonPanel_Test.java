@@ -1,6 +1,7 @@
 package net.sf.anathema.platform.tree.swing;
 
 import net.sf.anathema.framework.ui.Coordinate;
+import net.sf.anathema.platform.tree.display.AgnosticPolygonPanel;
 import net.sf.anathema.platform.tree.view.draw.Canvas;
 import net.sf.anathema.platform.tree.view.draw.FilledPolygon;
 import net.sf.anathema.platform.tree.view.draw.FlexibleArrow;
@@ -23,19 +24,20 @@ import static org.mockito.Mockito.when;
 
 public class SwingPolygonPanel_Test {
 
-  private final SwingPolygonPanel polygonPanel = new SwingPolygonPanel();
+  private final AgnosticPolygonPanel polygonPanel = new AgnosticPolygonPanel(new SwingPolygonPanel());
+  private final SwingPolygonPanel swingPanel = new SwingPolygonPanel();
   private final Graphics2D graphics = mock(Graphics2D.class);
   private final Canvas canvas = new SwingGraphicsCanvas(graphics);
 
   @Before
   public void setUp() throws Exception {
     when(graphics.create()).thenReturn(graphics);
-    polygonPanel.setSize(100, 100);
+    swingPanel.setSize(100, 100);
   }
 
   @Test
   public void hasIdentityTransformationInitially() throws Exception {
-    polygonPanel.paintComponent(graphics);
+    swingPanel.paintComponent(graphics);
     verify(graphics).transform(new AffineTransform());
   }
 
@@ -43,7 +45,7 @@ public class SwingPolygonPanel_Test {
   public void allowsZoomOutTo30Percent() throws Exception {
     double factor = 0.3;
     polygonPanel.scale(factor);
-    polygonPanel.paintComponent(graphics);
+    swingPanel.paintComponent(graphics);
     verify(graphics).transform(AffineTransform.getScaleInstance(factor, factor));
   }
 
@@ -51,7 +53,7 @@ public class SwingPolygonPanel_Test {
   public void limitsZoomOutTo30Percent() throws Exception {
     double factor = 0.29;
     polygonPanel.scale(factor);
-    polygonPanel.paintComponent(graphics);
+    swingPanel.paintComponent(graphics);
     verify(graphics).transform(AffineTransform.getScaleInstance(1, 1));
   }
 
@@ -59,7 +61,7 @@ public class SwingPolygonPanel_Test {
   public void allowsZoomInTo150Percent() throws Exception {
     double factor = 1.50;
     polygonPanel.scale(factor);
-    polygonPanel.paintComponent(graphics);
+    swingPanel.paintComponent(graphics);
     verify(graphics).transform(AffineTransform.getScaleInstance(1.5, 1.5));
   }
 
@@ -67,7 +69,7 @@ public class SwingPolygonPanel_Test {
   public void limitsZoomInTo150Percent() throws Exception {
     double factor = 1.51;
     polygonPanel.scale(factor);
-    polygonPanel.paintComponent(graphics);
+    swingPanel.paintComponent(graphics);
     verify(graphics).transform(AffineTransform.getScaleInstance(1, 1));
   }
 
@@ -76,7 +78,7 @@ public class SwingPolygonPanel_Test {
   public void scalesToAGivenPoint() throws Exception {
     double factor = .50;
     polygonPanel.scaleToPoint(factor, new Coordinate(100, 100));
-    polygonPanel.paintComponent(graphics);
+    swingPanel.paintComponent(graphics);
     AffineTransform expected = new AffineTransform(0.5, 0, 0, 0.5, 50, 50);
     verify(graphics).transform(expected);
   }
@@ -84,7 +86,7 @@ public class SwingPolygonPanel_Test {
   @Test
   public void translatesGraphics() throws Exception {
     polygonPanel.translate(5, 7);
-    polygonPanel.paintComponent(graphics);
+    swingPanel.paintComponent(graphics);
     verify(graphics).transform(AffineTransform.getTranslateInstance(5, 7));
   }
 
@@ -93,7 +95,7 @@ public class SwingPolygonPanel_Test {
     double factor = 1.50;
     polygonPanel.scale(factor);
     polygonPanel.translateRelativeToScale(150, 150);
-    polygonPanel.paintComponent(graphics);
+    swingPanel.paintComponent(graphics);
     AffineTransform expected = new AffineTransform(1.5, 0, 0, 1.5, 150, 150);
     verify(graphics).transform(expected);
   }
@@ -101,13 +103,13 @@ public class SwingPolygonPanel_Test {
   @Test
   public void centersOnPoint() throws Exception {
     polygonPanel.centerOn(new Coordinate(10, 10));
-    polygonPanel.paintComponent(graphics);
+    swingPanel.paintComponent(graphics);
     verify(graphics).transform(AffineTransform.getTranslateInstance(40, 40));
   }
 
   @Test
   public void activatesAntiAliasing() throws Exception {
-    polygonPanel.paintComponent(graphics);
+    swingPanel.paintComponent(graphics);
     verify(graphics).setRenderingHint(KEY_ANTIALIASING, VALUE_ANTIALIAS_ON);
   }
 
@@ -115,7 +117,7 @@ public class SwingPolygonPanel_Test {
   public void paintsPolygon() throws Exception {
     InteractiveGraphicsElement polygon = mock(FilledPolygon.class);
     polygonPanel.add(polygon);
-    polygonPanel.paintComponent(graphics);
+    swingPanel.paintComponent(graphics);
     verify(polygon).paint(canvas);
   }
 
@@ -123,7 +125,7 @@ public class SwingPolygonPanel_Test {
   public void paintsArrow() throws Exception {
     FlexibleArrow arrow = mock(FlexibleArrow.class);
     polygonPanel.add(arrow);
-    polygonPanel.paintComponent(graphics);
+    swingPanel.paintComponent(graphics);
     verify(arrow).paint(canvas);
   }
 
@@ -133,7 +135,7 @@ public class SwingPolygonPanel_Test {
     InteractiveGraphicsElement secondPolygon = mock(FilledPolygon.class);
     polygonPanel.add(firstPolygon);
     polygonPanel.add(secondPolygon);
-    polygonPanel.paintComponent(graphics);
+    swingPanel.paintComponent(graphics);
     verify(firstPolygon).paint(canvas);
     verify(secondPolygon).paint(canvas);
   }
@@ -143,7 +145,7 @@ public class SwingPolygonPanel_Test {
     InteractiveGraphicsElement element = mock(FilledPolygon.class);
     polygonPanel.add(element);
     polygonPanel.clear();
-    polygonPanel.paintComponent(graphics);
+    swingPanel.paintComponent(graphics);
     verifyZeroInteractions(element);
   }
 
