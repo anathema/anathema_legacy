@@ -24,8 +24,8 @@ import static org.mockito.Mockito.when;
 
 public class SwingPolygonPanel_Test {
 
-  private final AgnosticPolygonPanel polygonPanel = new AgnosticPolygonPanel(new SwingPolygonPanel());
   private final SwingPolygonPanel swingPanel = new SwingPolygonPanel();
+  private final AgnosticPolygonPanel polygonPanel = new AgnosticPolygonPanel(swingPanel);
   private final Graphics2D graphics = mock(Graphics2D.class);
   private final Canvas canvas = new SwingGraphicsCanvas(graphics);
 
