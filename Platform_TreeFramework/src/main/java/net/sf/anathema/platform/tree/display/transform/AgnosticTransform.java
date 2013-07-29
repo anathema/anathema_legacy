@@ -17,7 +17,6 @@ public class AgnosticTransform {
     ArrayList<TransformOperation> inverse = new ArrayList<>();
     for (TransformOperation operation : newOperations) {
       inverse.add(0, operation);
-
     }
     for (TransformOperation transformOperation : inverse) {
       operations.add(0, transformOperation);
