@@ -110,7 +110,7 @@ public class AgnosticPolygonPanel implements PolygonPanel {
     int xCenter = panel.getWidth() / 2;
     int yCenter = panel.getHeight() / 2;
     int newCenterX = xCenter - coordinate.x;
-    int newCenterY = yCenter - coordinate.x;
+    int newCenterY = yCenter - coordinate.y;
     transform.add(new CenterOn(newCenterX, newCenterY));
     updateDisplayTransformation();
   }
