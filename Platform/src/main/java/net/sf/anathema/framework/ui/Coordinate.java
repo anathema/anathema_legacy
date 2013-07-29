@@ -12,8 +12,8 @@ public class Coordinate {
   }
 
   public Coordinate(double x, double y) {
-    this.x = (int) x;
-    this.y = (int) y;
+    this.x = (int) Math.round(x);
+    this.y = (int) Math.round(y);
   }
 
   public Coordinate(int x, int y) {
