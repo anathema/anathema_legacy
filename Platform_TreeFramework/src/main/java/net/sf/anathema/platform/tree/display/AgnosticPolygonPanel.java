@@ -3,7 +3,6 @@ package net.sf.anathema.platform.tree.display;
 import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.platform.tree.display.transform.AgnosticTransform;
-import net.sf.anathema.platform.tree.display.transform.CenterOn;
 import net.sf.anathema.platform.tree.display.transform.Scale;
 import net.sf.anathema.platform.tree.display.transform.ScaleVisitor;
 import net.sf.anathema.platform.tree.display.transform.TransformOperation;
@@ -114,7 +113,7 @@ public class AgnosticPolygonPanel implements PolygonPanel {
     int yCenter = panel.getHeight() / 2;
     int newCenterX = xCenter - coordinate.x;
     int newCenterY = yCenter - coordinate.y;
-    transform.add(new CenterOn(newCenterX, newCenterY));
+    transform.preconcatenate(new Translation(newCenterX, newCenterY));
     updateDisplayTransformation();
   }
 

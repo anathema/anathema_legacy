@@ -1,6 +1,5 @@
 package net.sf.anathema.platform.tree.swing;
 
-import net.sf.anathema.platform.tree.display.transform.CenterOn;
 import net.sf.anathema.platform.tree.display.transform.Rotation;
 import net.sf.anathema.platform.tree.display.transform.Scale;
 import net.sf.anathema.platform.tree.display.transform.TransformOperationVisitor;
@@ -18,12 +17,6 @@ public class SwingTransformVisitor implements TransformOperationVisitor {
   @Override
   public void visitTranslation(Translation translation) {
     affineTransform.translate(translation.x, translation.y);
-  }
-
-  @Override
-  public void visitCenterOn(CenterOn centerOn) {
-    AffineTransform newCenter = AffineTransform.getTranslateInstance(centerOn.newCenterX, centerOn.newCenterY);
-    affineTransform.preConcatenate(newCenter);
   }
 
   @Override

@@ -9,11 +9,6 @@ public class ScaleVisitor implements TransformOperationVisitor {
   }
 
   @Override
-  public void visitCenterOn(CenterOn centerOn) {
-    //nothing to do
-  }
-
-  @Override
   public void visitScale(Scale operation) {
     scale = scale * operation.scale;
   }

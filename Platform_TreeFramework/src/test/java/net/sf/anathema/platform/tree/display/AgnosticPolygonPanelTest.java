@@ -2,7 +2,7 @@ package net.sf.anathema.platform.tree.display;
 
 import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.platform.tree.display.transform.AgnosticTransform;
-import net.sf.anathema.platform.tree.display.transform.CenterOn;
+import net.sf.anathema.platform.tree.display.transform.Translation;
 import org.junit.Test;
 
 import static org.mockito.Mockito.mock;
@@ -16,8 +16,7 @@ public class AgnosticPolygonPanelTest {
     AgnosticPolygonPanel polygonPanel = new AgnosticPolygonPanel(displayPanel);
     polygonPanel.centerOn(new Coordinate(2, 3));
     AgnosticTransform expected = new AgnosticTransform();
-    expected.add(new CenterOn(-2, -3));
+    expected.preconcatenate(new Translation(-2, -3));
     verify(displayPanel).setTransformation(expected);
-
   }
 }
