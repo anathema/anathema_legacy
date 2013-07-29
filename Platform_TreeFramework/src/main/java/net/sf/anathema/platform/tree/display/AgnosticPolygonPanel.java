@@ -4,9 +4,9 @@ import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.platform.tree.display.transform.AgnosticTransform;
 import net.sf.anathema.platform.tree.display.transform.CenterOn;
-import net.sf.anathema.platform.tree.display.transform.PreConcatenate;
 import net.sf.anathema.platform.tree.display.transform.Scale;
 import net.sf.anathema.platform.tree.display.transform.ScaleVisitor;
+import net.sf.anathema.platform.tree.display.transform.TransformOperation;
 import net.sf.anathema.platform.tree.display.transform.Translation;
 import net.sf.anathema.platform.tree.view.draw.GraphicsElement;
 import net.sf.anathema.platform.tree.view.draw.InteractiveGraphicsElement;
@@ -51,9 +51,7 @@ public class AgnosticPolygonPanel implements PolygonPanel {
 
   @Override
   public void scale(double scale) {
-    AgnosticTransform scaleTransform = new AgnosticTransform();
-    scaleTransform.add(new Scale(scale));
-    executeScaleIfBoundsAreNotBroken(scaleTransform);
+    executeScaleIfBoundsAreNotBroken(new Scale(scale));
     updateDisplayTransformation();
   }
 
@@ -63,11 +61,10 @@ public class AgnosticPolygonPanel implements PolygonPanel {
 
   @Override
   public void scaleToPoint(double scale, Coordinate coordinate) {
-    AgnosticTransform scaleTransform = new AgnosticTransform();
-    scaleTransform.add(new Translation(coordinate.x, coordinate.y));
-    scaleTransform.add(new Scale(scale));
-    scaleTransform.add(new Translation(-coordinate.x, -coordinate.y));
-    executeScaleIfBoundsAreNotBroken(scaleTransform);
+    Translation operation = new Translation(coordinate.x, coordinate.y);
+    Scale operation1 = new Scale(scale);
+    Translation operation2 = new Translation(-coordinate.x, -coordinate.y);
+    executeScaleIfBoundsAreNotBroken(operation, operation1, operation2);
     updateDisplayTransformation();
   }
 
@@ -79,10 +76,16 @@ public class AgnosticPolygonPanel implements PolygonPanel {
 
   @Override
   public void translateRelativeToScale(int x, int y) {
-    double scale = getScale(transform);
-    transform.add(new Translation(x / scale, y / scale));
+    Translation translation = createTranslationRelativeToScale(x, y);
+    transform.add(translation);
     updateDisplayTransformation();
   }
+
+  private Translation createTranslationRelativeToScale(int x, int y) {
+    double scale = getScale(transform);
+    return new Translation(x / scale, y / scale);
+  }
+
 
   @Override
   public void resetTransformation() {
@@ -150,13 +153,13 @@ public class AgnosticPolygonPanel implements PolygonPanel {
     panel.showMoveCursor();
   }
 
-  private void executeScaleIfBoundsAreNotBroken(AgnosticTransform scaleInstance) {
+  private void executeScaleIfBoundsAreNotBroken(TransformOperation... operations) {
     AgnosticTransform copy = transform.createCopy();
-    copy.add(new PreConcatenate(scaleInstance));
+    copy.preconcatenate(operations);
     double newScale = getScale(copy);
     boolean isScaleAllowed = MAX_ZOOM_OUT_SCALE <= newScale && newScale <= MAX_ZOOM_IN_SCALE;
     if (isScaleAllowed) {
-      transform.add(new PreConcatenate(scaleInstance));
+      transform.preconcatenate(operations);
     }
   }
 

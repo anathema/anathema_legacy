@@ -4,11 +4,6 @@ public class ScaleVisitor implements TransformOperationVisitor {
   private double scale = 1.0;
 
   @Override
-  public void visitPreConcatenate(PreConcatenate preConcatenate) {
-    preConcatenate.scaleInstance.visitOperations(this);
-  }
-
-  @Override
   public void visitTranslation(Translation translation) {
     //nothing to do
   }

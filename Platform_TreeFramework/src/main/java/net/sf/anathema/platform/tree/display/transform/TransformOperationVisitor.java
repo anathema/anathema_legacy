@@ -1,7 +1,6 @@
 package net.sf.anathema.platform.tree.display.transform;
 
 public interface TransformOperationVisitor {
-  void visitPreConcatenate(PreConcatenate preConcatenate);
 
   void visitTranslation(Translation translation);
 

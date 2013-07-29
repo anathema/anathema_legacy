@@ -13,6 +13,17 @@ public class AgnosticTransform {
     operations.add(operation);
   }
 
+  public void preconcatenate(TransformOperation... newOperations) {
+    ArrayList<TransformOperation> inverse = new ArrayList<>();
+    for (TransformOperation operation : newOperations) {
+      inverse.add(0, operation);
+
+    }
+    for (TransformOperation transformOperation : inverse) {
+      operations.add(0, transformOperation);
+    }
+  }
+
   public void visitOperations(TransformOperationVisitor visitor) {
     for (TransformOperation operation : operations) {
       operation.accept(visitor);
