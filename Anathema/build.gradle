@@ -1,27 +1,33 @@
-archivesBaseName= 'anathema'
+dependencies {
+  compile project(':Platform_Swing')
+
+  //For development, all projects need to be on the classpath at runtime.
+  parent.subprojects.each { p ->
+      if (!p.name.equals("Anathema") && 
+          !p.name.equals("Integrationtest")) { // exceptions, don't need to be on the classpath
+        runtime project(":${p.name}")
+      }
+  }
+}
 
 apply plugin:'application'
-mainClassName = "net.sf.anathema.AnathemaBootLoader"
+mainClassName = "net.sf.anathema.Anathema"
 
 jar {
   manifest {
     attributes(
       'Built-By': System.getProperty("user.name"),
-      'Main-Class': 'net.sf.anathema.AnathemaBootLoader',
+      'Main-Class': 'net.sf.anathema.Anathema',
       'SplashScreen-Image': 'icons/core/AnathemaSplashNew.png'
     )
   }
 }
 
-dependencies {
-  //For development, all projects need to be on the classpath at runtime.
-  project.parent.subprojects.each {
-      if (isRelevant(it)){
-        runtime project(":${it.name}")
-      }
+// Delays the building of the runtime classpath until after all build tasks have been run.
+project.gradle.taskGraph.whenReady { taskGraph ->
+  if (taskGraph.hasTask(jar)) {
+    // defines the runtime classpath of Anathema, inside the :Anathema:jar manifest file.
+    def libs = "lib/" + parent.subprojects.collectMany{ it.configurations.runtime.files.name }.unique().sort().join( " lib/" )
+    jar.manifest.attributes('Class-Path' : libs )
   }
-}
-
-private boolean isRelevant(project) {
-    return project.name != "Anathema" && project.name != "Integrationtest"
 }

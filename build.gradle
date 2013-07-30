@@ -2,14 +2,15 @@ import org.apache.tools.ant.filters.FixCrLfFilter
 import org.apache.tools.ant.filters.ReplaceTokens
 
 ext.jreVersion = "1.7.0_21"
+ext.jdkVersion = 1.7
 ext.dependenciesDir = new File(buildDir, 'dependencies')
-ext.pluginsDir = new File(buildDir, 'plugins')
 ext.versionString = "${version_major}.${version_minor}.${version_revision}"
 
 allprojects {
     apply plugin: 'java'
-    sourceCompatibility = 1.7
-
+    sourceCompatibility = jdkVersion
+    targetCompatibility = jdkVersion
+      
     repositories {
         mavenCentral()
         maven {
@@ -60,13 +61,22 @@ def os = operatingSystem()
 String operatingSystem() {
     def os = System.getProperty('os.name').toLowerCase()
     def result = ""
-    if (os.indexOf("win") >= 0) result = "win"
-    if (os.indexOf("mac") >= 0) result = "mac"
-    if (os.indexOf("nix") >= 0         //  unix
-            || os.indexOf("nux") >= 0) result = "linux"
+    if (os.indexOf("win") >= 0)   result = "win"
+    if (os.indexOf("mac") >= 0)   result = "mac"
+    if (os.indexOf("nix") >= 0          // "unix"
+    ||  os.indexOf("nux") >= 0)   result = "linux"
     if (os.indexOf("sunos") >= 0) result = "solaris"
     return result
 }
+
+// Replaces the default clean task, keeps the buildDir in place while deleting all files inside
+task clean(overwrite: true) << {
+    buildDir.mkdirs()
+    ant.delete(includeemptydirs: true, quiet: false) {
+        fileset(dir: buildDir, includes: "**/*", defaultexcludes: false)
+    }
+}
+
 
 // Release Variables
 ext.projectName = "Anathema"
@@ -124,6 +134,7 @@ task prepareWinJRE(type: Copy) {
     def target = new File('build/jre/win32');
     into target
     from { zipTree(configurations.jreWin.singleFile) }
+    exclude '**/jfxrt.jar' //this goes away with java 8
     onlyIf { !target.exists() }
     doLast {
         ant.delete(includeemptydirs: true, quiet: true) {
@@ -136,6 +147,7 @@ task prepareMacJRE(type: Copy) {
     def target = new File('build/jre/mac64');
     into target
     from { zipTree(configurations.jreMac.singleFile) }
+    exclude '**/jfxrt.jar' //this goes away with java 8
     onlyIf { !target.exists() }
     doLast {
         ant.delete(includeemptydirs: true, quiet: true) {
@@ -176,7 +188,6 @@ task assembleZip(type: Zip) {
     from 'Anathema/build/libs'
     into('lib') {
         from(dependenciesDir)
-        from(pluginsDir)
     }
     from("Development_Distribution/Linux") {
         include 'anathema.sh'
@@ -185,7 +196,7 @@ task assembleZip(type: Zip) {
         fileMode = 0755
     }
     from("build/launcher") {
-        include 'anathema.exe'
+        include 'Anathema.exe'
     }
     from("Development_Documentation/Distribution/English") {
         include 'license.txt'
@@ -210,8 +221,8 @@ task compileLauncherWin << {
             bindir: launch4jPath
     ) {
         config(
-                outfile: 'build/launcher/anathema.exe',
-                jarPath: 'anathema.jar',
+                outfile: 'build/launcher/Anathema.exe',
+                jarPath: 'Anathema.jar',
                 dontwrapjar: true,
                 headerType: 'gui',
                 icon: 'Development_Distribution/Windows/anathema.ico'
@@ -224,8 +235,8 @@ task compileLauncherWin << {
                     productVersion: exeVersion,
                     txtProductVersion: versionText,
                     productName: "$projectName",
-                    internalName: "anathema",
-                    originalFilename: "anathema.exe"
+                    internalName: "Anathema",
+                    originalFilename: "Anathema.exe"
             )
             jre(
                     path: "./jre",
@@ -267,15 +278,14 @@ task compileLauncherMac << {
             signature: "????", //opt
             //copyright: blah , //opt
             applicationCategory: "public.app-category.utilities", //opt
-            mainclassname: "net/sf/anathema/AnathemaBootLoader"
+            mainclassname: "net/sf/anathema/Anathema"
     ) {
 
         runtime(dir: "build/jre/mac64/jre${jreVersion}/Contents/Home")  //opt
 
-        classpath(dir: "Anathema/build/libs/")
+        classpath(dir: "Anathema/build/libs/") // Anathema.jar
         classpath(file: "Anathema/src/main/resources/icons/core/AnathemaSplashNew.png")
         classpath(dir: "${buildDir}/dependencies/")
-        classpath(dir: "${buildDir}/plugins/")
 
         option(value: "-splash:\$APP_ROOT/Contents/Java/AnathemaSplashNew.png")
         option(value: "-Dapple.laf-useScreenMenuBar=true")
@@ -292,7 +302,7 @@ task assembleMac(type: Zip) {
         exclude "${projectName}/${macAppDir}/Contents/MacOS/JavaAppLauncher" // Skipping this because...
     }
     into("${projectName}/${macAppDir}/Contents/MacOS/") {                    // We include it here with the execute bit set.
-        from("${buildDir}/${macAppDir}/Contents/MacOS/")                       // Necessary when building on a windows system
+        from("${buildDir}/${macAppDir}/Contents/MacOS/")                     // Necessary when building on a windows system
         include 'JavaAppLauncher'
         fileMode = 0755
     }
@@ -308,8 +318,7 @@ task assembleMac(type: Zip) {
 // Release Dependencies
 [compileLauncherWin, compileLauncherMac, assembleZip].each {
     it.dependsOn ':Anathema:jar'
-    it.dependsOn copyExternalDependencies
-    it.dependsOn copyAnathemaModules
+    it.dependsOn copyAllDependencies
     it.dependsOn generateChangelog
 }
 

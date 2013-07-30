@@ -13,8 +13,6 @@ task copyFilesForUpdate(type: Copy) {
   destinationDir buildDir
   into("update") {
     from("${buildDir}/dependencies")
-    from("${buildDir}/plugins")
-
   }
 }
 
@@ -51,7 +49,7 @@ task publishAsUpdate
 publishAsUpdate.group = 'Release'
 publishAsUpdate.description = "Builds & uploads the update artifacts to Anathema's update server. [Requires registered credentials]"
 
-copyFilesForUpdate.dependsOn "copyAnathemaModules", "copyExternalDependencies"
+copyFilesForUpdate.dependsOn "copyAllDependencies"
 buildFileListForUpdate.dependsOn copyFilesForUpdate
 uploadUpdate.dependsOn prepareUpdate, buildFileListForUpdate
 finishUpdate.dependsOn uploadUpdate
