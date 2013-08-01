@@ -27,15 +27,12 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.awt.geom.AffineTransform;
-import java.awt.geom.NoninvertibleTransformException;
-import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -131,17 +128,7 @@ public class SwingPolygonPanel extends JPanel implements DisplayPolygonPanel {
   }
 
   private Coordinate getObjectCoordinatesFrom(Coordinate point) {
-    Point2D elementPoint = transformClickPointToObjectCoordinates(point);
-    return new Coordinate(elementPoint.getX(), elementPoint.getY());
-  }
-
-  private Point2D transformClickPointToObjectCoordinates(Coordinate coordinate) {
-    try {
-      Point point = SwingTransformer.convert(coordinate);
-      return SwingTransformer.convert(transform).inverseTransform(point, point);
-    } catch (NoninvertibleTransformException e1) {
-      throw new RuntimeException(e1);
-    }
+    return transform.invert().apply(point);
   }
 
   @Override

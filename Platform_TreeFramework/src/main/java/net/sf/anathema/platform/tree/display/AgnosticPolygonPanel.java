@@ -4,7 +4,6 @@ import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.platform.tree.display.transform.AgnosticTransform;
 import net.sf.anathema.platform.tree.display.transform.Scale;
-import net.sf.anathema.platform.tree.display.transform.ScaleVisitor;
 import net.sf.anathema.platform.tree.display.transform.TransformOperation;
 import net.sf.anathema.platform.tree.display.transform.Translation;
 import net.sf.anathema.platform.tree.view.draw.GraphicsElement;
@@ -81,7 +80,7 @@ public class AgnosticPolygonPanel implements PolygonPanel {
   }
 
   private Translation createTranslationRelativeToScale(int x, int y) {
-    double scale = getScale(transform);
+    double scale = transform.getScale();
     return new Translation(x / scale, y / scale);
   }
 
@@ -155,16 +154,10 @@ public class AgnosticPolygonPanel implements PolygonPanel {
   private void executeScaleIfBoundsAreNotBroken(TransformOperation... operations) {
     AgnosticTransform copy = transform.createCopy();
     copy.preconcatenate(operations);
-    double newScale = getScale(copy);
+    double newScale = transform.getScale();
     boolean isScaleAllowed = MAX_ZOOM_OUT_SCALE <= newScale && newScale <= MAX_ZOOM_IN_SCALE;
     if (isScaleAllowed) {
       transform.preconcatenate(operations);
     }
-  }
-
-  private double getScale(AgnosticTransform transform) {
-    ScaleVisitor visitor = new ScaleVisitor();
-    transform.visitOperations(visitor);
-    return visitor.getScale();
   }
 }
