@@ -32,6 +32,13 @@ public class AgnosticTransform {
     }
   }
 
+  public boolean isScaleBetween(double maxZoomOutScale, double maxZoomInScale) {
+    double minimumDeterminant = maxZoomOutScale * maxZoomOutScale;
+    double maximumDeterminant = maxZoomInScale * maxZoomInScale;
+    double actualDeterminant = getDeterminant();
+    return minimumDeterminant <= actualDeterminant && actualDeterminant <= maximumDeterminant;
+  }
+
   public double getScale() {
     return Math.sqrt(getDeterminant());
   }
