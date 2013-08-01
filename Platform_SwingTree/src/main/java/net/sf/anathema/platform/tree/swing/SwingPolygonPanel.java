@@ -106,9 +106,8 @@ public class SwingPolygonPanel extends JPanel implements DisplayPolygonPanel {
   }
 
   @Override
-  public void changeCursor(Coordinate screenCoordinates) {
-    Coordinate coordinate = getObjectCoordinatesFrom(screenCoordinates);
-    container.onElementAtPoint(coordinate).perform(new SetHandCursor()).orFallBackTo(new SetDefaultCursor());
+  public void changeCursor(Coordinate elementCoordinates) {
+    container.onElementAtPoint(elementCoordinates).perform(new SetHandCursor()).orFallBackTo(new SetDefaultCursor());
   }
 
   @Override
@@ -122,13 +121,8 @@ public class SwingPolygonPanel extends JPanel implements DisplayPolygonPanel {
   }
 
   @Override
-  public Executor onElementAtPoint(Coordinate screenCoordinates) {
-    Coordinate elementPoint = getObjectCoordinatesFrom(screenCoordinates);
-    return container.onElementAtPoint(elementPoint);
-  }
-
-  private Coordinate getObjectCoordinatesFrom(Coordinate point) {
-    return transform.invert().apply(point);
+  public Executor onElementAtPoint(Coordinate elementCoordinates) {
+    return container.onElementAtPoint(elementCoordinates);
   }
 
   @Override
