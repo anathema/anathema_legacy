@@ -156,7 +156,7 @@ public class AgnosticPolygonPanel implements PolygonPanel {
   private void executeScaleIfBoundsAreNotBroken(TransformOperation... operations) {
     AgnosticTransform copy = transform.createCopy();
     copy.preconcatenate(operations);
-    boolean isScaleAllowed = transform.isScaleBetween(MAX_ZOOM_OUT_SCALE, MAX_ZOOM_IN_SCALE);
+    boolean isScaleAllowed = copy.isScaleBetween(MAX_ZOOM_OUT_SCALE, MAX_ZOOM_IN_SCALE);
     if (isScaleAllowed) {
       transform.preconcatenate(operations);
     }

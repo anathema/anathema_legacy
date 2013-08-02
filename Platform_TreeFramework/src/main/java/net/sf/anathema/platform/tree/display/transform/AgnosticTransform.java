@@ -6,6 +6,8 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import java.util.ArrayList;
 
+import static java.lang.Math.pow;
+
 public class AgnosticTransform {
 
   public double a1 = 1;
@@ -33,8 +35,8 @@ public class AgnosticTransform {
   }
 
   public boolean isScaleBetween(double maxZoomOutScale, double maxZoomInScale) {
-    double minimumDeterminant = maxZoomOutScale * maxZoomOutScale;
-    double maximumDeterminant = maxZoomInScale * maxZoomInScale;
+    double minimumDeterminant = pow(maxZoomOutScale, 2);
+    double maximumDeterminant = pow(maxZoomInScale, 2);
     double actualDeterminant = getDeterminant();
     return minimumDeterminant <= actualDeterminant && actualDeterminant <= maximumDeterminant;
   }
