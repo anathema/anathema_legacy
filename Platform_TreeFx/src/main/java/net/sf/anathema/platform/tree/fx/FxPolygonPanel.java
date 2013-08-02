@@ -1,10 +1,11 @@
 package net.sf.anathema.platform.tree.fx;
 
 import javafx.event.EventHandler;
-import javafx.scene.canvas.Canvas;
+import javafx.scene.Group;
+import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
-import javafx.scene.paint.Color;
+import javafx.scene.transform.Transform;
 import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.platform.tree.display.DisplayPolygonPanel;
@@ -32,6 +33,7 @@ import static javafx.scene.Cursor.MOVE;
 import static javafx.scene.input.MouseEvent.MOUSE_CLICKED;
 import static javafx.scene.input.MouseEvent.MOUSE_DRAGGED;
 import static javafx.scene.input.MouseEvent.MOUSE_PRESSED;
+import static net.sf.anathema.platform.tree.fx.FxTransformer.convert;
 import static net.sf.anathema.platform.tree.view.interaction.MouseButton.Other;
 import static net.sf.anathema.platform.tree.view.interaction.MouseButton.Primary;
 import static net.sf.anathema.platform.tree.view.interaction.MouseButton.Secondary;
@@ -39,16 +41,23 @@ import static net.sf.anathema.platform.tree.view.interaction.MouseButton.Seconda
 public class FxPolygonPanel implements DisplayPolygonPanel {
   private final ElementContainer container = new ElementContainer();
   private final List<FxSpecialTrigger> specialControls = new ArrayList<>();
-  private final Canvas canvas = new Canvas();
+  private final Group canvas = new Group();
   private AgnosticTransform transform = new AgnosticTransform();
 
   public FxPolygonPanel() {
-    canvas.getGraphicsContext2D().setFill(Color.WHITE);
+    //TODO: Set canvas background white
   }
 
   @Override
   public void refresh() {
-    //To change body of implemented methods use File | Settings | File Templates.
+    canvas.getChildren().clear();
+    canvas.getTransforms().clear();
+    FxGroupCanvas fxGroupCanvas = new FxGroupCanvas(canvas);
+    Transform fxTransform = convert(transform);
+    canvas.getTransforms().add(fxTransform);
+    for (GraphicsElement graphicsElement : container) {
+      graphicsElement.paint(fxGroupCanvas);
+    }
   }
 
   @Override
@@ -161,7 +170,7 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
 
   @Override
   public void setBackground(RGBColor color) {
-    canvas.getGraphicsContext2D().setFill(FxColorUtils.toFxColor(color));
+    //TODO: Set Background Color
   }
 
   @Override
@@ -171,7 +180,7 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
 
   @Override
   public void resetAllTooltips() {
-    //To change body of implemented methods use File | Settings | File Templates.
+    //TODO: Reset Tooltips (if FX requires this at all)
   }
 
   @Override
@@ -182,17 +191,18 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
 
   @Override
   public int getWidth() {
-    return (int) canvas.getWidth();
+    return (int) canvas.prefWidth(-1);
   }
 
   @Override
   public int getHeight() {
-    return (int) canvas.getHeight();
+    return (int) canvas.prefHeight(-1);
   }
 
   @Override
   public void setToolTipText(String toolTip) {
-    //To change body of implemented methods use File | Settings | File Templates.
+    Tooltip tooltip = new Tooltip(toolTip);
+    Tooltip.install(canvas, tooltip);
   }
 
   private MouseButton determineMouseButton(MouseEvent event) {

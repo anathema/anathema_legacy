@@ -1,6 +1,6 @@
 package net.sf.anathema.platform.tree.fx;
 
-import javafx.scene.canvas.Canvas;
+import javafx.scene.Group;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.shape.Rectangle;
 import net.sf.anathema.platform.tree.display.SpecialControl;
@@ -41,7 +41,7 @@ public class FxSpecialTrigger implements SpecialControlTrigger {
     //To change body of implemented methods use File | Settings | File Templates.
   }
 
-  public void addTo(Canvas canvas) {
+  public void addTo(Group group) {
     //To change body of created methods use File | Settings | File Templates.
   }
 
