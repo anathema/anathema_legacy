@@ -37,7 +37,8 @@ public class EquipmentTemplate implements IEquipmentTemplate {
 
   @Override
   public IEquipmentStats[] getStatsList() {
-    return statsList.toArray(new IEquipmentStats[statsList.size()]);
+    IEquipmentStats[] array = new IEquipmentStats[statsList.size()];
+    return statsList.toArray(array);
   }
 
   public synchronized void addStats(IEquipmentStats stats) {

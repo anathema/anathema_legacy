@@ -2,6 +2,7 @@ package net.sf.anathema.platform.tree.fx;
 
 import javafx.event.EventHandler;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
@@ -226,6 +227,10 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
 
   private Coordinate determineCoordinate(MouseEvent mouseEvent) {
     return new Coordinate(mouseEvent.getX(), mouseEvent.getY());
+  }
+
+  public Node getNode() {
+    return canvas;
   }
 
   private class SetHandCursor implements Closure {
