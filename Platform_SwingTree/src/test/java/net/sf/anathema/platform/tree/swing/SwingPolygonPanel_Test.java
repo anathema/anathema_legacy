@@ -79,7 +79,7 @@ public class SwingPolygonPanel_Test {
     double factor = .50;
     polygonPanel.scaleToPoint(factor, new Coordinate(100, 100));
     swingPanel.paintComponent(graphics);
-    AffineTransform expected = new AffineTransform(0.5, 0, 0, 0.5, 50, 50);
+    AffineTransform expected = new AffineTransform(0.5, 0, 0, 0.5, 0, 0);
     verify(graphics).transform(expected);
   }
 
@@ -96,7 +96,7 @@ public class SwingPolygonPanel_Test {
     polygonPanel.scale(factor);
     polygonPanel.translateRelativeToScale(150, 150);
     swingPanel.paintComponent(graphics);
-    AffineTransform expected = new AffineTransform(1.5, 0, 0, 1.5, 150, 150);
+    AffineTransform expected = new AffineTransform(1.5, 0, 0, 1.5, 100, 100);
     verify(graphics).transform(expected);
   }
 
