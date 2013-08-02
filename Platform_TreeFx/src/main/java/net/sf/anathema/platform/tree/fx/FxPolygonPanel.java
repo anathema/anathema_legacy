@@ -161,7 +161,7 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
 
   @Override
   public void setBackground(RGBColor color) {
-    //To change body of implemented methods use File | Settings | File Templates.
+    canvas.getGraphicsContext2D().setFill(FxColorUtils.toFxColor(color));
   }
 
   @Override
