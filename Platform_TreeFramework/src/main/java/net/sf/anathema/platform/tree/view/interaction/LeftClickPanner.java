@@ -18,7 +18,7 @@ public class LeftClickPanner implements MouseMotionClosure, MousePressClosure {
 
   @Override
   public void mouseDragged(MouseButton button, Coordinate coordinate) {
-    if (button != MouseButton.Left) {
+    if (button != MouseButton.Primary) {
       return;
     }
     int deltaX = coordinate.x - this.start.x;

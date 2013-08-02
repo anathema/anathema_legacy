@@ -13,8 +13,6 @@ import net.sf.anathema.platform.tree.view.interaction.MousePressClosure;
 import net.sf.anathema.platform.tree.view.interaction.MouseWheelClosure;
 import net.sf.anathema.platform.tree.view.interaction.SpecialControlTrigger;
 
-import javax.swing.JComponent;
-
 public interface DisplayPolygonPanel {
   void refresh();
 
@@ -48,8 +46,6 @@ public interface DisplayPolygonPanel {
   void showMoveCursor();
 
   void resetAllTooltips();
-
-  JComponent getComponent();
 
   void setTransformation(AgnosticTransform transform);
 

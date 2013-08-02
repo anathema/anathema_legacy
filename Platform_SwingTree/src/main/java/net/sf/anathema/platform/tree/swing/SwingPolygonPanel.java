@@ -196,9 +196,9 @@ public class SwingPolygonPanel extends JPanel implements DisplayPolygonPanel {
   private MouseButton determineMouseButton(MouseEvent e) {
     MouseButton button;
     if (SwingUtilities.isLeftMouseButton(e)) {
-      button = MouseButton.Left;
+      button = MouseButton.Primary;
     } else {
-      button = MouseButton.Right;
+      button = MouseButton.Secondary;
     }
     return button;
   }
@@ -219,7 +219,6 @@ public class SwingPolygonPanel extends JPanel implements DisplayPolygonPanel {
     ToolTipManager.sharedInstance().setEnabled(true);
   }
 
-  @Override
   public JComponent getComponent() {
     return this;
   }

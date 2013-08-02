@@ -32,27 +32,27 @@ public class CtrlLeftClickDetailsRequesterTest {
 
   @Test
   public void informsListenerOfToggledElement() throws Exception {
-    requester.mouseClicked(MouseButton.Left, MetaKey.CTRL, AnyCoordinate, 1);
+    requester.mouseClicked(MouseButton.Primary, MetaKey.CTRL, AnyCoordinate, 1);
     verify(listener).nodeDetailsDemanded("X");
   }
 
 
   @Test
   public void doesNotBindToElementPermanently() throws Exception {
-    requester.mouseClicked(MouseButton.Left, MetaKey.CTRL, AnyCoordinate, 1);
+    requester.mouseClicked(MouseButton.Primary, MetaKey.CTRL, AnyCoordinate, 1);
     polygon.toggle();
     verify(listener, times(1)).nodeDetailsDemanded("X");
   }
 
   @Test
   public void doesNothingOnRightClick() throws Exception {
-    requester.mouseClicked(MouseButton.Right, MetaKey.CTRL, AnyCoordinate, 1);
+    requester.mouseClicked(MouseButton.Secondary, MetaKey.CTRL, AnyCoordinate, 1);
     verifyZeroInteractions(panel);
   }
 
   @Test
   public void doesNothingOnLeftClickWithoutControlPressed() throws Exception {
-    requester.mouseClicked(MouseButton.Left, MetaKey.NONE, AnyCoordinate, 1);
+    requester.mouseClicked(MouseButton.Primary, MetaKey.NONE, AnyCoordinate, 1);
     verifyZeroInteractions(panel);
   }
 }

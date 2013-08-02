@@ -14,19 +14,19 @@ public class RightClickCentererTest {
 
   @Test
   public void centersPanelOnCursorPositionOnRightClick() throws Exception {
-    centerer.mouseClicked(MouseButton.Right, MetaKey.NONE, AnyCoordinate, 1);
+    centerer.mouseClicked(MouseButton.Secondary, MetaKey.NONE, AnyCoordinate, 1);
     verify(panel).centerOn(AnyCoordinate);
   }
 
   @Test
   public void doesNotReactOnLeftClick() throws Exception {
-    centerer.mouseClicked(MouseButton.Left, MetaKey.NONE, AnyCoordinate, 1);
+    centerer.mouseClicked(MouseButton.Primary, MetaKey.NONE, AnyCoordinate, 1);
     verifyZeroInteractions(panel);
   }
 
   @Test
   public void doesNotReactOnDoubleClick() throws Exception {
-    centerer.mouseClicked(MouseButton.Right, MetaKey.NONE, AnyCoordinate, 2);
+    centerer.mouseClicked(MouseButton.Secondary, MetaKey.NONE, AnyCoordinate, 2);
     verifyZeroInteractions(panel);
   }
 }

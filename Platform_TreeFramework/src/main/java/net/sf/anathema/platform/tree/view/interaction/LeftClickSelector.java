@@ -17,7 +17,7 @@ public class LeftClickSelector implements MouseClickClosure {
 
   @Override
   public void mouseClicked(MouseButton button, MetaKey key, Coordinate coordinate, int clickCount) {
-    if (button != MouseButton.Left || key == MetaKey.CTRL) {
+    if (button != MouseButton.Primary || key == MetaKey.CTRL) {
       return;
     }
     polygonPanel.onElementAtPoint(coordinate).perform(new NodeSelectionTrigger(cascade, interactionListener));

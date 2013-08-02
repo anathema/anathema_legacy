@@ -15,7 +15,7 @@ public class RightClickResetterTest {
 
   @Test
   public void resetsTransformationAndZoomsOutALittleOnRightDoubleClick() throws Exception {
-    resetter.mouseClicked(MouseButton.Right, MetaKey.NONE, AnyCoordinate,2);
+    resetter.mouseClicked(MouseButton.Secondary, MetaKey.NONE, AnyCoordinate,2);
     InOrder inOrder = Mockito.inOrder(panel);
     inOrder.verify(panel).resetTransformation();
     inOrder.verify(panel).scale(0.75);
@@ -23,13 +23,13 @@ public class RightClickResetterTest {
 
   @Test
   public void doesNothingOnSingleClick() throws Exception {
-    resetter.mouseClicked(MouseButton.Right, MetaKey.NONE, AnyCoordinate, 1);
+    resetter.mouseClicked(MouseButton.Secondary, MetaKey.NONE, AnyCoordinate, 1);
     verifyZeroInteractions(panel);
   }
 
   @Test
   public void doesNothingOnLeftClick() throws Exception {
-    resetter.mouseClicked(MouseButton.Left, MetaKey.NONE, AnyCoordinate, 2);
+    resetter.mouseClicked(MouseButton.Primary, MetaKey.NONE, AnyCoordinate, 2);
     verifyZeroInteractions(panel);
   }
 }

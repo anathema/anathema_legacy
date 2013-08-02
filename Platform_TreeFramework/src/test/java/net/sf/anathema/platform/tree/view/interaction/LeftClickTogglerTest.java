@@ -30,20 +30,20 @@ public class LeftClickTogglerTest {
 
   @Test
   public void informsListenerOfToggledElement() throws Exception {
-    selector.mouseClicked(MouseButton.Left, MetaKey.NONE, AnyCoordinate, 1);
+    selector.mouseClicked(MouseButton.Primary, MetaKey.NONE, AnyCoordinate, 1);
     verify(element).toggle();
     verify(panel).refresh();
   }
 
   @Test
   public void doesNothingOnRightClick() throws Exception {
-    selector.mouseClicked(MouseButton.Right, MetaKey.NONE, AnyCoordinate, 1);
+    selector.mouseClicked(MouseButton.Secondary, MetaKey.NONE, AnyCoordinate, 1);
     verifyZeroInteractions(panel);
   }
 
   @Test
   public void doesNothingOnLeftClickWithControlPressed() throws Exception {
-    selector.mouseClicked(MouseButton.Left, MetaKey.CTRL, AnyCoordinate, 1);
+    selector.mouseClicked(MouseButton.Primary, MetaKey.CTRL, AnyCoordinate, 1);
     verifyZeroInteractions(panel);
   }
 }

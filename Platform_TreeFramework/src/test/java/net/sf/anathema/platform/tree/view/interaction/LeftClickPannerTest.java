@@ -18,29 +18,29 @@ public class LeftClickPannerTest {
   @Test
   public void activatesOnLeftButtonOnly() throws Exception {
     panner.mousePressed(AnyCoordinate);
-    panner.mouseDragged(MouseButton.Right, new Coordinate(15, 15));
+    panner.mouseDragged(MouseButton.Secondary, new Coordinate(15, 15));
     verifyZeroInteractions(panel);
   }
 
   @Test
   public void translatesByDifferenceMoved() throws Exception {
     panner.mousePressed(new Coordinate(10, 10));
-    panner.mouseDragged(MouseButton.Left, new Coordinate(15, 15));
+    panner.mouseDragged(MouseButton.Primary, new Coordinate(15, 15));
     verifyTranslation(5, 5);
   }
 
   @Test
   public void translatesByDifferenceFromLastDrag() throws Exception {
     panner.mousePressed(new Coordinate(10, 10));
-    panner.mouseDragged(MouseButton.Left, new Coordinate(15, 15));
-    panner.mouseDragged(MouseButton.Left, new Coordinate(25, 25));
+    panner.mouseDragged(MouseButton.Primary, new Coordinate(15, 15));
+    panner.mouseDragged(MouseButton.Primary, new Coordinate(25, 25));
     verifyTranslation(10, 10);
   }
 
   @Test
   public void repaintsAfterTranslation() throws Exception {
     panner.mousePressed(new Coordinate(10, 10));
-    panner.mouseDragged(MouseButton.Left, new Coordinate(15, 15));
+    panner.mouseDragged(MouseButton.Primary, new Coordinate(15, 15));
     verify(panel).translateRelativeToScale(anyInt(), anyInt());
     verify(panel).refresh();
   }

@@ -17,7 +17,7 @@ public class CursorChangerTest {
 
   @Test
   public void changesCursorDuringMouseDrag() throws Exception {
-    new CursorChanger(panel).mouseDragged(MouseButton.Left, AnyCoordinate);
+    new CursorChanger(panel).mouseDragged(MouseButton.Primary, AnyCoordinate);
     verify(panel).showMoveCursor();
   }
 }

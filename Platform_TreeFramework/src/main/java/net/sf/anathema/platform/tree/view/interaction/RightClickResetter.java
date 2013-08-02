@@ -11,7 +11,7 @@ public class RightClickResetter implements MouseClickClosure {
 
   @Override
   public void mouseClicked(MouseButton button, MetaKey key, Coordinate coordinate, int clickCount) {
-    if (button != MouseButton.Right){
+    if (button != MouseButton.Secondary){
       return;
     }
     if (clickCount == 2) {
