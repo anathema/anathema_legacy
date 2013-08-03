@@ -1,6 +1,5 @@
 package net.sf.anathema.platform.tree.fx;
 
-import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Shape;
 import javafx.scene.transform.Transform;
 import net.sf.anathema.framework.ui.Coordinate;
@@ -30,7 +29,7 @@ public class FxTransformer {
       @Override
       public void visitCircle(Circle circle) {
         int radius = circle.diameter / 2;
-        Ellipse fxCircle = new Ellipse(circle.centerX, circle.centerY, radius, radius);
+        javafx.scene.shape.Circle fxCircle = new javafx.scene.shape.Circle(circle.centerX, circle.centerY, radius);
         result[0] = fxCircle;
       }
     });

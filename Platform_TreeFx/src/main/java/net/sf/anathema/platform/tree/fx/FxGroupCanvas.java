@@ -25,7 +25,7 @@ import static net.sf.anathema.platform.tree.fx.FxColorUtils.toFxColor;
 public class FxGroupCanvas implements Canvas {
 
   private Group group;
-  private Width strokeWidth;
+  private Width strokeWidth = new Width(0);
   private RGBColor strokeAndFill;
   private Font textFont;
 
@@ -46,8 +46,7 @@ public class FxGroupCanvas implements Canvas {
   @Override
   public void drawPolyline(Iterable<Coordinate> coordinates) {
     Polyline polyline = new Polyline();
-    configureShape(polyline);
-    polyline.setFill(null);
+    configureShapeWithoutFill(polyline);
     for (Coordinate coordinate : coordinates) {
       polyline.getPoints().addAll((double) coordinate.x, (double) coordinate.y);
     }
@@ -58,7 +57,7 @@ public class FxGroupCanvas implements Canvas {
   public void fill(TransformedShape shape) {
     Shape fxShape = FxTransformer.convert(shape.shape);
     Transform fxTransform = FxTransformer.convert(shape.transform);
-    fxShape.setStroke(null);
+    configureShapeWithoutStroke(fxShape);
     fxShape.getTransforms().add(fxTransform);
     group.getChildren().add(fxShape);
   }
@@ -66,8 +65,7 @@ public class FxGroupCanvas implements Canvas {
   @Override
   public void draw(AgnosticShape shape) {
     Shape fxShape = FxTransformer.convert(shape);
-    configureShape(fxShape);
-    fxShape.setFill(null);
+    configureShapeWithoutFill(fxShape);
     group.getChildren().add(fxShape);
   }
 
@@ -104,6 +102,16 @@ public class FxGroupCanvas implements Canvas {
     Coordinate origin = new Coordinate(bounds.getMinX(), bounds.getMinY());
     Area area = new Area(bounds.getWidth(), bounds.getHeight());
     return new Rectangle(origin, area);
+  }
+
+  private void configureShapeWithoutStroke(Shape fxShape) {
+    configureShape(fxShape);
+    fxShape.setStroke(null);
+  }
+
+  private void configureShapeWithoutFill(Shape fxShape) {
+    configureShape(fxShape);
+    fxShape.setFill(null);
   }
 
   private void configureShape(Shape shape) {
