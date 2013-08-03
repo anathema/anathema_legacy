@@ -58,7 +58,7 @@ public class FlexibleArrowTest {
   @Test
   public void hasDotAtBottom() throws Exception {
     arrow.paint(graphics);
-    verify(graphics).fill(new TransformedShape(new Circle(11, 0, 12)));
+    verify(graphics).fill(new TransformedShape(new Circle(17, 6, 12)));
   }
 
   @Test
