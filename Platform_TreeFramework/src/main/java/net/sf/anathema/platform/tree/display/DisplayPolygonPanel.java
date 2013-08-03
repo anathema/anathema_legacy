@@ -16,9 +16,6 @@ import net.sf.anathema.platform.tree.view.interaction.SpecialControlTrigger;
 public interface DisplayPolygonPanel {
   void refresh();
 
-  @SuppressWarnings("ConstantConditions") //Is null during superclass initialization
-  void revalidate();
-
   SpecialControlTrigger addSpecialControl();
 
   void add(InteractiveGraphicsElement element);
