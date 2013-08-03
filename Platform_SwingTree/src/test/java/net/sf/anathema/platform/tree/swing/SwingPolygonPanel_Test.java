@@ -148,22 +148,4 @@ public class SwingPolygonPanel_Test {
     swingPanel.paintComponent(graphics);
     verifyZeroInteractions(element);
   }
-
-  @Test
-  public void transformsPointForElements() throws Exception {
-    InteractiveGraphicsElement polygon = PolygonMother.squareAtOriginWithLength2();
-    polygonPanel.add(polygon);
-    polygonPanel.translate(2, 2);
-    polygonPanel.onElementAtPoint(new Coordinate(3, 3)).perform(new Closure() {
-      @Override
-      public void execute(InteractiveGraphicsElement polygon) {
-        //nothing to do
-      }
-    }).orFallBackTo(new Runnable() {
-      @Override
-      public void run() {
-        fail();
-      }
-    });
-  }
 }
