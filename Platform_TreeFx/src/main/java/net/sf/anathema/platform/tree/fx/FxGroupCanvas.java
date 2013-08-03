@@ -47,6 +47,7 @@ public class FxGroupCanvas implements Canvas {
   public void drawPolyline(Iterable<Coordinate> coordinates) {
     Polyline polyline = new Polyline();
     configureShape(polyline);
+    polyline.setFill(null);
     for (Coordinate coordinate : coordinates) {
       polyline.getPoints().addAll((double) coordinate.x, (double) coordinate.y);
     }
