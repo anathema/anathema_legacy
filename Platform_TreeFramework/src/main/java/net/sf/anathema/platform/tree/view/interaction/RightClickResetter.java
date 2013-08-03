@@ -11,12 +11,13 @@ public class RightClickResetter implements MouseClickClosure {
 
   @Override
   public void mouseClicked(MouseButton button, MetaKey key, Coordinate coordinate, int clickCount) {
-    if (button != MouseButton.Secondary){
+    if (button != MouseButton.Secondary) {
       return;
     }
-    if (clickCount == 2) {
-      polygonPanel.resetTransformation();
-      new DefaultScaler(polygonPanel).scale();
+    if (key != MetaKey.CTRL) {
+      return;
     }
+    polygonPanel.resetTransformation();
+    new DefaultScaler(polygonPanel).scale();
   }
 }

@@ -25,8 +25,8 @@ public class RightClickCentererTest {
   }
 
   @Test
-  public void doesNotReactOnDoubleClick() throws Exception {
-    centerer.mouseClicked(MouseButton.Secondary, MetaKey.NONE, AnyCoordinate, 2);
+  public void doesNotReactOnClickWithCtrl() throws Exception {
+    centerer.mouseClicked(MouseButton.Secondary, MetaKey.CTRL, AnyCoordinate, 1);
     verifyZeroInteractions(panel);
   }
 }

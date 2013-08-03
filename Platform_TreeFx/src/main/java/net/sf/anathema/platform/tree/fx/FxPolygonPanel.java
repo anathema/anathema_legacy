@@ -24,6 +24,7 @@ import net.sf.anathema.platform.tree.view.interaction.MouseMotionClosure;
 import net.sf.anathema.platform.tree.view.interaction.MousePressClosure;
 import net.sf.anathema.platform.tree.view.interaction.MouseWheelClosure;
 import net.sf.anathema.platform.tree.view.interaction.SpecialControlTrigger;
+import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +45,11 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
   private final List<FxSpecialTrigger> specialControls = new ArrayList<>();
   private final Group canvas = new Group();
   private AgnosticTransform transform = new AgnosticTransform();
+  private final Announcer<MousePressClosure> pressAnnouncer = Announcer.to(MousePressClosure.class);
+  private final Announcer<MouseClickClosure> clickAnnouncer = Announcer.to(MouseClickClosure.class);
+  private final Announcer<MouseBorderClosure> borderAnnouncer = Announcer.to(MouseBorderClosure.class);
+  private final Announcer<MouseMotionClosure> motionAnnouncer = Announcer.to(MouseMotionClosure.class);
+  private final Announcer<MouseWheelClosure> wheelAnnouncer = Announcer.to(MouseWheelClosure.class);
 
   public FxPolygonPanel() {
     //TODO: Set canvas background white

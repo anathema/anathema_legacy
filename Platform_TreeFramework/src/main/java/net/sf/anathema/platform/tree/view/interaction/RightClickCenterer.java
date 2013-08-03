@@ -14,8 +14,9 @@ public class RightClickCenterer implements MouseClickClosure {
     if (button != MouseButton.Secondary) {
       return;
     }
-    if (clickCount == 1) {
-      polygonPanel.centerOn(coordinate);
+    if (key != MetaKey.NONE) {
+      return;
     }
+    polygonPanel.centerOn(coordinate);
   }
 }
