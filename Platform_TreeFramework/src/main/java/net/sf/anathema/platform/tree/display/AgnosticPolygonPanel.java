@@ -92,9 +92,8 @@ public class AgnosticPolygonPanel implements PolygonPanel {
   }
 
   @Override
-  public void changeCursor(Coordinate screenCoordinates) {
-    Coordinate elementCoordinate = transformScreenCoordinatesToElementCoordinates(screenCoordinates);
-    panel.changeCursor(elementCoordinate);
+  public void changeCursor(Coordinate coordinate) {
+    panel.changeCursor(coordinate);
   }
 
   @Override
@@ -103,9 +102,8 @@ public class AgnosticPolygonPanel implements PolygonPanel {
   }
 
   @Override
-  public Executor onElementAtPoint(Coordinate screenCoordinates) {
-    Coordinate elementCoordinate = transformScreenCoordinatesToElementCoordinates(screenCoordinates);
-    return panel.onElementAtPoint(elementCoordinate);
+  public Executor onElementAtPoint(Coordinate coordinate) {
+    return panel.onElementAtPoint(coordinate);
   }
 
   @Override
@@ -160,9 +158,5 @@ public class AgnosticPolygonPanel implements PolygonPanel {
     if (isScaleAllowed) {
       transform.preconcatenate(operations);
     }
-  }
-
-  private Coordinate transformScreenCoordinatesToElementCoordinates(Coordinate screenCoordinates) {
-    return transform.invert().apply(screenCoordinates);
   }
 }

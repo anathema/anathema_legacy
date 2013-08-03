@@ -9,6 +9,7 @@ import javafx.scene.input.ScrollEvent;
 import javafx.scene.transform.Transform;
 import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.framework.ui.RGBColor;
+import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.platform.tree.display.DisplayPolygonPanel;
 import net.sf.anathema.platform.tree.display.transform.AgnosticTransform;
 import net.sf.anathema.platform.tree.view.MouseBorderClosure;
@@ -24,7 +25,6 @@ import net.sf.anathema.platform.tree.view.interaction.MouseMotionClosure;
 import net.sf.anathema.platform.tree.view.interaction.MousePressClosure;
 import net.sf.anathema.platform.tree.view.interaction.MouseWheelClosure;
 import net.sf.anathema.platform.tree.view.interaction.SpecialControlTrigger;
-import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,13 +45,15 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
   private final List<FxSpecialTrigger> specialControls = new ArrayList<>();
   private final Group canvas = new Group();
   private AgnosticTransform transform = new AgnosticTransform();
-  private final Announcer<MousePressClosure> pressAnnouncer = Announcer.to(MousePressClosure.class);
-  private final Announcer<MouseClickClosure> clickAnnouncer = Announcer.to(MouseClickClosure.class);
-  private final Announcer<MouseBorderClosure> borderAnnouncer = Announcer.to(MouseBorderClosure.class);
-  private final Announcer<MouseMotionClosure> motionAnnouncer = Announcer.to(MouseMotionClosure.class);
-  private final Announcer<MouseWheelClosure> wheelAnnouncer = Announcer.to(MouseWheelClosure.class);
+  private Tooltip tooltip;
 
   public FxPolygonPanel() {
+    FxThreading.runOnCorrectThread(new Runnable() {
+      @Override
+      public void run() {
+        tooltip = new Tooltip();
+      }
+    });
     //TODO: Set canvas background white
   }
 
@@ -203,8 +205,12 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
   }
 
   @Override
-  public void setToolTipText(String toolTip) {
-    Tooltip tooltip = new Tooltip(toolTip);
+  public void setToolTipText(String toolTipText) {
+    if (toolTipText == null) {
+      Tooltip.uninstall(canvas, tooltip);
+      return;
+    }
+    tooltip.setText(toolTipText);
     Tooltip.install(canvas, tooltip);
   }
 
