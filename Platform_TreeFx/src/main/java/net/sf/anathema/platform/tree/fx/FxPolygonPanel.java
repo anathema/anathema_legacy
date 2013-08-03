@@ -62,11 +62,6 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
   }
 
   @Override
-  public void revalidate() {
-    //To change body of implemented methods use File | Settings | File Templates.
-  }
-
-  @Override
   public SpecialControlTrigger addSpecialControl() {
     FxSpecialTrigger specialControl = new FxSpecialTrigger();
     specialControls.add(specialControl);
@@ -132,7 +127,8 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
     canvas.addEventHandler(ScrollEvent.SCROLL, new EventHandler<ScrollEvent>() {
       @Override
       public void handle(ScrollEvent scrollEvent) {
-        listener.mouseWheelMoved((int) scrollEvent.getTextDeltaY(), new Coordinate(scrollEvent.getX(), scrollEvent.getY()));
+        int wheelClicks = (int) scrollEvent.getDeltaY() / 40;
+        listener.mouseWheelMoved(wheelClicks, new Coordinate(scrollEvent.getX(), scrollEvent.getY()));
       }
     });
   }
@@ -207,9 +203,9 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
   }
 
   private MouseButton determineMouseButton(MouseEvent event) {
-    if (event.isPrimaryButtonDown()) {
+    if (event.getButton() == javafx.scene.input.MouseButton.PRIMARY) {
       return Primary;
-    } else if (event.isSecondaryButtonDown()) {
+    } else if (event.getButton() == javafx.scene.input.MouseButton.SECONDARY) {
       return Secondary;
     }
     return Other;
