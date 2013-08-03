@@ -31,7 +31,7 @@ public class FlexibleArrow implements GraphicsElement, ExtensibleArrow {
 
   private AgnosticShape createCircleAtBottom() {
     Coordinate origin = coordinates.getPointOfOrigin();
-    return new Circle(origin.x - RADIUS, origin.y - RADIUS, DIAMETER);
+    return new Circle(origin.x, origin.y, DIAMETER);
   }
 
   public void moveBy(int x, int y) {
