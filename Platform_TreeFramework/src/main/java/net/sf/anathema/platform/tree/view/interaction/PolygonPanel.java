@@ -2,6 +2,7 @@ package net.sf.anathema.platform.tree.view.interaction;
 
 import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.framework.ui.RGBColor;
+import net.sf.anathema.lib.gui.StatefulTooltip;
 import net.sf.anathema.platform.tree.view.draw.GraphicsElement;
 import net.sf.anathema.platform.tree.view.draw.InteractiveGraphicsElement;
 
@@ -47,4 +48,6 @@ public interface PolygonPanel {
   void setBackground(RGBColor color);
 
   void showMoveCursor();
+
+  StatefulTooltip createToolTip();
 }

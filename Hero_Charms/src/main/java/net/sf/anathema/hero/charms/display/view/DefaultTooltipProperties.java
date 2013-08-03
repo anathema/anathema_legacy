@@ -7,7 +7,7 @@ import net.sf.anathema.hero.charms.display.tooltip.CharmTooltipBuilderImpl;
 import net.sf.anathema.hero.charms.model.CharmIdMap;
 import net.sf.anathema.hero.charms.model.special.ISpecialCharm;
 import net.sf.anathema.hero.charms.model.special.NullSpecialCharm;
-import net.sf.anathema.lib.gui.TooltipBuilder;
+import net.sf.anathema.lib.gui.ConfigurableTooltip;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.platform.tree.display.ToolTipProperties;
 
@@ -26,15 +26,14 @@ public class DefaultTooltipProperties implements ToolTipProperties {
   }
 
   @Override
-  public String getToolTip(String charmId) {
-    if (treeProperties.isRequirementNode(charmId)) {
-      return null;
+  public void configureTooltip(String id, ConfigurableTooltip tooltip) {
+    if (treeProperties.isRequirementNode(id)) {
+      tooltip.showNoTooltip();
+      return;
     }
-    Charm charm = findNonNullCharm(charmId);
-    ISpecialCharm specialCharm = getSpecialCharm(charmId);
-    TooltipBuilder tooltipBuilder = new TooltipBuilder();
-    tooltipTextProvider.configureTooltipWithSpecials(charm, specialCharm, tooltipBuilder);
-    return tooltipBuilder.build();
+    Charm charm = findNonNullCharm(id);
+    ISpecialCharm specialCharm = getSpecialCharm(id);
+    tooltipTextProvider.configureTooltipWithSpecials(charm, specialCharm, tooltip);
   }
 
   private Charm findNonNullCharm(final String charmId) {

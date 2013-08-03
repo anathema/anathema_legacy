@@ -1,39 +1,27 @@
-package net.sf.anathema.platform.fx;
+package net.sf.anathema.platform.fx.tooltip;
 
 import javafx.scene.Node;
-import javafx.scene.control.Control;
 import javafx.scene.control.Label;
-import javafx.scene.control.Tooltip;
 import net.miginfocom.layout.CC;
-import net.sf.anathema.lib.gui.ConfigurableTooltip;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import org.tbee.javafx.scene.layout.MigPane;
 
 import static net.sf.anathema.lib.lang.StringUtilities.insertLineBreakEveryXCharacters;
 
-public class ConfigurableFxTooltip implements ConfigurableTooltip {
+public class FxTooltipBuilder {
   private final MigPane body = new MigPane(LayoutUtils.withoutInsets().wrapAfter(2));
   public static final int DEFAULT_TOOLTIP_WIDTH = 80;
-  private boolean tooltipEnabled = true;
 
-  @Override
-  public void showNoTooltip() {
-    tooltipEnabled = false;
-  }
-
-  @Override
   public void appendLine(String text) {
     addAsLine(new Label(text));
   }
 
-  @Override
   public void appendTitleLine(String title) {
     Label label = new Label(title);
     label.getStyleClass().add("boldText");
     addAsLine(label);
   }
 
-  @Override
   public void appendLine(String labelText, String valueText) {
     Label label = new Label(labelText + ": ");
     label.getStyleClass().add("italicText");
@@ -42,7 +30,6 @@ public class ConfigurableFxTooltip implements ConfigurableTooltip {
     body.add(value);
   }
 
-  @Override
   public void appendDescriptiveLine(String description) {
     String descriptionWithLineBreaks = insertLineBreakEveryXCharacters(description, "\n", DEFAULT_TOOLTIP_WIDTH);
     Label label = new Label(descriptionWithLineBreaks);
@@ -50,16 +37,15 @@ public class ConfigurableFxTooltip implements ConfigurableTooltip {
     addAsLine(label);
   }
 
-  public void configure(Control control) {
-    if (!tooltipEnabled) {
-      return;
-    }
-    Tooltip tooltip = new Tooltip();
-    tooltip.setGraphic(body);
-    control.setTooltip(tooltip);
-  }
-
   private void addAsLine(Node node) {
     body.add(node, new CC().span());
+  }
+
+  public void reset() {
+    body.getChildren().clear();
+  }
+
+  public Node getNode() {
+    return body;
   }
 }

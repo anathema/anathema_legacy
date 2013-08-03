@@ -2,6 +2,7 @@ package net.sf.anathema.platform.tree.swing;
 
 import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.framework.ui.RGBColor;
+import net.sf.anathema.lib.gui.StatefulTooltip;
 import net.sf.anathema.platform.tree.display.DisplayPolygonPanel;
 import net.sf.anathema.platform.tree.display.transform.AgnosticTransform;
 import net.sf.anathema.platform.tree.view.MouseBorderClosure;
@@ -227,6 +228,11 @@ public class SwingPolygonPanel extends JPanel implements DisplayPolygonPanel {
   public void setTransformation(AgnosticTransform transform) {
     this.transform = transform;
     repaint();
+  }
+
+  @Override
+  public StatefulTooltip createConfigurableTooltip() {
+    return null;
   }
 
   private class SetDefaultCursor implements Runnable {

@@ -1,6 +1,7 @@
 package net.sf.anathema.lib.gui;
 
 public interface ConfigurableTooltip {
+
   void showNoTooltip();
 
   void appendLine(String text);

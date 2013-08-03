@@ -1,5 +1,8 @@
 package net.sf.anathema.platform.tree.display;
 
+import net.sf.anathema.lib.gui.ConfigurableTooltip;
+
 public interface ToolTipProperties {
-  String getToolTip(String nodeId);
+
+  void configureTooltip(String id, ConfigurableTooltip tooltip);
 }

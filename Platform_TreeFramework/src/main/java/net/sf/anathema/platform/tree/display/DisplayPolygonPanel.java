@@ -2,6 +2,7 @@ package net.sf.anathema.platform.tree.display;
 
 import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.framework.ui.RGBColor;
+import net.sf.anathema.lib.gui.StatefulTooltip;
 import net.sf.anathema.platform.tree.display.transform.AgnosticTransform;
 import net.sf.anathema.platform.tree.view.MouseBorderClosure;
 import net.sf.anathema.platform.tree.view.draw.GraphicsElement;
@@ -51,4 +52,6 @@ public interface DisplayPolygonPanel {
   int getHeight();
 
   void setToolTipText(String toolTip);
+
+  StatefulTooltip createConfigurableTooltip();
 }

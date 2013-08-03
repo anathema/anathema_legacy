@@ -9,7 +9,9 @@ import javafx.scene.input.ScrollEvent;
 import javafx.scene.transform.Transform;
 import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.framework.ui.RGBColor;
+import net.sf.anathema.lib.gui.StatefulTooltip;
 import net.sf.anathema.platform.fx.FxThreading;
+import net.sf.anathema.platform.fx.tooltip.StatefulFxTooltip;
 import net.sf.anathema.platform.tree.display.DisplayPolygonPanel;
 import net.sf.anathema.platform.tree.display.transform.AgnosticTransform;
 import net.sf.anathema.platform.tree.view.MouseBorderClosure;
@@ -212,6 +214,11 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
     }
     tooltip.setText(toolTipText);
     Tooltip.install(canvas, tooltip);
+  }
+
+  @Override
+  public StatefulTooltip createConfigurableTooltip() {
+    return new StatefulFxTooltip(canvas);
   }
 
   private MouseButton determineMouseButton(MouseEvent event) {

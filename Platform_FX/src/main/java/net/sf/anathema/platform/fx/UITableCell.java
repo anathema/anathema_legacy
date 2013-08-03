@@ -5,6 +5,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
+import net.sf.anathema.platform.fx.tooltip.ConfigurableFxTooltip;
 
 import java.io.InputStream;
 

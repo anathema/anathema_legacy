@@ -1,5 +1,6 @@
 package net.sf.anathema.platform.tree.view.interaction;
 
+import net.sf.anathema.lib.gui.StatefulTooltip;
 import net.sf.anathema.platform.tree.display.ToolTipProperties;
 import net.sf.anathema.platform.tree.view.container.Cascade;
 import net.sf.anathema.platform.tree.view.container.NodeToggleListener;
@@ -27,8 +28,10 @@ public class SetToolTipWithDetails implements Closure {
   private class TooltipSetter implements NodeToggleListener {
     @Override
     public void toggled(String id) {
-      String toolTip = properties.getToolTip(id);
-      polygonPanel.setToolTipText(toolTip);
+      StatefulTooltip tooltip = polygonPanel.createToolTip();
+      tooltip.reset();
+      properties.configureTooltip(id, tooltip);
+      tooltip.apply();
     }
   }
 }

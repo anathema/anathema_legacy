@@ -2,6 +2,7 @@ package net.sf.anathema.platform.tree.display;
 
 import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.framework.ui.RGBColor;
+import net.sf.anathema.lib.gui.StatefulTooltip;
 import net.sf.anathema.platform.tree.display.transform.AgnosticTransform;
 import net.sf.anathema.platform.tree.display.transform.Scale;
 import net.sf.anathema.platform.tree.display.transform.TransformOperation;
@@ -149,6 +150,11 @@ public class AgnosticPolygonPanel implements PolygonPanel {
   @Override
   public void showMoveCursor() {
     panel.showMoveCursor();
+  }
+
+  @Override
+  public StatefulTooltip createToolTip() {
+    return panel.createConfigurableTooltip();
   }
 
   private void executeScaleIfBoundsAreNotBroken(TransformOperation... operations) {
