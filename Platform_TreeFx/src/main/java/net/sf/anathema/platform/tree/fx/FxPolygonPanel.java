@@ -52,10 +52,10 @@ import static net.sf.anathema.platform.tree.view.interaction.MouseButton.Seconda
 public class FxPolygonPanel implements DisplayPolygonPanel {
   private final ElementContainer container = new ElementContainer();
   private final List<FxSpecialTrigger> specialControls = new ArrayList<>();
-  private final Rectangle background = new Rectangle(0, 0);
   private final StackPane content = new StackPane();
+  private final Rectangle background = new Rectangle();
   private final Group canvas = new Group();
-  private final Rectangle glasspane = new Rectangle(0, 0, Color.color(0, 0, 0, 0.1));
+  private final Rectangle glasspane = new Rectangle();
   private AgnosticTransform transform = new AgnosticTransform();
   private Tooltip tooltip;
 
@@ -68,6 +68,7 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
     });
     sizeLikeContentPane(background);
     sizeLikeContentPane(glasspane);
+    glasspane.setFill(Color.color(0, 0, 0, 0.1));
     content.getChildren().addAll(background, canvas, glasspane);
     setBackground(RGBColor.White);
   }
