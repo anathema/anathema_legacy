@@ -54,7 +54,6 @@ public class FxSpecialTrigger implements SpecialControlTrigger {
   @Override
   public void placeBelow(AgnosticShape shape) {
     Bounds bounds = FxTransformer.convert(shape).getBoundsInLocal();
-    System.out.println(bounds);
     button.setLayoutX(bounds.getMinX());
     button.setLayoutY(bounds.getMaxY() + 10);
     button.setMinWidth(bounds.getWidth());
