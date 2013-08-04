@@ -267,7 +267,7 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
   private class SetDefaultCursor implements Runnable {
     @Override
     public void run() {
-      canvas.setCursor(DEFAULT);
+      glasspane.setCursor(DEFAULT);
     }
   }
 }
