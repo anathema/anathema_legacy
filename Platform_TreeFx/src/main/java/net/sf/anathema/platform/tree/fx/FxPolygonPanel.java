@@ -253,12 +253,12 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
     return key;
   }
 
-  private Coordinate determineCoordinate(MouseEvent mouseEvent) {
-    return new Coordinate(mouseEvent.getX(), mouseEvent.getY());
+  private Coordinate determineCoordinate(MouseEvent event) {
+    return new Coordinate(event.getX(), event.getY());
   }
 
-  private Coordinate determineCoordinate(ScrollEvent scrollEvent) {
-    return new Coordinate(scrollEvent.getX(), scrollEvent.getY());
+  private Coordinate determineCoordinate(ScrollEvent event) {
+    return new Coordinate(event.getX(), event.getY());
   }
 
   private Coordinate determineCoordinateInCanvas(Coordinate glassPaneCoordinate) {
