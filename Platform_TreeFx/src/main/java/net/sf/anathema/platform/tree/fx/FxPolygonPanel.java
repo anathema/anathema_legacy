@@ -41,6 +41,7 @@ import static javafx.scene.Cursor.MOVE;
 import static javafx.scene.input.MouseEvent.MOUSE_CLICKED;
 import static javafx.scene.input.MouseEvent.MOUSE_DRAGGED;
 import static javafx.scene.input.MouseEvent.MOUSE_PRESSED;
+import static net.sf.anathema.platform.tree.fx.FxColorUtils.toFxColor;
 import static net.sf.anathema.platform.tree.fx.FxTransformer.convert;
 import static net.sf.anathema.platform.tree.view.interaction.MouseButton.Other;
 import static net.sf.anathema.platform.tree.view.interaction.MouseButton.Primary;
@@ -49,9 +50,10 @@ import static net.sf.anathema.platform.tree.view.interaction.MouseButton.Seconda
 public class FxPolygonPanel implements DisplayPolygonPanel {
   private final ElementContainer container = new ElementContainer();
   private final List<FxSpecialTrigger> specialControls = new ArrayList<>();
+  private final Rectangle background = new Rectangle(0, 0);
   private final StackPane content = new StackPane();
-  private final Rectangle glasspane = new Rectangle(100, 100, Color.color(0, 0, 0, 0.1));
   private final Group canvas = new Group();
+  private final Rectangle glasspane = new Rectangle(0, 0, Color.color(0, 0, 0, 0.1));
   private AgnosticTransform transform = new AgnosticTransform();
   private Tooltip tooltip;
 
@@ -62,11 +64,15 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
         tooltip = new Tooltip();
       }
     });
-    content.getChildren().add(canvas);
-    glasspane.widthProperty().bind(content.widthProperty());
-    glasspane.heightProperty().bind(content.heightProperty());
-    content.getChildren().add(glasspane);
-    //TODO: Set canvas background white
+    sizeLikeContentPane(background);
+    sizeLikeContentPane(glasspane);
+    content.getChildren().addAll(background, canvas, glasspane);
+    setBackground(RGBColor.White);
+  }
+
+  private void sizeLikeContentPane(Rectangle rectangle) {
+    rectangle.widthProperty().bind(content.widthProperty());
+    rectangle.heightProperty().bind(content.heightProperty());
   }
 
   @Override
@@ -125,7 +131,7 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
     glasspane.addEventHandler(MOUSE_PRESSED, new EventHandler<MouseEvent>() {
       @Override
       public void handle(MouseEvent event) {
-        listener.mousePressed(determineCoordinate(event));
+        listener.mousePressed(determineCoordinateInCanvas(event));
       }
     });
   }
@@ -137,7 +143,7 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
       public void handle(MouseEvent event) {
         MouseButton button = determineMouseButton(event);
         MetaKey key = determineMetaKey(event);
-        listener.mouseClicked(button, key, determineCoordinate(event), event.getClickCount());
+        listener.mouseClicked(button, key, determineCoordinateInCanvas(event), event.getClickCount());
       }
     });
   }
@@ -174,20 +180,20 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
     glasspane.addEventHandler(MouseEvent.MOUSE_MOVED, new EventHandler<MouseEvent>() {
       @Override
       public void handle(MouseEvent mouseEvent) {
-        listener.mouseMoved(determineCoordinate(mouseEvent));
+        listener.mouseMoved(determineCoordinateInCanvas(mouseEvent));
       }
     });
     glasspane.addEventHandler(MOUSE_DRAGGED, new EventHandler<MouseEvent>() {
       @Override
       public void handle(MouseEvent mouseEvent) {
-        listener.mouseDragged(determineMouseButton(mouseEvent), determineCoordinate(mouseEvent));
+        listener.mouseDragged(determineMouseButton(mouseEvent), determineCoordinateInCanvas(mouseEvent));
       }
     });
   }
 
   @Override
   public void setBackground(RGBColor color) {
-    //TODO: Set Background Color
+    background.setFill(toFxColor(color));
   }
 
   @Override
@@ -250,7 +256,7 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
     return key;
   }
 
-  private Coordinate determineCoordinate(MouseEvent mouseEvent) {
+  private Coordinate determineCoordinateInCanvas(MouseEvent mouseEvent) {
     Point2D point2D = canvas.sceneToLocal(mouseEvent.getSceneX(), mouseEvent.getSceneY());
     return new Coordinate(point2D.getX(), point2D.getY());
   }
