@@ -6,6 +6,9 @@ import javafx.scene.Node;
 import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.transform.Transform;
 import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.framework.ui.RGBColor;
@@ -45,6 +48,8 @@ import static net.sf.anathema.platform.tree.view.interaction.MouseButton.Seconda
 public class FxPolygonPanel implements DisplayPolygonPanel {
   private final ElementContainer container = new ElementContainer();
   private final List<FxSpecialTrigger> specialControls = new ArrayList<>();
+  private final StackPane content = new StackPane();
+  private final Rectangle glasspane = new Rectangle(100, 100, Color.color(0, 0, 0, 0.1));
   private final Group canvas = new Group();
   private AgnosticTransform transform = new AgnosticTransform();
   private Tooltip tooltip;
@@ -56,6 +61,10 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
         tooltip = new Tooltip();
       }
     });
+    content.getChildren().add(canvas);
+    glasspane.widthProperty().bind(content.widthProperty());
+    glasspane.heightProperty().bind(content.heightProperty());
+    content.getChildren().add(glasspane);
     //TODO: Set canvas background white
   }
 
@@ -112,7 +121,7 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
 
   @Override
   public void addMousePressListener(final MousePressClosure listener) {
-    canvas.addEventHandler(MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+    glasspane.addEventHandler(MOUSE_PRESSED, new EventHandler<MouseEvent>() {
       @Override
       public void handle(MouseEvent event) {
         listener.mousePressed(determineCoordinate(event));
@@ -122,7 +131,7 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
 
   @Override
   public void addMouseClickListener(final MouseClickClosure listener) {
-    canvas.addEventHandler(MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+    glasspane.addEventHandler(MOUSE_CLICKED, new EventHandler<MouseEvent>() {
       @Override
       public void handle(MouseEvent event) {
         MouseButton button = determineMouseButton(event);
@@ -134,7 +143,7 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
 
   @Override
   public void addMouseWheelListener(final MouseWheelClosure listener) {
-    canvas.addEventHandler(ScrollEvent.SCROLL, new EventHandler<ScrollEvent>() {
+    glasspane.addEventHandler(ScrollEvent.SCROLL, new EventHandler<ScrollEvent>() {
       @Override
       public void handle(ScrollEvent scrollEvent) {
         int wheelClicks = (int) scrollEvent.getDeltaY() / 40;
@@ -145,13 +154,13 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
 
   @Override
   public void addMouseBorderListener(final MouseBorderClosure listener) {
-    canvas.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
+    glasspane.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
       @Override
       public void handle(MouseEvent mouseEvent) {
         listener.mouseEntered();
       }
     });
-    canvas.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
+    glasspane.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
       @Override
       public void handle(MouseEvent mouseEvent) {
         listener.mouseExited();
@@ -161,13 +170,13 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
 
   @Override
   public void addMouseMotionListener(final MouseMotionClosure listener) {
-    canvas.addEventHandler(MouseEvent.MOUSE_MOVED, new EventHandler<MouseEvent>() {
+    glasspane.addEventHandler(MouseEvent.MOUSE_MOVED, new EventHandler<MouseEvent>() {
       @Override
       public void handle(MouseEvent mouseEvent) {
         listener.mouseMoved(determineCoordinate(mouseEvent));
       }
     });
-    canvas.addEventHandler(MOUSE_DRAGGED, new EventHandler<MouseEvent>() {
+    glasspane.addEventHandler(MOUSE_DRAGGED, new EventHandler<MouseEvent>() {
       @Override
       public void handle(MouseEvent mouseEvent) {
         listener.mouseDragged(determineMouseButton(mouseEvent), determineCoordinate(mouseEvent));
@@ -182,7 +191,7 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
 
   @Override
   public void showMoveCursor() {
-    canvas.setCursor(MOVE);
+    glasspane.setCursor(MOVE);
   }
 
   @Override
@@ -198,22 +207,22 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
 
   @Override
   public int getWidth() {
-    return (int) canvas.prefWidth(-1);
+    return (int) content.getWidth();
   }
 
   @Override
   public int getHeight() {
-    return (int) canvas.prefHeight(-1);
+    return (int) content.getHeight();
   }
 
   @Override
   public void setToolTipText(String toolTipText) {
     if (toolTipText == null) {
-      Tooltip.uninstall(canvas, tooltip);
+      Tooltip.uninstall(glasspane, tooltip);
       return;
     }
     tooltip.setText(toolTipText);
-    Tooltip.install(canvas, tooltip);
+    Tooltip.install(glasspane, tooltip);
   }
 
   @Override
@@ -245,13 +254,13 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
   }
 
   public Node getNode() {
-    return canvas;
+    return content;
   }
 
   private class SetHandCursor implements Closure {
     @Override
     public void execute(InteractiveGraphicsElement polygon) {
-      canvas.setCursor(HAND);
+      glasspane.setCursor(HAND);
     }
   }
 
