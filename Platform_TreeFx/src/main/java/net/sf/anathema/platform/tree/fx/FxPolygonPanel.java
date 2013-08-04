@@ -38,6 +38,8 @@ import java.util.List;
 import static javafx.scene.Cursor.DEFAULT;
 import static javafx.scene.Cursor.HAND;
 import static javafx.scene.Cursor.MOVE;
+import static javafx.scene.input.MouseButton.PRIMARY;
+import static javafx.scene.input.MouseButton.SECONDARY;
 import static javafx.scene.input.MouseEvent.MOUSE_CLICKED;
 import static javafx.scene.input.MouseEvent.MOUSE_DRAGGED;
 import static javafx.scene.input.MouseEvent.MOUSE_PRESSED;
@@ -235,22 +237,20 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
   }
 
   private MouseButton determineMouseButton(MouseEvent event) {
-    if (event.getButton() == javafx.scene.input.MouseButton.PRIMARY) {
+    if (event.getButton() == PRIMARY) {
       return Primary;
-    } else if (event.getButton() == javafx.scene.input.MouseButton.SECONDARY) {
+    }
+    if (event.getButton() == SECONDARY) {
       return Secondary;
     }
     return Other;
   }
 
   private MetaKey determineMetaKey(MouseEvent event) {
-    MetaKey key;
     if (event.isControlDown()) {
-      key = MetaKey.CTRL;
-    } else {
-      key = MetaKey.NONE;
+      return MetaKey.CTRL;
     }
-    return key;
+    return MetaKey.NONE;
   }
 
   private Coordinate determineCoordinate(MouseEvent event) {
