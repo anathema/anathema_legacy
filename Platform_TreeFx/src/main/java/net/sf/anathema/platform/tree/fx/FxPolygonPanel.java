@@ -1,6 +1,7 @@
 package net.sf.anathema.platform.tree.fx;
 
 import javafx.event.EventHandler;
+import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.Tooltip;
@@ -250,7 +251,8 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
   }
 
   private Coordinate determineCoordinate(MouseEvent mouseEvent) {
-    return new Coordinate(mouseEvent.getX(), mouseEvent.getY());
+    Point2D point2D = canvas.sceneToLocal(mouseEvent.getSceneX(), mouseEvent.getSceneY());
+    return new Coordinate(point2D.getX(), point2D.getY());
   }
 
   public Node getNode() {
