@@ -80,9 +80,13 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
     FxGroupCanvas fxGroupCanvas = new FxGroupCanvas(canvas);
     Transform fxTransform = convert(transform);
     canvas.getTransforms().add(fxTransform);
+    for (FxSpecialTrigger control : specialControls) {
+      control.transformOriginalCoordinates(transform);
+    }
     for (GraphicsElement graphicsElement : container) {
       graphicsElement.paint(fxGroupCanvas);
     }
+
   }
 
   @Override

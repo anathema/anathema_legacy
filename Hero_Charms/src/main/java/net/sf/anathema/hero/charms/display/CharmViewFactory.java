@@ -3,9 +3,11 @@ package net.sf.anathema.hero.charms.display;
 import net.sf.anathema.character.main.framework.RegisteredCharacterView;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.view.SubViewFactory;
+import net.sf.anathema.framework.value.IntValueView;
 import net.sf.anathema.hero.charms.display.view.BridgingCharmView;
 import net.sf.anathema.hero.charms.display.view.CharmView;
 import net.sf.anathema.hero.charms.display.view.FxCharmView;
+import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;
 
 @RegisteredCharacterView(CharmView.class)
 public class CharmViewFactory implements SubViewFactory {
@@ -14,10 +16,8 @@ public class CharmViewFactory implements SubViewFactory {
   @Override
   public <T> T create(CharacterType type) {
     FxCharmView fxView = new FxCharmView();
-    //TODO Special Types
-    //IntegerViewFactory factory = IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(type);
-    //swingCharmView.registerSpecialType(IntValueView.class, new SpecialIntDisplayFactory(factory));
-    //swingCharmView.registerSpecialType(IBooleanValueView.class, new SpecialBooleanDisplayFactory());
+    fxView.registerSpecialType(IntValueView.class, new FxIntDisplayFactory());
+    fxView.registerSpecialType(IBooleanValueView.class, new FxBooleanDisplayFactory());
     return (T) new BridgingCharmView(fxView);
   }
 }
