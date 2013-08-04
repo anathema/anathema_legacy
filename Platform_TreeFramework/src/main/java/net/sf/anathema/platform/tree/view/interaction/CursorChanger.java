@@ -9,12 +9,6 @@ public class CursorChanger implements MouseMotionClosure {
     this.polygonPanel = polygonPanel;
   }
 
-  //@Override
-  //public void mouseReleased(MouseEvent e) {
-  // Point point = e.getPoint();
-//    polygonPanel.changeCursor(new Coordinate(point.x, point.y));
-//  }
-
   @Override
   public void mouseDragged(MouseButton button, Coordinate coordinate) {
     polygonPanel.showMoveCursor();

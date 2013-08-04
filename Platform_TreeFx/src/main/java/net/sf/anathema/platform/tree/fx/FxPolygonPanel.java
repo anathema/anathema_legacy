@@ -234,7 +234,7 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
 
   @Override
   public StatefulTooltip createConfigurableTooltip() {
-    return new StatefulFxTooltip(canvas);
+    return new StatefulFxTooltip(glasspane);
   }
 
   private MouseButton determineMouseButton(MouseEvent event) {
