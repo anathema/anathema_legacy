@@ -70,11 +70,6 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
     setBackground(RGBColor.White);
   }
 
-  private void sizeLikeContentPane(Rectangle rectangle) {
-    rectangle.widthProperty().bind(content.widthProperty());
-    rectangle.heightProperty().bind(content.heightProperty());
-  }
-
   @Override
   public void refresh() {
     canvas.getChildren().clear();
@@ -107,7 +102,8 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
   }
 
   @Override
-  public void changeCursor(Coordinate elementCoordinates) {
+  public void changeCursor(Coordinate glassPaneCoordinates) {
+    Coordinate elementCoordinates = determineCoordinateInCanvas(glassPaneCoordinates);
     container.onElementAtPoint(elementCoordinates).perform(new SetHandCursor()).orFallBackTo(new SetDefaultCursor());
   }
 
@@ -122,7 +118,8 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
   }
 
   @Override
-  public Executor onElementAtPoint(Coordinate elementCoordinates) {
+  public Executor onElementAtPoint(Coordinate glassPaneCoordinates) {
+    Coordinate elementCoordinates = determineCoordinateInCanvas(glassPaneCoordinates);
     return container.onElementAtPoint(elementCoordinates);
   }
 
@@ -131,7 +128,7 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
     glasspane.addEventHandler(MOUSE_PRESSED, new EventHandler<MouseEvent>() {
       @Override
       public void handle(MouseEvent event) {
-        listener.mousePressed(determineCoordinateInCanvas(event));
+        listener.mousePressed(determineCoordinate(event));
       }
     });
   }
@@ -143,7 +140,7 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
       public void handle(MouseEvent event) {
         MouseButton button = determineMouseButton(event);
         MetaKey key = determineMetaKey(event);
-        listener.mouseClicked(button, key, determineCoordinateInCanvas(event), event.getClickCount());
+        listener.mouseClicked(button, key, determineCoordinate(event), event.getClickCount());
       }
     });
   }
@@ -154,7 +151,7 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
       @Override
       public void handle(ScrollEvent scrollEvent) {
         int wheelClicks = (int) scrollEvent.getDeltaY() / 40;
-        listener.mouseWheelMoved(wheelClicks, new Coordinate(scrollEvent.getX(), scrollEvent.getY()));
+        listener.mouseWheelMoved(wheelClicks, determineCoordinate(scrollEvent));
       }
     });
   }
@@ -180,13 +177,13 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
     glasspane.addEventHandler(MouseEvent.MOUSE_MOVED, new EventHandler<MouseEvent>() {
       @Override
       public void handle(MouseEvent mouseEvent) {
-        listener.mouseMoved(determineCoordinateInCanvas(mouseEvent));
+        listener.mouseMoved(determineCoordinate(mouseEvent));
       }
     });
     glasspane.addEventHandler(MOUSE_DRAGGED, new EventHandler<MouseEvent>() {
       @Override
       public void handle(MouseEvent mouseEvent) {
-        listener.mouseDragged(determineMouseButton(mouseEvent), determineCoordinateInCanvas(mouseEvent));
+        listener.mouseDragged(determineMouseButton(mouseEvent), determineCoordinate(mouseEvent));
       }
     });
   }
@@ -256,13 +253,27 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
     return key;
   }
 
-  private Coordinate determineCoordinateInCanvas(MouseEvent mouseEvent) {
-    Point2D point2D = canvas.sceneToLocal(mouseEvent.getSceneX(), mouseEvent.getSceneY());
+  private Coordinate determineCoordinate(MouseEvent mouseEvent) {
+    return new Coordinate(mouseEvent.getX(), mouseEvent.getY());
+  }
+
+  private Coordinate determineCoordinate(ScrollEvent scrollEvent) {
+    return new Coordinate(scrollEvent.getX(), scrollEvent.getY());
+  }
+
+  private Coordinate determineCoordinateInCanvas(Coordinate glassPaneCoordinate) {
+    Point2D sceneCoordinate = glasspane.localToScene(glassPaneCoordinate.x, glassPaneCoordinate.y);
+    Point2D point2D = canvas.sceneToLocal(sceneCoordinate);
     return new Coordinate(point2D.getX(), point2D.getY());
   }
 
   public Node getNode() {
     return content;
+  }
+
+  private void sizeLikeContentPane(Rectangle rectangle) {
+    rectangle.widthProperty().bind(content.widthProperty());
+    rectangle.heightProperty().bind(content.heightProperty());
   }
 
   private class SetHandCursor implements Closure {
