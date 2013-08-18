@@ -83,13 +83,26 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
     for (GraphicsElement graphicsElement : container) {
       graphicsElement.paint(fxGroupCanvas);
     }
+    for (FxSpecialTrigger specialControl : specialControls) {
+      specialControl.addTo(fxGroupCanvas);
+    }
   }
 
   @Override
   public SpecialControlTrigger addSpecialControl() {
-    FxSpecialTrigger specialControl = new FxSpecialTrigger();
+    final FxSpecialTrigger specialControl = new FxSpecialTrigger();
     specialControls.add(specialControl);
-    container.add(new SpecialTriggerGraphicsElement(specialControl));
+    glasspane.addEventHandler(MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+      @Override
+      public void handle(MouseEvent event) {
+        MouseButton button = determineMouseButton(event);
+        Coordinate glasspaneCoordinate = determineCoordinate(event);
+        Coordinate coordinate = determineCoordinateInCanvas(glasspaneCoordinate);
+        if (specialControl.contains(coordinate) && button == MouseButton.Primary){
+            specialControl.toggle();
+        }
+      }
+    });
     return specialControl;
   }
 
@@ -142,7 +155,8 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
       public void handle(MouseEvent event) {
         MouseButton button = determineMouseButton(event);
         MetaKey key = determineMetaKey(event);
-        listener.mouseClicked(button, key, determineCoordinate(event), event.getClickCount());
+        Coordinate coordinate = determineCoordinate(event);
+        listener.mouseClicked(button, key, coordinate, event.getClickCount());
       }
     });
   }

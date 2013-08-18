@@ -8,7 +8,6 @@ import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.platform.tree.display.SpecialControl;
 import net.sf.anathema.platform.tree.display.shape.AgnosticShape;
 import net.sf.anathema.platform.tree.display.transform.AgnosticTransform;
-import net.sf.anathema.platform.tree.view.draw.Canvas;
 import net.sf.anathema.platform.tree.view.interaction.SpecialContentMap;
 import net.sf.anathema.platform.tree.view.interaction.SpecialControlTrigger;
 
@@ -60,8 +59,8 @@ public class FxSpecialTrigger implements SpecialControlTrigger {
     button.setMaxWidth(bounds.getWidth());
   }
 
-  public void addTo(Canvas group) {
-    this.parent = (FxGroupCanvas) group;
+  public void addTo(FxGroupCanvas group) {
+    this.parent = group;
     parent.addControl(button);
   }
 
