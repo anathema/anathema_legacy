@@ -60,7 +60,7 @@ public class TaskedCharacterView implements CharacterView {
   @Override
   public void toggleOverviewView(boolean experienced) {
     this.overviewView = experienced ? experienceOverviewView : creationOverviewView;
-    optionalViewPane.setView("Overview", characterPane.getOverview());
+    optionalViewPane.setView("Overview", characterPane.getOverviewPane());
     showOverview();
   }
 

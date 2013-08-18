@@ -18,6 +18,6 @@ public class DefaultCategorizedOverview implements CategorizedOverview {
 
   @Override
   public void showIn(OverviewDisplay display) {
-    display.setOverview(panel);
+    display.setOverviewPane(panel);
   }
 }
