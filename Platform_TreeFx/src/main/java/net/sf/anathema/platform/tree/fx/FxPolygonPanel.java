@@ -83,16 +83,13 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
     for (GraphicsElement graphicsElement : container) {
       graphicsElement.paint(fxGroupCanvas);
     }
-    for (FxSpecialTrigger control : specialControls) {
-      control.addTo(canvas);
-    }
   }
 
   @Override
   public SpecialControlTrigger addSpecialControl() {
     FxSpecialTrigger specialControl = new FxSpecialTrigger();
     specialControls.add(specialControl);
-    specialControl.addTo(canvas);
+    container.add(new SpecialTriggerGraphicsElement(specialControl));
     return specialControl;
   }
 

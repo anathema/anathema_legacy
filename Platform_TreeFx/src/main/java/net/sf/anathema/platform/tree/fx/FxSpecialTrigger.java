@@ -2,11 +2,13 @@ package net.sf.anathema.platform.tree.fx;
 
 import javafx.event.EventHandler;
 import javafx.geometry.Bounds;
-import javafx.scene.Group;
+import javafx.geometry.Point2D;
 import javafx.scene.control.ToggleButton;
+import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.platform.tree.display.SpecialControl;
 import net.sf.anathema.platform.tree.display.shape.AgnosticShape;
 import net.sf.anathema.platform.tree.display.transform.AgnosticTransform;
+import net.sf.anathema.platform.tree.view.draw.Canvas;
 import net.sf.anathema.platform.tree.view.interaction.SpecialContentMap;
 import net.sf.anathema.platform.tree.view.interaction.SpecialControlTrigger;
 
@@ -14,7 +16,7 @@ public class FxSpecialTrigger implements SpecialControlTrigger {
 
   private final ToggleButton button = new ToggleButton();
   private SpecialContentMap specialContent;
-  private Group parent;
+  private FxGroupCanvas parent;
 
   @Override
   public void init(String title, SpecialContentMap specialContent) {
@@ -58,12 +60,21 @@ public class FxSpecialTrigger implements SpecialControlTrigger {
     button.setMaxWidth(bounds.getWidth());
   }
 
-  public void addTo(Group group) {
-    group.getChildren().add(button);
-    this.parent = group;
+  public void addTo(Canvas group) {
+    this.parent = (FxGroupCanvas) group;
+    parent.addControl(button);
   }
 
   public void remove() {
-    parent.getChildren().remove(button);
+    parent.remove(button);
+  }
+
+  public void toggle() {
+    button.fire();
+  }
+
+  public boolean contains(Coordinate coordinate) {
+    Point2D point2D = button.parentToLocal(coordinate.x, coordinate.y);
+    return button.contains(point2D);
   }
 }

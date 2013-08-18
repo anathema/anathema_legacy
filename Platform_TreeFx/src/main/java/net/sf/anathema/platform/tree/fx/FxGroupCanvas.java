@@ -3,6 +3,7 @@ package net.sf.anathema.platform.tree.fx;
 import com.sun.javafx.scene.control.skin.FxFontUtils;
 import javafx.geometry.Bounds;
 import javafx.scene.Group;
+import javafx.scene.control.Control;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Polyline;
 import javafx.scene.shape.Shape;
@@ -119,5 +120,13 @@ public class FxGroupCanvas implements Canvas {
     shape.setStroke(paint);
     shape.setStrokeWidth(strokeWidth.width);
     shape.setFill(paint);
+  }
+
+  public void addControl(Control control) {
+    group.getChildren().add(control);
+  }
+
+  public void remove(Control control) {
+    group.getChildren().remove(control);
   }
 }
