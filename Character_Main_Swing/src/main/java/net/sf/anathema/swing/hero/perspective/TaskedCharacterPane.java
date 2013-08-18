@@ -21,7 +21,7 @@ public class TaskedCharacterPane implements CharacterPane, OverviewDisplay {
   private final JPanel viewPanel = new JPanel(viewStack);
   private final JPanel content = new JPanel(new BorderLayout());
   private final JXCollapsiblePane overviewPane = new JXCollapsiblePane(JXCollapsiblePane.Direction.RIGHT);
-  private final OptionalView overview;
+  private final OptionalView overview = new OverviewOptionalView(overviewPane);
 
   public TaskedCharacterPane() {
     content.add(paneContainer, BorderLayout.WEST);
@@ -29,10 +29,9 @@ public class TaskedCharacterPane implements CharacterPane, OverviewDisplay {
     content.add(overviewPane, BorderLayout.EAST);
     overviewPane.setAnimated(false);
     overviewPane.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
-    this.overview = new OverviewOptionalView(overviewPane);
   }
 
-  public OptionalView getOverviewPane() {
+  public OptionalView getOverview() {
     return overview;
   }
 
