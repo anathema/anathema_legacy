@@ -1,12 +1,9 @@
 package net.sf.anathema.swing.hero.perspective;
 
-import net.sf.anathema.lib.gui.action.SmartAction;
-
 import javax.swing.JPanel;
 import java.awt.CardLayout;
-import java.awt.Component;
 
-public class SwitchToView extends SmartAction {
+public class SwitchToView {
 
   private final String name;
   private final JPanel viewPanel;
@@ -16,11 +13,9 @@ public class SwitchToView extends SmartAction {
     this.name = name;
     this.viewPanel = viewPanel;
     this.viewStack = viewStack;
-    setNameWithoutMnemonic(name);
   }
 
-  @Override
-  public void execute(Component parent) {
+  public void execute() {
     viewStack.show(viewPanel, name);
   }
 }
