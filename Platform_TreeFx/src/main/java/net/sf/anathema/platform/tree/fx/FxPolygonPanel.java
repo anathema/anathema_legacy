@@ -81,7 +81,7 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
     Transform fxTransform = convert(transform);
     canvas.getTransforms().add(fxTransform);
     for (FxSpecialTrigger control : specialControls) {
-      control.transformOriginalCoordinates(transform);
+      control.addTo(canvas);
     }
     for (GraphicsElement graphicsElement : container) {
       graphicsElement.paint(fxGroupCanvas);
@@ -93,7 +93,6 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
   public SpecialControlTrigger addSpecialControl() {
     FxSpecialTrigger specialControl = new FxSpecialTrigger();
     specialControls.add(specialControl);
-    specialControl.transformOriginalCoordinates(transform);
     specialControl.addTo(canvas);
     return specialControl;
   }

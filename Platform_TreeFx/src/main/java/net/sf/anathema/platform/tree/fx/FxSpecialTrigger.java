@@ -4,6 +4,8 @@ import javafx.event.EventHandler;
 import javafx.geometry.Bounds;
 import javafx.scene.Group;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.transform.Transform;
 import net.sf.anathema.platform.tree.display.SpecialControl;
 import net.sf.anathema.platform.tree.display.shape.AgnosticShape;
@@ -30,9 +32,7 @@ public class FxSpecialTrigger implements SpecialControlTrigger {
 
   @Override
   public void transformOriginalCoordinates(AgnosticTransform transform) {
-    Transform fxTransform = FxTransformer.convert(transform);
-    button.getTransforms().clear();
-    button.getTransforms().add(fxTransform);
+    //nothing to do
   }
 
   @Override
