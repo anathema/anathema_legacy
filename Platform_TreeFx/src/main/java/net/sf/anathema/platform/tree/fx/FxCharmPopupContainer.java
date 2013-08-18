@@ -1,6 +1,7 @@
 package net.sf.anathema.platform.tree.fx;
 
 import javafx.event.EventHandler;
+import javafx.geometry.Side;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.ToggleButton;
 import javafx.stage.WindowEvent;
@@ -26,7 +27,7 @@ public class FxCharmPopupContainer implements SpecialCharmContainer{
   }
 
   public void display() {
-    menu.show(parent, 0, 0);
+    menu.show(parent, Side.BOTTOM, 0, 2);
   }
 
   public void hide() {
