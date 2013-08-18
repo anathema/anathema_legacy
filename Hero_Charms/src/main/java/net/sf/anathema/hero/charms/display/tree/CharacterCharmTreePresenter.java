@@ -7,10 +7,10 @@ import net.sf.anathema.hero.charms.display.model.CharacterCharmTypes;
 import net.sf.anathema.hero.charms.display.model.CharacterGroupCollection;
 import net.sf.anathema.hero.charms.display.model.CharmDisplayModel;
 import net.sf.anathema.hero.charms.display.presenter.CharmDisplayPropertiesMap;
+import net.sf.anathema.hero.charms.display.special.AgnosticSpecialCharmViewBuilder;
 import net.sf.anathema.hero.charms.display.special.CharacterSpecialCharmPresenter;
 import net.sf.anathema.hero.charms.display.special.CommonSpecialCharmList;
 import net.sf.anathema.hero.charms.display.special.SpecialCharmViewBuilder;
-import net.sf.anathema.hero.charms.display.special.SwingSpecialCharmViewBuilder;
 import net.sf.anathema.hero.charms.display.view.CharmView;
 import net.sf.anathema.hero.charms.display.view.DefaultFunctionalNodeProperties;
 import net.sf.anathema.hero.charms.model.CharmIdMap;
@@ -50,7 +50,7 @@ public class CharacterCharmTreePresenter {
     cascadePresenter.setCharmTypes(new CharacterCharmTypes(model));
     cascadePresenter.setChangeListener(charmGroupChangeListener);
     cascadePresenter.setView(view);
-    SpecialCharmViewBuilder specialViewBuilder = new SwingSpecialCharmViewBuilder(resources, charmConfiguration);
+    SpecialCharmViewBuilder specialViewBuilder = new AgnosticSpecialCharmViewBuilder(resources, charmConfiguration, view);
     SpecialCharmList specialCharmList = new CommonSpecialCharmList(specialViewBuilder);
     cascadePresenter.setSpecialPresenter(
             new CharacterSpecialCharmPresenter(charmGroupChangeListener, model, specialCharmList));

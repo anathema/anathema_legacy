@@ -4,9 +4,6 @@ import javafx.event.EventHandler;
 import javafx.geometry.Bounds;
 import javafx.scene.Group;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.transform.Transform;
 import net.sf.anathema.platform.tree.display.SpecialControl;
 import net.sf.anathema.platform.tree.display.shape.AgnosticShape;
 import net.sf.anathema.platform.tree.display.transform.AgnosticTransform;
@@ -27,7 +24,7 @@ public class FxSpecialTrigger implements SpecialControlTrigger {
 
   @Override
   public void transformThrough(AgnosticTransform transform) {
-    //To change body of implemented methods use File | Settings | File Templates.
+    //nothing to do
   }
 
   @Override

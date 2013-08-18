@@ -1,10 +1,12 @@
 package net.sf.anathema.hero.charms.display.view;
 
 import net.sf.anathema.framework.swing.IView;
+import net.sf.anathema.hero.charms.display.special.ToggleButtonSpecialNodeView;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.platform.fx.BridgingPanel;
+import net.sf.anathema.platform.tree.display.CategorizedSpecialNodeView;
 import net.sf.anathema.platform.tree.display.ContentFactory;
 import net.sf.anathema.platform.tree.display.TreeView;
 
@@ -47,6 +49,16 @@ public class BridgingCharmView implements CharmView, IView {
   @Override
   public void registerSpecialType(Class contentClass, ContentFactory factory) {
     fxView.registerSpecialType(contentClass, factory);
+  }
+
+  @Override
+  public ToggleButtonSpecialNodeView createToggleButtonSpecialView() {
+    return fxView.createToggleButtonSpecialView();
+  }
+
+  @Override
+  public CategorizedSpecialNodeView createCategorizedSpecialView() {
+    return fxView.createCategorizedSpecialView();
   }
 
   @Override

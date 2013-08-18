@@ -4,6 +4,9 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import net.miginfocom.layout.CC;
+import net.sf.anathema.hero.charms.display.special.BooleanSelectionSpecialNodeView;
+import net.sf.anathema.hero.charms.display.special.CategorizedSpecialView;
+import net.sf.anathema.hero.charms.display.special.ToggleButtonSpecialNodeView;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.util.Identifier;
@@ -13,6 +16,7 @@ import net.sf.anathema.platform.fx.StyledTitledPane;
 import net.sf.anathema.platform.fx.selection.ComboBoxSelectionView;
 import net.sf.anathema.platform.tree.display.AgnosticPolygonPanel;
 import net.sf.anathema.platform.tree.display.AgnosticTreeView;
+import net.sf.anathema.platform.tree.display.CategorizedSpecialNodeView;
 import net.sf.anathema.platform.tree.display.ContentFactory;
 import net.sf.anathema.platform.tree.display.TreeView;
 import net.sf.anathema.platform.tree.fx.FxPolygonPanel;
@@ -89,6 +93,16 @@ public class FxCharmView implements CharmView, NodeHolder {
   @Override
   public void registerSpecialType(Class contentClass, ContentFactory factory) {
     treeView.registerSpecialType(contentClass, factory);
+  }
+
+  @Override
+  public ToggleButtonSpecialNodeView createToggleButtonSpecialView() {
+    return new BooleanSelectionSpecialNodeView();
+  }
+
+  @Override
+  public CategorizedSpecialNodeView createCategorizedSpecialView() {
+    return new CategorizedSpecialView();
   }
 
   @Override

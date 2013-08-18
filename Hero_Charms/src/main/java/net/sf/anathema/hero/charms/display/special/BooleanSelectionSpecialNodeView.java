@@ -1,24 +1,23 @@
 package net.sf.anathema.hero.charms.display.special;
 
-import net.sf.anathema.hero.charms.model.special.ISpecialCharm;
 import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;
-import net.sf.anathema.platform.tree.display.ISpecialNodeView;
 import net.sf.anathema.platform.tree.display.SpecialCharmContainer;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BooleanSelectionSpecialNodeView implements ISpecialNodeView, ToggleButtonSpecialNodeView {
-  private final ISpecialCharm charm;
+public class BooleanSelectionSpecialNodeView implements ToggleButtonSpecialNodeView {
   private final List<ProxyBooleanValueView> views = new ArrayList<>();
-
-  public BooleanSelectionSpecialNodeView(ISpecialCharm charm) {
-    this.charm = charm;
-  }
+  private String id;
 
   @Override
   public String getNodeId() {
-    return charm.getCharmId();
+    return id;
+  }
+
+  @Override
+  public void setCharmId(String charmId) {
+    this.id = charmId;
   }
 
   @Override

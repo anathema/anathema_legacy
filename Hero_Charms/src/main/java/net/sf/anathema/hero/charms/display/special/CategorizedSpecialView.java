@@ -1,21 +1,15 @@
 package net.sf.anathema.hero.charms.display.special;
 
-import net.sf.anathema.hero.charms.model.special.ISpecialCharm;
 import net.sf.anathema.framework.value.IntValueView;
 import net.sf.anathema.platform.tree.display.CategorizedSpecialNodeView;
-import net.sf.anathema.platform.tree.display.ISpecialNodeView;
 import net.sf.anathema.platform.tree.display.SpecialCharmContainer;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SwingCategorizedSpecialView implements CategorizedSpecialNodeView, ISpecialNodeView {
-  private final ISpecialCharm visitedCharm;
+public class CategorizedSpecialView implements CategorizedSpecialNodeView {
   private final List<ProxyIntValueView> views = new ArrayList<>();
-
-  public SwingCategorizedSpecialView(ISpecialCharm visitedCharm) {
-    this.visitedCharm = visitedCharm;
-  }
+  private String id;
 
   @Override
   public IntValueView addCategory(String labelText, int maxValue, int value) {
@@ -26,7 +20,12 @@ public class SwingCategorizedSpecialView implements CategorizedSpecialNodeView, 
 
   @Override
   public String getNodeId() {
-    return visitedCharm.getCharmId();
+    return id;
+  }
+
+  @Override
+  public void setCharmId(String charmId) {
+    this.id = charmId;
   }
 
   @Override
