@@ -1,9 +1,10 @@
 package net.sf.anathema.character.main.view;
 
 import net.sf.anathema.character.main.type.CharacterType;
-import net.sf.anathema.framework.presenter.view.MultipleContentView;
 import net.sf.anathema.framework.swing.IView;
-import net.sf.anathema.framework.view.util.ContentProperties;
+import net.sf.anathema.hero.display.MultipleContentView;
+import net.sf.anathema.hero.display.ContentProperties;
+import net.sf.anathema.platform.fx.NodeHolder;
 
 public class CharacterViewSection implements SectionView {
 

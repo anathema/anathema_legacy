@@ -1,4 +1,4 @@
-package net.sf.anathema.framework.view.util;
+package net.sf.anathema.hero.display;
 
 public class ContentProperties {
 

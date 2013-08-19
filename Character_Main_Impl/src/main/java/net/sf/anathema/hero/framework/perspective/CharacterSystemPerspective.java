@@ -8,9 +8,9 @@ import net.sf.anathema.framework.view.perspective.PerspectiveToggle;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.swing.hero.perspective.CharacterStackSwingBridge;
+import net.sf.anathema.fx.hero.perspective.CharacterStackSwingBridge;
 import net.sf.anathema.swing.hero.perspective.CharacterSystemView;
-import net.sf.anathema.swing.hero.perspective.CharacterViewFactory;
+import net.sf.anathema.fx.hero.perspective.CharacterViewFactory;
 
 @PerspectiveAutoCollector
 @Weight(weight = 1)

@@ -1,7 +1,6 @@
-package net.sf.anathema.framework.presenter.view;
+package net.sf.anathema.hero.display;
 
 import net.sf.anathema.framework.swing.IView;
-import net.sf.anathema.framework.view.util.ContentProperties;
 
 public interface MultipleContentView {
 

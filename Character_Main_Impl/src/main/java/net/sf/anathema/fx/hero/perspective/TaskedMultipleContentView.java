@@ -1,16 +1,18 @@
-package net.sf.anathema.swing.hero.perspective;
+package net.sf.anathema.fx.hero.perspective;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import net.miginfocom.layout.CC;
-import net.sf.anathema.framework.presenter.view.MultipleContentView;
+import net.sf.anathema.hero.display.MultipleContentView;
 import net.sf.anathema.framework.swing.IView;
-import net.sf.anathema.framework.view.util.ContentProperties;
+import net.sf.anathema.hero.display.ContentProperties;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.platform.fx.FxThreading;
+import net.sf.anathema.platform.fx.NodeHolder;
 import net.sf.anathema.platform.fx.StyledTitledPane;
+import net.sf.anathema.swing.hero.perspective.SwitchToView;
 import org.jdesktop.swingx.JXTitledSeparator;
 import org.tbee.javafx.scene.layout.MigPane;
 

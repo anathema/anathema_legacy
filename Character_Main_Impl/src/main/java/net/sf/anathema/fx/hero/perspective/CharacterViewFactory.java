@@ -1,4 +1,4 @@
-package net.sf.anathema.swing.hero.perspective;
+package net.sf.anathema.fx.hero.perspective;
 
 import net.sf.anathema.character.main.view.CharacterView;
 import net.sf.anathema.hero.advance.overview.view.OverviewContainer;
