@@ -25,9 +25,17 @@ public class TaskedCharacterPane implements CharacterPane, OverviewDisplay {
   private final JPanel viewPanel = new JPanel(viewStack);
   private final JPanel content = new JPanel(new BorderLayout());
   private final JXCollapsiblePane overviewPane = new JXCollapsiblePane(JXCollapsiblePane.Direction.RIGHT);
-  private final OptionalView overview = new OverviewOptionalView(overviewPane);
 
   public TaskedCharacterPane() {
+    JComponent navigationComponent = createNavigationComponent();
+    content.add(navigationComponent, BorderLayout.WEST);
+    content.add(viewPanel, BorderLayout.CENTER);
+    content.add(overviewPane, BorderLayout.EAST);
+    overviewPane.setAnimated(false);
+    overviewPane.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
+  }
+
+  private JComponent createNavigationComponent() {
     BridgingPanel bridgingPanel = new BridgingPanel();
     bridgingPanel.init(new NodeHolder() {
       @Override
@@ -35,18 +43,14 @@ public class TaskedCharacterPane implements CharacterPane, OverviewDisplay {
         return paneContainer;
       }
     });
-    JComponent component = bridgingPanel.getComponent();
+    JComponent navigationComponent = bridgingPanel.getComponent();
     //TODO (Swing->FX) Layout properly when everything is in FX
-    component.setPreferredSize(new Dimension(200, content.getHeight()));
-    content.add(component, BorderLayout.WEST);
-    content.add(viewPanel, BorderLayout.CENTER);
-    content.add(overviewPane, BorderLayout.EAST);
-    overviewPane.setAnimated(false);
-    overviewPane.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
+    navigationComponent.setPreferredSize(new Dimension(200, content.getHeight()));
+    return navigationComponent;
   }
 
   public OptionalView getOverview() {
-    return overview;
+    return new OverviewOptionalView(overviewPane);
   }
 
   @Override
