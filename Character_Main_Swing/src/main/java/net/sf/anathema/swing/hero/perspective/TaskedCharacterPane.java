@@ -6,9 +6,10 @@ import net.sf.anathema.character.main.view.CharacterPane;
 import net.sf.anathema.framework.presenter.view.MultipleContentView;
 import net.sf.anathema.framework.view.util.OptionalView;
 import net.sf.anathema.hero.advance.overview.view.OverviewDisplay;
+import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.platform.fx.BridgingPanel;
+import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.platform.fx.NodeHolder;
-import org.jdesktop.swingx.JXCollapsiblePane;
 import org.tbee.javafx.scene.layout.MigPane;
 
 import javax.swing.JComponent;
@@ -16,7 +17,6 @@ import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 
 public class TaskedCharacterPane implements CharacterPane, OverviewDisplay {
 
@@ -24,7 +24,7 @@ public class TaskedCharacterPane implements CharacterPane, OverviewDisplay {
   private final CardLayout viewStack = new CardLayout();
   private final JPanel viewPanel = new JPanel(viewStack);
   private final JPanel content = new JPanel(new BorderLayout());
-  private final JXCollapsiblePane overviewPane = new JXCollapsiblePane(JXCollapsiblePane.Direction.RIGHT);
+  private final MigPane overviewPane = new MigPane(LayoutUtils.fillWithoutInsets().wrapAfter(1));
 
   public TaskedCharacterPane() {
     JComponent navigationComponent = createNavigationComponent();
@@ -36,7 +36,7 @@ public class TaskedCharacterPane implements CharacterPane, OverviewDisplay {
   }
 
   public OptionalView getOverview() {
-    return new OverviewOptionalView(overviewPane);
+    return new FxOptionalOverview(overviewPane);
   }
 
   @Override
@@ -45,9 +45,14 @@ public class TaskedCharacterPane implements CharacterPane, OverviewDisplay {
   }
 
   @Override
-  public void setOverviewPane(JComponent component) {
-    overviewPane.removeAll();
-    overviewPane.add(component);
+  public void setOverviewPane(final Node node) {
+    FxThreading.runOnCorrectThread(new Runnable() {
+      @Override
+      public void run() {
+        overviewPane.getChildren().clear();
+        overviewPane.add(node);
+      }
+    });
   }
 
   @Override
@@ -74,9 +79,16 @@ public class TaskedCharacterPane implements CharacterPane, OverviewDisplay {
   }
 
   private JComponent createOverviewComponent() {
-    JXCollapsiblePane overviewComponent = overviewPane;
-    overviewComponent.setAnimated(false);
-    overviewComponent.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
+    BridgingPanel bridgingPanel = new BridgingPanel();
+    bridgingPanel.init(new NodeHolder() {
+      @Override
+      public Node getNode() {
+        return overviewPane;
+      }
+    });
+    JComponent overviewComponent = bridgingPanel.getComponent();
+    //TODO (Swing->FX) Layout properly when everything is in FX
+    overviewComponent.setPreferredSize(new Dimension(200, content.getHeight()));
     return overviewComponent;
   }
 }

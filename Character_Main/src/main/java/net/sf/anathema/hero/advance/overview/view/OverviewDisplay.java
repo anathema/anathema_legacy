@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.advance.overview.view;
 
-import javax.swing.JComponent;
+import javafx.scene.Node;
 
 public interface OverviewDisplay {
-  void setOverviewPane(JComponent component);
+  void setOverviewPane(Node node);
 }

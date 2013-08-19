@@ -1,19 +1,19 @@
 package net.sf.anathema.swing.hero.overview;
 
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
+import net.sf.anathema.fx.hero.overview.FxOverviewCategory;
 import net.sf.anathema.hero.advance.overview.view.CategorizedOverview;
 import net.sf.anathema.hero.advance.overview.view.OverviewDisplay;
-
-import javax.swing.Box;
-import javax.swing.BoxLayout;
+import net.sf.anathema.lib.gui.layout.LayoutUtils;
+import org.tbee.javafx.scene.layout.MigPane;
 
 public class DefaultCategorizedOverview implements CategorizedOverview {
 
-  private final Box panel = new Box(BoxLayout.Y_AXIS);
+  private final MigPane panel = new MigPane(LayoutUtils.fillWithoutInsets().wrapAfter(1));
 
   @Override
   public final OverviewCategory addOverviewCategory(String borderText) {
-    return new SwingOverviewCategory(panel, borderText, true);
+    return new FxOverviewCategory(panel, borderText);
   }
 
   @Override
