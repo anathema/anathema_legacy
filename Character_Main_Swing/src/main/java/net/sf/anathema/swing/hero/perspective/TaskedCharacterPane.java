@@ -28,25 +28,11 @@ public class TaskedCharacterPane implements CharacterPane, OverviewDisplay {
 
   public TaskedCharacterPane() {
     JComponent navigationComponent = createNavigationComponent();
+    JComponent overviewComponent = createOverviewComponent();
+    JComponent characterComponent = createCharacterComponent();
     content.add(navigationComponent, BorderLayout.WEST);
-    content.add(viewPanel, BorderLayout.CENTER);
-    content.add(overviewPane, BorderLayout.EAST);
-    overviewPane.setAnimated(false);
-    overviewPane.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
-  }
-
-  private JComponent createNavigationComponent() {
-    BridgingPanel bridgingPanel = new BridgingPanel();
-    bridgingPanel.init(new NodeHolder() {
-      @Override
-      public Node getNode() {
-        return paneContainer;
-      }
-    });
-    JComponent navigationComponent = bridgingPanel.getComponent();
-    //TODO (Swing->FX) Layout properly when everything is in FX
-    navigationComponent.setPreferredSize(new Dimension(200, content.getHeight()));
-    return navigationComponent;
+    content.add(characterComponent, BorderLayout.CENTER);
+    content.add(overviewComponent, BorderLayout.EAST);
   }
 
   public OptionalView getOverview() {
@@ -67,5 +53,30 @@ public class TaskedCharacterPane implements CharacterPane, OverviewDisplay {
   @Override
   public JComponent getComponent() {
     return content;
+  }
+
+  private JComponent createNavigationComponent() {
+    BridgingPanel bridgingPanel = new BridgingPanel();
+    bridgingPanel.init(new NodeHolder() {
+      @Override
+      public Node getNode() {
+        return paneContainer;
+      }
+    });
+    JComponent navigationComponent = bridgingPanel.getComponent();
+    //TODO (Swing->FX) Layout properly when everything is in FX
+    navigationComponent.setPreferredSize(new Dimension(200, content.getHeight()));
+    return navigationComponent;
+  }
+
+  private JPanel createCharacterComponent() {
+    return viewPanel;
+  }
+
+  private JComponent createOverviewComponent() {
+    JXCollapsiblePane overviewComponent = overviewPane;
+    overviewComponent.setAnimated(false);
+    overviewComponent.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
+    return overviewComponent;
   }
 }

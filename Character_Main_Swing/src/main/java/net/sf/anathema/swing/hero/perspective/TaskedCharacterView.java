@@ -52,7 +52,7 @@ public class TaskedCharacterView implements CharacterView {
       content = new JPanel(new BorderLayout());
       content.add(characterPane.getComponent(), BorderLayout.CENTER);
       content.add(optionalViewPane.getComponent(), BorderLayout.EAST);
-      showOverview();
+      overviewView.showIn(characterPane);
     }
     return content;
   }
@@ -61,10 +61,6 @@ public class TaskedCharacterView implements CharacterView {
   public void toggleOverviewView(boolean experienced) {
     this.overviewView = experienced ? experienceOverviewView : creationOverviewView;
     optionalViewPane.setView("Overview", characterPane.getOverview());
-    showOverview();
-  }
-
-  private void showOverview() {
     overviewView.showIn(characterPane);
   }
 }
