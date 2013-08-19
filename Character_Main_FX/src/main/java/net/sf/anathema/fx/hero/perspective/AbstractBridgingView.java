@@ -18,7 +18,7 @@ public class AbstractBridgingView implements IView {
     for (String cssPath : cssPaths) {
       new Stylesheet(cssPath).applyToParent(viewHolder.getParent());
     }
-    panel.init(viewHolder);
+    panel.init(view);
   }
 
   @Override
