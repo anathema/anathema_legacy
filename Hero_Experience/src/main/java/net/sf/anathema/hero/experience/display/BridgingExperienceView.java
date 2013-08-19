@@ -1,16 +1,12 @@
 package net.sf.anathema.hero.experience.display;
 
-import net.sf.anathema.framework.swing.IView;
+import net.sf.anathema.fx.hero.perspective.AbstractBridgingView;
 import net.sf.anathema.hero.advance.experience.ExperiencePointEntry;
 import net.sf.anathema.hero.advance.experience.ExperienceSelectionListener;
 import net.sf.anathema.interaction.Tool;
-import net.sf.anathema.platform.fx.BridgingPanel;
 
-import javax.swing.JComponent;
-
-public class BridgingExperienceView implements ExperienceView, IView {
+public class BridgingExperienceView extends AbstractBridgingView implements ExperienceView {
   private final FxExperienceView fxView;
-  private final BridgingPanel panel = new BridgingPanel();
 
   public BridgingExperienceView(FxExperienceView fxView) {
     this.fxView = fxView;
@@ -18,7 +14,7 @@ public class BridgingExperienceView implements ExperienceView, IView {
   @Override
   public void initGui(ExperienceViewProperties properties) {
     fxView.initGui(properties);
-    panel.init(fxView, "skin/experience/experience.css");
+    init(fxView, "skin/experience/experience.css");
   }
 
   @Override
@@ -49,10 +45,5 @@ public class BridgingExperienceView implements ExperienceView, IView {
   @Override
   public void setEntries(ExperiencePointEntry... allEntries) {
     fxView.setEntries(allEntries);
-  }
-
-  @Override
-  public JComponent getComponent() {
-    return panel.getComponent();
   }
 }

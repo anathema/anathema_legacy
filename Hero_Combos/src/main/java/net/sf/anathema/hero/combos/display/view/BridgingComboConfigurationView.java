@@ -1,23 +1,20 @@
 package net.sf.anathema.hero.combos.display.view;
 
 import net.sf.anathema.framework.swing.IView;
+import net.sf.anathema.fx.hero.perspective.AbstractBridgingView;
+import net.sf.anathema.hero.charms.display.magic.MagicLearnProperties;
+import net.sf.anathema.hero.charms.display.magic.MagicLearnView;
 import net.sf.anathema.hero.combos.display.presenter.ComboConfigurationView;
 import net.sf.anathema.hero.combos.display.presenter.ComboContainer;
 import net.sf.anathema.hero.combos.display.presenter.ComboViewProperties;
-import net.sf.anathema.hero.charms.display.magic.MagicLearnProperties;
-import net.sf.anathema.hero.charms.display.magic.MagicLearnView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
-import net.sf.anathema.platform.fx.BridgingPanel;
 
-import javax.swing.JComponent;
-
-public class BridgingComboConfigurationView implements ComboConfigurationView, IView {
+public class BridgingComboConfigurationView extends AbstractBridgingView implements ComboConfigurationView, IView {
   private final FxComboConfigurationView fxView;
-  private final BridgingPanel panel = new BridgingPanel();
 
   public BridgingComboConfigurationView(FxComboConfigurationView fxView) {
     this.fxView = fxView;
-    panel.init(fxView,"skin/combos/combos.css", "skin/platform/tooltip.css");
+    init(fxView, "skin/combos/combos.css", "skin/platform/tooltip.css");
   }
 
   @Override
@@ -43,10 +40,5 @@ public class BridgingComboConfigurationView implements ComboConfigurationView, I
   @Override
   public ITextView addComboDescriptionView(String viewTitle) {
     return fxView.addComboDescriptionView(viewTitle);
-  }
-
-  @Override
-  public JComponent getComponent() {
-    return panel.getComponent();
   }
 }

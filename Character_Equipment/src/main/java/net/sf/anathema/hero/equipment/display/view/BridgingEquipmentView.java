@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.equipment.display.view;
 
 import net.sf.anathema.equipment.core.MagicalMaterial;
-import net.sf.anathema.framework.swing.IView;
+import net.sf.anathema.fx.hero.perspective.AbstractBridgingView;
 import net.sf.anathema.hero.equipment.display.presenter.EquipmentObjectView;
 import net.sf.anathema.hero.equipment.display.presenter.EquipmentPersonalizationProperties;
 import net.sf.anathema.hero.equipment.display.presenter.EquipmentView;
@@ -10,18 +10,14 @@ import net.sf.anathema.hero.equipment.display.presenter.PersonalizationEditView;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.selection.VetoableObjectSelectionView;
-import net.sf.anathema.platform.fx.BridgingPanel;
 
-import javax.swing.JComponent;
+public class BridgingEquipmentView extends AbstractBridgingView implements EquipmentView {
 
-public class BridgingEquipmentView implements EquipmentView, IView {
-
-  private final BridgingPanel panel = new BridgingPanel();
   private final FxEquipmentView fxView;
 
   public BridgingEquipmentView(FxEquipmentView fxView) {
     this.fxView = fxView;
-    panel.init(fxView, "skin/platform/tooltip.css");
+    init(fxView, "skin/platform/tooltip.css");
   }
 
   @Override
@@ -57,10 +53,5 @@ public class BridgingEquipmentView implements EquipmentView, IView {
   @Override
   public PersonalizationEditView startEditingPersonalization(EquipmentPersonalizationProperties properties) {
     return fxView.startEditingPersonalization(properties);
-  }
-
-  @Override
-  public JComponent getComponent() {
-    return panel.getComponent();
   }
 }

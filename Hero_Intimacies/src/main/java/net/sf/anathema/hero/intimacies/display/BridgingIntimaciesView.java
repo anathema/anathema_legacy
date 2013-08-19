@@ -3,26 +3,17 @@ package net.sf.anathema.hero.intimacies.display;
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
 import net.sf.anathema.character.main.library.util.CssSkinner;
 import net.sf.anathema.character.main.type.CharacterType;
-import net.sf.anathema.framework.swing.IView;
+import net.sf.anathema.fx.hero.perspective.AbstractBridgingView;
 import net.sf.anathema.hero.display.ExtensibleTraitView;
-import net.sf.anathema.platform.fx.BridgingPanel;
 
-import javax.swing.JComponent;
-
-public class BridgingIntimaciesView implements IntimaciesView, IView {
+public class BridgingIntimaciesView extends AbstractBridgingView implements IntimaciesView {
 
   private final FxIntimaciesView fxView;
-  private final BridgingPanel panel = new BridgingPanel();
 
   public BridgingIntimaciesView(FxIntimaciesView fxView, CharacterType type) {
     this.fxView = fxView;
     String[] skins = new CssSkinner().getSkins(type);
-    panel.init(fxView, skins);
-  }
-
-  @Override
-  public JComponent getComponent() {
-    return panel.getComponent();
+    init(fxView, skins);
   }
 
   @Override

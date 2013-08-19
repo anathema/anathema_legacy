@@ -1,24 +1,20 @@
 package net.sf.anathema.hero.charms.display.view;
 
-import net.sf.anathema.framework.swing.IView;
+import net.sf.anathema.fx.hero.perspective.AbstractBridgingView;
 import net.sf.anathema.hero.charms.display.special.ToggleButtonSpecialNodeView;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.util.Identifier;
-import net.sf.anathema.platform.fx.BridgingPanel;
 import net.sf.anathema.platform.tree.display.CategorizedSpecialNodeView;
 import net.sf.anathema.platform.tree.display.ContentFactory;
 import net.sf.anathema.platform.tree.display.TreeView;
 
-import javax.swing.JComponent;
-
-public class BridgingCharmView implements CharmView, IView {
+public class BridgingCharmView extends AbstractBridgingView implements CharmView {
   private FxCharmView fxView;
-  private BridgingPanel panel = new BridgingPanel();
 
   public BridgingCharmView(FxCharmView fxView) {
     this.fxView = fxView;
-    panel.init(fxView);
+    init(fxView);
   }
 
   @Override
@@ -59,10 +55,5 @@ public class BridgingCharmView implements CharmView, IView {
   @Override
   public CategorizedSpecialNodeView createCategorizedSpecialView() {
     return fxView.createCategorizedSpecialView();
-  }
-
-  @Override
-  public JComponent getComponent() {
-    return panel.getComponent();
   }
 }

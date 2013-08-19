@@ -3,15 +3,11 @@ package net.sf.anathema.hero.spiritual.display;
 import net.sf.anathema.character.main.library.util.CssSkinner;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.view.labelledvalue.IValueView;
-import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.framework.value.IntValueView;
-import net.sf.anathema.platform.fx.BridgingPanel;
+import net.sf.anathema.fx.hero.perspective.AbstractBridgingView;
 
-import javax.swing.JComponent;
-
-public class BridgingSpiritualTraitsView implements IView, SpiritualTraitsView {
+public class BridgingSpiritualTraitsView extends AbstractBridgingView implements SpiritualTraitsView {
   private final FxSpiritualTraitsView fxView;
-  private final BridgingPanel panel = new BridgingPanel();
 
   public BridgingSpiritualTraitsView(FxSpiritualTraitsView fxView) {
     this.fxView = fxView;
@@ -22,12 +18,7 @@ public class BridgingSpiritualTraitsView implements IView, SpiritualTraitsView {
     fxView.initGui(properties, characterType);
     CssSkinner cssSkinner = new CssSkinner();
     String[] skins = cssSkinner.getSkins(characterType);
-    panel.init(fxView, skins);
-  }
-
-  @Override
-  public JComponent getComponent() {
-    return panel.getComponent();
+    init(fxView, skins);
   }
 
   @Override
