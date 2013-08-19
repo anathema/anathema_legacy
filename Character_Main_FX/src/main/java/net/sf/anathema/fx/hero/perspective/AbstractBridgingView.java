@@ -1,28 +1,25 @@
 package net.sf.anathema.fx.hero.perspective;
 
-import net.sf.anathema.framework.swing.IView;
-import net.sf.anathema.platform.fx.BridgingPanel;
+import javafx.scene.Node;
 import net.sf.anathema.platform.fx.NodeHolder;
 import net.sf.anathema.platform.fx.ParentHolder;
 import net.sf.anathema.platform.fx.Stylesheet;
 import net.sf.anathema.platform.fx.ViewHolder;
 
-import javax.swing.JComponent;
+public class AbstractBridgingView implements NodeHolder {
 
-public class AbstractBridgingView implements IView {
-
-  private final BridgingPanel panel = new BridgingPanel();
+  private NodeHolder nodeHolder;
 
   public void init(NodeHolder view, String... cssPaths) {
     ParentHolder viewHolder = new ViewHolder(view);
     for (String cssPath : cssPaths) {
       new Stylesheet(cssPath).applyToParent(viewHolder.getParent());
     }
-    panel.init(view);
+    this.nodeHolder = view;
   }
 
   @Override
-  public JComponent getComponent() {
-    return panel.getComponent();
+  public Node getNode() {
+    return nodeHolder.getNode();
   }
 }

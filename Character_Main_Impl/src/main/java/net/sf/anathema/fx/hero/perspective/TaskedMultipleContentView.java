@@ -5,10 +5,10 @@ import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import net.miginfocom.layout.CC;
-import net.sf.anathema.hero.display.MultipleContentView;
-import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.hero.display.ContentProperties;
+import net.sf.anathema.hero.display.MultipleContentView;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
+import net.sf.anathema.platform.fx.BridgingPanel;
 import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.platform.fx.NodeHolder;
 import net.sf.anathema.platform.fx.StyledTitledPane;
@@ -39,7 +39,7 @@ public class TaskedMultipleContentView implements MultipleContentView {
   }
 
   @Override
-  public void addView(IView view, final ContentProperties tabProperties) {
+  public void addView(NodeHolder view, final ContentProperties tabProperties) {
     final String name = tabProperties.getName();
     viewPanel.add(createContainer(view, name), name);
     final Button trigger = new Button(name);
@@ -72,14 +72,21 @@ public class TaskedMultipleContentView implements MultipleContentView {
     });
   }
 
-  private JComponent createContainer(IView content, String name) {
+  private JComponent createContainer(NodeHolder content, String name) {
     JPanel viewComponent = new JPanel(new BorderLayout());
     JXTitledSeparator title = new JXTitledSeparator(name);
     title.setBorder(new EmptyBorder(0, 0, 5, 0));
     title.setFont(title.getFont().deriveFont(Font.BOLD));
     viewComponent.add(title, BorderLayout.NORTH);
     viewComponent.setBorder(new EmptyBorder(10, 10, 10, 10));
-    viewComponent.add(content.getComponent(), BorderLayout.CENTER);
+    JComponent swingComponent = connectToSwing(content);
+    viewComponent.add(swingComponent, BorderLayout.CENTER);
     return viewComponent;
+  }
+
+  private JComponent connectToSwing(NodeHolder content) {
+    BridgingPanel bridgingPanel = new BridgingPanel();
+    bridgingPanel.init(content);
+    return bridgingPanel.getComponent();
   }
 }

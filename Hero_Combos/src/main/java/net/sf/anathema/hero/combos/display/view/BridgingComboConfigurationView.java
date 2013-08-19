@@ -1,6 +1,5 @@
 package net.sf.anathema.hero.combos.display.view;
 
-import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.fx.hero.perspective.AbstractBridgingView;
 import net.sf.anathema.hero.charms.display.magic.MagicLearnProperties;
 import net.sf.anathema.hero.charms.display.magic.MagicLearnView;
@@ -9,7 +8,7 @@ import net.sf.anathema.hero.combos.display.presenter.ComboContainer;
 import net.sf.anathema.hero.combos.display.presenter.ComboViewProperties;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
-public class BridgingComboConfigurationView extends AbstractBridgingView implements ComboConfigurationView, IView {
+public class BridgingComboConfigurationView extends AbstractBridgingView implements ComboConfigurationView {
   private final FxComboConfigurationView fxView;
 
   public BridgingComboConfigurationView(FxComboConfigurationView fxView) {

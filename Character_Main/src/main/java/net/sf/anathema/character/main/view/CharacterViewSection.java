@@ -19,7 +19,7 @@ public class CharacterViewSection implements SectionView {
   @Override
   public <T> T addView(String title, Class<T> viewClass, CharacterType type) {
     T newView = subViewFactory.get(viewClass, type);
-    IView viewToAdd = (IView) newView;
+    NodeHolder viewToAdd = (NodeHolder) newView;
     view.addView(viewToAdd, new ContentProperties(title));
     return newView;
   }
