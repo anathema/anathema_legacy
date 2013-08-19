@@ -22,8 +22,7 @@ import java.awt.Dimension;
 public class TaskedCharacterPane implements CharacterPane, OverviewDisplay {
 
   private final MigPane paneContainer = new MigPane(new LC().wrapAfter(1));
-  private final CardLayout viewStack = new CardLayout();
-  private final JPanel viewPanel = new JPanel(viewStack);
+  private final MigPane viewPanel = new MigPane();
   private final JPanel content = new JPanel(new BorderLayout());
   private final MigPane overviewPane = new MigPane(LayoutUtils.fillWithoutInsets().wrapAfter(1));
 
@@ -42,7 +41,7 @@ public class TaskedCharacterPane implements CharacterPane, OverviewDisplay {
 
   @Override
   public MultipleContentView addMultipleContentView(String header) {
-    return new TaskedMultipleContentView(header, paneContainer, viewStack, viewPanel);
+    return new TaskedMultipleContentView(header, paneContainer, viewPanel);
   }
 
   @Override
@@ -75,8 +74,15 @@ public class TaskedCharacterPane implements CharacterPane, OverviewDisplay {
     return navigationComponent;
   }
 
-  private JPanel createCharacterComponent() {
-    return viewPanel;
+  private JComponent createCharacterComponent() {
+    BridgingPanel bridgingPanel = new BridgingPanel();
+    bridgingPanel.init(new NodeHolder() {
+      @Override
+      public Node getNode() {
+        return viewPanel;
+      }
+    });
+    return bridgingPanel.getComponent();
   }
 
   private JComponent createOverviewComponent() {

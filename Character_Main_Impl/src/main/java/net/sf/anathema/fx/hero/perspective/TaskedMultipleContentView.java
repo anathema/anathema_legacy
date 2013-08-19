@@ -10,43 +10,34 @@ import net.miginfocom.layout.CC;
 import net.sf.anathema.hero.display.ContentProperties;
 import net.sf.anathema.hero.display.MultipleContentView;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
-import net.sf.anathema.platform.fx.BridgingPanel;
 import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.platform.fx.NodeHolder;
 import net.sf.anathema.platform.fx.StyledTitledPane;
-import net.sf.anathema.swing.hero.perspective.SwitchToView;
 import org.tbee.javafx.scene.layout.MigPane;
-
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-import java.awt.CardLayout;
 
 public class TaskedMultipleContentView implements MultipleContentView {
   private final MigPane contentPane = new MigPane(LayoutUtils.fillWithoutInsets().wrapAfter(1));
   private final String header;
   private final MigPane paneContainer;
-  private CardLayout viewStack;
-  private JPanel viewPanel;
+  private final FxStack stack;
   private boolean isEmpty = true;
 
-  public TaskedMultipleContentView(String header, MigPane paneContainer, CardLayout viewStack, JPanel viewPanel) {
+  public TaskedMultipleContentView(String header, MigPane paneContainer, MigPane viewPanel) {
     this.header = header;
     this.paneContainer = paneContainer;
-    this.viewStack = viewStack;
-    this.viewPanel = viewPanel;
+    this.stack = new FxStack(viewPanel);
   }
 
   @Override
   public void addView(NodeHolder view, ContentProperties tabProperties) {
     final String name = tabProperties.getName();
-    NodeHolder fxContainer = createContainer(view, name);
-    JComponent swingComponent = connectToSwing(fxContainer);
-    viewPanel.add(swingComponent, name);
+    Node fxContainer = createContainer(view, name);
+    stack.add(name, fxContainer);
     final Button trigger = new Button(name);
     trigger.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent actionEvent) {
-        new SwitchToView(name, viewPanel, viewStack).execute();
+        new SwitchToView(name, stack).execute();
       }
     });
     FxThreading.runOnCorrectThread(new Runnable() {
@@ -72,7 +63,7 @@ public class TaskedMultipleContentView implements MultipleContentView {
     });
   }
 
-  private NodeHolder createContainer(final NodeHolder content, String name) {
+  private Node createContainer(final NodeHolder content, String name) {
     final BorderPane viewComponent = new BorderPane();
     Label title = new Label(name);
     viewComponent.setTop(title);
@@ -82,17 +73,6 @@ public class TaskedMultipleContentView implements MultipleContentView {
         viewComponent.setCenter(content.getNode());
       }
     });
-    return new NodeHolder() {
-      @Override
-      public Node getNode() {
-        return viewComponent;
-      }
-    };
-  }
-
-  private JComponent connectToSwing(NodeHolder content) {
-    BridgingPanel bridgingPanel = new BridgingPanel();
-    bridgingPanel.init(content);
-    return bridgingPanel.getComponent();
+    return viewComponent;
   }
 }
