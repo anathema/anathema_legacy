@@ -1,6 +1,5 @@
 package net.sf.anathema.platform.fx;
 
-import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 
 import javax.swing.JComponent;
@@ -13,7 +12,7 @@ public class BridgingPanel {
   }
 
   public void init(ParentHolder view) {
-    Platform.runLater(new InitScene(panel, view));
+    FxThreading.runOnCorrectThread(new InitScene(panel, view));
   }
 
   public JComponent getComponent() {
