@@ -9,7 +9,11 @@ public class BridgingPanel {
   private final JFXPanel panel = new JFXPanel();
 
   public void init(NodeHolder view, String... skinCss) {
-    Platform.runLater(new InitScene(panel, new ViewHolder(view), skinCss));
+    init(new ViewHolder(view), skinCss);
+  }
+
+  public void init(ParentHolder view, String... skinCss) {
+    Platform.runLater(new InitScene(panel, view, skinCss));
   }
 
   public JComponent getComponent() {
