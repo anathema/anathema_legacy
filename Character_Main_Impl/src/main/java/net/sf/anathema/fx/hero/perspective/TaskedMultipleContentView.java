@@ -5,7 +5,8 @@ import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.control.Separator;
+import javafx.scene.shape.Line;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.hero.display.ContentProperties;
 import net.sf.anathema.hero.display.MultipleContentView;
@@ -64,13 +65,15 @@ public class TaskedMultipleContentView implements MultipleContentView {
   }
 
   private Node createContainer(final NodeHolder content, String name) {
-    final BorderPane viewComponent = new BorderPane();
-    Label title = new Label(name);
-    viewComponent.setTop(title);
+    final MigPane viewComponent = new MigPane(LayoutUtils.fillWithoutInsets().wrapAfter(1));
+    MigPane titlePane = new MigPane(LayoutUtils.fillWithoutInsets());
+    titlePane.add(new Label(name));
+    titlePane.add(new Separator(), new CC().pushX().growX());
+    viewComponent.add(titlePane, new CC().pushX().growX());
     FxThreading.runOnCorrectThread(new Runnable() {
       @Override
       public void run() {
-        viewComponent.setCenter(content.getNode());
+        viewComponent.add(content.getNode(), new CC().push().grow());
       }
     });
     return viewComponent;
