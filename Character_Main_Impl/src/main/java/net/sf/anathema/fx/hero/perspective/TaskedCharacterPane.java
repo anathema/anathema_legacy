@@ -56,7 +56,6 @@ public class TaskedCharacterPane implements CharacterPane, OverviewDisplay {
     });
   }
 
-  @Override
   public JComponent getComponent() {
     return panel.getComponent();
   }
