@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.shape.Line;
+import javafx.scene.text.Font;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.hero.display.ContentProperties;
 import net.sf.anathema.hero.display.MultipleContentView;
@@ -67,7 +68,9 @@ public class TaskedMultipleContentView implements MultipleContentView {
   private Node createContainer(final NodeHolder content, String name) {
     final MigPane viewComponent = new MigPane(LayoutUtils.fillWithoutInsets().wrapAfter(1));
     MigPane titlePane = new MigPane(LayoutUtils.fillWithoutInsets());
-    titlePane.add(new Label(name));
+    Label title = new Label(name);
+    title.setStyle("-fx-font-weight: bold");
+    titlePane.add(title);
     titlePane.add(new Separator(), new CC().pushX().growX());
     viewComponent.add(titlePane, new CC().pushX().growX());
     FxThreading.runOnCorrectThread(new Runnable() {
