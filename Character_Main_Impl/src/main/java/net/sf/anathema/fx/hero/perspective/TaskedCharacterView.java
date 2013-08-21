@@ -1,17 +1,19 @@
 package net.sf.anathema.fx.hero.perspective;
 
-import net.sf.anathema.hero.advance.overview.view.CategorizedOverview;
+import javafx.scene.Node;
+import javafx.scene.layout.BorderPane;
 import net.sf.anathema.character.main.view.CharacterView;
 import net.sf.anathema.character.main.view.CharacterViewSection;
 import net.sf.anathema.character.main.view.SectionView;
 import net.sf.anathema.character.main.view.SubViewRegistry;
 import net.sf.anathema.framework.view.util.OptionalViewBar;
+import net.sf.anathema.hero.advance.overview.view.CategorizedOverview;
+import net.sf.anathema.platform.fx.BridgingPanel;
+import net.sf.anathema.platform.fx.NodeHolder;
 import net.sf.anathema.swing.hero.overview.DefaultCategorizedOverview;
 import net.sf.anathema.swing.hero.overview.NullOverviewContainer;
 
 import javax.swing.JComponent;
-import javax.swing.JPanel;
-import java.awt.BorderLayout;
 
 public class TaskedCharacterView implements CharacterView {
 
@@ -20,8 +22,9 @@ public class TaskedCharacterView implements CharacterView {
   private CategorizedOverview overviewView = new NullOverviewContainer();
   private final TaskedCharacterPane characterPane = new TaskedCharacterPane();
   private final OptionalViewBar optionalViewPane = new OptionalViewBar();
-  private JPanel content;
+  private BorderPane content;
   private final SubViewRegistry subViewFactory;
+  private final BridgingPanel panel = new BridgingPanel();
 
   public TaskedCharacterView(SubViewRegistry viewFactory) {
     this.subViewFactory = viewFactory;
@@ -49,12 +52,18 @@ public class TaskedCharacterView implements CharacterView {
   @Override
   public final JComponent getComponent() {
     if (content == null) {
-      content = new JPanel(new BorderLayout());
-      content.add(characterPane.getComponent(), BorderLayout.CENTER);
-      content.add(optionalViewPane.getComponent(), BorderLayout.EAST);
+      content = new BorderPane();
+      content.setCenter(characterPane.getNode());
+      content.setRight(optionalViewPane.getNode());
       overviewView.showIn(characterPane);
+      panel.init(new NodeHolder() {
+        @Override
+        public Node getNode() {
+          return content;
+        }
+      });
     }
-    return content;
+    return panel.getComponent();
   }
 
   @Override
