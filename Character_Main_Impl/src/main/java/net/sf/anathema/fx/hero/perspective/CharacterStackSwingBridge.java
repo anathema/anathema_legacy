@@ -28,8 +28,4 @@ public class CharacterStackSwingBridge implements CharacterStackBridge {
   public void showCharacterView(CharacterIdentifier identifier) {
     stackView.showView(identifier);
   }
-
-  public JComponent getComponent() {
-    return stackView.getComponent();
-  }
 }
