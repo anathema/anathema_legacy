@@ -9,7 +9,6 @@ import net.sf.anathema.hero.advance.overview.view.OverviewDisplay;
 import net.sf.anathema.hero.display.MultipleContentView;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.platform.fx.FxThreading;
-import net.sf.anathema.swing.hero.perspective.FxOptionalOverview;
 import org.tbee.javafx.scene.layout.MigPane;
 
 public class TaskedCharacterPane implements CharacterPane, OverviewDisplay {

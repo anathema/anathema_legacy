@@ -1,4 +1,4 @@
-package net.sf.anathema.swing.hero.overview;
+package net.sf.anathema.fx.hero.overview;
 
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
 import net.sf.anathema.fx.hero.overview.FxOverviewCategory;

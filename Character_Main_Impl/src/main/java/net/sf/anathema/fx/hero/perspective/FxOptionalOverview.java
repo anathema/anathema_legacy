@@ -1,4 +1,4 @@
-package net.sf.anathema.swing.hero.perspective;
+package net.sf.anathema.fx.hero.perspective;
 
 import net.sf.anathema.framework.view.util.OptionalView;
 import org.tbee.javafx.scene.layout.MigPane;

@@ -8,8 +8,8 @@ import net.sf.anathema.character.main.view.SectionView;
 import net.sf.anathema.character.main.view.SubViewRegistry;
 import net.sf.anathema.framework.view.util.OptionalViewBar;
 import net.sf.anathema.hero.advance.overview.view.CategorizedOverview;
-import net.sf.anathema.swing.hero.overview.DefaultCategorizedOverview;
-import net.sf.anathema.swing.hero.overview.NullOverviewContainer;
+import net.sf.anathema.fx.hero.overview.DefaultCategorizedOverview;
+import net.sf.anathema.fx.hero.overview.NullOverviewContainer;
 
 public class TaskedCharacterView implements CharacterView {
 
