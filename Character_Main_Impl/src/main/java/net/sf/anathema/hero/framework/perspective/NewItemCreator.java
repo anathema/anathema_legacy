@@ -1,6 +1,7 @@
-package net.sf.anathema.framework.presenter.action;
+package net.sf.anathema.hero.framework.perspective;
 
 import net.sf.anathema.framework.persistence.RepositoryItemPersister;
+import net.sf.anathema.framework.presenter.action.IItemCreator;
 import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.workflow.wizard.selection.IDialogModelTemplate;

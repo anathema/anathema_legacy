@@ -1,4 +1,4 @@
-package net.sf.anathema.framework.presenter.action;
+package net.sf.anathema.hero.framework.perspective;
 
 import net.sf.anathema.framework.persistence.RepositoryItemPersister;
 import net.sf.anathema.framework.presenter.ItemReceiver;

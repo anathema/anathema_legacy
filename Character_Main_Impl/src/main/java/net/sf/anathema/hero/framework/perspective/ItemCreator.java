@@ -1,6 +1,8 @@
-package net.sf.anathema.framework.presenter.action;
+package net.sf.anathema.hero.framework.perspective;
 
 import net.sf.anathema.framework.presenter.ItemReceiver;
+import net.sf.anathema.framework.presenter.action.IItemCreator;
+import net.sf.anathema.framework.presenter.action.IItemOperator;
 import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.framework.swing.MessageUtilities;
 import net.sf.anathema.framework.view.SwingApplicationFrame;

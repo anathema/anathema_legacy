@@ -6,7 +6,6 @@ import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.persistence.RepositoryItemPersister;
 import net.sf.anathema.framework.presenter.ItemReceiver;
-import net.sf.anathema.framework.presenter.action.NewItemCommand;
 import net.sf.anathema.framework.repository.IRepositoryFileResolver;
 import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.framework.view.PrintNameFile;
