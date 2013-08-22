@@ -1,35 +1,32 @@
 package net.sf.anathema.platform.fx;
 
 import javafx.application.Platform;
-import javafx.embed.swing.JFXPanel;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
 import net.sf.anathema.lib.lang.ArrayUtilities;
 
-import javax.swing.JComponent;
-
 public class PerspectivePane {
 
-  private class SceneParentHolder implements ParentHolder {
-    @Override
-    public Parent getParent() {
-      return outerPane;
-    }
-  }
-
-  private final JFXPanel bridgePanel = new JFXPanel();
   private BorderPane outerPane;
   private BorderPane navigationPanel = new BorderPane();
   private BorderPane contentPanel = new BorderPane();
 
-  public PerspectivePane(String... styleSheetPaths) {
+  public PerspectivePane(final String... styleSheetPaths) {
     FxThreading.assertNotOnFxThread();
     Platform.runLater(new InitNavigationPane());
     Platform.runLater(new InitContentPane());
     Platform.runLater(new InitOuterPane());
-    Platform.runLater(new InitScene(bridgePanel, new SceneParentHolder(), getAllStyleSheetPaths(styleSheetPaths)));
+    Platform.runLater(new Runnable() {
+      @Override
+      public void run() {
+        String[] allStyleSheetPaths = getAllStyleSheetPaths(styleSheetPaths);
+        for (String sheetPath : allStyleSheetPaths) {
+          new Stylesheet(sheetPath).applyToParent(outerPane);
+        }
+      }
+    });
   }
 
   private void initBorderedPane(Parent pane, String basicStyleClass) {
@@ -56,8 +53,8 @@ public class PerspectivePane {
     outerPane.getStyleClass().add(styleClass);
   }
 
-  public JComponent getComponent() {
-    return bridgePanel;
+  public Node getNode() {
+    return outerPane;
   }
 
   private class InitOuterPane implements Runnable {

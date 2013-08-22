@@ -1,8 +1,8 @@
 package net.sf.anathema.framework.view.perspective;
 
-import javax.swing.JComponent;
+import javafx.scene.Node;
 
 public interface Container {
 
-  void setSwingContent(JComponent component);
+  void setContent(Node component);
 }

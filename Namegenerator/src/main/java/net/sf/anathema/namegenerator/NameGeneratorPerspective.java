@@ -29,6 +29,6 @@ public class NameGeneratorPerspective implements Perspective {
     NameGeneratorView view = new FxNameGeneratorView();
     INameGeneratorModel generatorModel = new ExaltedNameGeneratorModel();
     new NameGeneratorPresenter(resources, view, generatorModel).initPresentation();
-    container.setSwingContent(view.getComponent());
+    container.setContent(view.getNode());
   }
 }

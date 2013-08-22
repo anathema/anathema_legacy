@@ -1,9 +1,8 @@
 package net.sf.anathema.namegenerator.presenter.view;
 
+import javafx.scene.Node;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.control.ChangeListener;
-
-import javax.swing.JComponent;
 
 public interface NameGeneratorView {
 
@@ -19,5 +18,5 @@ public interface NameGeneratorView {
 
   void addGenerationAction(String label, Command command);
 
-  JComponent getComponent();
+  Node getNode();
 }

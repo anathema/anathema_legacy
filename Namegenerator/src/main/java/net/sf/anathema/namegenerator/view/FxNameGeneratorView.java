@@ -5,6 +5,7 @@ import com.google.common.collect.HashBiMap;
 import javafx.application.Platform;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
@@ -54,8 +55,8 @@ public class FxNameGeneratorView implements NameGeneratorView {
   }
 
   @Override
-  public JComponent getComponent() {
-    return pane.getComponent();
+  public Node getNode() {
+    return pane.getNode();
   }
 
   @Override

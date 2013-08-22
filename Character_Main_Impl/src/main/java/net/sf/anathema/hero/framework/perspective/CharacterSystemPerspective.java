@@ -33,6 +33,6 @@ public class CharacterSystemPerspective implements Perspective {
     CharacterGridPresenter gridPresenter = new CharacterGridPresenter(systemModel, view.getGridView(), showOnSelect, resources);
     gridPresenter.initPresentation();
     new InteractionPresenter(systemModel, view.getInteractionView(), resources, view.getGridView(), showOnSelect).initPresentation();
-    container.setSwingContent(view.getComponent());
+    container.setContent(view.getNode());
   }
 }

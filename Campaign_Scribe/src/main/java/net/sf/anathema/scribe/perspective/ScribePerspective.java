@@ -27,6 +27,6 @@ public class ScribePerspective implements Perspective {
     ScribeView view = new ScribeView();
     ScribeModel scribeModel = new ScribeModel(applicationModel);
     new ScribePresenter(scribeModel, view, resources).initPresentation();
-    container.setSwingContent(view.perspectivePane.getComponent());
+    container.setContent(view.perspectivePane.getNode());
   }
 }

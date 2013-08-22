@@ -15,7 +15,6 @@ import net.sf.anathema.hero.framework.HeroEnvironmentExtractor;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.platform.fx.BridgingPanel;
 
 @PerspectiveAutoCollector
 @Weight(weight = 6000)
@@ -33,9 +32,7 @@ public class CharmCascadePerspective implements Perspective {
     FxCharmView cascadeView = new FxCharmView();
     new CharmCascadesPresenterImpl(resources, characterGenerics, cascadeView, magicDescriptionProvider,
             new CharmTreeIdentifierMap()).initPresentation();
-    BridgingPanel bridgingPanel = new BridgingPanel();
-    bridgingPanel.init(cascadeView);
-    container.setSwingContent(bridgingPanel.getComponent());
+    container.setContent(cascadeView.getNode());
   }
 
   private MagicDescriptionProvider getCharmDescriptionProvider(IApplicationModel model, Resources resources) {

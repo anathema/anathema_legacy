@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import net.miginfocom.layout.CC;
+import net.sf.anathema.framework.view.util.FxStack;
 import net.sf.anathema.hero.display.ContentProperties;
 import net.sf.anathema.hero.display.MultipleContentView;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;

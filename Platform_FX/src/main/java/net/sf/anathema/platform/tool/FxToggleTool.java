@@ -1,6 +1,7 @@
 package net.sf.anathema.platform.tool;
 
 import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.ToggleTool;
@@ -40,6 +41,10 @@ public class FxToggleTool extends FxBaseTool implements ToggleTool {
 
   public void setStyleClass(String styleClass) {
     button.getStyleClass().add(styleClass);
+  }
+
+  public void registerWithGroup(ToggleGroup group) {
+    group.getToggles().add(button);
   }
 
   private class DeselectToggleButtonAndProcess implements Command {

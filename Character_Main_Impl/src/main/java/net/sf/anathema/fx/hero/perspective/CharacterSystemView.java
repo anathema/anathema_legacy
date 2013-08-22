@@ -1,11 +1,10 @@
 package net.sf.anathema.fx.hero.perspective;
 
+import javafx.scene.Node;
 import net.sf.anathema.hero.framework.perspective.CharacterGridView;
 import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.platform.fx.InteractionView;
 import net.sf.anathema.platform.fx.PerspectivePane;
-
-import javax.swing.JComponent;
 
 public class CharacterSystemView {
 
@@ -35,7 +34,7 @@ public class CharacterSystemView {
     return stackView;
   }
 
-  public JComponent getComponent() {
-    return pane.getComponent();
+  public Node getNode() {
+    return pane.getNode();
   }
 }

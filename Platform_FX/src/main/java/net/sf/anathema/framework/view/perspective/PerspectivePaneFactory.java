@@ -1,14 +1,17 @@
 package net.sf.anathema.framework.view.perspective;
 
+import javafx.scene.Node;
 import net.miginfocom.layout.CC;
-import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.view.ViewFactory;
 import net.sf.anathema.initialization.ObjectFactory;
+import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.platform.fx.BridgingPanel;
+import net.sf.anathema.platform.fx.NodeHolder;
+import org.tbee.javafx.scene.layout.MigPane;
 
 import javax.swing.JComponent;
-import javax.swing.JPanel;
 import java.util.Collection;
 
 public class PerspectivePaneFactory implements ViewFactory {
@@ -32,10 +35,17 @@ public class PerspectivePaneFactory implements ViewFactory {
       perspectiveStack.add(perspective);
       selectionBar.addPerspective(perspective, resources);
     }
-    JPanel contentPanel = new JPanel(new MigLayout());
+    final MigPane contentPanel = new MigPane(LayoutUtils.fillWithoutInsets());
     contentPanel.add(selectionBar.getContent(), new CC().alignX("50%").wrap());
     contentPanel.add(perspectiveStack.getContent(), new CC().push().grow());
     selectionBar.selectFirstButton();
-    return contentPanel;
+    BridgingPanel bridgingPanel = new BridgingPanel();
+    bridgingPanel.init(new NodeHolder() {
+      @Override
+      public Node getNode() {
+        return contentPanel;
+      }
+    });
+    return bridgingPanel.getComponent();
   }
 }

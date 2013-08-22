@@ -1,6 +1,7 @@
 package net.sf.anathema.fx.hero.perspective;
 
 import javafx.scene.Node;
+import net.sf.anathema.framework.view.util.FxStack;
 import net.sf.anathema.hero.framework.perspective.model.CharacterIdentifier;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.platform.fx.NodeHolder;
