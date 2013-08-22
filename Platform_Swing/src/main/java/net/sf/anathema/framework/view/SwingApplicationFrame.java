@@ -1,15 +1,20 @@
 package net.sf.anathema.framework.view;
 
+import javafx.scene.Node;
+import net.miginfocom.layout.CC;
+import net.miginfocom.layout.LC;
 import net.sf.anathema.framework.presenter.AnathemaViewProperties;
 import net.sf.anathema.framework.view.menu.MainMenuBar;
 import net.sf.anathema.framework.view.messaging.OneLineStatusBar;
+import net.sf.anathema.framework.view.messaging.StatusBar;
 import net.sf.anathema.initialization.ApplicationFrameView;
+import net.sf.anathema.platform.fx.BridgingPanel;
+import net.sf.anathema.platform.fx.NodeHolder;
+import org.tbee.javafx.scene.layout.MigPane;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
@@ -35,7 +40,15 @@ public class SwingApplicationFrame implements ApplicationFrameView {
 
   public void show() {
     JFrame applicationFrame = initFrame();
-    applicationFrame.getContentPane().add(createContentPane());
+    BridgingPanel bridgingPanel = new BridgingPanel();
+    final Node contentPane = createContentPane();
+    bridgingPanel.init(new NodeHolder() {
+      @Override
+      public Node getNode() {
+        return contentPane;
+      }
+    });
+    applicationFrame.getContentPane().add(bridgingPanel.getComponent());
     applicationFrame.setJMenuBar(menu.getMenuBar());
     displayOnScreenCenter(applicationFrame, DEFAULT_SIZE);
   }
@@ -49,7 +62,7 @@ public class SwingApplicationFrame implements ApplicationFrameView {
     return menu;
   }
 
-  public OneLineStatusBar getStatusBar() {
+  public StatusBar getStatusBar() {
     return statusBar;
   }
 
@@ -67,10 +80,10 @@ public class SwingApplicationFrame implements ApplicationFrameView {
     return frame;
   }
 
-  private JComponent createContentPane() {
-    JPanel contentPane = new JPanel(new BorderLayout());
-    contentPane.add(contentFactory.createContent(), BorderLayout.CENTER);
-    contentPane.add(statusBar.getComponent(), BorderLayout.SOUTH);
+  private Node createContentPane() {
+    MigPane contentPane = new MigPane(new LC().fill().wrapAfter(1));
+    contentPane.add(contentFactory.createContent(), new CC().grow().push());
+    contentPane.add(statusBar.getComponent(), new CC().dockSouth());
     return contentPane;
   }
 }

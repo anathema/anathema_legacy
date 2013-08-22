@@ -1,8 +1,8 @@
 package net.sf.anathema.framework.view;
 
-import javax.swing.JComponent;
+import javafx.scene.Node;
 
 public interface ViewFactory {
 
-  JComponent createContent();
+  Node createContent();
 }

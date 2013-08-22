@@ -7,11 +7,8 @@ import net.sf.anathema.framework.view.ViewFactory;
 import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.platform.fx.BridgingPanel;
-import net.sf.anathema.platform.fx.NodeHolder;
 import org.tbee.javafx.scene.layout.MigPane;
 
-import javax.swing.JComponent;
 import java.util.Collection;
 
 public class PerspectivePaneFactory implements ViewFactory {
@@ -29,8 +26,7 @@ public class PerspectivePaneFactory implements ViewFactory {
   }
 
   @Override
-  public JComponent createContent() {
-    BridgingPanel bridgingPanel = new BridgingPanel();
+  public Node createContent() {
     Collection<Perspective> sortedPerspectives = objectFactory.instantiateOrdered(PerspectiveAutoCollector.class);
     for (final Perspective perspective : sortedPerspectives) {
       perspectiveStack.add(perspective);
@@ -40,12 +36,6 @@ public class PerspectivePaneFactory implements ViewFactory {
     contentPanel.add(selectionBar.getContent(), new CC().alignX("50%").wrap());
     contentPanel.add(perspectiveStack.getContent(), new CC().push().grow());
     selectionBar.selectFirstButton();
-    bridgingPanel.init(new NodeHolder() {
-      @Override
-      public Node getNode() {
-        return contentPanel;
-      }
-    });
-    return bridgingPanel.getComponent();
+    return contentPanel;
   }
 }

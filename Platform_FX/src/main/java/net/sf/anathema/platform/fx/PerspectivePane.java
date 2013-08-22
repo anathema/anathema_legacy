@@ -5,13 +5,17 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
+import net.miginfocom.layout.CC;
+import net.miginfocom.layout.LC;
+import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.lib.lang.ArrayUtilities;
+import org.tbee.javafx.scene.layout.MigPane;
 
 public class PerspectivePane {
 
-  private BorderPane outerPane;
-  private BorderPane navigationPanel = new BorderPane();
-  private BorderPane contentPanel = new BorderPane();
+  private MigPane outerPane;
+  private MigPane navigationPanel = new MigPane(LayoutUtils.fillWithoutInsets());
+  private MigPane contentPanel = new MigPane(LayoutUtils.fillWithoutInsets());
 
   public PerspectivePane(final String... styleSheetPaths) {
     FxThreading.assertNotOnFxThread();
@@ -41,12 +45,12 @@ public class PerspectivePane {
 
   public void setNavigationComponent(Node component) {
     FxThreading.assertOnFxThread();
-    navigationPanel.setCenter(component);
+    navigationPanel.add(component, new CC().grow().push());
   }
 
   public void setContentComponent(Node component) {
     FxThreading.assertOnFxThread();
-    contentPanel.setCenter(component);
+    contentPanel.add(component, new CC().grow().push());
   }
 
   public void addStyleSheetClass(String styleClass) {
@@ -60,10 +64,10 @@ public class PerspectivePane {
   private class InitOuterPane implements Runnable {
     @Override
     public void run() {
-      outerPane = new BorderPane();
+      outerPane = new MigPane(new LC().fill().debug(1));
       outerPane.getStyleClass().add("perspective-outer-pane");
-      outerPane.setLeft(navigationPanel);
-      outerPane.setCenter(contentPanel);
+      outerPane.add(navigationPanel, new CC().grow().push());
+      outerPane.add(contentPanel, new CC().grow().push());
     }
   }
 

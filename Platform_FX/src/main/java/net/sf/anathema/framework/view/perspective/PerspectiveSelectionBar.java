@@ -17,7 +17,7 @@ public class PerspectiveSelectionBar {
   }
 
   public void addPerspective(final Perspective perspective, Resources resources) {
-    Command command = createCommand(perspective, resources);
+    Command command = createCommand(perspective);
     FxToggleTool tool = FxToggleTool.create();
     tool.setCommand(command);
     PerspectiveToggle toggle = new ToolPerspectiveToggle(tool, resources);
@@ -26,8 +26,8 @@ public class PerspectiveSelectionBar {
     tool.registerWithGroup(buttonGroup);
   }
 
-  private Command createCommand(final Perspective perspective, Resources resources) {
-    return new Command() {
+  private Command createCommand(final Perspective perspective) {
+      return new Command() {
       @Override
       public void execute() {
         perspectiveStack.show(perspective);
