@@ -30,6 +30,7 @@ public class PerspectivePaneFactory implements ViewFactory {
 
   @Override
   public JComponent createContent() {
+    BridgingPanel bridgingPanel = new BridgingPanel();
     Collection<Perspective> sortedPerspectives = objectFactory.instantiateOrdered(PerspectiveAutoCollector.class);
     for (final Perspective perspective : sortedPerspectives) {
       perspectiveStack.add(perspective);
@@ -39,7 +40,6 @@ public class PerspectivePaneFactory implements ViewFactory {
     contentPanel.add(selectionBar.getContent(), new CC().alignX("50%").wrap());
     contentPanel.add(perspectiveStack.getContent(), new CC().push().grow());
     selectionBar.selectFirstButton();
-    BridgingPanel bridgingPanel = new BridgingPanel();
     bridgingPanel.init(new NodeHolder() {
       @Override
       public Node getNode() {
