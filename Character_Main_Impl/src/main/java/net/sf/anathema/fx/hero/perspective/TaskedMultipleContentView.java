@@ -6,12 +6,12 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
-import javafx.scene.shape.Line;
-import javafx.scene.text.Font;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.hero.display.ContentProperties;
 import net.sf.anathema.hero.display.MultipleContentView;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
+import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.lib.util.SimpleIdentifier;
 import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.platform.fx.NodeHolder;
 import net.sf.anathema.platform.fx.StyledTitledPane;
@@ -32,14 +32,15 @@ public class TaskedMultipleContentView implements MultipleContentView {
 
   @Override
   public void addView(NodeHolder view, ContentProperties tabProperties) {
-    final String name = tabProperties.getName();
+    String name = tabProperties.getName();
     Node fxContainer = createContainer(view, name);
-    stack.add(name, fxContainer);
+    final Identifier containerId = new SimpleIdentifier(name);
+    stack.add(containerId, fxContainer);
     final Button trigger = new Button(name);
     trigger.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent actionEvent) {
-        new SwitchToView(name, stack).execute();
+        new SwitchToView(containerId, stack).execute();
       }
     });
     FxThreading.runOnCorrectThread(new Runnable() {

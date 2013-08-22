@@ -1,11 +1,13 @@
 package net.sf.anathema.fx.hero.perspective;
 
+import net.sf.anathema.lib.util.Identifier;
+
 public class SwitchToView {
 
-  private final String name;
+  private final Identifier name;
   private final FxStack stack;
 
-  public SwitchToView(String name, FxStack stack) {
+  public SwitchToView(Identifier name, FxStack stack) {
     this.name = name;
     this.stack = stack;
   }
