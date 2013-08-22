@@ -5,8 +5,11 @@ import javafx.scene.Node;
 import javafx.scene.control.ToolBar;
 import net.miginfocom.layout.AC;
 import net.miginfocom.layout.CC;
+import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.interaction.Tool;
+import net.sf.anathema.platform.tool.FxBaseTool;
 import net.sf.anathema.platform.tool.FxButtonTool;
+import net.sf.anathema.platform.tool.FxToggleTool;
 import org.tbee.javafx.scene.layout.MigPane;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
@@ -45,15 +48,15 @@ public class Navigation {
 
   public Tool addTool() {
     final FxButtonTool fxButtonTool = FxButtonTool.ForToolbar();
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        toolBar.getItems().add(fxButtonTool.getNode());
-        FxAcceleratorMap acceleratorMap = new FxAcceleratorMap(toolBar.getScene().getAccelerators());
-        fxButtonTool.registerHotkeyIn(acceleratorMap);
-      }
-    });
+    addTool(fxButtonTool);
     return fxButtonTool;
+  }
+
+  @SuppressWarnings("UnusedDeclaration")
+  public ToggleTool addToggleTool() {
+    final FxToggleTool fxToggleTool = FxToggleTool.create();
+    addTool(fxToggleTool);
+    return fxToggleTool;
   }
 
   protected void addElementToNavigation(Node element) {
@@ -75,5 +78,16 @@ public class Navigation {
 
   public Node getNode() {
     return pane;
+  }
+
+  private void addTool(final FxBaseTool fxButtonTool) {
+    FxThreading.runOnCorrectThread(new Runnable() {
+      @Override
+      public void run() {
+        toolBar.getItems().add(fxButtonTool.getNode());
+        FxAcceleratorMap acceleratorMap = new FxAcceleratorMap(toolBar.getScene().getAccelerators());
+        fxButtonTool.registerHotkeyIn(acceleratorMap);
+      }
+    });
   }
 }
