@@ -10,7 +10,6 @@ public class LanguagesViewFactory implements SubViewFactory {
   @SuppressWarnings("unchecked")
   @Override
   public <T> T create(CharacterType type) {
-    FxLanguagesView view = new FxLanguagesView();
-    return (T) new BridgingLanguagesView(view);
+    return (T) new FxLanguagesView();
   }
 }

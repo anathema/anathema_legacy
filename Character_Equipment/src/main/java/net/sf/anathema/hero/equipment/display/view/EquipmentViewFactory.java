@@ -4,6 +4,7 @@ import net.sf.anathema.character.main.framework.RegisteredCharacterView;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.view.SubViewFactory;
 import net.sf.anathema.hero.equipment.display.presenter.EquipmentView;
+import net.sf.anathema.platform.fx.Stylesheet;
 
 @RegisteredCharacterView(EquipmentView.class)
 public class EquipmentViewFactory implements SubViewFactory {
@@ -11,6 +12,7 @@ public class EquipmentViewFactory implements SubViewFactory {
   @Override
   public <T> T create(CharacterType type) {
     FxEquipmentView fxView = new FxEquipmentView();
-    return (T) new BridgingEquipmentView(fxView);
+    new Stylesheet("skin/platform/tooltip.css").applyToParent(fxView.getNode());
+    return (T) fxView;
   }
 }

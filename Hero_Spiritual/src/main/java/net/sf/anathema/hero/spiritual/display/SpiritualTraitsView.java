@@ -1,12 +1,11 @@
 package net.sf.anathema.hero.spiritual.display;
 
-import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.view.labelledvalue.IValueView;
 import net.sf.anathema.framework.value.IntValueView;
 
 public interface SpiritualTraitsView {
 
-  void initGui(SpiritualTraitsViewProperties properties, CharacterType characterType);
+  void initGui(SpiritualTraitsViewProperties properties);
 
   IntValueView addVirtue(String labelText, int maxValue);
 

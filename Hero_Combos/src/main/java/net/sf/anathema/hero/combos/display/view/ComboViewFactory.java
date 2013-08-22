@@ -4,6 +4,7 @@ import net.sf.anathema.character.main.framework.RegisteredCharacterView;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.view.SubViewFactory;
 import net.sf.anathema.hero.combos.display.presenter.ComboConfigurationView;
+import net.sf.anathema.platform.fx.Stylesheet;
 
 @RegisteredCharacterView(ComboConfigurationView.class)
 public class ComboViewFactory implements SubViewFactory {
@@ -11,6 +12,8 @@ public class ComboViewFactory implements SubViewFactory {
   @Override
   public <T> T create(CharacterType type) {
     FxComboConfigurationView fxView = new FxComboConfigurationView();
-    return (T) new BridgingComboConfigurationView(fxView);
+    new Stylesheet("skin/combos/combos.css").applyToParent(fxView.getNode());
+    new Stylesheet("skin/platform/tooltip.css").applyToParent(fxView.getNode());
+    return (T) fxView;
   }
 }

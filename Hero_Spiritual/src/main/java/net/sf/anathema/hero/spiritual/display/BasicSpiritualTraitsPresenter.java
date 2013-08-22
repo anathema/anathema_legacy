@@ -29,6 +29,6 @@ public class BasicSpiritualTraitsPresenter {
     for (Presenter presenter : subPresenters) {
       presenter.initPresentation();
     }
-    view.initGui(new DefaultSpiritualTraitsViewProperties(resources), null);
+    view.initGui(new DefaultSpiritualTraitsViewProperties(resources));
   }
 }

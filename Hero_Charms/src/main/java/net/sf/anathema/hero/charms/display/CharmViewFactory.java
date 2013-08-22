@@ -4,7 +4,6 @@ import net.sf.anathema.character.main.framework.RegisteredCharacterView;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.view.SubViewFactory;
 import net.sf.anathema.framework.value.IntValueView;
-import net.sf.anathema.hero.charms.display.view.BridgingCharmView;
 import net.sf.anathema.hero.charms.display.view.CharmView;
 import net.sf.anathema.hero.charms.display.view.FxCharmView;
 import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;
@@ -18,6 +17,6 @@ public class CharmViewFactory implements SubViewFactory {
     FxCharmView fxView = new FxCharmView();
     fxView.registerSpecialType(IntValueView.class, new FxIntDisplayFactory());
     fxView.registerSpecialType(IBooleanValueView.class, new FxBooleanDisplayFactory());
-    return (T) new BridgingCharmView(fxView);
+    return (T) fxView;
   }
 }
