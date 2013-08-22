@@ -13,6 +13,7 @@ import net.sf.anathema.lib.resources.Resources;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import java.util.List;
 
 public class ControlledPrintCommand implements Command {
@@ -31,6 +32,15 @@ public class ControlledPrintCommand implements Command {
 
   @Override
   public void execute() {
+    SwingUtilities.invokeLater(new Runnable() {
+      @Override
+      public void run() {
+        doIt();
+      }
+    });
+  }
+
+  private void doIt() {
     Report report = selectReport(item);
     if (report == null) {
       return;
@@ -48,8 +58,8 @@ public class ControlledPrintCommand implements Command {
   }
 
   private Report selectReport(List<Report> reports) {
-    IObjectSelectionProperties properties =
-            new DefaultObjectSelectionProperties(resources, "Anathema.Reporting.PrintSelection.Message", "Anathema.Reporting.PrintSelection.Title");
+    IObjectSelectionProperties properties = new DefaultObjectSelectionProperties(resources,
+            "Anathema.Reporting.PrintSelection.Message", "Anathema.Reporting.PrintSelection.Title");
     Report[] reportArray = reports.toArray(new Report[reports.size()]);
     ObjectSelectionDialogPage dialogPage = new ObjectSelectionDialogPage(reportArray, properties);
     UserDialog userDialog = new UserDialog(parent, dialogPage);
