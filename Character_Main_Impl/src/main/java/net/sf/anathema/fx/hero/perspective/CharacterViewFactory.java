@@ -15,6 +15,7 @@ import net.sf.anathema.hero.advance.overview.presenter.OverviewPresenter;
 import net.sf.anathema.hero.display.presenter.CharacterPresenter;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.platform.fx.NodeHolder;
 
 public class CharacterViewFactory {
   private final Resources resources;
@@ -25,7 +26,7 @@ public class CharacterViewFactory {
     this.model = model;
   }
 
-  public IView createView(Item item) {
+  public NodeHolder createView(Item item) {
     Hero hero = (Hero) item.getItemData();
     SubViewRegistry viewFactory = new SubViewMap(model.getObjectFactory());
     CharacterView characterView = new TaskedCharacterView(viewFactory);

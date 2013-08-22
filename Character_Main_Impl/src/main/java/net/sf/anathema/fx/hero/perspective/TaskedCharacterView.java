@@ -8,12 +8,8 @@ import net.sf.anathema.character.main.view.SectionView;
 import net.sf.anathema.character.main.view.SubViewRegistry;
 import net.sf.anathema.framework.view.util.OptionalViewBar;
 import net.sf.anathema.hero.advance.overview.view.CategorizedOverview;
-import net.sf.anathema.platform.fx.BridgingPanel;
-import net.sf.anathema.platform.fx.NodeHolder;
 import net.sf.anathema.swing.hero.overview.DefaultCategorizedOverview;
 import net.sf.anathema.swing.hero.overview.NullOverviewContainer;
-
-import javax.swing.JComponent;
 
 public class TaskedCharacterView implements CharacterView {
 
@@ -24,7 +20,6 @@ public class TaskedCharacterView implements CharacterView {
   private final OptionalViewBar optionalViewPane = new OptionalViewBar();
   private BorderPane content;
   private final SubViewRegistry subViewFactory;
-  private final BridgingPanel panel = new BridgingPanel();
 
   public TaskedCharacterView(SubViewRegistry viewFactory) {
     this.subViewFactory = viewFactory;
@@ -50,20 +45,14 @@ public class TaskedCharacterView implements CharacterView {
   }
 
   @Override
-  public final JComponent getComponent() {
+  public Node getNode() {
     if (content == null) {
       content = new BorderPane();
       content.setCenter(characterPane.getNode());
       content.setRight(optionalViewPane.getNode());
       overviewView.showIn(characterPane);
-      panel.init(new NodeHolder() {
-        @Override
-        public Node getNode() {
-          return content;
-        }
-      });
     }
-    return panel.getComponent();
+    return content;
   }
 
   @Override

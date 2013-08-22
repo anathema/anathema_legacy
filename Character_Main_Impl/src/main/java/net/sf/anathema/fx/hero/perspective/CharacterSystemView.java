@@ -1,9 +1,12 @@
-package net.sf.anathema.swing.hero.perspective;
+package net.sf.anathema.fx.hero.perspective;
 
+import javafx.scene.Node;
 import net.sf.anathema.framework.perspective.SwingPerspectivePane;
-import net.sf.anathema.fx.hero.perspective.CharacterGridFxView;
 import net.sf.anathema.hero.framework.perspective.CharacterGridView;
+import net.sf.anathema.platform.fx.BridgingPanel;
 import net.sf.anathema.platform.fx.InteractionView;
+import net.sf.anathema.platform.fx.NodeHolder;
+import net.sf.anathema.swing.hero.perspective.SwingInteractionView;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -20,7 +23,14 @@ public class CharacterSystemView {
     this.interactionView = new SwingInteractionView();
     JPanel panel = createNavigationPanel();
     pane.setNavigationComponent(panel);
-    pane.setContentComponent(stackView.getComponent());
+    BridgingPanel bridgingPanel = new BridgingPanel();
+    bridgingPanel.init(new NodeHolder() {
+      @Override
+      public Node getNode() {
+        return stackView.getComponent();
+      }
+    });
+    pane.setContentComponent(bridgingPanel.getComponent());
   }
 
   private JPanel createNavigationPanel() {
