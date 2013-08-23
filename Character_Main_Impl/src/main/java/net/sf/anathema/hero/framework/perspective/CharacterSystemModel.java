@@ -6,6 +6,7 @@ import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.persistence.RepositoryItemPersister;
 import net.sf.anathema.framework.presenter.ItemReceiver;
+import net.sf.anathema.framework.reporting.Report;
 import net.sf.anathema.framework.repository.IRepositoryFileResolver;
 import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.framework.view.PrintNameFile;
@@ -17,7 +18,8 @@ import net.sf.anathema.hero.framework.perspective.model.CharacterItemModel;
 import net.sf.anathema.hero.framework.perspective.model.CharacterPersistenceModel;
 import net.sf.anathema.hero.framework.perspective.model.ItemSystemModel;
 import net.sf.anathema.hero.framework.perspective.model.NewCharacterListener;
-import net.sf.anathema.hero.framework.perspective.sheet.ControlledPrintCommand;
+import net.sf.anathema.hero.framework.perspective.model.ReportRegister;
+import net.sf.anathema.hero.framework.perspective.sheet.ControlledPrintWithSelectedReport;
 import net.sf.anathema.hero.framework.perspective.sheet.QuickPrintCommand;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.platform.RegExCharacterPrintNameFileScanner;
@@ -141,9 +143,8 @@ public class CharacterSystemModel implements ItemSystemModel {
   }
 
   @Override
-  public void printCurrentItemControlled(Resources resources) {
-    CharacterReportFinder reportFinder = createReportFinder(resources);
-    new ControlledPrintCommand(resources, getCurrentItem(), reportFinder).execute();
+  public void printCurrentItemInto(Report report, Resources resources) {
+    new ControlledPrintWithSelectedReport(getCurrentItem(), resources, report).execute();
   }
 
   @Override
@@ -167,6 +168,14 @@ public class CharacterSystemModel implements ItemSystemModel {
   @Override
   public void whenNewCharacterIsAdded(NewCharacterListener listener) {
     characterAddedListener.addListener(listener);
+  }
+
+  @Override
+  public void registerAllReportsOn(ReportRegister register, Resources resources) {
+    CharacterReportFinder reportFinder = createReportFinder(resources);
+    for (Report report : reportFinder.getAllReports(getCurrentItem())) {
+      register.register(report);
+    }
   }
 
   @Override

@@ -1,5 +1,6 @@
 package net.sf.anathema.hero.framework.perspective.model;
 
+import net.sf.anathema.framework.reporting.Report;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -23,9 +24,11 @@ public interface ItemSelectionModel {
 
   void printCurrentItemQuickly(Resources resources);
 
-  void printCurrentItemControlled(Resources resources);
+  void printCurrentItemInto(Report report, Resources resources);
 
   void createNew(Resources resources);
 
   void whenNewCharacterIsAdded(NewCharacterListener listener);
+
+  void registerAllReportsOn(ReportRegister register, Resources resources);
 }

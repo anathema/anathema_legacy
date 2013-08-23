@@ -8,4 +8,6 @@ public interface InteractionView {
   Tool addTool();
 
   ToggleTool addToggleTool();
+
+  MenuTool addMenuTool();
 }

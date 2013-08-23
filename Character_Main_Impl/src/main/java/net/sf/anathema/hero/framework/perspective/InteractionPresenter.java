@@ -26,7 +26,6 @@ public class InteractionPresenter {
   public void initPresentation() {
     initNewInteraction();
     initSaveInteraction();
-    initQuickPrintInteraction();
     initControlledPrintInteraction();
     initExperiencedInteraction();
   }
@@ -40,12 +39,8 @@ public class InteractionPresenter {
     new NewInteractionPresenter(model, view.addTool(), resources, gridView, selector).initPresentation();
   }
 
-  private void initQuickPrintInteraction() {
-    new QuickPrintInteractionPresenter(model, view.addTool(), resources).initPresentation();
-  }
-
   private void initControlledPrintInteraction() {
-    new ControlledPrintInteractionPresenter(model, view.addTool(), resources).initPresentation();
+    new PrintInteractionPresenter(model, view.addMenuTool(), resources).initPresentation();
   }
 
   private void initExperiencedInteraction() {

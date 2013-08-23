@@ -1,7 +1,6 @@
 package net.sf.anathema.hero.framework.perspective.sheet;
 
 import net.sf.anathema.framework.repository.Item;
-import net.sf.anathema.lib.gui.file.FileChoosingUtilities;
 import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -26,7 +25,7 @@ public class ControlledFileChooser implements FileChooser {
   @Override
   public Path getPrintFile() {
     String suggestedFileName = getBaseName(item) + PrintCommand.PDF_EXTENSION;
-    Path selectedFile = FileChoosingUtilities.selectSaveFile(parent, suggestedFileName);
+    Path selectedFile = FxFileChooser.selectSaveFile();
     if (selectedFile == null) {
       return null;
     }

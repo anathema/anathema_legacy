@@ -64,7 +64,7 @@ public class Navigation {
     return pane;
   }
 
-  private void addTool(final FxBaseTool fxButtonTool) {
+  protected void addTool(final FxBaseTool fxButtonTool) {
     FxThreading.runOnCorrectThread(new Runnable() {
       @Override
       public void run() {
