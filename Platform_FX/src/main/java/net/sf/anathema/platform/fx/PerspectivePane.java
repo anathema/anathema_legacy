@@ -44,21 +44,11 @@ public class PerspectivePane {
   }
 
   public void setNavigationComponent(final Node component) {
-    runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        navigationPanel.add(component, new CC().grow().push());
-      }
-    });
+    navigationPanel.add(component, new CC().grow().push());
   }
 
   public void setContentComponent(final Node component) {
-    runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        contentPanel.add(component, new CC().grow().push());
-      }
-    });
+    contentPanel.add(component, new CC().grow().push());
   }
 
 

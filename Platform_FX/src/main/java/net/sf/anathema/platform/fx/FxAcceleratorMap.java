@@ -20,13 +20,17 @@ public class FxAcceleratorMap implements AcceleratorMap {
 
   @Override
   public void register(Hotkey hotkey, final Command command) {
-    KeyCode character = KeyCode.valueOf(hotkey.asString().toUpperCase());
-    KeyCombination combination = create().shortcut(DOWN).alt(ANY).shift(ANY).control(ANY).meta(ANY).code(character).build();
+    KeyCombination combination = createKeyCombination(hotkey);
     accelerators.put(combination, new Runnable() {
       @Override
       public void run() {
         command.execute();
       }
     });
+  }
+
+  public static KeyCombination createKeyCombination(Hotkey hotkey) {
+    KeyCode character = KeyCode.valueOf(hotkey.asString().toUpperCase());
+    return create().shortcut(DOWN).alt(ANY).shift(ANY).control(ANY).meta(ANY).code(character).build();
   }
 }

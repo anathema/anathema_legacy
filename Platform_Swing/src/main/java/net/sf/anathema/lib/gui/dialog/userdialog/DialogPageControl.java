@@ -55,7 +55,7 @@ public class DialogPageControl implements IInputValidCheckable, IMessageSetable 
     if (content == null) {
       content = dialogPage.createContent();
       if (content == null) {
-        throw new ContractFailedException("Method createContent() must not return null in "
+        throw new ContractFailedException("Method getNode() must not return null in "
                                           + dialogPage.getClass().getName());
       }
       dialogPage.setInputValidListener(new InputValidAfterChangeListener(new DialogPageInputValidCheckable(this, dialogPage)));

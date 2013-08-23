@@ -1,8 +1,6 @@
 package net.sf.anathema.framework.view.util;
 
-import com.google.common.collect.Collections2;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Sets;
 import javafx.scene.Node;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.lib.util.Identifier;
@@ -10,7 +8,6 @@ import net.sf.anathema.platform.fx.FxThreading;
 import org.tbee.javafx.scene.layout.MigPane;
 
 import java.util.LinkedHashMap;
-import java.util.Map;
 
 public class FxStack {
 
@@ -23,6 +20,11 @@ public class FxStack {
 
   public void add(Identifier name, Node node) {
     namedNodes.put(name, node);
+    addToContentToAllowFxToFullyInitialize(name);
+  }
+
+  private void addToContentToAllowFxToFullyInitialize(Identifier name) {
+    show(name);
   }
 
   public void show(final Identifier name) {

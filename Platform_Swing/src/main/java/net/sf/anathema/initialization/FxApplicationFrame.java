@@ -40,8 +40,9 @@ public class FxApplicationFrame implements ApplicationFrameView {
   }
 
   public void show() {
-    Parent contentPane = createContentPane();
+    MigPane contentPane = new MigPane(new LC().fill().wrapAfter(1));
     Scene scene = new Scene(contentPane);
+    initContent(contentPane);
     stage.setScene(scene);
     stage.setHeight(720);
     stage.setWidth(1280);
@@ -71,11 +72,11 @@ public class FxApplicationFrame implements ApplicationFrameView {
   }
 
 
-  private Parent createContentPane() {
-    MigPane contentPane = new MigPane(new LC().fill().wrapAfter(1));
+  private Parent initContent(MigPane contentPane) {
     contentPane.add(menu.getMenuBar(), new CC().dockNorth());
-    contentPane.add(contentFactory.createContent(), new CC().grow().push());
-    contentPane.add(statusBar.getComponent(), new CC().dockSouth());
+    contentPane.add(contentFactory.getNode(), new CC().grow().push());
+    contentFactory.init();
+    contentPane.add(statusBar.getNode(), new CC().dockSouth());
     return contentPane;
   }
 }
