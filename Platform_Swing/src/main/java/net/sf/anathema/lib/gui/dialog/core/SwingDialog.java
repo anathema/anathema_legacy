@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 
 import javax.swing.JDialog;
 import javax.swing.JRootPane;
+import javax.swing.WindowConstants;
 import java.awt.Container;
 import java.awt.Window;
 import java.awt.event.WindowListener;
@@ -15,6 +16,8 @@ public class SwingDialog implements ISwingFrameOrDialog {
   public SwingDialog(JDialog dialog) {
     Preconditions.checkNotNull(dialog);
     this.dialog = dialog;
+    dialog.setAlwaysOnTop(true);
+    dialog.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
   }
 
   @Override
@@ -40,11 +43,6 @@ public class SwingDialog implements ISwingFrameOrDialog {
   @Override
   public Container getContentPane() {
     return dialog.getContentPane();
-  }
-
-  @Override
-  public void setDefaultCloseOperation(int closeOperation) {
-    dialog.setDefaultCloseOperation(closeOperation);
   }
 
   @Override

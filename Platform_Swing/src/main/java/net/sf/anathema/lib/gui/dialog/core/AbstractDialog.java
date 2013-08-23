@@ -11,15 +11,11 @@ import net.sf.anathema.lib.message.IBasicMessage;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;
-import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.Image;
-import java.awt.Window;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.List;
 
 import static net.sf.anathema.lib.gui.dialog.core.StaticDialogResult.Canceled;
 
@@ -47,7 +43,6 @@ public abstract class AbstractDialog {
     dialog = createFrameOrDialog(parent);
     dialog.setModal(true);
     dialog.getContentPane().setLayout(new MigLayout(LayoutUtils.fillWithoutInsets().wrapAfter(1)));
-    dialog.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
     dialog.addWindowListener(cancelingWindowListener);
     CloseOnEscapeKeyActionBehavior.attachTo(this);
   }
@@ -61,25 +56,6 @@ public abstract class AbstractDialog {
   }
 
   private static ISwingFrameOrDialog createFrameOrDialog(Component parent) {
-    Window window = GuiUtilities.getWindowFor(parent);
-    if (window == null || !window.isVisible()) {
-      JFrame frame = new JFrame(INITIAL_DIALOG_TITLE);
-
-      if (window != null) {
-        List<Image> originalIconImages = window.getIconImages();
-        if (!originalIconImages.isEmpty()) {
-          frame.setIconImages(originalIconImages);
-        } else {
-          frame.setIconImages(DialogDefaults.getInstance().getFrameIconImages());
-        }
-      }
-      DialogDefaults dialogDefaults = DialogDefaults.getInstance();
-      if (frame.getIconImages().isEmpty()) {
-        //happens when 'window' is the swing fallback frame
-        frame.setIconImages(dialogDefaults.getFrameIconImages());
-      }
-      return new SwingFrame(frame);
-    }
     return new SwingDialog(GuiUtilities.createDialog(parent, INITIAL_DIALOG_TITLE));
   }
 

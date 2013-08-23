@@ -17,8 +17,6 @@ public interface ISwingFrameOrDialog {
 
   Container getContentPane();
 
-  void setDefaultCloseOperation(int closeOperation);
-
   void addWindowListener(WindowListener windowListener);
 
   void removeWindowListener(WindowListener windowListener);
