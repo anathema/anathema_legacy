@@ -33,7 +33,7 @@ public class PerspectivePaneFactory implements ViewFactory {
       selectionBar.addPerspective(perspective, resources);
     }
     final MigPane contentPanel = new MigPane(LayoutUtils.fillWithoutInsets());
-    contentPanel.add(selectionBar.getContent(), new CC().alignX("50%").wrap());
+    contentPanel.add(selectionBar.getContent(), new CC().dockNorth());
     contentPanel.add(perspectiveStack.getContent(), new CC().push().grow());
     selectionBar.selectFirstButton();
     return contentPanel;

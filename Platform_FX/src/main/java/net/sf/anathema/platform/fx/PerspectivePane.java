@@ -14,7 +14,7 @@ import static net.sf.anathema.platform.fx.FxThreading.runOnCorrectThread;
 
 public class PerspectivePane {
 
-  private MigPane outerPane;
+  private MigPane outerPane = new MigPane(new LC().fill());
   private MigPane navigationPanel = new MigPane(LayoutUtils.fillWithoutInsets());
   private MigPane contentPanel = new MigPane(LayoutUtils.fillWithoutInsets());
 
@@ -73,7 +73,6 @@ public class PerspectivePane {
   private class InitOuterPane implements Runnable {
     @Override
     public void run() {
-      outerPane = new MigPane(new LC().fill().debug(1));
       outerPane.getStyleClass().add("perspective-outer-pane");
       outerPane.add(navigationPanel, new CC().grow().push());
       outerPane.add(contentPanel, new CC().grow().push());

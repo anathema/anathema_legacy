@@ -1,7 +1,7 @@
 package net.sf.anathema.framework.view.util;
 
 import javafx.scene.Node;
-import javafx.scene.Parent;
+import net.miginfocom.layout.CC;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.platform.fx.FxThreading;
 import org.tbee.javafx.scene.layout.MigPane;
@@ -28,7 +28,7 @@ public class FxStack {
       public void run() {
         parent.getChildren().clear();
         Node selectedNode = namedNodes.get(name);
-        parent.add(selectedNode);
+        parent.add(selectedNode, new CC().push().grow());
       }
     });
   }
