@@ -19,7 +19,7 @@ public class TaskedCharacterPane implements CharacterPane, OverviewDisplay {
   private final MigPane content = new MigPane(LayoutUtils.fillWithoutInsets());
 
   public TaskedCharacterPane() {
-    content.add(paneContainer);
+    content.add(paneContainer, new CC().alignY("top"));
     content.add(viewPanel, new CC().push().grow());
     content.add(overviewPane);
   }

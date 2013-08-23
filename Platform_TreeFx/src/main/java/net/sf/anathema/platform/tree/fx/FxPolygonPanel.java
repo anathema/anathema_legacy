@@ -14,6 +14,7 @@ import javafx.scene.transform.Transform;
 import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.lib.gui.StatefulTooltip;
+import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.platform.fx.tooltip.StatefulFxTooltip;
 import net.sf.anathema.platform.tree.display.DisplayPolygonPanel;
 import net.sf.anathema.platform.tree.display.transform.AgnosticTransform;
@@ -55,7 +56,7 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
   private final Rectangle background = new Rectangle();
   private final Group canvas = new Group();
   private final Rectangle glasspane = new Rectangle();
-  private final Tooltip tooltip = new Tooltip();
+  private Tooltip tooltip;
   private AgnosticTransform transform = new AgnosticTransform();
 
   public FxPolygonPanel() {
@@ -67,6 +68,12 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
     content.setClip(clippingRectangle);
     content.getChildren().addAll(background, canvas, glasspane);
     setBackground(RGBColor.White);
+    FxThreading.runOnCorrectThread(new Runnable() {
+      @Override
+      public void run() {
+        tooltip = new Tooltip();
+      }
+    });
   }
 
   @Override

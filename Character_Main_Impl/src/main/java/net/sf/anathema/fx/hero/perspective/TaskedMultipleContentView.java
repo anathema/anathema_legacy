@@ -3,7 +3,7 @@ package net.sf.anathema.fx.hero.perspective;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import net.miginfocom.layout.CC;
@@ -16,6 +16,7 @@ import net.sf.anathema.lib.util.SimpleIdentifier;
 import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.platform.fx.NodeHolder;
 import net.sf.anathema.platform.fx.StyledTitledPane;
+import net.sf.anathema.platform.fx.Stylesheet;
 import org.tbee.javafx.scene.layout.MigPane;
 
 public class TaskedMultipleContentView implements MultipleContentView {
@@ -29,6 +30,7 @@ public class TaskedMultipleContentView implements MultipleContentView {
     this.header = header;
     this.paneContainer = paneContainer;
     this.stack = new FxStack(viewPanel);
+    new Stylesheet("skin/character/charactersubview.css").applyToParent(contentPane);
   }
 
   @Override
@@ -37,7 +39,8 @@ public class TaskedMultipleContentView implements MultipleContentView {
     Node fxContainer = createContainer(view, name);
     final Identifier containerId = new SimpleIdentifier(name);
     stack.add(containerId, fxContainer);
-    final Button trigger = new Button(name);
+    final Hyperlink trigger = new Hyperlink(name);
+    trigger.getStyleClass().add("character-subview-selector");
     trigger.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent actionEvent) {

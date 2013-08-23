@@ -1,0 +1,3 @@
+.character-subview-selector:visited {
+    -fx-text-fill: -fx-text-background-color;
+}
