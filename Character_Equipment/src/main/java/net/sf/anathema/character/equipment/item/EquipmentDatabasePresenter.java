@@ -65,7 +65,7 @@ public class EquipmentDatabasePresenter implements Presenter {
     String[] backgrounds = transform(defaultCostBackgrounds, String.class, new Function<String, String>() {
       @Override
       public String apply(String arg0) {
-        return resources.getString("BackgroundType.Name." + arg0);
+        return resources.getString("Equipment.Cost.Type." + arg0);
       }
     });
     final CostSelectionView costView = descriptionPanel.addCostView(getColonString("Equipment.Creation.Basics.Cost"));
