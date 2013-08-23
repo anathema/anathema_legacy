@@ -17,15 +17,16 @@ public class TaskedCharacterPane implements CharacterPane, OverviewDisplay {
   private final MigPane viewPanel = new MigPane();
   private final MigPane overviewPane = new MigPane(LayoutUtils.fillWithoutInsets().wrapAfter(1));
   private final MigPane content = new MigPane(LayoutUtils.fillWithoutInsets());
+  private final FxOptionalOverview overview = new FxOptionalOverview(overviewPane);
 
   public TaskedCharacterPane() {
     content.add(paneContainer, new CC().alignY("top"));
     content.add(viewPanel, new CC().push().grow());
-    content.add(overviewPane);
+    content.add(overviewPane, new CC().alignX("right").alignY("top"));
   }
 
   public OptionalView getOverview() {
-    return new FxOptionalOverview(overviewPane);
+    return overview;
   }
 
   @Override
@@ -35,13 +36,7 @@ public class TaskedCharacterPane implements CharacterPane, OverviewDisplay {
 
   @Override
   public void setOverviewPane(final Node node) {
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        overviewPane.getChildren().clear();
-        overviewPane.add(node);
-      }
-    });
+    overview.setOverview(node);
   }
 
   public Node getNode() {
