@@ -40,6 +40,6 @@ public class PerspectiveSelectionBar {
   }
 
   public void selectFirstButton() {
-    buttonGroup.getToggles().get(0).setSelected(true);
+    perspectiveStack.showFirst();
   }
 }

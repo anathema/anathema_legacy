@@ -36,4 +36,8 @@ public class PerspectiveStack {
   public Node getContent() {
     return cardPanel;
   }
+
+  public void showFirst() {
+    perspectiveStack.showFirst();
+  }
 }
