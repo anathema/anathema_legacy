@@ -7,6 +7,6 @@ import javax.swing.JOptionPane;
 public class SwingApplicationFrame {
 
   public static JComponent getParentComponent() {
-    return (JComponent) ((JFrame) JOptionPane.getRootFrame()).getContentPane();
+    return null;
   }
 }
