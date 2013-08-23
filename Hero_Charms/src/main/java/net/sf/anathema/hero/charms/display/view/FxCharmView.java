@@ -33,7 +33,7 @@ public class FxCharmView implements CharmView, NodeHolder {
   private final AgnosticTreeView treeView = new AgnosticTreeView(new AgnosticPolygonPanel(viewComponent));
 
   public FxCharmView() {
-    content.add(selectionPanel, new CC().growX());
+    content.add(selectionPanel, new CC().growX().push().minHeight("44"));
     content.add(viewComponent.getNode(), new CC().grow().push());
   }
 
