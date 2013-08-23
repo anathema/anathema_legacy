@@ -3,11 +3,18 @@ package net.sf.anathema.framework.view.menu;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.MenuItem;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.CommandProxy;
 import net.sf.anathema.interaction.Hotkey;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.file.RelativePath;
+import net.sf.anathema.platform.tool.ImageContainer;
+import net.sf.anathema.platform.tool.LoadImage;
+
+import static javafx.scene.input.KeyCombination.SHORTCUT_DOWN;
 
 public class FxMenuTool implements Tool {
 
@@ -25,17 +32,20 @@ public class FxMenuTool implements Tool {
 
   @Override
   public void setIcon(RelativePath relativePath) {
-    //To change body of implemented methods use File | Settings | File Templates.
+    ImageContainer container = new LoadImage(relativePath).run();
+    ImageView imageView = new ImageView();
+    container.displayIn(imageView);
+    item.setGraphic(imageView);
   }
 
   @Override
   public void setOverlay(RelativePath relativePath) {
-    //To change body of implemented methods use File | Settings | File Templates.
+    //nothing to do
   }
 
   @Override
   public void setTooltip(String text) {
-    //To change body of implemented methods use File | Settings | File Templates.
+    //menuitems in fx can't have tooltips
   }
 
   @Override
@@ -59,8 +69,10 @@ public class FxMenuTool implements Tool {
   }
 
   @Override
-  public void setHotkey(Hotkey s) {
-
+  public void setHotkey(Hotkey shortcut) {
+    KeyCode keyCode = KeyCode.valueOf(String.valueOf(shortcut.asString()));
+    KeyCodeCombination keyCodeCombination = new KeyCodeCombination(keyCode, SHORTCUT_DOWN);
+    item.setAccelerator(keyCodeCombination);
   }
 
   public MenuItem getNode() {
