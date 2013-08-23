@@ -33,8 +33,8 @@ public class EquipmentPerspective implements Perspective {
 
   private void initInFx(Container container, Resources resources, IEquipmentDatabaseManagement databaseManagement) {
     FxEquipmentDatabaseView view = new FxEquipmentDatabaseView();
-    container.setContent(view.perspectivePane.getNode());
     new EquipmentDatabasePresenter(resources, databaseManagement, view.view).initPresentation();
+    container.setContent(view.perspectivePane.getNode());
   }
 
   private IEquipmentDatabaseManagement createDatabaseManagement(IApplicationModel model) {

@@ -17,7 +17,6 @@ public class PerspectivePaneFactory implements ViewFactory {
   private final PerspectiveSelectionBar selectionBar;
   private final Resources resources;
   private final ObjectFactory objectFactory;
-  private final MigPane contentPanel = new MigPane(LayoutUtils.fillWithoutInsets());
 
   public PerspectivePaneFactory(IApplicationModel model, Resources resources, ObjectFactory objectFactory) {
     this.resources = resources;
@@ -27,19 +26,16 @@ public class PerspectivePaneFactory implements ViewFactory {
   }
 
   @Override
-  public void init() {
-    contentPanel.add(selectionBar.getContent(), new CC().dockNorth());
-    contentPanel.add(perspectiveStack.getContent(), new CC().push().grow());
+  public Node createContent() {
     Collection<Perspective> sortedPerspectives = objectFactory.instantiateOrdered(PerspectiveAutoCollector.class);
     for (final Perspective perspective : sortedPerspectives) {
       perspectiveStack.add(perspective);
       selectionBar.addPerspective(perspective, resources);
     }
+    final MigPane contentPanel = new MigPane(LayoutUtils.fillWithoutInsets());
+    contentPanel.add(selectionBar.getContent(), new CC().dockNorth());
+    contentPanel.add(perspectiveStack.getContent(), new CC().push().grow());
     selectionBar.selectFirstButton();
-  }
-
-  @Override
-  public Node getNode() {
     return contentPanel;
   }
 }

@@ -21,7 +21,7 @@ public class OneLineStatusBar implements StatusBar {
     label.setPrefSize(350, 20);
   }
 
-  public Node getNode() {
+  public Node getComponent() {
     return panel;
   }
 

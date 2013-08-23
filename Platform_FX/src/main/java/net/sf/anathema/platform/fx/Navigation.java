@@ -1,11 +1,8 @@
 package net.sf.anathema.platform.fx;
 
-import javafx.collections.ObservableMap;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ToolBar;
-import javafx.scene.input.KeyCombination;
 import net.miginfocom.layout.AC;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.interaction.ToggleTool;
@@ -24,8 +21,13 @@ public class Navigation {
   private ToolBar toolBar = new ToolBar();
 
   public Navigation() {
-    pane.add(toolBar, new CC().width("100%").grow());
-    pane.add(navigation, new CC().push());
+    FxThreading.runOnCorrectThread(new Runnable() {
+      @Override
+      public void run() {
+        pane.add(toolBar, new CC().width("100%").grow());
+        pane.add(navigation, new CC().push());
+      }
+    });
   }
 
   public Tool addTool() {
@@ -63,10 +65,15 @@ public class Navigation {
   }
 
   private void addTool(final FxBaseTool fxButtonTool) {
-    toolBar.getItems().add(fxButtonTool.getNode());
-    Scene scene = toolBar.getScene();
-    ObservableMap<KeyCombination, Runnable> accelerators = scene.getAccelerators();
-    FxAcceleratorMap acceleratorMap = new FxAcceleratorMap(accelerators);
-    fxButtonTool.registerHotkeyIn(acceleratorMap);
+    FxThreading.runOnCorrectThread(new Runnable() {
+      @Override
+      public void run() {
+        toolBar.getItems().add(fxButtonTool.getNode());
+        Scene scene = toolBar.getScene();
+        /*ObservableMap<KeyCombination, Runnable> accelerators = scene.getAccelerators();
+        FxAcceleratorMap acceleratorMap = new FxAcceleratorMap(accelerators);
+        fxButtonTool.registerHotkeyIn(acceleratorMap);*/
+      }
+    });
   }
 }

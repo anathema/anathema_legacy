@@ -4,7 +4,5 @@ import javafx.scene.Node;
 
 public interface ViewFactory {
 
-  Node getNode();
-
-  void init();
+  Node createContent();
 }
