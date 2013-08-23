@@ -14,7 +14,6 @@ import javafx.scene.transform.Transform;
 import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.lib.gui.StatefulTooltip;
-import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.platform.fx.tooltip.StatefulFxTooltip;
 import net.sf.anathema.platform.tree.display.DisplayPolygonPanel;
 import net.sf.anathema.platform.tree.display.transform.AgnosticTransform;
@@ -56,19 +55,15 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
   private final Rectangle background = new Rectangle();
   private final Group canvas = new Group();
   private final Rectangle glasspane = new Rectangle();
+  private final Tooltip tooltip = new Tooltip();
   private AgnosticTransform transform = new AgnosticTransform();
-  private Tooltip tooltip;
 
   public FxPolygonPanel() {
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        tooltip = new Tooltip();
-      }
-    });
+    Rectangle clippingRectangle = new Rectangle(0, 0);
     sizeLikeContentPane(background);
     sizeLikeContentPane(glasspane);
-    glasspane.setFill(Color.color(0, 0, 0, 0.1));
+    sizeLikeContentPane(clippingRectangle);
+    content.setClip(clippingRectangle);
     content.getChildren().addAll(background, canvas, glasspane);
     setBackground(RGBColor.White);
   }
@@ -98,8 +93,8 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
         MouseButton button = determineMouseButton(event);
         Coordinate glasspaneCoordinate = determineCoordinate(event);
         Coordinate coordinate = determineCoordinateInCanvas(glasspaneCoordinate);
-        if (specialControl.contains(coordinate) && button == MouseButton.Primary){
-            specialControl.toggle();
+        if (specialControl.contains(coordinate) && button == MouseButton.Primary) {
+          specialControl.toggle();
         }
       }
     });
