@@ -1,5 +1,8 @@
 package net.sf.anathema.cascades.module;
 
+import javafx.scene.Node;
+import net.miginfocom.layout.CC;
+import net.miginfocom.layout.LC;
 import net.sf.anathema.cascades.presenter.CharmCascadesPresenterImpl;
 import net.sf.anathema.cascades.presenter.CharmTreeIdentifierMap;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
@@ -15,6 +18,7 @@ import net.sf.anathema.hero.framework.HeroEnvironmentExtractor;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.resources.Resources;
+import org.tbee.javafx.scene.layout.MigPane;
 
 @PerspectiveAutoCollector
 @Weight(weight = 6000)
@@ -32,7 +36,15 @@ public class CharmCascadePerspective implements Perspective {
     FxCharmView cascadeView = new FxCharmView();
     new CharmCascadesPresenterImpl(resources, characterGenerics, cascadeView, magicDescriptionProvider,
             new CharmTreeIdentifierMap()).initPresentation();
-    container.setContent(cascadeView.getNode());
+    MigPane content = createContentPane(cascadeView);
+    container.setContent(content);
+  }
+
+  private MigPane createContentPane(FxCharmView cascadeView) {
+    Node node = cascadeView.getNode();
+    MigPane content = new MigPane(new LC().fill());
+    content.add(node, new CC().grow().push());
+    return content;
   }
 
   private MagicDescriptionProvider getCharmDescriptionProvider(IApplicationModel model, Resources resources) {

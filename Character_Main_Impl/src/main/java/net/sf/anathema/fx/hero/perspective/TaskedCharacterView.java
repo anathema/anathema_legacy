@@ -1,17 +1,15 @@
 package net.sf.anathema.fx.hero.perspective;
 
 import javafx.scene.Node;
-import javafx.scene.layout.BorderPane;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.character.main.view.CharacterView;
 import net.sf.anathema.character.main.view.CharacterViewSection;
 import net.sf.anathema.character.main.view.SectionView;
 import net.sf.anathema.character.main.view.SubViewRegistry;
 import net.sf.anathema.framework.view.util.OptionalViewBar;
-import net.sf.anathema.hero.advance.overview.view.CategorizedOverview;
 import net.sf.anathema.fx.hero.overview.DefaultCategorizedOverview;
 import net.sf.anathema.fx.hero.overview.NullOverviewContainer;
-import net.sf.anathema.lib.gui.layout.LayoutUtils;
+import net.sf.anathema.hero.advance.overview.view.CategorizedOverview;
 import org.tbee.javafx.scene.layout.MigPane;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
@@ -52,7 +50,7 @@ public class TaskedCharacterView implements CharacterView {
   @Override
   public Node getNode() {
     if (content == null) {
-      content = new MigPane(fillWithoutInsets().debug(1));
+      content = new MigPane(fillWithoutInsets());
       content.add(characterPane.getNode(), new CC().grow().push());
       content.add(optionalViewPane.getNode(), new CC().alignY("top"));
       overviewView.showIn(characterPane);

@@ -7,7 +7,6 @@ import javafx.scene.layout.BorderPane;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
-import net.sf.anathema.lib.lang.ArrayUtilities;
 import org.tbee.javafx.scene.layout.MigPane;
 
 import static net.sf.anathema.platform.fx.FxThreading.runOnCorrectThread;
@@ -25,22 +24,15 @@ public class PerspectivePane {
     runOnCorrectThread(new Runnable() {
       @Override
       public void run() {
-        String[] allStyleSheetPaths = getAllStyleSheetPaths(styleSheetPaths);
-        for (String sheetPath : allStyleSheetPaths) {
+        for (String sheetPath : styleSheetPaths) {
           new Stylesheet(sheetPath).applyToParent(outerPane);
         }
       }
     });
   }
 
-  private void initBorderedPane(Parent pane, String basicStyleClass) {
+  private void initBorderedPane(Parent pane) {
     BorderPane.setMargin(pane, new Insets(3));
-    pane.getStyleClass().add(basicStyleClass);
-    pane.getStyleClass().add("bordered-perspective-container");
-  }
-
-  private String[] getAllStyleSheetPaths(String[] styleSheetPaths) {
-    return ArrayUtilities.concat(String.class, styleSheetPaths, "skin/platform/perspective.css");
   }
 
   public void setNavigationComponent(final Node component) {
@@ -73,7 +65,6 @@ public class PerspectivePane {
   private class InitOuterPane implements Runnable {
     @Override
     public void run() {
-      outerPane.getStyleClass().add("perspective-outer-pane");
       outerPane.add(navigationPanel, new CC().grow().minWidth("200").width("200").maxWidth("200"));
       outerPane.add(contentPanel, new CC().grow().push());
     }
@@ -82,14 +73,14 @@ public class PerspectivePane {
   private class InitNavigationPane implements Runnable {
     @Override
     public void run() {
-      initBorderedPane(navigationPanel, "perspective-navigation-pane");
+      initBorderedPane(navigationPanel);
     }
   }
 
   private class InitContentPane implements Runnable {
     @Override
     public void run() {
-      initBorderedPane(contentPanel, "perspective-content-pane");
+      initBorderedPane(contentPanel);
     }
   }
 }
