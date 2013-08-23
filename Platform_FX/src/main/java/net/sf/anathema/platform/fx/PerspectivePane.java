@@ -74,7 +74,7 @@ public class PerspectivePane {
     @Override
     public void run() {
       outerPane.getStyleClass().add("perspective-outer-pane");
-      outerPane.add(navigationPanel, new CC().grow().push());
+      outerPane.add(navigationPanel, new CC().grow().minWidth("200").width("200").maxWidth("200"));
       outerPane.add(contentPanel, new CC().grow().push());
     }
   }
@@ -82,9 +82,6 @@ public class PerspectivePane {
   private class InitNavigationPane implements Runnable {
     @Override
     public void run() {
-      navigationPanel.setMinWidth(200);
-      navigationPanel.setPrefWidth(200);
-      navigationPanel.setMaxWidth(200);
       initBorderedPane(navigationPanel, "perspective-navigation-pane");
     }
   }
