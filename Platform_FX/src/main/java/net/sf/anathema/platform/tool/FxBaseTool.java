@@ -18,8 +18,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static net.sf.anathema.platform.fx.FxUtilities.systemSupportsPopUpsWhileEmbeddingFxIntoSwing;
-
 public class FxBaseTool implements Tool, FxComponent {
   private final ButtonBase button;
   private final ImageView overlay;
@@ -66,9 +64,6 @@ public class FxBaseTool implements Tool, FxComponent {
 
   @Override
   public void setTooltip(final String text) {
-    if (!systemSupportsPopUpsWhileEmbeddingFxIntoSwing()) {
-      return;
-    }
     Platform.runLater(new Runnable() {
       @Override
       public void run() {

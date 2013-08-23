@@ -9,12 +9,10 @@ import net.sf.anathema.lib.resources.Resources;
 public class EquipmentItemUIConfiguration extends AbstractUIConfiguration<String> {
 
   private final IEquipmentTemplateProvider templateProvider;
-  private Resources resources;
   private final EquipmentTemplateTooltipBuilder tooltipBuilder;
 
   public EquipmentItemUIConfiguration(IEquipmentTemplateProvider provider, Resources resources) {
     templateProvider = provider;
-    this.resources = resources;
     tooltipBuilder = new EquipmentTemplateTooltipBuilder(resources);
   }
 

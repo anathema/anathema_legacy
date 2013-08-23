@@ -26,11 +26,9 @@ public class UITableCell<T> extends ListCell<T> {
   }
 
   private void setTooltip(T item) {
-    if (FxUtilities.systemSupportsPopUpsWhileEmbeddingFxIntoSwing()) {
-      ConfigurableFxTooltip configurableTooltip = new ConfigurableFxTooltip();
-      configuration.configureTooltip(item, configurableTooltip);
-      configurableTooltip.configure(this);
-    }
+    ConfigurableFxTooltip configurableTooltip = new ConfigurableFxTooltip();
+    configuration.configureTooltip(item, configurableTooltip);
+    configurableTooltip.configure(this);
   }
 
   private void setImage(T item) {
