@@ -6,7 +6,6 @@ import javafx.stage.Stage;
 import net.sf.anathema.framework.configuration.IInitializationPreferences;
 import net.sf.anathema.framework.configuration.InitializationPreferences;
 import net.sf.anathema.framework.environment.LocaleEnvironment;
-import net.sf.anathema.framework.environment.SwingEnvironment;
 import net.sf.anathema.framework.view.ApplicationFrame;
 import net.sf.anathema.framework.view.ErrorWindow;
 import net.sf.anathema.initialization.GuiInitializer;
@@ -27,19 +26,13 @@ public class Anathema extends Application {
   public void init() throws Exception {
     Logger.getLogger(Anathema.class).info("Launching Anathema");
     this.initializationPreferences = loadPreferences();
-    prepareEnvironment(initializationPreferences);
+    displayStatus("Preparing Environment...");
+    LocaleEnvironment.initLocale(initializationPreferences);
   }
 
   private IInitializationPreferences loadPreferences() {
     displayStatus("Retrieving Preferences...");
     return InitializationPreferences.getDefaultPreferences();
-  }
-
-  private void prepareEnvironment(IInitializationPreferences initializationPreferences) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
-    displayStatus("Preparing Environment...");
-    LocaleEnvironment.initLocale(initializationPreferences);
-    SwingEnvironment.initLookAndFeel(initializationPreferences);
-    SwingEnvironment.initTooltipManager(initializationPreferences);
   }
 
   @Override
