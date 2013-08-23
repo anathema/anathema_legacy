@@ -22,19 +22,16 @@ import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 
 public class FxToolListView<T> implements ToolListView<T> {
 
-  private ListView<T> list;
-  private MigPane buttonPanel;
-  private MigPane content;
+  private ListView<T> list = new ListView<>();
+  private MigPane buttonPanel = new MigPane();
+  private MigPane content = new MigPane(fillWithoutInsets().wrapAfter(1));
 
   public FxToolListView() {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        list = new ListView<>();
         list.getStyleClass().add("tool-list");
-        buttonPanel = new MigPane();
         buttonPanel.getStyleClass().add("tool-buttons");
-        content = new MigPane(fillWithoutInsets().wrapAfter(1));
         content.add(list, new CC().push().grow().span());
         content.add(buttonPanel);
         list.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
@@ -54,7 +51,6 @@ public class FxToolListView<T> implements ToolListView<T> {
 
   @Override
   public void addListSelectionListener(final Runnable listener) {
-    waitForContent();
     list.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<T>() {
       @Override
       public void changed(ObservableValue<? extends T> observableValue, T t, T t2) {
@@ -65,7 +61,6 @@ public class FxToolListView<T> implements ToolListView<T> {
 
   @Override
   public void addListSelectionListener(final Closure<T> listener) {
-    waitForContent();
     list.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<T>() {
       @Override
       public void changed(ObservableValue<? extends T> observableValue, T t, T newSelection) {
@@ -96,17 +91,6 @@ public class FxToolListView<T> implements ToolListView<T> {
   }
 
   public void setUiConfiguration(final AgnosticUIConfiguration<T> configuration) {
-    waitForContent();
     list.setCellFactory(new ConfigurableListCellFactory<>(configuration));
-  }
-
-  private void waitForContent() {
-    while (content == null) {
-      try {
-        Thread.sleep(50);
-      } catch (InterruptedException e) {
-        throw new RuntimeException(e);
-      }
-    }
   }
 }

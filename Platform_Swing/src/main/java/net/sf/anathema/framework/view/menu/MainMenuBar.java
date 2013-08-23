@@ -2,15 +2,14 @@ package net.sf.anathema.framework.view.menu;
 
 import net.sf.anathema.framework.view.MenuBar;
 
-import javax.swing.JMenuBar;
-
 public class MainMenuBar implements MenuBar {
 
-  private final JMenuBar menuBar = new JMenuBar();
+  private final javafx.scene.control.MenuBar menuBar = new javafx.scene.control.MenuBar();
   private final Menu mainMenu;
   private final Menu helpMenu;
 
   public MainMenuBar(String mainMenuName, String helpMenuName) {
+    menuBar.setUseSystemMenuBar(true);
     char mainMenuMnemonic = mainMenuName.charAt(0);
     mainMenu = new Menu(mainMenuName, mainMenuMnemonic);
     char helpMenuMnemonic = 'H';
@@ -22,8 +21,8 @@ public class MainMenuBar implements MenuBar {
       }
     }
     helpMenu = new Menu(helpMenuName, helpMenuMnemonic);
-    menuBar.add(mainMenu.getComponent());
-    menuBar.add(helpMenu.getComponent());
+    menuBar.getMenus().add(mainMenu.getNode());
+    menuBar.getMenus().add(helpMenu.getNode());
   }
 
   @Override
@@ -36,7 +35,7 @@ public class MainMenuBar implements MenuBar {
     return helpMenu;
   }
 
-  public JMenuBar getMenuBar() {
+  public javafx.scene.control.MenuBar getMenuBar() {
     return menuBar;
   }
 }

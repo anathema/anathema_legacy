@@ -18,16 +18,10 @@ public class FxEquipmentDetails implements EquipmentDetails {
 
   private final FxToolListView<IEquipmentStats> listView = new FxToolListView<>();
   private final FxEquipmentDescriptionPanel descriptionPanel;
-  private MigPane outerPane;
+  private MigPane outerPane = new MigPane(LayoutUtils.fillWithoutInsets().wrapAfter(1), new AC().grow().fill());
 
   public FxEquipmentDetails(SelectionViewFactory selectionFactory) {
     this.descriptionPanel = new FxEquipmentDescriptionPanel(selectionFactory);
-    Platform.runLater(new Runnable() {
-      @Override
-      public void run() {
-        outerPane = new MigPane(LayoutUtils.fillWithoutInsets().wrapAfter(1), new AC().grow().fill());
-      }
-    });
   }
 
   public Node getNode() {

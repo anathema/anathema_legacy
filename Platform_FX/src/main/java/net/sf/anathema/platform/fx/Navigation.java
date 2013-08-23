@@ -1,7 +1,7 @@
 package net.sf.anathema.platform.fx;
 
-import javafx.application.Platform;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.ToolBar;
 import net.miginfocom.layout.AC;
 import net.miginfocom.layout.CC;
@@ -16,30 +16,14 @@ import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
 public class Navigation {
 
-  private MigPane pane;
-  private MigPane navigation;
-  private ToolBar toolBar;
+  private MigPane pane = new MigPane(withoutInsets().gridGap("0", "2").wrapAfter(1), new AC().grow().fill(), new AC().fill());
+  private MigPane navigation = new MigPane(withoutInsets().gridGap("0", "2").wrapAfter(1), new AC().grow().fill(), new AC().fill());
+  private ToolBar toolBar = new ToolBar();
 
   public Navigation() {
-    FxThreading.assertNotOnFxThread();
-    Platform.runLater(new Runnable() {
+    FxThreading.runOnCorrectThread(new Runnable() {
       @Override
       public void run() {
-        navigation = new MigPane(withoutInsets().gridGap("0", "2").wrapAfter(1), new AC().grow().fill(),
-                new AC().fill());
-      }
-    });
-    Platform.runLater(new Runnable() {
-      @Override
-      public void run() {
-        toolBar = new ToolBar();
-      }
-    });
-    Platform.runLater(new Runnable() {
-      @Override
-      public void run() {
-        pane = new MigPane(withoutInsets().gridGap("0", "2").wrapAfter(1), new AC().grow().fill(),
-                new AC().fill());
         pane.add(toolBar, new CC().width("100%").grow());
         pane.add(navigation, new CC().push());
       }
@@ -68,7 +52,7 @@ public class Navigation {
   }
 
   public void clear() {
-    Platform.runLater(new Runnable() {
+    FxThreading.runOnCorrectThread(new Runnable() {
       @Override
       public void run() {
         navigation.getChildren().clear();
@@ -85,8 +69,10 @@ public class Navigation {
       @Override
       public void run() {
         toolBar.getItems().add(fxButtonTool.getNode());
-        FxAcceleratorMap acceleratorMap = new FxAcceleratorMap(toolBar.getScene().getAccelerators());
-        fxButtonTool.registerHotkeyIn(acceleratorMap);
+        Scene scene = toolBar.getScene();
+        /*ObservableMap<KeyCombination, Runnable> accelerators = scene.getAccelerators();
+        FxAcceleratorMap acceleratorMap = new FxAcceleratorMap(accelerators);
+        fxButtonTool.registerHotkeyIn(acceleratorMap);*/
       }
     });
   }

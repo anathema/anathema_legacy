@@ -9,13 +9,12 @@ import net.sf.anathema.platform.fx.Navigation;
 
 public class FxEquipmentNavigation extends Navigation implements EquipmentNavigation {
 
-  private ListSelectionView<String> listView;
+  private ListSelectionView<String> listView = new ListSelectionView<>();
 
   public FxEquipmentNavigation() {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        listView = new ListSelectionView<>();
         addContainerToNavigation(listView.getNode());
       }
     });
@@ -23,18 +22,7 @@ public class FxEquipmentNavigation extends Navigation implements EquipmentNaviga
 
   @Override
   public VetoableObjectSelectionView<String> getTemplateListView() {
-    waitForListView();
     return listView;
-  }
-
-  private void waitForListView() {
-    while (listView == null) {
-      try {
-        Thread.sleep(50);
-      } catch (InterruptedException e) {
-        throw new RuntimeException(e);
-      }
-    }
   }
 
   @Override

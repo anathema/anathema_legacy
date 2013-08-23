@@ -1,6 +1,5 @@
 package net.sf.anathema.platform.fx;
 
-import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -11,6 +10,8 @@ import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.lib.lang.ArrayUtilities;
 import org.tbee.javafx.scene.layout.MigPane;
 
+import static net.sf.anathema.platform.fx.FxThreading.runOnCorrectThread;
+
 public class PerspectivePane {
 
   private MigPane outerPane;
@@ -18,11 +19,10 @@ public class PerspectivePane {
   private MigPane contentPanel = new MigPane(LayoutUtils.fillWithoutInsets());
 
   public PerspectivePane(final String... styleSheetPaths) {
-    FxThreading.assertNotOnFxThread();
-    Platform.runLater(new InitNavigationPane());
-    Platform.runLater(new InitContentPane());
-    Platform.runLater(new InitOuterPane());
-    Platform.runLater(new Runnable() {
+    runOnCorrectThread(new InitNavigationPane());
+    runOnCorrectThread(new InitContentPane());
+    runOnCorrectThread(new InitOuterPane());
+    runOnCorrectThread(new Runnable() {
       @Override
       public void run() {
         String[] allStyleSheetPaths = getAllStyleSheetPaths(styleSheetPaths);
@@ -43,15 +43,24 @@ public class PerspectivePane {
     return ArrayUtilities.concat(String.class, styleSheetPaths, "skin/platform/perspective.css");
   }
 
-  public void setNavigationComponent(Node component) {
-    FxThreading.assertOnFxThread();
-    navigationPanel.add(component, new CC().grow().push());
+  public void setNavigationComponent(final Node component) {
+    runOnCorrectThread(new Runnable() {
+      @Override
+      public void run() {
+        navigationPanel.add(component, new CC().grow().push());
+      }
+    });
   }
 
-  public void setContentComponent(Node component) {
-    FxThreading.assertOnFxThread();
-    contentPanel.add(component, new CC().grow().push());
+  public void setContentComponent(final Node component) {
+    runOnCorrectThread(new Runnable() {
+      @Override
+      public void run() {
+        contentPanel.add(component, new CC().grow().push());
+      }
+    });
   }
+
 
   public void addStyleSheetClass(String styleClass) {
     outerPane.getStyleClass().add(styleClass);

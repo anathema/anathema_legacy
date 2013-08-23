@@ -1,11 +1,9 @@
 package net.sf.anathema.framework.presenter;
 
 import net.sf.anathema.lib.file.RelativePath;
-import net.sf.anathema.lib.gui.icon.ImageProvider;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.awt.Frame;
-import java.awt.Image;
 
 public class AnathemaViewProperties {
 
@@ -21,8 +19,8 @@ public class AnathemaViewProperties {
     return resources.getString("MainFrame.Title");
   }
 
-  public Image getFrameIcon() {
-    return new ImageProvider().getImage(new RelativePath("icons/AnathemaIcon.png"));
+  public RelativePath getFrameIcon() {
+    return new RelativePath("icons/AnathemaIcon.png");
   }
 
   public String getMainMenuName() {

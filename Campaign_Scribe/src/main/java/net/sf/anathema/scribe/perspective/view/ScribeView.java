@@ -1,6 +1,5 @@
 package net.sf.anathema.scribe.perspective.view;
 
-import javafx.application.Platform;
 import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.platform.fx.PerspectivePane;
 import net.sf.anathema.scribe.editor.view.FxScrollView;
@@ -11,8 +10,7 @@ public class ScribeView {
   public final ScribeNavigation scribeNavigation = new ScribeNavigation();
 
   public ScribeView() {
-    FxThreading.assertNotOnFxThread();
-    Platform.runLater(new Runnable() {
+    FxThreading.runOnCorrectThread(new Runnable() {
       @Override
       public void run() {
         perspectivePane.addStyleSheetClass("scribe-perspective");

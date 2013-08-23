@@ -1,5 +1,6 @@
 package net.sf.anathema.initialization;
 
+import javafx.stage.Stage;
 import net.sf.anathema.ISplashscreen;
 import net.sf.anathema.ProxySplashscreen;
 import net.sf.anathema.framework.IApplicationModel;
@@ -9,15 +10,17 @@ import net.sf.anathema.framework.module.AnathemaCoreMenu;
 import net.sf.anathema.framework.presenter.AnathemaViewProperties;
 import net.sf.anathema.framework.resources.LocaleResources;
 import net.sf.anathema.framework.view.ApplicationView;
-import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.framework.view.perspective.PerspectivePaneFactory;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.Resources;
 
 public class GuiInitializer extends Initializer {
 
-  public GuiInitializer(IInitializationPreferences initializationPreferences) throws InitializationException {
+  private final Stage stage;
+
+  public GuiInitializer(IInitializationPreferences initializationPreferences, Stage stage) throws InitializationException {
     super(initializationPreferences);
+    this.stage = stage;
   }
 
   @Override
@@ -36,7 +39,7 @@ public class GuiInitializer extends Initializer {
     displayMessage("Building View...");
     AnathemaViewProperties viewProperties = new AnathemaViewProperties(resources, getPreferences().initMaximized());
     PerspectivePaneFactory factory = new PerspectivePaneFactory(anathemaModel, resources, objectFactory);
-    return new SwingApplicationFrame(viewProperties, factory);
+    return new FxApplicationFrame(stage, viewProperties, factory);
   }
 
   @Override

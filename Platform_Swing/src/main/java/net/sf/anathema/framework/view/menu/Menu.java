@@ -1,37 +1,34 @@
 package net.sf.anathema.framework.view.menu;
 
+import javafx.scene.control.SeparatorMenuItem;
 import net.sf.anathema.interaction.Command;
-import net.sf.anathema.swing.interaction.ActionInteraction;
-
-import javax.swing.JMenu;
 
 public class Menu implements IMenu {
 
-  private final JMenu menu;
+  private final javafx.scene.control.Menu menu;
 
   public Menu(String name) {
-    menu = new JMenu(name);
+    menu = new javafx.scene.control.Menu(name);
   }
 
   public Menu(String name, char mnemonic) {
     this(name);
-    menu.setMnemonic(mnemonic);
   }
 
-  public JMenu getComponent() {
+  public javafx.scene.control.Menu getNode() {
     return menu;
   }
 
   @Override
   public void addMenuItem(Command action, String label) {
-    ActionInteraction tool = new ActionInteraction();
+    FxMenuTool tool = new FxMenuTool();
     tool.setText(label);
     tool.setCommand(action);
-    tool.addTo(new AddToSwingMenu(menu));
+    menu.getItems().add(tool.getNode());
   }
 
   @Override
   public void addSeparator() {
-    menu.addSeparator();
+    menu.getItems().add(new SeparatorMenuItem());
   }
 }

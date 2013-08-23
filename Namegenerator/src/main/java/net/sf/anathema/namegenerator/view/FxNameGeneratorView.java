@@ -21,8 +21,6 @@ import net.sf.anathema.platform.fx.PerspectivePane;
 import org.jmock.example.announcer.Announcer;
 import org.tbee.javafx.scene.layout.MigPane;
 
-import javax.swing.JComponent;
-
 public class FxNameGeneratorView implements NameGeneratorView {
 
   private final PerspectivePane pane = new PerspectivePane();
@@ -33,8 +31,7 @@ public class FxNameGeneratorView implements NameGeneratorView {
   private final Announcer<ChangeListener> generatorListeners = Announcer.to(ChangeListener.class);
 
   public FxNameGeneratorView() {
-    FxThreading.assertNotOnFxThread();
-    Platform.runLater(new Runnable() {
+    FxThreading.runOnCorrectThread(new Runnable() {
       @Override
       public void run() {
         pane.setNavigationComponent(navigation);

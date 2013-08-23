@@ -24,8 +24,7 @@ public class FxScrollEditor implements ScrollEditor {
   private final Announcer<TextTypedListener> titleChanged = Announcer.to(TextTypedListener.class);
 
   public FxScrollEditor() {
-    FxThreading.assertNotOnFxThread();
-    Platform.runLater(new Runnable() {
+    FxThreading.runOnCorrectThread(new Runnable() {
       @Override
       public void run() {
         titleDisplay = createNameField();

@@ -2,10 +2,9 @@ package net.sf.anathema.platform.tool;
 
 import javafx.scene.image.ImageView;
 import jfxtras.labs.scene.control.MiniIconButton;
-import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.platform.fx.FxComponent;
 
-public class FxButtonTool extends FxBaseTool implements Tool, FxComponent {
+public class FxButtonTool extends FxBaseTool implements FxComponent {
 
   public static FxButtonTool ForToolbar() {
     ImageView mainIcon = new ImageView();

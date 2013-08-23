@@ -11,8 +11,7 @@ public class ThreadedFxScrollPreview implements ScrollPreview {
   private FxScrollPreview preview;
 
   public ThreadedFxScrollPreview() {
-    FxThreading.assertNotOnFxThread();
-    Platform.runLater(new Runnable() {
+    FxThreading.runOnCorrectThread(new Runnable() {
       @Override
       public void run() {
         preview = new FxScrollPreview();
