@@ -86,7 +86,7 @@ public class AnathemaAboutAction implements Command {
   }
 
   private void showCloseButton(MigPane parent, final Stage aboutStage) {
-    Button close = new Button("Close");
+    Button close = new Button(getString("Help.AboutDialog.CloseButton"));
     close.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent actionEvent) {
