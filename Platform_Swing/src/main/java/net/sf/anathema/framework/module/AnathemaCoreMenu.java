@@ -4,7 +4,7 @@ import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.presenter.action.AnathemaExitAction;
 import net.sf.anathema.framework.presenter.action.menu.help.updatecheck.UpdateAction;
-import net.sf.anathema.framework.presenter.action.preferences.AnathemaAboutAction;
+import net.sf.anathema.framework.presenter.action.about.AnathemaAboutAction;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
 import net.sf.anathema.framework.presenter.action.preferences.ShowPreferencesAction;
 import net.sf.anathema.framework.repository.tree.RepositoryViewAction;

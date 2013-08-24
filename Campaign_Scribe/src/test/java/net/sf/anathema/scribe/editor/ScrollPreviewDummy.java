@@ -1,6 +1,6 @@
 package net.sf.anathema.scribe.editor;
 
-import net.sf.anathema.scribe.editor.model.HtmlText;
+import net.sf.anathema.platform.markdown.HtmlText;
 import net.sf.anathema.scribe.editor.presenter.ScrollPreview;
 
 public class ScrollPreviewDummy implements ScrollPreview {

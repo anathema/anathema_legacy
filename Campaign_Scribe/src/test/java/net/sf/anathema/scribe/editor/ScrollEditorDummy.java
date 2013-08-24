@@ -1,14 +1,14 @@
 package net.sf.anathema.scribe.editor;
 
-import net.sf.anathema.scribe.editor.model.WikiText;
+import net.sf.anathema.platform.markdown.WikiText;
 import net.sf.anathema.scribe.editor.presenter.ScrollEditor;
 import net.sf.anathema.scribe.editor.presenter.TextTypedListener;
 import org.jmock.example.announcer.Announcer;
 
 public class ScrollEditorDummy implements ScrollEditor {
 
-  public final Announcer<TextTypedListener> contentChangedAnnouncer = new Announcer<TextTypedListener>(TextTypedListener.class);
-  public final Announcer<TextTypedListener> titleChangedAnnouncer = new Announcer<TextTypedListener>(TextTypedListener.class);
+  public final Announcer<TextTypedListener> contentChangedAnnouncer = new Announcer<>(TextTypedListener.class);
+  public final Announcer<TextTypedListener> titleChangedAnnouncer = new Announcer<>(TextTypedListener.class);
   public WikiText text;
   public String title;
 

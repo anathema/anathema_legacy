@@ -1,4 +1,4 @@
-package net.sf.anathema.scribe.editor.model;
+package net.sf.anathema.platform.markdown;
 
 public class EmbracedConversion implements Conversion {
 

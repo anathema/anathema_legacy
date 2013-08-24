@@ -3,7 +3,7 @@ package net.sf.anathema.scribe.editor.view;
 import javafx.application.Platform;
 import javafx.scene.Node;
 import net.sf.anathema.platform.fx.FxThreading;
-import net.sf.anathema.scribe.editor.model.HtmlText;
+import net.sf.anathema.platform.markdown.HtmlText;
 import net.sf.anathema.scribe.editor.presenter.ScrollPreview;
 
 public class ThreadedFxScrollPreview implements ScrollPreview {

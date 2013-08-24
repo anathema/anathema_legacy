@@ -2,9 +2,9 @@ package net.sf.anathema.scribe.perspective.presenter;
 
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.control.ChangeListener;
-import net.sf.anathema.scribe.editor.model.HtmlText;
+import net.sf.anathema.platform.markdown.HtmlText;
 import net.sf.anathema.scribe.editor.model.ScrollChangedListener;
-import net.sf.anathema.scribe.editor.model.WikiText;
+import net.sf.anathema.platform.markdown.WikiText;
 import net.sf.anathema.scribe.perspective.model.ScribeModel;
 import net.sf.anathema.scribe.perspective.view.ScribeNavigation;
 import net.sf.anathema.scribe.scroll.persistence.ScrollReference;

@@ -8,7 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import net.sf.anathema.platform.fx.FxThreading;
-import net.sf.anathema.scribe.editor.model.WikiText;
+import net.sf.anathema.platform.markdown.WikiText;
 import net.sf.anathema.scribe.editor.presenter.ScrollEditor;
 import net.sf.anathema.scribe.editor.presenter.TextTypedListener;
 import org.jmock.example.announcer.Announcer;

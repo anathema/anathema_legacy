@@ -4,7 +4,7 @@ import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.web.WebView;
-import net.sf.anathema.scribe.editor.model.HtmlText;
+import net.sf.anathema.platform.markdown.HtmlText;
 import net.sf.anathema.scribe.editor.presenter.ScrollPreview;
 
 public class FxScrollPreview implements ScrollPreview {

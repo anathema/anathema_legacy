@@ -1,4 +1,4 @@
-package net.sf.anathema.scribe.editor.model;
+package net.sf.anathema.platform.markdown;
 
 import java.util.ArrayList;
 import java.util.List;
