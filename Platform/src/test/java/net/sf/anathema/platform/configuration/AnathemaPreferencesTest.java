@@ -7,7 +7,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import javax.swing.plaf.metal.MetalLookAndFeel;
 import java.util.prefs.Preferences;
 
 public class AnathemaPreferencesTest {
@@ -52,13 +51,6 @@ public class AnathemaPreferencesTest {
   @Test
   public void testLookAndFeelDefault() throws Exception {
     Assert.assertNull(initializationPreferences.getUserLookAndFeel());
-  }
-
-  @Test
-  public void testUserLookAndFeel() throws Exception {
-    String metalName = MetalLookAndFeel.class.getName();
-    preferences.put("UserLookAndFeel", metalName);
-    Assert.assertEquals(metalName, initializationPreferences.getUserLookAndFeel());
   }
 
   @Test

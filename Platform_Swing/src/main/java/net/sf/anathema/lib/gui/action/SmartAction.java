@@ -4,7 +4,6 @@ import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 import net.sf.anathema.lib.gui.icon.IconImageIcon;
 import net.sf.anathema.lib.gui.swing.GuiUtilities;
-import net.sf.anathema.lib.gui.swing.IEnableable;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;

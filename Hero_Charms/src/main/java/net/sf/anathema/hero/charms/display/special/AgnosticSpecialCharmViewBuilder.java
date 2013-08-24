@@ -49,10 +49,10 @@ public class AgnosticSpecialCharmViewBuilder implements SpecialCharmViewBuilder 
 
   @Override
   public void buildFor(ISpecialCharm charm) {
-    charm.accept(new SwingSpecialCharmVisitor());
+    charm.accept(new AgnosticSpecialCharmVisitor());
   }
 
-  private class SwingSpecialCharmVisitor implements ISpecialCharmVisitor {
+  private class AgnosticSpecialCharmVisitor implements ISpecialCharmVisitor {
 
     @Override
     public void visitMultiLearnableCharm(IMultiLearnableCharm visitedCharm) {

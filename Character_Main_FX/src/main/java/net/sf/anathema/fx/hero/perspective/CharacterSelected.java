@@ -5,8 +5,6 @@ import javafx.event.EventHandler;
 import net.sf.anathema.hero.framework.perspective.Selector;
 import net.sf.anathema.hero.framework.perspective.model.CharacterIdentifier;
 
-import javax.swing.SwingUtilities;
-
 public class CharacterSelected implements EventHandler<ActionEvent> {
   private final Selector<CharacterIdentifier> characterSelector;
   private final CharacterIdentifier identifier;
@@ -18,11 +16,6 @@ public class CharacterSelected implements EventHandler<ActionEvent> {
 
   @Override
   public void handle(ActionEvent actionEvent) {
-    SwingUtilities.invokeLater(new Runnable() {
-      @Override
-      public void run() {
-        characterSelector.selected(identifier);
-      }
-    });
+    characterSelector.selected(identifier);
   }
 }

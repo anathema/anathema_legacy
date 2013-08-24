@@ -1,4 +1,4 @@
-package net.sf.anathema.lib.gui.swing;
+package net.sf.anathema.lib.gui.action;
 
 public interface IEnableable {
 

@@ -20,20 +20,20 @@ import static org.mockito.Mockito.verifyZeroInteractions;
 public class AgnosticTreeViewTest {
 
   private final PolygonPanel panel = mock(PolygonPanel.class);
-  private final AgnosticTreeView swingTreeView = new AgnosticTreeView(panel);
+  private final AgnosticTreeView treeView = new AgnosticTreeView(panel);
   Cascade cascade = mock(Cascade.class);
 
   @Test
   public void setsBackgroundColorOnCorrespondingNode() throws Exception {
-    swingTreeView.loadCascade(cascade, true);
-    swingTreeView.colorNode("ID", RGBColor.White);
+    treeView.loadCascade(cascade, true);
+    treeView.colorNode("ID", RGBColor.White);
     verify(cascade).colorNode("ID", RGBColor.White);
   }
 
   @Test
   public void triggersRepaintAfterColoring() throws Exception {
-    swingTreeView.loadCascade(cascade, true);
-    swingTreeView.colorNode("ID", RGBColor.White);
+    treeView.loadCascade(cascade, true);
+    treeView.colorNode("ID", RGBColor.White);
     InOrder inOrder = inOrder(cascade, panel);
     inOrder.verify(cascade).colorNode(anyString(), Matchers.any(RGBColor.class));
     inOrder.verify(panel).refresh();
@@ -41,23 +41,23 @@ public class AgnosticTreeViewTest {
 
   @Test
   public void setsBackgroundFillOnPolygonPanel() throws Exception {
-    swingTreeView.setCanvasBackground(RGBColor.Red);
+    treeView.setCanvasBackground(RGBColor.Red);
     verify(panel).setBackground(RGBColor.Red);
   }
 
   @Test
   public void notifiesListenersOfLoading() throws Exception {
     CascadeLoadedListener listener = mock(CascadeLoadedListener.class);
-    swingTreeView.addCascadeLoadedListener(listener);
-    swingTreeView.loadCascade(cascade, true);
+    treeView.addCascadeLoadedListener(listener);
+    treeView.loadCascade(cascade, true);
     verify(listener).cascadeLoaded();
   }
 
   @Test
   public void zoomsOutALittleAfterNotificationSoAllSpecialControlsAreInitializedWhenItHappens() throws Exception {
     CascadeLoadedListener listener = mock(CascadeLoadedListener.class);
-    swingTreeView.addCascadeLoadedListener(listener);
-    swingTreeView.loadCascade(cascade, true);
+    treeView.addCascadeLoadedListener(listener);
+    treeView.loadCascade(cascade, true);
     InOrder inOrder = inOrder(listener, panel);
     inOrder.verify(listener).cascadeLoaded();
     inOrder.verify(panel).scale(0.75);
@@ -65,13 +65,13 @@ public class AgnosticTreeViewTest {
 
   @Test
   public void paintsCascadeOnCanvas() throws Exception {
-    swingTreeView.loadCascade(cascade, true);
+    treeView.loadCascade(cascade, true);
     verify(cascade).addTo(panel);
   }
 
   @Test
   public void clearsCanvasBeforeAdding() throws Exception {
-    swingTreeView.loadCascade(cascade, true);
+    treeView.loadCascade(cascade, true);
     InOrder inOrder = inOrder(panel, cascade);
     inOrder.verify(panel).clear();
     inOrder.verify(cascade).addTo(panel);
@@ -79,31 +79,31 @@ public class AgnosticTreeViewTest {
 
   @Test
   public void isEmptyAfterClear() throws Exception {
-    swingTreeView.clear();
+    treeView.clear();
     verify(panel).clear();
   }
 
   @Test
   public void resetsPanelDuringClear() throws Exception {
-    swingTreeView.clear();
+    treeView.clear();
     verify(panel).resetTransformation();
   }
 
   @Test
   public void forgetsCascadeOnClear() throws Exception {
-    swingTreeView.loadCascade(cascade, true);
-    swingTreeView.clear();
+    treeView.loadCascade(cascade, true);
+    treeView.clear();
     reset(cascade);
-    swingTreeView.colorNode("X", RGBColor.Black);
+    treeView.colorNode("X", RGBColor.Black);
     verifyZeroInteractions(cascade);
   }
 
   @Test
   public void initializesNodeNamesOnCascadesAndRepaints() throws Exception {
     NodePresentationProperties properties = mock(NodePresentationProperties.class);
-    swingTreeView.loadNodeNamesFrom(properties);
-    swingTreeView.loadCascade(cascade, true);
-    swingTreeView.initNodeNames();
+    treeView.loadNodeNamesFrom(properties);
+    treeView.loadCascade(cascade, true);
+    treeView.initNodeNames();
     InOrder inOrder = inOrder(cascade, panel);
     inOrder.verify(cascade).initNodeNames(properties);
     inOrder.verify(panel).refresh();
@@ -112,7 +112,7 @@ public class AgnosticTreeViewTest {
   @Test
   public void registersToolTipListener() {
     ToolTipProperties properties = mock(ToolTipProperties.class);
-    swingTreeView.initToolTips(properties);
+    treeView.initToolTips(properties);
     verify(panel).addMouseMotionListener(isA(ToolTipListener.class));
   }
 
