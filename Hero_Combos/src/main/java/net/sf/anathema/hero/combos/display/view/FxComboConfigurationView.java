@@ -2,12 +2,12 @@ package net.sf.anathema.hero.combos.display.view;
 
 import javafx.scene.Node;
 import net.miginfocom.layout.CC;
-import net.sf.anathema.hero.combos.display.presenter.ComboConfigurationView;
-import net.sf.anathema.hero.combos.display.presenter.ComboContainer;
-import net.sf.anathema.hero.combos.display.presenter.ComboViewProperties;
 import net.sf.anathema.hero.charms.display.magic.FxMagicLearnView;
 import net.sf.anathema.hero.charms.display.magic.MagicLearnProperties;
 import net.sf.anathema.hero.charms.display.magic.MagicLearnView;
+import net.sf.anathema.hero.combos.display.presenter.ComboConfigurationView;
+import net.sf.anathema.hero.combos.display.presenter.ComboContainer;
+import net.sf.anathema.hero.combos.display.presenter.ComboViewProperties;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.platform.fx.FxTextView;
