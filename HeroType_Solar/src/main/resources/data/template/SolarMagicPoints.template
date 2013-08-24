@@ -1,10 +1,10 @@
 {
-    "generalBonusPoints": {
+    "generalCreationPoints": {
         "freePicks": 10,
          "costs": 4,
          "highMartialArtsCosts": 4
     },
-    "favoredBonusPoints": {
+    "favoredCreationPoints": {
         "costs": 3,
         "highMartialArtsCosts": 3
     },

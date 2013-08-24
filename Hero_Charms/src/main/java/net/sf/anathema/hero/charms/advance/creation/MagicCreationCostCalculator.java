@@ -38,12 +38,6 @@ public class MagicCreationCostCalculator implements HeroBonusPointCalculator {
     recalculate();
   }
 
-  private void clear() {
-    generalPicksSpent = 0;
-    favoredPicksSpent = 0;
-    bonusPointsSpent = 0;
-  }
-
   private void handleMagic(Magic magic, Set<Magic> handledMagic) {
     int bonusPointFactor = getMagicCosts(magic);
     boolean favored = analyzer.isMagicFavored(magic);
@@ -114,5 +108,11 @@ public class MagicCreationCostCalculator implements HeroBonusPointCalculator {
   private int getMagicCosts(Magic magic) {
     MagicCosts magicCosts = new MagicCreationCosts(template, standardMartialArtsLevel);
     return magicCosts.getMagicCosts(magic, analyzer);
+  }
+
+  private void clear() {
+    generalPicksSpent = 0;
+    favoredPicksSpent = 0;
+    bonusPointsSpent = 0;
   }
 }
