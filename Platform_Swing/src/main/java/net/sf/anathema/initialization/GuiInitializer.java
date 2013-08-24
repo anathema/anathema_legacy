@@ -6,6 +6,7 @@ import net.sf.anathema.ProxySplashscreen;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.Version;
 import net.sf.anathema.framework.configuration.IInitializationPreferences;
+import net.sf.anathema.framework.fx.FxDialogExceptionHandler;
 import net.sf.anathema.framework.module.AnathemaCoreMenu;
 import net.sf.anathema.framework.presenter.AnathemaViewProperties;
 import net.sf.anathema.framework.resources.LocaleResources;
@@ -32,6 +33,11 @@ public class GuiInitializer extends Initializer {
   public ApplicationView initialize() throws InitializationException {
     InitializedModelAndView dao = initializeModelViewAndPresentation();
     return dao.view;
+  }
+
+  @Override
+  protected void configureExceptionHandling(LocaleResources resources) {
+    getExceptionHandling().addHandler(new FxDialogExceptionHandler(resources, stage));
   }
 
   @Override

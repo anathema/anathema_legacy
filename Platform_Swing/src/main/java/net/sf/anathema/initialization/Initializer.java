@@ -3,7 +3,6 @@ package net.sf.anathema.initialization;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.configuration.IInitializationPreferences;
 import net.sf.anathema.framework.resources.LocaleResources;
-import net.sf.anathema.framework.swing.SwingDialogExceptionHandler;
 import net.sf.anathema.framework.view.ApplicationView;
 import net.sf.anathema.initialization.reflections.AggregatedResourceLoader;
 import net.sf.anathema.initialization.reflections.CustomDataResourceLoader;
@@ -12,6 +11,8 @@ import net.sf.anathema.initialization.reflections.ReflectionObjectFactory;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
 import net.sf.anathema.initialization.repository.RepositoryLocationResolver;
 import net.sf.anathema.lib.exception.CentralExceptionHandling;
+import net.sf.anathema.lib.exception.ConsoleExceptionHandler;
+import net.sf.anathema.lib.exception.LoggingExceptionHandler;
 import net.sf.anathema.lib.resources.ResourceFile;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -19,6 +20,7 @@ import java.util.Set;
 
 public abstract class Initializer {
 
+  private final CentralExceptionHandling exceptionHandling = new CentralExceptionHandling();
   private final IInitializationPreferences initializationPreferences;
   private final AnathemaExtensionCollection extensionCollection;
   private final DefaultAnathemaReflections reflections;
@@ -47,8 +49,13 @@ public abstract class Initializer {
     presenter.initPresentation();
   }
 
-  private void configureExceptionHandling(LocaleResources resources) {
-    CentralExceptionHandling.setHandler(new SwingDialogExceptionHandler(resources));
+  protected void configureExceptionHandling(LocaleResources resources) {
+    exceptionHandling.addHandler(new ConsoleExceptionHandler());
+    exceptionHandling.addHandler(new LoggingExceptionHandler());
+  }
+
+  protected CentralExceptionHandling getExceptionHandling() {
+    return exceptionHandling;
   }
 
   private IApplicationModel initModel(Resources resources, ResourceLoader loader) throws InitializationException {
@@ -71,10 +78,6 @@ public abstract class Initializer {
     RepositoryLocationResolver resolver = new RepositoryLocationResolver(initializationPreferences);
     CustomDataResourceLoader customLoader = new CustomDataResourceLoader(resolver);
     return new AggregatedResourceLoader(reflections, customLoader);
-  }
-
-  protected IInitializationPreferences getPreferences() {
-    return initializationPreferences;
   }
 
   protected abstract void showVersion(Resources resources);

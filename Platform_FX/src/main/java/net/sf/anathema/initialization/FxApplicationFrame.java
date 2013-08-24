@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.sf.anathema.framework.presenter.AnathemaViewProperties;
@@ -22,14 +23,20 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class FxApplicationFrame implements ApplicationFrameView {
+  private static Stage owner;
   private final Stage stage;
   private final AnathemaViewProperties properties;
   private final ViewFactory contentFactory;
   private final MainMenuBar menu;
   private final OneLineStatusBar statusBar = new OneLineStatusBar();
 
+  public static Window getOwner() {
+    return owner;
+  }
+
   public FxApplicationFrame(Stage stage, AnathemaViewProperties viewProperties, ViewFactory factory) {
     this.stage = stage;
+    owner = stage;
     this.properties = viewProperties;
     this.contentFactory = factory;
     this.menu = new MainMenuBar(properties.getMainMenuName(), properties.getHelpMenuName());

@@ -11,7 +11,6 @@ import net.sf.anathema.lib.message.IBasicMessage;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;
-import javax.swing.WindowConstants;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
@@ -40,7 +39,7 @@ public abstract class AbstractDialog {
     Preconditions.checkNotNull(dialogConfiguration);
     this.dialogConfiguration = dialogConfiguration;
     dialogPagePanel = new DialogPagePanel(dialogConfiguration.getHeaderPanelConfiguration());
-    dialog = createFrameOrDialog(parent);
+    dialog = new SwingDialog(GuiUtilities.createDialog(parent, INITIAL_DIALOG_TITLE));
     dialog.setModal(true);
     dialog.getContentPane().setLayout(new MigLayout(LayoutUtils.fillWithoutInsets().wrapAfter(1)));
     dialog.addWindowListener(cancelingWindowListener);
@@ -53,10 +52,6 @@ public abstract class AbstractDialog {
 
   protected boolean isMainContentGrabVerticalSpace() {
     return true;
-  }
-
-  private static ISwingFrameOrDialog createFrameOrDialog(Component parent) {
-    return new SwingDialog(GuiUtilities.createDialog(parent, INITIAL_DIALOG_TITLE));
   }
 
   public final void performCancel() {

@@ -15,6 +15,9 @@ allprojects {
         maven {
             url 'http://anathema.butatopanto.de:8081/maven/releases/'
         }
+        maven {
+            url 'https://github.com/xaviermichel/maven-repo/raw/master/releases'
+        }
     }
 }
 
