@@ -27,8 +27,6 @@ import java.util.Set;
 
 public class GuiUtilities {
 
-  public static final String ENABLED_PROPERTY_NAME = "enabled";
-
   public static Window getWindowFor(EventObject event) {
     if (event == null) {
       return JOptionPane.getRootFrame();

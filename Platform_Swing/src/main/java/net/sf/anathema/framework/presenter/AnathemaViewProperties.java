@@ -3,16 +3,12 @@ package net.sf.anathema.framework.presenter;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.resources.Resources;
 
-import java.awt.Frame;
-
 public class AnathemaViewProperties {
 
   private final Resources resources;
-  private final boolean maximized;
 
-  public AnathemaViewProperties(Resources resources, boolean maximized) {
+  public AnathemaViewProperties(Resources resources) {
     this.resources = resources;
-    this.maximized = maximized;
   }
 
   public String getDefaultFrameTitle() {
@@ -25,10 +21,6 @@ public class AnathemaViewProperties {
 
   public String getMainMenuName() {
     return resources.getString("AnathemaCore.MainMenu.Name");
-  }
-
-  public int getLaunchState() {
-    return maximized ? Frame.MAXIMIZED_BOTH : Frame.NORMAL;
   }
 
   public String getHelpMenuName() {

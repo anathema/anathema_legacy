@@ -37,7 +37,7 @@ public class GuiInitializer extends Initializer {
   @Override
   protected ApplicationFrameView initView(Resources resources, IApplicationModel anathemaModel, ObjectFactory objectFactory) {
     displayMessage("Building View...");
-    AnathemaViewProperties viewProperties = new AnathemaViewProperties(resources, getPreferences().initMaximized());
+    AnathemaViewProperties viewProperties = new AnathemaViewProperties(resources);
     PerspectivePaneFactory factory = new PerspectivePaneFactory(anathemaModel, resources, objectFactory);
     return new FxApplicationFrame(stage, viewProperties, factory);
   }
