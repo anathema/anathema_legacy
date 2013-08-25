@@ -1,6 +1,7 @@
 package net.sf.anathema.fx.hero.overview;
 
 import javafx.scene.Node;
+import net.miginfocom.layout.CC;
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
 import net.sf.anathema.character.main.view.labelledvalue.IValueView;
 import net.sf.anathema.character.main.view.labelledvalue.LabelledAllotmentView;
@@ -12,14 +13,14 @@ import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
 public class FxOverviewCategory implements OverviewCategory {
   private final MigPane panel = new MigPane(withoutInsets().wrapAfter(4));
-  private Node border;
+  private Node overViewCategory;
 
   public FxOverviewCategory(final MigPane parent, final String label) {
     FxThreading.runOnCorrectThread(new Runnable() {
       @Override
       public void run() {
-        border = StyledTitledPane.Create(label, panel);
-        parent.add(border);
+        overViewCategory = StyledTitledPane.Create(label, panel);
+        parent.add(overViewCategory, new CC().grow());
       }
     });
   }
@@ -46,6 +47,6 @@ public class FxOverviewCategory implements OverviewCategory {
   }
 
   public Node getNode() {
-    return border;
+    return overViewCategory;
   }
 }
