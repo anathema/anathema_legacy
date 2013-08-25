@@ -44,7 +44,6 @@ public class Anathema extends Application {
       ApplicationFrame applicationFrame = new GuiInitializer(initializationPreferences, stage, exceptionHandler).initialize().getWindow();
       displayStatus("Done.");
       applicationFrame.show();
-      throw new InitializationException("XC");
     } catch (InitializationException e) {
       exceptionHandler.handle(e);
     }
