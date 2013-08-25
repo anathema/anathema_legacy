@@ -1,21 +1,10 @@
 package net.sf.anathema.platform.environment;
 
-import net.sf.anathema.framework.configuration.IInitializationPreferences;
-import net.sf.anathema.lib.exception.NotYetImplementedException;
+import net.sf.anathema.framework.configuration.RepositoryPreference;
 
-import java.util.Locale;
+public class DummyInitializationPreferences implements RepositoryPreference {
 
-public class DummyInitializationPreferences implements IInitializationPreferences {
-
-  private Locale locale;
-  private int toolTipSeconds;
-  private String userLookAndFeel;
   private String repositoryLocation;
-
-  @Override
-  public boolean initMaximized() {
-    throw new NotYetImplementedException();
-  }
 
   @Override
   public String getRepositoryLocationPreference(String defaultValue) {
@@ -27,32 +16,5 @@ public class DummyInitializationPreferences implements IInitializationPreference
 
   public void setRepositoryLocationPreference(String preference) {
     this.repositoryLocation = preference;
-  }
-
-  @Override
-  public String getUserLookAndFeel() {
-    return userLookAndFeel;
-  }
-
-  @Override
-  public Locale getPreferredLocale() {
-    return locale;
-  }
-
-  @Override
-  public int getTooltipTimePreference() {
-    return toolTipSeconds;
-  }
-
-  public void setLocale(Locale locale) {
-    this.locale = locale;
-  }
-
-  public void setToolTipTime(int toolTipSeconds) {
-    this.toolTipSeconds = toolTipSeconds;
-  }
-
-  public void setUserLookAndFeel(String preference) {
-    userLookAndFeel = preference;
   }
 }

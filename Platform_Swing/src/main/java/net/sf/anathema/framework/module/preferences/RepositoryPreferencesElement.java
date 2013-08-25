@@ -44,7 +44,7 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
 
   public RepositoryPreferencesElement() {
     try {
-      repository = new RepositoryLocationResolver(InitializationPreferences.getDefaultPreferences());
+      repository = new RepositoryLocationResolver(new InitializationPreferences());
       repositoryDirectory = new File(repository.resolve()).getCanonicalFile().toPath();
       defaultDirectory = new File(repository.getDefaultLocation()).getCanonicalFile().toPath();
       verifyDirectoriesExist();

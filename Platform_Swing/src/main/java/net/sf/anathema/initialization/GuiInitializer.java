@@ -5,7 +5,7 @@ import net.sf.anathema.ISplashscreen;
 import net.sf.anathema.ProxySplashscreen;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.Version;
-import net.sf.anathema.framework.configuration.IInitializationPreferences;
+import net.sf.anathema.framework.configuration.RepositoryPreference;
 import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.fx.FxDialogExceptionHandler;
 import net.sf.anathema.framework.module.AnathemaCoreMenu;
@@ -22,7 +22,7 @@ public class GuiInitializer extends Initializer {
   private final Stage stage;
   private final ExtensibleExceptionHandler exceptionHandler;
 
-  public GuiInitializer(IInitializationPreferences initializationPreferences, Stage stage, ExtensibleExceptionHandler exceptionHandler) throws InitializationException {
+  public GuiInitializer(RepositoryPreference initializationPreferences, Stage stage, ExtensibleExceptionHandler exceptionHandler) throws InitializationException {
     super(initializationPreferences, exceptionHandler);
     this.stage = stage;
     this.exceptionHandler = exceptionHandler;

@@ -2,9 +2,8 @@ package net.sf.anathema;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import net.sf.anathema.framework.configuration.IInitializationPreferences;
+import net.sf.anathema.framework.configuration.RepositoryPreference;
 import net.sf.anathema.framework.configuration.InitializationPreferences;
-import net.sf.anathema.framework.environment.LocaleEnvironment;
 import net.sf.anathema.framework.view.ApplicationFrame;
 import net.sf.anathema.initialization.GuiInitializer;
 import net.sf.anathema.initialization.InitializationException;
@@ -14,7 +13,7 @@ import net.sf.anathema.lib.logging.Logger;
 
 public class Anathema extends Application {
 
-  private IInitializationPreferences initializationPreferences;
+  private RepositoryPreference initializationPreferences;
   private ExtensibleExceptionHandler exceptionHandler;
 
   /*Called by the boot loader using reflection.*/
@@ -27,14 +26,8 @@ public class Anathema extends Application {
   public void init() throws Exception {
     Logger.getLogger(Anathema.class).info("Launching Anathema");
     this.exceptionHandler = new ExceptionHandling().create();
-    this.initializationPreferences = loadPreferences();
-    displayStatus("Preparing Environment...");
-    LocaleEnvironment.initLocale(initializationPreferences);
-  }
-
-  private IInitializationPreferences loadPreferences() {
     displayStatus("Retrieving Preferences...");
-    return InitializationPreferences.getDefaultPreferences();
+    this.initializationPreferences = new InitializationPreferences();
   }
 
   @Override

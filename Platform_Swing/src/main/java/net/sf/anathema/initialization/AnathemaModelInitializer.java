@@ -1,7 +1,7 @@
 package net.sf.anathema.initialization;
 
 import net.sf.anathema.framework.IApplicationModel;
-import net.sf.anathema.framework.configuration.IInitializationPreferences;
+import net.sf.anathema.framework.configuration.RepositoryPreference;
 import net.sf.anathema.framework.model.ApplicationModel;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
@@ -14,10 +14,10 @@ import java.io.File;
 
 public class AnathemaModelInitializer {
 
-  private final IInitializationPreferences preferences;
+  private final RepositoryPreference preferences;
   private Iterable<ExtensionWithId> extensions;
 
-  public AnathemaModelInitializer(IInitializationPreferences preferences, Iterable<ExtensionWithId> extensions) {
+  public AnathemaModelInitializer(RepositoryPreference preferences, Iterable<ExtensionWithId> extensions) {
     this.preferences = preferences;
     this.extensions = extensions;
   }

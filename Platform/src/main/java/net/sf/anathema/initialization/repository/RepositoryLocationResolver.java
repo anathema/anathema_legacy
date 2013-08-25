@@ -1,14 +1,14 @@
 package net.sf.anathema.initialization.repository;
 
-import net.sf.anathema.framework.configuration.IInitializationPreferences;
+import net.sf.anathema.framework.configuration.RepositoryPreference;
 
 import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.DEFAULT_REPOSITORY_LOCATION;
 
 public class RepositoryLocationResolver implements IStringResolver {
 
-  private final IInitializationPreferences preferences;
+  private final RepositoryPreference preferences;
 
-  public RepositoryLocationResolver(IInitializationPreferences preferences) {
+  public RepositoryLocationResolver(RepositoryPreference preferences) {
     this.preferences = preferences;
   }
 

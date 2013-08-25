@@ -1,6 +1,6 @@
 package net.sf.anathema.platform.configuration;
 
-import net.sf.anathema.framework.configuration.IInitializationPreferences;
+import net.sf.anathema.framework.configuration.RepositoryPreference;
 import net.sf.anathema.framework.configuration.InitializationPreferences;
 import org.junit.After;
 import org.junit.Assert;
@@ -12,7 +12,7 @@ import java.util.prefs.Preferences;
 public class AnathemaPreferencesTest {
 
   private Preferences preferences;
-  private IInitializationPreferences initializationPreferences;
+  private RepositoryPreference initializationPreferences;
 
   @Before
   public void setUp() throws Exception {
@@ -35,44 +35,6 @@ public class AnathemaPreferencesTest {
   public void customizedDefaultRepository() throws Exception {
     Assert.assertEquals(
       "C:/exalted/ist/toll/", initializationPreferences.getRepositoryLocationPreference("C:/exalted/ist/toll/"));
-  }
-
-  @Test
-  public void testMaximizedDefault() throws Exception {
-    Assert.assertFalse(initializationPreferences.initMaximized());
-  }
-
-  @Test
-  public void testInitMaximized() throws Exception {
-    preferences.putBoolean("Maximize", true);
-    Assert.assertTrue(initializationPreferences.initMaximized());
-  }
-
-  @Test
-  public void testLookAndFeelDefault() throws Exception {
-    Assert.assertNull(initializationPreferences.getUserLookAndFeel());
-  }
-
-  @Test
-  public void testDefaultToolTipTime() throws Exception {
-    Assert.assertEquals(10, initializationPreferences.getTooltipTimePreference());
-  }
-
-  @Test
-  public void testChangedToolTipTime() throws Exception {
-    preferences.putInt("ToolTipTime", 14);
-    Assert.assertEquals(14, initializationPreferences.getTooltipTimePreference());
-  }
-
-  @Test
-  public void testDefaultLocale() throws Exception {
-    Assert.assertEquals("en", initializationPreferences.getPreferredLocale().getLanguage());
-  }
-
-  @Test
-  public void testSpanishLocale() throws Exception {
-    preferences.put("Locale", "Spanish");
-    Assert.assertEquals("es", initializationPreferences.getPreferredLocale().getLanguage());
   }
 
   @After

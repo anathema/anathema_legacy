@@ -1,7 +1,7 @@
 package net.sf.anathema.initialization;
 
 import net.sf.anathema.framework.IApplicationModel;
-import net.sf.anathema.framework.configuration.IInitializationPreferences;
+import net.sf.anathema.framework.configuration.RepositoryPreference;
 import net.sf.anathema.framework.environment.ApplicationEnvironment;
 import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.resources.LocaleResources;
@@ -21,13 +21,13 @@ import java.util.Set;
 
 public abstract class Initializer {
 
-  private final IInitializationPreferences initializationPreferences;
+  private final RepositoryPreference initializationPreferences;
   private final AnathemaExtensionCollection extensionCollection;
   private final DefaultAnathemaReflections reflections;
   private final ObjectFactory objectFactory;
   private final ExceptionHandler exceptionHandler;
 
-  public Initializer(IInitializationPreferences initializationPreferences, ExceptionHandler exceptionHandler) throws InitializationException {
+  public Initializer(RepositoryPreference initializationPreferences, ExceptionHandler exceptionHandler) throws InitializationException {
     this.exceptionHandler = exceptionHandler;
     this.reflections = new DefaultAnathemaReflections();
     this.objectFactory = new ReflectionObjectFactory(reflections);
