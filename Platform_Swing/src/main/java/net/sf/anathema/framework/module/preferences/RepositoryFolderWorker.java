@@ -1,6 +1,8 @@
 package net.sf.anathema.framework.module.preferences;
 
 import net.sf.anathema.framework.repository.RepositoryException;
+import net.sf.anathema.framework.swing.ExceptionIndicator;
+import net.sf.anathema.initialization.FxApplicationFrame;
 import net.sf.anathema.initialization.repository.IOFileSystemAbstraction;
 import net.sf.anathema.initialization.repository.RepositoryFolderCreator;
 import net.sf.anathema.lib.message.Message;
@@ -8,7 +10,6 @@ import net.sf.anathema.lib.message.Message;
 import java.io.File;
 
 import static java.text.MessageFormat.format;
-import static net.sf.anathema.lib.gui.dialog.message.MessageDialogFactory.showMessageDialog;
 
 public class RepositoryFolderWorker {
   public boolean isValid(File folder) {
@@ -36,11 +37,12 @@ public class RepositoryFolderWorker {
     new RepositoryFolderCreator(fileSystem, new CanonicalPathResolver(folder)).createRepositoryFolder();
   }
 
-  private void handleException(RepositoryException e, String message) {
+  private void handleException(RepositoryException e, String messageText) {
     Throwable cause = e.getCause();
     if (cause == null) {
       cause = e;
     }
-    showMessageDialog(null, new Message(message + cause.getMessage(), cause));
+    Message message = new Message(messageText + cause.getMessage(), cause);
+    ExceptionIndicator.indicate(FxApplicationFrame.getOwner(), message);
   }
 }

@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.view;
 
-import net.sf.anathema.lib.gui.dialog.message.MessageDialogFactory;
+import net.sf.anathema.framework.swing.ExceptionIndicator;
 import net.sf.anathema.lib.message.Message;
 
 public class ErrorWindow implements ApplicationFrame {
@@ -13,6 +13,7 @@ public class ErrorWindow implements ApplicationFrame {
 
   @Override
   public void show() {
-    MessageDialogFactory.showMessageDialog(null, new Message(cause.getMessage(), cause));
+    Message message = new Message(cause.getMessage(), cause);
+    ExceptionIndicator.indicate(null, message);
   }
 }

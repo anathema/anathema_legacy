@@ -4,11 +4,12 @@ import net.miginfocom.layout.CC;
 import net.sf.anathema.framework.configuration.InitializationPreferences;
 import net.sf.anathema.framework.presenter.DirectoryFileChooser;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
+import net.sf.anathema.framework.swing.ExceptionIndicator;
+import net.sf.anathema.initialization.FxApplicationFrame;
 import net.sf.anathema.initialization.PreferenceElement;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.initialization.repository.RepositoryLocationResolver;
 import net.sf.anathema.lib.gui.action.SmartAction;
-import net.sf.anathema.lib.gui.dialog.message.MessageDialogFactory;
 import net.sf.anathema.lib.io.PathUtils;
 import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.resources.Resources;
@@ -47,10 +48,7 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
       defaultDirectory = new File(repository.getDefaultLocation()).getCanonicalFile().toPath();
       verifyDirectoriesExist();
     } catch (IOException e) {
-      Throwable cause = e.getCause();
-      MessageDialogFactory.showMessageDialog(null,
-              new Message("An error occured while setting up the repository paths: " + cause.getMessage(),
-                      cause));
+      handleException(e);
     }
   }
 
@@ -61,10 +59,7 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
                 "Unable to read/write/create user selected repository folder and default repository folder");
       }
     } catch (IOException e) {
-      Throwable cause = e.getCause();
-      MessageDialogFactory.showMessageDialog(null,
-              new Message("An error occured while setting up the repository paths: " + cause.getMessage(),
-                      cause));
+      handleException(e);
     }
   }
 
@@ -115,9 +110,9 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
             resources.getString("AnathemaCore.Tools.Preferences.RepositoryDirectory.DefaultDirectory")) {
       @Override
       protected void execute(Component parent) {
-          repositoryDirectory = defaultDirectory.toAbsolutePath();
-          setDisplayedPath(defaultDirectory);
-          dirty = modificationAllowed;
+        repositoryDirectory = defaultDirectory.toAbsolutePath();
+        setDisplayedPath(defaultDirectory);
+        dirty = modificationAllowed;
       }
     });
   }
@@ -137,10 +132,7 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
                             "Repository directory (and parent directory) deleted by user while the preferences dialog was open");
                   }
                 } catch (IOException e) {
-                  Throwable cause = e.getCause();
-                  MessageDialogFactory.showMessageDialog(null,
-                          new Message("An error occured while opening the repository path: " + cause.getMessage(),
-                                  cause));
+                  handleException(e, "An error occured while opening the repository path: ");
                 }
               }
             });
@@ -155,13 +147,7 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
         SYSTEM_PREFERENCES.put(REPOSITORY_PREFERENCE, repositoryDirectory.toAbsolutePath().toString());
       }
     } catch (IOException e) {
-      Throwable cause = e.getCause();
-      if (cause == null) {
-        cause = e;
-      }
-      MessageDialogFactory.showMessageDialog(null,
-              new Message("An error occured while saving the repository preferences: " + cause.getMessage(),
-                      cause));
+      handleException(e, "An error occured while saving the repository preferences: ");
     }
   }
 
@@ -189,5 +175,20 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
     repositoryDirectory = Paths.get(repository.resolve());
     setDisplayedPath(repositoryDirectory);
     dirty = false;
+  }
+
+  private void handleException(IOException e) {
+    String messageText = "An error occured while setting up the repository paths: ";
+    handleException(e, messageText);
+  }
+
+  private void handleException(IOException e, String messageText) {
+    Throwable cause = e.getCause();
+    if (cause == null) {
+      cause = e;
+    }
+    Message message = new Message(messageText + cause.getMessage(),
+            cause);
+    ExceptionIndicator.indicate(FxApplicationFrame.getOwner(), message);
   }
 }

@@ -1,15 +1,16 @@
 package net.sf.anathema.framework.swing;
 
 import javafx.stage.Window;
+import net.sf.anathema.framework.fx.FxDialogExceptionHandler;
 import net.sf.anathema.lib.exception.LoggingExceptionHandler;
-import net.sf.anathema.lib.gui.dialog.message.MessageDialogFactory;
 import net.sf.anathema.lib.message.Message;
+import net.sf.anathema.lib.resources.NullStringProvider;
 
 public class ExceptionIndicator {
 
-  public static void indicate(Window parentComponent, Message message) {
+  public static void indicate(Window owner, Message message) {
     Throwable throwable = message.getThrowable();
     new LoggingExceptionHandler().handle(throwable);
-    MessageDialogFactory.showMessageDialog(parentComponent, message);
+    new FxDialogExceptionHandler(new NullStringProvider(), owner).handle(message.getThrowable(), message.getText());
   }
 }
