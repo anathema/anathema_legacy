@@ -1,4 +1,4 @@
-package net.sf.anathema.framework.preferences;
+package net.sf.anathema.framework.preferences.perspective;
 
 import net.sf.anathema.platform.fx.Navigation;
 

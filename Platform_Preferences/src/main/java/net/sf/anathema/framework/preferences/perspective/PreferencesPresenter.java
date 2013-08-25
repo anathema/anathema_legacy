@@ -1,7 +1,6 @@
-package net.sf.anathema.framework.preferences;
+package net.sf.anathema.framework.preferences.perspective;
 
 import net.sf.anathema.framework.environment.Environment;
-import net.sf.anathema.lib.resources.Resources;
 
 public class PreferencesPresenter {
 

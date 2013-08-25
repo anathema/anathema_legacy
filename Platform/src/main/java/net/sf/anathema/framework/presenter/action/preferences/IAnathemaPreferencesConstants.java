@@ -5,7 +5,6 @@ public interface IAnathemaPreferencesConstants {
 
   String SYSTEM_PREFERENCES_NODE = "anathema/system";
 
-  String OPEN_PDF_PREFERENCE = "OpenPdf";
   String PAGE_FORMAT_PREFERENCE = "PageFormat";
   String REPOSITORY_PREFERENCE = "RepositoryForAnathema4orHigher";
 }

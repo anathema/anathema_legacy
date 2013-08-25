@@ -1,4 +1,4 @@
-package net.sf.anathema.framework.preferences;
+package net.sf.anathema.framework.preferences.perspective;
 
 import javafx.scene.Node;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;

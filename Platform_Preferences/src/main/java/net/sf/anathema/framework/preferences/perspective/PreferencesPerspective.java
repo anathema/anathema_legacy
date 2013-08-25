@@ -1,4 +1,4 @@
-package net.sf.anathema.framework.preferences;
+package net.sf.anathema.framework.preferences.perspective;
 
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.environment.Environment;
@@ -31,5 +31,18 @@ public class PreferencesPerspective implements Perspective {
 //Persisters: Write to a single file in the main directory
 //Main Presenter: For each model, find a view and a persister and initialize
 //Main Persister: Find all persisters, have all models.
-//Main Persister: For each persister, write data for corresponding model or default - to a single file!?
+//Main Persister: For each persister, write data for corresponding model or default - to a single file
 //Main Persister: For each persister, load data for corresponding model or default.
+//Main Persister: Concatenate GSON elements into a single object, as in
+/*
+{ "preferences": [
+  { "repository": {
+    "path": "C:\\my\\path"
+  }},
+  { "sheet": {
+    "format": "Letter"
+  }}
+]}
+*/
+//Early during initialization: Load all preferences
+//In Environment: Offer to get preference loading implementation by class. Hand in to wherever required.
