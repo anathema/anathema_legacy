@@ -1,6 +1,7 @@
 package net.sf.anathema.fx.hero.perspective;
 
 import javafx.scene.Node;
+import net.miginfocom.layout.AC;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.character.main.view.CharacterView;
 import net.sf.anathema.character.main.view.CharacterViewSection;
@@ -50,9 +51,9 @@ public class TaskedCharacterView implements CharacterView {
   @Override
   public Node getNode() {
     if (content == null) {
-      content = new MigPane(fillWithoutInsets());
+      content = new MigPane(fillWithoutInsets(), new AC().index(0).shrink().shrinkPrio(200));
       content.add(characterPane.getNode(), new CC().grow().push());
-      content.add(optionalViewPane.getNode(), new CC().alignY("top"));
+      content.add(optionalViewPane.getNode(), new CC().alignY("top").grow().dockEast());
       overviewView.showIn(characterPane);
     }
     return content;
