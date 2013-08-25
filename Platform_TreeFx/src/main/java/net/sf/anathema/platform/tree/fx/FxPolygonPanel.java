@@ -66,6 +66,7 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
     sizeLikeContentPane(clippingRectangle);
     glasspane.setFill(Color.TRANSPARENT);
     content.setClip(clippingRectangle);
+    canvas.setManaged(false);
     content.getChildren().addAll(background, canvas, glasspane);
     setBackground(RGBColor.White);
     FxThreading.runOnCorrectThread(new Runnable() {
