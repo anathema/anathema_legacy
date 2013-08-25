@@ -5,7 +5,8 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.effect.GaussianBlur;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -41,19 +42,24 @@ public class AnathemaAboutAction implements Command {
     parent.getStyleClass().add("thinborder");
     Scene scene = new Scene(parent, 300, 400);
     new Stylesheet("skin/platform/aboutDialog.css").applyToScene(scene);
+    final Stage aboutStage = initializeDialogStage(scene);
+    showProgramTitle(parent);
+    showVersion(parent);
+    showCopyrightAndLicense(parent);
+    showCredits(parent);
+    showCloseButton(parent, aboutStage);
+    aboutStage.showAndWait();
+  }
+
+  private Stage initializeDialogStage(Scene scene) {
     final Stage aboutStage = new Stage();
     aboutStage.initStyle(StageStyle.UNDECORATED);
     aboutStage.initOwner(stage);
     aboutStage.setResizable(false);
     aboutStage.setTitle(resources.getString("Help.AboutDialog.Title"));
     aboutStage.setScene(scene);
-    showProgramTitle(parent);
-    showVersion(parent);
-    showCopyrightAndLicense(parent);
-    showCredits(parent);
-    showCloseButton(parent, aboutStage);
-    stage.getScene().getRoot().setEffect(new GaussianBlur());
-    aboutStage.showAndWait();
+    initCloseOnEscape(aboutStage);
+    return aboutStage;
   }
 
   @SuppressWarnings("ConstantConditions")
@@ -63,7 +69,7 @@ public class AnathemaAboutAction implements Command {
       URL stylesheet = getClass().getClassLoader().getResource("aboutPage.css");
       String markdownContent = IOUtils.toString(content);
       HtmlText htmlText = new HtmlConverter().convert(new WikiText(markdownContent));
-      WebView webView = new WebView();
+      final WebView webView = new WebView();
       webView.getEngine().setUserStyleSheetLocation(stylesheet.toExternalForm());
       webView.getEngine().loadContent(htmlText.getHtmlText());
       parent.add(webView, new CC().pad(0, 2, 0, 2));
@@ -100,10 +106,22 @@ public class AnathemaAboutAction implements Command {
     close.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent actionEvent) {
-        aboutStage.close();
-        stage.getScene().getRoot().setEffect(null);
+        closeDialog(aboutStage);
       }
     });
     parent.add(close, new CC().dockSouth().alignX("center"));
+  }
+
+  private void initCloseOnEscape(final Stage aboutStage) {
+    aboutStage.getScene().getAccelerators().put(new KeyCodeCombination(KeyCode.ESCAPE), new Runnable() {
+      @Override
+      public void run() {
+        closeDialog(aboutStage);
+      }
+    });
+  }
+
+  private void closeDialog(Stage stage) {
+    stage.close();
   }
 }
