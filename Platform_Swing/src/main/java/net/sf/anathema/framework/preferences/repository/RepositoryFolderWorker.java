@@ -1,5 +1,6 @@
-package net.sf.anathema.framework.module.preferences;
+package net.sf.anathema.framework.preferences.repository;
 
+import net.sf.anathema.framework.module.preferences.CanonicalPathResolver;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.initialization.repository.IOFileSystemAbstraction;
 import net.sf.anathema.initialization.repository.RepositoryFolderCreator;

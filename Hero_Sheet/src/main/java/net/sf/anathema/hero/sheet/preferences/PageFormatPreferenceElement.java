@@ -1,4 +1,4 @@
-package net.sf.anathema.framework.module.preferences;
+package net.sf.anathema.hero.sheet.preferences;
 
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
 import net.sf.anathema.framework.reporting.pdf.PageSize;

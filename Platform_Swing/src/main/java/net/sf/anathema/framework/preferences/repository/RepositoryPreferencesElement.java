@@ -1,4 +1,4 @@
-package net.sf.anathema.framework.module.preferences;
+package net.sf.anathema.framework.preferences.repository;
 
 import net.miginfocom.layout.CC;
 import net.sf.anathema.framework.configuration.InitializationPreferences;

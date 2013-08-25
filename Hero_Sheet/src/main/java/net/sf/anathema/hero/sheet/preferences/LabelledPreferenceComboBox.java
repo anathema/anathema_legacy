@@ -1,4 +1,4 @@
-package net.sf.anathema.framework.module.preferences;
+package net.sf.anathema.hero.sheet.preferences;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
