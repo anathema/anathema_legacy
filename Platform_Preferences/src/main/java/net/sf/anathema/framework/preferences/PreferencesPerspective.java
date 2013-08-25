@@ -25,3 +25,11 @@ public class PreferencesPerspective implements Perspective {
     presenter.initialize();
   }
 }
+
+//Find all Preferences. For each: Persister, View, Presenter, Model
+//Register all preferences by view
+//Persisters: Write to a single file in the main directory
+//Main Presenter: For each model, find a view and a persister and initialize
+//Main Persister: Find all persisters, have all models.
+//Main Persister: For each persister, write data for corresponding model or default - to a single file!?
+//Main Persister: For each persister, load data for corresponding model or default.

@@ -1,0 +1,6 @@
+dependencies {
+    compile project(':Platform')
+    compile project(':Platform_FX')
+    compile project(':Platform_Swing')
+    testCompile testDependencies //includes JUnit etc.
+}
