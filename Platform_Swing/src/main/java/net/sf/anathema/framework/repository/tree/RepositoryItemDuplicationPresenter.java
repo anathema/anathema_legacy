@@ -4,11 +4,12 @@ import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.IRepositoryFileAccess;
+import net.sf.anathema.framework.swing.ExceptionIndicator;
 import net.sf.anathema.framework.view.PrintNameFile;
+import net.sf.anathema.initialization.FxApplicationFrame;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.action.SmartAction;
-import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.message.MessageType;
 import net.sf.anathema.lib.resources.Resources;
@@ -17,8 +18,6 @@ import java.awt.Component;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-
-import static net.sf.anathema.lib.gui.dialog.message.MessageDialogFactory.showMessageDialog;
 
 public class RepositoryItemDuplicationPresenter implements Presenter {
 
@@ -58,18 +57,12 @@ public class RepositoryItemDuplicationPresenter implements Presenter {
             model.refreshItem(type, handler.getNewId());
             messaging.addMessage("AnathemaCore.Tools.RepositoryView.DuplicateDoneMessage", MessageType.INFORMATION);
           }
-        }
-        catch (RepositoryException e) {
-          showMessageDialog(parentComponent, new Message(
-              resources.getString("AnathemaCore.Tools.RepositoryView.RepositoryError"),
-              e));
-          Logger.getLogger(getClass()).error(e);
-        }
-        catch (IOException e) {
-          showMessageDialog(parentComponent, new Message(
-              resources.getString("AnathemaCore.Tools.RepositoryView.FileError"),
-              e));
-          Logger.getLogger(getClass()).error(e);
+        } catch (RepositoryException e) {
+          Message message = new Message(resources.getString("AnathemaCore.Tools.RepositoryView.RepositoryError"), e);
+          ExceptionIndicator.indicate(FxApplicationFrame.getOwner(), message);
+        } catch (IOException e) {
+          Message message = new Message(resources.getString("AnathemaCore.Tools.RepositoryView.FileError"), e);
+          ExceptionIndicator.indicate(FxApplicationFrame.getOwner(), message);
         }
       }
     };

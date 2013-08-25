@@ -2,12 +2,12 @@ package net.sf.anathema.framework.repository.tree;
 
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.repository.RepositoryException;
+import net.sf.anathema.framework.swing.ExceptionIndicator;
+import net.sf.anathema.initialization.FxApplicationFrame;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.action.SmartAction;
-import net.sf.anathema.lib.gui.dialog.message.MessageDialogFactory;
 import net.sf.anathema.lib.gui.file.FileChoosingUtilities;
-import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -29,10 +29,10 @@ public class RepositoryItemImportPresenter implements Presenter {
   private final AmountMessaging messaging;
 
   public RepositoryItemImportPresenter(
-      Resources resources,
-      IRepositoryTreeModel repositoryTreeModel,
-      IRepositoryTreeView treeView,
-      AmountMessaging fileCountMessaging) {
+          Resources resources,
+          IRepositoryTreeModel repositoryTreeModel,
+          IRepositoryTreeView treeView,
+          AmountMessaging fileCountMessaging) {
     this.resources = resources;
     this.model = repositoryTreeModel;
     this.view = treeView;
@@ -43,13 +43,13 @@ public class RepositoryItemImportPresenter implements Presenter {
   @Override
   public void initPresentation() {
     SmartAction action = new SmartAction(
-        resources.getString("AnathemaCore.Tools.RepositoryView.ImportName"), new FileUi().getImportFileIcon()) {
+            resources.getString("AnathemaCore.Tools.RepositoryView.ImportName"), new FileUi().getImportFileIcon()) {
 
       @Override
       protected void execute(Component parentComponent) {
         try {
           Path loadFile = FileChoosingUtilities.chooseFile(
-              resources.getString("AnathemaCore.Tools.RepositoryView.ImportOk"), parentComponent, new ZipFileFilter(resources));
+                  resources.getString("AnathemaCore.Tools.RepositoryView.ImportOk"), parentComponent, new ZipFileFilter(resources));
           if (loadFile == null) {
             return;
           }
@@ -73,24 +73,15 @@ public class RepositoryItemImportPresenter implements Presenter {
           }
           importZipFile.close();
           messaging.addMessage("AnathemaCore.Tools.RepositoryView.ImportDoneMessage", entriesByItem.keySet().size());
-        }
-        catch (ZipException e) {
-          MessageDialogFactory.showMessageDialog(parentComponent, new Message(
-              resources.getString("AnathemaCore.Tools.RepositoryView.NoZipFileError"),
-              e));
-          Logger.getLogger(getClass()).error(e);
-        }
-        catch (IOException e) {
-          MessageDialogFactory.showMessageDialog(parentComponent, new Message(
-              resources.getString("AnathemaCore.Tools.RepositoryView.FileError"),
-              e));
-          Logger.getLogger(getClass()).error(e);
-        }
-        catch (RepositoryException e) {
-          MessageDialogFactory.showMessageDialog(parentComponent, new Message(
-              resources.getString("AnathemaCore.Tools.RepositoryView.RepositoryError"),
-              e));
-          Logger.getLogger(getClass()).error(e);
+        } catch (ZipException e) {
+          Message message = new Message(resources.getString("AnathemaCore.Tools.RepositoryView.NoZipFileError"), e);
+          ExceptionIndicator.indicate(FxApplicationFrame.getOwner(), message);
+        } catch (IOException e) {
+          Message message = new Message(resources.getString("AnathemaCore.Tools.RepositoryView.FileError"), e);
+          ExceptionIndicator.indicate(FxApplicationFrame.getOwner(), message);
+        } catch (RepositoryException e) {
+          Message message = new Message(resources.getString("AnathemaCore.Tools.RepositoryView.RepositoryError"), e);
+          ExceptionIndicator.indicate(FxApplicationFrame.getOwner(), message);
         }
       }
     };
@@ -99,9 +90,9 @@ public class RepositoryItemImportPresenter implements Presenter {
   }
 
   private MultiEntryMap<String, ZipEntry> groupEntriesByItems(ZipFile importZipFile) {
-    Enumeration< ? extends ZipEntry> entries = importZipFile.entries();
+    Enumeration<? extends ZipEntry> entries = importZipFile.entries();
     MultiEntryMap<String, ZipEntry> entriesByComment = new MultiEntryMap<>();
-    for (; entries.hasMoreElements();) {
+    for (; entries.hasMoreElements(); ) {
       ZipEntry entry = entries.nextElement();
       String comment = entry.getComment();
       if (comment == null) {

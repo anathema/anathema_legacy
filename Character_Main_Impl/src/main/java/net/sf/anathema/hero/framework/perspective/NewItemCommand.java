@@ -2,8 +2,8 @@ package net.sf.anathema.hero.framework.perspective;
 
 import net.sf.anathema.framework.persistence.RepositoryItemPersister;
 import net.sf.anathema.framework.presenter.ItemReceiver;
-import net.sf.anathema.framework.swing.MessageUtilities;
-import net.sf.anathema.framework.view.SwingApplicationFrame;
+import net.sf.anathema.framework.swing.ExceptionIndicator;
+import net.sf.anathema.initialization.FxApplicationFrame;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.message.Message;
@@ -45,7 +45,7 @@ public class NewItemCommand implements Command {
       itemCreator.operate(template);
     } catch (PersistenceException e) {
       Message message = new Message(resources.getString("AnathemaPersistence.NewMenu.Message.Error"), e);
-      MessageUtilities.indicateMessage(NewItemCommand.class, SwingApplicationFrame.getParentComponent(), message);
+      ExceptionIndicator.indicate(FxApplicationFrame.getOwner(), message);
     }
   }
 }

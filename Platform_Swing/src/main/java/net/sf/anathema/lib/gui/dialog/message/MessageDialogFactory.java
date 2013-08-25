@@ -1,30 +1,21 @@
 package net.sf.anathema.lib.gui.dialog.message;
 
-import net.sf.anathema.lib.gui.dialog.foldout.FoldOutDialog;
-import net.sf.anathema.lib.gui.dialog.foldout.IFoldOutPage;
-import net.sf.anathema.lib.gui.dialog.message.internal.MessageDetailsFoldOutPage;
-import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
+import fr.xmichel.javafx.dialog.Dialog;
+import javafx.stage.Window;
+import net.sf.anathema.framework.fx.FxDialogExceptionHandler;
 import net.sf.anathema.lib.message.IMessage;
-
-import java.awt.Component;
+import net.sf.anathema.lib.resources.NullStringProvider;
 
 public class MessageDialogFactory {
 
-  public static UserDialog createMessageDialog(Component parentComponent, IMessage message) {
-    UserDialog userDialog;
-    if (message.getDetail() == null) {
-      userDialog = new UserDialog(parentComponent, new MessageUserDialogConfiguration(message));
-      userDialog.getDialog().setResizable(false);
+  @SuppressWarnings("ThrowableResultOfMethodCallIgnored")
+  public static void showMessageDialog(Window owner, IMessage message) {
+    Throwable throwable = message.getThrowable();
+    if (throwable == null) {
+      Dialog.showInfo("Info", message.getText(), owner);
     } else {
-      IFoldOutPage foldOutPage = new MessageDetailsFoldOutPage(message.getDetail());
-      FoldOutMessageDialogConfiguration dialogConfiguration = new FoldOutMessageDialogConfiguration(message,
-              foldOutPage);
-      userDialog = new FoldOutDialog(parentComponent, dialogConfiguration);
+      //TODO (Swing->FX) Hand in proper resources
+      new FxDialogExceptionHandler(new NullStringProvider(), owner).handle(message.getThrowable(), message.getText());
     }
-    return userDialog;
-  }
-
-  public static void showMessageDialog(Component parent, IMessage message) {
-    createMessageDialog(parent, message).show();
   }
 }

@@ -2,7 +2,6 @@ package net.sf.anathema.hero.framework.perspective.sheet;
 
 import net.sf.anathema.framework.reporting.Report;
 import net.sf.anathema.framework.repository.Item;
-import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.lib.resources.Resources;
 
 public class ControlledPrintWithSelectedReport {
@@ -17,7 +16,7 @@ public class ControlledPrintWithSelectedReport {
   }
 
   public void execute() {
-    ControlledFileChooser fileChooser = new ControlledFileChooser(item, resources, SwingApplicationFrame.getParentComponent());
-    new PrintCommand(resources, SwingApplicationFrame.getParentComponent(), item, report, fileChooser).execute();
+    ControlledFileChooser fileChooser = new ControlledFileChooser(resources);
+    new PrintCommand(resources, item, report, fileChooser).execute();
   }
 }

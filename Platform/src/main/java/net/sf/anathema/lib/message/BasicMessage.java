@@ -2,7 +2,6 @@ package net.sf.anathema.lib.message;
 
 import com.google.common.base.Preconditions;
 
-/** A basic message only contains the text and type of a message. */
 public class BasicMessage implements IBasicMessage {
   private final MessageType type;
   private final String text;

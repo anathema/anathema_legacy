@@ -1,13 +1,13 @@
 package net.sf.anathema.framework.repository.tree;
 
 import net.sf.anathema.framework.repository.RepositoryException;
+import net.sf.anathema.framework.swing.ExceptionIndicator;
+import net.sf.anathema.initialization.FxApplicationFrame;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.action.SmartAction;
-import net.sf.anathema.lib.gui.dialog.message.MessageDialogFactory;
 import net.sf.anathema.lib.gui.dialog.userdialog.buttons.ConfigurableVetor;
-import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -46,9 +46,8 @@ public class RepositoryItemDeletionPresenter implements Presenter {
               repositoryModel.deleteSelection();
               messaging.addMessage("AnathemaCore.Tools.RepositoryView.DeleteDoneMessage", itemCount);
             } catch (RepositoryException e) {
-              MessageDialogFactory.showMessageDialog(parentComponent,
-                      new Message(resources.getString("AnathemaCore.Tools.RepositoryView.RepositoryError"), e));
-              Logger.getLogger(getClass()).error(e);
+              Message errorMessage = new Message(resources.getString("AnathemaCore.Tools.RepositoryView.RepositoryError"), e);
+              ExceptionIndicator.indicate(FxApplicationFrame.getOwner(), errorMessage);
             }
           }
         });

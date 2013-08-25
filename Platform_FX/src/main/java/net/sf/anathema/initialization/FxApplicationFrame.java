@@ -18,10 +18,6 @@ import net.sf.anathema.platform.tool.ImageContainer;
 import net.sf.anathema.platform.tool.LoadImage;
 import org.tbee.javafx.scene.layout.MigPane;
 
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-
 public class FxApplicationFrame implements ApplicationFrameView {
   private static Stage owner;
   private final Stage stage;
@@ -40,10 +36,6 @@ public class FxApplicationFrame implements ApplicationFrameView {
     this.properties = viewProperties;
     this.contentFactory = factory;
     this.menu = new MainMenuBar(properties.getMainMenuName(), properties.getHelpMenuName());
-  }
-
-  public static JComponent getParentComponent() {
-    return (JComponent) ((JFrame) JOptionPane.getRootFrame()).getContentPane();
   }
 
   public void show() {
