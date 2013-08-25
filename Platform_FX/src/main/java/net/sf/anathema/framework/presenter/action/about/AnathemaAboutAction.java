@@ -9,7 +9,6 @@ import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
-import net.sf.anathema.initialization.FxApplicationFrame;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.platform.markdown.HtmlConverter;
@@ -26,9 +25,11 @@ import java.text.MessageFormat;
 public class AnathemaAboutAction implements Command {
 
   private final Resources resources;
+  private Stage stage;
 
-  public AnathemaAboutAction(Resources resources) {
+  public AnathemaAboutAction(Resources resources, Stage stage) {
     this.resources = resources;
+    this.stage = stage;
   }
 
   @Override
@@ -36,7 +37,7 @@ public class AnathemaAboutAction implements Command {
     MigPane parent = new MigPane(new LC().fill().wrapAfter(1));
     Scene scene = new Scene(parent, 300, 400);
     final Stage aboutStage = new Stage();
-    aboutStage.initOwner(FxApplicationFrame.getOwner());
+    aboutStage.initOwner(stage);
     aboutStage.setResizable(false);
     aboutStage.setTitle(resources.getString("Help.AboutDialog.Title"));
     aboutStage.setScene(scene);

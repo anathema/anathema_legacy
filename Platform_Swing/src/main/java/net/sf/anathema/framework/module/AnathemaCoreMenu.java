@@ -1,5 +1,6 @@
 package net.sf.anathema.framework.module;
 
+import javafx.stage.Stage;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.presenter.action.AnathemaExitAction;
@@ -16,6 +17,12 @@ import net.sf.anathema.lib.resources.Resources;
 
 public class AnathemaCoreMenu {
 
+  private Stage stage;
+
+  public AnathemaCoreMenu(Stage stage) {
+    this.stage = stage;
+  }
+
   public void add(Resources resources, IApplicationModel model, MenuBar menubar) {
     IMenu mainMenu = menubar.getMainMenu();
     addImportExportEntry(resources, model, mainMenu);
@@ -29,7 +36,7 @@ public class AnathemaCoreMenu {
   }
 
   private void addAboutEntry(Resources resources, IMenu helpMenu) {
-    Command action = new AnathemaAboutAction(resources);
+    Command action = new AnathemaAboutAction(resources, stage);
     String name = resources.getString("Help.AboutDialog.Title");
     helpMenu.addMenuItem(action, name);
   }

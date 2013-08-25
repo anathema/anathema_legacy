@@ -27,7 +27,7 @@ public class GuiInitializer extends Initializer {
   @Override
   protected void initPresentation(LocaleResources resources, IApplicationModel model, ApplicationView view) {
     super.initPresentation(resources, model, view);
-    new AnathemaCoreMenu().add(resources, model, view.getMenuBar());
+    new AnathemaCoreMenu(stage).add(resources, model, view.getMenuBar());
   }
 
   public ApplicationView initialize() throws InitializationException {
