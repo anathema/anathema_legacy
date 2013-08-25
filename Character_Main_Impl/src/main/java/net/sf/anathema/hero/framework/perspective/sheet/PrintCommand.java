@@ -57,7 +57,7 @@ public class PrintCommand implements Command {
   private void showMessage(Throwable e, String errorMessageKey) {
     String errorMessage = resources.getString(errorMessageKey);
     Message message = new Message(errorMessage, e);
-    ExceptionIndicator.indicate(FxApplicationFrame.getOwner(), message);
+    ExceptionIndicator.indicate(resources, FxApplicationFrame.getOwner(), message);
   }
 
   private void performPrint(Item item, Report selectedReport, Path selectedFile) throws IOException, ReportException {

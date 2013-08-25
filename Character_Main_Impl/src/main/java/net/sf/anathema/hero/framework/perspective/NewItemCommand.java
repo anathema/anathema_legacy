@@ -44,8 +44,8 @@ public class NewItemCommand implements Command {
     try {
       itemCreator.operate(template);
     } catch (PersistenceException e) {
-      Message message = new Message(resources.getString("AnathemaPersistence.NewMenu.Message.Error"), e);
-      ExceptionIndicator.indicate(FxApplicationFrame.getOwner(), message);
+      Message message = new Message(resources.getString("CharacterSystem.NewCharacter.Error"), e);
+      ExceptionIndicator.indicate(resources, FxApplicationFrame.getOwner(), message);
     }
   }
 }

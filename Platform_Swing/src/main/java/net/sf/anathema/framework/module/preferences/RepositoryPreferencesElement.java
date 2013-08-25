@@ -189,6 +189,6 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
     }
     Message message = new Message(messageText + cause.getMessage(),
             cause);
-    ExceptionIndicator.indicate(FxApplicationFrame.getOwner(), message);
+    ExceptionIndicator.indicate(resources, FxApplicationFrame.getOwner(), message);
   }
 }

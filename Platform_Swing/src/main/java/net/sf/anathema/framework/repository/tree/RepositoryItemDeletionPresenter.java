@@ -47,7 +47,7 @@ public class RepositoryItemDeletionPresenter implements Presenter {
               messaging.addMessage("AnathemaCore.Tools.RepositoryView.DeleteDoneMessage", itemCount);
             } catch (RepositoryException e) {
               Message errorMessage = new Message(resources.getString("AnathemaCore.Tools.RepositoryView.RepositoryError"), e);
-              ExceptionIndicator.indicate(FxApplicationFrame.getOwner(), errorMessage);
+              ExceptionIndicator.indicate(resources, FxApplicationFrame.getOwner(), errorMessage);
             }
           }
         });

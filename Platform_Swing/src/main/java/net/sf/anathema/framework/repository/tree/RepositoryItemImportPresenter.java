@@ -75,13 +75,13 @@ public class RepositoryItemImportPresenter implements Presenter {
           messaging.addMessage("AnathemaCore.Tools.RepositoryView.ImportDoneMessage", entriesByItem.keySet().size());
         } catch (ZipException e) {
           Message message = new Message(resources.getString("AnathemaCore.Tools.RepositoryView.NoZipFileError"), e);
-          ExceptionIndicator.indicate(FxApplicationFrame.getOwner(), message);
+          ExceptionIndicator.indicate(resources, FxApplicationFrame.getOwner(), message);
         } catch (IOException e) {
           Message message = new Message(resources.getString("AnathemaCore.Tools.RepositoryView.FileError"), e);
-          ExceptionIndicator.indicate(FxApplicationFrame.getOwner(), message);
+          ExceptionIndicator.indicate(resources, FxApplicationFrame.getOwner(), message);
         } catch (RepositoryException e) {
           Message message = new Message(resources.getString("AnathemaCore.Tools.RepositoryView.RepositoryError"), e);
-          ExceptionIndicator.indicate(FxApplicationFrame.getOwner(), message);
+          ExceptionIndicator.indicate(resources, FxApplicationFrame.getOwner(), message);
         }
       }
     };

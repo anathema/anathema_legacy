@@ -50,7 +50,7 @@ public class RepositoryItemExportPresenter implements Presenter {
           messaging.addMessage("AnathemaCore.Tools.RepositoryView.ExportDoneMessage", printNameFiles.length);
         } catch (IOException e) {
           Message message = new Message(resources.getString("AnathemaCore.Tools.RepositoryView.FileError"), e);
-          ExceptionIndicator.indicate(FxApplicationFrame.getOwner(), message);
+          ExceptionIndicator.indicate(resources, FxApplicationFrame.getOwner(), message);
         }
       }
     };
