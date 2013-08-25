@@ -12,16 +12,19 @@ import net.sf.anathema.framework.presenter.AnathemaViewProperties;
 import net.sf.anathema.framework.resources.LocaleResources;
 import net.sf.anathema.framework.view.ApplicationView;
 import net.sf.anathema.framework.view.perspective.PerspectivePaneFactory;
+import net.sf.anathema.lib.exception.ExtensibleExceptionHandler;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.Resources;
 
 public class GuiInitializer extends Initializer {
 
   private final Stage stage;
+  private final ExtensibleExceptionHandler exceptionHandler;
 
-  public GuiInitializer(IInitializationPreferences initializationPreferences, Stage stage) throws InitializationException {
+  public GuiInitializer(IInitializationPreferences initializationPreferences, Stage stage, ExtensibleExceptionHandler exceptionHandler) throws InitializationException {
     super(initializationPreferences);
     this.stage = stage;
+    this.exceptionHandler = exceptionHandler;
   }
 
   @Override
@@ -35,9 +38,8 @@ public class GuiInitializer extends Initializer {
     return dao.view;
   }
 
-  @Override
-  protected void configureExceptionHandling(LocaleResources resources) {
-    getExceptionHandling().addHandler(new FxDialogExceptionHandler(resources, stage));
+  protected void configureExceptionHandling(Resources resources) {
+    exceptionHandler.addHandler(new FxDialogExceptionHandler(resources, stage));
   }
 
   @Override

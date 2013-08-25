@@ -10,9 +10,6 @@ import net.sf.anathema.initialization.reflections.DefaultAnathemaReflections;
 import net.sf.anathema.initialization.reflections.ReflectionObjectFactory;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
 import net.sf.anathema.initialization.repository.RepositoryLocationResolver;
-import net.sf.anathema.lib.exception.CentralExceptionHandling;
-import net.sf.anathema.lib.exception.ConsoleExceptionHandler;
-import net.sf.anathema.lib.exception.LoggingExceptionHandler;
 import net.sf.anathema.lib.resources.ResourceFile;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -20,7 +17,6 @@ import java.util.Set;
 
 public abstract class Initializer {
 
-  private final CentralExceptionHandling exceptionHandling = new CentralExceptionHandling();
   private final IInitializationPreferences initializationPreferences;
   private final AnathemaExtensionCollection extensionCollection;
   private final DefaultAnathemaReflections reflections;
@@ -36,26 +32,21 @@ public abstract class Initializer {
   protected InitializedModelAndView initializeModelViewAndPresentation() throws InitializationException {
     ResourceLoader loader = createResourceLoaderForInternalAndCustomResources();
     LocaleResources resources = initResources(loader);
-    showVersion(resources);
     configureExceptionHandling(resources);
+    showVersion(resources);
     IApplicationModel anathemaModel = initModel(resources, loader);
     ApplicationFrameView view = initView(resources, anathemaModel, objectFactory);
     initPresentation(resources, anathemaModel, view);
     return new InitializedModelAndView(view, anathemaModel);
   }
 
+  protected void configureExceptionHandling(Resources resources) {
+    //nothing to do
+  }
+
   protected void initPresentation(LocaleResources resources, IApplicationModel anathemaModel, ApplicationView view) {
     AnathemaPresenter presenter = new AnathemaPresenter(anathemaModel, view, resources, objectFactory);
     presenter.initPresentation();
-  }
-
-  protected void configureExceptionHandling(LocaleResources resources) {
-    exceptionHandling.addHandler(new ConsoleExceptionHandler());
-    exceptionHandling.addHandler(new LoggingExceptionHandler());
-  }
-
-  protected CentralExceptionHandling getExceptionHandling() {
-    return exceptionHandling;
   }
 
   private IApplicationModel initModel(Resources resources, ResourceLoader loader) throws InitializationException {
