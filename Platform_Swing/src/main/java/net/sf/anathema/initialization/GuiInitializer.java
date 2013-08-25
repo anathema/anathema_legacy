@@ -22,7 +22,7 @@ public class GuiInitializer extends Initializer {
   private final ExtensibleExceptionHandler exceptionHandler;
 
   public GuiInitializer(IInitializationPreferences initializationPreferences, Stage stage, ExtensibleExceptionHandler exceptionHandler) throws InitializationException {
-    super(initializationPreferences);
+    super(initializationPreferences, exceptionHandler);
     this.stage = stage;
     this.exceptionHandler = exceptionHandler;
   }

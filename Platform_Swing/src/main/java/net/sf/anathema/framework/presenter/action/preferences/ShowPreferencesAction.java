@@ -23,28 +23,26 @@ public class ShowPreferencesAction implements Command {
   public void execute() {
     PreferencesPage page = new PreferencesPage(resources, elements);
     UserDialog userDialog = new UserDialog(SwingApplicationFrame.getParentComponent(), page);
-    
+
     boolean confirmed = false;
     boolean dirty = false;
     while (!confirmed) {
       DialogResult result = userDialog.show();
       confirmed = true;
-      
+
       if (result.isCanceled()) {
         for (IPreferencesElement element : elements) {
           if (element.isDirty()) {
             element.reset();
           }
         }
-      }
-      else {
+      } else {
         dirty = false;
         for (IPreferencesElement element : elements) {
           if (element.isDirty()) {
             if (element.isValid()) {
               dirty = true;
-            }
-            else {
+            } else {
               confirmed = false;
             }
           }

@@ -6,6 +6,7 @@ import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.InitializedModelAndView;
 import net.sf.anathema.initialization.Initializer;
 import net.sf.anathema.initialization.ObjectFactory;
+import net.sf.anathema.lib.exception.ConsoleExceptionHandler;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.view.NullMainView;
 
@@ -13,7 +14,7 @@ import static net.sf.anathema.framework.configuration.InitializationPreferences.
 
 public class TestInitializer extends Initializer {
   public TestInitializer() throws InitializationException {
-    super(getDefaultPreferences());
+    super(getDefaultPreferences(), new ConsoleExceptionHandler());
   }
 
   public IApplicationModel initialize() {

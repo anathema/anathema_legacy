@@ -9,6 +9,7 @@ import net.sf.anathema.initialization.FxApplicationFrame;
 import net.sf.anathema.initialization.PreferenceElement;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.initialization.repository.RepositoryLocationResolver;
+import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.io.PathUtils;
 import net.sf.anathema.lib.message.Message;
@@ -56,10 +57,10 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
     try {
       if (!isValid() || !isDefaultValid()) {
         throw new IOException(
-                "Unable to read/write/create user selected repository folder and default repository folder");
+                "Unable to read/write/create user selected repository folder and default repository folder.");
       }
-    } catch (IOException e) {
-      handleException(e);
+    } catch (IOException | AnathemaException ex) {
+      handleException(ex);
     }
   }
 
@@ -153,7 +154,12 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
 
   @Override
   public boolean isValid() {
-    return new RepositoryFolderWorker().isValid(repositoryDirectory.toFile());
+    try {
+      return new RepositoryFolderWorker().isValid(repositoryDirectory.toFile());
+    } catch (AnathemaException e) {
+      handleException(e);
+      return false;
+    }
   }
 
   public boolean isDefaultValid() {
@@ -177,12 +183,12 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
     dirty = false;
   }
 
-  private void handleException(IOException e) {
+  private void handleException(Exception e) {
     String messageText = "An error occured while setting up the repository paths: ";
     handleException(e, messageText);
   }
 
-  private void handleException(IOException e, String messageText) {
+  private void handleException(Exception e, String messageText) {
     Throwable cause = e.getCause();
     if (cause == null) {
       cause = e;

@@ -10,6 +10,8 @@ import net.sf.anathema.initialization.reflections.DefaultAnathemaReflections;
 import net.sf.anathema.initialization.reflections.ReflectionObjectFactory;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
 import net.sf.anathema.initialization.repository.RepositoryLocationResolver;
+import net.sf.anathema.lib.exception.AnathemaException;
+import net.sf.anathema.lib.exception.ExceptionHandler;
 import net.sf.anathema.lib.resources.ResourceFile;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -21,8 +23,10 @@ public abstract class Initializer {
   private final AnathemaExtensionCollection extensionCollection;
   private final DefaultAnathemaReflections reflections;
   private final ObjectFactory objectFactory;
+  private final ExceptionHandler exceptionHandler;
 
-  public Initializer(IInitializationPreferences initializationPreferences) throws InitializationException {
+  public Initializer(IInitializationPreferences initializationPreferences, ExceptionHandler exceptionHandler) throws InitializationException {
+    this.exceptionHandler = exceptionHandler;
     this.reflections = new DefaultAnathemaReflections();
     this.objectFactory = new ReflectionObjectFactory(reflections);
     this.extensionCollection = new AnathemaExtensionCollection(objectFactory);
@@ -66,9 +70,14 @@ public abstract class Initializer {
   }
 
   private ResourceLoader createResourceLoaderForInternalAndCustomResources() {
-    RepositoryLocationResolver resolver = new RepositoryLocationResolver(initializationPreferences);
-    CustomDataResourceLoader customLoader = new CustomDataResourceLoader(resolver);
-    return new AggregatedResourceLoader(reflections, customLoader);
+    try {
+      RepositoryLocationResolver resolver = new RepositoryLocationResolver(initializationPreferences);
+      CustomDataResourceLoader customLoader = new CustomDataResourceLoader(resolver);
+      return new AggregatedResourceLoader(reflections, customLoader);
+    } catch (AnathemaException e) {
+      exceptionHandler.handle(e);
+      return new AggregatedResourceLoader(reflections);
+    }
   }
 
   protected abstract void showVersion(Resources resources);
