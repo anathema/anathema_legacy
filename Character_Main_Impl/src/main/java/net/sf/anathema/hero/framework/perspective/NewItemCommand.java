@@ -1,13 +1,10 @@
 package net.sf.anathema.hero.framework.perspective;
 
+import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.persistence.RepositoryItemPersister;
 import net.sf.anathema.framework.presenter.ItemReceiver;
-import net.sf.anathema.framework.swing.ExceptionIndicator;
-import net.sf.anathema.initialization.FxApplicationFrame;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.exception.PersistenceException;
-import net.sf.anathema.lib.message.Message;
-import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.wizard.selection.IDialogModelTemplate;
 import net.sf.anathema.lib.workflow.wizard.selection.ItemTemplateFactory;
 
@@ -17,12 +14,12 @@ public class NewItemCommand implements Command {
 
   private final ItemCreator itemCreator;
   private final ItemTemplateFactory templateFactory;
-  private Resources resources;
+  private final Environment environment;
 
-  public NewItemCommand(ItemTemplateFactory templateFactory, Resources resources, ItemReceiver itemReceiver,
+  public NewItemCommand(ItemTemplateFactory templateFactory, Environment environment, ItemReceiver itemReceiver,
                         RepositoryItemPersister persister) {
     this.templateFactory = templateFactory;
-    this.resources = resources;
+    this.environment = environment;
     this.itemCreator = new ItemCreator(new NewItemCreator(persister), itemReceiver);
   }
 
@@ -44,8 +41,7 @@ public class NewItemCommand implements Command {
     try {
       itemCreator.operate(template);
     } catch (PersistenceException e) {
-      Message message = new Message(resources.getString("CharacterSystem.NewCharacter.Error"), e);
-      ExceptionIndicator.indicate(resources, FxApplicationFrame.getOwner(), message);
+      environment.handle(e, environment.getString("CharacterSystem.NewCharacter.Error"));
     }
   }
 }

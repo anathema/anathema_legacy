@@ -1,22 +1,22 @@
 package net.sf.anathema.hero.framework.perspective;
 
+import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.hero.framework.perspective.model.ItemSelectionModel;
 import net.sf.anathema.hero.framework.perspective.model.ReportRegister;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.file.RelativePath;
-import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.platform.fx.MenuTool;
 
 public class PrintInteractionPresenter {
-  private ItemSelectionModel model;
-  private MenuTool interaction;
-  private Resources resources;
+  private final ItemSelectionModel model;
+  private final MenuTool interaction;
+  private final Environment environment;
 
-  public PrintInteractionPresenter(ItemSelectionModel model, MenuTool interaction, Resources resources) {
+  public PrintInteractionPresenter(ItemSelectionModel model, MenuTool interaction, Environment environment) {
     this.model = model;
     this.interaction = interaction;
-    this.resources = resources;
+    this.environment = environment;
   }
 
   public void initPresentation() {
@@ -28,7 +28,7 @@ public class PrintInteractionPresenter {
 
   private void initializeAppearance() {
     interaction.setIcon(new RelativePath("icons/TaskBarPDF24.png"));
-    interaction.setTooltip(resources.getString("Anathema.Reporting.Menu.PrintItem.Name"));
+    interaction.setTooltip(environment.getString("Anathema.Reporting.Menu.PrintItem.Name"));
   }
 
   private void initializeEnabling() {
@@ -41,8 +41,8 @@ public class PrintInteractionPresenter {
       @Override
       public void changeOccurred() {
         interaction.clearMenu();
-        ReportRegister reportRegister = new InteractionReportRegister(interaction, model, resources);
-        model.registerAllReportsOn(reportRegister, resources);
+        ReportRegister reportRegister = new InteractionReportRegister(interaction, model, environment);
+        model.registerAllReportsOn(reportRegister, environment);
       }
     });
   }
@@ -51,7 +51,7 @@ public class PrintInteractionPresenter {
     interaction.setCommand(new Command() {
       @Override
       public void execute() {
-        model.printCurrentItemQuickly(resources);
+        model.printCurrentItemQuickly(environment);
       }
     });
   }

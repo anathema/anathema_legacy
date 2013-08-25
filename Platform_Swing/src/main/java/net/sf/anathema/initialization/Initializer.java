@@ -2,6 +2,8 @@ package net.sf.anathema.initialization;
 
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.configuration.IInitializationPreferences;
+import net.sf.anathema.framework.environment.ApplicationEnvironment;
+import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.resources.LocaleResources;
 import net.sf.anathema.framework.view.ApplicationView;
 import net.sf.anathema.initialization.reflections.AggregatedResourceLoader;
@@ -39,7 +41,8 @@ public abstract class Initializer {
     configureExceptionHandling(resources);
     showVersion(resources);
     IApplicationModel anathemaModel = initModel(resources, loader);
-    ApplicationFrameView view = initView(resources, anathemaModel, objectFactory);
+    Environment environment = new ApplicationEnvironment(resources, exceptionHandler);
+    ApplicationFrameView view = initView(environment, anathemaModel, objectFactory);
     initPresentation(resources, anathemaModel, view);
     return new InitializedModelAndView(view, anathemaModel);
   }
@@ -84,5 +87,5 @@ public abstract class Initializer {
 
   protected abstract void displayMessage(String message);
 
-  protected abstract ApplicationFrameView initView(Resources resources, IApplicationModel anathemaModel, ObjectFactory objectFactory);
+  protected abstract ApplicationFrameView initView(Environment environment, IApplicationModel anathemaModel, ObjectFactory objectFactory);
 }

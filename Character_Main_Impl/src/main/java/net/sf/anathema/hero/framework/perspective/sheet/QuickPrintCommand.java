@@ -1,18 +1,18 @@
 package net.sf.anathema.hero.framework.perspective.sheet;
 
+import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.reporting.Report;
 import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.interaction.Command;
-import net.sf.anathema.lib.resources.Resources;
 
 public class QuickPrintCommand implements Command {
 
-  private Resources resources;
-  private DefaultReportFinder finder;
-  private Item item;
+  private final Environment environment;
+  private final DefaultReportFinder finder;
+  private final Item item;
 
-  public QuickPrintCommand(Resources resources, Item item, DefaultReportFinder finder) {
-    this.resources = resources;
+  public QuickPrintCommand(Environment environment, Item item, DefaultReportFinder finder) {
+    this.environment = environment;
     this.finder = finder;
     this.item = item;
   }
@@ -23,7 +23,7 @@ public class QuickPrintCommand implements Command {
     if (report == null) {
       return;
     }
-    QuickFileChooser fileChooser = new QuickFileChooser(item, resources);
-    new PrintCommand(resources, item, report, fileChooser).execute();
+    QuickFileChooser fileChooser = new QuickFileChooser(item, environment);
+    new PrintCommand(environment, item, report, fileChooser).execute();
   }
 }

@@ -3,6 +3,7 @@ package net.sf.anathema.hero.framework.perspective;
 import net.sf.anathema.character.main.framework.item.CharacterPrintNameFileScanner;
 import net.sf.anathema.character.main.persistence.HeroItemPersister;
 import net.sf.anathema.framework.IApplicationModel;
+import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.persistence.RepositoryItemPersister;
 import net.sf.anathema.framework.presenter.ItemReceiver;
@@ -137,18 +138,18 @@ public class CharacterSystemModel implements ItemSystemModel {
   }
 
   @Override
-  public void printCurrentItemQuickly(Resources resources) {
-    CharacterReportFinder reportFinder = createReportFinder(resources);
-    new QuickPrintCommand(resources, getCurrentItem(), reportFinder).execute();
+  public void printCurrentItemQuickly(Environment environment) {
+    CharacterReportFinder reportFinder = createReportFinder(environment);
+    new QuickPrintCommand(environment, getCurrentItem(), reportFinder).execute();
   }
 
   @Override
-  public void printCurrentItemInto(Report report, Resources resources) {
-    new ControlledPrintWithSelectedReport(getCurrentItem(), resources, report).execute();
+  public void printCurrentItemInto(Report report, Environment environment) {
+    new ControlledPrintWithSelectedReport(getCurrentItem(), environment, report).execute();
   }
 
   @Override
-  public void createNew(final Resources resources) {
+  public void createNew(final Environment environment) {
     ItemReceiver receiver = new ItemReceiver() {
       @Override
       public void addItem(Item item) {
@@ -160,9 +161,9 @@ public class CharacterSystemModel implements ItemSystemModel {
       }
     };
     IItemType itemType = retrieveCharacterItemType();
-    ItemTemplateFactory factory = new CharacterCreationTemplateFactory(getCharacterGenerics(), resources);
+    ItemTemplateFactory factory = new CharacterCreationTemplateFactory(getCharacterGenerics(), environment);
     RepositoryItemPersister persister = new HeroItemPersister(itemType, getCharacterGenerics(), model.getMessaging());
-    new NewItemCommand(factory, resources, receiver, persister).execute();
+    new NewItemCommand(factory, environment, receiver, persister).execute();
   }
 
   @Override

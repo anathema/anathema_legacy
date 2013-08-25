@@ -29,6 +29,7 @@ public class FxDialogExceptionHandler implements ExceptionHandler {
     }
   }
 
+  @Override
   public void handle(Throwable throwable, String message) {
     if (throwable instanceof Exception) {
       indicateException((Exception) throwable, message);

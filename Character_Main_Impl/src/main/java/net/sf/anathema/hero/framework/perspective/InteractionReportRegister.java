@@ -1,22 +1,22 @@
 package net.sf.anathema.hero.framework.perspective;
 
+import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.reporting.Report;
 import net.sf.anathema.hero.framework.perspective.model.ItemSelectionModel;
 import net.sf.anathema.hero.framework.perspective.model.ReportRegister;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
-import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.platform.fx.MenuTool;
 
 public class InteractionReportRegister implements ReportRegister {
-  private MenuTool interaction;
-  private ItemSelectionModel model;
-  private Resources resources;
+  private final MenuTool interaction;
+  private final ItemSelectionModel model;
+  private final Environment environment;
 
-  public InteractionReportRegister(MenuTool interaction, ItemSelectionModel model, Resources resources) {
+  public InteractionReportRegister(MenuTool interaction, ItemSelectionModel model, Environment environment) {
     this.interaction = interaction;
     this.model = model;
-    this.resources = resources;
+    this.environment = environment;
   }
 
   @Override
@@ -26,7 +26,7 @@ public class InteractionReportRegister implements ReportRegister {
     tool.setCommand(new Command() {
       @Override
       public void execute() {
-        model.printCurrentItemInto(report, resources);
+        model.printCurrentItemInto(report, environment);
       }
     });
   }

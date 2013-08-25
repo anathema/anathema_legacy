@@ -1,6 +1,7 @@
 package net.sf.anathema;
 
 import net.sf.anathema.framework.IApplicationModel;
+import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.initialization.ApplicationFrameView;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.InitializedModelAndView;
@@ -33,7 +34,7 @@ public class TestInitializer extends Initializer {
   }
 
   @Override
-  protected ApplicationFrameView initView(Resources resources, IApplicationModel anathemaModel, ObjectFactory objectFactory) {
+  protected ApplicationFrameView initView(Environment environment, IApplicationModel anathemaModel, ObjectFactory objectFactory) {
     return new NullMainView();
   }
 }

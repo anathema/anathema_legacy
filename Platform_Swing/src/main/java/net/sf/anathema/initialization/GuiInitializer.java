@@ -6,6 +6,7 @@ import net.sf.anathema.ProxySplashscreen;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.Version;
 import net.sf.anathema.framework.configuration.IInitializationPreferences;
+import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.fx.FxDialogExceptionHandler;
 import net.sf.anathema.framework.module.AnathemaCoreMenu;
 import net.sf.anathema.framework.presenter.AnathemaViewProperties;
@@ -43,10 +44,10 @@ public class GuiInitializer extends Initializer {
   }
 
   @Override
-  protected ApplicationFrameView initView(Resources resources, IApplicationModel anathemaModel, ObjectFactory objectFactory) {
+  protected ApplicationFrameView initView(Environment environment, IApplicationModel anathemaModel, ObjectFactory objectFactory) {
     displayMessage("Building View...");
-    AnathemaViewProperties viewProperties = new AnathemaViewProperties(resources);
-    PerspectivePaneFactory factory = new PerspectivePaneFactory(anathemaModel, resources, objectFactory);
+    AnathemaViewProperties viewProperties = new AnathemaViewProperties(environment);
+    PerspectivePaneFactory factory = new PerspectivePaneFactory(anathemaModel, environment, objectFactory);
     return new FxApplicationFrame(stage, viewProperties, factory);
   }
 

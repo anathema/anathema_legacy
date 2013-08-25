@@ -1,24 +1,24 @@
 package net.sf.anathema.hero.framework.perspective;
 
+import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.hero.framework.perspective.model.CharacterIdentifier;
 import net.sf.anathema.hero.framework.perspective.model.ItemSelectionModel;
 import net.sf.anathema.interaction.Tool;
-import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.platform.fx.InteractionView;
 
 public class InteractionPresenter {
 
   private ItemSelectionModel model;
   private InteractionView view;
-  private Resources resources;
+  private final Environment environment;
   private CharacterGridView gridView;
   private Selector<CharacterIdentifier> selector;
 
-  public InteractionPresenter(ItemSelectionModel model, InteractionView view, Resources resources, CharacterGridView gridView,
+  public InteractionPresenter(ItemSelectionModel model, InteractionView view, Environment environment, CharacterGridView gridView,
                               Selector<CharacterIdentifier> selector) {
     this.model = model;
     this.view = view;
-    this.resources = resources;
+    this.environment = environment;
     this.gridView = gridView;
     this.selector = selector;
   }
@@ -32,18 +32,18 @@ public class InteractionPresenter {
 
   private void initSaveInteraction() {
     Tool tool = view.addTool();
-    new SaveInteractionPresenter(model, tool, resources).initPresentation();
+    new SaveInteractionPresenter(model, tool, environment).initPresentation();
   }
 
   private void initNewInteraction() {
-    new NewInteractionPresenter(model, view.addTool(), resources, gridView, selector).initPresentation();
+    new NewInteractionPresenter(model, view.addTool(), environment, gridView, selector).initPresentation();
   }
 
   private void initControlledPrintInteraction() {
-    new PrintInteractionPresenter(model, view.addMenuTool(), resources).initPresentation();
+    new PrintInteractionPresenter(model, view.addMenuTool(), environment).initPresentation();
   }
 
   private void initExperiencedInteraction() {
-    new ExperiencedInteractionPresenter(model, view.addToggleTool(), resources).initPresentation();
+    new ExperiencedInteractionPresenter(model, view.addToggleTool(), environment).initPresentation();
   }
 }

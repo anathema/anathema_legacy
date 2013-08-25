@@ -17,4 +17,11 @@ public class ExtensibleExceptionHandler implements ExceptionHandler {
       handler.handle(exception);
     }
   }
+
+  @Override
+  public void handle(Throwable exception, String message) {
+    for (ExceptionHandler handler : handlers) {
+      handler.handle(exception, message);
+    }
+  }
 }

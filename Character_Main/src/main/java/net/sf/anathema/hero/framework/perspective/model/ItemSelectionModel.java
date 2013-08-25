@@ -1,5 +1,6 @@
 package net.sf.anathema.hero.framework.perspective.model;
 
+import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.reporting.Report;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.resources.Resources;
@@ -22,11 +23,11 @@ public interface ItemSelectionModel {
 
   void convertCurrentToExperienced();
 
-  void printCurrentItemQuickly(Resources resources);
+  void printCurrentItemQuickly(Environment environment);
 
-  void printCurrentItemInto(Report report, Resources resources);
+  void printCurrentItemInto(Report report, Environment environment);
 
-  void createNew(Resources resources);
+  void createNew(Environment environment);
 
   void whenNewCharacterIsAdded(NewCharacterListener listener);
 

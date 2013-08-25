@@ -7,6 +7,7 @@ import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManageme
 import net.sf.anathema.character.equipment.item.model.gson.GsonEquipmentDatabase;
 import net.sf.anathema.character.equipment.item.view.fx.FxEquipmentDatabaseView;
 import net.sf.anathema.framework.IApplicationModel;
+import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.view.perspective.Container;
 import net.sf.anathema.framework.view.perspective.Perspective;
 import net.sf.anathema.framework.view.perspective.PerspectiveAutoCollector;
@@ -26,9 +27,9 @@ public class EquipmentPerspective implements Perspective {
   }
 
   @Override
-  public void initContent(Container container, IApplicationModel applicationModel, Resources resources) {
+  public void initContent(Container container, IApplicationModel applicationModel, Environment environment) {
     IEquipmentDatabaseManagement databaseManagement = createDatabaseManagement(applicationModel);
-    initInFx(container, resources, databaseManagement);
+    initInFx(container, environment, databaseManagement);
   }
 
   private void initInFx(Container container, Resources resources, IEquipmentDatabaseManagement databaseManagement) {

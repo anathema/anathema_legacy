@@ -9,4 +9,9 @@ public class LoggingExceptionHandler implements ExceptionHandler {
   public void handle(Throwable exception) {
     logger.error("Uncaught Exception:", exception);
   }
+
+  @Override
+  public void handle(Throwable exception, String message) {
+    logger.error(message, exception);
+  }
 }
