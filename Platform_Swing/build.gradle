@@ -1,6 +1,5 @@
 dependencies {
     compile 'com.miglayout:miglayout-swing:4.2'
-    compile 'org.swinglabs.swingx:swingx-all:1.6.5-1'
     compile project(':Platform')
     compile project(':Platform_FX')
     testCompile project(path: ':Platform', configuration: 'tests')

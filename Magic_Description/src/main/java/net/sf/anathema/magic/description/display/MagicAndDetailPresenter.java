@@ -1,6 +1,5 @@
 package net.sf.anathema.magic.description.display;
 
-import net.sf.anathema.framework.view.CollapsibleView;
 import net.sf.anathema.lib.gui.Presenter;
 
 public class MagicAndDetailPresenter implements Presenter {
@@ -14,14 +13,14 @@ public class MagicAndDetailPresenter implements Presenter {
         return;
       }
       model.setDetailFor(magicId);
-      collapsibleView.setCollapsibleTitle(detailPresenter.getDetailTitle());
-      collapsibleView.expandCollapsible();
+      //collapsibleView.setCollapsibleTitle(detailPresenter.getDetailTitle());
+      //collapsibleView.expandCollapsible();
     }
   }
 
   private final DetailDemandingMagicPresenter mainPresenter;
   private final MagicDetailPresenter detailPresenter;
-  private final CollapsibleView collapsibleView = new CollapsibleView();
+  //private final CollapsibleView collapsibleView = new CollapsibleView();
 
   public MagicAndDetailPresenter(MagicDetailPresenter detailPresenter, DetailDemandingMagicPresenter mainPresenter) {
     this.detailPresenter = detailPresenter;
@@ -37,7 +36,7 @@ public class MagicAndDetailPresenter implements Presenter {
 
   private void initDetailPresentation() {
     mainPresenter.addShowDetailListener(new OpenCharmDetailListener());
-    collapsibleView.setMainContent(mainPresenter.getView().getComponent());
-    collapsibleView.setCollapsibleContainer(detailPresenter.getView().getComponent());
+    //collapsibleView.setMainContent(mainPresenter.getView().getComponent());
+    //collapsibleView.setCollapsibleContainer(detailPresenter.getView().getComponent());
   }
 }
