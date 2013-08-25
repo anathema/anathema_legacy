@@ -16,7 +16,7 @@ public class ControlledPrintWithSelectedReport {
   }
 
   public void execute() {
-    ControlledFileChooser fileChooser = new ControlledFileChooser(environment);
+    ControlledFileChooser fileChooser = new ControlledFileChooser();
     new PrintCommand(environment, item, report, fileChooser).execute();
   }
 }
