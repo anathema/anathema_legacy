@@ -5,12 +5,15 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.platform.fx.Stylesheet;
 import net.sf.anathema.platform.markdown.HtmlConverter;
 import net.sf.anathema.platform.markdown.HtmlText;
 import net.sf.anathema.platform.markdown.WikiText;
@@ -35,8 +38,11 @@ public class AnathemaAboutAction implements Command {
   @Override
   public void execute() {
     MigPane parent = new MigPane(new LC().fill().wrapAfter(1));
+    parent.getStyleClass().add("thinborder");
     Scene scene = new Scene(parent, 300, 400);
+    new Stylesheet("skin/platform/aboutDialog.css").applyToScene(scene);
     final Stage aboutStage = new Stage();
+    aboutStage.initStyle(StageStyle.UNDECORATED);
     aboutStage.initOwner(stage);
     aboutStage.setResizable(false);
     aboutStage.setTitle(resources.getString("Help.AboutDialog.Title"));
@@ -46,6 +52,7 @@ public class AnathemaAboutAction implements Command {
     showCopyrightAndLicense(parent);
     showCredits(parent);
     showCloseButton(parent, aboutStage);
+    stage.getScene().getRoot().setEffect(new GaussianBlur());
     aboutStage.showAndWait();
   }
 
@@ -53,13 +60,13 @@ public class AnathemaAboutAction implements Command {
   private void showCredits(MigPane parent) {
     try {
       InputStream content = getClass().getClassLoader().getResourceAsStream("about.md");
-      URL stylesheet = getClass().getClassLoader().getResource("about.css");
+      URL stylesheet = getClass().getClassLoader().getResource("aboutPage.css");
       String markdownContent = IOUtils.toString(content);
       HtmlText htmlText = new HtmlConverter().convert(new WikiText(markdownContent));
       WebView webView = new WebView();
       webView.getEngine().setUserStyleSheetLocation(stylesheet.toExternalForm());
       webView.getEngine().loadContent(htmlText.getHtmlText());
-      parent.add(webView);
+      parent.add(webView, new CC().pad(0, 2, 0, 2));
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
@@ -77,7 +84,7 @@ public class AnathemaAboutAction implements Command {
     String buildLabel = getString("Help.AboutDialog.BuiltLabel");
     String buildDate = getString("Anathema.Version.Built");
     String version = MessageFormat.format("v{0}, {1} {2}", versionNumber, buildLabel, buildDate);
-    parent.add(new Label(version), new CC().dockNorth().alignX("center"));
+    parent.add(new Label(version), new CC().dockNorth().alignX("center").pad("2"));
   }
 
   private String getString(String key) {
@@ -85,7 +92,7 @@ public class AnathemaAboutAction implements Command {
   }
 
   private void showProgramTitle(MigPane parent) {
-    parent.add(new Label("Anathema"), new CC().dockNorth().alignX("center").pad("3"));
+    parent.add(new Label("Anathema"), new CC().dockNorth().alignX("center").pad("2"));
   }
 
   private void showCloseButton(MigPane parent, final Stage aboutStage) {
@@ -94,6 +101,7 @@ public class AnathemaAboutAction implements Command {
       @Override
       public void handle(ActionEvent actionEvent) {
         aboutStage.close();
+        stage.getScene().getRoot().setEffect(null);
       }
     });
     parent.add(close, new CC().dockSouth().alignX("center"));

@@ -1,0 +1,6 @@
+.thinborder {
+    -fx-border-color: gray;
+    -fx-border-style: solid;
+    -fx-border-radius: 4;
+    -fx-border-width: 0.5;
+}
