@@ -2,8 +2,11 @@ package net.sf.anathema.character.main.library.util;
 
 import net.sf.anathema.character.main.type.CharacterType;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
+
+import static java.text.MessageFormat.format;
 
 public class CssSkinner {
 
@@ -19,12 +22,7 @@ public class CssSkinner {
     if (characterType == null) {
       return "skin/traits/trait.css";
     }
-    if (characterType.getId().equals("Solar")) {
-      return "skin/solar/trait.css";
-    } else if (characterType.getId().equals("Mortal")) {
-      return "skin/mortal/trait.css";
-    } else {
-      return "skin/traits/trait.css";
-    }
+    String skinFolder = characterType.getId().toLowerCase();
+    return format("skin/{0}/trait.css", skinFolder);
   }
 }
