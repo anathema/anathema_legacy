@@ -27,7 +27,7 @@ public class SpellInitializer implements HeroModelInitializer {
   @Override
   public void initialize(SectionView sectionView, Hero hero, Resources resources) {
     String header = resources.getString(titleKey);
-    SpellView view = sectionView.addView(header, SpellView.class, hero.getTemplate().getTemplateType().getCharacterType());
+    SpellView view = sectionView.addView(header, SpellView.class);
     MagicDescriptionProvider magicDescriptionProvider = CharmDescriptionProviderExtractor.CreateFor(applicationModel, resources);
     ExperienceModel experienceModel = ExperienceModelFetcher.fetch(hero);
     SpellsModel spellsModel = SpellsModelFetcher.fetch(hero);

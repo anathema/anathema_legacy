@@ -24,7 +24,7 @@ public class AttributesInitializer implements HeroModelInitializer {
   public void initialize(SectionView sectionView, Hero hero, Resources resources) {
     String attributeHeader = resources.getString("CardView.AttributeConfiguration.Title");
     GroupedFavorableTraitConfigurationView attributeView =
-            sectionView.addView(attributeHeader, GroupedFavorableTraitConfigurationView.class, hero.getTemplate().getTemplateType().getCharacterType());
+            sectionView.addView(attributeHeader, GroupedFavorableTraitConfigurationView.class);
     new AttributesPresenter(hero, resources, attributeView).initPresentation();
   }
 }

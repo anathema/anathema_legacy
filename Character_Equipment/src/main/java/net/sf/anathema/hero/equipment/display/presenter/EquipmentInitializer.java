@@ -1,6 +1,5 @@
 package net.sf.anathema.hero.equipment.display.presenter;
 
-import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.view.SectionView;
 import net.sf.anathema.framework.model.ApplicationModel;
 import net.sf.anathema.hero.display.HeroModelGroup;
@@ -23,8 +22,7 @@ public class EquipmentInitializer implements HeroModelInitializer {
   @Override
   public void initialize(SectionView sectionView, Hero hero, Resources resources) {
     String viewName = resources.getString("AdditionalTemplateView.TabName.Equipment");
-    CharacterType characterType = hero.getTemplate().getTemplateType().getCharacterType();
-    EquipmentView view = sectionView.addView(viewName, EquipmentView.class, characterType);
+    EquipmentView view = sectionView.addView(viewName, EquipmentView.class);
     EquipmentModel equipmentModel = EquipmentModelFetcher.fetch(hero);
     new EquipmentPresenter(resources, equipmentModel, view).initPresentation();
   }

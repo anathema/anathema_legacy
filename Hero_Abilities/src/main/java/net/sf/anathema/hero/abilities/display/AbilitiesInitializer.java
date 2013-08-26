@@ -23,7 +23,7 @@ public class AbilitiesInitializer implements HeroModelInitializer {
   public void initialize(SectionView sectionView, Hero hero, Resources resources) {
     String abilityHeader = resources.getString("CardView.AbilityConfiguration.Title");
     GroupedFavorableTraitConfigurationView abilityView = sectionView
-            .addView(abilityHeader, GroupedFavorableTraitConfigurationView.class, hero.getTemplate().getTemplateType().getCharacterType());
+            .addView(abilityHeader, GroupedFavorableTraitConfigurationView.class);
     new AbilitiesPresenter(hero, resources, abilityView).initPresentation();
   }
 }

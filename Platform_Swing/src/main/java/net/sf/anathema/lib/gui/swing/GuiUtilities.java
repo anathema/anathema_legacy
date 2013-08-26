@@ -1,7 +1,6 @@
 package net.sf.anathema.lib.gui.swing;
 
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 import javax.swing.JTable;
@@ -9,7 +8,6 @@ import javax.swing.SwingUtilities;
 import javax.swing.table.TableCellEditor;
 import java.awt.Component;
 import java.awt.Container;
-import java.awt.Dialog;
 import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.GraphicsConfiguration;
@@ -96,21 +94,14 @@ public class GuiUtilities {
     centerToComponent(window, window.getParent());
   }
 
-  public static JDialog createDialog(Component parentComponent, String title) {
-    JDialog dialog = createRawDialogForParentComponent(parentComponent);
+  public static JDialog createDialog(String title) {
+    JDialog dialog = createRawDialogForParentComponent();
     dialog.setTitle(title);
     accountForScreenSize(dialog);
     return dialog;
   }
 
-  public static JDialog createRawDialogForParentComponent(Component parentComponent) {
-    Window window = getWindowFor(parentComponent);
-    if (window instanceof Frame) {
-      return new JDialog((Frame) window);
-    }
-    if (window instanceof Dialog) {
-      return new JDialog((Dialog) window);
-    }
+  public static JDialog createRawDialogForParentComponent() {
     return new JDialog();
   }
 
@@ -237,12 +228,6 @@ public class GuiUtilities {
         }
       }
     }
-  }
-
-  public static void displayOnScreenCenter(JFrame frame, Dimension size) {
-    frame.setSize(size);
-    centerOnScreen(frame);
-    frame.setVisible(true);
   }
 
   public static void setEnabled(Container container, boolean enabled) {

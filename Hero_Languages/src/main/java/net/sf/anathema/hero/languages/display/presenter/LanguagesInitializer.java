@@ -23,7 +23,7 @@ public class LanguagesInitializer implements HeroModelInitializer {
   @Override
   public void initialize(SectionView sectionView, Hero hero, Resources resources) {
     String viewName = resources.getString("AdditionalTemplateView.TabName.Linguistics");
-    LanguagesView view = sectionView.addView(viewName, LanguagesView.class, hero.getTemplate().getTemplateType().getCharacterType());
+    LanguagesView view = sectionView.addView(viewName, LanguagesView.class);
     LanguagesModel languagesModel = LanguagesModelFetcher.fetch(hero);
     new LanguagesPresenter(languagesModel, view, resources).initPresentation();
   }

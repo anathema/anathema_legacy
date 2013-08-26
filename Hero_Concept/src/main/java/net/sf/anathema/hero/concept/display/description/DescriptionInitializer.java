@@ -28,7 +28,7 @@ public class DescriptionInitializer implements HeroModelInitializer {
   public void initialize(SectionView sectionView, Hero hero, Resources resources) {
     String descriptionHeader = resources.getString("CardView.CharacterDescription.Title");
     ConfigurableCharacterView descriptionView =
-            sectionView.addView(descriptionHeader, ConfigurableCharacterView.class, hero.getTemplate().getTemplateType().getCharacterType());
+            sectionView.addView(descriptionHeader, ConfigurableCharacterView.class);
     DescriptionDetails descriptionDetails = createDescriptionDetails(hero);
     new DescriptionPresenter(descriptionDetails, resources, descriptionView).initPresentation();
   }

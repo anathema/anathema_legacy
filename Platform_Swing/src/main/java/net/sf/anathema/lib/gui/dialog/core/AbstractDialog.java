@@ -39,7 +39,7 @@ public abstract class AbstractDialog {
     Preconditions.checkNotNull(dialogConfiguration);
     this.dialogConfiguration = dialogConfiguration;
     dialogPagePanel = new DialogPagePanel(dialogConfiguration.getHeaderPanelConfiguration());
-    dialog = new SwingDialog(GuiUtilities.createDialog(parent, INITIAL_DIALOG_TITLE));
+    dialog = new SwingDialog(GuiUtilities.createDialog(INITIAL_DIALOG_TITLE));
     dialog.setModal(true);
     dialog.getContentPane().setLayout(new MigLayout(LayoutUtils.fillWithoutInsets().wrapAfter(1)));
     dialog.addWindowListener(cancelingWindowListener);

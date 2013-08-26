@@ -21,7 +21,7 @@ public class SpiritualTraitsInitializer implements HeroModelInitializer {
   @Override
   public void initialize(SectionView sectionView, Hero hero, Resources resources) {
     String header = new DefaultSpiritualTraitsViewProperties(resources).getOverallHeader();
-    SpiritualTraitsView view = sectionView.addView(header, SpiritualTraitsView.class, hero.getTemplate().getTemplateType().getCharacterType());
+    SpiritualTraitsView view = sectionView.addView(header, SpiritualTraitsView.class);
     new BasicSpiritualTraitsPresenter(resources, hero, view).initPresentation();
   }
 }

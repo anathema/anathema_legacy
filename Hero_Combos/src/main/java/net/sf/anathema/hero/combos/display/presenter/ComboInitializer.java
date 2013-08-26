@@ -31,7 +31,7 @@ public class ComboInitializer implements HeroModelInitializer {
       return;
     }
     String header = resources.getString("CardView.CharmConfiguration.ComboCreation.Title");
-    ComboConfigurationView comboView = sectionView.addView(header, ComboConfigurationView.class, hero.getTemplate().getTemplateType().getCharacterType());
+    ComboConfigurationView comboView = sectionView.addView(header, ComboConfigurationView.class);
     MagicDescriptionProvider magicDescriptionProvider = CharmDescriptionProviderExtractor.CreateFor(model, resources);
     ComboConfigurationModel comboModel = new ComboConfigurationModel(hero, magicDescriptionProvider);
     new ComboConfigurationPresenter(hero, resources, comboModel, comboView).initPresentation();

@@ -1,6 +1,5 @@
 package net.sf.anathema.hero.concept.display.caste.presenter;
 
-import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.view.SectionView;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.hero.concept.HeroConceptFetcher;
@@ -27,8 +26,7 @@ public class CasteInitializer implements HeroModelInitializer {
       return;
     }
     String conceptHeader = resources.getString("CardView.CharacterConcept.Title");
-    CharacterType characterType = hero.getTemplate().getTemplateType().getCharacterType();
-    CasteView conceptView = sectionView.addView(conceptHeader, CasteView.class, characterType);
+    CasteView conceptView = sectionView.addView(conceptHeader, CasteView.class);
     new CastePresenter(hero, conceptView, resources).initPresentation();
   }
 }
