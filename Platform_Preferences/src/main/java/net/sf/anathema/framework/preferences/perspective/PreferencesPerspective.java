@@ -21,7 +21,9 @@ public class PreferencesPerspective implements Perspective {
   public void initContent(Container container, IApplicationModel applicationModel, Environment environment) {
     PreferencesSystemView view = new PreferencesSystemView();
     container.setContent(view.perspectivePane.getNode());
-    PreferencesPresenter presenter = new PreferencesPresenter(environment, view.preferencesNavigation, view.preferencesView);
+    PreferencesModel model = new CollectingPreferencesModel();
+    PreferencesPersister persister = new PropertiesPreferencesPersister();
+    PreferencesPresenter presenter = new PreferencesPresenter(environment, view.preferencesNavigation, view.preferencesView, model, persister);
     presenter.initialize();
   }
 }
