@@ -7,14 +7,6 @@ import java.util.List;
 
 public class ElementUtilities {
 
-  public static void addAttribute(Element element, String name, int value) {
-    element.addAttribute(name, String.valueOf(value));
-  }
-
-  public static void addAttribute(Element element, String name, boolean value) {
-    element.addAttribute(name, String.valueOf(value));
-  }
-
   public static int getRequiredIntAttrib(Element element, String name) throws PersistenceException {
     String value = getRequiredAttrib(element, name);
     try {

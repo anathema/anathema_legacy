@@ -1,6 +1,8 @@
 package net.sf.anathema.framework.preferences.perspective;
 
 import net.sf.anathema.framework.environment.Environment;
+import net.sf.anathema.framework.preferences.persistence.PreferencePto;
+import net.sf.anathema.framework.presenter.action.preferences.PreferencesPage;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 
@@ -22,12 +24,12 @@ public class PreferencesPresenter {
   }
 
   public void initialize() {
+    loadPreferences();
     addSaveButtonToNavigation();
     addNavigationEntryForEachCategory();
   }
 
   private void addNavigationEntryForEachCategory() {
-    //To change body of created methods use File | Settings | File Templates.
   }
 
   private void addSaveButtonToNavigation() {
@@ -41,7 +43,13 @@ public class PreferencesPresenter {
     });
   }
 
+  private void loadPreferences() {
+    PreferencePto pto = persister.load();
+    model.initializeFrom(pto);
+  }
+
   private void savePreferences() {
-    persister.save(model);
+    PreferencePto pto = model.serialize();
+    persister.save(pto);
   }
 }
