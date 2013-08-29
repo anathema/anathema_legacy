@@ -5,7 +5,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @SuppressWarnings("FieldCanBeLocal")
 public class PreferenceKey {
-  private final String key;
+  public final String key;
 
   public PreferenceKey(String key) {
     this.key = key;
