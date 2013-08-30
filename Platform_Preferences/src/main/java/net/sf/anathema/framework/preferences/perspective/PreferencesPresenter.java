@@ -2,7 +2,6 @@ package net.sf.anathema.framework.preferences.perspective;
 
 import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.preferences.persistence.PreferencePto;
-import net.sf.anathema.framework.presenter.action.preferences.PreferencesPage;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 
