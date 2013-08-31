@@ -4,11 +4,41 @@ import net.sf.anathema.framework.preferences.elements.PreferenceModel;
 import net.sf.anathema.framework.preferences.elements.PreferencePresenter;
 import net.sf.anathema.framework.preferences.elements.PreferenceView;
 import net.sf.anathema.framework.preferences.elements.RegisteredPreferencePresenter;
+import net.sf.anathema.framework.reporting.pdf.PageSize;
+import net.sf.anathema.lib.control.ChangeListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
+import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
+import net.sf.anathema.lib.resources.Resources;
 
 @RegisteredPreferencePresenter
 public class SheetPreferencePresenter implements PreferencePresenter {
-  private PreferenceModel model;
-  private PreferenceView view;
+  private SheetPreferenceModel model;
+  private SheetPreferenceView view;
+  private Resources resources;
+
+  @Override
+  public void initialize() {
+    final ObjectSelectionView<PageSize> pageSizeView = view.addObjectSelectionView("Page format", new PageSizeUi(resources));
+    pageSizeView.setObjects(model.getAvailableChoices());
+    pageSizeView.addObjectSelectionChangedListener(new ObjectValueListener<PageSize>() {
+      @Override
+      public void valueChanged(PageSize newValue) {
+        model.requestChangeTo(newValue);
+      }
+    });
+    model.onChange(new ChangeListener() {
+      @Override
+      public void changeOccurred() {
+        showCurrentChoiceInView(pageSizeView);
+      }
+    });
+    showCurrentChoiceInView(pageSizeView);
+  }
+
+  @Override
+  public void useResources(Resources resources) {
+    this.resources = resources;
+  }
 
   @Override
   public Class getViewClass() {
@@ -27,16 +57,15 @@ public class SheetPreferencePresenter implements PreferencePresenter {
 
   @Override
   public void useModel(PreferenceModel preferenceModel) {
-    this.model = preferenceModel;
+    this.model = (SheetPreferenceModel) preferenceModel;
   }
 
   @Override
   public void useView(PreferenceView view) {
-    this.view = view;
+    this.view = (SheetPreferenceView) view;
   }
 
-  @Override
-  public void initialize() {
-    //To change body of implemented methods use File | Settings | File Templates.
+  private void showCurrentChoiceInView(ObjectSelectionView<PageSize> pageSizeView) {
+    pageSizeView.setSelectedObject(model.getSelectedPageSize());
   }
 }

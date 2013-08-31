@@ -41,6 +41,7 @@ public class PreferencesPresenter {
       PreferenceView view = preferencesNavigation.addSection(presenter.getTitle(), presenter.getViewClass());
       presenter.useView(view);
       presenter.useModel(model.find(presenter.getModelClass()));
+      presenter.useResources(environment);
       presenter.initialize();
     }
   }

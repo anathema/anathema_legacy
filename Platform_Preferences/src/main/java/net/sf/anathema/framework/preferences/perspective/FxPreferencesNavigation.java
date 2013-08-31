@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import net.sf.anathema.framework.preferences.elements.PreferenceView;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.platform.fx.Navigation;
+import net.sf.anathema.platform.fx.NodeHolder;
 
 import java.util.ArrayList;
 
@@ -27,7 +28,7 @@ public class FxPreferencesNavigation extends Navigation implements PreferencesNa
         trigger.setOnAction(new EventHandler<ActionEvent>() {
           @Override
           public void handle(ActionEvent actionEvent) {
-            preferencesView.show(view);
+            preferencesView.show((NodeHolder)view);
           }
         });
         return view;

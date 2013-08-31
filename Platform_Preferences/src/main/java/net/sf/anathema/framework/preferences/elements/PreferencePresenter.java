@@ -1,5 +1,7 @@
 package net.sf.anathema.framework.preferences.elements;
 
+import net.sf.anathema.lib.resources.Resources;
+
 public interface PreferencePresenter {
   Class getViewClass();
 
@@ -12,4 +14,6 @@ public interface PreferencePresenter {
   void useView(PreferenceView view);
 
   void initialize();
+
+  void useResources(Resources resources);
 }
