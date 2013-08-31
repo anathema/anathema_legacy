@@ -9,13 +9,14 @@ import net.sf.anathema.framework.view.perspective.PerspectiveAutoCollector;
 import net.sf.anathema.framework.view.perspective.PerspectiveToggle;
 import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.initialization.reflections.Weight;
+import net.sf.anathema.lib.file.RelativePath;
 
 @PerspectiveAutoCollector
 @Weight(weight = 8000)
 public class PreferencesPerspective implements Perspective {
   @Override
   public void configureToggle(PerspectiveToggle toggle) {
-    toggle.setText("Preferences");
+    toggle.setIcon(new RelativePath("icons/preferences.png"));
     toggle.setTooltip("Configure Anathema");
   }
 

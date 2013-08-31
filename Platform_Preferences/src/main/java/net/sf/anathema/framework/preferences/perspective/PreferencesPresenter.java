@@ -8,6 +8,7 @@ import net.sf.anathema.framework.preferences.persistence.PreferencePto;
 import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
+import net.sf.anathema.lib.file.RelativePath;
 
 import java.util.Collection;
 
@@ -46,7 +47,7 @@ public class PreferencesPresenter {
 
   private void addSaveButtonToNavigation() {
     Tool tool = preferencesNavigation.addTool();
-    tool.setText("Save");
+    tool.setIcon(new RelativePath("icons/TaskBarSave24.png"));
     tool.setCommand(new Command() {
       @Override
       public void execute() {

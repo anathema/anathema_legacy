@@ -205,6 +205,7 @@ Anathema includes software developed by
 -Google, Inc.
 -Nat Pryce (http://nat.truemesh.com/archives/000710.html)
 -MiG InfoCom AB (http://www.miglayout.com)
+-Everaldo Coelho (http://www.everaldo.com/)
 
 The "Save as PDF" icon was created by Wolfgang Bartelme (http://www.bartelme.at/) and is used with permission.
 Some of the other images are taken with permission from the archives at http://www.wolf-spoor.org.
@@ -228,8 +229,8 @@ MiG Layout
 
 GNU LGPL v2.1
 =========================
-Swing Labs components
 Logback
+"Settings" icon
 
 Individual Licenses:
 =========================
