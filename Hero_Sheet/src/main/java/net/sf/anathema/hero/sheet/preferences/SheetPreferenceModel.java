@@ -8,7 +8,7 @@ import net.sf.anathema.framework.preferences.persistence.PreferenceValue;
 import net.sf.anathema.framework.reporting.pdf.PageSize;
 
 @RegisteredPreferenceModel
-public class SheetPreferencesModel implements PreferenceModel {
+public class SheetPreferenceModel implements PreferenceModel {
 
   public static final PreferenceKey KEY = new PreferenceKey("hero.sheet.pagesize");
   private PageSize pageSize;

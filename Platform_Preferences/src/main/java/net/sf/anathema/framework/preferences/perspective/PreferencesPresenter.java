@@ -1,34 +1,47 @@
 package net.sf.anathema.framework.preferences.perspective;
 
 import net.sf.anathema.framework.environment.Environment;
+import net.sf.anathema.framework.preferences.elements.PreferencePresenter;
+import net.sf.anathema.framework.preferences.elements.PreferenceView;
+import net.sf.anathema.framework.preferences.elements.RegisteredPreferencePresenter;
 import net.sf.anathema.framework.preferences.persistence.PreferencePto;
+import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
+
+import java.util.Collection;
 
 public class PreferencesPresenter {
 
   private final Environment environment;
   private final PreferencesNavigation preferencesNavigation;
-  private final PreferencesView preferencesView;
   private final PreferencesModel model;
   private final PreferencesPersister persister;
+  private ObjectFactory objectFactory;
 
   public PreferencesPresenter(Environment environment, PreferencesNavigation preferencesNavigation,
-                              PreferencesView preferencesView, PreferencesModel model, PreferencesPersister persister) {
+                              PreferencesModel model, PreferencesPersister persister, ObjectFactory objectFactory) {
     this.environment = environment;
     this.preferencesNavigation = preferencesNavigation;
-    this.preferencesView = preferencesView;
     this.model = model;
     this.persister = persister;
+    this.objectFactory = objectFactory;
   }
 
   public void initialize() {
     loadPreferences();
     addSaveButtonToNavigation();
-    addNavigationEntryForEachCategory();
+    initIndividualPresentations();
   }
 
-  private void addNavigationEntryForEachCategory() {
+  private void initIndividualPresentations() {
+    Collection<PreferencePresenter> presenters = objectFactory.instantiateOrdered(RegisteredPreferencePresenter.class);
+    for (PreferencePresenter presenter : presenters) {
+      PreferenceView view = preferencesNavigation.addSection(presenter.getTitle(), presenter.getViewClass());
+      presenter.useView(view);
+      presenter.useModel(model.find(presenter.getModelClass()));
+      presenter.initialize();
+    }
   }
 
   private void addSaveButtonToNavigation() {

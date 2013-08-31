@@ -32,7 +32,7 @@ public class PropertiesPreferencesPersister implements PreferencesPersister {
       Properties properties = loader.load();
       return createPto(properties);
     } catch (ConfigurationFailedException e) {
-      LOGGER.warn("Could not restore preferences.", e);
+      LOGGER.warn("Could not restore preferences: "+e.getMessage());
       return new PreferencePto();
     }
   }

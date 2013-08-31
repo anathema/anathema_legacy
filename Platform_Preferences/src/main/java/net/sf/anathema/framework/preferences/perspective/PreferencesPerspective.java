@@ -7,6 +7,7 @@ import net.sf.anathema.framework.view.perspective.Container;
 import net.sf.anathema.framework.view.perspective.Perspective;
 import net.sf.anathema.framework.view.perspective.PerspectiveAutoCollector;
 import net.sf.anathema.framework.view.perspective.PerspectiveToggle;
+import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.initialization.reflections.Weight;
 
 @PerspectiveAutoCollector
@@ -20,11 +21,12 @@ public class PreferencesPerspective implements Perspective {
 
   @Override
   public void initContent(Container container, IApplicationModel applicationModel, Environment environment) {
-    PreferencesSystemView view = new PreferencesSystemView();
+    ObjectFactory objectFactory = applicationModel.getObjectFactory();
+    PreferencesSystemView view = new PreferencesSystemView(objectFactory);
     container.setContent(view.perspectivePane.getNode());
-    PreferencesModel model = new CollectingPreferencesModel(applicationModel.getObjectFactory());
+    PreferencesModel model = new CollectingPreferencesModel(objectFactory);
     PreferencesPersister persister = new PropertiesPreferencesPersister();
-    PreferencesPresenter presenter = new PreferencesPresenter(environment, view.preferencesNavigation, view.preferencesView, model, persister);
+    PreferencesPresenter presenter = new PreferencesPresenter(environment, view.preferencesNavigation, model, persister, objectFactory);
     presenter.initialize();
   }
 }

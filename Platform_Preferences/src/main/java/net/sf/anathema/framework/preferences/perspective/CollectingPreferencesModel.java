@@ -3,6 +3,7 @@ package net.sf.anathema.framework.preferences.perspective;
 import net.sf.anathema.framework.preferences.elements.PreferenceModel;
 import net.sf.anathema.framework.preferences.elements.RegisteredPreferenceModel;
 import net.sf.anathema.framework.preferences.persistence.PreferencePto;
+import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.ObjectFactory;
 
 import java.util.ArrayList;
@@ -31,5 +32,15 @@ public class CollectingPreferencesModel implements PreferencesModel {
     for (PreferenceModel model : models) {
       model.initializeFrom(pto);
     }
+  }
+
+  @Override
+  public PreferenceModel find(Class modelClass) {
+    for (PreferenceModel model : models) {
+      if (modelClass.isInstance(model)) {
+        return model;
+      }
+    }
+    throw new InitializationException("Unknown preference requested: " + modelClass);
   }
 }
