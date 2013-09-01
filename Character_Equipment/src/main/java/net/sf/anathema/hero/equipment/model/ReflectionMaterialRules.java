@@ -4,7 +4,7 @@ import com.google.common.base.Functions;
 import net.sf.anathema.hero.equipment.sheet.content.stats.ArtifactAttuneType;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.equipment.core.MagicalMaterial;
-import net.sf.anathema.initialization.ObjectFactory;
+import net.sf.anathema.framework.environment.ObjectFactory;
 
 import java.util.Collection;
 import java.util.HashMap;

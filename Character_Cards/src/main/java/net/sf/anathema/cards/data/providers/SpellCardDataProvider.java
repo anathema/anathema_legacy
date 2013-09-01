@@ -5,19 +5,19 @@ import net.sf.anathema.cards.data.SpellCardData;
 import net.sf.anathema.cards.layout.ICardReportResourceProvider;
 import net.sf.anathema.character.main.magic.spells.Spell;
 import net.sf.anathema.framework.IApplicationModel;
+import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.spells.model.SpellsModelFetcher;
 import net.sf.anathema.hero.spells.sheet.content.SpellStats;
-import net.sf.anathema.framework.environment.Resources;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SpellCardDataProvider extends AbstractMagicCardDataProvider {
 
-  public SpellCardDataProvider(IApplicationModel model, Resources resources) {
-    super(model, resources);
+  public SpellCardDataProvider(IApplicationModel model, Environment environment) {
+    super(model, environment);
   }
 
   @Override

@@ -1,8 +1,8 @@
 package net.sf.anathema.initialization;
 
 import net.sf.anathema.framework.IApplicationModel;
+import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
-import net.sf.anathema.initialization.reflections.ResourceLoader;
 
 public class ExtensionWithId {
 
@@ -14,8 +14,8 @@ public class ExtensionWithId {
     this.extension = extension;
   }
 
-  public void register(IApplicationModel model, ResourceLoader loader) throws InitializationException {
-    extension.initialize(model.getRepository(), model.getObjectFactory(), loader);
+  public void register(IApplicationModel model, Environment environment) throws InitializationException {
+    extension.initialize(model.getRepository(), environment, environment);
     model.getExtensionPointRegistry().register(id, extension);
   }
 }

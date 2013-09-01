@@ -1,4 +1,4 @@
-package net.sf.anathema.initialization.reflections;
+package net.sf.anathema.framework.environment.dependencies;
 
 import com.google.common.collect.Sets;
 import net.sf.anathema.lib.logging.Logger;

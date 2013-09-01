@@ -3,11 +3,12 @@ package net.sf.anathema.initialization.bootjob;
 import net.sf.anathema.ProxySplashscreen;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.Version;
+import net.sf.anathema.framework.environment.Environment;
+import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.framework.environment.dependencies.Weight;
 import net.sf.anathema.initialization.BootJob;
 import net.sf.anathema.initialization.IBootJob;
-import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.logging.Logger;
-import net.sf.anathema.framework.environment.Resources;
 
 import java.io.File;
 import java.text.MessageFormat;
@@ -20,13 +21,13 @@ public class RepositoryUpdate implements IBootJob {
   private static final Logger logger = Logger.getLogger(RepositoryUpdate.class);
 
   @Override
-  public void run(Resources resources, IApplicationModel model) {
+  public void run(Environment environment, IApplicationModel model) {
     if (!repositoryAlreadyExists(model)) {
-      createRepositoryAtVersion(resources, model);
+      createRepositoryAtVersion(environment, model);
       return;
     }
-    ProxySplashscreen.getInstance().displayStatusMessage(resources.getString("Bootjob.UpdateRepository"));
-    Version anathemaVersion = new Version(resources);
+    ProxySplashscreen.getInstance().displayStatusMessage(environment.getString("Bootjob.UpdateRepository"));
+    Version anathemaVersion = new Version(environment);
     RepositoryVersion repositoryVersion = new RepositoryVersion(model.getRepository());
     logger.info(format("Found repository at version {0}.", repositoryVersion.asString()));
     if (!repositoryVersion.needsUpdateTo(anathemaVersion)) {

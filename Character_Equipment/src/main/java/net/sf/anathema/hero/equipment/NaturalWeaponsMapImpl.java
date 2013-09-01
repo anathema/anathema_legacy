@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.equipment.core.IEquipmentTemplate;
 import net.sf.anathema.initialization.InitializationException;
-import net.sf.anathema.initialization.ObjectFactory;
+import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.lib.logging.Logger;
 
 import java.util.Collection;

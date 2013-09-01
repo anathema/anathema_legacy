@@ -7,6 +7,7 @@ import com.itextpdf.text.pdf.MultiColumnText;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import net.sf.anathema.character.main.magic.description.MagicDescription;
+import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.hero.charms.display.presenter.CharmDescriptionProviderExtractor;
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.hero.charms.display.MagicDisplayLabeler;
@@ -28,25 +29,24 @@ import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.spells.model.SpellsModelFetcher;
 import net.sf.anathema.hero.spells.sheet.content.SpellStats;
-import net.sf.anathema.framework.environment.Resources;
 
 import static java.text.MessageFormat.format;
 
 public class MagicReport extends AbstractPdfReport {
 
-  private final Resources resources;
+  private final Environment environment;
   private final IApplicationModel model;
   private final MagicPartFactory partFactory;
 
-  public MagicReport(Resources resources, IApplicationModel model) {
-    this.resources = resources;
+  public MagicReport(Environment environment, IApplicationModel model) {
+    this.environment = environment;
     this.model = model;
     partFactory = new MagicPartFactory(new PdfReportUtils());
   }
 
   @Override
   public String toString() {
-    return resources.getString("MagicReport.Name");
+    return environment.getString("MagicReport.Name");
   }
 
   @Override
@@ -67,7 +67,7 @@ public class MagicReport extends AbstractPdfReport {
     String currentGroup = "";
     for (Spell spell : getCurrentSpells(hero)) {
       SpellStats spellStats = createSpellStats(spell);
-      String nextGroupName = format("{0} {1}", spellStats.getType(resources), spellStats.getGroupName(resources));
+      String nextGroupName = format("{0} {1}", spellStats.getType(environment), spellStats.getGroupName(environment));
       if (!currentGroup.equals(nextGroupName)) {
         currentGroup = nextGroupName;
         columnText.addElement(partFactory.createGroupTitle(currentGroup));
@@ -83,8 +83,8 @@ public class MagicReport extends AbstractPdfReport {
     String currentGroup = "";
     for (Charm charm : getCurrentCharms(hero)) {
       CharmStats charmStats = createCharmStats(hero, charm);
-      if (!currentGroup.equals(charmStats.getGroupName(resources))) {
-        currentGroup = charmStats.getGroupName(resources);
+      if (!currentGroup.equals(charmStats.getGroupName(environment))) {
+        currentGroup = charmStats.getGroupName(environment);
         columnText.addElement(partFactory.createGroupTitle(currentGroup));
       }
       addMagicName(charm, columnText);
@@ -94,19 +94,19 @@ public class MagicReport extends AbstractPdfReport {
   }
 
   private void addSpellCost(Spell charm, MultiColumnText columnText) throws DocumentException {
-    String costsLabel = resources.getString("MagicReport.Costs.Label") + ": ";
-    String costsValue = new ScreenDisplayInfoContributor(resources).createCostString(charm);
+    String costsLabel = environment.getString("MagicReport.Costs.Label") + ": ";
+    String costsValue = new ScreenDisplayInfoContributor(environment).createCostString(charm);
     columnText.addElement(partFactory.createDataPhrase(costsLabel, costsValue));
   }
 
   private void addSpellTarget(SpellStats spellStats, MultiColumnText columnText) throws DocumentException {
-    String targetLabel = resources.getString("MagicReport.Target.Label") + ": ";
-    String target = Joiner.on(", ").join(spellStats.getDetailStrings(resources));
+    String targetLabel = environment.getString("MagicReport.Target.Label") + ": ";
+    String target = Joiner.on(", ").join(spellStats.getDetailStrings(environment));
     columnText.addElement(partFactory.createDataPhrase(targetLabel, target));
   }
 
   private void addMagicName(Magic magic, MultiColumnText columnText) throws DocumentException {
-    String charmName = new MagicDisplayLabeler(resources).getLabelForMagic(magic);
+    String charmName = new MagicDisplayLabeler(environment).getLabelForMagic(magic);
     columnText.addElement(partFactory.createCharmTitle(charmName));
   }
 
@@ -120,34 +120,34 @@ public class MagicReport extends AbstractPdfReport {
   }
 
   private void addCostsCell(Charm charm, PdfPTable table) {
-    String costsLabel = resources.getString("MagicReport.Costs.Label") + ": ";
-    String costsValue = new ScreenDisplayInfoContributor(resources).createCostString(charm);
+    String costsLabel = environment.getString("MagicReport.Costs.Label") + ": ";
+    String costsValue = new ScreenDisplayInfoContributor(environment).createCostString(charm);
     table.addCell(partFactory.createDataCell(costsLabel, costsValue));
   }
 
   private void addTypeCell(Charm charm, PdfPTable table) {
-    String typeLabel = resources.getString("MagicReport.Type.Label") + ": ";
-    String typeValue = new VerboseCharmTypeContributor(resources).createTypeString(charm.getCharmTypeModel());
+    String typeLabel = environment.getString("MagicReport.Type.Label") + ": ";
+    String typeValue = new VerboseCharmTypeContributor(environment).createTypeString(charm.getCharmTypeModel());
     table.addCell(partFactory.createDataCell(typeLabel, typeValue));
   }
 
   private void addKeywordsRow(CharmStats charmStats, PdfPTable table) {
-    String keywords = Joiner.on(", ").join(charmStats.getDetailStrings(resources));
-    String keywordsLabel = resources.getString("MagicReport.Keywords.Label") + ": ";
+    String keywords = Joiner.on(", ").join(charmStats.getDetailStrings(environment));
+    String keywordsLabel = environment.getString("MagicReport.Keywords.Label") + ": ";
     table.addCell(partFactory.createDoubleDataCell(keywordsLabel, keywords));
   }
 
   private void addDurationRow(CharmStats charmStats, PdfPTable table) {
-    String durationLabel = resources.getString("MagicReport.Duration.Label") + ": ";
-    String durationString = charmStats.getDurationString(resources);
+    String durationLabel = environment.getString("MagicReport.Duration.Label") + ": ";
+    String durationString = charmStats.getDurationString(environment);
     table.addCell(partFactory.createDoubleDataCell(durationLabel, durationString));
   }
 
   private void addCharmDescription(Magic magic, MultiColumnText columnText) throws DocumentException {
     MagicDescription charmDescription = getCharmDescription(magic);
     if (charmDescription.isEmpty()) {
-      String sourceString = new MagicSourceContributor<>(resources).createSourceString(magic);
-      String sourceReference = resources.getString("MagicReport.See.Source", sourceString);
+      String sourceString = new MagicSourceContributor<>(environment).createSourceString(magic);
+      String sourceReference = environment.getString("MagicReport.See.Source", sourceString);
       columnText.addElement(partFactory.createDescriptionParagraph(sourceReference));
     }
     for (String paragraph : charmDescription.getParagraphs()) {
@@ -164,7 +164,7 @@ public class MagicReport extends AbstractPdfReport {
   }
 
   private MagicDescription getCharmDescription(Magic magic) {
-    return CharmDescriptionProviderExtractor.CreateFor(model, resources).getCharmDescription(magic);
+    return CharmDescriptionProviderExtractor.CreateFor(model, environment).getCharmDescription(magic);
   }
 
   private void writeColumnText(Document document, MultiColumnText columnText) throws DocumentException {

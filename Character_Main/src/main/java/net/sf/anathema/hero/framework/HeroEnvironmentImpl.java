@@ -9,7 +9,7 @@ import net.sf.anathema.character.main.template.TemplateRegistry;
 import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.character.main.type.ReflectionCharacterTypes;
 import net.sf.anathema.character.main.xml.registry.CharacterTemplateRegistryCollection;
-import net.sf.anathema.initialization.ObjectFactory;
+import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.initialization.repository.DataFileProvider;
 
 public class HeroEnvironmentImpl implements HeroEnvironment {

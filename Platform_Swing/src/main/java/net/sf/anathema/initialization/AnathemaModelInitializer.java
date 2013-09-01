@@ -2,37 +2,36 @@ package net.sf.anathema.initialization;
 
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.configuration.RepositoryPreference;
+import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.model.ApplicationModel;
 import net.sf.anathema.framework.repository.RepositoryException;
-import net.sf.anathema.initialization.reflections.ResourceLoader;
 import net.sf.anathema.initialization.repository.IOFileSystemAbstraction;
 import net.sf.anathema.initialization.repository.RepositoryFolderCreator;
 import net.sf.anathema.initialization.repository.RepositoryLocationResolver;
-import net.sf.anathema.framework.environment.Resources;
 
 import java.io.File;
 
 public class AnathemaModelInitializer {
 
   private final RepositoryPreference preferences;
-  private Iterable<ExtensionWithId> extensions;
+  private final Iterable<ExtensionWithId> extensions;
 
   public AnathemaModelInitializer(RepositoryPreference preferences, Iterable<ExtensionWithId> extensions) {
     this.preferences = preferences;
     this.extensions = extensions;
   }
 
-  public IApplicationModel initializeModel(Resources resources, ObjectFactory instantiater, ResourceLoader loader) throws InitializationException {
-    ApplicationModel model = createModel(resources, loader, instantiater);
+  public IApplicationModel initializeModel(Environment environment) throws InitializationException {
+    ApplicationModel model = createModel(environment);
     for (ExtensionWithId extension : extensions) {
-      extension.register(model, loader);
+      extension.register(model, environment);
     }
     return model;
   }
 
-  private ApplicationModel createModel(Resources resources, ResourceLoader resourceLoader, ObjectFactory instantiater) throws InitializationException {
+  private ApplicationModel createModel(Environment environment) throws InitializationException {
     try {
-      return new ApplicationModel(createRepositoryFolder(), resources, resourceLoader, instantiater);
+      return new ApplicationModel(createRepositoryFolder(), environment);
     } catch (RepositoryException e) {
       throw new InitializationException("Failed to create repository folder.\nPlease check read/write permissions.", e);
     }

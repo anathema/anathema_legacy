@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.charms.display.presenter;
 
 import net.sf.anathema.character.main.type.CharacterType;
-import net.sf.anathema.initialization.ObjectFactory;
+import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.platform.tree.document.visualizer.TreePresentationProperties;
 
 import java.util.Collection;

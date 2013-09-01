@@ -2,7 +2,7 @@ package net.sf.anathema.hero.display.presenter;
 
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.hero.display.HeroModelGroup;
-import net.sf.anathema.initialization.ObjectFactory;
+import net.sf.anathema.framework.environment.ObjectFactory;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -13,8 +13,8 @@ public class InitializerList {
   private final IApplicationModel applicationModel;
   private final ObjectFactory objectFactory;
 
-  public InitializerList(IApplicationModel applicationModel) {
-    this.objectFactory = applicationModel.getObjectFactory();
+  public InitializerList(ObjectFactory objectFactory, IApplicationModel applicationModel) {
+    this.objectFactory = objectFactory;
     this.applicationModel = applicationModel;
   }
 

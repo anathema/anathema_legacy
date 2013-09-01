@@ -2,6 +2,7 @@ package net.sf.anathema.framework.module;
 
 import javafx.stage.Stage;
 import net.sf.anathema.framework.IApplicationModel;
+import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.presenter.action.AnathemaExitAction;
 import net.sf.anathema.framework.presenter.action.menu.help.updatecheck.UpdateAction;
@@ -23,16 +24,16 @@ public class AnathemaCoreMenu {
     this.stage = stage;
   }
 
-  public void add(Resources resources, IApplicationModel model, MenuBar menubar) {
+  public void add(Environment environment, IApplicationModel model, MenuBar menubar) {
     IMenu mainMenu = menubar.getMainMenu();
-    addImportExportEntry(resources, model, mainMenu);
+    addImportExportEntry(environment, model, mainMenu);
     mainMenu.addSeparator();
-    addPreferencesEntry(resources, model, mainMenu);
+    addPreferencesEntry(environment, model, mainMenu);
     mainMenu.addSeparator();
-    addExitEntry(resources, mainMenu);
+    addExitEntry(environment, mainMenu);
     IMenu helpMenu = menubar.getHelpMenu();
-    addUpdateEntry(resources, helpMenu);
-    addAboutEntry(resources, helpMenu);
+    addUpdateEntry(environment, helpMenu);
+    addAboutEntry(environment, helpMenu);
   }
 
   private void addAboutEntry(Resources resources, IMenu helpMenu) {
@@ -53,9 +54,9 @@ public class AnathemaCoreMenu {
     mainMenu.addMenuItem(action, name);
   }
 
-  private void addImportExportEntry(Resources resources, IApplicationModel model, IMenu mainMenu) {
-    Command action = new RepositoryViewAction(model, resources);
-    String name = resources.getString("AnathemaCore.Tools.ExportImport.Name") + "\u2026";
+  private void addImportExportEntry(Environment environment, IApplicationModel model, IMenu mainMenu) {
+    Command action = new RepositoryViewAction(model, environment);
+    String name = environment.getString("AnathemaCore.Tools.ExportImport.Name") + "\u2026";
     mainMenu.addMenuItem(action, name);
   }
 

@@ -5,33 +5,32 @@ import net.sf.anathema.ISplashscreen;
 import net.sf.anathema.ProxySplashscreen;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.Version;
-import net.sf.anathema.framework.configuration.RepositoryPreference;
 import net.sf.anathema.framework.environment.Environment;
+import net.sf.anathema.framework.environment.ObjectFactory;
+import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.framework.environment.exception.ExtensibleExceptionHandler;
 import net.sf.anathema.framework.fx.FxDialogExceptionHandler;
 import net.sf.anathema.framework.module.AnathemaCoreMenu;
 import net.sf.anathema.framework.presenter.AnathemaViewProperties;
-import net.sf.anathema.framework.environment.resources.LocaleResources;
 import net.sf.anathema.framework.view.ApplicationView;
 import net.sf.anathema.framework.view.perspective.PerspectivePaneFactory;
-import net.sf.anathema.framework.environment.exception.ExtensibleExceptionHandler;
 import net.sf.anathema.lib.logging.Logger;
-import net.sf.anathema.framework.environment.Resources;
 
 public class GuiInitializer extends Initializer {
 
   private final Stage stage;
   private final ExtensibleExceptionHandler exceptionHandler;
 
-  public GuiInitializer(RepositoryPreference initializationPreferences, Stage stage, ExtensibleExceptionHandler exceptionHandler) throws InitializationException {
-    super(initializationPreferences, exceptionHandler);
+  public GuiInitializer(Stage stage, Environment environment, ExtensibleExceptionHandler exceptionHandler) throws InitializationException {
+    super(environment);
     this.stage = stage;
     this.exceptionHandler = exceptionHandler;
   }
 
   @Override
-  protected void initPresentation(LocaleResources resources, IApplicationModel model, ApplicationView view) {
-    super.initPresentation(resources, model, view);
-    new AnathemaCoreMenu(stage).add(resources, model, view.getMenuBar());
+  protected void initPresentation(Environment environment, IApplicationModel model, ApplicationView view) {
+    super.initPresentation(environment, model, view);
+    new AnathemaCoreMenu(stage).add(environment, model, view.getMenuBar());
   }
 
   public ApplicationView initialize() throws InitializationException {

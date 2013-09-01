@@ -5,25 +5,23 @@ import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProviderFactory;
 import net.sf.anathema.character.main.magic.description.RegisteredMagicDescriptionProviderFactory;
 import net.sf.anathema.framework.IApplicationModel;
-import net.sf.anathema.initialization.ObjectFactory;
-import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.framework.environment.Environment;
 
 import java.util.Collection;
 
 public class CharmDescriptionProviderExtractor {
 
-  public static MagicDescriptionProvider CreateFor(IApplicationModel model, Resources resources) {
-    AggregatedCharmDescriptionProvider provider = new AggregatedCharmDescriptionProvider(resources);
-    Collection<MagicDescriptionProviderFactory> factories = findFactories(model);
+  public static MagicDescriptionProvider CreateFor(IApplicationModel model, Environment environment) {
+    AggregatedCharmDescriptionProvider provider = new AggregatedCharmDescriptionProvider(environment);
+    Collection<MagicDescriptionProviderFactory> factories = findFactories(environment);
     for (MagicDescriptionProviderFactory factory : factories) {
       provider.addProvider(factory.create(model));
     }
     return provider;
   }
 
-  private static Collection<MagicDescriptionProviderFactory> findFactories(IApplicationModel model) {
-    ObjectFactory objectFactory = model.getObjectFactory();
-    return objectFactory.instantiateAll(RegisteredMagicDescriptionProviderFactory.class);
+  private static Collection<MagicDescriptionProviderFactory> findFactories(Environment environment) {
+    return environment.instantiateAll(RegisteredMagicDescriptionProviderFactory.class);
   }
 
 }

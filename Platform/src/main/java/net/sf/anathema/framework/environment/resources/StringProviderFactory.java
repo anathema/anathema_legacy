@@ -1,7 +1,7 @@
 package net.sf.anathema.framework.environment.resources;
 
 import net.sf.anathema.framework.environment.Resources;
-import net.sf.anathema.initialization.reflections.ExternalResourceFile;
+import net.sf.anathema.framework.environment.dependencies.ExternalResourceFile;
 import net.sf.anathema.lib.logging.Logger;
 import org.apache.commons.io.FilenameUtils;
 

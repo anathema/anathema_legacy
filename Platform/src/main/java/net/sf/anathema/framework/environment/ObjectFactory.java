@@ -1,4 +1,6 @@
-package net.sf.anathema.initialization;
+package net.sf.anathema.framework.environment;
+
+import net.sf.anathema.initialization.InitializationException;
 
 import java.lang.annotation.Annotation;
 import java.util.Collection;

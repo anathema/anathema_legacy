@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.type;
 
-import net.sf.anathema.initialization.ObjectFactory;
+import net.sf.anathema.framework.environment.ObjectFactory;
 
 import java.util.ArrayList;
 import java.util.Collection;

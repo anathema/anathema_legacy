@@ -1,4 +1,4 @@
-package net.sf.anathema.initialization.reflections;
+package net.sf.anathema.framework.environment;
 
 import net.sf.anathema.framework.environment.resources.ResourceFile;
 

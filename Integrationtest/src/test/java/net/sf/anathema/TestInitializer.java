@@ -1,21 +1,19 @@
 package net.sf.anathema;
 
 import net.sf.anathema.framework.IApplicationModel;
-import net.sf.anathema.framework.configuration.InitializationPreferences;
 import net.sf.anathema.framework.environment.Environment;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.initialization.ApplicationFrameView;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.InitializedModelAndView;
 import net.sf.anathema.initialization.Initializer;
-import net.sf.anathema.initialization.ObjectFactory;
-import net.sf.anathema.framework.environment.exception.ConsoleExceptionHandler;
-import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.view.NullMainView;
 
 
 public class TestInitializer extends Initializer {
   public TestInitializer() throws InitializationException {
-    super(new InitializationPreferences(), new ConsoleExceptionHandler());
+    super(new DummyEnvironment());
   }
 
   public IApplicationModel initialize() {

@@ -8,6 +8,7 @@ import net.sf.anathema.cascades.presenter.CharmTreeIdentifierMap;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.environment.Environment;
+import net.sf.anathema.framework.environment.dependencies.Weight;
 import net.sf.anathema.framework.view.perspective.Container;
 import net.sf.anathema.framework.view.perspective.Perspective;
 import net.sf.anathema.framework.view.perspective.PerspectiveAutoCollector;
@@ -16,9 +17,7 @@ import net.sf.anathema.hero.charms.display.presenter.CharmDescriptionProviderExt
 import net.sf.anathema.hero.charms.display.view.FxCharmView;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.framework.HeroEnvironmentExtractor;
-import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.file.RelativePath;
-import net.sf.anathema.framework.environment.Resources;
 import org.tbee.javafx.scene.layout.MigPane;
 
 @PerspectiveAutoCollector
@@ -48,7 +47,7 @@ public class CharmCascadePerspective implements Perspective {
     return content;
   }
 
-  private MagicDescriptionProvider getCharmDescriptionProvider(IApplicationModel model, Resources resources) {
-    return CharmDescriptionProviderExtractor.CreateFor(model, resources);
+  private MagicDescriptionProvider getCharmDescriptionProvider(IApplicationModel model, Environment environment) {
+    return CharmDescriptionProviderExtractor.CreateFor(model, environment);
   }
 }

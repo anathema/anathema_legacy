@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.sheet.pdf.content;
 
 import net.sf.anathema.initialization.InitializationException;
-import net.sf.anathema.initialization.ObjectFactory;
+import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.framework.environment.Resources;
 
 import java.util.Collection;

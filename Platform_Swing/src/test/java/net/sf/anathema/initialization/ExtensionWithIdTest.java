@@ -1,9 +1,10 @@
 package net.sf.anathema.initialization;
 
 import net.sf.anathema.framework.IApplicationModel;
+import net.sf.anathema.framework.environment.Environment;
+import net.sf.anathema.framework.environment.ResourceLoader;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.repository.Repository;
-import net.sf.anathema.initialization.reflections.ResourceLoader;
 import net.sf.anathema.lib.registry.Registry;
 import org.junit.Test;
 
@@ -13,18 +14,16 @@ import static org.mockito.Mockito.when;
 
 public class ExtensionWithIdTest {
 
-  ResourceLoader loader = mock(ResourceLoader.class);
-  ObjectFactory objectFactory = mock(ObjectFactory.class);
   IApplicationModel model = mock(IApplicationModel.class);
   Repository repository = mock(Repository.class);
   IAnathemaExtension extension = mock(IAnathemaExtension.class);
+  Environment environment = mock(Environment.class);
 
   @Test
   public void handsAllParametersToExtension() throws Exception {
     when(model.getRepository()).thenReturn(repository);
-    when(model.getObjectFactory()).thenReturn(objectFactory);
     when(model.getExtensionPointRegistry()).thenReturn(new Registry<String, IAnathemaExtension>());
-    new ExtensionWithId("id", extension).register(model, loader);
-    verify(extension).initialize(repository, objectFactory, loader);
+    new ExtensionWithId("id", extension).register(model, environment);
+    verify(extension).initialize(repository, environment, environment);
   }
 }

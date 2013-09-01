@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.dummy;
 
 import net.sf.anathema.initialization.InitializationException;
-import net.sf.anathema.initialization.ObjectFactory;
+import net.sf.anathema.framework.environment.ObjectFactory;
 
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;

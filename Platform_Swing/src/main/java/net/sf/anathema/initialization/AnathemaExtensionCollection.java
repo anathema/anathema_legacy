@@ -1,5 +1,6 @@
 package net.sf.anathema.initialization;
 
+import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 
 import java.util.ArrayList;

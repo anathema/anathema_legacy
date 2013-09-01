@@ -7,7 +7,7 @@ import net.sf.anathema.framework.reporting.Report;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.framework.HeroEnvironmentExtractor;
 import net.sf.anathema.initialization.RegisteredReportFactory;
-import net.sf.anathema.initialization.reflections.Weight;
+import net.sf.anathema.framework.environment.dependencies.Weight;
 
 @RegisteredReportFactory
 @Weight(weight = 50)

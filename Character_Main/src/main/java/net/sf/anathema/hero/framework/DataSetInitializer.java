@@ -5,8 +5,8 @@ import net.sf.anathema.character.main.framework.data.IExtensibleDataSetCompiler;
 import net.sf.anathema.character.main.framework.data.IExtensibleDataSetProvider;
 import net.sf.anathema.initialization.ExtensibleDataSetCompiler;
 import net.sf.anathema.initialization.InitializationException;
-import net.sf.anathema.initialization.ObjectFactory;
-import net.sf.anathema.initialization.reflections.ResourceLoader;
+import net.sf.anathema.framework.environment.ObjectFactory;
+import net.sf.anathema.framework.environment.ResourceLoader;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.framework.environment.resources.ResourceFile;
 

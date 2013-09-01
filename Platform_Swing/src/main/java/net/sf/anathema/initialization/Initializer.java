@@ -1,49 +1,31 @@
 package net.sf.anathema.initialization;
 
 import net.sf.anathema.framework.IApplicationModel;
+import net.sf.anathema.framework.configuration.InitializationPreferences;
 import net.sf.anathema.framework.configuration.RepositoryPreference;
-import net.sf.anathema.framework.environment.ApplicationEnvironment;
 import net.sf.anathema.framework.environment.Environment;
-import net.sf.anathema.framework.environment.resources.LocaleResources;
-import net.sf.anathema.framework.view.ApplicationView;
-import net.sf.anathema.initialization.reflections.AggregatedResourceLoader;
-import net.sf.anathema.initialization.reflections.CustomDataResourceLoader;
-import net.sf.anathema.initialization.reflections.DefaultAnathemaReflections;
-import net.sf.anathema.initialization.reflections.ReflectionObjectFactory;
-import net.sf.anathema.initialization.reflections.ResourceLoader;
-import net.sf.anathema.initialization.repository.RepositoryLocationResolver;
-import net.sf.anathema.lib.exception.AnathemaException;
-import net.sf.anathema.framework.environment.ExceptionHandler;
-import net.sf.anathema.framework.environment.resources.ResourceFile;
+import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.framework.environment.Resources;
-
-import java.util.Set;
+import net.sf.anathema.framework.view.ApplicationView;
 
 public abstract class Initializer {
 
   private final RepositoryPreference initializationPreferences;
   private final AnathemaExtensionCollection extensionCollection;
-  private final DefaultAnathemaReflections reflections;
-  private final ObjectFactory objectFactory;
-  private final ExceptionHandler exceptionHandler;
+  private final Environment environment;
 
-  public Initializer(RepositoryPreference initializationPreferences, ExceptionHandler exceptionHandler) throws InitializationException {
-    this.exceptionHandler = exceptionHandler;
-    this.reflections = new DefaultAnathemaReflections();
-    this.objectFactory = new ReflectionObjectFactory(reflections);
-    this.extensionCollection = new AnathemaExtensionCollection(objectFactory);
-    this.initializationPreferences = initializationPreferences;
+  public Initializer(Environment environment) throws InitializationException {
+    this.environment = environment;
+    this.extensionCollection = new AnathemaExtensionCollection(environment);
+    this.initializationPreferences = new InitializationPreferences();
   }
 
   protected InitializedModelAndView initializeModelViewAndPresentation() throws InitializationException {
-    ResourceLoader loader = createResourceLoaderForInternalAndCustomResources();
-    LocaleResources resources = initResources(loader);
-    Environment environment = new ApplicationEnvironment(resources, exceptionHandler);
     configureExceptionHandling(environment);
-    showVersion(resources);
-    IApplicationModel anathemaModel = initModel(resources, loader);
-    ApplicationFrameView view = initView(environment, anathemaModel, objectFactory);
-    initPresentation(resources, anathemaModel, view);
+    showVersion(environment);
+    IApplicationModel anathemaModel = initModel(environment);
+    ApplicationFrameView view = initView(environment, anathemaModel, environment);
+    initPresentation(environment, anathemaModel, view);
     return new InitializedModelAndView(view, anathemaModel);
   }
 
@@ -51,36 +33,15 @@ public abstract class Initializer {
     //nothing to do
   }
 
-  protected void initPresentation(LocaleResources resources, IApplicationModel anathemaModel, ApplicationView view) {
-    AnathemaPresenter presenter = new AnathemaPresenter(anathemaModel, view, resources, objectFactory);
+  protected void initPresentation(Environment environment, IApplicationModel anathemaModel, ApplicationView view) {
+    AnathemaPresenter presenter = new AnathemaPresenter(anathemaModel, view, environment);
     presenter.initPresentation();
   }
 
-  private IApplicationModel initModel(Resources resources, ResourceLoader loader) throws InitializationException {
+  private IApplicationModel initModel(Environment environment) throws InitializationException {
     displayMessage("Creating Model...");
     AnathemaModelInitializer modelInitializer = new AnathemaModelInitializer(initializationPreferences, extensionCollection);
-    return modelInitializer.initializeModel(resources, objectFactory, loader);
-  }
-
-  private LocaleResources initResources(ResourceLoader loader) {
-    displayMessage("Loading Resources...");
-    LocaleResources resources = new LocaleResources();
-    Set<ResourceFile> resourcesInPaths = loader.getResourcesMatching(".*\\.properties");
-    for (ResourceFile resource : resourcesInPaths) {
-      resources.addResourceBundle(resource);
-    }
-    return resources;
-  }
-
-  private ResourceLoader createResourceLoaderForInternalAndCustomResources() {
-    try {
-      RepositoryLocationResolver resolver = new RepositoryLocationResolver(initializationPreferences);
-      CustomDataResourceLoader customLoader = new CustomDataResourceLoader(resolver);
-      return new AggregatedResourceLoader(reflections, customLoader);
-    } catch (AnathemaException e) {
-      exceptionHandler.handle(e);
-      return new AggregatedResourceLoader(reflections);
-    }
+    return modelInitializer.initializeModel(environment);
   }
 
   protected abstract void showVersion(Resources resources);

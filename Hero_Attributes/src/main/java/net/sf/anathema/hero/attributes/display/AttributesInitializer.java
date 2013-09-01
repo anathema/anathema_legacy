@@ -3,11 +3,11 @@ package net.sf.anathema.hero.attributes.display;
 import net.sf.anathema.character.main.library.trait.view.GroupedFavorableTraitConfigurationView;
 import net.sf.anathema.character.main.view.SectionView;
 import net.sf.anathema.framework.IApplicationModel;
+import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.hero.display.presenter.HeroModelInitializer;
 import net.sf.anathema.hero.display.presenter.RegisteredInitializer;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.initialization.reflections.Weight;
-import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.framework.environment.dependencies.Weight;
 
 import static net.sf.anathema.hero.display.HeroModelGroup.NaturalTraits;
 
@@ -21,10 +21,10 @@ public class AttributesInitializer implements HeroModelInitializer {
   }
 
   @Override
-  public void initialize(SectionView sectionView, Hero hero, Resources resources) {
-    String attributeHeader = resources.getString("CardView.AttributeConfiguration.Title");
+  public void initialize(SectionView sectionView, Hero hero, Environment environment) {
+    String attributeHeader = environment.getString("CardView.AttributeConfiguration.Title");
     GroupedFavorableTraitConfigurationView attributeView =
             sectionView.addView(attributeHeader, GroupedFavorableTraitConfigurationView.class);
-    new AttributesPresenter(hero, resources, attributeView).initPresentation();
+    new AttributesPresenter(hero, environment, attributeView).initPresentation();
   }
 }

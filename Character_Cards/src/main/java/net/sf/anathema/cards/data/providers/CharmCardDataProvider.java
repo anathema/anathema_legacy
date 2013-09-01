@@ -5,20 +5,20 @@ import net.sf.anathema.cards.data.ICardData;
 import net.sf.anathema.cards.layout.ICardReportResourceProvider;
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.framework.IApplicationModel;
+import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.hero.charms.model.CharmsModelFetcher;
 import net.sf.anathema.hero.charms.sheet.content.CharmContentHelper;
 import net.sf.anathema.hero.charms.sheet.content.stats.CharmStats;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.framework.environment.Resources;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CharmCardDataProvider extends AbstractMagicCardDataProvider {
 
-  public CharmCardDataProvider(IApplicationModel model, Resources resources) {
-    super(model, resources);
+  public CharmCardDataProvider(IApplicationModel model, Environment environment) {
+    super(model, environment);
   }
 
   @Override

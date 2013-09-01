@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.parser.charms.special;
 
 import net.sf.anathema.character.main.magic.parser.dto.special.SpecialCharmDto;
-import net.sf.anathema.initialization.ObjectFactory;
+import net.sf.anathema.framework.environment.ObjectFactory;
 import org.dom4j.Element;
 
 import java.util.ArrayList;

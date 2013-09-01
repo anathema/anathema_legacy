@@ -3,10 +3,10 @@ package net.sf.anathema.hero.display.presenter;
 import net.sf.anathema.character.main.view.CharacterView;
 import net.sf.anathema.character.main.view.SectionView;
 import net.sf.anathema.framework.IApplicationModel;
+import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.hero.display.HeroModelGroup;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.framework.environment.Resources;
 
 import static net.sf.anathema.hero.display.HeroModelGroup.Magic;
 import static net.sf.anathema.hero.display.HeroModelGroup.Miscellaneous;
@@ -19,13 +19,13 @@ public class CharacterPresenter implements Presenter {
   private final InitializerList initializerList;
   private final Hero hero;
   private final CharacterView characterView;
-  private final Resources resources;
+  private final Environment environment;
 
-  public CharacterPresenter(Hero hero, CharacterView view, Resources resources, IApplicationModel applicationModel) {
-    this.initializerList = new InitializerList(applicationModel);
+  public CharacterPresenter(Hero hero, CharacterView view, Environment environment, IApplicationModel model) {
+    this.initializerList = new InitializerList(environment, model);
     this.hero = hero;
     this.characterView = view;
-    this.resources = resources;
+    this.environment = environment;
   }
 
   @Override
@@ -44,13 +44,13 @@ public class CharacterPresenter implements Presenter {
   }
 
   private SectionView prepareSection(String titleKey) {
-    String sectionTitle = resources.getString(titleKey);
+    String sectionTitle = environment.getString(titleKey);
     return characterView.addSection(sectionTitle);
   }
 
   private void initializeGroup(HeroModelGroup group, SectionView sectionView) {
     for (HeroModelInitializer initializer : initializerList.getInOrderFor(group)) {
-      initializer.initialize(sectionView, hero, resources);
+      initializer.initialize(sectionView, hero, environment);
     }
   }
 }

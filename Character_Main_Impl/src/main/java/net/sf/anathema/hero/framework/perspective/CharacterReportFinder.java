@@ -21,7 +21,7 @@ public class CharacterReportFinder implements DefaultReportFinder, AllReportFind
   private final List<Report> reports = new ArrayList<>();
 
   public CharacterReportFinder(IApplicationModel model, Environment environment) {
-    Collection<IReportFactory> factories = model.getObjectFactory().instantiateOrdered(RegisteredReportFactory.class);
+    Collection<IReportFactory> factories = environment.instantiateOrdered(RegisteredReportFactory.class);
     for (IReportFactory factory : factories) {
       Collections.addAll(reports, factory.createReport(environment, model));
     }

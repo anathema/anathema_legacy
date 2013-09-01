@@ -1,12 +1,12 @@
 package net.sf.anathema.initialization;
 
 import net.sf.anathema.framework.IApplicationModel;
+import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.messaging.IMessageContainer;
 import net.sf.anathema.framework.module.PreferencesElementsExtensionPoint;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
 import net.sf.anathema.framework.view.ApplicationView;
 import net.sf.anathema.lib.control.ChangeListener;
-import net.sf.anathema.framework.environment.Resources;
 
 import java.util.Collection;
 
@@ -14,14 +14,12 @@ public class AnathemaPresenter {
 
   private final IApplicationModel model;
   private final ApplicationView view;
-  private final Resources resources;
-  private final ObjectFactory objectFactory;
+  private final Environment environment;
 
-  public AnathemaPresenter(IApplicationModel model, ApplicationView view, Resources resources, ObjectFactory objectFactory) {
-    this.objectFactory = objectFactory;
+  public AnathemaPresenter(IApplicationModel model, ApplicationView view, Environment environment) {
     this.model = model;
     this.view = view;
-    this.resources = resources;
+    this.environment = environment;
   }
 
   public void initPresentation() throws InitializationException {
@@ -46,16 +44,16 @@ public class AnathemaPresenter {
   }
 
   private void runBootJobs() throws InitializationException {
-    Collection<IBootJob> jobs = objectFactory.instantiateOrdered(BootJob.class);
+    Collection<IBootJob> jobs = environment.instantiateOrdered(BootJob.class);
     for (IBootJob bootJob : jobs) {
-      bootJob.run(resources, model);
+      bootJob.run(environment, model);
     }
   }
 
   private void initializePreferences() throws InitializationException {
     PreferencesElementsExtensionPoint extensionPoint =
             (PreferencesElementsExtensionPoint) model.getExtensionPointRegistry().get(PreferencesElementsExtensionPoint.ID);
-    Collection<IPreferencesElement> elements = objectFactory.instantiateOrdered(PreferenceElement.class);
+    Collection<IPreferencesElement> elements = environment.instantiateOrdered(PreferenceElement.class);
     for (IPreferencesElement element : elements) {
       extensionPoint.addPreferencesElement(element);
     }

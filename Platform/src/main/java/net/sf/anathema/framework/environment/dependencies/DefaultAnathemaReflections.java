@@ -1,6 +1,7 @@
-package net.sf.anathema.initialization.reflections;
+package net.sf.anathema.framework.environment.dependencies;
 
 import com.google.common.base.Function;
+import net.sf.anathema.framework.environment.ResourceLoader;
 import net.sf.anathema.framework.environment.resources.InternalResourceFile;
 import net.sf.anathema.framework.environment.resources.ResourceFile;
 import org.reflections.Reflections;

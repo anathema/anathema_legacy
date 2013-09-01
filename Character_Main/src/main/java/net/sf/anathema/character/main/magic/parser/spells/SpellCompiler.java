@@ -5,7 +5,7 @@ import net.sf.anathema.character.main.framework.data.IExtensibleDataSetCompiler;
 import net.sf.anathema.character.main.magic.spells.Spell;
 import net.sf.anathema.character.main.magic.spells.SpellException;
 import net.sf.anathema.initialization.ExtensibleDataSetCompiler;
-import net.sf.anathema.initialization.ObjectFactory;
+import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.framework.environment.resources.ResourceFile;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;

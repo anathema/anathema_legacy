@@ -5,7 +5,7 @@ import net.miginfocom.layout.CC;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.view.ViewFactory;
-import net.sf.anathema.initialization.ObjectFactory;
+import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.framework.environment.Resources;
 import org.tbee.javafx.scene.layout.MigPane;

@@ -4,7 +4,7 @@ import net.sf.anathema.framework.preferences.elements.PreferenceModel;
 import net.sf.anathema.framework.preferences.elements.RegisteredPreferenceModel;
 import net.sf.anathema.framework.preferences.persistence.PreferencePto;
 import net.sf.anathema.initialization.InitializationException;
-import net.sf.anathema.initialization.ObjectFactory;
+import net.sf.anathema.framework.environment.ObjectFactory;
 
 import java.util.ArrayList;
 import java.util.Collection;

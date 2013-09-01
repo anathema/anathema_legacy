@@ -4,6 +4,7 @@ import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.view.SectionView;
 import net.sf.anathema.framework.IApplicationModel;
+import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.hero.charms.compiler.CharmCache;
 import net.sf.anathema.hero.charms.display.model.CharmDisplayModel;
 import net.sf.anathema.hero.charms.display.presenter.CharmDescriptionProviderExtractor;
@@ -16,8 +17,7 @@ import net.sf.anathema.hero.display.presenter.HeroModelInitializer;
 import net.sf.anathema.hero.display.presenter.RegisteredInitializer;
 import net.sf.anathema.hero.framework.HeroEnvironmentExtractor;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.initialization.reflections.Weight;
-import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.framework.environment.dependencies.Weight;
 import net.sf.anathema.platform.tree.document.visualizer.TreePresentationProperties;
 
 import static net.sf.anathema.hero.display.HeroModelGroup.Magic;
@@ -32,20 +32,20 @@ public class CharmInitializer implements HeroModelInitializer {
   }
 
   @Override
-  public void initialize(SectionView sectionView, Hero hero, Resources resources) {
+  public void initialize(SectionView sectionView, Hero hero, Environment environment) {
     boolean canLearnCharms = CharmsModelFetcher.fetch(hero) != null;
     if (!canLearnCharms) {
       return;
     }
-    MagicDescriptionProvider provider = CharmDescriptionProviderExtractor.CreateFor(applicationModel, resources);
+    MagicDescriptionProvider provider = CharmDescriptionProviderExtractor.CreateFor(applicationModel, environment);
     CharmDisplayModel model = new CharmDisplayModel(hero, provider);
     CharacterType characterType = hero.getTemplate().getTemplateType().getCharacterType();
-    CharmDisplayPropertiesMap propertiesMap = new CharmDisplayPropertiesMap(applicationModel.getObjectFactory());
+    CharmDisplayPropertiesMap propertiesMap = new CharmDisplayPropertiesMap(environment);
     TreePresentationProperties presentationProperties = propertiesMap.getDisplayProperties(characterType);
-    String header = resources.getString("CardView.CharmConfiguration.CharmSelection.Title");
+    String header = environment.getString("CardView.CharmConfiguration.CharmSelection.Title");
     CharmView charmView = sectionView.addView(header, CharmView.class);
     CharmIdMap charmCache = getCharmIdMap();
-    CharacterCharmTreePresenter treePresenter = new CharacterCharmTreePresenter(resources, charmView, model, presentationProperties, propertiesMap, charmCache, provider);
+    CharacterCharmTreePresenter treePresenter = new CharacterCharmTreePresenter(environment, charmView, model, presentationProperties, propertiesMap, charmCache, provider);
     treePresenter.initPresentation();
     //MagicDetailPresenter detailPresenter = createMagicDetailPresenter();
     //new MagicAndDetailPresenter(detailPresenter, treePresenter).initPresentation();

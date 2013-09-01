@@ -1,5 +1,6 @@
-package net.sf.anathema.initialization.reflections;
+package net.sf.anathema.framework.environment.dependencies;
 
+import net.sf.anathema.framework.environment.ResourceLoader;
 import net.sf.anathema.framework.environment.resources.ResourceFile;
 
 import java.util.HashSet;

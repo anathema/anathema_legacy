@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.template.magic.AbilityFavoringType;
 import net.sf.anathema.character.main.template.magic.FavoringTraitType;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.type.RegisteredCharacterType;
-import net.sf.anathema.initialization.reflections.Weight;
+import net.sf.anathema.framework.environment.dependencies.Weight;
 
 @RegisteredCharacterType
 @Weight(weight = 1)

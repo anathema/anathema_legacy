@@ -5,8 +5,8 @@ import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.framework.HeroEnvironmentExtension;
 import net.sf.anathema.hero.framework.HeroEnvironmentInitializer;
 import net.sf.anathema.initialization.Extension;
-import net.sf.anathema.initialization.ObjectFactory;
-import net.sf.anathema.initialization.reflections.ResourceLoader;
+import net.sf.anathema.framework.environment.ObjectFactory;
+import net.sf.anathema.framework.environment.ResourceLoader;
 import net.sf.anathema.initialization.repository.DataFileProvider;
 
 @Extension(id = HeroEnvironmentExtension.ID)

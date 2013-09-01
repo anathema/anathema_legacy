@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.framework.ICharacterTemplateRegistryCollec
 import net.sf.anathema.character.main.framework.data.ExtensibleDataSet;
 import net.sf.anathema.character.main.template.ITemplateRegistry;
 import net.sf.anathema.character.main.type.CharacterTypes;
-import net.sf.anathema.initialization.ObjectFactory;
+import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.initialization.repository.DataFileProvider;
 
 public interface HeroEnvironment {

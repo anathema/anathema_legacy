@@ -3,8 +3,8 @@ package net.sf.anathema.framework.module;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
 import net.sf.anathema.initialization.Extension;
-import net.sf.anathema.initialization.ObjectFactory;
-import net.sf.anathema.initialization.reflections.ResourceLoader;
+import net.sf.anathema.framework.environment.ObjectFactory;
+import net.sf.anathema.framework.environment.ResourceLoader;
 import net.sf.anathema.initialization.repository.DataFileProvider;
 
 import java.util.ArrayList;

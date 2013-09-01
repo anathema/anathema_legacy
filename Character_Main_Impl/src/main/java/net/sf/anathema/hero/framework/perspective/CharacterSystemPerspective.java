@@ -7,7 +7,7 @@ import net.sf.anathema.framework.view.perspective.Perspective;
 import net.sf.anathema.framework.view.perspective.PerspectiveAutoCollector;
 import net.sf.anathema.framework.view.perspective.PerspectiveToggle;
 import net.sf.anathema.fx.hero.perspective.CharacterStackFxBridge;
-import net.sf.anathema.initialization.reflections.Weight;
+import net.sf.anathema.framework.environment.dependencies.Weight;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.fx.hero.perspective.CharacterSystemView;
 import net.sf.anathema.fx.hero.perspective.CharacterViewFactory;

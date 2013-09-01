@@ -3,8 +3,8 @@ package net.sf.anathema.hero.framework;
 import net.sf.anathema.character.main.framework.CharacterTemplateInitializer;
 import net.sf.anathema.character.main.framework.data.IExtensibleDataSetProvider;
 import net.sf.anathema.initialization.InitializationException;
-import net.sf.anathema.initialization.ObjectFactory;
-import net.sf.anathema.initialization.reflections.ResourceLoader;
+import net.sf.anathema.framework.environment.ObjectFactory;
+import net.sf.anathema.framework.environment.ResourceLoader;
 import net.sf.anathema.initialization.repository.DataFileProvider;
 
 public class HeroEnvironmentInitializer {

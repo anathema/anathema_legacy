@@ -1,4 +1,4 @@
-package net.sf.anathema.initialization.reflections;
+package net.sf.anathema.framework.environment.dependencies;
 
 import java.lang.annotation.Annotation;
 import java.util.Set;

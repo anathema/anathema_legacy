@@ -3,7 +3,7 @@ package net.sf.anathema.hero.sheet.pdf;
 import net.sf.anathema.hero.sheet.pdf.content.ReportContentRegistry;
 import net.sf.anathema.hero.sheet.pdf.encoder.boxes.EncoderRegistry;
 import net.sf.anathema.hero.sheet.pdf.page.PageRegistry;
-import net.sf.anathema.initialization.ObjectFactory;
+import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.framework.environment.Resources;
 
 public class HeroReportingRegistries {

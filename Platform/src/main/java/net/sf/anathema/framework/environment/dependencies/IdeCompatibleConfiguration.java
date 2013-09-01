@@ -1,11 +1,11 @@
-package net.sf.anathema.initialization.reflections;
+package net.sf.anathema.framework.environment.dependencies;
 
 import org.reflections.scanners.ResourcesScanner;
 import org.reflections.scanners.TypeAnnotationsScanner;
 import org.reflections.util.ConfigurationBuilder;
 import org.reflections.util.FilterBuilder;
 
-import static net.sf.anathema.initialization.reflections.EncodingClasspathHelper.forPackage;
+import static net.sf.anathema.framework.environment.dependencies.EncodingClasspathHelper.forPackage;
 
 public class IdeCompatibleConfiguration extends ConfigurationBuilder {
 

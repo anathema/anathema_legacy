@@ -7,7 +7,7 @@ import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElemen
 import net.sf.anathema.framework.swing.ExceptionIndicator;
 import net.sf.anathema.initialization.FxApplicationFrame;
 import net.sf.anathema.initialization.PreferenceElement;
-import net.sf.anathema.initialization.reflections.Weight;
+import net.sf.anathema.framework.environment.dependencies.Weight;
 import net.sf.anathema.initialization.repository.RepositoryLocationResolver;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.gui.action.SmartAction;

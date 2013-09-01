@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.persistence;
 
 import net.sf.anathema.hero.framework.HeroEnvironment;
-import net.sf.anathema.initialization.ObjectFactory;
+import net.sf.anathema.framework.environment.ObjectFactory;
 
 import java.util.Collection;
 

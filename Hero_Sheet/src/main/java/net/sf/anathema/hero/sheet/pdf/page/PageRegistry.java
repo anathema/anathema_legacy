@@ -5,7 +5,7 @@ import net.sf.anathema.hero.sheet.pdf.content.BasicContent;
 import net.sf.anathema.hero.sheet.pdf.encoder.boxes.EncoderRegistry;
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
 import net.sf.anathema.initialization.InitializationException;
-import net.sf.anathema.initialization.ObjectFactory;
+import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.framework.environment.Resources;
 
