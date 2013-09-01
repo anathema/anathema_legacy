@@ -25,7 +25,6 @@ import net.sf.anathema.hero.framework.perspective.sheet.QuickPrintCommand;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.platform.RegExCharacterPrintNameFileScanner;
 import net.sf.anathema.lib.control.ChangeListener;
-import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.wizard.selection.ItemTemplateFactory;
 import net.sf.anathema.swing.hero.creation.CharacterCreationTemplateFactory;
 import org.jmock.example.announcer.Announcer;
@@ -172,8 +171,8 @@ public class CharacterSystemModel implements ItemSystemModel {
   }
 
   @Override
-  public void registerAllReportsOn(ReportRegister register, Resources resources) {
-    CharacterReportFinder reportFinder = createReportFinder(resources);
+  public void registerAllReportsOn(ReportRegister register, Environment environment) {
+    CharacterReportFinder reportFinder = createReportFinder(environment);
     for (Report report : reportFinder.getAllReports(getCurrentItem())) {
       register.register(report);
     }
@@ -238,7 +237,7 @@ public class CharacterSystemModel implements ItemSystemModel {
     item.getChangeManagement().setClean();
   }
 
-  private CharacterReportFinder createReportFinder(Resources resources) {
-    return new CharacterReportFinder(model, resources);
+  private CharacterReportFinder createReportFinder(Environment environment) {
+    return new CharacterReportFinder(model, environment);
   }
 }

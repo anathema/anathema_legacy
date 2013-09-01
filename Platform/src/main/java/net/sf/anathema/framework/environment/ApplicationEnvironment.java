@@ -13,6 +13,11 @@ public class ApplicationEnvironment implements Environment {
   }
 
   @Override
+  public void handle(Throwable exception) {
+    handler.handle(exception);
+  }
+
+  @Override
   public void handle(Throwable throwable, String message) {
     handler.handle(throwable, message);
   }

@@ -38,10 +38,10 @@ public abstract class Initializer {
   protected InitializedModelAndView initializeModelViewAndPresentation() throws InitializationException {
     ResourceLoader loader = createResourceLoaderForInternalAndCustomResources();
     LocaleResources resources = initResources(loader);
-    configureExceptionHandling(resources);
+    Environment environment = new ApplicationEnvironment(resources, exceptionHandler);
+    configureExceptionHandling(environment);
     showVersion(resources);
     IApplicationModel anathemaModel = initModel(resources, loader);
-    Environment environment = new ApplicationEnvironment(resources, exceptionHandler);
     ApplicationFrameView view = initView(environment, anathemaModel, objectFactory);
     initPresentation(resources, anathemaModel, view);
     return new InitializedModelAndView(view, anathemaModel);

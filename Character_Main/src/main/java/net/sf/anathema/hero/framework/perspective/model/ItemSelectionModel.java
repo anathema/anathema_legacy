@@ -3,7 +3,6 @@ package net.sf.anathema.hero.framework.perspective.model;
 import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.reporting.Report;
 import net.sf.anathema.lib.control.ChangeListener;
-import net.sf.anathema.lib.resources.Resources;
 
 import java.io.IOException;
 
@@ -31,5 +30,5 @@ public interface ItemSelectionModel {
 
   void whenNewCharacterIsAdded(NewCharacterListener listener);
 
-  void registerAllReportsOn(ReportRegister register, Resources resources);
+  void registerAllReportsOn(ReportRegister register, Environment environment);
 }

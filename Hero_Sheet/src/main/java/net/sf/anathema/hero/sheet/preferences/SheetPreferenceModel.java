@@ -12,9 +12,9 @@ import org.jmock.example.announcer.Announcer;
 @RegisteredPreferenceModel
 public class SheetPreferenceModel implements PreferenceModel {
 
-  public static final PreferenceKey KEY = new PreferenceKey("hero.sheet.pagesize");
-  private PageSize pageSize;
+  private static final PreferenceKey KEY = new PreferenceKey("hero.sheet.pagesize");
   private final Announcer<ChangeListener> announcer = Announcer.to(ChangeListener.class);
+  private PageSize pageSize;
 
   @Override
   public void serializeTo(PreferencePto pto) {
