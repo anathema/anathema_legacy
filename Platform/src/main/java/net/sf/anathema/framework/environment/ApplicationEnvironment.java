@@ -1,5 +1,6 @@
 package net.sf.anathema.framework.environment;
 
+import de.idos.updates.configuration.PropertiesLoader;
 import net.sf.anathema.lib.exception.ExceptionHandler;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -30,5 +31,10 @@ public class ApplicationEnvironment implements Environment {
   @Override
   public String getString(String key, Object... arguments) {
     return resources.getString(key, arguments);
+  }
+
+  @Override
+  public String getPreference(String key) {
+    return new PropertiesLoader("preferences.properties").load().getProperty(key);
   }
 }

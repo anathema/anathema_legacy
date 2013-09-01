@@ -12,7 +12,7 @@ import org.jmock.example.announcer.Announcer;
 @RegisteredPreferenceModel
 public class SheetPreferenceModel implements PreferenceModel {
 
-  private static final PreferenceKey KEY = new PreferenceKey("hero.sheet.pagesize");
+  public static final PreferenceKey KEY = new PreferenceKey("hero.sheet.pagesize");
   private final Announcer<ChangeListener> announcer = Announcer.to(ChangeListener.class);
   private PageSize pageSize;
 
@@ -25,11 +25,14 @@ public class SheetPreferenceModel implements PreferenceModel {
   @Override
   public void initializeFrom(PreferencePto pto) {
     PreferenceValue value = pto.map.get(KEY);
+    this.pageSize = calculatePageSize(value);
+  }
+
+  public static PageSize calculatePageSize(PreferenceValue value) {
     if (value == null) {
-      this.pageSize = PageSize.A4;
-      return;
+      return PageSize.A4;
     }
-    this.pageSize = PageSize.valueOf(value.value);
+    return PageSize.valueOf(value.value);
   }
 
   public PageSize[] getAvailableChoices() {
