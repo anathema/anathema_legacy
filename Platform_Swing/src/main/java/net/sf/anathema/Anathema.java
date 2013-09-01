@@ -7,8 +7,8 @@ import net.sf.anathema.framework.configuration.InitializationPreferences;
 import net.sf.anathema.framework.view.ApplicationFrame;
 import net.sf.anathema.initialization.GuiInitializer;
 import net.sf.anathema.initialization.InitializationException;
-import net.sf.anathema.lib.exception.ExceptionHandling;
-import net.sf.anathema.lib.exception.ExtensibleExceptionHandler;
+import net.sf.anathema.framework.environment.exception.ExceptionHandling;
+import net.sf.anathema.framework.environment.exception.ExtensibleExceptionHandler;
 import net.sf.anathema.lib.logging.Logger;
 
 public class Anathema extends Application {

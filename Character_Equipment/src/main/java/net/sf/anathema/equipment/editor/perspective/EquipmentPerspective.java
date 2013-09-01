@@ -14,7 +14,7 @@ import net.sf.anathema.framework.view.perspective.PerspectiveAutoCollector;
 import net.sf.anathema.framework.view.perspective.PerspectiveToggle;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.file.RelativePath;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 @PerspectiveAutoCollector
 @Weight(weight = 5000)

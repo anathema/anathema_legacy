@@ -4,8 +4,8 @@ import fr.xmichel.javafx.dialog.Dialog;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Window;
-import net.sf.anathema.lib.exception.ExceptionHandler;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.ExceptionHandler;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.platform.fx.FxThreading;
 
 public class FxDialogExceptionHandler implements ExceptionHandler {

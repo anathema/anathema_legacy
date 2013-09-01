@@ -8,7 +8,7 @@ import net.sf.anathema.initialization.reflections.ResourceLoader;
 import net.sf.anathema.initialization.repository.IOFileSystemAbstraction;
 import net.sf.anathema.initialization.repository.RepositoryFolderCreator;
 import net.sf.anathema.initialization.repository.RepositoryLocationResolver;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 import java.io.File;
 

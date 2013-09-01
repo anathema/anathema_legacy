@@ -22,7 +22,7 @@ import net.sf.anathema.hero.charms.compiler.special.ReflectionSpecialCharmBuilde
 import net.sf.anathema.initialization.ExtensibleDataSetCompiler;
 import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.lib.exception.PersistenceException;
-import net.sf.anathema.lib.resources.ResourceFile;
+import net.sf.anathema.framework.environment.resources.ResourceFile;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 import org.dom4j.Document;

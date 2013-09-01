@@ -6,7 +6,7 @@ import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.hero.display.HeroModelGroup;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 import static net.sf.anathema.hero.display.HeroModelGroup.Magic;
 import static net.sf.anathema.hero.display.HeroModelGroup.Miscellaneous;

@@ -8,7 +8,7 @@ import net.sf.anathema.framework.repository.IRepositoryFileResolver;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.framework.HeroEnvironmentExtractor;
 import net.sf.anathema.initialization.RegisteredItemTypePresentation;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 import static net.sf.anathema.character.main.itemtype.CharacterItemTypeRetrieval.retrieveCharacterItemType;
 import static net.sf.anathema.character.main.itemtype.ExaltedCharacterItemTypeConfiguration.CHARACTER_ITEM_TYPE_ID;

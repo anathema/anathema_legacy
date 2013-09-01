@@ -5,7 +5,7 @@ import net.sf.anathema.character.main.xml.GenericCharacterTemplate;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.logging.Logger;
-import net.sf.anathema.lib.resources.ResourceFile;
+import net.sf.anathema.framework.environment.resources.ResourceFile;
 
 public class CharacterTemplateInitializer {
 

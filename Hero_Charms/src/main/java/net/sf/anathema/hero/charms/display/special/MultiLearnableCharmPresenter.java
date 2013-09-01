@@ -5,7 +5,7 @@ import net.sf.anathema.character.main.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.hero.charms.model.special.multilearn.MultiLearnCharmSpecials;
 import net.sf.anathema.framework.value.IntValueView;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.platform.tree.display.CategorizedSpecialNodeView;
 
 public class MultiLearnableCharmPresenter implements Presenter {

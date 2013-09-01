@@ -6,7 +6,7 @@ import net.sf.anathema.framework.module.PreferencesElementsExtensionPoint;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
 import net.sf.anathema.framework.view.ApplicationView;
 import net.sf.anathema.lib.control.ChangeListener;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 import java.util.Collection;
 

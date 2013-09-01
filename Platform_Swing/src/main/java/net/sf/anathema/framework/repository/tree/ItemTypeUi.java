@@ -3,7 +3,7 @@ package net.sf.anathema.framework.repository.tree;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.lib.gui.icon.ImageProvider;
 import net.sf.anathema.lib.gui.ui.ObjectUi;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 import javax.swing.Icon;
 

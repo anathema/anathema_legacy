@@ -2,7 +2,7 @@ package net.sf.anathema.hero.magic.model.charms;
 
 import net.sf.anathema.hero.utilities.NullResources;
 import net.sf.anathema.character.main.magic.charm.duration.QualifiedAmountDuration;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

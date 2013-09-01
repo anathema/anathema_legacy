@@ -9,7 +9,7 @@ import net.sf.anathema.hero.charms.display.tooltip.source.MagicSourceContributor
 import net.sf.anathema.character.main.magic.basic.Magic;
 import net.sf.anathema.character.main.magic.basic.cost.CostImpl;
 import net.sf.anathema.character.main.magic.basic.cost.HealthCost;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public abstract class AbstractMagicCardData implements ICardData {
 

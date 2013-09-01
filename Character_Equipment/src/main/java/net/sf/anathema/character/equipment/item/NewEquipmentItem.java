@@ -2,7 +2,7 @@ package net.sf.anathema.character.equipment.item;
 
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.interaction.Command;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class NewEquipmentItem implements Command {
   private final IEquipmentDatabaseManagement model;

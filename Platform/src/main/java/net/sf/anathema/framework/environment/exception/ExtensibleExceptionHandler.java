@@ -1,4 +1,6 @@
-package net.sf.anathema.lib.exception;
+package net.sf.anathema.framework.environment.exception;
+
+import net.sf.anathema.framework.environment.ExceptionHandler;
 
 import java.util.ArrayList;
 import java.util.List;

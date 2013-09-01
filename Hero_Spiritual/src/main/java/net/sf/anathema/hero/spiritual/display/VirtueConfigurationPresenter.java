@@ -6,7 +6,7 @@ import net.sf.anathema.character.main.traits.types.VirtueType;
 import net.sf.anathema.framework.value.IntValueView;
 import net.sf.anathema.hero.traits.TraitMap;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class VirtueConfigurationPresenter implements Presenter {
 

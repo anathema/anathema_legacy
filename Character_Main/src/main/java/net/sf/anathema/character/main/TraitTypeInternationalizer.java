@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main;
 
 import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class TraitTypeInternationalizer {
 

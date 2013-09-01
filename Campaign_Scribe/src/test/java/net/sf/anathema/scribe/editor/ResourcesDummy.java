@@ -1,6 +1,6 @@
 package net.sf.anathema.scribe.editor;
 
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 import java.util.HashMap;
 import java.util.Map;

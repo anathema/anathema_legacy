@@ -20,7 +20,7 @@ import net.sf.anathema.hero.sheet.pdf.page.PageEncoder;
 import net.sf.anathema.hero.sheet.pdf.page.layout.Sheet;
 import net.sf.anathema.hero.sheet.pdf.page.layout.simple.MortalPageEncoder;
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class PortraitSimpleMortalSheetReport extends AbstractPdfReport {
 

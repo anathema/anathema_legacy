@@ -2,7 +2,7 @@ package net.sf.anathema.hero.charms.sheet.content.stats;
 
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.hero.charms.sheet.content.IMagicStats;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class MultipleEffectCharmStats extends AbstractCharmStats implements IMagicStats {
 

@@ -1,6 +1,6 @@
 package net.sf.anathema.lib.compare;
 
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;

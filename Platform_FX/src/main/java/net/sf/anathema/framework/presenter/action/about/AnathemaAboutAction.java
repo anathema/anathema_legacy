@@ -13,7 +13,7 @@ import javafx.stage.StageStyle;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.sf.anathema.interaction.Command;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.platform.fx.Stylesheet;
 import net.sf.anathema.platform.markdown.HtmlConverter;
 import net.sf.anathema.platform.markdown.HtmlText;

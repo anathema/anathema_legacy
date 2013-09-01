@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.sheet.pdf.content;
 
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public abstract class AbstractSubContent implements SubContent {
 
@@ -8,10 +8,6 @@ public abstract class AbstractSubContent implements SubContent {
 
   protected AbstractSubContent(Resources resources) {
     this.resources = resources;
-  }
-  
-  protected String getStringFromResource(String key, Object... args) {
-    return resources.getString(key, args);
   }
 
   protected Resources getResources() {

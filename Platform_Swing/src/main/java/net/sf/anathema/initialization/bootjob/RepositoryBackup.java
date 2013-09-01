@@ -6,7 +6,7 @@ import net.sf.anathema.framework.repository.Repository;
 import net.sf.anathema.framework.repository.tree.FileExporter;
 import net.sf.anathema.framework.repository.tree.RepositoryZipPathCreator;
 import net.sf.anathema.initialization.ItemTypeCollection;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 import java.io.IOException;
 import java.nio.file.Path;

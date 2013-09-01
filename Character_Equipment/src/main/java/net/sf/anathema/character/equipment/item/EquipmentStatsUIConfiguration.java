@@ -10,7 +10,7 @@ import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.AbstractUIConfiguration;
 import net.sf.anathema.lib.gui.ConfigurableTooltip;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class EquipmentStatsUIConfiguration extends AbstractUIConfiguration<IEquipmentStats> {
   private final EquipmentStringBuilder tooltipFactory;

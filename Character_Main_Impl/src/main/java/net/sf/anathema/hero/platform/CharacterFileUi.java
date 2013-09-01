@@ -7,7 +7,7 @@ import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.hero.concept.CasteType;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.AbstractUIConfiguration;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.swing.hero.creation.CharacterTypeUi;
 

@@ -9,7 +9,7 @@ import net.sf.anathema.hero.languages.model.LanguagesModel;
 import net.sf.anathema.hero.languages.model.LanguagesModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.initialization.reflections.Weight;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 @RegisteredInitializer(HeroModelGroup.NaturalTraits)
 @Weight(weight = 400)

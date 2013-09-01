@@ -6,7 +6,7 @@ import net.sf.anathema.initialization.IBootJob;
 import net.sf.anathema.initialization.initialitems.ItemInitializer;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
 import net.sf.anathema.initialization.reflections.Weight;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 @BootJob
 @Weight(weight = 12)

@@ -8,7 +8,7 @@ import net.sf.anathema.hero.sheet.pdf.encoder.boxes.AbstractEncoderFactory;
 import net.sf.anathema.hero.sheet.pdf.encoder.boxes.ContentEncoder;
 import net.sf.anathema.hero.sheet.pdf.encoder.boxes.RegisteredEncoderFactory;
 import net.sf.anathema.hero.traits.sheet.encoder.DotBoxContentEncoder;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 @RegisteredEncoderFactory
 public class EssenceDotEncoderFactory extends AbstractEncoderFactory {

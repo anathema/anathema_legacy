@@ -11,7 +11,7 @@ import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.userdialog.DefaultDialogConfiguration;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 import org.apache.commons.io.FilenameUtils;
 
 import java.awt.Component;

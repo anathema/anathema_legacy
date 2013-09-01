@@ -10,7 +10,7 @@ import net.sf.anathema.hero.display.configurableview.MultiComponentLine;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.IntValueChangedListener;
 import net.sf.anathema.lib.gui.widgets.IIntegerView;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;

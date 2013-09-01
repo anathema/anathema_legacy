@@ -20,7 +20,7 @@ import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.lib.collection.IdentityMapping;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 import static net.sf.anathema.character.main.library.trait.favorable.FavorableState.Caste;
 import static net.sf.anathema.character.main.library.trait.favorable.FavorableState.Default;

@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.preferences.elements;
 
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public interface PreferencePresenter {
   Class getViewClass();

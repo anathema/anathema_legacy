@@ -2,7 +2,7 @@ package net.sf.anathema.framework.model;
 
 import com.google.common.collect.Lists;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
-import net.sf.anathema.lib.resources.ResourceFile;
+import net.sf.anathema.framework.environment.resources.ResourceFile;
 import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;

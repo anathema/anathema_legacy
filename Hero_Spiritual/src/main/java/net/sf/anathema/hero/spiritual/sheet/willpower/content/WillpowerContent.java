@@ -6,7 +6,7 @@ import net.sf.anathema.hero.sheet.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.hero.sheet.pdf.encoder.general.ListUtils;
 import net.sf.anathema.hero.spiritual.SpiritualTraitModelFetcher;
 import net.sf.anathema.hero.traits.sheet.content.BulletList;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class WillpowerContent extends AbstractSubBoxContent {
 

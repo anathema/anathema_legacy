@@ -4,7 +4,7 @@ import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.configuration.RepositoryPreference;
 import net.sf.anathema.framework.environment.ApplicationEnvironment;
 import net.sf.anathema.framework.environment.Environment;
-import net.sf.anathema.framework.resources.LocaleResources;
+import net.sf.anathema.framework.environment.resources.LocaleResources;
 import net.sf.anathema.framework.view.ApplicationView;
 import net.sf.anathema.initialization.reflections.AggregatedResourceLoader;
 import net.sf.anathema.initialization.reflections.CustomDataResourceLoader;
@@ -13,9 +13,9 @@ import net.sf.anathema.initialization.reflections.ReflectionObjectFactory;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
 import net.sf.anathema.initialization.repository.RepositoryLocationResolver;
 import net.sf.anathema.lib.exception.AnathemaException;
-import net.sf.anathema.lib.exception.ExceptionHandler;
-import net.sf.anathema.lib.resources.ResourceFile;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.ExceptionHandler;
+import net.sf.anathema.framework.environment.resources.ResourceFile;
+import net.sf.anathema.framework.environment.Resources;
 
 import java.util.Set;
 

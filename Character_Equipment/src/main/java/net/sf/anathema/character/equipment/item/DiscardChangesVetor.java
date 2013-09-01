@@ -5,7 +5,7 @@ import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.data.Condition;
 import net.sf.anathema.lib.gui.dialog.userdialog.buttons.ConfigurableVetor;
 import net.sf.anathema.lib.gui.list.veto.Vetor;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class DiscardChangesVetor implements Vetor {
 

@@ -9,7 +9,7 @@ import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.sheet.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.hero.spiritual.SpiritualTraitModelFetcher;
 import net.sf.anathema.hero.traits.sheet.content.NamedValue;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 import java.util.ArrayList;
 import java.util.List;

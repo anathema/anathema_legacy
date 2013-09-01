@@ -15,7 +15,7 @@ import net.sf.anathema.equipment.editor.wizard.WizardDialog;
 import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.lib.gui.dialog.core.DialogResult;
 import net.sf.anathema.lib.gui.dialog.userdialog.DialogCloseHandler;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.util.Closure;
 
 import javax.swing.SwingUtilities;

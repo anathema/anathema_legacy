@@ -5,7 +5,7 @@ import net.sf.anathema.hero.charms.display.MagicDisplayLabeler;
 import net.sf.anathema.hero.charms.display.tooltip.CharmTooltipBuilder;
 import net.sf.anathema.lib.gui.AbstractUIConfiguration;
 import net.sf.anathema.lib.gui.ConfigurableTooltip;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class CharmUiConfigurationWithoutSpecials extends AbstractUIConfiguration<Charm> {
   private final Resources resources;

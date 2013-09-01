@@ -6,7 +6,7 @@ import net.sf.anathema.character.main.view.ColumnCount;
 import net.sf.anathema.hero.abilities.model.AbilityModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.traits.display.FavorableTraitConfigurationPresenter;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class AbilitiesPresenter {
 

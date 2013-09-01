@@ -20,7 +20,7 @@ import net.sf.anathema.hero.sheet.pdf.page.layout.Sheet;
 import net.sf.anathema.hero.sheet.pdf.page.layout.landscape.FirstPageEncoder;
 import net.sf.anathema.hero.sheet.pdf.page.layout.landscape.SecondPageEncoder;
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 import java.util.ArrayList;
 import java.util.Collections;

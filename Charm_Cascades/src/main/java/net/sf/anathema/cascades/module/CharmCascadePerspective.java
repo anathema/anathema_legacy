@@ -18,7 +18,7 @@ import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.framework.HeroEnvironmentExtractor;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.file.RelativePath;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 import org.tbee.javafx.scene.layout.MigPane;
 
 @PerspectiveAutoCollector

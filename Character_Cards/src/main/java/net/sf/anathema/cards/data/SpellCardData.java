@@ -9,7 +9,7 @@ import net.sf.anathema.cards.layout.ICardReportResourceProvider;
 import net.sf.anathema.character.main.magic.description.MagicDescription;
 import net.sf.anathema.character.main.magic.spells.Spell;
 import net.sf.anathema.hero.spells.sheet.content.SpellStats;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class SpellCardData extends AbstractMagicCardData {
 	private Spell spell;

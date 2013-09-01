@@ -2,7 +2,7 @@ package net.sf.anathema.framework.ui;
 
 import net.sf.anathema.lib.gui.AbstractUIConfiguration;
 import net.sf.anathema.lib.gui.ConfigurableTooltip;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.util.Identifier;
 
 public class IdentifierConfiguration extends AbstractUIConfiguration<Identifier> {

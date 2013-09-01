@@ -1,4 +1,4 @@
-package net.sf.anathema.lib.exception;
+package net.sf.anathema.framework.environment;
 
 public interface ExceptionHandler {
   void handle(Throwable exception);

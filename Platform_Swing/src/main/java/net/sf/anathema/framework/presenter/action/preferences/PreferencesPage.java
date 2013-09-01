@@ -3,7 +3,7 @@ package net.sf.anathema.framework.presenter.action.preferences;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.AbstractDialogPage;
 import net.sf.anathema.lib.message.IBasicMessage;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;

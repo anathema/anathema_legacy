@@ -10,7 +10,7 @@ import net.sf.anathema.character.equipment.dummy.DummyEquipmentObject;
 import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 import net.sf.anathema.character.main.library.trait.specialties.Specialty;
 import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.framework.resources.LocaleResources;
+import net.sf.anathema.framework.environment.resources.LocaleResources;
 import net.sf.anathema.hero.equipment.display.presenter.EquipmentObjectPresenter;
 import net.sf.anathema.hero.equipment.display.presenter.EquipmentObjectView;
 import net.sf.anathema.hero.equipment.display.presenter.StatsView;

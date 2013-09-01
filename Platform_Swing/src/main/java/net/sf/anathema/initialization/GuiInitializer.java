@@ -10,12 +10,12 @@ import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.fx.FxDialogExceptionHandler;
 import net.sf.anathema.framework.module.AnathemaCoreMenu;
 import net.sf.anathema.framework.presenter.AnathemaViewProperties;
-import net.sf.anathema.framework.resources.LocaleResources;
+import net.sf.anathema.framework.environment.resources.LocaleResources;
 import net.sf.anathema.framework.view.ApplicationView;
 import net.sf.anathema.framework.view.perspective.PerspectivePaneFactory;
-import net.sf.anathema.lib.exception.ExtensibleExceptionHandler;
+import net.sf.anathema.framework.environment.exception.ExtensibleExceptionHandler;
 import net.sf.anathema.lib.logging.Logger;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class GuiInitializer extends Initializer {
 

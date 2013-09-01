@@ -3,7 +3,7 @@ package net.sf.anathema.hero.combat.sheet.combat.content;
 import net.sf.anathema.hero.sheet.pdf.content.RegisteredReportContent;
 import net.sf.anathema.hero.sheet.pdf.content.ReportContentFactory;
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 @RegisteredReportContent(produces = CombatStatsContent.class)
 public class CombatStatsContentFactory implements ReportContentFactory<CombatStatsContent> {

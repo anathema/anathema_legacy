@@ -4,7 +4,7 @@ import net.sf.anathema.hero.display.configurableview.ConfigurableCharacterView;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.herotype.solar.model.curse.DescriptiveVirtueFlaw;
 import net.sf.anathema.herotype.solar.model.curse.DescriptiveVirtueFlawModel;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 

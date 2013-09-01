@@ -17,7 +17,7 @@ import net.sf.anathema.hero.display.presenter.RegisteredInitializer;
 import net.sf.anathema.hero.framework.HeroEnvironmentExtractor;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.initialization.reflections.Weight;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.platform.tree.document.visualizer.TreePresentationProperties;
 
 import static net.sf.anathema.hero.display.HeroModelGroup.Magic;

@@ -1,6 +1,6 @@
 package net.sf.anathema.scribe.editor.presenter;
 
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.platform.markdown.HtmlText;
 import net.sf.anathema.scribe.editor.model.ScrollChangedListener;
 import net.sf.anathema.platform.markdown.WikiText;

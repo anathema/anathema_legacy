@@ -3,7 +3,7 @@ package net.sf.anathema.hero.sheet.pdf.content.stats;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.main.util.IStats;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public abstract class AbstractNameStatsGroup<T extends IStats> extends AbstractTextStatsGroup<T> {
   private final String title;

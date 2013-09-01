@@ -4,7 +4,7 @@ import net.sf.anathema.magic.description.display.MagicDetailPresenter;
 import net.sf.anathema.magic.description.display.MagicDetailPresenterFactory;
 import net.sf.anathema.magic.description.display.RegisteredMagicDetailPresenterFactory;
 import net.sf.anathema.framework.IApplicationModel;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.magic.description.model.AutoSaveMagicDescriptionEditModel;
 import net.sf.anathema.magic.description.model.MagicDescriptionEditModel;
 import net.sf.anathema.magic.description.persistence.MagicDescriptionDataBase;

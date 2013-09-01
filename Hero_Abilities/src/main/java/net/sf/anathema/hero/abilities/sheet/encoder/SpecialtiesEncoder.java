@@ -11,7 +11,7 @@ import net.sf.anathema.hero.traits.sheet.content.PdfTraitEncoder;
 import net.sf.anathema.hero.traits.sheet.content.ValuedTraitReference;
 import net.sf.anathema.hero.traits.sheet.encoder.AbstractNamedTraitEncoder;
 import net.sf.anathema.hero.traits.sheet.encoder.INamedTraitEncoder;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 import java.util.ArrayList;
 import java.util.Collections;

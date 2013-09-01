@@ -1,6 +1,6 @@
 package net.sf.anathema.initialization.reflections;
 
-import net.sf.anathema.lib.resources.ResourceFile;
+import net.sf.anathema.framework.environment.resources.ResourceFile;
 import org.apache.commons.io.FilenameUtils;
 
 import java.io.File;

@@ -13,7 +13,7 @@ import net.sf.anathema.framework.view.MenuBar;
 import net.sf.anathema.framework.view.menu.IMenu;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.registry.IRegistry;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class AnathemaCoreMenu {
 

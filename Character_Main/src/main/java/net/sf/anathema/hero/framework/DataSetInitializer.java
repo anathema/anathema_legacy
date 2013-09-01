@@ -8,7 +8,7 @@ import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
 import net.sf.anathema.lib.logging.Logger;
-import net.sf.anathema.lib.resources.ResourceFile;
+import net.sf.anathema.framework.environment.resources.ResourceFile;
 
 import java.util.Collection;
 import java.util.Set;

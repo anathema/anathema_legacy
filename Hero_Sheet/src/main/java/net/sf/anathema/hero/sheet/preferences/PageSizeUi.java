@@ -4,7 +4,7 @@ import net.sf.anathema.framework.reporting.pdf.PageSize;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.ConfigurableTooltip;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class PageSizeUi implements AgnosticUIConfiguration<PageSize> {
   private Resources resources;

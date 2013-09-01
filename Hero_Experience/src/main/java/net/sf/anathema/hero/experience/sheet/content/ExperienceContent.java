@@ -4,7 +4,7 @@ import net.sf.anathema.hero.advance.experience.ExperiencePointManagementImpl;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.sheet.pdf.content.AbstractSubBoxContent;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 import java.text.MessageFormat;
 

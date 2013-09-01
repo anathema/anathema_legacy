@@ -7,7 +7,7 @@ import net.sf.anathema.herotype.solar.model.curse.DescriptiveVirtueFlaw;
 import net.sf.anathema.herotype.solar.model.curse.DescriptiveVirtueFlawModel;
 import net.sf.anathema.herotype.solar.model.curse.GreatCurseFetcher;
 import net.sf.anathema.lib.lang.StringUtilities;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class VirtueFlawContent extends AbstractSubBoxContent {
 

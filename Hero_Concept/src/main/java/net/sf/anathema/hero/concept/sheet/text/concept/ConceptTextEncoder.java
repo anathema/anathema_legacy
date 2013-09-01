@@ -13,7 +13,7 @@ import net.sf.anathema.hero.description.HeroDescriptionFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.sheet.text.HeroTextEncoder;
 import net.sf.anathema.hero.sheet.text.TextPartFactory;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class ConceptTextEncoder implements HeroTextEncoder {
 

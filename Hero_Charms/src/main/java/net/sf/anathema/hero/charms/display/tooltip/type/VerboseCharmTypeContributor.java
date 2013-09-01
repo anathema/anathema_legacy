@@ -3,7 +3,7 @@ package net.sf.anathema.hero.charms.display.tooltip.type;
 import net.sf.anathema.character.main.magic.charm.type.ISimpleSpecialsModel;
 import net.sf.anathema.character.main.magic.charm.type.TurnType;
 import net.sf.anathema.lib.gui.TooltipBuilder;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class VerboseCharmTypeContributor extends AbstractCharmTypeContributor {
 

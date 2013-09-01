@@ -11,7 +11,7 @@ import net.sf.anathema.equipment.editor.wizard.CheckInputListener;
 import net.sf.anathema.lib.gui.layout.AdditiveView;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.message.IBasicMessage;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
 import net.sf.anathema.lib.workflow.intvalue.IntValuePresentation;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;

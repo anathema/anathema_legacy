@@ -5,7 +5,7 @@ import net.sf.anathema.character.equipment.item.view.EquipmentNavigation;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.file.RelativePath;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class RemoveEquipmentTemplateAction {
   private final IEquipmentDatabaseManagement model;

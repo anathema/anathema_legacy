@@ -8,7 +8,7 @@ import net.sf.anathema.hero.charms.model.CharmIdMap;
 import net.sf.anathema.hero.charms.model.special.ISpecialCharm;
 import net.sf.anathema.hero.charms.model.special.NullSpecialCharm;
 import net.sf.anathema.lib.gui.ConfigurableTooltip;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.platform.tree.display.ToolTipProperties;
 
 public class DefaultTooltipProperties implements ToolTipProperties {

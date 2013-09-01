@@ -2,9 +2,9 @@ package net.sf.anathema.framework.swing;
 
 import javafx.stage.Window;
 import net.sf.anathema.framework.fx.FxDialogExceptionHandler;
-import net.sf.anathema.lib.exception.LoggingExceptionHandler;
+import net.sf.anathema.framework.environment.exception.LoggingExceptionHandler;
 import net.sf.anathema.lib.message.Message;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class ExceptionIndicator {
 

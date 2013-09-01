@@ -4,7 +4,7 @@ import com.google.common.base.Function;
 import com.google.common.base.Joiner;
 import net.sf.anathema.hero.charms.sheet.content.CharmPrintNameTransformer;
 import net.sf.anathema.hero.combos.display.presenter.Combo;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class ToDisplayCombo implements Function<Combo, DisplayCombo> {
 

@@ -6,7 +6,7 @@ import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider
 import net.sf.anathema.character.main.magic.description.RegisteredMagicDescriptionProviderFactory;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.initialization.ObjectFactory;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 import java.util.Collection;
 

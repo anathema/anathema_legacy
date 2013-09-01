@@ -11,7 +11,7 @@ import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.spells.model.CircleModel;
 import net.sf.anathema.hero.spells.model.SpellsModel;
 import net.sf.anathema.hero.spells.model.SpellsModelFetcher;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class SpellInitializer implements HeroModelInitializer {
   private IApplicationModel applicationModel;

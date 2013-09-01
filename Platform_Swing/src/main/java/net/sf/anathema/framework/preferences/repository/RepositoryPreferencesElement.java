@@ -13,7 +13,7 @@ import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.io.PathUtils;
 import net.sf.anathema.lib.message.Message;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 

@@ -3,7 +3,7 @@ package net.sf.anathema.hero.charms.display.tooltip;
 import net.sf.anathema.character.main.magic.basic.cost.Cost;
 import net.sf.anathema.lib.gui.TooltipBuilder;
 import net.sf.anathema.lib.lang.StringUtilities;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class CostStringBuilder extends AbstractCostStringBuilder<Cost> {
 

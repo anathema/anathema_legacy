@@ -11,7 +11,7 @@ import net.sf.anathema.herotype.solar.model.SolarCharacterType;
 import net.sf.anathema.herotype.solar.model.curse.DescriptiveVirtueFlawModel;
 import net.sf.anathema.herotype.solar.model.curse.GreatCurseFetcher;
 import net.sf.anathema.initialization.reflections.Weight;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 @RegisteredInitializer(HeroModelGroup.SpiritualTraits)
 @Weight(weight = 200)

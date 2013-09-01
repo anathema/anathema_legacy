@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.combat.sheet.social.stats;
 
 import net.sf.anathema.hero.sheet.pdf.content.stats.AbstractValueStatsGroup;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public abstract class AbstractSocialCombatsValueStatsGroup extends AbstractValueStatsGroup<ISocialCombatStats> {
 

@@ -1,7 +1,7 @@
 package net.sf.anathema.lib.dummy;
 
 import net.sf.anathema.lib.exception.NotYetImplementedException;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -8,7 +8,7 @@ import net.sf.anathema.character.equipment.creation.presenter.stats.properties.O
 import net.sf.anathema.character.equipment.creation.view.WeaponDamageView;
 import net.sf.anathema.equipment.editor.wizard.CheckInputListener;
 import net.sf.anathema.lib.data.Condition;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 import javax.swing.JPanel;
 import java.awt.Component;

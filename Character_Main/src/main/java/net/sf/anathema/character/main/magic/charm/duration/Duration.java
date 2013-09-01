@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic.charm.duration;
 
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public interface Duration {
 

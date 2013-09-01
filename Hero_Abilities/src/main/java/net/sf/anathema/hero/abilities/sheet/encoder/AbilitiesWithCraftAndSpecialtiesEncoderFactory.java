@@ -8,7 +8,7 @@ import net.sf.anathema.hero.sheet.pdf.encoder.boxes.GlobalEncoderFactory;
 import net.sf.anathema.hero.sheet.pdf.encoder.boxes.RegisteredEncoderFactory;
 import net.sf.anathema.hero.traits.sheet.content.PdfTraitEncoder;
 import net.sf.anathema.hero.traits.sheet.encoder.FavorableTraitContentEncoder;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 @RegisteredEncoderFactory
 public class AbilitiesWithCraftAndSpecialtiesEncoderFactory extends GlobalEncoderFactory {

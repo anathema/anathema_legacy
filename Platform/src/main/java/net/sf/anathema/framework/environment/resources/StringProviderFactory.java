@@ -1,13 +1,8 @@
-package net.sf.anathema.framework.resources;
+package net.sf.anathema.framework.environment.resources;
 
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.initialization.reflections.ExternalResourceFile;
 import net.sf.anathema.lib.logging.Logger;
-import net.sf.anathema.lib.resources.FileStringProvider;
-import net.sf.anathema.lib.resources.InternalResourceFile;
-import net.sf.anathema.lib.resources.NullStringProvider;
-import net.sf.anathema.lib.resources.ResourceFile;
-import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.lib.resources.StringProvider;
 import org.apache.commons.io.FilenameUtils;
 
 import java.io.IOException;

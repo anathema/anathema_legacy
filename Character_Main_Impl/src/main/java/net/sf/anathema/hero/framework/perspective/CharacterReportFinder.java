@@ -8,7 +8,7 @@ import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.hero.framework.perspective.sheet.AllReportFinder;
 import net.sf.anathema.hero.framework.perspective.sheet.DefaultReportFinder;
 import net.sf.anathema.initialization.RegisteredReportFactory;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 import java.util.ArrayList;
 import java.util.Collection;

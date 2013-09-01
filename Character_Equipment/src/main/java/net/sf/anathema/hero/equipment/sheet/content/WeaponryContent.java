@@ -11,7 +11,7 @@ import net.sf.anathema.hero.equipment.sheet.content.stats.weapons.SecondEditionD
 import net.sf.anathema.hero.equipment.sheet.content.stats.weapons.SecondEditionSpeedWeaponStatsGroup;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.sheet.pdf.content.SubBoxContent;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class WeaponryContent extends AbstractWeaponryContent implements SubBoxContent {
 

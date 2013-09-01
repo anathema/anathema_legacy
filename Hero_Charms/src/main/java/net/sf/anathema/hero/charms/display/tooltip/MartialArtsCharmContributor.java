@@ -5,7 +5,7 @@ import net.sf.anathema.character.main.magic.basic.Magic;
 import net.sf.anathema.character.main.magic.charm.martial.MartialArtsLevel;
 import net.sf.anathema.character.main.magic.charm.martial.MartialArtsUtilities;
 import net.sf.anathema.lib.gui.ConfigurableTooltip;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class MartialArtsCharmContributor implements MagicTooltipContributor {
   private final Resources resources;

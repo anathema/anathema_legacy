@@ -11,7 +11,7 @@ import net.sf.anathema.equipment.editor.wizard.CheckInputListener;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.gui.dialog.core.IPageContent;
 import net.sf.anathema.lib.message.IBasicMessage;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.workflow.booleanvalue.BooleanValueModel;
 import net.sf.anathema.lib.workflow.booleanvalue.BooleanValuePresentation;
 

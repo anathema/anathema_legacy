@@ -6,7 +6,7 @@ import net.sf.anathema.character.main.xml.ITemplateParser;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.registry.Registry;
-import net.sf.anathema.lib.resources.ResourceFile;
+import net.sf.anathema.framework.environment.resources.ResourceFile;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.apache.commons.io.IOUtils;
 import org.dom4j.Document;

@@ -1,6 +1,6 @@
 package net.sf.anathema.scribe.editor.presenter;
 
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.scribe.editor.model.ScrollModel;
 
 public class ScrollPresenter {

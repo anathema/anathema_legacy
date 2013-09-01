@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.sheet.pdf.encoder.boxes;
 
 import net.sf.anathema.hero.sheet.pdf.content.BasicContent;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.util.Identifier;
 
 public interface EncoderFactory extends Identifier {

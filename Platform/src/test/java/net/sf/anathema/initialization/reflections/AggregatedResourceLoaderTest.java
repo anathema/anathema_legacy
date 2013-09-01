@@ -1,7 +1,7 @@
 package net.sf.anathema.initialization.reflections;
 
 import com.google.common.collect.Sets;
-import net.sf.anathema.lib.resources.ResourceFile;
+import net.sf.anathema.framework.environment.resources.ResourceFile;
 import org.junit.Test;
 
 import java.util.Set;

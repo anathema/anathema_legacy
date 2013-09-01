@@ -5,7 +5,7 @@ import net.sf.anathema.hero.charms.model.special.subeffects.SubEffect;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;
 
 public class MultipleEffectCharmPresenter implements Presenter {

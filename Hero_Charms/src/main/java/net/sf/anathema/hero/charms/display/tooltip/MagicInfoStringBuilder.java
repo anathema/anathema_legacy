@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.magic.basic.Magic;
 import net.sf.anathema.character.main.magic.basic.cost.Cost;
 import net.sf.anathema.character.main.magic.basic.cost.ICostList;
 import net.sf.anathema.character.main.magic.basic.cost.IHealthCost;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class MagicInfoStringBuilder implements IMagicInfoStringBuilder {
 

@@ -4,7 +4,7 @@ import net.sf.anathema.hero.combos.display.presenter.Combo;
 import net.sf.anathema.hero.combos.model.CombosModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.sheet.pdf.content.AbstractSubBoxContent;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 import java.util.ArrayList;
 import java.util.Collections;

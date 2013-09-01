@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.basic.Magic;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.lib.gui.ConfigurableTooltip;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class CharmPrerequisitesContributor implements MagicTooltipContributor {
   private final Resources resources;

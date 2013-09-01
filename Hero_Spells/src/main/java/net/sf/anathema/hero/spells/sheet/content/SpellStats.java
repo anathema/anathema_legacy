@@ -7,7 +7,7 @@ import net.sf.anathema.character.main.magic.spells.Spell;
 import net.sf.anathema.hero.charms.sheet.content.IMagicStats;
 import net.sf.anathema.hero.charms.sheet.content.stats.AbstractCharmStats;
 import net.sf.anathema.hero.charms.sheet.content.stats.AbstractMagicStats;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import static net.sf.anathema.lib.lang.ArrayUtilities.transform;

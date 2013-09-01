@@ -2,7 +2,7 @@ package net.sf.anathema.hero.sheet.pdf.encoder.general;
 
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Phrase;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,8 +1,6 @@
 package net.sf.anathema.framework.environment;
 
 import de.idos.updates.configuration.PropertiesLoader;
-import net.sf.anathema.lib.exception.ExceptionHandler;
-import net.sf.anathema.lib.resources.Resources;
 
 public class ApplicationEnvironment implements Environment {
   private final Resources resources;

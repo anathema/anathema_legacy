@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.xml.registry;
 
 import net.sf.anathema.character.main.xml.ITemplateParser;
 import net.sf.anathema.lib.exception.PersistenceException;
-import net.sf.anathema.lib.resources.ResourceFile;
+import net.sf.anathema.framework.environment.resources.ResourceFile;
 
 public interface IXmlTemplateRegistry<T> {
 

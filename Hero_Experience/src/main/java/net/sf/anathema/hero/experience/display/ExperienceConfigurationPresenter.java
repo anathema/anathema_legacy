@@ -7,7 +7,7 @@ import net.sf.anathema.hero.advance.experience.ExperiencePointEntry;
 import net.sf.anathema.hero.advance.experience.ExperienceSelectionListener;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class ExperienceConfigurationPresenter {
 

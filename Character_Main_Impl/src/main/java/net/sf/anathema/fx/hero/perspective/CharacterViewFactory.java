@@ -14,7 +14,7 @@ import net.sf.anathema.hero.advance.overview.presenter.OverviewPresenter;
 import net.sf.anathema.hero.advance.overview.view.OverviewContainer;
 import net.sf.anathema.hero.display.presenter.CharacterPresenter;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.platform.fx.NodeHolder;
 import net.sf.anathema.platform.fx.Stylesheet;
 

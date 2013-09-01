@@ -4,7 +4,7 @@ import net.sf.anathema.hero.framework.perspective.model.ItemSelectionModel;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.lib.file.RelativePath;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class ExperiencedInteractionPresenter {
   private ItemSelectionModel model;

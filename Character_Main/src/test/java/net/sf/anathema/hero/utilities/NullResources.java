@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.utilities;
 
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class NullResources implements Resources {
 

@@ -9,7 +9,7 @@ import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats
 import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IWeaponStats;
 import net.sf.anathema.hero.health.HealthType;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.util.Identifier;
 
 public class EquipmentStringBuilder implements IEquipmentStringBuilder {

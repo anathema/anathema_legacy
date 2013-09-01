@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.charms.display.tooltip;
 
 import com.google.common.base.Strings;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class MagicInfoStringConcatenator {
 

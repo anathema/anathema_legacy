@@ -6,7 +6,7 @@ import net.sf.anathema.hero.display.HeroModelGroup;
 import net.sf.anathema.hero.display.presenter.HeroModelInitializer;
 import net.sf.anathema.hero.display.presenter.RegisteredInitializer;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 @RegisteredInitializer(HeroModelGroup.Miscellaneous)
 public class ExperiencePointInitializer implements HeroModelInitializer {

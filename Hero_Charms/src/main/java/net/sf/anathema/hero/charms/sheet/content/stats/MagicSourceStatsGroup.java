@@ -4,7 +4,7 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.hero.charms.sheet.content.IMagicStats;
 import net.sf.anathema.hero.sheet.pdf.content.stats.AbstractTextStatsGroup;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class MagicSourceStatsGroup extends AbstractTextStatsGroup<IMagicStats> {
 

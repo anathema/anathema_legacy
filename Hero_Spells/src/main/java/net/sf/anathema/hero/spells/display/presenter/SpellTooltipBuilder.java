@@ -6,7 +6,7 @@ import net.sf.anathema.hero.charms.display.tooltip.ScreenDisplayInfoContributor;
 import net.sf.anathema.hero.charms.display.tooltip.source.MagicSourceContributor;
 import net.sf.anathema.character.main.magic.spells.Spell;
 import net.sf.anathema.lib.gui.ConfigurableTooltip;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class SpellTooltipBuilder {
 

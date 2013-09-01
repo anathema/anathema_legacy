@@ -1,6 +1,7 @@
-package net.sf.anathema.lib.resources;
+package net.sf.anathema.framework.environment.resources;
 
 import com.google.common.io.Closeables;
+import net.sf.anathema.framework.environment.Resources;
 
 import java.io.IOException;
 import java.io.InputStream;

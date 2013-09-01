@@ -8,7 +8,7 @@ import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.workflow.intvalue.IntValuePresentation;
 
 public class WeaponDamagePresenter implements Presenter {

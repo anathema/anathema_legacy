@@ -12,7 +12,7 @@ import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.main.magic.charm.martial.MartialArtsUtilities;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.spells.model.SpellsModelFetcher;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -6,7 +6,7 @@ import net.sf.anathema.character.main.template.ITemplateType;
 import net.sf.anathema.character.main.xml.presentation.GenericPresentationTemplate;
 import net.sf.anathema.hero.framework.perspective.model.CharacterIdentifier;
 import net.sf.anathema.lib.file.RelativePath;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.util.Identifier;
 
 import static net.sf.anathema.hero.concept.CasteType.NULL_CASTE_TYPE;

@@ -8,7 +8,7 @@ import net.sf.anathema.hero.spiritual.SpiritualTraitModelFetcher;
 import net.sf.anathema.hero.traits.TraitMap;
 import net.sf.anathema.hero.traits.sheet.content.NamedValue;
 import net.sf.anathema.hero.traits.sheet.content.PrintTrait;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class VirtueContent extends AbstractSubBoxContent {
 

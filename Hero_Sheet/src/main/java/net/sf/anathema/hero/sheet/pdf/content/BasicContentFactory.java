@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.sheet.pdf.content;
 
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 @RegisteredReportContent(produces = BasicContent.class)
 public class BasicContentFactory implements ReportContentFactory<BasicContent> {

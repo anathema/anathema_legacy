@@ -1,4 +1,4 @@
-package net.sf.anathema.lib.resources;
+package net.sf.anathema.framework.environment;
 
 public interface Resources {
 

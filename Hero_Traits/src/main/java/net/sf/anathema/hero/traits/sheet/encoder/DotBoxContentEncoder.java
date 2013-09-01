@@ -10,7 +10,7 @@ import net.sf.anathema.hero.sheet.pdf.page.IVoidStateFormatConstants;
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.hero.traits.sheet.content.PdfTraitEncoder;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class DotBoxContentEncoder implements ContentEncoder {
 

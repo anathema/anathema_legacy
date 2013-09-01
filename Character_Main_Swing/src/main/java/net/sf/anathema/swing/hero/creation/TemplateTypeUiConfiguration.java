@@ -2,7 +2,7 @@ package net.sf.anathema.swing.hero.creation;
 
 import net.sf.anathema.character.main.view.repository.ITemplateTypeAggregation;
 import net.sf.anathema.lib.gui.AbstractUIConfiguration;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class TemplateTypeUiConfiguration extends AbstractUIConfiguration<ITemplateTypeAggregation> {
   private Resources resources;

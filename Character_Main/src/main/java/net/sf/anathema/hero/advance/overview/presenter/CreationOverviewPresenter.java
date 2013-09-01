@@ -15,7 +15,7 @@ import net.sf.anathema.hero.points.overview.IValueModel;
 import net.sf.anathema.hero.points.overview.SpendingModel;
 import net.sf.anathema.hero.points.overview.WeightedCategory;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;

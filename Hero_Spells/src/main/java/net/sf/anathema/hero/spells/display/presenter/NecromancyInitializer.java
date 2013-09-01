@@ -8,7 +8,7 @@ import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.spells.model.CircleModel;
 import net.sf.anathema.hero.spells.model.NecromancyModel;
 import net.sf.anathema.initialization.reflections.Weight;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 import static net.sf.anathema.hero.display.HeroModelGroup.Magic;
 

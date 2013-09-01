@@ -6,7 +6,7 @@ import net.sf.anathema.hero.sheet.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.hero.spiritual.SpiritualTraitModelFetcher;
 import net.sf.anathema.hero.spiritual.model.pool.EssencePoolModelFetcher;
 import net.sf.anathema.lib.exception.ContractFailedException;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class SimpleEssenceContent extends AbstractSubBoxContent {
 

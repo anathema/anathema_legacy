@@ -3,7 +3,7 @@ package net.sf.anathema.hero.charms.display.tooltip;
 import net.sf.anathema.hero.charms.display.MagicDisplayLabeler;
 import net.sf.anathema.character.main.magic.basic.Magic;
 import net.sf.anathema.lib.gui.ConfigurableTooltip;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class MagicNameContributor implements MagicTooltipContributor {
   private final MagicDisplayLabeler labeler;

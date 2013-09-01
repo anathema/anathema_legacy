@@ -15,7 +15,7 @@ import net.sf.anathema.hero.charms.model.special.subeffects.ISubEffectCharm;
 import net.sf.anathema.hero.charms.model.special.subeffects.MultipleEffectCharmSpecials;
 import net.sf.anathema.hero.charms.model.special.traitcap.ITraitCapModifyingCharm;
 import net.sf.anathema.hero.charms.model.special.upgradable.IUpgradableCharm;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.platform.tree.display.CategorizedSpecialNodeView;
 import net.sf.anathema.platform.tree.display.SpecialNodeView;
 

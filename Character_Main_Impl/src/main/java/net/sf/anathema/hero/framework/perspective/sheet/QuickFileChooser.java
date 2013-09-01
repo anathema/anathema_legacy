@@ -2,7 +2,7 @@ package net.sf.anathema.hero.framework.perspective.sheet;
 
 import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.lib.lang.StringUtilities;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 import java.io.IOException;
 import java.nio.file.Files;

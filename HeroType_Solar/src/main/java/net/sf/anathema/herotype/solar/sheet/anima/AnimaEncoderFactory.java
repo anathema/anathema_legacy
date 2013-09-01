@@ -6,7 +6,7 @@ import net.sf.anathema.hero.sheet.pdf.content.BasicContent;
 import net.sf.anathema.hero.sheet.pdf.encoder.boxes.RegisteredEncoderFactory;
 import net.sf.anathema.hero.sheet.pdf.encoder.table.ITableEncoder;
 import net.sf.anathema.herotype.solar.model.SolarCharacterType;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 @RegisteredEncoderFactory
 public class AnimaEncoderFactory extends AbstractAnimaEncoderFactory {

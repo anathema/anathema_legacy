@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.magic.description.MagicDescription;
 import net.sf.anathema.character.main.magic.basic.Magic;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.hero.charms.display.presenter.CharmDescriptionProviderExtractor;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public abstract class AbstractMagicCardDataProvider implements ICardDataProvider {
 

@@ -13,7 +13,7 @@ import net.sf.anathema.hero.equipment.sheet.content.stats.weapons.TagsStatsGroup
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.traits.TraitMap;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public abstract class AbstractWeaponryContent extends AbstractEquipmentContent<IWeaponStats> {
 

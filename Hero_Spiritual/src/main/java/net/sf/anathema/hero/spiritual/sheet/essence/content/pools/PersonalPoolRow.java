@@ -3,7 +3,7 @@ package net.sf.anathema.hero.spiritual.sheet.essence.content.pools;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.spiritual.model.pool.EssencePoolModel;
 import net.sf.anathema.hero.spiritual.model.pool.EssencePoolModelFetcher;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class PersonalPoolRow extends AbstractPoolRow {
 

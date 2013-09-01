@@ -3,7 +3,7 @@ package net.sf.anathema.hero.equipment.sheet.content;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.stats.WeaponStatsDecorator;
 import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IWeaponStats;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class WeaponStatsDecorationFactory implements IEquipmentStatsDecorationFactory<IWeaponStats> {
 

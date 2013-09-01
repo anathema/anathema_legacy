@@ -1,7 +1,7 @@
 package net.sf.anathema.framework.repository.tree;
 
 import net.sf.anathema.lib.io.AbstractFileTypeFilter;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class ZipFileFilter extends AbstractFileTypeFilter {
 

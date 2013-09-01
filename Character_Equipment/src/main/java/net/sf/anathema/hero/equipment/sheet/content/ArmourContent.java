@@ -9,7 +9,7 @@ import net.sf.anathema.hero.equipment.sheet.content.stats.armour.MobilityPenalty
 import net.sf.anathema.hero.equipment.sheet.content.stats.armour.SoakArmourStatsGroup;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.sheet.pdf.content.stats.IStatsGroup;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class ArmourContent extends AbstractEquipmentContent<IArmourStats> {
 

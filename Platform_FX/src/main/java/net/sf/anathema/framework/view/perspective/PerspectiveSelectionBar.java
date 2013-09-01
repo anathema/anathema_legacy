@@ -4,7 +4,7 @@ import javafx.scene.Node;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.ToolBar;
 import net.sf.anathema.interaction.Command;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.platform.tool.FxToggleTool;
 
 public class PerspectiveSelectionBar {

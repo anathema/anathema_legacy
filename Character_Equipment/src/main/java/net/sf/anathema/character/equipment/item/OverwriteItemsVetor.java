@@ -9,7 +9,7 @@ import net.sf.anathema.lib.gui.dialog.userdialog.buttons.DialogButtonConfigurati
 import net.sf.anathema.lib.message.IMessage;
 import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.message.MessageType;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 import java.awt.Component;
 

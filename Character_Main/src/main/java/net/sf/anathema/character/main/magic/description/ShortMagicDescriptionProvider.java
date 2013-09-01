@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.magic.description;
 
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.basic.Magic;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 import org.apache.commons.lang3.StringUtils;
 
 import java.text.MessageFormat;

@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.template.presentation.IPresentationPropert
 import net.sf.anathema.hero.advance.overview.presenter.SelectIdentifierConfiguration;
 import net.sf.anathema.hero.concept.CasteType;
 import net.sf.anathema.lib.file.RelativePath;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class AgnosticCasteUi extends SelectIdentifierConfiguration<CasteType> {
   private final CasteUI casteUI;

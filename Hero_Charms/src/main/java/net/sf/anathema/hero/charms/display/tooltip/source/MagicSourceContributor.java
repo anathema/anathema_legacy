@@ -7,7 +7,7 @@ import net.sf.anathema.character.main.magic.basic.source.SourceBook;
 import net.sf.anathema.lib.gui.ConfigurableTooltip;
 import net.sf.anathema.lib.gui.TooltipBuilder;
 import net.sf.anathema.lib.lang.StringUtilities;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class MagicSourceContributor<T extends Magic> implements IMagicSourceStringBuilder<T>, MagicTooltipContributor {
 

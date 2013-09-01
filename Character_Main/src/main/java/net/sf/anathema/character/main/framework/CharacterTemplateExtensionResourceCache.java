@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.framework;
 
-import net.sf.anathema.lib.resources.ResourceFile;
+import net.sf.anathema.framework.environment.resources.ResourceFile;
 
 import java.util.HashMap;
 import java.util.List;

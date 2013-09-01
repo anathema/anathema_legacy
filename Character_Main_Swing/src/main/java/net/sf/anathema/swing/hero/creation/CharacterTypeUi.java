@@ -1,7 +1,7 @@
 package net.sf.anathema.swing.hero.creation;
 
 import net.sf.anathema.character.main.type.CharacterType;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class CharacterTypeUi {
 

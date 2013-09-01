@@ -5,7 +5,7 @@ import net.sf.anathema.hero.sheet.pdf.encoder.EncoderIds;
 import net.sf.anathema.hero.sheet.pdf.encoder.boxes.ContentEncoder;
 import net.sf.anathema.hero.sheet.pdf.encoder.boxes.GlobalEncoderFactory;
 import net.sf.anathema.hero.sheet.pdf.encoder.boxes.RegisteredEncoderFactory;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 @RegisteredEncoderFactory
 public class VirtueEncoderFactory extends GlobalEncoderFactory {

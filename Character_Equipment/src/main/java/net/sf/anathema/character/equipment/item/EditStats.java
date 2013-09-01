@@ -6,7 +6,7 @@ import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ChangeListener;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 public class EditStats {
   private final StatsEditor factory;

@@ -11,7 +11,7 @@ import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IWeaponStats;
 import net.sf.anathema.hero.equipment.sheet.content.stats.IEquipmentStatsGroup;
 import net.sf.anathema.hero.sheet.pdf.encoder.table.TableEncodingUtilities;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.util.Identifier;
 
 import static net.sf.anathema.lib.lang.ArrayUtilities.transform;

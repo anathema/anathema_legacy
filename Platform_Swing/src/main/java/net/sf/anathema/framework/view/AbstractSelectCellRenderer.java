@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.view;
 
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JList;

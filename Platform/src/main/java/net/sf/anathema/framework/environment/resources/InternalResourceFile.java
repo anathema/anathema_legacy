@@ -1,4 +1,4 @@
-package net.sf.anathema.lib.resources;
+package net.sf.anathema.framework.environment.resources;
 
 import java.net.URL;
 

@@ -5,7 +5,7 @@ import net.sf.anathema.magic.description.display.MagicDetailPresenter;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.magic.description.model.MagicDescriptionEditDetailModel;
 import net.sf.anathema.magic.description.model.MagicDescriptionEditModel;
 import net.sf.anathema.magic.description.view.MagicDescriptionEditView;

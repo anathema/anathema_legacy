@@ -7,7 +7,7 @@ import net.sf.anathema.hero.sheet.pdf.page.layout.Sheet;
 import net.sf.anathema.hero.sheet.pdf.page.layout.SheetPage;
 import net.sf.anathema.hero.sheet.pdf.page.layout.field.LayoutField;
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 import static net.sf.anathema.hero.sheet.pdf.encoder.EncoderIds.ARSENAL;
 import static net.sf.anathema.hero.sheet.pdf.encoder.EncoderIds.CHARMS_AND_SORCERY;

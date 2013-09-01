@@ -16,7 +16,7 @@ import net.sf.anathema.hero.charms.display.view.DefaultFunctionalNodeProperties;
 import net.sf.anathema.hero.charms.model.CharmIdMap;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.charms.model.special.SpecialCharmList;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.platform.tree.document.visualizer.TreePresentationProperties;
 
 public class CharacterCharmTreePresenter {

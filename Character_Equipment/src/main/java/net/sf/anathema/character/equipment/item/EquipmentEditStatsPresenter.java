@@ -5,7 +5,7 @@ import net.sf.anathema.character.equipment.item.view.ToolListView;
 import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.util.Closure;
 
 public class EquipmentEditStatsPresenter implements Presenter {

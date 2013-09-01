@@ -9,7 +9,7 @@ import net.sf.anathema.hero.health.HealthType;
 import net.sf.anathema.lib.control.IntValueChangedListener;
 import net.sf.anathema.lib.gui.layout.AdditiveView;
 import net.sf.anathema.lib.gui.layout.SwingLayoutUtils;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
 
 import javax.swing.JComponent;

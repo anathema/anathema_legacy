@@ -1,9 +1,6 @@
-package net.sf.anathema.framework.resources;
+package net.sf.anathema.framework.environment.resources;
 
-import net.sf.anathema.lib.resources.DefaultStringProvider;
-import net.sf.anathema.lib.resources.MultiSourceStringProvider;
-import net.sf.anathema.lib.resources.ResourceFile;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 import java.util.Locale;
 

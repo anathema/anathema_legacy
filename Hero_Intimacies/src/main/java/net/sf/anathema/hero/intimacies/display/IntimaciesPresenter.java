@@ -1,7 +1,5 @@
 package net.sf.anathema.hero.intimacies.display;
 
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyCodeCombination;
 import net.sf.anathema.character.main.CharacterUI;
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
 import net.sf.anathema.character.main.library.removableentry.RemovableEntryListener;
@@ -18,7 +16,6 @@ import net.sf.anathema.hero.model.change.ChangeFlavor;
 import net.sf.anathema.hero.model.change.FlavoredChangeListener;
 import net.sf.anathema.hero.points.HeroBonusPointCalculator;
 import net.sf.anathema.interaction.Command;
-import net.sf.anathema.interaction.Hotkey;
 import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ChangeListener;
@@ -27,7 +24,7 @@ import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
 import net.sf.anathema.lib.control.legality.LegalityFontProvider;
 import net.sf.anathema.lib.control.legality.ValueLegalityState;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.framework.environment.Resources;
 
 import java.util.HashMap;
 import java.util.Map;
