@@ -9,6 +9,7 @@ import java.util.Collection;
 import java.util.Set;
 
 public class ApplicationEnvironment implements Environment {
+  public static final String PREFERENCES_PROPERTIES = "preferences.properties";
   private final Resources resources;
   private final ExceptionHandler handler;
   private final ResourceLoader loader;
@@ -43,7 +44,7 @@ public class ApplicationEnvironment implements Environment {
 
   @Override
   public String getPreference(String key) {
-    return new PropertiesLoader("preferences.properties").load().getProperty(key);
+    return new PropertiesLoader(PREFERENCES_PROPERTIES).load().getProperty(key);
   }
 
   @Override
