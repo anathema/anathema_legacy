@@ -7,6 +7,7 @@ import net.sf.anathema.initialization.InitializationException;
 
 import java.lang.annotation.Annotation;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Set;
 
 public class DummyEnvironment implements Environment {
@@ -37,16 +38,16 @@ public class DummyEnvironment implements Environment {
 
   @Override
   public <T> Collection<T> instantiateOrdered(Class<? extends Annotation> annotation, Object... parameter) throws InitializationException {
-    return null;  //To change body of implemented methods use File | Settings | File Templates.
+    return Collections.emptyList();
   }
 
   @Override
   public <T> Collection<T> instantiateAll(Class<? extends Annotation> annotation, Object... parameter) throws InitializationException {
-    return null;  //To change body of implemented methods use File | Settings | File Templates.
+    return Collections.emptyList();
   }
 
   @Override
   public Set<ResourceFile> getResourcesMatching(String namePattern) {
-    return null;  //To change body of implemented methods use File | Settings | File Templates.
+    return Collections.emptySet();
   }
 }
