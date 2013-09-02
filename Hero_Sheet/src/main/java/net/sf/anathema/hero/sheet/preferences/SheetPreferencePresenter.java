@@ -18,7 +18,7 @@ public class SheetPreferencePresenter implements PreferencePresenter {
 
   @Override
   public void initialize() {
-    final ObjectSelectionView<PageSize> pageSizeView = view.addObjectSelectionView("Page format", new PageSizeUi(resources));
+    final ObjectSelectionView<PageSize> pageSizeView = view.addObjectSelectionView(resources.getString("Preferences.Sheet.PageSize"), new PageSizeUi(resources));
     pageSizeView.setObjects(model.getAvailableChoices());
     pageSizeView.addObjectSelectionChangedListener(new ObjectValueListener<PageSize>() {
       @Override
@@ -52,7 +52,7 @@ public class SheetPreferencePresenter implements PreferencePresenter {
 
   @Override
   public String getTitle() {
-    return "Sheet";
+    return resources.getString("Preferences.Sheet");
   }
 
   @Override
