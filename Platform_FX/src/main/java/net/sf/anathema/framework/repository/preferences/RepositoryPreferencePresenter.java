@@ -5,6 +5,8 @@ import net.sf.anathema.framework.preferences.elements.PreferenceModel;
 import net.sf.anathema.framework.preferences.elements.PreferencePresenter;
 import net.sf.anathema.framework.preferences.elements.PreferenceView;
 import net.sf.anathema.framework.preferences.elements.RegisteredPreferencePresenter;
+import net.sf.anathema.lib.control.ChangeListener;
+import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
 @RegisteredPreferencePresenter
 public class RepositoryPreferencePresenter implements PreferencePresenter {
@@ -14,7 +16,19 @@ public class RepositoryPreferencePresenter implements PreferencePresenter {
 
   @Override
   public void initialize() {
-    
+    final ITextView textView = view.addRepositoryDisplay("Repository folder");
+    textView.setEnabled(false);
+    model.whenLocationChanges(new ChangeListener() {
+      @Override
+      public void changeOccurred() {
+        showRepoInView(textView);
+      }
+    });
+    showRepoInView(textView);
+  }
+
+  private void showRepoInView(ITextView textView) {
+    textView.setText(model.getRepositoryPath().toAbsolutePath().toString());
   }
 
   @Override
