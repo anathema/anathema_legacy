@@ -1,5 +1,7 @@
 package net.sf.anathema.hero.sheet.preferences;
 
+import net.sf.anathema.framework.environment.Environment;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.framework.preferences.elements.PreferenceModel;
 import net.sf.anathema.framework.preferences.elements.PreferencePresenter;
 import net.sf.anathema.framework.preferences.elements.PreferenceView;
@@ -8,7 +10,6 @@ import net.sf.anathema.framework.reporting.pdf.PageSize;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
-import net.sf.anathema.framework.environment.Resources;
 
 @RegisteredPreferencePresenter
 public class SheetPreferencePresenter implements PreferencePresenter {
@@ -18,7 +19,8 @@ public class SheetPreferencePresenter implements PreferencePresenter {
 
   @Override
   public void initialize() {
-    final ObjectSelectionView<PageSize> pageSizeView = view.addObjectSelectionView(resources.getString("Preferences.Sheet.PageSize"), new PageSizeUi(resources));
+    final ObjectSelectionView<PageSize> pageSizeView = view.addObjectSelectionView(
+            resources.getString("Preferences.Sheet.PageSize"), new PageSizeUi(resources));
     pageSizeView.setObjects(model.getAvailableChoices());
     pageSizeView.addObjectSelectionChangedListener(new ObjectValueListener<PageSize>() {
       @Override
@@ -36,8 +38,8 @@ public class SheetPreferencePresenter implements PreferencePresenter {
   }
 
   @Override
-  public void useResources(Resources resources) {
-    this.resources = resources;
+  public void useEnvironment(Environment environment) {
+    this.resources = environment;
   }
 
   @Override

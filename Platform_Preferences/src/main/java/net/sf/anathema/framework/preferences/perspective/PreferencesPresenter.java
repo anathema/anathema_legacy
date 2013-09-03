@@ -38,7 +38,7 @@ public class PreferencesPresenter {
   private void initIndividualPresentations() {
     Collection<PreferencePresenter> presenters = objectFactory.instantiateOrdered(RegisteredPreferencePresenter.class);
     for (PreferencePresenter presenter : presenters) {
-      presenter.useResources(environment);
+      presenter.useEnvironment(environment);
       presenter.useModel(model.find(presenter.getModelClass()));
       PreferenceView view = preferencesNavigation.addSection(presenter.getTitle(), presenter.getViewClass());
       presenter.useView(view);

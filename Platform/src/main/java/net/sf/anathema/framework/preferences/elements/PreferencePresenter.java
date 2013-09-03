@@ -1,5 +1,6 @@
 package net.sf.anathema.framework.preferences.elements;
 
+import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.environment.Resources;
 
 public interface PreferencePresenter {
@@ -15,5 +16,5 @@ public interface PreferencePresenter {
 
   void initialize();
 
-  void useResources(Resources resources);
+  void useEnvironment(Environment environment);
 }
