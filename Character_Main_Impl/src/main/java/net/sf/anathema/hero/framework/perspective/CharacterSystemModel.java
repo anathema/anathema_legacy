@@ -59,7 +59,7 @@ public class CharacterSystemModel implements ItemSystemModel {
   private int newCharacterCount = 0;
 
   public CharacterSystemModel(IApplicationModel model) {
-    this(new CharacterPersistenceModel(model), model);
+    this(new CharacterPersistenceModel(model, HeroEnvironmentExtractor.getGenerics(model)), model);
   }
 
   public CharacterSystemModel(CharacterPersistenceModel persistenceModel, IApplicationModel model) {

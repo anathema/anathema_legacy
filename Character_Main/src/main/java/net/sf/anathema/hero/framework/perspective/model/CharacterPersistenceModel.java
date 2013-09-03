@@ -11,7 +11,6 @@ import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
 import net.sf.anathema.framework.repository.access.printname.IPrintNameFileAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.hero.framework.HeroEnvironment;
-import net.sf.anathema.hero.framework.HeroEnvironmentExtractor;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -21,9 +20,11 @@ import static net.sf.anathema.character.main.itemtype.CharacterItemTypeRetrieval
 public class CharacterPersistenceModel {
 
   private IApplicationModel model;
+  private HeroEnvironment heroEnvironment;
 
-  public CharacterPersistenceModel(IApplicationModel model) {
+  public CharacterPersistenceModel(IApplicationModel model, HeroEnvironment environment) {
     this.model = model;
+    this.heroEnvironment = environment;
   }
 
   public Collection<PrintNameFile> collectCharacterPrintNameFiles() {
@@ -46,7 +47,7 @@ public class CharacterPersistenceModel {
   }
 
   private RepositoryItemPersister findPersister() {
-    HeroEnvironment generics = HeroEnvironmentExtractor.getGenerics(model);
+    HeroEnvironment generics = heroEnvironment;
     IItemType itemType = getCharacterItemType();
     return new HeroItemPersister(itemType, generics, model.getMessaging());
   }

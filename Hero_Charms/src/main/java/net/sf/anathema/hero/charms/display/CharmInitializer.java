@@ -15,6 +15,7 @@ import net.sf.anathema.hero.charms.model.CharmIdMap;
 import net.sf.anathema.hero.charms.model.CharmsModelFetcher;
 import net.sf.anathema.hero.display.presenter.HeroModelInitializer;
 import net.sf.anathema.hero.display.presenter.RegisteredInitializer;
+import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.framework.HeroEnvironmentExtractor;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.framework.environment.dependencies.Weight;
@@ -25,10 +26,12 @@ import static net.sf.anathema.hero.display.HeroModelGroup.Magic;
 @RegisteredInitializer(Magic)
 @Weight(weight = 0)
 public class CharmInitializer implements HeroModelInitializer {
-  private IApplicationModel applicationModel;
+  private final IApplicationModel applicationModel;
+  private final HeroEnvironment heroEnvironment;
 
   public CharmInitializer(IApplicationModel applicationModel) {
     this.applicationModel = applicationModel;
+    this.heroEnvironment = HeroEnvironmentExtractor.getGenerics(applicationModel);
   }
 
   @Override
@@ -52,6 +55,6 @@ public class CharmInitializer implements HeroModelInitializer {
   }
 
   private CharmIdMap getCharmIdMap() {
-    return HeroEnvironmentExtractor.getGenerics(applicationModel).getDataSet(CharmCache.class);
+    return heroEnvironment.getDataSet(CharmCache.class);
   }
 }
