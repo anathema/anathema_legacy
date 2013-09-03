@@ -50,4 +50,8 @@ public class RepositoryPreferenceModel implements PreferenceModel {
     this.repositoryPath = path;
     announcer.announce().changeOccurred();
   }
+
+  public void resetToDefault() {
+    requestChangeOfRepositoryPath(defaultPath);
+  }
 }

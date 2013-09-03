@@ -22,17 +22,30 @@ public class RepositoryPreferencePresenter implements PreferencePresenter {
   @Override
   public void initialize() {
     initRepoDisplay();
-    browseForFolder();
+    initBrowseForFolder();
+    initResetToDefault();
   }
 
-  private void browseForFolder() {
+  private void initResetToDefault() {
     Tool tool = view.addTool();
-    tool.setText("Browse");
-    tool.setTooltip("Tell Anathema where to store your data.");
+    tool.setText(environment.getString("Preferences.Repository.Default.Button"));
+    tool.setTooltip(environment.getString("Preferences.Repository.Default.Tooltip"));
     tool.setCommand(new Command() {
       @Override
       public void execute() {
-        view.selectNewRepository("Select a new repository folder");
+        model.resetToDefault();
+      }
+    });
+  }
+
+  private void initBrowseForFolder() {
+    Tool tool = view.addTool();
+    tool.setText(environment.getString("Preferences.Repository.Browse.Button"));
+    tool.setTooltip(environment.getString("Preferences.Repository.Browse.Tooltip"));
+    tool.setCommand(new Command() {
+      @Override
+      public void execute() {
+        view.selectNewRepository("Preferences.Repository.Browse.Prompt");
       }
     });
     view.whenRepositoryChangeIsRequested(new ObjectValueListener<Path>() {
@@ -44,7 +57,7 @@ public class RepositoryPreferencePresenter implements PreferencePresenter {
   }
 
   private void initRepoDisplay() {
-    final ITextView textView = view.addRepositoryDisplay("Repository folder");
+    final ITextView textView = view.addRepositoryDisplay(environment.getString("Preferences.Repository.Label"));
     textView.setEnabled(false);
     model.whenLocationChanges(new ChangeListener() {
       @Override
