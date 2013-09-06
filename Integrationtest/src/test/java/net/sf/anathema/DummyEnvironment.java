@@ -1,16 +1,22 @@
 package net.sf.anathema;
 
 import net.sf.anathema.framework.environment.Environment;
+import net.sf.anathema.framework.environment.ObjectFactory;
+import net.sf.anathema.framework.environment.dependencies.DefaultAnathemaReflections;
+import net.sf.anathema.framework.environment.dependencies.ReflectionObjectFactory;
 import net.sf.anathema.framework.environment.exception.ConsoleExceptionHandler;
 import net.sf.anathema.framework.environment.resources.ResourceFile;
 import net.sf.anathema.initialization.InitializationException;
 
 import java.lang.annotation.Annotation;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Set;
 
 public class DummyEnvironment implements Environment {
+  
+  private final DefaultAnathemaReflections finder = new DefaultAnathemaReflections();
+  private final ObjectFactory factory = new ReflectionObjectFactory(finder);
+  
   @Override
   public void handle(Throwable exception) {
     new ConsoleExceptionHandler().handle(exception);
@@ -38,16 +44,16 @@ public class DummyEnvironment implements Environment {
 
   @Override
   public <T> Collection<T> instantiateOrdered(Class<? extends Annotation> annotation, Object... parameter) throws InitializationException {
-    return Collections.emptyList();
+    return factory.instantiateOrdered(annotation, parameter);
   }
 
   @Override
   public <T> Collection<T> instantiateAll(Class<? extends Annotation> annotation, Object... parameter) throws InitializationException {
-    return Collections.emptyList();
+    return factory.instantiateAll(annotation, parameter);
   }
 
   @Override
   public Set<ResourceFile> getResourcesMatching(String namePattern) {
-    return Collections.emptySet();
+    return finder.getResourcesMatching(namePattern);
   }
 }
