@@ -43,8 +43,11 @@ public class SiderealCharacterModule extends CharacterTypeModule {
 
   private static final TemplateType defaultTemplateType = new TemplateType(type);
   public static final TemplateType dreamsType = new TemplateType(type, new Identifier("Dreams"));
+  public static final TemplateType dreamsEstablishedType = new TemplateType(type, new Identifier("DreamsEstablished"));
+  public static final TemplateType dreamsInfluentialType = new TemplateType(type, new Identifier("DreamsInfluential"));
+  public static final TemplateType dreamsLegendaryType = new TemplateType(type, new Identifier("DreamsLegendary"));
 
-  private static final TemplateType[] dreams = {dreamsType};
+  public static final TemplateType[] dreams = {dreamsType, dreamsEstablishedType, dreamsInfluentialType, dreamsLegendaryType};
 
   public static final String BACKGROUND_ID_ARSENAL = "SiderealDreamsArsenal";
   public static final String BACKGROUND_ID_COMMAND = "SiderealDreamsCommand";

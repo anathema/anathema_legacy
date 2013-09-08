@@ -52,7 +52,10 @@ public class DbCharacterModule extends CharacterTypeModule {
           new Identifier("ImmaculateSubtype"));
   private static final TemplateType dreamsTemplateType = new TemplateType(type,
           new Identifier("DreamsSubtype"));
-  private static final TemplateType[] dreams = {dreamsTemplateType};
+  private static final TemplateType dreamsYoungType = new TemplateType(type, new Identifier("DreamsYoung"));
+  private static final TemplateType dreamsInfluentialType = new TemplateType(type, new Identifier("DreamsInfluential"));
+  private static final TemplateType dreamsLegendaryType = new TemplateType(type, new Identifier("DreamsLegendary"));
+  private static final TemplateType[] dreams = {dreamsTemplateType, dreamsYoungType, dreamsInfluentialType, dreamsLegendaryType};
 
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {

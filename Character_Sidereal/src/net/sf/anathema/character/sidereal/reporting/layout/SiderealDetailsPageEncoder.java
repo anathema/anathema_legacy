@@ -2,6 +2,7 @@ package net.sf.anathema.character.sidereal.reporting.layout;
 
 import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.layout.Sheet;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
@@ -13,6 +14,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
+import net.sf.anathema.character.sidereal.SiderealCharacterModule;
 import net.sf.anathema.character.sidereal.reporting.content.SiderealCollegeContent;
 import net.sf.anathema.character.sidereal.reporting.rendering.ArcaneFateInfoEncoder;
 import net.sf.anathema.character.sidereal.reporting.rendering.ParadoxInfoEncoder;
@@ -23,7 +25,6 @@ import net.sf.anathema.framework.reporting.pdf.PageSize;
 import net.sf.anathema.lib.resources.Resources;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.PADDING;
-import static net.sf.anathema.character.sidereal.SiderealCharacterModule.dreamsType;
 
 public class SiderealDetailsPageEncoder implements PageEncoder {
 
@@ -72,8 +73,13 @@ public class SiderealDetailsPageEncoder implements PageEncoder {
   }
 
   private boolean isFirstAge(IGenericCharacter character) {
-    return character.getTemplate().getTemplateType().getSubType().getId().equals(
-            dreamsType.getSubType().getId());
+    String subTypeId = character.getTemplate().getTemplateType().getSubType().getId();
+    for (TemplateType templateType : SiderealCharacterModule.dreams) {
+      if (subTypeId.equals(templateType.getSubType().getId())) {
+        return true;
+      }
+    }
+    return false;
   }
 
   private void encodeConnections(SheetGraphics graphics, ReportSession session,
