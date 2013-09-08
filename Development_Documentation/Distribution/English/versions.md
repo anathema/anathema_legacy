@@ -1,10 +1,13 @@
 # Anathema Version History
-Anathema © 2004 - 2012 by The Anathema Developers
-Exalted © 2001-2012 by White Wolf Publishing, Inc.
+Anathema © 2004 - 2013 by The Anathema Developers
+Exalted © 2001-2013 by White Wolf Publishing, Inc.
 
 Website: [anathema.github.com](http://anathema.github.com)
 
 ## Release 5.1.3
+
+### Features
+* [ferrushin] Adds missing First Age templates for Sidereals and Dragon-Blooded
 
 ### Bugfix
 * Corrects Essence requirement for [Solar/Investigation] "Oracular Magistrate Understanding".
