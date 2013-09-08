@@ -1,0 +1,7 @@
+<traitTemplates uses="template/DreamsDbTraitCollection2nd.template">
+       <essence startValue="5" lowerableState="Default">
+        <limitation type="Static" value="7"/>
+        <minimum value="5"/>
+    </essence>
+
+</traitTemplates>

@@ -1,10 +1,10 @@
-<exaltedCharacterTemplate characterType="Dragon-Blooded" subtemplate="DreamsSubtype">
+<exaltedCharacterTemplate characterType="Dragon-Blooded" subtemplate="DreamsLegendarySubtype">
   <general>
     <edition edition="SecondEdition"/>
     <abilityGroups uses="template/DbAbilityGroup2nd.template"/>
     <attributeGroups uses="trait/DefaultAttributeGroup.template"/>
     <essence uses="template/DbEssence.template"/>
-    <traitCollection uses="template/DreamsDbTraitCollection2nd.template"/>
+    <traitCollection uses="template/DreamsDbLegendaryTraitCollection2nd.template"/>
     <magicTemplate uses="template/DbMagic2nd.template"/>
     <presentation uses="template/DbPresentation2nd.template"/>
     <additionalRules>
@@ -41,13 +41,13 @@
   <creation>
     <bonusPointCosts uses="template/RevisedDbBonusPointCosts.template"/>
     <creationPoints>
-      <attributeDots primary="8" secondary="6" tertiary="4"/>
-      <abilityDots general="30" favored="0" favoredPicks="3"/>
-      <backgroundDots count="15"/>
+      <attributeDots primary="14" secondary="12" tertiary="10"/>
+      <abilityDots general="55" favored="0" favoredPicks="3"/>
+      <backgroundDots count="30"/>
       <virtueDots count="5"/>
-      <bonusPoints count="18"/>
-      <specialtyDots count="4"/>
-      <charmPicks favored="0" general="10"/>
+      <bonusPoints count="50"/>
+      <specialtyDots count="9"/>
+      <charmPicks favored="0" general="70"/>
     </creationPoints>
   </creation>
   <experience>
