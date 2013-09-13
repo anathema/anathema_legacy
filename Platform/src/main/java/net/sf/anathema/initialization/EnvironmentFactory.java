@@ -13,7 +13,7 @@ import net.sf.anathema.framework.environment.dependencies.ReflectionObjectFactor
 import net.sf.anathema.framework.environment.preferences.PropertyPreferences;
 import net.sf.anathema.framework.environment.resources.LocaleResources;
 import net.sf.anathema.framework.environment.resources.ResourceFile;
-import net.sf.anathema.initialization.reflections.CustomDataResourceLoader;
+import net.sf.anathema.initialization.repository.CustomDataResourceLoader;
 import net.sf.anathema.initialization.repository.RepositoryLocationResolver;
 import net.sf.anathema.lib.exception.AnathemaException;
 

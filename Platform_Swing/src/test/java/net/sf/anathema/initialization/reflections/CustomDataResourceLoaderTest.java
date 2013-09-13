@@ -1,5 +1,6 @@
 package net.sf.anathema.initialization.reflections;
 
+import net.sf.anathema.initialization.repository.CustomDataResourceLoader;
 import net.sf.anathema.initialization.repository.RepositoryLocationResolver;
 import net.sf.anathema.framework.environment.resources.ResourceFile;
 import org.junit.Before;
@@ -60,6 +61,7 @@ public class CustomDataResourceLoaderTest {
     assertThat(result.size(), is(1));
   }
 
+  @SuppressWarnings("ResultOfMethodCallIgnored")
   private void createFile(String name) throws IOException {
     File file = new File(customFolder, name);
     file.createNewFile();

@@ -16,7 +16,7 @@ public class PreferencesPerspective implements Perspective {
   @Override
   public void configureToggle(PerspectiveToggle toggle) {
     toggle.setIcon(new RelativePath("icons/preferences.png"));
-    toggle.setTooltip("Configure Anathema");
+    toggle.setTooltip("Preferences.Perspective");
   }
 
   @Override
@@ -29,11 +29,3 @@ public class PreferencesPerspective implements Perspective {
     presenter.initialize();
   }
 }
-
-//Find all Preferences. For each: View, Presenter, Model
-//Register all preferences by view
-//Persisters: Write to a single file in the main directory
-//Main Presenter: For each model, find a view and a persister and initialize
-//Early during initialization: Load all preferences
-//Main Persister: Write all serialized to single properties file
-//In Environment: Offer to get preference loading implementation by class. Hand in to wherever required.
