@@ -11,11 +11,10 @@ import org.jmock.example.announcer.Announcer;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.DEFAULT_REPOSITORY_LOCATION;
-
 @RegisteredPreferenceModel
 public class RepositoryPreferenceModel implements PreferenceModel {
   public static final PreferenceKey key = new PreferenceKey("framework.repository.location");
+  public static final String DEFAULT_REPOSITORY_LOCATION = "./repository/";
   private final Path defaultPath = Paths.get(DEFAULT_REPOSITORY_LOCATION);
   private final Announcer<ChangeListener> announcer = Announcer.to(ChangeListener.class);
   private Path repositoryPath;

@@ -1,17 +1,19 @@
 package net.sf.anathema.initialization;
 
-import net.sf.anathema.framework.configuration.InitializationPreferences;
+import net.sf.anathema.framework.configuration.PreferencesBasedRepositoryLocation;
 import net.sf.anathema.framework.environment.ApplicationEnvironment;
 import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.environment.ExceptionHandler;
 import net.sf.anathema.framework.environment.ObjectFactory;
-import net.sf.anathema.framework.environment.resources.LocaleResources;
-import net.sf.anathema.framework.environment.resources.ResourceFile;
+import net.sf.anathema.framework.environment.Preferences;
+import net.sf.anathema.framework.environment.ResourceLoader;
 import net.sf.anathema.framework.environment.dependencies.AggregatedResourceLoader;
-import net.sf.anathema.initialization.reflections.CustomDataResourceLoader;
 import net.sf.anathema.framework.environment.dependencies.DefaultAnathemaReflections;
 import net.sf.anathema.framework.environment.dependencies.ReflectionObjectFactory;
-import net.sf.anathema.framework.environment.ResourceLoader;
+import net.sf.anathema.framework.environment.preferences.PropertyPreferences;
+import net.sf.anathema.framework.environment.resources.LocaleResources;
+import net.sf.anathema.framework.environment.resources.ResourceFile;
+import net.sf.anathema.initialization.reflections.CustomDataResourceLoader;
 import net.sf.anathema.initialization.repository.RepositoryLocationResolver;
 import net.sf.anathema.lib.exception.AnathemaException;
 
@@ -26,11 +28,12 @@ public class EnvironmentFactory {
   }
 
   public Environment create() {
+    Preferences preferences = new PropertyPreferences();
     DefaultAnathemaReflections reflections = new DefaultAnathemaReflections();
-    ResourceLoader loader = createResourceLoaderForInternalAndCustomResources(exceptionHandler, reflections);
+    ResourceLoader loader = createResourceLoaderForInternalAndCustomResources(exceptionHandler, reflections, preferences);
     ObjectFactory objectFactory = new ReflectionObjectFactory(reflections);
     LocaleResources resources = initResources(loader);
-    return new ApplicationEnvironment(resources, exceptionHandler, loader, objectFactory);
+    return new ApplicationEnvironment(resources, exceptionHandler, loader, objectFactory, preferences);
   }
 
   private LocaleResources initResources(ResourceLoader loader) {
@@ -42,9 +45,10 @@ public class EnvironmentFactory {
     return resources;
   }
 
-  private ResourceLoader createResourceLoaderForInternalAndCustomResources(ExceptionHandler exceptionHandler, DefaultAnathemaReflections reflections) {
+  private ResourceLoader createResourceLoaderForInternalAndCustomResources(ExceptionHandler exceptionHandler, DefaultAnathemaReflections reflections, Preferences preferences) {
     try {
-      RepositoryLocationResolver resolver = new RepositoryLocationResolver(new InitializationPreferences());
+      PreferencesBasedRepositoryLocation location = new PreferencesBasedRepositoryLocation(preferences);
+      RepositoryLocationResolver resolver = new RepositoryLocationResolver(location);
       CustomDataResourceLoader customLoader = new CustomDataResourceLoader(resolver);
       return new AggregatedResourceLoader(reflections, customLoader);
     } catch (AnathemaException e) {

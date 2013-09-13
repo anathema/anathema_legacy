@@ -3,8 +3,6 @@ package net.sf.anathema.initialization;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.messaging.IMessageContainer;
-import net.sf.anathema.framework.module.PreferencesElementsExtensionPoint;
-import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
 import net.sf.anathema.framework.view.ApplicationView;
 import net.sf.anathema.lib.control.ChangeListener;
 
@@ -23,7 +21,6 @@ public class AnathemaPresenter {
   }
 
   public void initPresentation() throws InitializationException {
-    initializePreferences();
     runBootJobs();
     initMessaging();
   }
@@ -47,15 +44,6 @@ public class AnathemaPresenter {
     Collection<IBootJob> jobs = environment.instantiateOrdered(BootJob.class);
     for (IBootJob bootJob : jobs) {
       bootJob.run(environment, model);
-    }
-  }
-
-  private void initializePreferences() throws InitializationException {
-    PreferencesElementsExtensionPoint extensionPoint =
-            (PreferencesElementsExtensionPoint) model.getExtensionPointRegistry().get(PreferencesElementsExtensionPoint.ID);
-    Collection<IPreferencesElement> elements = environment.instantiateOrdered(PreferenceElement.class);
-    for (IPreferencesElement element : elements) {
-      extensionPoint.addPreferencesElement(element);
     }
   }
 }

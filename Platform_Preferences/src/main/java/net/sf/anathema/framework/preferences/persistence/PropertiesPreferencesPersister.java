@@ -2,7 +2,7 @@ package net.sf.anathema.framework.preferences.persistence;
 
 import de.idos.updates.configuration.ConfigurationFailedException;
 import de.idos.updates.configuration.PropertiesLoader;
-import net.sf.anathema.framework.environment.ApplicationEnvironment;
+import net.sf.anathema.framework.environment.preferences.PropertyPreferences;
 import net.sf.anathema.framework.preferences.perspective.PreferencesPersister;
 import net.sf.anathema.framework.presenter.action.menu.help.updatecheck.PropertiesSaver;
 import net.sf.anathema.lib.logging.Logger;
@@ -17,7 +17,7 @@ public class PropertiesPreferencesPersister implements PreferencesPersister {
 
   @Override
   public void save(PreferencePto pto) {
-    PropertiesSaver saver = new PropertiesSaver(ApplicationEnvironment.PREFERENCES_PROPERTIES);
+    PropertiesSaver saver = new PropertiesSaver(PropertyPreferences.PREFERENCES_PROPERTIES);
     Properties properties = createProperties(pto);
     try {
       saver.save(properties);

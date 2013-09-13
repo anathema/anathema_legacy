@@ -1,8 +1,6 @@
 package net.sf.anathema.initialization;
 
 import net.sf.anathema.framework.IApplicationModel;
-import net.sf.anathema.framework.configuration.InitializationPreferences;
-import net.sf.anathema.framework.configuration.RepositoryPreference;
 import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.framework.environment.Resources;
@@ -10,14 +8,12 @@ import net.sf.anathema.framework.view.ApplicationView;
 
 public abstract class Initializer {
 
-  private final RepositoryPreference initializationPreferences;
   private final AnathemaExtensionCollection extensionCollection;
   private final Environment environment;
 
   public Initializer(Environment environment) throws InitializationException {
     this.environment = environment;
     this.extensionCollection = new AnathemaExtensionCollection(environment);
-    this.initializationPreferences = new InitializationPreferences();
   }
 
   protected InitializedModelAndView initializeModelViewAndPresentation() throws InitializationException {
@@ -40,7 +36,7 @@ public abstract class Initializer {
 
   private IApplicationModel initModel(Environment environment) throws InitializationException {
     displayMessage("Creating Model...");
-    AnathemaModelInitializer modelInitializer = new AnathemaModelInitializer(initializationPreferences, extensionCollection);
+    AnathemaModelInitializer modelInitializer = new AnathemaModelInitializer(extensionCollection);
     return modelInitializer.initializeModel(environment);
   }
 

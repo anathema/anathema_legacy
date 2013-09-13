@@ -10,10 +10,6 @@ import java.io.File;
 import static java.text.MessageFormat.format;
 
 public class RepositoryFolderWorker {
-  public boolean isValid(File folder) {
-    create(folder);
-    return true;
-  }
 
   public File createFolder(File folder) {
     try {
