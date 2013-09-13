@@ -148,7 +148,7 @@ public class CharacterSystemModel implements ItemSystemModel {
   }
 
   @Override
-  public void createNew(final Environment environment) {
+  public void createNew(Environment environment) {
     ItemReceiver receiver = new ItemReceiver() {
       @Override
       public void addItem(Item item) {
