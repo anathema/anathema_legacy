@@ -32,7 +32,6 @@ public class NewInteractionPresenter {
     initializeAppearance();
     initializeCommand();
     model.whenNewCharacterIsAdded(new NewCharacterListener() {
-
       @Override
       public void added(CharacterItemModel character) {
         new CharacterButtonPresenter(environment, selector, character, view).initPresentation();
