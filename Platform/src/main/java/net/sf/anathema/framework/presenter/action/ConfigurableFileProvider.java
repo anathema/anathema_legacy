@@ -1,10 +1,8 @@
 package net.sf.anathema.framework.presenter.action;
 
-import net.sf.anathema.lib.workflow.wizard.selection.IDialogModelTemplate;
-
 import java.io.File;
 
-public class ConfigurableFileProvider implements IDialogModelTemplate, IFileProvider {
+public class ConfigurableFileProvider implements IFileProvider {
 
   private File file;
 

@@ -15,17 +15,15 @@ import net.sf.anathema.lib.workflow.wizard.selection.ItemTemplateFactory;
 public class CharacterCreationTemplateFactory implements ItemTemplateFactory {
 
   private final Resources resources;
-  private final HeroEnvironment generics;
 
-  public CharacterCreationTemplateFactory(HeroEnvironment generics, Resources resources) {
-    this.generics = generics;
+  public CharacterCreationTemplateFactory(Resources resources) {
     this.resources = resources;
   }
 
   @Override
-  public IDialogModelTemplate createTemplate() {
+  public IDialogModelTemplate createTemplate(HeroEnvironment heroEnvironment) {
     CharacterStatisticsConfiguration template = new CharacterStatisticsConfiguration();
-    IDialogPage page = createPage(template);
+    IDialogPage page = createPage(template, heroEnvironment);
     boolean canceled = showDialog(page);
     if (canceled) {
       return NO_TEMPLATE;
@@ -33,8 +31,8 @@ public class CharacterCreationTemplateFactory implements ItemTemplateFactory {
     return template;
   }
 
-  private IDialogPage createPage(IDialogModelTemplate template) {
-    CharacterItemCreationModel model = new CharacterItemCreationModel(generics, (CharacterStatisticsConfiguration) template);
+  private IDialogPage createPage(IDialogModelTemplate template, HeroEnvironment heroEnvironment) {
+    CharacterItemCreationModel model = new CharacterItemCreationModel(heroEnvironment, (CharacterStatisticsConfiguration) template);
     CharacterItemCreationView view = new CharacterItemCreationView();
     CharacterCreationPageProperties properties = new CharacterCreationPageProperties(resources);
     return new CharacterCreationDialogPage(model, view, properties);

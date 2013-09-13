@@ -8,6 +8,8 @@ import net.sf.anathema.hero.framework.perspective.model.ItemSelectionModel;
 import net.sf.anathema.hero.framework.perspective.model.NewCharacterListener;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
+import net.sf.anathema.lib.workflow.wizard.selection.ItemTemplateFactory;
+import net.sf.anathema.swing.hero.creation.CharacterCreationTemplateFactory;
 
 public class NewInteractionPresenter {
 
@@ -52,7 +54,8 @@ public class NewInteractionPresenter {
   private class CreateNewCommand implements Command {
     @Override
     public void execute() {
-      model.createNew(environment);
+      ItemTemplateFactory factory = new CharacterCreationTemplateFactory(environment);
+      model.createNew(factory, environment);
     }
   }
 }

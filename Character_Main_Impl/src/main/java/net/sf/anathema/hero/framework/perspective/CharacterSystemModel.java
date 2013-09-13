@@ -26,7 +26,6 @@ import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.platform.RegExCharacterPrintNameFileScanner;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.workflow.wizard.selection.ItemTemplateFactory;
-import net.sf.anathema.swing.hero.creation.CharacterCreationTemplateFactory;
 import org.jmock.example.announcer.Announcer;
 
 import java.io.IOException;
@@ -81,12 +80,12 @@ public class CharacterSystemModel implements ItemSystemModel {
   }
 
   private CharacterPrintNameFileScanner createFileScanner() {
-    HeroEnvironment generics = getCharacterGenerics();
+    HeroEnvironment generics = getHeroEnvironment();
     IRepositoryFileResolver repositoryFileResolver = model.getRepository().getRepositoryFileResolver();
     return new RegExCharacterPrintNameFileScanner(generics.getCharacterTypes(), repositoryFileResolver);
   }
 
-  private HeroEnvironment getCharacterGenerics() {
+  private HeroEnvironment getHeroEnvironment() {
     return HeroEnvironmentExtractor.getGenerics(model);
   }
 
@@ -148,7 +147,7 @@ public class CharacterSystemModel implements ItemSystemModel {
   }
 
   @Override
-  public void createNew(Environment environment) {
+  public void createNew(ItemTemplateFactory factory, Environment environment) {
     ItemReceiver receiver = new ItemReceiver() {
       @Override
       public void addItem(Item item) {
@@ -160,9 +159,9 @@ public class CharacterSystemModel implements ItemSystemModel {
       }
     };
     IItemType itemType = retrieveCharacterItemType();
-    ItemTemplateFactory factory = new CharacterCreationTemplateFactory(getCharacterGenerics(), environment);
-    RepositoryItemPersister persister = new HeroItemPersister(itemType, getCharacterGenerics(), model.getMessaging());
-    new NewItemCommand(factory, environment, receiver, persister).execute();
+    HeroEnvironment heroEnvironment = getHeroEnvironment();
+    RepositoryItemPersister persister = new HeroItemPersister(itemType, heroEnvironment, model.getMessaging());
+    new NewItemCommand(factory, environment, receiver, persister, heroEnvironment).execute();
   }
 
   @Override

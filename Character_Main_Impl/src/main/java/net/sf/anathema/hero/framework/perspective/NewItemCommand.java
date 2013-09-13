@@ -3,6 +3,7 @@ package net.sf.anathema.hero.framework.perspective;
 import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.persistence.RepositoryItemPersister;
 import net.sf.anathema.framework.presenter.ItemReceiver;
+import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.workflow.wizard.selection.IDialogModelTemplate;
@@ -12,14 +13,16 @@ import javax.swing.SwingUtilities;
 
 public class NewItemCommand implements Command {
 
-  private final ItemCreator itemCreator;
   private final ItemTemplateFactory templateFactory;
+  private final HeroEnvironment heroEnvironment;
+  private final ItemCreator itemCreator;
   private final Environment environment;
 
   public NewItemCommand(ItemTemplateFactory templateFactory, Environment environment, ItemReceiver itemReceiver,
-                        RepositoryItemPersister persister) {
+                        RepositoryItemPersister persister, HeroEnvironment heroEnvironment) {
     this.templateFactory = templateFactory;
     this.environment = environment;
+    this.heroEnvironment = heroEnvironment;
     this.itemCreator = new ItemCreator(new NewItemCreator(persister), itemReceiver);
   }
 
@@ -34,7 +37,7 @@ public class NewItemCommand implements Command {
   }
 
   private void doIt() {
-    IDialogModelTemplate template = templateFactory.createTemplate();
+    IDialogModelTemplate template = templateFactory.createTemplate(heroEnvironment);
     if (template == ItemTemplateFactory.NO_TEMPLATE) {
       return;
     }
