@@ -50,7 +50,7 @@ public class CharacterCreationDialogPage extends AbstractDialogPage {
 
   @Override
   public boolean canFinish() {
-    return model.isSelectionComplete();
+    return true;
   }
 
   @Override

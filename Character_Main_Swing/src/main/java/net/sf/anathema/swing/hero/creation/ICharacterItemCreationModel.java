@@ -6,7 +6,7 @@ import net.sf.anathema.lib.control.ChangeListener;
 
 public interface ICharacterItemCreationModel {
 
-  CharacterType[] getAvailableCharacterTypes();
+  Iterable<CharacterType> getAvailableCharacterTypes();
 
   void setCharacterType(CharacterType type);
 
@@ -17,6 +17,4 @@ public interface ICharacterItemCreationModel {
   ITemplateTypeAggregation getSelectedTemplate();
 
   void setSelectedTemplate(ITemplateTypeAggregation newValue);
-
-  boolean isSelectionComplete();
 }

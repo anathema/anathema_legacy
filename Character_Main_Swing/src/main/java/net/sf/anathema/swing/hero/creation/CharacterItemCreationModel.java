@@ -25,7 +25,7 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
   private final MultiEntryMap<CharacterType, ITemplateTypeAggregation> aggregationsByType = new MultiEntryMap<>();
   private final HeroTemplateHolder templateHolder;
   private final HeroEnvironment generics;
-  private final CharacterType[] types;
+  private final List<CharacterType> types;
 
   public CharacterItemCreationModel(HeroEnvironment generics, HeroTemplateHolder templateHolder) {
     this.generics = generics;
@@ -36,14 +36,14 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
     setCharacterType(characterTypes.findAll()[0]);
   }
 
-  private CharacterType[] collectCharacterTypes(ITemplateRegistry registry) {
+  private List<CharacterType> collectCharacterTypes(ITemplateRegistry registry) {
     List<CharacterType> availableTypes = new ArrayList<>();
     for (CharacterType type : characterTypes.findAll()) {
       if (registry.getAllSupportedTemplates(type).length > 0) {
         availableTypes.add(type);
       }
     }
-    return availableTypes.toArray(new CharacterType[availableTypes.size()]);
+    return availableTypes;
   }
 
   private void aggregateTemplates() {
@@ -58,12 +58,7 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
   }
 
   @Override
-  public boolean isSelectionComplete() {
-    return templateHolder.hasTemplate();
-  }
-
-  @Override
-  public CharacterType[] getAvailableCharacterTypes() {
+  public Iterable<CharacterType> getAvailableCharacterTypes() {
     return types;
   }
 
@@ -105,18 +100,10 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
       return;
     }
     this.selectedTemplate = newValue;
-    if (selectedTemplate == null) {
-      templateHolder.clearTemplate();
-    } else {
-      setEditionDependentTemplate();
-    }
-    control.announce().changeOccurred();
-  }
-
-  private void setEditionDependentTemplate() {
     ITemplateType templateType = selectedTemplate.getTemplateType();
     HeroTemplate template = generics.getTemplateRegistry().getTemplate(templateType);
     templateHolder.setTemplate(template);
+    control.announce().changeOccurred();
   }
 
   @Override

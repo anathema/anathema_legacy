@@ -13,12 +13,4 @@ public class HeroTemplateHolder {
   public void setTemplate(HeroTemplate template) {
     this.template = template;
   }
-
-  public boolean hasTemplate() {
-    return getTemplate() != null;
-  }
-
-  public void clearTemplate() {
-    setTemplate(null);
-  }
 }
