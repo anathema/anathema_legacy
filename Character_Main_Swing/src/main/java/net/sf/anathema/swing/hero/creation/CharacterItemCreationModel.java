@@ -19,13 +19,13 @@ import java.util.List;
 public class CharacterItemCreationModel implements ICharacterItemCreationModel {
 
   private final CharacterTypes characterTypes;
-  private CharacterType selectedType;
   private final Announcer<ChangeListener> control = Announcer.to(ChangeListener.class);
-  private ITemplateTypeAggregation selectedTemplate;
   private final MultiEntryMap<CharacterType, ITemplateTypeAggregation> aggregationsByType = new MultiEntryMap<>();
   private final HeroTemplateHolder templateHolder;
   private final HeroEnvironment generics;
   private final List<CharacterType> types;
+  private CharacterType selectedType;
+  private ITemplateTypeAggregation selectedTemplate;
 
   public CharacterItemCreationModel(HeroEnvironment generics, HeroTemplateHolder templateHolder) {
     this.generics = generics;
@@ -33,7 +33,7 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
     this.characterTypes = generics.getCharacterTypes();
     this.types = collectCharacterTypes(generics.getTemplateRegistry());
     aggregateTemplates();
-    setCharacterType(characterTypes.findAll()[0]);
+    setCharacterType(types.get(0));
   }
 
   private List<CharacterType> collectCharacterTypes(ITemplateRegistry registry) {
@@ -73,18 +73,14 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
   }
 
   private void setTemplateToDefault() {
-    if (getAvailableTemplates().length == 0) {
-      setSelectedTemplate(null);
-    } else {
-      HeroTemplate defaultTemplate = generics.getTemplateRegistry().getDefaultTemplate(selectedType);
-      for (ITemplateTypeAggregation aggregation : aggregationsByType.get(selectedType)) {
-        if (aggregation.contains(defaultTemplate)) {
-          setSelectedTemplate(aggregation);
-          return;
-        }
+    HeroTemplate defaultTemplate = generics.getTemplateRegistry().getDefaultTemplate(selectedType);
+    for (ITemplateTypeAggregation aggregation : aggregationsByType.get(selectedType)) {
+      if (aggregation.contains(defaultTemplate)) {
+        setSelectedTemplate(aggregation);
+        return;
       }
-      throw new IllegalStateException("Template not contained in aggregations.");
     }
+    throw new IllegalStateException("Template not contained in aggregations.");
   }
 
   @Override
