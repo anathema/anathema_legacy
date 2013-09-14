@@ -1,9 +1,10 @@
 package net.sf.anathema.swing.hero.creation;
 
 import com.google.common.base.Objects;
-import net.sf.anathema.character.main.CharacterStatisticsConfiguration;
+import net.sf.anathema.character.main.HeroTemplateHolder;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITemplateRegistry;
+import net.sf.anathema.character.main.template.ITemplateType;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.character.main.view.repository.ITemplateTypeAggregation;
@@ -22,13 +23,13 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
   private final Announcer<ChangeListener> control = Announcer.to(ChangeListener.class);
   private ITemplateTypeAggregation selectedTemplate;
   private final MultiEntryMap<CharacterType, ITemplateTypeAggregation> aggregationsByType = new MultiEntryMap<>();
-  private final CharacterStatisticsConfiguration configuration;
+  private final HeroTemplateHolder templateHolder;
   private final HeroEnvironment generics;
   private final CharacterType[] types;
 
-  public CharacterItemCreationModel(HeroEnvironment generics, CharacterStatisticsConfiguration configuration) {
+  public CharacterItemCreationModel(HeroEnvironment generics, HeroTemplateHolder templateHolder) {
     this.generics = generics;
-    this.configuration = configuration;
+    this.templateHolder = templateHolder;
     this.characterTypes = generics.getCharacterTypes();
     this.types = collectCharacterTypes(generics.getTemplateRegistry());
     aggregateTemplates();
@@ -58,7 +59,7 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
 
   @Override
   public boolean isSelectionComplete() {
-    return configuration.getTemplate() != null;
+    return templateHolder.hasTemplate();
   }
 
   @Override
@@ -105,7 +106,7 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
     }
     this.selectedTemplate = newValue;
     if (selectedTemplate == null) {
-      configuration.setTemplate(null);
+      templateHolder.clearTemplate();
     } else {
       setEditionDependentTemplate();
     }
@@ -113,7 +114,9 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
   }
 
   private void setEditionDependentTemplate() {
-    configuration.setTemplate(generics.getTemplateRegistry().getTemplate(selectedTemplate.getTemplateType()));
+    ITemplateType templateType = selectedTemplate.getTemplateType();
+    HeroTemplate template = generics.getTemplateRegistry().getTemplate(templateType);
+    templateHolder.setTemplate(template);
   }
 
   @Override

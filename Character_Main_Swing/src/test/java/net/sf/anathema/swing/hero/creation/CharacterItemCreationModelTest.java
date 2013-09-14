@@ -1,6 +1,6 @@
 package net.sf.anathema.swing.hero.creation;
 
-import net.sf.anathema.character.main.CharacterStatisticsConfiguration;
+import net.sf.anathema.character.main.HeroTemplateHolder;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITemplateRegistry;
 import net.sf.anathema.hero.dummy.DummyCharacterTypes;
@@ -20,7 +20,7 @@ public class CharacterItemCreationModelTest {
   @Test
   public void comparesNewlySetCharacterTypeViaEqualsNotIdentity() throws Exception {
     HeroEnvironment generics = createGenericsWithCharacterType(new DummyMundaneCharacterType());
-    CharacterStatisticsConfiguration configuration = mock(CharacterStatisticsConfiguration.class);
+    HeroTemplateHolder configuration = mock(HeroTemplateHolder.class);
     CharacterItemCreationModel model = new CharacterItemCreationModel(generics, configuration);
     ChangeListener listener = mock(ChangeListener.class);
     model.addListener(listener);

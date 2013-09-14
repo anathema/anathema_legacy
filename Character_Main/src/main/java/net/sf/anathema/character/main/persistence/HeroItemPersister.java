@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.persistence;
 
-import net.sf.anathema.character.main.CharacterStatisticsConfiguration;
 import net.sf.anathema.character.main.ExaltedCharacter;
 import net.sf.anathema.character.main.framework.item.DataItem;
 import net.sf.anathema.character.main.magic.spells.SpellException;
+import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.framework.persistence.ItemMetaDataPersister;
@@ -18,7 +18,6 @@ import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.hero.persistence.HeroModelPersister;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.message.MessageType;
-import net.sf.anathema.lib.workflow.wizard.selection.IDialogModelTemplate;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.apache.commons.io.IOUtils;
 import org.dom4j.Document;
@@ -115,10 +114,9 @@ public class HeroItemPersister implements RepositoryItemPersister {
   }
 
   @Override
-  public Item createNew(IDialogModelTemplate template) throws PersistenceException {
-    CharacterStatisticsConfiguration configuration = (CharacterStatisticsConfiguration) template;
+  public Item createNew(HeroTemplate template) throws PersistenceException {
     try {
-      ExaltedCharacter character = new ExaltedCharacter(configuration.getTemplate(), generics);
+      ExaltedCharacter character = new ExaltedCharacter(template, generics);
       markCharacterReadyForWork(character);
       return createItem(character);
     } catch (SpellException e) {

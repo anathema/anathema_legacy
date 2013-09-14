@@ -1,7 +1,6 @@
 package net.sf.anathema.hero.persistence;
 
 import net.sf.anathema.character.main.Character;
-import net.sf.anathema.character.main.CharacterStatisticsConfiguration;
 import net.sf.anathema.character.main.framework.data.IExtensibleDataSetProvider;
 import net.sf.anathema.character.main.persistence.HeroItemPersister;
 import net.sf.anathema.framework.item.IItemType;
@@ -24,20 +23,12 @@ import static org.mockito.Mockito.when;
 public class HeroItemPersisterTest {
   private IMessaging messaging = mock(IMessaging.class);
   private IItemType type;
-  private SimpleDummyCharacterTemplate template;
-  private CharacterStatisticsConfiguration configuration;
+  private SimpleDummyCharacterTemplate template = new SimpleDummyCharacterTemplate(new DummyExaltCharacterType(), null);
 
   @Before
   public void createPersistableItemType() throws Exception {
     type = mock(IItemType.class);
     when(type.supportsRepository()).thenReturn(true);
-  }
-
-  @Before
-  public void createCharacterConfiguration() {
-    template = new SimpleDummyCharacterTemplate(new DummyExaltCharacterType(), null);
-    configuration = new CharacterStatisticsConfiguration();
-    configuration.setTemplate(template);
   }
 
   @Test
@@ -56,7 +47,7 @@ public class HeroItemPersisterTest {
   }
 
   private Character createNewCharacter(HeroItemPersister persister) throws PersistenceException {
-    Item item = persister.createNew(configuration);
+    Item item = persister.createNew(template);
     return (Character) item.getItemData();
   }
 }

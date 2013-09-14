@@ -5,7 +5,6 @@ import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import net.sf.anathema.character.main.Character;
-import net.sf.anathema.character.main.CharacterStatisticsConfiguration;
 import net.sf.anathema.character.main.itemtype.CharacterItemTypeRetrieval;
 import net.sf.anathema.character.main.persistence.HeroItemPersister;
 import net.sf.anathema.character.main.template.HeroTemplate;
@@ -95,11 +94,9 @@ public class CharacterCreationSteps {
   }
 
   private Character createCharacter(HeroTemplate template) {
-    CharacterStatisticsConfiguration creationRules = new CharacterStatisticsConfiguration();
-    creationRules.setTemplate(template);
     IItemType characterItemType = CharacterItemTypeRetrieval.retrieveCharacterItemType();
     RepositoryItemPersister itemPersister = new HeroItemPersister(characterItemType, getCharacterGenerics(), model.getMessaging());
-    Item item = itemPersister.createNew(creationRules);
+    Item item = itemPersister.createNew(template);
     return (Character) item.getItemData();
   }
 

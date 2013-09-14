@@ -1,9 +1,8 @@
 package net.sf.anathema.character.main;
 
 import net.sf.anathema.character.main.template.HeroTemplate;
-import net.sf.anathema.lib.workflow.wizard.selection.IDialogModelTemplate;
 
-public class CharacterStatisticsConfiguration implements IDialogModelTemplate {
+public class HeroTemplateHolder {
 
   private HeroTemplate template;
 
@@ -13,5 +12,13 @@ public class CharacterStatisticsConfiguration implements IDialogModelTemplate {
 
   public void setTemplate(HeroTemplate template) {
     this.template = template;
+  }
+
+  public boolean hasTemplate() {
+    return getTemplate() != null;
+  }
+
+  public void clearTemplate() {
+    setTemplate(null);
   }
 }

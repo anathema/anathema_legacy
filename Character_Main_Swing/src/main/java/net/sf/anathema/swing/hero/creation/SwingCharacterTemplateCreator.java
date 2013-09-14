@@ -1,6 +1,6 @@
 package net.sf.anathema.swing.hero.creation;
 
-import net.sf.anathema.character.main.CharacterStatisticsConfiguration;
+import net.sf.anathema.character.main.HeroTemplateHolder;
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.hero.framework.HeroEnvironment;
@@ -33,16 +33,16 @@ public class SwingCharacterTemplateCreator implements CharacterTemplateCreator {
   }
 
   private void doIt(HeroEnvironment heroEnvironment, IItemOperator operator) {
-    CharacterStatisticsConfiguration template = new CharacterStatisticsConfiguration();
+    HeroTemplateHolder template = new HeroTemplateHolder();
     IDialogPage page = createPage(template, heroEnvironment);
     boolean canceled = showDialog(page);
     if (canceled) {
       return;
     }
-    operator.operate(template);
+    operator.operate(template.getTemplate());
   }
 
-  private IDialogPage createPage(CharacterStatisticsConfiguration template, HeroEnvironment heroEnvironment) {
+  private IDialogPage createPage(HeroTemplateHolder template, HeroEnvironment heroEnvironment) {
     CharacterItemCreationModel model = new CharacterItemCreationModel(heroEnvironment, template);
     CharacterItemCreationView view = new CharacterItemCreationView();
     CharacterCreationPageProperties properties = new CharacterCreationPageProperties(resources);
