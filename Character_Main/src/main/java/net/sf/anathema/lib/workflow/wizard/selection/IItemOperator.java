@@ -1,7 +1,6 @@
-package net.sf.anathema.framework.presenter.action;
+package net.sf.anathema.lib.workflow.wizard.selection;
 
 import net.sf.anathema.lib.exception.PersistenceException;
-import net.sf.anathema.lib.workflow.wizard.selection.IDialogModelTemplate;
 
 public interface IItemOperator {
 

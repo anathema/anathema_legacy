@@ -2,7 +2,7 @@ package net.sf.anathema.hero.framework.perspective;
 
 import net.sf.anathema.framework.presenter.ItemReceiver;
 import net.sf.anathema.framework.presenter.action.IItemCreator;
-import net.sf.anathema.framework.presenter.action.IItemOperator;
+import net.sf.anathema.lib.workflow.wizard.selection.IItemOperator;
 import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.workflow.wizard.selection.IDialogModelTemplate;

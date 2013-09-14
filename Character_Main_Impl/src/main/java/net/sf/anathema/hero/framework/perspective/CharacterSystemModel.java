@@ -25,7 +25,8 @@ import net.sf.anathema.hero.framework.perspective.sheet.QuickPrintCommand;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.platform.RegExCharacterPrintNameFileScanner;
 import net.sf.anathema.lib.control.ChangeListener;
-import net.sf.anathema.lib.workflow.wizard.selection.ItemTemplateFactory;
+import net.sf.anathema.lib.exception.PersistenceException;
+import net.sf.anathema.lib.workflow.wizard.selection.CharacterTemplateCreator;
 import org.jmock.example.announcer.Announcer;
 
 import java.io.IOException;
@@ -147,7 +148,7 @@ public class CharacterSystemModel implements ItemSystemModel {
   }
 
   @Override
-  public void createNew(ItemTemplateFactory factory, Environment environment) {
+  public void createNew(CharacterTemplateCreator factory, Environment environment) {
     ItemReceiver receiver = new ItemReceiver() {
       @Override
       public void addItem(Item item) {
@@ -161,7 +162,12 @@ public class CharacterSystemModel implements ItemSystemModel {
     IItemType itemType = retrieveCharacterItemType();
     HeroEnvironment heroEnvironment = getHeroEnvironment();
     RepositoryItemPersister persister = new HeroItemPersister(itemType, heroEnvironment, model.getMessaging());
-    new NewItemCommand(factory, environment, receiver, persister, heroEnvironment).execute();
+    ItemCreator itemCreator = new ItemCreator(new NewItemCreator(persister), receiver);
+    try {
+      factory.createTemplate(heroEnvironment, itemCreator);
+    } catch (PersistenceException e) {
+      environment.handle(e, environment.getString("CharacterSystem.NewCharacter.Error"));
+    }
   }
 
   @Override

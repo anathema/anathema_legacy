@@ -3,7 +3,7 @@ package net.sf.anathema.hero.framework.perspective.model;
 import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.reporting.Report;
 import net.sf.anathema.lib.control.ChangeListener;
-import net.sf.anathema.lib.workflow.wizard.selection.ItemTemplateFactory;
+import net.sf.anathema.lib.workflow.wizard.selection.CharacterTemplateCreator;
 
 import java.io.IOException;
 
@@ -27,7 +27,7 @@ public interface ItemSelectionModel {
 
   void printCurrentItemInto(Report report, Environment environment);
 
-  void createNew(ItemTemplateFactory factory, Environment environment);
+  void createNew(CharacterTemplateCreator factory, Environment environment);
 
   void whenNewCharacterIsAdded(NewCharacterListener listener);
 
