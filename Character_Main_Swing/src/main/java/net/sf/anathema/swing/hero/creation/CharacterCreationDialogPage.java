@@ -1,7 +1,7 @@
 package net.sf.anathema.swing.hero.creation;
 
+import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.type.CharacterType;
-import net.sf.anathema.character.main.view.repository.ITemplateTypeAggregation;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.action.SmartAction;
@@ -32,11 +32,11 @@ public class CharacterCreationDialogPage extends AbstractDialogPage {
     model.addListener(inputValidListener);
   }
 
-  protected void refreshList(VetoableObjectSelectionView<ITemplateTypeAggregation> list) {
-    ITemplateTypeAggregation[] availableTemplates = model.getAvailableTemplates();
-    Arrays.sort(availableTemplates, new Comparator<ITemplateTypeAggregation>() {
+  protected void refreshList(VetoableObjectSelectionView<HeroTemplate> list) {
+    HeroTemplate[] availableTemplates = model.getAvailableTemplates();
+    Arrays.sort(availableTemplates, new Comparator<HeroTemplate>() {
       @Override
-      public int compare(ITemplateTypeAggregation o1, ITemplateTypeAggregation o2) {
+      public int compare(HeroTemplate o1, HeroTemplate o2) {
         return getTemplateResource(o1).compareTo(getTemplateResource(o2));
       }
     });
@@ -44,7 +44,7 @@ public class CharacterCreationDialogPage extends AbstractDialogPage {
     list.setSelectedObject(model.getSelectedTemplate());
   }
 
-  private String getTemplateResource(ITemplateTypeAggregation o1) {
+  private String getTemplateResource(HeroTemplate o1) {
     return properties.getTemplateUI().getLabel(o1);
   }
 
@@ -80,10 +80,10 @@ public class CharacterCreationDialogPage extends AbstractDialogPage {
       }, properties.getTypeString(type));
       button.setSelected(type.equals(model.getSelectedTemplate().getTemplateType().getCharacterType()));
     }
-    final VetoableObjectSelectionView<ITemplateTypeAggregation> list = view.addObjectSelectionList();
-    list.addObjectSelectionChangedListener(new ObjectValueListener<ITemplateTypeAggregation>() {
+    final VetoableObjectSelectionView<HeroTemplate> list = view.addObjectSelectionList();
+    list.addObjectSelectionChangedListener(new ObjectValueListener<HeroTemplate>() {
       @Override
-      public void valueChanged(ITemplateTypeAggregation newValue) {
+      public void valueChanged(HeroTemplate newValue) {
         if (newValue == null) {
           return;
         }

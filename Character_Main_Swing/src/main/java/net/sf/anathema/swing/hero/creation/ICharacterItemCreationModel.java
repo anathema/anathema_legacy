@@ -1,20 +1,20 @@
 package net.sf.anathema.swing.hero.creation;
 
+import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.type.CharacterType;
-import net.sf.anathema.character.main.view.repository.ITemplateTypeAggregation;
 import net.sf.anathema.lib.control.ChangeListener;
 
 public interface ICharacterItemCreationModel {
 
-  Iterable<CharacterType> getAvailableCharacterTypes();
-
   void setCharacterType(CharacterType type);
+
+  void setSelectedTemplate(HeroTemplate newValue);
 
   void addListener(ChangeListener listener);
 
-  ITemplateTypeAggregation[] getAvailableTemplates();
+  Iterable<CharacterType> getAvailableCharacterTypes();
 
-  ITemplateTypeAggregation getSelectedTemplate();
+  HeroTemplate[] getAvailableTemplates();
 
-  void setSelectedTemplate(ITemplateTypeAggregation newValue);
+  HeroTemplate getSelectedTemplate();
 }

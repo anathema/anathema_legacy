@@ -1,13 +1,13 @@
 package net.sf.anathema.swing.hero.creation;
 
 import net.sf.anathema.character.main.CharacterUI;
+import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.type.CharacterType;
-import net.sf.anathema.character.main.view.repository.ITemplateTypeAggregation;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.message.MessageType;
-import net.sf.anathema.framework.environment.Resources;
 
 import javax.swing.Icon;
 
@@ -37,7 +37,7 @@ public class CharacterCreationPageProperties {
     return iconProvider.getSmallTypeIcon(type);
   }
 
-  public AgnosticUIConfiguration<ITemplateTypeAggregation> getTemplateUI() {
+  public AgnosticUIConfiguration<HeroTemplate> getTemplateUI() {
     return new TemplateTypeUiConfiguration(resources);
   }
 

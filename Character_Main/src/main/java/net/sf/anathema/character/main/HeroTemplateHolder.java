@@ -13,4 +13,8 @@ public class HeroTemplateHolder {
   public void setTemplate(HeroTemplate template) {
     this.template = template;
   }
+
+  public boolean isCurrentlySelected(HeroTemplate newValue) {
+    return newValue == template;
+  }
 }

@@ -4,10 +4,8 @@ import com.google.common.base.Objects;
 import net.sf.anathema.character.main.HeroTemplateHolder;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITemplateRegistry;
-import net.sf.anathema.character.main.template.ITemplateType;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.type.CharacterTypes;
-import net.sf.anathema.character.main.view.repository.ITemplateTypeAggregation;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.control.ChangeListener;
@@ -18,48 +16,35 @@ import java.util.List;
 
 public class CharacterItemCreationModel implements ICharacterItemCreationModel {
 
-  private final CharacterTypes characterTypes;
   private final Announcer<ChangeListener> control = Announcer.to(ChangeListener.class);
-  private final MultiEntryMap<CharacterType, ITemplateTypeAggregation> aggregationsByType = new MultiEntryMap<>();
-  private final HeroTemplateHolder templateHolder;
+  private final MultiEntryMap<CharacterType, HeroTemplate> templatesByType = new MultiEntryMap<>();
+  private final List<CharacterType> availableCharacterTypes = new ArrayList<>();
   private final HeroEnvironment generics;
-  private final List<CharacterType> types;
+  private final HeroTemplateHolder templateHolder;
   private CharacterType selectedType;
-  private ITemplateTypeAggregation selectedTemplate;
 
   public CharacterItemCreationModel(HeroEnvironment generics, HeroTemplateHolder templateHolder) {
     this.generics = generics;
     this.templateHolder = templateHolder;
-    this.characterTypes = generics.getCharacterTypes();
-    this.types = collectCharacterTypes(generics.getTemplateRegistry());
-    aggregateTemplates();
-    setCharacterType(types.get(0));
+    initializeTypesAndTemplates();
+    setCharacterType(availableCharacterTypes.get(0));
   }
 
-  private List<CharacterType> collectCharacterTypes(ITemplateRegistry registry) {
-    List<CharacterType> availableTypes = new ArrayList<>();
-    for (CharacterType type : characterTypes.findAll()) {
-      if (registry.getAllSupportedTemplates(type).length > 0) {
-        availableTypes.add(type);
+  private void initializeTypesAndTemplates() {
+    CharacterTypes types = generics.getCharacterTypes();
+    ITemplateRegistry templateRegistry = generics.getTemplateRegistry();
+    for (CharacterType type : types.findAll()) {
+      HeroTemplate[] templates = templateRegistry.getAllSupportedTemplates(type);
+      if (templates.length > 0) {
+        availableCharacterTypes.add(type);
+        templatesByType.add(type, templates);
       }
-    }
-    return availableTypes;
-  }
-
-  private void aggregateTemplates() {
-    TemplateTypeAggregator aggregator = new TemplateTypeAggregator(generics.getTemplateRegistry());
-    for (CharacterType type : characterTypes.findAll()) {
-      ITemplateTypeAggregation[] aggregations = aggregator.aggregateTemplates(type);
-      if (aggregations.length == 0) {
-        continue;
-      }
-      aggregationsByType.add(type, aggregations);
     }
   }
 
   @Override
   public Iterable<CharacterType> getAvailableCharacterTypes() {
-    return types;
+    return availableCharacterTypes;
   }
 
   @Override
@@ -74,37 +59,28 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
 
   private void setTemplateToDefault() {
     HeroTemplate defaultTemplate = generics.getTemplateRegistry().getDefaultTemplate(selectedType);
-    for (ITemplateTypeAggregation aggregation : aggregationsByType.get(selectedType)) {
-      if (aggregation.contains(defaultTemplate)) {
-        setSelectedTemplate(aggregation);
-        return;
-      }
-    }
-    throw new IllegalStateException("Template not contained in aggregations.");
+    templateHolder.setTemplate(defaultTemplate);
   }
 
   @Override
-  public ITemplateTypeAggregation[] getAvailableTemplates() {
-    List<ITemplateTypeAggregation> list = aggregationsByType.get(selectedType);
-    List<ITemplateTypeAggregation> copyList = new ArrayList<>(list);
-    return copyList.toArray(new ITemplateTypeAggregation[copyList.size()]);
+  public HeroTemplate[] getAvailableTemplates() {
+    List<HeroTemplate> list = templatesByType.get(selectedType);
+    List<HeroTemplate> copyList = new ArrayList<>(list);
+    return copyList.toArray(new HeroTemplate[copyList.size()]);
   }
 
   @Override
-  public void setSelectedTemplate(ITemplateTypeAggregation newValue) {
-    if (selectedTemplate == newValue) {
+  public void setSelectedTemplate(HeroTemplate newValue) {
+    if (templateHolder.isCurrentlySelected(newValue)) {
       return;
     }
-    this.selectedTemplate = newValue;
-    ITemplateType templateType = selectedTemplate.getTemplateType();
-    HeroTemplate template = generics.getTemplateRegistry().getTemplate(templateType);
-    templateHolder.setTemplate(template);
+    templateHolder.setTemplate(newValue);
     control.announce().changeOccurred();
   }
 
   @Override
-  public ITemplateTypeAggregation getSelectedTemplate() {
-    return selectedTemplate;
+  public HeroTemplate getSelectedTemplate() {
+    return templateHolder.getTemplate();
   }
 
   @Override
