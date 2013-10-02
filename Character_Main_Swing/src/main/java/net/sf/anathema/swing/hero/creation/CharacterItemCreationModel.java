@@ -20,12 +20,11 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
   private final MultiEntryMap<CharacterType, HeroTemplate> templatesByType = new MultiEntryMap<>();
   private final List<CharacterType> availableCharacterTypes = new ArrayList<>();
   private final HeroEnvironment generics;
-  private final HeroTemplateHolder templateHolder;
+  private final HeroTemplateHolder templateHolder = new HeroTemplateHolder();
   private CharacterType selectedType;
 
-  public CharacterItemCreationModel(HeroEnvironment generics, HeroTemplateHolder templateHolder) {
+  public CharacterItemCreationModel(HeroEnvironment generics) {
     this.generics = generics;
-    this.templateHolder = templateHolder;
     initializeTypesAndTemplates();
     setCharacterType(availableCharacterTypes.get(0));
   }

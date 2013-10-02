@@ -21,7 +21,7 @@ public class CharacterItemCreationModelTest {
   public void comparesNewlySetCharacterTypeViaEqualsNotIdentity() throws Exception {
     HeroEnvironment generics = createGenericsWithCharacterType(new DummyMundaneCharacterType());
     HeroTemplateHolder configuration = mock(HeroTemplateHolder.class);
-    CharacterItemCreationModel model = new CharacterItemCreationModel(generics, configuration);
+    CharacterItemCreationModel model = new CharacterItemCreationModel(generics);
     ChangeListener listener = mock(ChangeListener.class);
     model.addListener(listener);
     model.setCharacterType(new DummyMundaneCharacterType());

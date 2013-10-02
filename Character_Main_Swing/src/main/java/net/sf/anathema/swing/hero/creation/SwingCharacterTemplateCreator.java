@@ -33,20 +33,19 @@ public class SwingCharacterTemplateCreator implements CharacterTemplateCreator {
   }
 
   private void doIt(HeroEnvironment heroEnvironment, IItemOperator operator) {
-    HeroTemplateHolder template = new HeroTemplateHolder();
-    IDialogPage page = createPage(template, heroEnvironment);
+    CharacterItemCreationModel model = new CharacterItemCreationModel(heroEnvironment);
+    IDialogPage page = createPage(model);
     boolean canceled = showDialog(page);
     if (canceled) {
       return;
     }
-    operator.operate(template.getTemplate());
+    operator.operate(model.getSelectedTemplate());
   }
 
-  private IDialogPage createPage(HeroTemplateHolder template, HeroEnvironment heroEnvironment) {
-    CharacterItemCreationModel model = new CharacterItemCreationModel(heroEnvironment, template);
+  private IDialogPage createPage(CharacterItemCreationModel creationModel) {
     CharacterItemCreationView view = new CharacterItemCreationView();
     CharacterCreationPageProperties properties = new CharacterCreationPageProperties(resources);
-    return new CharacterCreationDialogPage(model, view, properties);
+    return new CharacterCreationDialogPage(creationModel, view, properties);
   }
 
   private boolean showDialog(IDialogPage page) {
