@@ -1,9 +1,8 @@
 package net.sf.anathema.swing.hero.creation;
 
-import net.sf.anathema.character.main.HeroTemplateHolder;
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.framework.view.SwingApplicationFrame;
-import net.sf.anathema.hero.framework.HeroEnvironment;
+import net.sf.anathema.hero.creation.ICharacterItemCreationModel;
 import net.sf.anathema.lib.gui.dialog.core.DialogResult;
 import net.sf.anathema.lib.gui.dialog.core.ISwingFrameOrDialog;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
@@ -23,26 +22,25 @@ public class SwingCharacterTemplateCreator implements CharacterTemplateCreator {
   }
 
   @Override
-  public void createTemplate(final HeroEnvironment heroEnvironment, final IItemOperator operator) {
+  public void createTemplate(final IItemOperator operator, final ICharacterItemCreationModel creationModel) {
     SwingUtilities.invokeLater(new Runnable() {
       @Override
       public void run() {
-        doIt(heroEnvironment, operator);
+        doIt(operator, creationModel);
       }
     });
   }
 
-  private void doIt(HeroEnvironment heroEnvironment, IItemOperator operator) {
-    CharacterItemCreationModel model = new CharacterItemCreationModel(heroEnvironment);
-    IDialogPage page = createPage(model);
+  private void doIt(IItemOperator operator, ICharacterItemCreationModel creationModel) {
+    IDialogPage page = createPage(creationModel);
     boolean canceled = showDialog(page);
     if (canceled) {
       return;
     }
-    operator.operate(model.getSelectedTemplate());
+    operator.operate(creationModel.getSelectedTemplate());
   }
 
-  private IDialogPage createPage(CharacterItemCreationModel creationModel) {
+  private IDialogPage createPage(ICharacterItemCreationModel creationModel) {
     CharacterItemCreationView view = new CharacterItemCreationView();
     CharacterCreationPageProperties properties = new CharacterCreationPageProperties(resources);
     return new CharacterCreationDialogPage(creationModel, view, properties);

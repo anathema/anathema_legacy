@@ -163,8 +163,9 @@ public class CharacterSystemModel implements ItemSystemModel {
     HeroEnvironment heroEnvironment = getHeroEnvironment();
     RepositoryItemPersister persister = new HeroItemPersister(itemType, heroEnvironment, model.getMessaging());
     ItemCreator itemCreator = new ItemCreator(new NewItemCreator(persister), receiver);
+    CharacterItemCreationModel creationModel = new CharacterItemCreationModel(heroEnvironment);
     try {
-      factory.createTemplate(heroEnvironment, itemCreator);
+      factory.createTemplate(itemCreator, creationModel);
     } catch (PersistenceException e) {
       environment.handle(e, environment.getString("CharacterSystem.NewCharacter.Error"));
     }

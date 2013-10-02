@@ -1,8 +1,8 @@
 package net.sf.anathema.lib.workflow.wizard.selection;
 
-import net.sf.anathema.hero.framework.HeroEnvironment;
+import net.sf.anathema.hero.creation.ICharacterItemCreationModel;
 
 public interface CharacterTemplateCreator {
 
-  void createTemplate(HeroEnvironment generics, IItemOperator itemCreator);
+  void createTemplate(final IItemOperator operator, final ICharacterItemCreationModel creationModel);
 }

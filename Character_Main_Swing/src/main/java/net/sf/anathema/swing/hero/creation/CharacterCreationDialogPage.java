@@ -2,6 +2,7 @@ package net.sf.anathema.swing.hero.creation;
 
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.type.CharacterType;
+import net.sf.anathema.hero.creation.ICharacterItemCreationModel;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.action.SmartAction;

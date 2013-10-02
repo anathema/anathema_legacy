@@ -1,4 +1,4 @@
-package net.sf.anathema.swing.hero.creation;
+package net.sf.anathema.hero.framework.perspective;
 
 import com.google.common.base.Objects;
 import net.sf.anathema.character.main.HeroTemplateHolder;
@@ -7,6 +7,7 @@ import net.sf.anathema.character.main.template.ITemplateRegistry;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.hero.framework.HeroEnvironment;
+import net.sf.anathema.hero.creation.ICharacterItemCreationModel;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.control.ChangeListener;
 import org.jmock.example.announcer.Announcer;
