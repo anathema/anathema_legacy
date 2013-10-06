@@ -9,11 +9,9 @@ import net.sf.anathema.hero.dummy.DummyMundaneCharacterType;
 import net.sf.anathema.hero.dummy.template.SimpleDummyCharacterTemplate;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.lib.control.ChangeListener;
-import org.junit.Test;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verifyZeroInteractions;
-import static org.mockito.Mockito.when;
+import org.junit.Test;
+import org.mockito.Mockito;
 
 public class CharacterItemCreationModelTest {
 
