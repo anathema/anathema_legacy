@@ -3,25 +3,25 @@ package net.sf.anathema.swing.hero.creation;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.hero.creation.ICharacterItemCreationModel;
+import net.sf.anathema.interaction.Command;
+import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.AbstractDialogPage;
 import net.sf.anathema.lib.gui.selection.VetoableObjectSelectionView;
 import net.sf.anathema.lib.message.IBasicMessage;
 
 import javax.swing.JComponent;
-import javax.swing.JToggleButton;
-import java.awt.Component;
 import java.util.Arrays;
 import java.util.Comparator;
 
 public class CharacterCreationDialogPage extends AbstractDialogPage {
   private final CharacterCreationPageProperties properties;
   private final ICharacterItemCreationModel model;
-  private final ICharacterItemCreationView view;
+  private final CharacterCreationView view;
 
-  public CharacterCreationDialogPage(ICharacterItemCreationModel model, ICharacterItemCreationView view, CharacterCreationPageProperties properties) {
+  public CharacterCreationDialogPage(ICharacterItemCreationModel model, CharacterCreationView view,
+                                     CharacterCreationPageProperties properties) {
     super(properties.getConfirmMessage().getText());
     this.model = model;
     this.view = view;
@@ -56,7 +56,7 @@ public class CharacterCreationDialogPage extends AbstractDialogPage {
 
   @Override
   public String getTitle() {
-    return  properties.getTitle();
+    return properties.getTitle();
   }
 
   @Override
@@ -71,15 +71,21 @@ public class CharacterCreationDialogPage extends AbstractDialogPage {
 
   @Override
   public JComponent createContent() {
-    IToggleButtonPanel panel = view.addToggleButtonPanel();
+    ToggleButtonPanel panel = view.addToggleButtonPanel();
     for (final CharacterType type : model.getAvailableCharacterTypes()) {
-      JToggleButton button = panel.addButton(new SmartAction(properties.getTypeIcon(type)) {
+      ToggleTool button = panel.addButton(properties.getTypeString(type));
+      button.setIcon(properties.getTypeIcon(type));
+      button.setCommand(new Command() {
         @Override
-        protected void execute(Component parentComponent) {
+        public void execute() {
           model.setCharacterType(type);
         }
-      }, properties.getTypeString(type));
-      button.setSelected(type.equals(model.getSelectedTemplate().getTemplateType().getCharacterType()));
+      });
+      if (type.equals(model.getSelectedTemplate().getTemplateType().getCharacterType())) {
+        button.select();
+      } else {
+        button.deselect();
+      }
     }
     final VetoableObjectSelectionView<HeroTemplate> list = view.addObjectSelectionList();
     list.addObjectSelectionChangedListener(new ObjectValueListener<HeroTemplate>() {

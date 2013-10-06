@@ -4,6 +4,7 @@ import net.sf.anathema.character.main.CharacterUI;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.IBasicMessage;
@@ -33,8 +34,8 @@ public class CharacterCreationPageProperties {
     return new CharacterTypeUi(resources).getLabel(type);
   }
 
-  public Icon getTypeIcon(CharacterType type) {
-    return iconProvider.getSmallTypeIcon(type);
+  public RelativePath getTypeIcon(CharacterType type) {
+    return iconProvider.getSmallTypeIconPath(type);
   }
 
   public AgnosticUIConfiguration<HeroTemplate> getTemplateUI() {

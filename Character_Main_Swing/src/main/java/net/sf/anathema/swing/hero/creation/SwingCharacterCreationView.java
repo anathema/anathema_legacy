@@ -11,17 +11,17 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-public class CharacterItemCreationView implements ICharacterItemCreationView {
+public class SwingCharacterCreationView implements CharacterCreationView {
 
   private final JPanel component;
 
-  public CharacterItemCreationView() {
+  public SwingCharacterCreationView() {
     this.component = new JPanel(new MigLayout(LayoutUtils.withoutInsets().gridGapX("10")));
   }
 
   @Override
-  public IToggleButtonPanel addToggleButtonPanel() {
-    ToggleButtonPanel panel = new ToggleButtonPanel();
+  public ToggleButtonPanel addToggleButtonPanel() {
+    SwingToggleButtonPanel panel = new SwingToggleButtonPanel();
     component.add(panel.getComponent(), new CC().grow().pushY());
     return panel;
   }

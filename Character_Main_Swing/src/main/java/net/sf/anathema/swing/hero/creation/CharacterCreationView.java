@@ -4,9 +4,9 @@ import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.lib.gui.dialog.core.IPageContent;
 import net.sf.anathema.lib.gui.selection.VetoableObjectSelectionView;
 
-public interface ICharacterItemCreationView extends IPageContent {
+public interface CharacterCreationView extends IPageContent {
 
-  IToggleButtonPanel addToggleButtonPanel();
+  ToggleButtonPanel addToggleButtonPanel();
 
   VetoableObjectSelectionView<HeroTemplate> addObjectSelectionList();
 }

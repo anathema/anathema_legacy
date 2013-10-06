@@ -15,11 +15,7 @@ import javax.swing.SwingUtilities;
 
 public class SwingCharacterTemplateCreator implements CharacterTemplateCreator {
 
-  private final Resources resources;
-
-  public SwingCharacterTemplateCreator(Resources resources) {
-    this.resources = resources;
-  }
+  private Resources resources;
 
   @Override
   public void createTemplate(final IItemOperator operator, final ICharacterItemCreationModel creationModel) {
@@ -29,6 +25,11 @@ public class SwingCharacterTemplateCreator implements CharacterTemplateCreator {
         doIt(operator, creationModel);
       }
     });
+  }
+
+  @Override
+  public void useResources(Resources resources) {
+    this.resources = resources;
   }
 
   private void doIt(IItemOperator operator, ICharacterItemCreationModel creationModel) {
@@ -41,7 +42,7 @@ public class SwingCharacterTemplateCreator implements CharacterTemplateCreator {
   }
 
   private IDialogPage createPage(ICharacterItemCreationModel creationModel) {
-    CharacterItemCreationView view = new CharacterItemCreationView();
+    SwingCharacterCreationView view = new SwingCharacterCreationView();
     CharacterCreationPageProperties properties = new CharacterCreationPageProperties(resources);
     return new CharacterCreationDialogPage(creationModel, view, properties);
   }
