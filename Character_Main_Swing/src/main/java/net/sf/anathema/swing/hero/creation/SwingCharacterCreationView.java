@@ -4,6 +4,8 @@ import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.framework.swing.selection.ListObjectSelectionView;
+import net.sf.anathema.hero.creation.CharacterCreationView;
+import net.sf.anathema.hero.creation.ToggleButtonPanel;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.lib.gui.selection.VetoableObjectSelectionView;
 
@@ -26,14 +28,8 @@ public class SwingCharacterCreationView implements CharacterCreationView {
     return panel;
   }
 
-  @Override
   public JComponent getContent() {
     return component;
-  }
-
-  @Override
-  public void requestFocus() {
-    // nothing to do
   }
 
   @Override

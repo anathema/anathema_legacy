@@ -3,6 +3,7 @@ package net.sf.anathema.swing.hero.creation;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.hero.creation.ICharacterItemCreationModel;
+import net.sf.anathema.hero.creation.ToggleButtonPanel;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.lib.control.ChangeListener;
@@ -18,9 +19,9 @@ import java.util.Comparator;
 public class CharacterCreationDialogPage extends AbstractDialogPage {
   private final CharacterCreationPageProperties properties;
   private final ICharacterItemCreationModel model;
-  private final CharacterCreationView view;
+  private final SwingCharacterCreationView view;
 
-  public CharacterCreationDialogPage(ICharacterItemCreationModel model, CharacterCreationView view,
+  public CharacterCreationDialogPage(ICharacterItemCreationModel model, SwingCharacterCreationView view,
                                      CharacterCreationPageProperties properties) {
     super(properties.getConfirmMessage().getText());
     this.model = model;

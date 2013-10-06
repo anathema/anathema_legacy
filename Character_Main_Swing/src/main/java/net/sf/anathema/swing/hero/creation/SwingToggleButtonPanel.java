@@ -3,6 +3,7 @@ package net.sf.anathema.swing.hero.creation;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.framework.view.toolbar.ToolbarUtilities;
+import net.sf.anathema.hero.creation.ToggleButtonPanel;
 import net.sf.anathema.interaction.ToggleTool;
 
 import javax.swing.ButtonGroup;
