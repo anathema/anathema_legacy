@@ -1,7 +1,5 @@
 package net.sf.anathema.charmdatabase.view.fx;
 
-import javafx.application.Platform;
-import javafx.scene.Node;
 import net.miginfocom.layout.AC;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
@@ -15,99 +13,44 @@ import net.sf.anathema.charmdatabase.view.rules.CharmTraitMinimumsPanel;
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.charms.display.MagicDisplayLabeler;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
-import net.sf.anathema.platform.fx.FxObjectSelectionView;
-import net.sf.anathema.platform.fx.StyledTitledPane;
 import net.sf.anathema.platform.fx.selection.SelectionViewFactory;
 
-import org.tbee.javafx.scene.layout.MigPane;
-
-public class FxCharmRulesPanel implements CharmRulesPanel {
-	
-	private MigPane pane;
-	
-	private final SelectionViewFactory selectionViewFactory;
-	
+public class FxCharmRulesPanel extends AbstractFxContainerPanel implements CharmRulesPanel {
 	private final FxCharmPrerequisitesPanel prerequisitesPanel;
 	private final FxCharmTraitsPanel traitsPanel;
 	private final FxCharmCostsPanel costsPanel;
 	private final FxCharmKeywordsPanel keywordsPanel;
 
 	public FxCharmRulesPanel(Resources resources, SelectionViewFactory selectionFactory) {
-		Platform.runLater(new Runnable() {
-			@Override
-			public void run() {
-				pane = new MigPane(new LC().wrapAfter(2).fill().insets("4"), new AC(), new AC().index(1).shrinkPrio(200));
-			}
-		});
-
-		this.selectionViewFactory = selectionFactory;
+		super(selectionFactory, new LC().wrapAfter(2).fill().insets("4"), new AC(), new AC().index(1).shrinkPrio(200));
 		prerequisitesPanel = new FxCharmPrerequisitesPanel(new MagicDisplayLabeler(resources));
 		traitsPanel = new FxCharmTraitsPanel(resources);
 		costsPanel = new FxCharmCostsPanel(resources);
 		keywordsPanel = new FxCharmKeywordsPanel(resources);
 	}
-	
-	public Node getNode() {
-		return pane;
-	}
 
 	@Override
 	public CharmPrerequisitesPanel addPrerequisitesPanel(final String title) {
-		Platform.runLater(new Runnable() {
-			@Override
-			public void run() {
-				Node titledPane = StyledTitledPane.Create(title, prerequisitesPanel.getNode());
-				pane.add(titledPane, new CC().grow().push());
-			}
-		});
-		return prerequisitesPanel;
+		return addSubpanel(prerequisitesPanel, title, new CC().grow().push());
 	}
 
 	@Override
 	public CharmTraitMinimumsPanel addTraitsPanel(final String title) {
-		Platform.runLater(new Runnable() {
-			@Override
-			public void run() {
-				Node titledPane = StyledTitledPane.Create(title, traitsPanel.getNode());
-				pane.add(titledPane, new CC().grow().push());
-			}
-		});
-		return traitsPanel;
+		return addSubpanel(traitsPanel, title, new CC().grow().push());
 	}
 
 	@Override
 	public CharmCostsPanel addCostsPanel(final String title) {
-		Platform.runLater(new Runnable() {
-			@Override
-			public void run() {
-				Node titledPane = StyledTitledPane.Create(title, costsPanel.getNode());
-				pane.add(titledPane, new CC().grow().push());
-			}
-		});
-		return costsPanel;
+		return addSubpanel(costsPanel, title, new CC().grow().push());
 	}
 	
 	@Override
 	public CharmKeywordsPanel addKeywordsPanel(final String title) {
-		Platform.runLater(new Runnable() {
-			@Override
-			public void run() {
-				Node titledPane = StyledTitledPane.Create(title, keywordsPanel.getNode());
-				pane.add(titledPane, new CC().grow().push());
-			}
-		});
-		return keywordsPanel;
+		return addSubpanel(keywordsPanel, title, new CC().grow().push());
 	}
 
 	@Override
 	public ObjectSelectionView<CharmType> addTypeView(String label, CharmTypeUi ui) {
-		final FxObjectSelectionView<CharmType> selectionView = selectionViewFactory.create(label, ui);
-		Platform.runLater(new Runnable() {
-			@Override
-			public void run() {
-				pane.add(selectionView.getNode(), new CC().grow());
-			}
-		});
-		return selectionView;
+		return addSelectionView(label, ui, new CC().grow());
 	}
 }
