@@ -6,17 +6,14 @@ import java.util.List;
 
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
-import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.characterengine.support.Announcer;
 import net.sf.anathema.charmdatabase.management.filters.CharmDatabaseFilter;
-import net.sf.anathema.charmdatabase.presenter.CharmEditModel;
-import net.sf.anathema.charmdatabase.presenter.ICharmEditModel;
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.charms.compiler.CharmCache;
+import net.sf.anathema.hero.charms.display.MagicDisplayLabeler;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
-import net.sf.anathema.lib.util.SimpleIdentifier;
 
 public class CharmDatabaseManagement implements ICharmDatabaseManagement {
 
@@ -32,19 +29,10 @@ public class CharmDatabaseManagement implements ICharmDatabaseManagement {
 			HeroEnvironment characterGenerics,
 			MagicDescriptionProvider magicDescriptionProvider) {
 		cache = characterGenerics.getDataSet(CharmCache.class);
-		editModel = new CharmEditModel(resources, magicDescriptionProvider);
+		editModel = new CharmEditModel(new MagicDisplayLabeler(resources), magicDescriptionProvider);
 		
-		// TODO: Horrible, just horrible.
-		// trying to collect all charm types
-		// clean this up; there must be a much smarter way of doing this
-		List<Identifier> types = new ArrayList<Identifier>();
-		for (CharacterType type : characterGenerics.getCharacterTypes().findAll()) {
-			if (type.isEssenceUser()) {
-				types.add(type);
-			}
-		}
-		types.add(new SimpleIdentifier("Martial Arts"));
-		characterTypes = types.toArray(new Identifier[0]);
+		// TODO: We eventually want Charm Types, rather than Character Types here.
+		characterTypes = characterGenerics.getCharacterTypes().findAll();
 	}
 
 	@Override

@@ -18,12 +18,12 @@ import net.sf.anathema.hero.framework.HeroEnvironmentExtractor;
 import net.sf.anathema.lib.file.RelativePath;
 
 @PerspectiveAutoCollector
-@Weight(weight = 6000)
+@Weight(weight = 6001)
 public class CharmDatabasePerspective implements Perspective {
   @Override
   public void configureToggle(PerspectiveToggle toggle) {
     toggle.setIcon(new RelativePath("icons/toolbar/TaskBarCharms24.png"));
-    toggle.setTooltip("ItemType.CharmCascades.PrintName");
+    toggle.setTooltip("ItemType.CharmDatabase.PrintName");
   }
 
   @Override

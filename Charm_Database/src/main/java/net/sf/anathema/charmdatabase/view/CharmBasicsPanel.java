@@ -6,11 +6,9 @@ import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
-public interface CharmDescriptionPanel {
+public interface CharmBasicsPanel {
 
   ITextView addNameView(String label);
-
-  ITextView addDescriptionView(String label);
 
   ObjectSelectionView<Identifier> addTypeView(String string, DirectUi compositionUi);
   

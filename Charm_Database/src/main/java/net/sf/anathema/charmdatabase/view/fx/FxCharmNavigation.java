@@ -3,7 +3,7 @@ package net.sf.anathema.charmdatabase.view.fx;
 import javafx.application.Platform;
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.charmdatabase.view.CharmNavigation;
-import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.hero.charms.display.MagicDisplayLabeler;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
@@ -18,7 +18,7 @@ public class FxCharmNavigation extends Navigation implements CharmNavigation {
 
   private ListSelectionView<Charm> listView = new ListSelectionView<>();
 
-  public FxCharmNavigation(final Resources resources) {
+  public FxCharmNavigation(final MagicDisplayLabeler labeler) {
 	listView.setCellRenderer(new AgnosticUIConfiguration<Charm>() {
 
 		@Override
@@ -28,7 +28,7 @@ public class FxCharmNavigation extends Navigation implements CharmNavigation {
 
 		@Override
 		public String getLabel(Charm charm) {
-			return charm != null ? resources.getString(charm.getId()) : null;
+			return charm != null ? labeler.getLabelForMagic(charm) : null;
 		}
 
 		@Override
@@ -52,7 +52,7 @@ public class FxCharmNavigation extends Navigation implements CharmNavigation {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-    	  addContainerToNavigation(view.getNode());
+    	  addElementToNavigation(view.getNode());
       }
     });
     return view;

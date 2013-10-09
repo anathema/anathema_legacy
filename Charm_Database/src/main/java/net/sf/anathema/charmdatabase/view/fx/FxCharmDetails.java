@@ -4,9 +4,12 @@ import javafx.application.Platform;
 import javafx.scene.Node;
 import net.miginfocom.layout.AC;
 import net.miginfocom.layout.CC;
-import net.sf.anathema.charmdatabase.view.CharmDescriptionPanel;
+import net.miginfocom.layout.LC;
+import net.sf.anathema.charmdatabase.view.CharmBasicsPanel;
 import net.sf.anathema.charmdatabase.view.CharmDetails;
-import net.sf.anathema.lib.gui.layout.LayoutUtils;
+import net.sf.anathema.charmdatabase.view.CharmInformationPanel;
+import net.sf.anathema.charmdatabase.view.rules.CharmRulesPanel;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.platform.fx.StyledTitledPane;
 import net.sf.anathema.platform.fx.selection.SelectionViewFactory;
 
@@ -14,12 +17,20 @@ import org.tbee.javafx.scene.layout.MigPane;
 
 public class FxCharmDetails implements CharmDetails {
 
+  private final String BASICS_HEIGHT = "20%";
+  private final String RULES_HEIGHT = "60%";
+  private final String INFO_HEIGHT = "20%";
+	
   //private final FxCharmListView<IEquipmentStats> listView = new FxCharmListView<>();
-  private final FxCharmDescriptionPanel descriptionPanel;
-  private MigPane outerPane = new MigPane(LayoutUtils.fillWithoutInsets().wrapAfter(1), new AC().grow().fill());
+  private final FxCharmBasicsPanel basicsPanel;
+  private final FxCharmRulesPanel rulesPanel;
+  private final FxCharmInformationPanel informationPanel;
+  private MigPane outerPane = new MigPane(new LC().wrapAfter(1), new AC().grow().fill());
 
-  public FxCharmDetails(SelectionViewFactory selectionFactory) {
-    this.descriptionPanel = new FxCharmDescriptionPanel(selectionFactory);
+  public FxCharmDetails(SelectionViewFactory selectionFactory, Resources resources) {
+    this.basicsPanel = new FxCharmBasicsPanel(selectionFactory);
+    this.rulesPanel = new FxCharmRulesPanel(resources, selectionFactory);
+    this.informationPanel = new FxCharmInformationPanel();
   }
 
   public Node getNode() {
@@ -42,14 +53,38 @@ public class FxCharmDetails implements CharmDetails {
   }*/
 
   @Override
-  public CharmDescriptionPanel addDescriptionPanel(final String title) {
+  public CharmBasicsPanel addBasicsPanel(final String title) {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        Node titledPane = StyledTitledPane.Create(title, descriptionPanel.getNode());
-        outerPane.add(titledPane, new CC().grow().push());
+        Node titledPane = StyledTitledPane.Create(title, basicsPanel.getNode());
+        outerPane.add(titledPane, new CC().height(BASICS_HEIGHT).grow().push());
       }
     });
-    return descriptionPanel;
+    return basicsPanel;
+  }
+
+  @Override
+  public CharmRulesPanel addRulesPanel(final String title) {
+	  Platform.runLater(new Runnable() {
+	      @Override
+	      public void run() {
+	        Node titledPane = StyledTitledPane.Create(title, rulesPanel.getNode());
+	        outerPane.add(titledPane, new CC().height(RULES_HEIGHT).grow().push());
+	      }
+	    });
+	    return rulesPanel;
+  }
+
+  @Override
+  public CharmInformationPanel addInformationPanel(final String title) {
+	  Platform.runLater(new Runnable() {
+	      @Override
+	      public void run() {
+	        Node titledPane = StyledTitledPane.Create(title, informationPanel.getNode());
+	        outerPane.add(titledPane, new CC().height(INFO_HEIGHT).grow().push());
+	      }
+	    });
+	    return informationPanel;
   }
 }

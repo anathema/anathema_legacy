@@ -1,21 +1,20 @@
 package net.sf.anathema.charmdatabase.view.fx;
 
 import javafx.application.Platform;
+import javafx.scene.Node;
 import net.miginfocom.layout.AC;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
-import net.sf.anathema.charmdatabase.view.CharmFilterPanel;
+import net.sf.anathema.charmdatabase.view.CharmInformationPanel;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.platform.fx.FxTextView;
 
 import org.tbee.javafx.scene.layout.MigPane;
 
-public class FxFilterPanel implements CharmFilterPanel {
-	//private final SelectionViewFactory selectionViewFactory;
-	  private MigPane pane;
+public class FxCharmInformationPanel implements CharmInformationPanel {
+	private MigPane pane;
 
-	  public FxFilterPanel() {
-	    //this.selectionViewFactory = selectionFactory;
+	public FxCharmInformationPanel() {
 	    Platform.runLater(new Runnable() {
 	      @Override
 	      public void run() {
@@ -23,10 +22,14 @@ public class FxFilterPanel implements CharmFilterPanel {
 	      }
 	    });
 	  }
-
-	  @Override
-	  public ITextView addTextFilterView(String label) {
-	    final FxTextView view = FxTextView.SingleLine(label);
+	
+	public Node getNode() {
+	    return pane;
+	  }
+	
+	@Override
+	  public ITextView addDescriptionView(String label) {
+	    final FxTextView view = FxTextView.MultiLine(label);
 	    Platform.runLater(new Runnable() {
 	      @Override
 	      public void run() {
@@ -34,9 +37,5 @@ public class FxFilterPanel implements CharmFilterPanel {
 	      }
 	    });
 	    return view;
-	  }
-	  
-	  public MigPane getNode() {
-		  return pane;
 	  }
 }
