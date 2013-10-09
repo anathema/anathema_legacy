@@ -1,4 +1,4 @@
-package net.sf.anathema.charmdatabase.view.fx;
+package net.sf.anathema.charmdatabase.view.rules.fx;
 
 import net.sf.anathema.character.main.magic.basic.cost.Cost;
 import net.sf.anathema.character.main.magic.basic.cost.IHealthCost;

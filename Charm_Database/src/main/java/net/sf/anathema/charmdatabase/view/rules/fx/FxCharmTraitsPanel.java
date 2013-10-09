@@ -1,8 +1,10 @@
-package net.sf.anathema.charmdatabase.view.fx;
+package net.sf.anathema.charmdatabase.view.rules.fx;
 
 import net.miginfocom.layout.AC;
 import net.miginfocom.layout.LC;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
+import net.sf.anathema.charmdatabase.view.fx.AbstractFxListPanel;
+import net.sf.anathema.charmdatabase.view.fx.IconlessCellRenderer;
 import net.sf.anathema.charmdatabase.view.rules.CharmTraitMinimumsPanel;
 import net.sf.anathema.framework.environment.Resources;
 

@@ -1,8 +1,9 @@
-package net.sf.anathema.charmdatabase.view.fx;
+package net.sf.anathema.charmdatabase.view.info.fx;
 
 import net.miginfocom.layout.AC;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
+import net.sf.anathema.charmdatabase.view.fx.AbstractFxContainerPanel;
 import net.sf.anathema.charmdatabase.view.info.CharmInformationPanel;
 import net.sf.anathema.charmdatabase.view.info.CharmSourcePanel;
 import net.sf.anathema.framework.environment.Resources;

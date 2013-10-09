@@ -6,7 +6,9 @@ import net.miginfocom.layout.LC;
 import net.sf.anathema.charmdatabase.view.CharmBasicsPanel;
 import net.sf.anathema.charmdatabase.view.CharmDetails;
 import net.sf.anathema.charmdatabase.view.info.CharmInformationPanel;
+import net.sf.anathema.charmdatabase.view.info.fx.FxCharmInformationPanel;
 import net.sf.anathema.charmdatabase.view.rules.CharmRulesPanel;
+import net.sf.anathema.charmdatabase.view.rules.fx.FxCharmRulesPanel;
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.platform.fx.selection.SelectionViewFactory;
 

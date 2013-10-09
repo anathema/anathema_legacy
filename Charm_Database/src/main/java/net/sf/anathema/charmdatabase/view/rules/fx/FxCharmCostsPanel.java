@@ -1,4 +1,4 @@
-package net.sf.anathema.charmdatabase.view.fx;
+package net.sf.anathema.charmdatabase.view.rules.fx;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +9,8 @@ import net.sf.anathema.character.main.magic.basic.cost.Cost;
 import net.sf.anathema.character.main.magic.basic.cost.CostImpl;
 import net.sf.anathema.character.main.magic.basic.cost.HealthCost;
 import net.sf.anathema.character.main.magic.basic.cost.ICostList;
+import net.sf.anathema.charmdatabase.view.fx.AbstractFxListPanel;
+import net.sf.anathema.charmdatabase.view.fx.IconlessCellRenderer;
 import net.sf.anathema.charmdatabase.view.rules.CharmCostsPanel;
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.charms.display.tooltip.CostStringBuilder;

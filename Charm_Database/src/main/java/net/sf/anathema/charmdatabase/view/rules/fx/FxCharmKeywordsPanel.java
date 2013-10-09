@@ -1,4 +1,4 @@
-package net.sf.anathema.charmdatabase.view.fx;
+package net.sf.anathema.charmdatabase.view.rules.fx;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -6,6 +6,8 @@ import java.util.Comparator;
 import net.miginfocom.layout.AC;
 import net.miginfocom.layout.LC;
 import net.sf.anathema.character.main.magic.basic.attribute.MagicAttribute;
+import net.sf.anathema.charmdatabase.view.fx.AbstractFxListPanel;
+import net.sf.anathema.charmdatabase.view.fx.IconlessCellRenderer;
 import net.sf.anathema.charmdatabase.view.rules.CharmKeywordsPanel;
 import net.sf.anathema.framework.environment.Resources;
 
