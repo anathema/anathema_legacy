@@ -8,11 +8,13 @@ import net.miginfocom.layout.LC;
 
 import org.tbee.javafx.scene.layout.MigPane;
 
+import static net.sf.anathema.platform.fx.FxThreading.runOnCorrectThread;
+
 public abstract class AbstractFxPane {
 	protected MigPane pane;
 	
-	protected AbstractFxPane(final LC layout, final AC col, final AC row) {		
-		Platform.runLater(new Runnable() {
+	protected AbstractFxPane(final LC layout, final AC col, final AC row) {
+		runOnCorrectThread(new Runnable() {
 			@Override
 			public void run() {
 				pane = new MigPane(layout, col, row);
@@ -20,7 +22,7 @@ public abstract class AbstractFxPane {
 		});
 	}
 	
-	protected void addToPane(final Node node, final CC cc) {
+	protected void addToPaneLater(final Node node, final CC cc) {
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {

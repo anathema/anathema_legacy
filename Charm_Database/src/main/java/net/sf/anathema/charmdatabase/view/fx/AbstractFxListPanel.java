@@ -11,8 +11,8 @@ public abstract class AbstractFxListPanel<T> extends AbstractFxPane {
 	
 	protected AbstractFxListPanel(LC layout, AC col, AC row, IconlessCellRenderer<T> renderer) {
 		super(layout, col, row);
+		addToPaneLater(listView.getNode(), new CC());
 		listView.setCellRenderer(renderer);
-		addToPane(listView.getNode(), new CC());
 	}
 	
 	protected void setObjects(T[] objects) {
