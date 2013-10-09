@@ -3,6 +3,7 @@ package net.sf.anathema.charmdatabase.view.fx;
 import javafx.application.Platform;
 import javafx.scene.Node;
 import net.miginfocom.layout.AC;
+import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.sf.anathema.character.main.magic.basic.source.SourceBook;
 import net.sf.anathema.charmdatabase.view.info.CharmSourcePanel;
@@ -25,11 +26,10 @@ private MigPane pane;
 			@Override
 			public void run() {
 				pane = new MigPane(new LC().height("100"), new AC(), new AC().index(1).shrinkPrio(200));
-				pane.add(listView.getNode());
+				pane.add(listView.getNode(), new CC().push());
 			}
 		});
 		
-		// TODO: A graphical means to render the trait values would be nice.
 		listView.setCellRenderer(new AgnosticUIConfiguration<SourceBook>() {
 
 			@Override

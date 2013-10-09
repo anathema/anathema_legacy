@@ -39,7 +39,7 @@ public class FxCharmInformationPanel implements CharmInformationPanel {
 	    Platform.runLater(new Runnable() {
 	      @Override
 	      public void run() {
-	        pane.add(view.getNode(), new CC().spanX(2));
+	        pane.add(view.getNode(), new CC().spanX(2).grow());
 	      }
 	    });
 	    return view;
@@ -51,7 +51,7 @@ public class FxCharmInformationPanel implements CharmInformationPanel {
 			@Override
 			public void run() {
 				Node titledPane = StyledTitledPane.Create(title, sourcePanel.getNode());
-				pane.add(titledPane, new CC());
+				pane.add(titledPane, new CC().grow());
 			}
 		});
 		return sourcePanel;
