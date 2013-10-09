@@ -1,4 +1,4 @@
-package net.sf.anathema.charmdatabase.management;
+package net.sf.anathema.charmdatabase.management.model;
 
 import net.sf.anathema.character.main.magic.basic.attribute.MagicAttribute;
 import net.sf.anathema.character.main.magic.basic.cost.ICostList;
@@ -35,9 +35,9 @@ public interface ICharmEditModel {
 	void addCharmGroupChangedListening(ChangeListener listener);
 	
 	// TODO: More complex prerequisites, such as OR groups or keyword counts
-	Charm[] getCharmPrerequisites();
+	CharmPrerequisite[] getCharmPrerequisites();
 	
-	void setCharmPrerequisites(Charm[] charms);
+	void setCharmPrerequisites(CharmPrerequisite[] charms);
 	
 	void addCharmPrerequisitesChangedListening(ChangeListener listener);
 	

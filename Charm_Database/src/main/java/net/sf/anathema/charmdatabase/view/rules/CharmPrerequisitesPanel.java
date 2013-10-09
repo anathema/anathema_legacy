@@ -1,7 +1,7 @@
 package net.sf.anathema.charmdatabase.view.rules;
 
-import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.charmdatabase.management.model.CharmPrerequisite;
 
 public interface CharmPrerequisitesPanel {
-	public void setPrerequisites(Charm[] charms);
+	public void setPrerequisites(CharmPrerequisite[] charms);
 }

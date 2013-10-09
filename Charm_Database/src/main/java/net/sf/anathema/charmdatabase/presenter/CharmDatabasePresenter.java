@@ -113,7 +113,6 @@ public class CharmDatabasePresenter implements Presenter {
 			model.getCharmEditModel().setCharmGroup(newValue);
 		}
     });
-    
         
     model.getCharmEditModel().addCanonCharmSelectionListening(new ChangeListener() {
 

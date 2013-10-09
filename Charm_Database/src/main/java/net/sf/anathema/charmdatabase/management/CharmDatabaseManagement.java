@@ -8,6 +8,8 @@ import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.characterengine.support.Announcer;
 import net.sf.anathema.charmdatabase.management.filters.CharmDatabaseFilter;
+import net.sf.anathema.charmdatabase.management.model.CharmEditModel;
+import net.sf.anathema.charmdatabase.management.model.ICharmEditModel;
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.charms.compiler.CharmCache;
 import net.sf.anathema.hero.charms.display.MagicDisplayLabeler;

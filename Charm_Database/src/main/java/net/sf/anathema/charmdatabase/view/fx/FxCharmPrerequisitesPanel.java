@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import net.miginfocom.layout.AC;
 import net.miginfocom.layout.LC;
 import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.charmdatabase.management.model.CharmPrerequisite;
 import net.sf.anathema.charmdatabase.view.rules.CharmPrerequisitesPanel;
 import net.sf.anathema.hero.charms.display.MagicDisplayLabeler;
 import net.sf.anathema.lib.file.RelativePath;
@@ -18,7 +19,7 @@ public class FxCharmPrerequisitesPanel implements CharmPrerequisitesPanel {
 
 	private MigPane pane;
 	
-	private ListSelectionView<Charm> listView = new ListSelectionView<>();
+	private ListSelectionView<CharmPrerequisite> listView = new ListSelectionView<>();
 	
 	public FxCharmPrerequisitesPanel(final MagicDisplayLabeler labeler) {
 		Platform.runLater(new Runnable() {
@@ -29,20 +30,20 @@ public class FxCharmPrerequisitesPanel implements CharmPrerequisitesPanel {
 			}
 		});
 		
-		listView.setCellRenderer(new AgnosticUIConfiguration<Charm>() {
+		listView.setCellRenderer(new AgnosticUIConfiguration<CharmPrerequisite>() {
 
 			@Override
-			public RelativePath getIconsRelativePath(Charm value) {
+			public RelativePath getIconsRelativePath(CharmPrerequisite value) {
 				return null;
 			}
 
 			@Override
-			public String getLabel(Charm charm) {
-				return charm != null ? labeler.getLabelForMagic(charm) : null;
+			public String getLabel(CharmPrerequisite charm) {
+				return charm != null ? charm.getText(labeler) : null;
 			}
 
 			@Override
-			public void configureTooltip(Charm item,
+			public void configureTooltip(CharmPrerequisite item,
 					ConfigurableTooltip configurableTooltip) {
 				// nothing to do
 			}
@@ -55,7 +56,7 @@ public class FxCharmPrerequisitesPanel implements CharmPrerequisitesPanel {
 	}
 
 	@Override
-	public void setPrerequisites(Charm[] charms) {
+	public void setPrerequisites(CharmPrerequisite[] charms) {
 		listView.setObjects(charms);
 	}
 

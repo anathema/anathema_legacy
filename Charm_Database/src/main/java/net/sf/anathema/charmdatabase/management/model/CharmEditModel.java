@@ -1,4 +1,4 @@
-package net.sf.anathema.charmdatabase.management;
+package net.sf.anathema.charmdatabase.management.model;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,7 +30,7 @@ public class CharmEditModel implements ICharmEditModel {
 	ITextualDescription description;
 	Identifier charmType;
 	Identifier charmGroup;
-	Charm[] prerequisites;
+	CharmPrerequisite[] prerequisites;
 	ValuedTraitType[] traitMinimums;
 	ICostList costs;
 	MagicAttribute[] keywords;
@@ -70,7 +70,7 @@ public class CharmEditModel implements ICharmEditModel {
 		setCharmType(charm.getCharacterType());
 		setCharmGroup(new SimpleIdentifier(charm.getGroupId()));
 		
-		setCharmPrerequisites(charm.getParentCharms().toArray(new Charm[0]));
+		setCharmPrerequisites(derivePrerequisites(charm));
 		
 		List<ValuedTraitType> traits = new ArrayList<>();
 		traits.add(charm.getEssence());
@@ -154,12 +154,12 @@ public class CharmEditModel implements ICharmEditModel {
 	}
 
 	@Override
-	public Charm[] getCharmPrerequisites() {
+	public CharmPrerequisite[] getCharmPrerequisites() {
 		return prerequisites;
 	}
 
 	@Override
-	public void setCharmPrerequisites(Charm[] charms) {
+	public void setCharmPrerequisites(CharmPrerequisite[] charms) {
 		if (Arrays.deepEquals(prerequisites, charms)) {
 			return;
 		}
@@ -172,6 +172,18 @@ public class CharmEditModel implements ICharmEditModel {
 	@Override
 	public void addCharmPrerequisitesChangedListening(ChangeListener listener) {
 		prerequisitesChangedControl.addListener(listener);
+	}
+	
+	private CharmPrerequisite[] derivePrerequisites(Charm charm) {
+		List<CharmPrerequisite> prerequisites = new ArrayList<CharmPrerequisite>();
+		
+		for (Charm parent : charm.getParentCharms()) {
+			prerequisites.add(new SimpleCharmPrerequisite(parent));
+		}
+		
+		// TODO: Get special prerequisite types, like groups
+		
+		return prerequisites.toArray(new CharmPrerequisite[0]);
 	}
 
 	@Override
