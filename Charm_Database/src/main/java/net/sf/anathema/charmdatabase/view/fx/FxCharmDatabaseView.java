@@ -5,7 +5,7 @@ import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.charmdatabase.view.AgnosticCharmDatabaseView;
 import net.sf.anathema.charmdatabase.view.CharmDatabaseView;
 import net.sf.anathema.charmdatabase.view.CharmBasicsPanel;
-import net.sf.anathema.charmdatabase.view.CharmInformationPanel;
+import net.sf.anathema.charmdatabase.view.info.CharmInformationPanel;
 import net.sf.anathema.charmdatabase.view.rules.CharmRulesPanel;
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.charms.display.MagicDisplayLabeler;

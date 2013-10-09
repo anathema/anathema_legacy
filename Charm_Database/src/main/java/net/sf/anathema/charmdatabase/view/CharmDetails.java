@@ -1,5 +1,6 @@
 package net.sf.anathema.charmdatabase.view;
 
+import net.sf.anathema.charmdatabase.view.info.CharmInformationPanel;
 import net.sf.anathema.charmdatabase.view.rules.CharmRulesPanel;
 
 

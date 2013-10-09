@@ -1,6 +1,7 @@
 package net.sf.anathema.charmdatabase.view;
 
 import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.charmdatabase.view.info.CharmInformationPanel;
 import net.sf.anathema.charmdatabase.view.rules.CharmRulesPanel;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.selection.VetoableObjectSelectionView;

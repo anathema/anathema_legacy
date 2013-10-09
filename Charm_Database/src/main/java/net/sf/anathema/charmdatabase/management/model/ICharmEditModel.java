@@ -2,6 +2,7 @@ package net.sf.anathema.charmdatabase.management.model;
 
 import net.sf.anathema.character.main.magic.basic.attribute.MagicAttribute;
 import net.sf.anathema.character.main.magic.basic.cost.ICostList;
+import net.sf.anathema.character.main.magic.basic.source.SourceBook;
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.charm.duration.Duration;
 import net.sf.anathema.character.main.magic.charm.type.ICharmTypeModel;
@@ -82,6 +83,12 @@ public interface ICharmEditModel {
 	
 	void addCharmDurationTypeChangedListening(ChangeListener listener);
 	
+	
+	SourceBook[] getCharmSources();
+	
+	void setCharmSources(SourceBook[] sources);
+	
+	void addCharmSourcesChangedListening(ChangeListener listener);
 	
 	
 	void addCanonCharmSelectionListening(ChangeListener listener);

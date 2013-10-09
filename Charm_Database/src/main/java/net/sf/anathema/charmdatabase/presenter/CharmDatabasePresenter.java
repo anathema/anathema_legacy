@@ -6,7 +6,8 @@ import net.sf.anathema.charmdatabase.management.ICharmDatabaseManagement;
 import net.sf.anathema.charmdatabase.management.filters.CharmNameFilter;
 import net.sf.anathema.charmdatabase.view.CharmBasicsPanel;
 import net.sf.anathema.charmdatabase.view.CharmDatabaseView;
-import net.sf.anathema.charmdatabase.view.CharmInformationPanel;
+import net.sf.anathema.charmdatabase.view.info.CharmInformationPanel;
+import net.sf.anathema.charmdatabase.view.info.CharmSourcePanel;
 import net.sf.anathema.charmdatabase.view.rules.CharmCostsPanel;
 import net.sf.anathema.charmdatabase.view.rules.CharmKeywordsPanel;
 import net.sf.anathema.charmdatabase.view.rules.CharmPrerequisitesPanel;
@@ -205,9 +206,19 @@ public class CharmDatabasePresenter implements Presenter {
   
   private void initInformationDetailsView() {
 	  CharmInformationPanel infoPanel = view.addInformationPanel(resources.getString("Charms.Creation.Information"));
-	  final ITextView descriptionView = infoPanel.addDescriptionView(resources.getString("Charms.Creation.Basics.Description"));
+	  final ITextView descriptionView = infoPanel.addDescriptionView(resources.getString("Charms.Creation.Information.Description"));
 	  new TextualPresentation().initView(descriptionView, model.getCharmEditModel().getDescription());
+	  final CharmSourcePanel sourcesPanel = infoPanel.addSourcePanel(resources.getString("Charms.Creation.Information.Sources"));
 
+	  model.getCharmEditModel().addCharmSourcesChangedListening(new ChangeListener() {
+
+		@Override
+		public void changeOccurred() {
+			sourcesPanel.setSources(model.getCharmEditModel().getCharmSources());
+		}
+		  
+	  });
+	  
 	  model.getCharmEditModel().addCanonCharmSelectionListening(new ChangeListener() {
 
 		@Override

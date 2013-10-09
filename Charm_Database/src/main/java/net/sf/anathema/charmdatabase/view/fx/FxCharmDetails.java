@@ -7,7 +7,7 @@ import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.sf.anathema.charmdatabase.view.CharmBasicsPanel;
 import net.sf.anathema.charmdatabase.view.CharmDetails;
-import net.sf.anathema.charmdatabase.view.CharmInformationPanel;
+import net.sf.anathema.charmdatabase.view.info.CharmInformationPanel;
 import net.sf.anathema.charmdatabase.view.rules.CharmRulesPanel;
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.platform.fx.StyledTitledPane;
@@ -30,7 +30,7 @@ public class FxCharmDetails implements CharmDetails {
   public FxCharmDetails(SelectionViewFactory selectionFactory, Resources resources) {
     this.basicsPanel = new FxCharmBasicsPanel(selectionFactory);
     this.rulesPanel = new FxCharmRulesPanel(resources, selectionFactory);
-    this.informationPanel = new FxCharmInformationPanel();
+    this.informationPanel = new FxCharmInformationPanel(resources);
   }
 
   public Node getNode() {
@@ -58,7 +58,7 @@ public class FxCharmDetails implements CharmDetails {
       @Override
       public void run() {
         Node titledPane = StyledTitledPane.Create(title, basicsPanel.getNode());
-        outerPane.add(titledPane, new CC().height(BASICS_HEIGHT).grow().push());
+        outerPane.add(titledPane, new CC().height(BASICS_HEIGHT).growY().push());
       }
     });
     return basicsPanel;
@@ -70,7 +70,7 @@ public class FxCharmDetails implements CharmDetails {
 	      @Override
 	      public void run() {
 	        Node titledPane = StyledTitledPane.Create(title, rulesPanel.getNode());
-	        outerPane.add(titledPane, new CC().height(RULES_HEIGHT).grow().push());
+	        outerPane.add(titledPane, new CC().height(RULES_HEIGHT).growY().push());
 	      }
 	    });
 	    return rulesPanel;
@@ -82,7 +82,7 @@ public class FxCharmDetails implements CharmDetails {
 	      @Override
 	      public void run() {
 	        Node titledPane = StyledTitledPane.Create(title, informationPanel.getNode());
-	        outerPane.add(titledPane, new CC().height(INFO_HEIGHT).grow().push());
+	        outerPane.add(titledPane, new CC().height(INFO_HEIGHT).growY().push());
 	      }
 	    });
 	    return informationPanel;

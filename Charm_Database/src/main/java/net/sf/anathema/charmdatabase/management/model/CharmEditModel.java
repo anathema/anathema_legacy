@@ -6,6 +6,7 @@ import java.util.List;
 
 import net.sf.anathema.character.main.magic.basic.attribute.MagicAttribute;
 import net.sf.anathema.character.main.magic.basic.cost.ICostList;
+import net.sf.anathema.character.main.magic.basic.source.SourceBook;
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.charm.duration.Duration;
 import net.sf.anathema.character.main.magic.charm.type.ICharmTypeModel;
@@ -36,6 +37,7 @@ public class CharmEditModel implements ICharmEditModel {
 	MagicAttribute[] keywords;
 	ICharmTypeModel actionType;
 	Duration duration;
+	SourceBook[] sources;
 	
 	private final Announcer<ChangeListener> typeChangedControl = Announcer.to(ChangeListener.class);
 	private final Announcer<ChangeListener> traitChangedControl = Announcer.to(ChangeListener.class);
@@ -45,6 +47,7 @@ public class CharmEditModel implements ICharmEditModel {
 	private final Announcer<ChangeListener> keywordsChangedControl = Announcer.to(ChangeListener.class);
 	private final Announcer<ChangeListener> actionTypeChangedControl = Announcer.to(ChangeListener.class);
 	private final Announcer<ChangeListener> durationChangedControl = Announcer.to(ChangeListener.class);
+	private final Announcer<ChangeListener> sourcesChangedControl = Announcer.to(ChangeListener.class);
 	
 	private final Announcer<ChangeListener> canonSelectedControl = Announcer.to(ChangeListener.class);
 	private final Announcer<ChangeListener> customSelectedControl = Announcer.to(ChangeListener.class);
@@ -81,6 +84,8 @@ public class CharmEditModel implements ICharmEditModel {
 		setCharmKeywords(charm.getAttributes());
 		setCharmActionType(charm.getCharmTypeModel());
 		setCharmDuration(charm.getDuration());
+		
+		setCharmSources(charm.getSources());
 		
 		// TODO: Check charm classification
 		canonSelectedControl.announce().changeOccurred();
@@ -289,6 +294,23 @@ public class CharmEditModel implements ICharmEditModel {
 	@Override
 	public void addCharmDurationTypeChangedListening(ChangeListener listener) {
 		durationChangedControl.addListener(listener);
+	}
+
+	@Override
+	public SourceBook[] getCharmSources() {
+		return sources;
+	}
+
+	@Override
+	public void setCharmSources(SourceBook[] sources) {
+		this.sources = sources;
+		
+		sourcesChangedControl.announce().changeOccurred();
+	}
+
+	@Override
+	public void addCharmSourcesChangedListening(ChangeListener listener) {
+		sourcesChangedControl.addListener(listener);
 	}
 	
 }
