@@ -1,10 +1,12 @@
 package net.sf.anathema.fx.hero.creation;
 
+import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.hero.creation.CharacterCreationView;
 import net.sf.anathema.hero.creation.ToggleButtonPanel;
+import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.lib.gui.selection.VetoableObjectSelectionView;
 import net.sf.anathema.platform.fx.ListSelectionView;
@@ -28,5 +30,17 @@ public class FxCharacterCreationView implements CharacterCreationView {
     scrollPane.setContent(view.getNode());
     component.add(scrollPane, new CC().grow().push());
     return view;
+  }
+
+  public Parent getNode() {
+    return component;
+  }
+
+  public void whenConfirmed(Command command) {
+    //To change body of created methods use File | Settings | File Templates.
+  }
+
+  public void whenCanceled(Command command) {
+    //To change body of created methods use File | Settings | File Templates.
   }
 }
