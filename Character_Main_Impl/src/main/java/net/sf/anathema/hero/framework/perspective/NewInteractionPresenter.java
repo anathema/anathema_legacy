@@ -53,8 +53,10 @@ public class NewInteractionPresenter {
   private class CreateNewCommand implements Command {
     @Override
     public void execute() {
-      CharacterTemplateCreator factory = new SwingCharacterTemplateCreator(environment);
-      model.createNew(factory, environment);
+      //TODO (Swing->FX): Instantiate Creator in the view to decouple the presenter from Swing.
+      CharacterTemplateCreator creator = new SwingCharacterTemplateCreator();
+      creator.useResources(environment);
+      model.createNew(creator, environment);
     }
   }
 }

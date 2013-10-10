@@ -1,4 +1,4 @@
-package net.sf.anathema.swing.hero.creation;
+package net.sf.anathema.hero.creation;
 
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.framework.environment.Resources;

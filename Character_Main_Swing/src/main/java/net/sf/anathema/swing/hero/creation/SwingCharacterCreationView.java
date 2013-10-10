@@ -4,6 +4,8 @@ import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.framework.swing.selection.ListObjectSelectionView;
+import net.sf.anathema.hero.creation.CharacterCreationView;
+import net.sf.anathema.hero.creation.ToggleButtonPanel;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.lib.gui.selection.VetoableObjectSelectionView;
 
@@ -11,29 +13,23 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-public class CharacterItemCreationView implements ICharacterItemCreationView {
+public class SwingCharacterCreationView implements CharacterCreationView {
 
   private final JPanel component;
 
-  public CharacterItemCreationView() {
+  public SwingCharacterCreationView() {
     this.component = new JPanel(new MigLayout(LayoutUtils.withoutInsets().gridGapX("10")));
   }
 
   @Override
-  public IToggleButtonPanel addToggleButtonPanel() {
-    ToggleButtonPanel panel = new ToggleButtonPanel();
+  public ToggleButtonPanel addToggleButtonPanel() {
+    SwingToggleButtonPanel panel = new SwingToggleButtonPanel();
     component.add(panel.getComponent(), new CC().grow().pushY());
     return panel;
   }
 
-  @Override
   public JComponent getContent() {
     return component;
-  }
-
-  @Override
-  public void requestFocus() {
-    // nothing to do
   }
 
   @Override

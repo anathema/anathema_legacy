@@ -9,7 +9,7 @@ import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.AbstractUIConfiguration;
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.util.Identifier;
-import net.sf.anathema.swing.hero.creation.CharacterTypeUi;
+import net.sf.anathema.hero.creation.CharacterTypeUi;
 
 public class CharacterFileUi extends AbstractUIConfiguration<PrintNameFile> {
 
