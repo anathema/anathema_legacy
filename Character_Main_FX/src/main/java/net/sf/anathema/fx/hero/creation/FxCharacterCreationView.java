@@ -1,6 +1,9 @@
 package net.sf.anathema.fx.hero.creation;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.character.main.template.HeroTemplate;
@@ -36,11 +39,24 @@ public class FxCharacterCreationView implements CharacterCreationView {
     return component;
   }
 
-  public void whenConfirmed(Command command) {
-    //To change body of created methods use File | Settings | File Templates.
+  public void whenConfirmed(final Command command) {
+    //TODO (Swing->FX): i18n
+    addButton(command, "OK");
   }
 
   public void whenCanceled(Command command) {
-    //To change body of created methods use File | Settings | File Templates.
+    //TODO (Swing->FX): i18n
+    addButton(command, "Cancel");
+  }
+
+  private void addButton(final Command command, String label) {
+    Button button = new Button(label);
+    component.add(button);
+    button.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent actionEvent) {
+        command.execute();
+      }
+    });
   }
 }
