@@ -53,7 +53,7 @@ public class NewInteractionPresenter {
     @Override
     public void execute() {
       CharacterTemplateCreator creator = view.createNewCharacter();
-      creator.useResources(environment);
+      creator.useEnvironment(environment);
       model.createNew(creator, environment);
     }
   }

@@ -20,10 +20,13 @@ import static javafx.scene.control.ScrollPane.ScrollBarPolicy.NEVER;
 
 public class FxCharacterCreationView implements CharacterCreationView {
 
-  //TODO (Swing->FX): Show with main window as parent stage
   private final Stage stage = new Stage();
   private final MigPane component = new MigPane(new LC().gridGapX("10").gridGapY("10").wrapAfter(2));
   private final MigPane buttonBar = new MigPane(LayoutUtils.withoutInsets());
+
+  public FxCharacterCreationView() {
+    component.add(buttonBar, new CC().newline().gapTop("10").span().push().grow());
+  }
 
   @Override
   public ToggleButtonPanel addToggleButtonPanel() {
@@ -45,8 +48,9 @@ public class FxCharacterCreationView implements CharacterCreationView {
 
   @Override
   public void show() {
-    component.add(buttonBar, new CC().newline().gapTop("10").span().push().grow());
     Scene scene = new Scene(component);
+    //TODO (Swing->FX): Show with main window as parent stage
+    stage.initOwner(null);
     stage.setScene(scene);
     stage.setHeight(200);
     stage.setWidth(300);
