@@ -3,8 +3,10 @@ package net.sf.anathema.fx.hero.creation;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.stage.Stage;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.hero.creation.CharacterCreationView;
@@ -17,6 +19,7 @@ import org.tbee.javafx.scene.layout.MigPane;
 
 public class FxCharacterCreationView implements CharacterCreationView {
 
+  private final Stage stage = new Stage();
   private final MigPane component = new MigPane(LayoutUtils.withoutInsets().gridGapX("10"));
 
   @Override
@@ -37,6 +40,17 @@ public class FxCharacterCreationView implements CharacterCreationView {
 
   public Parent getNode() {
     return component;
+  }
+
+  public void show() {
+    Parent parent = getNode();
+    Scene scene = new Scene(parent);
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  public void close() {
+    stage.close();
   }
 
   public void whenConfirmed(final Command command) {

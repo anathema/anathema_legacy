@@ -1,8 +1,5 @@
 package net.sf.anathema.fx.hero.creation;
 
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.creation.CharacterCreationPageProperties;
 import net.sf.anathema.hero.creation.CharacterCreationPresenter;
@@ -16,25 +13,21 @@ public class FxCharacterTemplateCreator implements CharacterTemplateCreator {
 
   @Override
   public void createTemplate(final IItemOperator operator, final ICharacterItemCreationModel creationModel) {
-    final Stage stage = new Stage();
-    FxCharacterCreationView view = initView(creationModel);
-    Parent parent = view.getNode();
-    Scene scene = new Scene(parent);
-    stage.setScene(scene);
+    final FxCharacterCreationView view = initView(creationModel);
     view.whenCanceled(new Command() {
       @Override
       public void execute() {
-        stage.close();
+        view.close();
       }
     });
     view.whenConfirmed(new Command() {
       @Override
       public void execute() {
-        stage.close();
+        view.close();
         operator.operate(creationModel.getSelectedTemplate());
       }
     });
-    stage.show();
+    view.show();
   }
 
   private FxCharacterCreationView initView(ICharacterItemCreationModel model) {
