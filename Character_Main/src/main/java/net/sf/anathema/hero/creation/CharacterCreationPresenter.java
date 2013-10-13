@@ -31,7 +31,7 @@ public class CharacterCreationPresenter {
     view.setTitle(properties.getTitle());
     ToggleButtonPanel panel = view.addToggleButtonPanel();
     for (final CharacterType type : model.getAvailableCharacterTypes()) {
-      ToggleTool button = panel.addButton(properties.getTypeString(type));
+      final ToggleTool button = panel.addButton(properties.getTypeString(type));
       button.setIcon(properties.getTypeIcon(type));
       button.setCommand(new Command() {
         @Override
@@ -39,11 +39,13 @@ public class CharacterCreationPresenter {
           model.setCharacterType(type);
         }
       });
-      if (type.equals(model.getSelectedTemplate().getTemplateType().getCharacterType())) {
-        button.select();
-      } else {
-        button.deselect();
-      }
+      model.addListener(new ChangeListener() {
+        @Override
+        public void changeOccurred() {
+          updateButtonChoice(type, button);
+        }
+      });
+      updateButtonChoice(type, button);
     }
     final VetoableObjectSelectionView<HeroTemplate> list = view.addObjectSelectionList();
     list.setCellRenderer(properties.getTemplateUI());
@@ -65,6 +67,14 @@ public class CharacterCreationPresenter {
     });
     refreshList(list);
     view.show();
+  }
+
+  private void updateButtonChoice(CharacterType type, ToggleTool button) {
+    if (type.equals(model.getSelectedTemplate().getTemplateType().getCharacterType())) {
+      button.select();
+    } else {
+      button.deselect();
+    }
   }
 
   private void initButtons() {

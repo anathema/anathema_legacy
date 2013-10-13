@@ -4,6 +4,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.stage.Stage;
 import net.miginfocom.layout.CC;
+import net.miginfocom.layout.LC;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.hero.creation.CharacterCreationView;
 import net.sf.anathema.hero.creation.ToggleButtonPanel;
@@ -14,12 +15,15 @@ import net.sf.anathema.platform.fx.ListSelectionView;
 import net.sf.anathema.platform.tool.FxButtonTool;
 import org.tbee.javafx.scene.layout.MigPane;
 
+import static javafx.scene.control.ScrollPane.ScrollBarPolicy.AS_NEEDED;
+import static javafx.scene.control.ScrollPane.ScrollBarPolicy.NEVER;
+
 public class FxCharacterCreationView implements CharacterCreationView {
 
   //TODO (Swing->FX): Show with main window as parent stage
   private final Stage stage = new Stage();
-  private final MigPane component = new MigPane(LayoutUtils.withoutInsets().gridGapX("10"));
-  private final MigPane buttonBar = new MigPane(LayoutUtils.withoutInsets().gridGapX("10"));
+  private final MigPane component = new MigPane(new LC().gridGapX("10").gridGapY("10").wrapAfter(2));
+  private final MigPane buttonBar = new MigPane(LayoutUtils.withoutInsets());
 
   @Override
   public ToggleButtonPanel addToggleButtonPanel() {
@@ -32,6 +36,8 @@ public class FxCharacterCreationView implements CharacterCreationView {
   public VetoableObjectSelectionView<HeroTemplate> addObjectSelectionList() {
     ListSelectionView<HeroTemplate> view = new ListSelectionView<>();
     ScrollPane scrollPane = new ScrollPane();
+    scrollPane.setHbarPolicy(NEVER);
+    scrollPane.setVbarPolicy(AS_NEEDED);
     scrollPane.setContent(view.getNode());
     component.add(scrollPane, new CC().grow().push());
     return view;
@@ -39,9 +45,11 @@ public class FxCharacterCreationView implements CharacterCreationView {
 
   @Override
   public void show() {
-    component.add(buttonBar, new CC().newline());
+    component.add(buttonBar, new CC().newline().gapTop("10").span().push().grow());
     Scene scene = new Scene(component);
     stage.setScene(scene);
+    stage.setHeight(200);
+    stage.setWidth(300);
     stage.show();
   }
 
@@ -53,7 +61,7 @@ public class FxCharacterCreationView implements CharacterCreationView {
   @Override
   public Tool addButton() {
     FxButtonTool tool = FxButtonTool.ForAnyPurpose();
-    buttonBar.add(tool.getNode());
+    buttonBar.add(tool.getNode(), new CC().alignX("right"));
     return tool;
   }
 
