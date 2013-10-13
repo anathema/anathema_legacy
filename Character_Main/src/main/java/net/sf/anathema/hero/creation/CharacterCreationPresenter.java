@@ -7,6 +7,7 @@ import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.selection.VetoableObjectSelectionView;
+import net.sf.anathema.lib.workflow.wizard.selection.IItemOperator;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -16,11 +17,13 @@ public class CharacterCreationPresenter {
   private final CharacterCreationView view;
   private final CharacterCreationPageProperties properties;
   private final ICharacterItemCreationModel model;
+  private IItemOperator operator;
 
-  public CharacterCreationPresenter(CharacterCreationView view, CharacterCreationPageProperties properties, ICharacterItemCreationModel model) {
+  public CharacterCreationPresenter(CharacterCreationView view, CharacterCreationPageProperties properties, ICharacterItemCreationModel model, IItemOperator operator) {
     this.view = view;
     this.properties = properties;
     this.model = model;
+    this.operator = operator;
   }
   
   public void initPresentation(){
@@ -51,6 +54,19 @@ public class CharacterCreationPresenter {
         model.setSelectedTemplate(newValue);
       }
     });
+    view.whenCanceled(new Command() {
+      @Override
+      public void execute() {
+        view.close();
+      }
+    });
+    view.whenConfirmed(new Command() {
+      @Override
+      public void execute() {
+        view.close();
+        operator.operate(model.getSelectedTemplate());
+      }
+    });
     model.addListener(new ChangeListener() {
       @Override
       public void changeOccurred() {
@@ -58,6 +74,7 @@ public class CharacterCreationPresenter {
       }
     });
     refreshList(list);
+    view.show();
   }
 
   protected void refreshList(VetoableObjectSelectionView<HeroTemplate> list) {
