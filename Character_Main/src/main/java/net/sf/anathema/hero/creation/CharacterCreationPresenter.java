@@ -28,6 +28,7 @@ public class CharacterCreationPresenter {
   }
 
   public void initPresentation() {
+    view.setTitle(properties.getTitle());
     ToggleButtonPanel panel = view.addToggleButtonPanel();
     for (final CharacterType type : model.getAvailableCharacterTypes()) {
       ToggleTool button = panel.addButton(properties.getTypeString(type));

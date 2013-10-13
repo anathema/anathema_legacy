@@ -16,8 +16,10 @@ import org.tbee.javafx.scene.layout.MigPane;
 
 public class FxCharacterCreationView implements CharacterCreationView {
 
+  //TODO (Swing->FX): Show with main window as parent stage
   private final Stage stage = new Stage();
   private final MigPane component = new MigPane(LayoutUtils.withoutInsets().gridGapX("10"));
+  private final MigPane buttonBar = new MigPane(LayoutUtils.withoutInsets().gridGapX("10"));
 
   @Override
   public ToggleButtonPanel addToggleButtonPanel() {
@@ -37,6 +39,7 @@ public class FxCharacterCreationView implements CharacterCreationView {
 
   @Override
   public void show() {
+    component.add(buttonBar, new CC().newline());
     Scene scene = new Scene(component);
     stage.setScene(scene);
     stage.show();
@@ -50,7 +53,12 @@ public class FxCharacterCreationView implements CharacterCreationView {
   @Override
   public Tool addButton() {
     FxButtonTool tool = FxButtonTool.ForAnyPurpose();
-    component.add(tool.getNode());
+    buttonBar.add(tool.getNode());
     return tool;
+  }
+
+  @Override
+  public void setTitle(String title) {
+    stage.setTitle(title);
   }
 }

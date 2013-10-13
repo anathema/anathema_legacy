@@ -15,4 +15,6 @@ public interface CharacterCreationView {
   void close();
 
   Tool addButton();
+
+  void setTitle(String title);
 }
