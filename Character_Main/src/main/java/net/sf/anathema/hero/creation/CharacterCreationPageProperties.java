@@ -33,4 +33,11 @@ public class CharacterCreationPageProperties {
     return new TemplateTypeUiConfiguration(resources);
   }
 
+  public String getCancelButtonString() {
+    return resources.getString("CharacterDialog.Cancel");
+  }
+
+  public String getOkButtonString() {
+    return resources.getString("CharacterDialog.OK");
+  }
 }

@@ -4,6 +4,7 @@ import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.ToggleTool;
+import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.selection.VetoableObjectSelectionView;
@@ -25,8 +26,8 @@ public class CharacterCreationPresenter {
     this.model = model;
     this.operator = operator;
   }
-  
-  public void initPresentation(){
+
+  public void initPresentation() {
     ToggleButtonPanel panel = view.addToggleButtonPanel();
     for (final CharacterType type : model.getAvailableCharacterTypes()) {
       ToggleTool button = panel.addButton(properties.getTypeString(type));
@@ -54,19 +55,7 @@ public class CharacterCreationPresenter {
         model.setSelectedTemplate(newValue);
       }
     });
-    view.whenCanceled(new Command() {
-      @Override
-      public void execute() {
-        view.close();
-      }
-    });
-    view.whenConfirmed(new Command() {
-      @Override
-      public void execute() {
-        view.close();
-        operator.operate(model.getSelectedTemplate());
-      }
-    });
+    initButtons();
     model.addListener(new ChangeListener() {
       @Override
       public void changeOccurred() {
@@ -75,6 +64,26 @@ public class CharacterCreationPresenter {
     });
     refreshList(list);
     view.show();
+  }
+
+  private void initButtons() {
+    Tool cancel = view.addButton();
+    cancel.setText(properties.getCancelButtonString());
+    cancel.setCommand(new Command() {
+      @Override
+      public void execute() {
+        view.close();
+      }
+    });
+    Tool ok = view.addButton();
+    ok.setText(properties.getOkButtonString());
+    ok.setCommand(new Command() {
+      @Override
+      public void execute() {
+        view.close();
+        operator.operate(model.getSelectedTemplate());
+      }
+    });
   }
 
   protected void refreshList(VetoableObjectSelectionView<HeroTemplate> list) {

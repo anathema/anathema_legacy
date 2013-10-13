@@ -2,7 +2,6 @@ package net.sf.anathema.hero.framework.perspective;
 
 import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
-import net.sf.anathema.fx.hero.creation.FxCharacterTemplateCreator;
 import net.sf.anathema.hero.framework.perspective.model.CharacterIdentifier;
 import net.sf.anathema.hero.framework.perspective.model.CharacterItemModel;
 import net.sf.anathema.hero.framework.perspective.model.ItemSelectionModel;
@@ -53,8 +52,7 @@ public class NewInteractionPresenter {
   private class CreateNewCommand implements Command {
     @Override
     public void execute() {
-      //TODO (Swing->FX): Instantiate Creator in the view to decouple the presenter from Swing.
-      CharacterTemplateCreator creator = new FxCharacterTemplateCreator();
+      CharacterTemplateCreator creator = view.createNewCharacter();
       creator.useResources(environment);
       model.createNew(creator, environment);
     }

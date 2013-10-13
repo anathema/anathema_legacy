@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.creation;
 
 import net.sf.anathema.character.main.template.HeroTemplate;
-import net.sf.anathema.interaction.Command;
+import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.selection.VetoableObjectSelectionView;
 
 public interface CharacterCreationView {
@@ -14,7 +14,5 @@ public interface CharacterCreationView {
 
   void close();
 
-  void whenCanceled(Command command);
-
-  void whenConfirmed(Command command);
+  Tool addButton();
 }

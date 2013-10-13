@@ -6,10 +6,12 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ToggleGroup;
 import net.miginfocom.layout.AC;
 import net.miginfocom.layout.LC;
+import net.sf.anathema.fx.hero.creation.FxCharacterTemplateCreator;
 import net.sf.anathema.hero.framework.perspective.CharacterButtonDto;
 import net.sf.anathema.hero.framework.perspective.CharacterGridView;
 import net.sf.anathema.hero.framework.perspective.Selector;
 import net.sf.anathema.hero.framework.perspective.model.CharacterIdentifier;
+import net.sf.anathema.lib.workflow.wizard.selection.CharacterTemplateCreator;
 import net.sf.anathema.platform.fx.Stylesheet;
 import org.tbee.javafx.scene.layout.MigPane;
 
@@ -59,6 +61,11 @@ public class CharacterGridFxView implements CharacterGridView {
         buttonsByIdentifier.get(dto.identifier).setContent(dto);
       }
     });
+  }
+
+  @Override
+  public CharacterTemplateCreator createNewCharacter() {
+    return new FxCharacterTemplateCreator();
   }
 
   private CharacterGridButton createGridButton(CharacterButtonDto dto,
