@@ -14,9 +14,10 @@ import net.sf.anathema.charmdatabase.view.rules.CharmTraitMinimumsPanel;
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.charms.display.MagicDisplayLabeler;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
+import net.sf.anathema.platform.fx.NodeHolder;
 import net.sf.anathema.platform.fx.selection.SelectionViewFactory;
 
-public class FxCharmRulesPanel extends AbstractFxContainerPanel implements CharmRulesPanel {
+public class FxCharmRulesPanel extends AbstractFxContainerPanel implements CharmRulesPanel, NodeHolder {
 	private final FxCharmPrerequisitesPanel prerequisitesPanel;
 	private final FxCharmTraitsPanel traitsPanel;
 	private final FxCharmCostsPanel costsPanel;

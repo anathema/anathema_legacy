@@ -3,8 +3,6 @@ package net.sf.anathema.charmdatabase.view.rules.fx;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.miginfocom.layout.AC;
-import net.miginfocom.layout.LC;
 import net.sf.anathema.character.main.magic.basic.cost.Cost;
 import net.sf.anathema.character.main.magic.basic.cost.CostImpl;
 import net.sf.anathema.character.main.magic.basic.cost.HealthCost;
@@ -15,15 +13,15 @@ import net.sf.anathema.charmdatabase.view.rules.CharmCostsPanel;
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.charms.display.tooltip.CostStringBuilder;
 import net.sf.anathema.hero.charms.display.tooltip.HealthCostStringBuilder;
+import net.sf.anathema.platform.fx.NodeHolder;
 
-public class FxCharmCostsPanel extends AbstractFxListPanel<WrappedCost<?>> implements CharmCostsPanel {
+public class FxCharmCostsPanel extends AbstractFxListPanel<WrappedCost<?>> implements CharmCostsPanel, NodeHolder {
 
 	private Resources resources;
 
 	
 	public FxCharmCostsPanel(final Resources resources) {
-		super(new LC().height("100"), new AC(), new AC().index(1).shrinkPrio(200),
-				new IconlessCellRenderer<WrappedCost<?>>() {
+		super(new IconlessCellRenderer<WrappedCost<?>>() {
 					@Override
 					public String getLabel(WrappedCost<?> cost) {
 						return cost != null ? cost.getString() : null;

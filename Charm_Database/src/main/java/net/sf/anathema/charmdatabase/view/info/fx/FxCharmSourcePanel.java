@@ -1,18 +1,16 @@
 package net.sf.anathema.charmdatabase.view.info.fx;
 
-import net.miginfocom.layout.AC;
-import net.miginfocom.layout.LC;
 import net.sf.anathema.character.main.magic.basic.source.SourceBook;
 import net.sf.anathema.charmdatabase.view.fx.AbstractFxListPanel;
 import net.sf.anathema.charmdatabase.view.fx.IconlessCellRenderer;
 import net.sf.anathema.charmdatabase.view.info.CharmSourcePanel;
 import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.platform.fx.NodeHolder;
 
-public class FxCharmSourcePanel extends AbstractFxListPanel<SourceBook> implements CharmSourcePanel {
+public class FxCharmSourcePanel extends AbstractFxListPanel<SourceBook> implements CharmSourcePanel, NodeHolder {
 	
 	public FxCharmSourcePanel(final Resources resources) {
-		super(new LC().height("100"), new AC(), new AC().index(1).shrinkPrio(200),
-				new IconlessCellRenderer<SourceBook>() {
+		super(new IconlessCellRenderer<SourceBook>() {
 			@Override
 			public String getLabel(SourceBook source) {
 				// TODO: We should display page numbers as well

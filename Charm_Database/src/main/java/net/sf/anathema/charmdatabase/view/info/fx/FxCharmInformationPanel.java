@@ -8,8 +8,9 @@ import net.sf.anathema.charmdatabase.view.info.CharmInformationPanel;
 import net.sf.anathema.charmdatabase.view.info.CharmSourcePanel;
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
+import net.sf.anathema.platform.fx.NodeHolder;
 
-public class FxCharmInformationPanel extends AbstractFxContainerPanel implements CharmInformationPanel {
+public class FxCharmInformationPanel extends AbstractFxContainerPanel implements CharmInformationPanel, NodeHolder {
 	
 	private final FxCharmSourcePanel sourcePanel;
 
