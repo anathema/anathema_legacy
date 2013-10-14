@@ -14,17 +14,17 @@ import net.sf.anathema.platform.fx.selection.SelectionViewFactory;
 
 public class FxCharmDetails extends AbstractFxContainerPanel implements CharmDetails {
 
-  private final String BASICS_HEIGHT = "20%";
-  private final String RULES_HEIGHT = "60%";
-  private final String INFO_HEIGHT = "20%";
-	
+  private final static String BASICS_HEIGHT = "20%";
+  private final static String RULES_HEIGHT = "60%";
+  private final static String INFO_HEIGHT = "20%";
+
   //private final FxCharmListView<IEquipmentStats> listView = new FxCharmListView<>();
   private final FxCharmBasicsPanel basicsPanel;
   private final FxCharmRulesPanel rulesPanel;
   private final FxCharmInformationPanel informationPanel;
 
   public FxCharmDetails(SelectionViewFactory selectionFactory, Resources resources) {
-	super(selectionFactory, new LC().wrapAfter(1), new AC().grow().fill(), new AC().grow().fill());
+    super(selectionFactory, new LC().wrapAfter(1), new AC().grow().fill(), new AC().grow().fill());
     this.basicsPanel = new FxCharmBasicsPanel(selectionFactory);
     this.rulesPanel = new FxCharmRulesPanel(resources, selectionFactory);
     this.informationPanel = new FxCharmInformationPanel(resources);
@@ -32,16 +32,19 @@ public class FxCharmDetails extends AbstractFxContainerPanel implements CharmDet
 
   @Override
   public CharmBasicsPanel addBasicsPanel(final String title) {
-	return addSubpanel(basicsPanel, title, new CC().height(BASICS_HEIGHT).growY().push());
+    addSubpanel(basicsPanel, title, new CC().height(BASICS_HEIGHT).growY().push());
+    return basicsPanel;
   }
 
   @Override
   public CharmRulesPanel addRulesPanel(final String title) {
-	  return addSubpanel(rulesPanel, title, new CC().height(RULES_HEIGHT).growY().push());
+    addSubpanel(rulesPanel, title, new CC().height(RULES_HEIGHT).growY().push());
+    return rulesPanel;
   }
 
   @Override
   public CharmInformationPanel addInformationPanel(final String title) {
-	  return addSubpanel(informationPanel, title, new CC().height(INFO_HEIGHT).growY().push());
+    addSubpanel(informationPanel, title, new CC().height(INFO_HEIGHT).growY().push());
+    return informationPanel;
   }
 }

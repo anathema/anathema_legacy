@@ -5,9 +5,8 @@ import net.sf.anathema.charmdatabase.view.fx.AbstractFxListPanel;
 import net.sf.anathema.charmdatabase.view.fx.IconlessCellRenderer;
 import net.sf.anathema.charmdatabase.view.rules.CharmTraitMinimumsPanel;
 import net.sf.anathema.framework.environment.Resources;
-import net.sf.anathema.platform.fx.NodeHolder;
 
-public class FxCharmTraitsPanel extends AbstractFxListPanel<ValuedTraitType> implements CharmTraitMinimumsPanel, NodeHolder {
+public class FxCharmTraitsPanel extends AbstractFxListPanel<ValuedTraitType> implements CharmTraitMinimumsPanel {
 	
 	public FxCharmTraitsPanel(final Resources resources) {
 		super(new IconlessCellRenderer<ValuedTraitType>() {

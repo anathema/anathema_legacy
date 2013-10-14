@@ -5,9 +5,8 @@ import net.sf.anathema.charmdatabase.view.fx.AbstractFxListPanel;
 import net.sf.anathema.charmdatabase.view.fx.IconlessCellRenderer;
 import net.sf.anathema.charmdatabase.view.info.CharmSourcePanel;
 import net.sf.anathema.framework.environment.Resources;
-import net.sf.anathema.platform.fx.NodeHolder;
 
-public class FxCharmSourcePanel extends AbstractFxListPanel<SourceBook> implements CharmSourcePanel, NodeHolder {
+public class FxCharmSourcePanel extends AbstractFxListPanel<SourceBook> implements CharmSourcePanel {
 	
 	public FxCharmSourcePanel(final Resources resources) {
 		super(new IconlessCellRenderer<SourceBook>() {

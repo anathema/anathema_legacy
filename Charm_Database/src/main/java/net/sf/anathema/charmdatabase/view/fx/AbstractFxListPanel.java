@@ -5,9 +5,10 @@ import net.miginfocom.layout.AC;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.sf.anathema.platform.fx.ListSelectionView;
+import net.sf.anathema.platform.fx.NodeHolder;
 import org.tbee.javafx.scene.layout.MigPane;
 
-public abstract class AbstractFxListPanel<T> {
+public abstract class AbstractFxListPanel<T> implements NodeHolder {
 
   protected final MigPane pane = new MigPane(new LC().height("100"), new AC(), new AC().index(1).shrinkPrio(200));
   private ListSelectionView<T> listView = new ListSelectionView<>();

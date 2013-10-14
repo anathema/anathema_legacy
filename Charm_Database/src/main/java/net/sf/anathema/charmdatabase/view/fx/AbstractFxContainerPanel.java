@@ -61,7 +61,7 @@ public abstract class AbstractFxContainerPanel {
     return selectionView;
   }
 
-  public <T extends NodeHolder> T addSubpanel(final T subpanel, final String title, final CC constraints) {
+  public void addSubpanel(final NodeHolder subpanel, final String title, final CC constraints) {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
@@ -69,7 +69,6 @@ public abstract class AbstractFxContainerPanel {
         pane.add(titledPane, constraints);
       }
     });
-    return subpanel;
   }
 
   public final Node getNode() {
