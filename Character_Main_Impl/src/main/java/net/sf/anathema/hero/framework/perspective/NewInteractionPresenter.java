@@ -9,7 +9,6 @@ import net.sf.anathema.hero.framework.perspective.model.NewCharacterListener;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.workflow.wizard.selection.CharacterTemplateCreator;
-import net.sf.anathema.swing.hero.creation.SwingCharacterTemplateCreator;
 
 public class NewInteractionPresenter {
 
@@ -53,9 +52,8 @@ public class NewInteractionPresenter {
   private class CreateNewCommand implements Command {
     @Override
     public void execute() {
-      //TODO (Swing->FX): Instantiate Creator in the view to decouple the presenter from Swing.
-      CharacterTemplateCreator creator = new SwingCharacterTemplateCreator();
-      creator.useResources(environment);
+      CharacterTemplateCreator creator = view.createNewCharacter();
+      creator.useEnvironment(environment);
       model.createNew(creator, environment);
     }
   }

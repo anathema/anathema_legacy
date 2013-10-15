@@ -6,7 +6,7 @@ import net.sf.anathema.hero.framework.perspective.model.ReportRegister;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.file.RelativePath;
-import net.sf.anathema.platform.fx.MenuTool;
+import net.sf.anathema.platform.view.MenuTool;
 
 public class PrintInteractionPresenter {
   private final ItemSelectionModel model;

@@ -12,7 +12,8 @@ public class TemplateTypeUiConfiguration extends AbstractUIConfiguration<HeroTem
   }
 
   @Override
-  public String getLabel(HeroTemplate value) {
-    return resources.getString(value.getPresentationProperties().getNewActionResource());
+  protected String labelForExistingValue(HeroTemplate value) {
+    String newActionResource = value.getPresentationProperties().getNewActionResource();
+    return resources.getString(newActionResource);
   }
 }

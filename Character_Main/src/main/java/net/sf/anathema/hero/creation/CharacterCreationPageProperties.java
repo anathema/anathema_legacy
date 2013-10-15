@@ -1,16 +1,11 @@
-package net.sf.anathema.swing.hero.creation;
+package net.sf.anathema.hero.creation;
 
 import net.sf.anathema.character.main.CharacterUI;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.framework.environment.Resources;
-import net.sf.anathema.hero.creation.CharacterTypeUi;
-import net.sf.anathema.hero.creation.TemplateTypeUiConfiguration;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
-import net.sf.anathema.lib.message.BasicMessage;
-import net.sf.anathema.lib.message.IBasicMessage;
-import net.sf.anathema.lib.message.MessageType;
 
 public class CharacterCreationPageProperties {
 
@@ -26,10 +21,6 @@ public class CharacterCreationPageProperties {
     return resources.getString("CharacterDialog.Title");
   }
 
-  public IBasicMessage getConfirmMessage() {
-    return new BasicMessage(resources.getString("CharacterDialog.Message.Confirm"), MessageType.NORMAL);
-  }
-
   public String getTypeString(CharacterType type) {
     return new CharacterTypeUi(resources).getLabel(type);
   }
@@ -42,4 +33,11 @@ public class CharacterCreationPageProperties {
     return new TemplateTypeUiConfiguration(resources);
   }
 
+  public String getCancelButtonString() {
+    return resources.getString("CharacterDialog.Cancel");
+  }
+
+  public String getOkButtonString() {
+    return resources.getString("CharacterDialog.OK");
+  }
 }

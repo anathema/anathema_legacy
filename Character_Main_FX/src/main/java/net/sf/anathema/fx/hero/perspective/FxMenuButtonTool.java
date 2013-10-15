@@ -4,7 +4,7 @@ import javafx.scene.control.SplitMenuButton;
 import javafx.scene.image.ImageView;
 import net.sf.anathema.framework.view.menu.FxMenuTool;
 import net.sf.anathema.interaction.Tool;
-import net.sf.anathema.platform.fx.MenuTool;
+import net.sf.anathema.platform.view.MenuTool;
 import net.sf.anathema.platform.tool.AdjustSize;
 import net.sf.anathema.platform.tool.FxBaseTool;
 import net.sf.anathema.platform.tool.ImageClosure;

@@ -6,7 +6,7 @@ import net.sf.anathema.hero.framework.perspective.model.ItemSelectionModel;
 import net.sf.anathema.hero.framework.perspective.model.ReportRegister;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
-import net.sf.anathema.platform.fx.MenuTool;
+import net.sf.anathema.platform.view.MenuTool;
 
 public class InteractionReportRegister implements ReportRegister {
   private final MenuTool interaction;
