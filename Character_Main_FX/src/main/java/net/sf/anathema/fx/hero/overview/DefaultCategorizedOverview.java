@@ -1,7 +1,6 @@
 package net.sf.anathema.fx.hero.overview;
 
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
-import net.sf.anathema.fx.hero.overview.FxOverviewCategory;
 import net.sf.anathema.hero.advance.overview.view.CategorizedOverview;
 import net.sf.anathema.hero.advance.overview.view.OverviewDisplay;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
@@ -18,6 +17,9 @@ public class DefaultCategorizedOverview implements CategorizedOverview {
 
   @Override
   public void showIn(OverviewDisplay display) {
-    display.setOverviewPane(panel);
+    if (!(display instanceof FxOverviewDisplay)) {
+      return;
+    }
+    ((FxOverviewDisplay) display).setOverviewPane(panel);
   }
 }

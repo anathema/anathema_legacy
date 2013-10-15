@@ -7,6 +7,7 @@ import net.sf.anathema.character.equipment.creation.presenter.stats.properties.A
 import net.sf.anathema.character.main.CharacterUI;
 import net.sf.anathema.hero.health.HealthType;
 import net.sf.anathema.lib.control.IntValueChangedListener;
+import net.sf.anathema.lib.gui.icon.ImageProvider;
 import net.sf.anathema.lib.gui.layout.AdditiveView;
 import net.sf.anathema.lib.gui.layout.SwingLayoutUtils;
 import net.sf.anathema.framework.environment.Resources;
@@ -36,7 +37,7 @@ public class ArmourStatisticsPresenterPage extends AbstractEquipmentStatisticsPr
             new String[]{getProperties().getLethalSoakLabel(), getProperties().getLethalHardnessLabel()},
             new Component[]{initIntegerSpinner(lethalSoakModel).getComponent(), initIntegerSpinner(
                     getPageModel().getLethalHardnessModel()).getComponent()});
-    final IconToggleButton linkToggleButton = new IconToggleButton(new CharacterUI().getLinkIcon());
+    final IconToggleButton linkToggleButton = new IconToggleButton(new ImageProvider().getImageIcon(new CharacterUI().getLinkIconPath()));
     final IIntValueModel aggravatedSoakModel = getPageModel().getSoakModel(HealthType.Aggravated);
     final JComponent aggravatedSoakSpinner = initIntegerSpinner(aggravatedSoakModel).getComponent();
     getPageContent().addView(new AdditiveView() {

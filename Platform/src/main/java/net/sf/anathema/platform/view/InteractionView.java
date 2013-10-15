@@ -1,4 +1,4 @@
-package net.sf.anathema.platform.fx;
+package net.sf.anathema.platform.view;
 
 import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.interaction.Tool;

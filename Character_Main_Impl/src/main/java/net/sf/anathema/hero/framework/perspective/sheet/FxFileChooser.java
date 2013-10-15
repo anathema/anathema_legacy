@@ -9,6 +9,7 @@ import static net.sf.anathema.hero.framework.perspective.sheet.PrintCommand.PDF_
 
 public class FxFileChooser {
 
+  //TODO (Swing->FX): Move this to Character_Main_FX instead of Character_Main_Impl
   public static Path selectSaveFile() {
     FileChooser chooser = new javafx.stage.FileChooser();
     chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF Files", "*" + PDF_EXTENSION));
