@@ -1,4 +1,4 @@
-package net.sf.anathema.framework.environment;
+package net.sf.anathema.framework.desktop;
 
 import java.awt.Desktop;
 import java.io.IOException;

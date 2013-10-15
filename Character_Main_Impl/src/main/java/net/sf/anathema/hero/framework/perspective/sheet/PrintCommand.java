@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.framework.perspective.sheet;
 
-import net.sf.anathema.framework.environment.DesktopEnvironment;
+import net.sf.anathema.framework.desktop.DesktopEnvironment;
 import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.reporting.Report;
 import net.sf.anathema.framework.reporting.ReportException;
