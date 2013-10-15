@@ -5,12 +5,12 @@ import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.sf.anathema.character.main.view.CharacterPane;
 import net.sf.anathema.framework.view.util.OptionalView;
-import net.sf.anathema.hero.advance.overview.view.OverviewDisplay;
+import net.sf.anathema.fx.hero.overview.FxOverviewDisplay;
 import net.sf.anathema.hero.display.MultipleContentView;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import org.tbee.javafx.scene.layout.MigPane;
 
-public class TaskedCharacterPane implements CharacterPane, OverviewDisplay {
+public class TaskedCharacterPane implements CharacterPane, FxOverviewDisplay {
 
   private final MigPane paneContainer = new MigPane(new LC().wrapAfter(1));
   private final MigPane viewPanel = new MigPane();
