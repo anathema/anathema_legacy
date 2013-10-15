@@ -7,12 +7,12 @@ import net.sf.anathema.lib.gui.AbstractUIConfiguration;
 public class CharmTypeUi extends AbstractUIConfiguration<CharmType>{
 	private Resources resources;
 
-	  public CharmTypeUi(Resources resources) {
-	    this.resources = resources;
-	  }
+	public CharmTypeUi(Resources resources) {
+		this.resources = resources;
+	}
 
-	  @Override
-	  protected String labelForExistingValue(CharmType value) {
-	    return resources.getString(value.getId());
-	  }
+	@Override
+	protected String labelForExistingValue(CharmType value) {
+		return resources.getString(value.getId());
+	}
 }

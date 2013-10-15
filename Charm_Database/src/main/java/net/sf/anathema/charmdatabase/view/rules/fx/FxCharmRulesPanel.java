@@ -3,8 +3,10 @@ package net.sf.anathema.charmdatabase.view.rules.fx;
 import net.miginfocom.layout.AC;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
+import net.sf.anathema.character.main.magic.charm.duration.Duration;
 import net.sf.anathema.character.main.magic.charm.type.CharmType;
 import net.sf.anathema.charmdatabase.presenter.CharmTypeUi;
+import net.sf.anathema.charmdatabase.presenter.DurationUi;
 import net.sf.anathema.charmdatabase.view.fx.AbstractFxContainerPanel;
 import net.sf.anathema.charmdatabase.view.rules.CharmCostsPanel;
 import net.sf.anathema.charmdatabase.view.rules.CharmKeywordsPanel;
@@ -52,6 +54,11 @@ public class FxCharmRulesPanel extends AbstractFxContainerPanel implements Charm
 
 	@Override
 	public ObjectSelectionView<CharmType> addTypeView(String label, CharmTypeUi ui) {
+		return addSelectionView(label, ui, new CC().grow());
+	}
+
+	@Override
+	public ObjectSelectionView<Duration> addDurationView(String label, DurationUi ui) {
 		return addSelectionView(label, ui, new CC().grow());
 	}
 }

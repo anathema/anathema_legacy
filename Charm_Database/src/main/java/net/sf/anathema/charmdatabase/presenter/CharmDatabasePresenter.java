@@ -1,5 +1,11 @@
 package net.sf.anathema.charmdatabase.presenter;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import net.sf.anathema.character.main.magic.charm.duration.Duration;
+import net.sf.anathema.character.main.magic.charm.duration.QualifiedAmountDuration;
+import net.sf.anathema.character.main.magic.charm.duration.SimpleDuration;
 import net.sf.anathema.character.main.magic.charm.type.CharmType;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.charmdatabase.management.ICharmDatabaseManagement;
@@ -144,7 +150,9 @@ public class CharmDatabasePresenter implements Presenter {
 	    final CharmCostsPanel costsPanel = rulesPanel.addCostsPanel(resources.getString("Charms.Creation.Rules.Costs"));
 	    final CharmKeywordsPanel keywordsPanel = rulesPanel.addKeywordsPanel(resources.getString("Charms.Creation.Rules.Keywords"));
 	    final ObjectSelectionView<CharmType> actionTypeView = rulesPanel.addTypeView(resources.getString("Charms.Creation.Rules.Type"), new CharmTypeUi(resources));
+	    final ObjectSelectionView<Duration> durationView = rulesPanel.addDurationView(resources.getString("Charms.Creation.Rules.Duration"), new DurationUi(resources));
 	    actionTypeView.setObjects(CharmType.values());
+	    durationView.setObjects(getDurations());
 	    
 	    model.getCharmEditModel().addCharmPrerequisitesChangedListening(new ChangeListener() {
 			@Override
@@ -185,12 +193,24 @@ public class CharmDatabasePresenter implements Presenter {
 			}
 	    	
 	    });
+	    
+	    model.getCharmEditModel().addCharmDurationTypeChangedListening(new ChangeListener() {
+
+			@Override
+			public void changeOccurred() {
+				// TODO: We will require some simple means of handling non-standard durations
+				durationView.setObjects(new Duration[] { model.getCharmEditModel().getCharmDuration() });
+				durationView.setSelectedObject(model.getCharmEditModel().getCharmDuration());
+			}
+	    	
+	    });
   
 	    model.getCharmEditModel().addCanonCharmSelectionListening(new ChangeListener() {
 
 			@Override
 			public void changeOccurred() {
 				actionTypeView.setEnabled(false);
+				durationView.setEnabled(false);
 			}
 	    	
 	    });
@@ -199,9 +219,19 @@ public class CharmDatabasePresenter implements Presenter {
 			@Override
 			public void changeOccurred() {
 				actionTypeView.setEnabled(true);
+				durationView.setEnabled(true);
 			}
 	    	
 	    });
+  }
+  
+  private Duration[] getDurations() {
+	  // TODO: There should be a list for these common values somewhere, as there is for types
+	  List<Duration> durations = new ArrayList<>();
+	  durations.add(SimpleDuration.INSTANT_DURATION);
+	  durations.add(SimpleDuration.PERMANENT_DURATION);
+	  durations.add(new QualifiedAmountDuration("1", "scene"));
+	  return durations.toArray(new Duration[0]);
   }
   
   private void initInformationDetailsView() {
