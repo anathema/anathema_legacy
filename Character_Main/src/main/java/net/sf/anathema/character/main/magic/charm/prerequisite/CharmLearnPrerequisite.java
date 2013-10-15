@@ -4,4 +4,6 @@ import net.sf.anathema.character.main.magic.charm.ICharmLearnArbitrator;
 
 public interface CharmLearnPrerequisite {
 	boolean isFulfilled(ICharmLearnArbitrator arbitrator);
+	
+	void visitCharmLearnPrerequisite(CharmLearnPrerequisiteVisitor visitor);
 }

@@ -2,6 +2,7 @@ package net.sf.anathema.character.main.magic.charm.prerequisite.impl;
 
 import net.sf.anathema.character.main.magic.basic.attribute.MagicAttribute;
 import net.sf.anathema.character.main.magic.charm.ICharmLearnArbitrator;
+import net.sf.anathema.character.main.magic.charm.prerequisite.CharmLearnPrerequisiteVisitor;
 import net.sf.anathema.character.main.magic.charm.prerequisite.IndirectCharmLearnPrerequisite;
 import net.sf.anathema.character.main.magic.charm.prerequisite.MultipleCharmLearnPrerequisite;
 
@@ -29,6 +30,11 @@ public class AttributeKnownCharmLearnPrerequisite implements IndirectCharmLearnP
 	@Override
 	public String getRequirementLabel() {
 		return "Requirement." + attribute.getId() + "." + count;
+	}
+
+	@Override
+	public void visitCharmLearnPrerequisite(CharmLearnPrerequisiteVisitor visitor) {
+		visitor.visitAttributeKnownCharmLearnPrerequisite(this);
 	}
 
 }

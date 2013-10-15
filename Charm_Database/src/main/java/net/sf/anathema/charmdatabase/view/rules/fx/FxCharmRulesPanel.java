@@ -10,11 +10,11 @@ import net.sf.anathema.charmdatabase.presenter.DurationUi;
 import net.sf.anathema.charmdatabase.view.fx.AbstractFxContainerPanel;
 import net.sf.anathema.charmdatabase.view.rules.CharmCostsPanel;
 import net.sf.anathema.charmdatabase.view.rules.CharmKeywordsPanel;
+import net.sf.anathema.charmdatabase.view.rules.CharmLearnPrerequisiteStringBuilder;
 import net.sf.anathema.charmdatabase.view.rules.CharmPrerequisitesPanel;
 import net.sf.anathema.charmdatabase.view.rules.CharmRulesPanel;
 import net.sf.anathema.charmdatabase.view.rules.CharmTraitMinimumsPanel;
 import net.sf.anathema.framework.environment.Resources;
-import net.sf.anathema.hero.charms.display.MagicDisplayLabeler;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.platform.fx.NodeHolder;
 import net.sf.anathema.platform.fx.selection.SelectionViewFactory;
@@ -27,7 +27,7 @@ public class FxCharmRulesPanel extends AbstractFxContainerPanel implements Charm
 
   public FxCharmRulesPanel(Resources resources, SelectionViewFactory selectionFactory) {
     super(selectionFactory, new LC().wrapAfter(2).fill().insets("4"), new AC(), new AC().index(1).shrinkPrio(200));
-    prerequisitesPanel = new FxCharmPrerequisitesPanel(new MagicDisplayLabeler(resources));
+    prerequisitesPanel = new FxCharmPrerequisitesPanel(new CharmLearnPrerequisiteStringBuilder(resources));
     traitsPanel = new FxCharmTraitsPanel(resources);
     costsPanel = new FxCharmCostsPanel(resources);
     keywordsPanel = new FxCharmKeywordsPanel(resources);

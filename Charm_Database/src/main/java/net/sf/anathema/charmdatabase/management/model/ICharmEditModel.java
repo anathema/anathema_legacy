@@ -5,6 +5,7 @@ import net.sf.anathema.character.main.magic.basic.cost.ICostList;
 import net.sf.anathema.character.main.magic.basic.source.SourceBook;
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.charm.duration.Duration;
+import net.sf.anathema.character.main.magic.charm.prerequisite.CharmLearnPrerequisite;
 import net.sf.anathema.character.main.magic.charm.type.ICharmTypeModel;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.lib.control.ChangeListener;
@@ -35,10 +36,9 @@ public interface ICharmEditModel {
 	
 	void addCharmGroupChangedListening(ChangeListener listener);
 	
-	// TODO: More complex prerequisites, such as OR groups or keyword counts
-	CharmPrerequisite[] getCharmPrerequisites();
+	CharmLearnPrerequisite[] getCharmPrerequisites();
 	
-	void setCharmPrerequisites(CharmPrerequisite[] charms);
+	void setCharmPrerequisites(CharmLearnPrerequisite[] charms);
 	
 	void addCharmPrerequisitesChangedListening(ChangeListener listener);
 	

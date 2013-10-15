@@ -36,10 +36,10 @@ public class CharmLearnPrerequisiteBuilder {
 		for (Charm charm : parents) {
 			prerequisites.add(new SimpleCharmLearnPrerequisite(charm));
 		}
-		for (SelectiveCharmGroup group : combinedGroups) {
+		for (SelectiveCharmGroup group : openGroups) {
 			prerequisites.add(new DirectGroupCharmLearnPrerequisite(group.getAllGroupCharms(), group.getThreshold()));
 		}
-		for (SelectiveCharmGroup group : openGroups) {
+		for (SelectiveCharmGroup group : combinedGroups) {
 			prerequisites.add(new IndirectGroupCharmLearnPrerequisite(group.getLabel(), group.getAllGroupCharms(), group.getThreshold()));
 		}
 		for (IndirectCharmRequirement requirement : prerequisiteList.getAttributeRequirements()) {

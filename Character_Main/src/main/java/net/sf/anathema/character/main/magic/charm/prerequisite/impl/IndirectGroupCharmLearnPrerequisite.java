@@ -2,6 +2,7 @@ package net.sf.anathema.character.main.magic.charm.prerequisite.impl;
 
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.charm.prerequisite.AbstractGroupCharmLearnPrerequisite;
+import net.sf.anathema.character.main.magic.charm.prerequisite.CharmLearnPrerequisiteVisitor;
 import net.sf.anathema.character.main.magic.charm.prerequisite.IndirectCharmLearnPrerequisite;
 
 public class IndirectGroupCharmLearnPrerequisite extends AbstractGroupCharmLearnPrerequisite implements IndirectCharmLearnPrerequisite {
@@ -15,6 +16,11 @@ public class IndirectGroupCharmLearnPrerequisite extends AbstractGroupCharmLearn
 	@Override
 	public String getRequirementLabel() {
 		return "Requirement." + keyword + "." + getThreshold();
+	}
+
+	@Override
+	public void visitCharmLearnPrerequisite(CharmLearnPrerequisiteVisitor visitor) {
+		visitor.visitIndirectGroupCharmLearnPrerequisite(this);		
 	}
 
 }

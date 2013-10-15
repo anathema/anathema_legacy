@@ -9,6 +9,7 @@ import net.sf.anathema.character.main.magic.basic.cost.ICostList;
 import net.sf.anathema.character.main.magic.basic.source.SourceBook;
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.charm.duration.Duration;
+import net.sf.anathema.character.main.magic.charm.prerequisite.CharmLearnPrerequisite;
 import net.sf.anathema.character.main.magic.charm.type.ICharmTypeModel;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
@@ -31,7 +32,7 @@ public class CharmEditModel implements ICharmEditModel {
 	ITextualDescription description;
 	Identifier charmType;
 	Identifier charmGroup;
-	CharmPrerequisite[] prerequisites;
+	CharmLearnPrerequisite[] prerequisites;
 	ValuedTraitType[] traitMinimums;
 	ICostList costs;
 	MagicAttribute[] keywords;
@@ -73,7 +74,7 @@ public class CharmEditModel implements ICharmEditModel {
 		setCharmType(charm.getCharacterType());
 		setCharmGroup(new SimpleIdentifier(charm.getGroupId()));
 		
-		setCharmPrerequisites(derivePrerequisites(charm));
+		setCharmPrerequisites(charm.getLearnPrerequisites().toArray(new CharmLearnPrerequisite[0]));
 		
 		List<ValuedTraitType> traits = new ArrayList<>();
 		traits.add(charm.getEssence());
@@ -159,12 +160,12 @@ public class CharmEditModel implements ICharmEditModel {
 	}
 
 	@Override
-	public CharmPrerequisite[] getCharmPrerequisites() {
+	public CharmLearnPrerequisite[] getCharmPrerequisites() {
 		return prerequisites;
 	}
 
 	@Override
-	public void setCharmPrerequisites(CharmPrerequisite[] charms) {
+	public void setCharmPrerequisites(CharmLearnPrerequisite[] charms) {
 		if (Arrays.deepEquals(prerequisites, charms)) {
 			return;
 		}
@@ -177,18 +178,6 @@ public class CharmEditModel implements ICharmEditModel {
 	@Override
 	public void addCharmPrerequisitesChangedListening(ChangeListener listener) {
 		prerequisitesChangedControl.addListener(listener);
-	}
-	
-	private CharmPrerequisite[] derivePrerequisites(Charm charm) {
-		List<CharmPrerequisite> prerequisites = new ArrayList<CharmPrerequisite>();
-		
-		for (Charm parent : charm.getParentCharms()) {
-			prerequisites.add(new SimpleCharmPrerequisite(parent));
-		}
-		
-		// TODO: Get special prerequisite types, like groups
-		
-		return prerequisites.toArray(new CharmPrerequisite[0]);
 	}
 
 	@Override
