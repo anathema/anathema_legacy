@@ -26,10 +26,6 @@ public class PathUtils {
     Files.write(file, string.getBytes());
   }
 
-  public static void openOnDesktop(Path path) throws IOException {
-    Desktop.getDesktop().open(path.toFile());
-  }
-
   public static Collection<Path> listAll(Path directory, String glob) {
     try (DirectoryStream<Path> stream = Files.newDirectoryStream(directory, glob)) {
       List<Path> items = new ArrayList<>();

@@ -1,12 +1,11 @@
 package net.sf.anathema.hero.framework.perspective.sheet;
 
+import net.sf.anathema.framework.environment.DesktopEnvironment;
 import net.sf.anathema.framework.environment.Environment;
-import net.sf.anathema.framework.environment.SwingEnvironment;
 import net.sf.anathema.framework.reporting.Report;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.interaction.Command;
-import net.sf.anathema.lib.io.PathUtils;
 import org.apache.commons.io.IOUtils;
 
 import java.io.FileNotFoundException;
@@ -67,8 +66,8 @@ public class PrintCommand implements Command {
   }
 
   private void openFile(Path selectedFile) throws IOException {
-    if (SwingEnvironment.isAutoOpenSupported()) {
-      PathUtils.openOnDesktop(selectedFile);
+    if (DesktopEnvironment.isAutoOpenSupported()) {
+      DesktopEnvironment.openOnDesktop(selectedFile);
     }
   }
 
