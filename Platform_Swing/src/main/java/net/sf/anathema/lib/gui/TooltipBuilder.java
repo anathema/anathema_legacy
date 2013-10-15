@@ -6,7 +6,6 @@ public class TooltipBuilder implements ConfigurableTooltip {
   public static final String CommaSpace = ", ";
   public static final String Space = " ";
   public static final String ColonSpace = ": ";
-  public static final int DEFAULT_TOOLTIP_WIDTH = 80;
 
   private final StringBuilder builder = new StringBuilder();
   private boolean showNoTooltip = false;
