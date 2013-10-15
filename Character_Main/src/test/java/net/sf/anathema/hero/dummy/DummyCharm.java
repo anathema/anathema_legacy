@@ -1,6 +1,8 @@
 package net.sf.anathema.hero.dummy;
 
 import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.character.main.magic.charm.prerequisite.CharmLearnPrerequisite;
+import net.sf.anathema.character.main.magic.charm.prerequisite.impl.SimpleCharmLearnPrerequisite;
 import net.sf.anathema.character.main.magic.charm.requirements.IndirectCharmRequirement;
 import net.sf.anathema.character.main.magic.basic.source.SourceBook;
 import net.sf.anathema.character.main.magic.charm.duration.Duration;
@@ -34,6 +36,7 @@ public class DummyCharm extends SimpleIdentifier implements Charm {
   private Duration duration;
   private IComboRestrictions comboRestrictions = new ComboRestrictions();
   private ValuedTraitType[] prerequisites;
+  private List<CharmLearnPrerequisite> learnPrerequisites;
   private Set<Charm> parentCharms;
   private Set<Charm> learnFollowUpCharms = new HashSet<>();
   private List<IndirectCharmRequirement> requirements = new ArrayList<>();
@@ -72,6 +75,9 @@ public class DummyCharm extends SimpleIdentifier implements Charm {
     super(id);
     this.parentCharms = new LinkedHashSet<>();
     Collections.addAll(parentCharms, parents);
+    for (Charm charm : parents) {
+    	learnPrerequisites.add(new SimpleCharmLearnPrerequisite(charm));
+    }
     this.prerequisites = prerequisites;
   }
 
@@ -141,6 +147,11 @@ public class DummyCharm extends SimpleIdentifier implements Charm {
   @Override
   public Set<Charm> getLearnChildCharms() {
     return learnFollowUpCharms;
+  }
+  
+  @Override
+  public List<CharmLearnPrerequisite> getLearnPrerequisites() {
+  	return learnPrerequisites;
   }
 
   @Override
