@@ -244,7 +244,9 @@ public class CharmDatabasePresenter implements Presenter {
 
 		@Override
 		public void changeOccurred() {
-			sourcesPanel.setSources(model.getCharmEditModel().getCharmSources());
+			sourcesPanel.setSources(model.getCharmEditModel().getCharmSources(), 
+					model.getCharmEditModel().getCharmType(),
+					model.getCharmEditModel().getName().getText());
 		}
 		  
 	  });

@@ -1,6 +1,7 @@
 package net.sf.anathema.hero.charms.display.tooltip.source;
 
 import net.sf.anathema.hero.charms.display.tooltip.IMagicSourceStringBuilder;
+import net.sf.anathema.hero.charms.display.tooltip.ISourceStringBuilder;
 import net.sf.anathema.hero.charms.display.tooltip.MagicTooltipContributor;
 import net.sf.anathema.character.main.magic.basic.Magic;
 import net.sf.anathema.character.main.magic.basic.source.SourceBook;
@@ -9,7 +10,7 @@ import net.sf.anathema.lib.gui.TooltipBuilder;
 import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.framework.environment.Resources;
 
-public class MagicSourceContributor<T extends Magic> implements IMagicSourceStringBuilder<T>, MagicTooltipContributor {
+public class MagicSourceContributor<T extends Magic> implements IMagicSourceStringBuilder<T>, MagicTooltipContributor, ISourceStringBuilder {
 
   private final Resources resources;
 
@@ -33,20 +34,25 @@ public class MagicSourceContributor<T extends Magic> implements IMagicSourceStri
   public String createSourceString(T t) {
     SourceBook[] sources = getSources(t);
     String[] sourceStrings = new String[sources.length];
-    for (int i = 0; i != sources.length; i++) {
-      StringBuilder builder = new StringBuilder();
-      builder.append(resources.getString(createSourceBookKey(sources[i])));
-      String pageKey = createPageKey(t.getId(), sources[i]);
+    for (int i = 0; i != sources.length; i++) {     
+      sourceStrings[i] = createStringForSource(t.getId(), sources[i]);
+    }
+    String andString = resources.getString("CharmTreeView.ToolTip.SourceAnd");
+    return StringUtilities.joinStringsWithDelimiter(sourceStrings, ", " + andString + " ");
+  }
+  
+  @Override
+  public String createStringForSource(String magicId, SourceBook source) {
+	  StringBuilder builder = new StringBuilder();
+      builder.append(resources.getString(createSourceBookKey(source)));
+      String pageKey = createPageKey(magicId, source);
       if (resources.supportsKey(pageKey)) {
         builder.append(TooltipBuilder.CommaSpace);
         builder.append(resources.getString("CharmTreeView.ToolTip.Page"));
         builder.append(TooltipBuilder.Space);
         builder.append(resources.getString(pageKey));
       }
-      sourceStrings[i] = builder.toString();
-    }
-    String andString = resources.getString("CharmTreeView.ToolTip.SourceAnd");
-    return StringUtilities.joinStringsWithDelimiter(sourceStrings, ", " + andString + " ");
+      return builder.toString();
   }
 
   private String createSourceBookKey(SourceBook source) {
