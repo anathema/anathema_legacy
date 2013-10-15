@@ -8,23 +8,25 @@ import net.sf.anathema.charmdatabase.view.info.CharmInformationPanel;
 import net.sf.anathema.charmdatabase.view.info.CharmSourcePanel;
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
+import net.sf.anathema.platform.fx.NodeHolder;
 
-public class FxCharmInformationPanel extends AbstractFxContainerPanel implements CharmInformationPanel {
-	
-	private final FxCharmSourcePanel sourcePanel;
+public class FxCharmInformationPanel extends AbstractFxContainerPanel implements CharmInformationPanel, NodeHolder {
 
-	public FxCharmInformationPanel(Resources resources) {
-		super(new LC().wrapAfter(3).fill().insets("4"), new AC(), new AC());
-	    sourcePanel = new FxCharmSourcePanel(resources);
-	  }
-	
-	@Override
-	  public ITextView addDescriptionView(String label) {
-		return addTextBoxView(label, new CC().spanX(2).grow());
-	  }
+  private final FxCharmSourcePanel sourcePanel;
 
-	@Override
-	public CharmSourcePanel addSourcePanel(final String title) {
-		return addSubpanel(sourcePanel, title, new CC().grow());
-	}
+  public FxCharmInformationPanel(Resources resources) {
+    super(new LC().wrapAfter(3).fill().insets("4"), new AC(), new AC());
+    sourcePanel = new FxCharmSourcePanel(resources);
+  }
+
+  @Override
+  public ITextView addDescriptionView(String label) {
+    return addTextBoxView(label, new CC().spanX(2).grow());
+  }
+
+  @Override
+  public CharmSourcePanel addSourcePanel(final String title) {
+    addSubpanel(sourcePanel, title, new CC().grow());
+    return sourcePanel;
+  }
 }

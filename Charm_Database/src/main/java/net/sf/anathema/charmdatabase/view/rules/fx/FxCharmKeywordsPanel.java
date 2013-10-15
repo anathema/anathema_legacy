@@ -1,22 +1,19 @@
 package net.sf.anathema.charmdatabase.view.rules.fx;
 
-import java.util.Arrays;
-import java.util.Comparator;
-
-import net.miginfocom.layout.AC;
-import net.miginfocom.layout.LC;
 import net.sf.anathema.character.main.magic.basic.attribute.MagicAttribute;
 import net.sf.anathema.charmdatabase.view.fx.AbstractFxListPanel;
 import net.sf.anathema.charmdatabase.view.fx.IconlessCellRenderer;
 import net.sf.anathema.charmdatabase.view.rules.CharmKeywordsPanel;
 import net.sf.anathema.framework.environment.Resources;
 
+import java.util.Arrays;
+import java.util.Comparator;
+
 public class FxCharmKeywordsPanel extends AbstractFxListPanel<MagicAttribute> implements CharmKeywordsPanel {
 	
 	public FxCharmKeywordsPanel(final Resources resources) {
 		// TODO: A graphical means to render the trait values would be nice.
-		super(new LC().height("100"), new AC(), new AC().index(1).shrinkPrio(200),
-				new IconlessCellRenderer<MagicAttribute>() {
+		super(new IconlessCellRenderer<MagicAttribute>() {
 					@Override
 					public String getLabel(MagicAttribute attribute) {
 						return attribute != null ? resources.getString(attribute.getId()) 
