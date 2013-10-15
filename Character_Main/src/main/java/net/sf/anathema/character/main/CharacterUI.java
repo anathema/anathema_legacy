@@ -24,10 +24,6 @@ public class CharacterUI extends AbstractUI {
     return new RelativePath("icons/ButtonRandomNameB16.png");
   }
 
-  public Icon getSmallTypeIcon(CharacterType characterType) {
-    return getIcon(getSmallTypeIconPath(characterType));
-  }
-
   public RelativePath getSmallTypeIconPath(CharacterType characterType) {
     return new RelativePath("icons/" + characterType.getId() + "Icon16.png");
   }
@@ -36,20 +32,8 @@ public class CharacterUI extends AbstractUI {
     return new RelativePath("icons/" + characterType.getId() + "Icon100.png");
   }
 
-  public Icon getMediumBallResource(CharacterType characterType) {
-    return getIcon(getMediumBallPath(characterType));
-  }
-
   public RelativePath getMediumBallPath(CharacterType characterType) {
     return new RelativePath("icons/Border" + characterType.getId() + "Button16.png");
-  }
-
-  public Icon getUnselectedBallResource() {
-    return getIcon(new RelativePath("icons/BorderUnselectedButton16.png"));
-  }
-
-  public Icon getUnselectableBallResource() {
-    return getIcon(new RelativePath("icons/BorderUnselectableButton16.png"));
   }
 
   public RelativePath getRandomRealmNameIconPath() {
