@@ -2,18 +2,11 @@ package net.sf.anathema.character.main;
 
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.lib.file.RelativePath;
-import net.sf.anathema.lib.gui.ui.AbstractUI;
 
-import javax.swing.Icon;
-
-public class CharacterUI extends AbstractUI {
+public class CharacterUI {
 
   public RelativePath getCharacterDescriptionTabIcon() {
     return new RelativePath("icons/TabDescription16.png");
-  }
-
-  public Icon getLinkIcon() {
-    return getIcon(getLinkIconPath());
   }
 
   public RelativePath getLinkIconPath() {

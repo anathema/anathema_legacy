@@ -6,8 +6,8 @@ import net.sf.anathema.hero.framework.perspective.Selector;
 import net.sf.anathema.hero.framework.perspective.model.CharacterIdentifier;
 import net.sf.anathema.lib.workflow.wizard.selection.CharacterTemplateCreator;
 import net.sf.anathema.platform.fx.FxThreading;
-import net.sf.anathema.platform.fx.InteractionView;
-import net.sf.anathema.platform.fx.MenuTool;
+import net.sf.anathema.platform.view.InteractionView;
+import net.sf.anathema.platform.view.MenuTool;
 import net.sf.anathema.platform.fx.Navigation;
 
 public class FxCharacterNavigation extends Navigation implements InteractionView, CharacterGridView {
