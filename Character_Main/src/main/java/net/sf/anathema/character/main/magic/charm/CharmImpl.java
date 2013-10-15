@@ -1,17 +1,29 @@
 package net.sf.anathema.character.main.magic.charm;
 
-import com.google.common.base.Preconditions;
+import static net.sf.anathema.character.main.traits.types.AbilityType.MartialArts;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import net.sf.anathema.character.main.magic.basic.AbstractMagic;
+import net.sf.anathema.character.main.magic.basic.attribute.MagicAttributeImpl;
+import net.sf.anathema.character.main.magic.basic.cost.ICostList;
+import net.sf.anathema.character.main.magic.basic.source.SourceBook;
+import net.sf.anathema.character.main.magic.charm.combos.IComboRestrictions;
+import net.sf.anathema.character.main.magic.charm.duration.Duration;
+import net.sf.anathema.character.main.magic.charm.prerequisite.CharmLearnPrerequisite;
+import net.sf.anathema.character.main.magic.charm.prerequisite.CharmLearnPrerequisiteBuilder;
+import net.sf.anathema.character.main.magic.charm.prerequisite.impl.SimpleCharmLearnPrerequisite;
 import net.sf.anathema.character.main.magic.charm.requirements.GroupedCharmRequirement;
 import net.sf.anathema.character.main.magic.charm.requirements.IndirectCharmRequirement;
 import net.sf.anathema.character.main.magic.charm.requirements.SelectiveCharmGroup;
 import net.sf.anathema.character.main.magic.charm.requirements.SelectiveCharmGroups;
-import net.sf.anathema.character.main.magic.basic.source.SourceBook;
-import net.sf.anathema.character.main.magic.charm.duration.Duration;
 import net.sf.anathema.character.main.magic.charm.type.ICharmTypeModel;
-import net.sf.anathema.character.main.magic.charm.combos.IComboRestrictions;
-import net.sf.anathema.character.main.magic.basic.AbstractMagic;
-import net.sf.anathema.character.main.magic.basic.attribute.MagicAttributeImpl;
-import net.sf.anathema.character.main.magic.basic.cost.ICostList;
 import net.sf.anathema.character.main.magic.parser.charms.CharmPrerequisiteList;
 import net.sf.anathema.character.main.magic.parser.charms.SelectiveCharmGroupTemplate;
 import net.sf.anathema.character.main.traits.TraitType;
@@ -25,15 +37,7 @@ import net.sf.anathema.hero.traits.TraitMap;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import static net.sf.anathema.character.main.traits.types.AbilityType.MartialArts;
+import com.google.common.base.Preconditions;
 
 public class CharmImpl extends AbstractMagic implements Charm {
 
@@ -53,6 +57,7 @@ public class CharmImpl extends AbstractMagic implements Charm {
   private final List<String> requiredSubEffects = new ArrayList<>();
   private final List<Charm> parentCharms = new ArrayList<>();
   private final List<CharmImpl> children = new ArrayList<>();
+  private final List<CharmLearnPrerequisite> prerequisites = new ArrayList<>();
   private final SelectiveCharmGroups selectiveCharmGroups = new SelectiveCharmGroups();
   private final Set<String> favoredCasteIds = new HashSet<>();
 
@@ -213,6 +218,16 @@ public class CharmImpl extends AbstractMagic implements Charm {
     for (SelectiveCharmGroup charmGroup : selectiveCharmGroups) {
       charmGroup.extractCharms(charmsById, this);
     }
+    
+    prerequisites.addAll(Arrays.asList(new CharmLearnPrerequisiteBuilder(prerequisisteList,
+    		parentCharms.toArray(new Charm[0]),
+    		selectiveCharmGroups.getOpenGroups().toArray(new SelectiveCharmGroup[0]),
+    		selectiveCharmGroups.getCombinedGroups().toArray(new SelectiveCharmGroup[0])).getPrerequisites()));
+  }
+  
+  @Override
+  public List<CharmLearnPrerequisite> getLearnPrerequisites() {
+	  return prerequisites;
   }
 
   public void addChild(CharmImpl child) {
@@ -336,5 +351,8 @@ public class CharmImpl extends AbstractMagic implements Charm {
 
   public void addParentCharms(Charm... parent) {
     parentCharms.addAll(Arrays.asList(parent));
+    for (Charm charm : parent) {
+    	prerequisites.add(new SimpleCharmLearnPrerequisite(charm));
+    }
   }
 }

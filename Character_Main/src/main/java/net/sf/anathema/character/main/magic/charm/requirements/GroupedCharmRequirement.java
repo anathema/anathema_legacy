@@ -20,4 +20,20 @@ public class GroupedCharmRequirement implements IndirectCharmRequirement {
     ICharmLearnArbitrator arbitrator = new StaticCharmLearnArbitrator(charms);
     return charmGroup.holdsThreshold(arbitrator);
   }
+  
+  public Charm[] getGroupCharms() {
+	  return charmGroup.getAllGroupCharms();
+  }
+  
+  public int getThreshold() {
+	  return charmGroup.getThreshold();
+  }
+  
+  public String getLabel() {
+	  return charmGroup.getLabel();
+  }
+  
+  public boolean hasLabel() {
+	  return getLabel() != null;
+  }
 }

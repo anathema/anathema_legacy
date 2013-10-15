@@ -1,5 +1,6 @@
 package net.sf.anathema.character.main.magic.charm;
 
+import net.sf.anathema.character.main.magic.charm.prerequisite.CharmLearnPrerequisite;
 import net.sf.anathema.character.main.magic.charm.requirements.IndirectCharmRequirement;
 import net.sf.anathema.character.main.magic.charm.duration.Duration;
 import net.sf.anathema.character.main.magic.charm.type.ICharmTypeModel;
@@ -31,6 +32,8 @@ public interface Charm extends Magic {
   IComboRestrictions getComboRules();
 
   IndirectCharmRequirement[] getAttributeRequirements();
+  
+  List<CharmLearnPrerequisite> getLearnPrerequisites();
 
   Set<Charm> getParentCharms();
 
