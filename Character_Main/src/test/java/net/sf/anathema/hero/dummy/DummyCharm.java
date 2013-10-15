@@ -36,7 +36,7 @@ public class DummyCharm extends SimpleIdentifier implements Charm {
   private Duration duration;
   private IComboRestrictions comboRestrictions = new ComboRestrictions();
   private ValuedTraitType[] prerequisites;
-  private List<CharmLearnPrerequisite> learnPrerequisites;
+  private List<CharmLearnPrerequisite> learnPrerequisites = new ArrayList<>();
   private Set<Charm> parentCharms;
   private Set<Charm> learnFollowUpCharms = new HashSet<>();
   private List<IndirectCharmRequirement> requirements = new ArrayList<>();
