@@ -1,7 +1,7 @@
 package net.sf.anathema.framework.repository.tree;
 
 import net.sf.anathema.framework.repository.RepositoryException;
-import net.sf.anathema.framework.swing.ExceptionIndicator;
+import net.sf.anathema.framework.fx.ExceptionIndicator;
 import net.sf.anathema.initialization.FxApplicationFrame;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.control.ChangeListener;

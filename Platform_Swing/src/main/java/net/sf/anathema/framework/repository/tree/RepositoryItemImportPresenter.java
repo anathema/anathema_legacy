@@ -2,7 +2,7 @@ package net.sf.anathema.framework.repository.tree;
 
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.repository.RepositoryException;
-import net.sf.anathema.framework.swing.ExceptionIndicator;
+import net.sf.anathema.framework.fx.ExceptionIndicator;
 import net.sf.anathema.initialization.FxApplicationFrame;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.gui.Presenter;
