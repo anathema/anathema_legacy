@@ -1,5 +1,6 @@
 dependencies {
     compile project(':Character_Main')
+    compile project(':Character_Main_Impl')
     compile project(':Platform_FX')
     testCompile testDependencies
 }
