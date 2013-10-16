@@ -17,8 +17,7 @@ public class AttributeKnownCharmLearnPrerequisite implements IndirectCharmLearnP
 	
 	@Override
 	public boolean isFulfilled(ICharmLearnArbitrator arbitrator) {
-		// TODO need a way to determine if this can be fulfilled
-		return false;
+		return arbitrator.hasLearnedThresholdCharmsWithKeyword(attribute, count);
 	}
 
 	@Override

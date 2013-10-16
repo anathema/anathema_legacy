@@ -3,6 +3,8 @@ package net.sf.anathema.character.main.magic.charm;
 import java.util.HashSet;
 import java.util.Set;
 
+import net.sf.anathema.character.main.magic.basic.attribute.MagicAttribute;
+
 public class CompositeLearnWorker implements ICharmLearnWorker {
 
   private final ICharmLearnArbitrator learnArbitrator;
@@ -15,6 +17,12 @@ public class CompositeLearnWorker implements ICharmLearnWorker {
   @Override
   public boolean isLearned(Charm charm) {
     return learnArbitrator.isLearned(charm) && !forgottenCharm.contains(charm);
+  }
+  
+  @Override
+  public boolean hasLearnedThresholdCharmsWithKeyword(MagicAttribute attribute,
+  		int threshold) {
+  	return learnArbitrator.hasLearnedThresholdCharmsWithKeyword(attribute, threshold);
   }
 
   @Override

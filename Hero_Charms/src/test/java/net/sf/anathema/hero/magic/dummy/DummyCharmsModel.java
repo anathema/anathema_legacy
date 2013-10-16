@@ -1,5 +1,6 @@
 package net.sf.anathema.hero.magic.dummy;
 
+import net.sf.anathema.character.main.magic.basic.attribute.MagicAttribute;
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.hero.charms.model.CharmIdMap;
 import net.sf.anathema.hero.charms.model.ICharmGroup;
@@ -67,6 +68,12 @@ public class DummyCharmsModel implements CharmsModel {
   @Override
   public boolean isLearnable(Charm charm) {
     throw new NotYetImplementedException();
+  }
+  
+  @Override
+  public boolean hasLearnedThresholdCharmsWithKeyword(MagicAttribute attribute,
+		  int threshold) {
+	throw new NotYetImplementedException();
   }
 
   @Override

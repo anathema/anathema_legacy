@@ -1,5 +1,6 @@
 package net.sf.anathema.hero.magic.dummy;
 
+import net.sf.anathema.character.main.magic.basic.attribute.MagicAttribute;
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.hero.charms.model.learn.ICharmLearnListener;
 import net.sf.anathema.hero.charms.model.learn.IExtendedCharmLearnableArbitrator;
@@ -16,6 +17,12 @@ public class DummyLearnableArbitrator implements IExtendedCharmLearnableArbitrat
   @Override
   public boolean isLearnable(Charm charm) {
     return ArrayUtils.contains(learnableCharmIds, charm.getId());
+  }
+  
+  @Override
+  public boolean hasLearnedThresholdCharmsWithKeyword(MagicAttribute attribute,
+  		int threshold) {
+  	return false;
   }
 
   @Override

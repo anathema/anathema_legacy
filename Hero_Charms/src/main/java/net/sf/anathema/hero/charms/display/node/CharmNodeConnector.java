@@ -1,11 +1,11 @@
 package net.sf.anathema.hero.charms.display.node;
 
-import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.character.main.magic.charm.requirements.IndirectCharmRequirement;
-import net.sf.anathema.graph.nodes.IIdentifiedRegularNode;
-
 import java.util.Collection;
 import java.util.Map;
+
+import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.character.main.magic.charm.prerequisite.IndirectCharmLearnPrerequisite;
+import net.sf.anathema.graph.nodes.IIdentifiedRegularNode;
 
 public class CharmNodeConnector {
 
@@ -16,8 +16,8 @@ public class CharmNodeConnector {
         IIdentifiedRegularNode parentNode = charmNodesById.get(parentCharm.getId());
         connectNodes(childNode, parentNode);
       }
-      for (IndirectCharmRequirement requirement : charm.getIndirectRequirements()) {
-        IIdentifiedRegularNode parentNode = charmNodesById.get(requirement.getStringRepresentation());
+      for (IndirectCharmLearnPrerequisite requirement : charm.getPrerequisitesOfType(IndirectCharmLearnPrerequisite.class)) {
+        IIdentifiedRegularNode parentNode = charmNodesById.get(requirement.getRequirementLabel());
         connectNodes(childNode, parentNode);
       }
     }

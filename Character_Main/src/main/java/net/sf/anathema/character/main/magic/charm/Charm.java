@@ -44,6 +44,8 @@ public interface Charm extends Magic {
   Set<Charm> getLearnFollowUpCharms(ICharmLearnArbitrator learnArbitrator);
 
   Set<Charm> getLearnPrerequisitesCharms(ICharmLearnArbitrator learnArbitrator);
+  
+  <T extends CharmLearnPrerequisite> List<T> getPrerequisitesOfType(Class<T> clazz);
 
   boolean isBlockedByAlternative(ICharmLearnArbitrator  learnArbitrator);
 
@@ -54,6 +56,4 @@ public interface Charm extends Magic {
   boolean isTreeRoot();
 
   Set<Charm> getRenderingPrerequisiteCharms();
-  
-  Set<IndirectCharmRequirement> getIndirectRequirements();
 }

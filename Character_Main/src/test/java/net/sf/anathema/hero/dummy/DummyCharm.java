@@ -148,6 +148,18 @@ public class DummyCharm extends SimpleIdentifier implements Charm {
   public List<CharmLearnPrerequisite> getLearnPrerequisites() {
   	return learnPrerequisites;
   }
+  
+
+  @Override
+  public <T extends CharmLearnPrerequisite> List<T> getPrerequisitesOfType(Class<T> clazz) {
+	  List<T> matches = new ArrayList<>();
+	  for (CharmLearnPrerequisite prerequisite : learnPrerequisites) {
+		  if (clazz.isInstance(prerequisite)) {
+			  matches.add((T) prerequisite);
+		  }
+	  }
+	  return matches;
+  }
 
   @Override
   public Set<Charm> getParentCharms() {
@@ -167,13 +179,6 @@ public class DummyCharm extends SimpleIdentifier implements Charm {
   @Override
   public Set<Charm> getRenderingPrerequisiteCharms() {
     return parentCharms;
-  }
-
-  @Override
-  public Set<IndirectCharmRequirement> getIndirectRequirements() {
-    HashSet<IndirectCharmRequirement> charmRequirements = new HashSet<>();
-    Collections.addAll(charmRequirements, getAttributeRequirements());
-    return charmRequirements;
   }
 
   @Override

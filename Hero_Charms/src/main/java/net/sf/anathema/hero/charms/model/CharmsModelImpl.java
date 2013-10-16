@@ -12,10 +12,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import net.sf.anathema.character.main.magic.basic.attribute.MagicAttribute;
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.charm.CharmAttributeList;
 import net.sf.anathema.character.main.magic.charm.martial.MartialArtsLevel;
 import net.sf.anathema.character.main.magic.charm.martial.MartialArtsUtilities;
+import net.sf.anathema.character.main.magic.charm.prerequisite.IndirectCharmLearnPrerequisite;
 import net.sf.anathema.character.main.magic.charm.requirements.IndirectCharmRequirement;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.type.CharacterType;
@@ -383,11 +385,10 @@ public class CharmsModelImpl implements CharmsModel {
         return false;
       }
     }
-    Charm[] learnedCharms = getLearnedCharms(true);
-    for (IndirectCharmRequirement requirement : charm.getAttributeRequirements()) {
-      if (!requirement.isFulfilled(learnedCharms)) {
-        return false;
-      }
+    for (IndirectCharmLearnPrerequisite prerequisite : charm.getPrerequisitesOfType(IndirectCharmLearnPrerequisite.class)) {
+    	if (!prerequisite.isFulfilled(this)) {
+    		return false;
+    	}
     }
     if (!(new CharmTraitRequirementChecker(getPrerequisiteModifyingCharms(), traits, this).areTraitMinimumsSatisfied(charm))) {
       return false;
@@ -398,6 +399,22 @@ public class CharmsModelImpl implements CharmsModel {
       }
     }
     return true;
+  }
+  
+  @Override
+  public boolean hasLearnedThresholdCharmsWithKeyword(MagicAttribute attribute,
+  		int threshold) {
+	  Charm[] learnedCharms = getLearnedCharms(true);
+	  int count = 0;
+	  for (Charm charm : learnedCharms) {
+		  if (charm.hasAttribute(attribute)) {
+			  count++;
+		  }
+		  if (count >= threshold) {
+			  return true;
+		  }
+	  }
+	  return false;
   }
 
   private boolean isExperienced() {

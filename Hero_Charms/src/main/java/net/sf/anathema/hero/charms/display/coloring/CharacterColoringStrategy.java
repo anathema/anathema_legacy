@@ -1,6 +1,7 @@
 package net.sf.anathema.hero.charms.display.coloring;
 
 import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.character.main.magic.charm.prerequisite.IndirectCharmLearnPrerequisite;
 import net.sf.anathema.character.main.magic.charm.requirements.IndirectCharmRequirement;
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.hero.charms.display.model.CharmDisplayModel;
@@ -31,9 +32,9 @@ public class CharacterColoringStrategy implements CharmColoring {
   }
 
   @Override
-  public void setPrerequisiteVisuals(IndirectCharmRequirement requirement) {
-    String id = requirement.getStringRepresentation();
-    boolean fulfilled = requirement.isFulfilled(getCharmConfiguration().getLearnedCharms(true));
+  public void setPrerequisiteVisuals(IndirectCharmLearnPrerequisite prerequisite) {
+    String id = prerequisite.getRequirementLabel();
+    boolean fulfilled = prerequisite.isFulfilled(getCharmConfiguration());
     RGBColor color = fulfilled ? characterColor.brighter() : UNSELECTED_COLOR;
     treeView.colorNode(id, new RGBColor(color, MAXIMUM_OPACITY));
   }

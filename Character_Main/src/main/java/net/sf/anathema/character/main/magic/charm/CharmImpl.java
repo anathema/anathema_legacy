@@ -4,7 +4,6 @@ import static net.sf.anathema.character.main.traits.types.AbilityType.MartialArt
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +19,6 @@ import net.sf.anathema.character.main.magic.charm.prerequisite.CharmLearnPrerequ
 import net.sf.anathema.character.main.magic.charm.prerequisite.CharmLearnPrerequisiteBuilder;
 import net.sf.anathema.character.main.magic.charm.prerequisite.DirectCharmLearnPrerequisite;
 import net.sf.anathema.character.main.magic.charm.prerequisite.impl.SimpleCharmLearnPrerequisite;
-import net.sf.anathema.character.main.magic.charm.requirements.GroupedCharmRequirement;
 import net.sf.anathema.character.main.magic.charm.requirements.IndirectCharmRequirement;
 import net.sf.anathema.character.main.magic.charm.requirements.SelectiveCharmGroup;
 import net.sf.anathema.character.main.magic.charm.requirements.SelectiveCharmGroups;
@@ -224,17 +222,6 @@ public class CharmImpl extends AbstractMagic implements Charm {
   }
 
   @Override
-  public Set<IndirectCharmRequirement> getIndirectRequirements() {
-    Set<IndirectCharmRequirement> indirectRequirements = new HashSet<>();
-    for (SelectiveCharmGroup charmGroup : selectiveCharmGroups.getCombinedGroups()) {
-      GroupedCharmRequirement requirement = new GroupedCharmRequirement(charmGroup);
-      indirectRequirements.add(requirement);
-    }
-    Collections.addAll(indirectRequirements, getAttributeRequirements());
-    return indirectRequirements;
-  }
-
-  @Override
   public Set<Charm> getLearnPrerequisitesCharms(ICharmLearnArbitrator learnArbitrator) {
     Set<Charm> prerequisiteCharms = new HashSet<>();
     for (Charm charm : getParentCharms()) {
@@ -324,7 +311,8 @@ public class CharmImpl extends AbstractMagic implements Charm {
   }
 
   @SuppressWarnings("unused")
-  private <T extends CharmLearnPrerequisite> List<T> getPrerequisitesOfType(Class<T> clazz) {
+  @Override
+  public <T extends CharmLearnPrerequisite> List<T> getPrerequisitesOfType(Class<T> clazz) {
 	  List<T> matches = new ArrayList<>();
 	  for (CharmLearnPrerequisite prerequisite : prerequisites) {
 		  if (clazz.isInstance(prerequisite)) {
