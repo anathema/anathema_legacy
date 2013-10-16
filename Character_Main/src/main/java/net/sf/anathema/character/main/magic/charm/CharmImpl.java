@@ -18,6 +18,7 @@ import net.sf.anathema.character.main.magic.charm.combos.IComboRestrictions;
 import net.sf.anathema.character.main.magic.charm.duration.Duration;
 import net.sf.anathema.character.main.magic.charm.prerequisite.CharmLearnPrerequisite;
 import net.sf.anathema.character.main.magic.charm.prerequisite.CharmLearnPrerequisiteBuilder;
+import net.sf.anathema.character.main.magic.charm.prerequisite.DirectCharmLearnPrerequisite;
 import net.sf.anathema.character.main.magic.charm.prerequisite.impl.SimpleCharmLearnPrerequisite;
 import net.sf.anathema.character.main.magic.charm.requirements.GroupedCharmRequirement;
 import net.sf.anathema.character.main.magic.charm.requirements.IndirectCharmRequirement;
@@ -216,9 +217,8 @@ public class CharmImpl extends AbstractMagic implements Charm {
   @Override
   public Set<Charm> getRenderingPrerequisiteCharms() {
     Set<Charm> prerequisiteCharms = new HashSet<>();
-    prerequisiteCharms.addAll(parentCharms);
-    for (SelectiveCharmGroup charmGroup : selectiveCharmGroups.getOpenGroups()) {
-      prerequisiteCharms.addAll(Arrays.asList(charmGroup.getAllGroupCharms()));
+    for (DirectCharmLearnPrerequisite prerequisite : getPrerequisitesOfType(DirectCharmLearnPrerequisite.class)) {
+    	prerequisiteCharms.addAll(Arrays.asList(prerequisite.getDirectPredecessors()));
     }
     return prerequisiteCharms;
   }
@@ -321,6 +321,17 @@ public class CharmImpl extends AbstractMagic implements Charm {
   @Override
   public TraitType getPrimaryTraitType() {
     return getPrerequisites().length == 0 ? OtherTraitType.Essence : getPrerequisites()[0].getType();
+  }
+
+  @SuppressWarnings("unused")
+  private <T extends CharmLearnPrerequisite> List<T> getPrerequisitesOfType(Class<T> clazz) {
+	  List<T> matches = new ArrayList<>();
+	  for (CharmLearnPrerequisite prerequisite : prerequisites) {
+		  if (clazz.isInstance(prerequisite)) {
+			  matches.add((T) prerequisite);
+		  }
+	  }
+	  return matches;
   }
 
   public void addParentCharms(Charm... parent) {
