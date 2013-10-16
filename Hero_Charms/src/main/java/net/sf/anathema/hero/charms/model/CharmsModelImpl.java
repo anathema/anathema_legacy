@@ -18,7 +18,6 @@ import net.sf.anathema.character.main.magic.charm.CharmAttributeList;
 import net.sf.anathema.character.main.magic.charm.martial.MartialArtsLevel;
 import net.sf.anathema.character.main.magic.charm.martial.MartialArtsUtilities;
 import net.sf.anathema.character.main.magic.charm.prerequisite.IndirectCharmLearnPrerequisite;
-import net.sf.anathema.character.main.magic.charm.requirements.IndirectCharmRequirement;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.hero.charms.advance.creation.MagicCreationCostEvaluator;

@@ -1,16 +1,16 @@
 package net.sf.anathema.hero.magic.parser;
 
-import net.sf.anathema.character.main.magic.charm.requirements.IndirectCharmRequirement;
-import net.sf.anathema.character.main.magic.charm.requirements.CharmAttributeRequirement;
+import static org.junit.Assert.assertTrue;
 import net.sf.anathema.character.main.magic.basic.attribute.MagicAttributeImpl;
-import net.sf.anathema.character.main.magic.parser.charms.prerequisite.GenericAttributeRequirementBuilder;
+import net.sf.anathema.character.main.magic.charm.prerequisite.CharmLearnPrerequisite;
+import net.sf.anathema.character.main.magic.charm.prerequisite.impl.AttributeKnownCharmLearnPrerequisite;
+import net.sf.anathema.character.main.magic.parser.charms.prerequisite.GenericAttributePrerequisiteBuilder;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.lib.xml.DocumentUtilities;
+
 import org.apache.commons.lang3.ArrayUtils;
 import org.dom4j.Element;
 import org.junit.Test;
-
-import static org.junit.Assert.assertTrue;
 
 public class GenericAttributeRequirementBuilderTest {
 
@@ -18,9 +18,9 @@ public class GenericAttributeRequirementBuilderTest {
   public void testReadGenericAttributeRequirement() throws Exception {
     String xml = "<element><genericCharmAttributeRequirement attribute=\"generic\"/></element>";
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
-    GenericAttributeRequirementBuilder builder = new GenericAttributeRequirementBuilder();
+    GenericAttributePrerequisiteBuilder builder = new GenericAttributePrerequisiteBuilder();
     builder.setType(AbilityType.Investigation);
-    IndirectCharmRequirement[] indirectRequirements = builder.getCharmAttributeRequirements(rootElement);
-    assertTrue(ArrayUtils.contains(indirectRequirements, new CharmAttributeRequirement(new MagicAttributeImpl("genericInvestigation", false), 1)));
+    CharmLearnPrerequisite[] indirectRequirements = builder.getCharmAttributePrerequisites(rootElement);
+    assertTrue(ArrayUtils.contains(indirectRequirements, new AttributeKnownCharmLearnPrerequisite(new MagicAttributeImpl("genericInvestigation", false), 1)));
   }
 }

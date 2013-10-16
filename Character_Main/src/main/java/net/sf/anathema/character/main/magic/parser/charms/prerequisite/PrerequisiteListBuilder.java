@@ -1,31 +1,33 @@
 package net.sf.anathema.character.main.magic.parser.charms.prerequisite;
 
-import net.sf.anathema.character.main.magic.charm.CharmException;
-import net.sf.anathema.character.main.magic.charm.requirements.IndirectCharmRequirement;
-import net.sf.anathema.character.main.magic.parser.charms.CharmPrerequisiteList;
-import net.sf.anathema.character.main.magic.parser.charms.SelectiveCharmGroupTemplate;
-import net.sf.anathema.character.main.traits.ValuedTraitType;
-import net.sf.anathema.lib.exception.PersistenceException;
-import net.sf.anathema.lib.xml.ElementUtilities;
-import org.dom4j.Element;
-
-import java.util.List;
-
 import static net.sf.anathema.character.main.magic.charm.ICharmXMLConstants.ATTRIB_THRESHOLD;
 import static net.sf.anathema.character.main.magic.charm.ICharmXMLConstants.ATTRIB_VALUE;
 import static net.sf.anathema.character.main.magic.charm.ICharmXMLConstants.TAG_ESSENCE;
 import static net.sf.anathema.character.main.magic.charm.ICharmXMLConstants.TAG_SELECTIVE_CHARM_GROUP;
 import static net.sf.anathema.character.main.traits.types.OtherTraitType.Essence;
 
+import java.util.List;
+
+import net.sf.anathema.character.main.magic.charm.CharmException;
+import net.sf.anathema.character.main.magic.charm.prerequisite.CharmLearnPrerequisite;
+import net.sf.anathema.character.main.magic.charm.prerequisite.IndirectCharmLearnPrerequisite;
+import net.sf.anathema.character.main.magic.parser.charms.CharmPrerequisiteList;
+import net.sf.anathema.character.main.magic.parser.charms.SelectiveCharmGroupTemplate;
+import net.sf.anathema.character.main.traits.ValuedTraitType;
+import net.sf.anathema.lib.exception.PersistenceException;
+import net.sf.anathema.lib.xml.ElementUtilities;
+
+import org.dom4j.Element;
+
 public class PrerequisiteListBuilder {
 
   private static final String ATTRIB_LABEL = "label";
 
   private final ITraitPrerequisitesBuilder traitBuilder;
-  private final IAttributeRequirementBuilder attributeBuilder;
+  private final IAttributePrerequisiteBuilder attributeBuilder;
   private final ICharmPrerequisiteBuilder charmBuilder;
 
-  public PrerequisiteListBuilder(ITraitPrerequisitesBuilder traitBuilder, IAttributeRequirementBuilder attributeBuilder,
+  public PrerequisiteListBuilder(ITraitPrerequisitesBuilder traitBuilder, IAttributePrerequisiteBuilder attributeBuilder,
                                  ICharmPrerequisiteBuilder charmBuilder) {
     this.traitBuilder = traitBuilder;
     this.attributeBuilder = attributeBuilder;
@@ -37,7 +39,7 @@ public class PrerequisiteListBuilder {
     ValuedTraitType essence = buildEssencePrerequisite(prerequisiteListElement);
     String[] prerequisiteCharmIDs = charmBuilder.buildCharmPrerequisites(prerequisiteListElement);
     SelectiveCharmGroupTemplate[] selectiveCharmGroups = buildSelectiveCharmGroups(prerequisiteListElement);
-    IndirectCharmRequirement[] indirectRequirements = attributeBuilder.getCharmAttributeRequirements(prerequisiteListElement);
+    IndirectCharmLearnPrerequisite[] indirectRequirements = attributeBuilder.getCharmAttributePrerequisites(prerequisiteListElement);
     return new CharmPrerequisiteList(allPrerequisites, essence, prerequisiteCharmIDs, selectiveCharmGroups, indirectRequirements);
   }
 

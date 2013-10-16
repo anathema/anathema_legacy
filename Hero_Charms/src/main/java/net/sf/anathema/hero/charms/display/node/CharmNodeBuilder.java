@@ -31,7 +31,7 @@ public class CharmNodeBuilder {
     }
     for (Charm charm : groupCharms) {
       for (IndirectCharmLearnPrerequisite prerequisite : charm.getPrerequisitesOfType(IndirectCharmLearnPrerequisite.class)) {
-        String label = prerequisite.getRequirementLabel();
+        String label = prerequisite.getStringLabel();
         IIdentifiedRegularNode parentNode = NodeFactory.createChildlessNode(label);
         charmNodesById.put(label, parentNode);
       }

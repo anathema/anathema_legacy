@@ -13,7 +13,7 @@ public class IndirectGroupCharmLearnPrerequisite extends AbstractGroupCharmLearn
 	}
 
 	@Override
-	public String getRequirementLabel() {
+	public String getStringLabel() {
 		return "Requirement." + keyword + "." + getThreshold();
 	}
 

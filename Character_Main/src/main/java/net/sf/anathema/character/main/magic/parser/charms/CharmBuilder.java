@@ -8,7 +8,7 @@ import net.sf.anathema.character.main.magic.charm.combos.IComboRestrictions;
 import net.sf.anathema.character.main.magic.basic.attribute.MagicAttribute;
 import net.sf.anathema.character.main.magic.basic.cost.ICostList;
 import net.sf.anathema.character.main.magic.basic.source.SourceBook;
-import net.sf.anathema.character.main.magic.parser.charms.prerequisite.IAttributeRequirementBuilder;
+import net.sf.anathema.character.main.magic.parser.charms.prerequisite.IAttributePrerequisiteBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.ICharmPrerequisiteBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.ITraitPrerequisitesBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.PrerequisiteListBuilder;
@@ -45,12 +45,12 @@ public class CharmBuilder implements ICharmBuilder {
   private final ReflectionSpecialCharmParser specialCharmParser;
   private final IIdStringBuilder idBuilder;
   private final ITraitPrerequisitesBuilder traitsBuilder;
-  private final IAttributeRequirementBuilder attributeRequirementsBuilder;
+  private final IAttributePrerequisiteBuilder attributeRequirementsBuilder;
   private final IComboRulesBuilder comboBuilder;
   private final ICharmPrerequisiteBuilder charmPrerequisiteBuilder;
   private final CharacterTypes characterTypes;
 
-  public CharmBuilder(IIdStringBuilder idBuilder, ITraitPrerequisitesBuilder traitsBuilder, IAttributeRequirementBuilder attributeRequirementsBuilder,
+  public CharmBuilder(IIdStringBuilder idBuilder, ITraitPrerequisitesBuilder traitsBuilder, IAttributePrerequisiteBuilder attributeRequirementsBuilder,
                       IComboRulesBuilder comboBuilder, ICharmPrerequisiteBuilder charmPrerequisiteBuilder, CharacterTypes characterTypes,
                       ReflectionSpecialCharmParser specialCharmParser) {
     this.idBuilder = idBuilder;

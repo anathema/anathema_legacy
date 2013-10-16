@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.parser.charms;
 
 import net.sf.anathema.character.main.magic.charm.CharmImpl;
-import net.sf.anathema.character.main.magic.parser.charms.prerequisite.AttributeRequirementBuilder;
+import net.sf.anathema.character.main.magic.parser.charms.prerequisite.AttributePrerequisiteBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.CharmPrerequisiteBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.TraitPrerequisitesBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.special.ReflectionSpecialCharmParser;
@@ -23,7 +23,7 @@ public class CharmSetBuilder extends AbstractCharmSetBuilder {
 
   public CharmSetBuilder(CharacterTypes characterTypes, ReflectionSpecialCharmParser specialCharmParser) {
     this.builder =
-            new CharmBuilder(new IdStringBuilder(), new TraitPrerequisitesBuilder(), new AttributeRequirementBuilder(), new ComboRulesBuilder(),
+            new CharmBuilder(new IdStringBuilder(), new TraitPrerequisitesBuilder(), new AttributePrerequisiteBuilder(), new ComboRulesBuilder(),
                     new CharmPrerequisiteBuilder(), characterTypes, specialCharmParser);
   }
 

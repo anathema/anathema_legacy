@@ -2,7 +2,7 @@ package net.sf.anathema.hero.magic.parser;
 
 import net.sf.anathema.character.main.magic.charm.ICharmXMLConstants;
 import net.sf.anathema.character.main.magic.parser.charms.CharmPrerequisiteList;
-import net.sf.anathema.character.main.magic.parser.charms.prerequisite.AttributeRequirementBuilder;
+import net.sf.anathema.character.main.magic.parser.charms.prerequisite.AttributePrerequisiteBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.CharmPrerequisiteBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.PrerequisiteListBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.TraitPrerequisitesBuilder;
@@ -22,7 +22,7 @@ public class PrerequisiteListBuilderTest {
   }
 
   private static CharmPrerequisiteList parsePrerequisiteList(Element prerequisiteListElement) throws PersistenceException {
-    return new PrerequisiteListBuilder(new TraitPrerequisitesBuilder(), new AttributeRequirementBuilder(), new CharmPrerequisiteBuilder())
+    return new PrerequisiteListBuilder(new TraitPrerequisitesBuilder(), new AttributePrerequisiteBuilder(), new CharmPrerequisiteBuilder())
             .buildPrerequisiteList(prerequisiteListElement);
   }
 

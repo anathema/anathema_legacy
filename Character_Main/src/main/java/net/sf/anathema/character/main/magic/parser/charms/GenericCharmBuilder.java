@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic.parser.charms;
 
-import net.sf.anathema.character.main.magic.parser.charms.prerequisite.GenericAttributeRequirementBuilder;
+import net.sf.anathema.character.main.magic.parser.charms.prerequisite.GenericAttributePrerequisiteBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.GenericTraitPrerequisitesBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.special.ReflectionSpecialCharmParser;
 import net.sf.anathema.character.main.magic.parser.combos.GenericComboRulesBuilder;
@@ -12,11 +12,11 @@ public class GenericCharmBuilder extends CharmBuilder implements ICharmBuilder, 
   private final GenericCharmPrerequisiteBuilder charmPrerequisiteBuilder;
   private final GenericIdStringBuilder idBuilder;
   private final GenericTraitPrerequisitesBuilder traitBuilder;
-  private final GenericAttributeRequirementBuilder attributeRequirementBuilder;
+  private final GenericAttributePrerequisiteBuilder attributeRequirementBuilder;
   private final GenericComboRulesBuilder comboBuilder;
 
   public GenericCharmBuilder(GenericIdStringBuilder idBuilder, GenericTraitPrerequisitesBuilder traitBuilder,
-                             GenericAttributeRequirementBuilder attributeRequirementBuilder, GenericComboRulesBuilder comboBuilder,
+                             GenericAttributePrerequisiteBuilder attributeRequirementBuilder, GenericComboRulesBuilder comboBuilder,
                              GenericCharmPrerequisiteBuilder charmPrerequisiteBuilder, CharacterTypes characterTypes,
                              ReflectionSpecialCharmParser specialCharmParser) {
     super(idBuilder, traitBuilder, attributeRequirementBuilder, comboBuilder, charmPrerequisiteBuilder, characterTypes, specialCharmParser);

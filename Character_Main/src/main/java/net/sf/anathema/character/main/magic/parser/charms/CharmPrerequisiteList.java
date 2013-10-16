@@ -1,8 +1,9 @@
 package net.sf.anathema.character.main.magic.parser.charms;
 
-import com.google.common.base.Preconditions;
-import net.sf.anathema.character.main.magic.charm.requirements.IndirectCharmRequirement;
+import net.sf.anathema.character.main.magic.charm.prerequisite.IndirectCharmLearnPrerequisite;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
+
+import com.google.common.base.Preconditions;
 
 public class CharmPrerequisiteList {
 
@@ -10,10 +11,10 @@ public class CharmPrerequisiteList {
   private final ValuedTraitType[] prerequisites;
   private final ValuedTraitType essence;
   private final SelectiveCharmGroupTemplate[] selectiveCharmGroups;
-  private final IndirectCharmRequirement[] indirectRequirements;
+  private final IndirectCharmLearnPrerequisite[] indirectPrerequisites;
 
   public CharmPrerequisiteList(ValuedTraitType[] prerequisites, ValuedTraitType essence, String[] prerequisiteCharmID,
-                               SelectiveCharmGroupTemplate[] selectiveCharmGroups, IndirectCharmRequirement[] indirectRequirements) {
+                               SelectiveCharmGroupTemplate[] selectiveCharmGroups, IndirectCharmLearnPrerequisite[] indirectPrerequisites) {
     Preconditions.checkNotNull(prerequisites);
     Preconditions.checkNotNull(essence);
     Preconditions.checkNotNull(prerequisiteCharmID);
@@ -22,7 +23,7 @@ public class CharmPrerequisiteList {
     this.essence = essence;
     this.parentCharmIDs = prerequisiteCharmID;
     this.selectiveCharmGroups = selectiveCharmGroups;
-    this.indirectRequirements = indirectRequirements;
+    this.indirectPrerequisites = indirectPrerequisites;
   }
 
   public ValuedTraitType getEssence() {
@@ -41,7 +42,7 @@ public class CharmPrerequisiteList {
     return selectiveCharmGroups;
   }
 
-  public IndirectCharmRequirement[] getAttributeRequirements() {
-    return indirectRequirements;
+  public IndirectCharmLearnPrerequisite[] getIndirectPrerequisites() {
+    return indirectPrerequisites;
   }
 }

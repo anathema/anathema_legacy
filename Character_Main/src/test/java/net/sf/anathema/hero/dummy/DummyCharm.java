@@ -1,20 +1,26 @@
 package net.sf.anathema.hero.dummy;
 
-import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.character.main.magic.charm.prerequisite.CharmLearnPrerequisite;
-import net.sf.anathema.character.main.magic.charm.prerequisite.impl.SimpleCharmLearnPrerequisite;
-import net.sf.anathema.character.main.magic.charm.requirements.IndirectCharmRequirement;
-import net.sf.anathema.character.main.magic.basic.source.SourceBook;
-import net.sf.anathema.character.main.magic.charm.duration.Duration;
-import net.sf.anathema.character.main.magic.charm.duration.SimpleDuration;
-import net.sf.anathema.character.main.magic.charm.type.CharmType;
-import net.sf.anathema.character.main.magic.charm.type.CharmTypeModel;
-import net.sf.anathema.character.main.magic.charm.ICharmLearnArbitrator;
-import net.sf.anathema.character.main.magic.charm.combos.ComboRestrictions;
-import net.sf.anathema.character.main.magic.charm.combos.IComboRestrictions;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
+
 import net.sf.anathema.character.main.magic.basic.attribute.MagicAttribute;
 import net.sf.anathema.character.main.magic.basic.attribute.MagicAttributeImpl;
 import net.sf.anathema.character.main.magic.basic.cost.CostList;
+import net.sf.anathema.character.main.magic.basic.source.SourceBook;
+import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.character.main.magic.charm.ICharmLearnArbitrator;
+import net.sf.anathema.character.main.magic.charm.combos.ComboRestrictions;
+import net.sf.anathema.character.main.magic.charm.combos.IComboRestrictions;
+import net.sf.anathema.character.main.magic.charm.duration.Duration;
+import net.sf.anathema.character.main.magic.charm.duration.SimpleDuration;
+import net.sf.anathema.character.main.magic.charm.prerequisite.CharmLearnPrerequisite;
+import net.sf.anathema.character.main.magic.charm.prerequisite.impl.SimpleCharmLearnPrerequisite;
+import net.sf.anathema.character.main.magic.charm.type.CharmType;
+import net.sf.anathema.character.main.magic.charm.type.CharmTypeModel;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.type.CharacterType;
@@ -24,13 +30,6 @@ import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
-
 public class DummyCharm extends SimpleIdentifier implements Charm {
 
   private Duration duration;
@@ -39,7 +38,6 @@ public class DummyCharm extends SimpleIdentifier implements Charm {
   private List<CharmLearnPrerequisite> learnPrerequisites = new ArrayList<>();
   private Set<Charm> parentCharms;
   private Set<Charm> learnFollowUpCharms = new HashSet<>();
-  private List<IndirectCharmRequirement> requirements = new ArrayList<>();
   private CharacterType characterType;
   private String groupId;
   private CharmTypeModel model = new CharmTypeModel();
@@ -81,20 +79,10 @@ public class DummyCharm extends SimpleIdentifier implements Charm {
     this.prerequisites = prerequisites;
   }
 
-  @SuppressWarnings("UnusedDeclaration")
-  public void addAttributeRequirement(IndirectCharmRequirement requirement) {
-    requirements.add(requirement);
-  }
-
   public void addLearnFollowUpCharm(Charm charm) {
     learnFollowUpCharms.add(charm);
   }
-
-  @Override
-  public IndirectCharmRequirement[] getAttributeRequirements() {
-    return requirements.toArray(new IndirectCharmRequirement[requirements.size()]);
-  }
-
+  
   @Override
   public CharacterType getCharacterType() {
     return characterType;

@@ -26,7 +26,7 @@ public class AttributeKnownCharmLearnPrerequisite implements IndirectCharmLearnP
 	}
 
 	@Override
-	public String getRequirementLabel() {
+	public String getStringLabel() {
 		return "Requirement." + attribute.getId() + "." + count;
 	}
 

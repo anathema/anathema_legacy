@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.magic.charm.CharmImpl;
 import net.sf.anathema.character.main.magic.parser.charms.GenericCharmBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.GenericCharmPrerequisiteBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.GenericIdStringBuilder;
-import net.sf.anathema.character.main.magic.parser.charms.prerequisite.GenericAttributeRequirementBuilder;
+import net.sf.anathema.character.main.magic.parser.charms.prerequisite.GenericAttributePrerequisiteBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.GenericTraitPrerequisitesBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.special.ReflectionSpecialCharmParser;
 import net.sf.anathema.character.main.magic.parser.combos.GenericComboRulesBuilder;
@@ -28,7 +28,7 @@ public class GenericCharmBuilderTest {
   private final DummyCharacterTypes characterTypes = new DummyCharacterTypes();
   private ReflectionSpecialCharmParser specialCharmParserMock = mock(ReflectionSpecialCharmParser.class);
   private final GenericCharmBuilder builder =
-          new GenericCharmBuilder(new GenericIdStringBuilder(), new GenericTraitPrerequisitesBuilder(), new GenericAttributeRequirementBuilder(),
+          new GenericCharmBuilder(new GenericIdStringBuilder(), new GenericTraitPrerequisitesBuilder(), new GenericAttributePrerequisiteBuilder(),
                   new GenericComboRulesBuilder(), new GenericCharmPrerequisiteBuilder(), characterTypes, specialCharmParserMock);
 
   @Before

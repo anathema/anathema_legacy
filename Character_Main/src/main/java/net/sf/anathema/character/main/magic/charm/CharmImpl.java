@@ -18,8 +18,8 @@ import net.sf.anathema.character.main.magic.charm.duration.Duration;
 import net.sf.anathema.character.main.magic.charm.prerequisite.CharmLearnPrerequisite;
 import net.sf.anathema.character.main.magic.charm.prerequisite.CharmLearnPrerequisiteBuilder;
 import net.sf.anathema.character.main.magic.charm.prerequisite.DirectCharmLearnPrerequisite;
+import net.sf.anathema.character.main.magic.charm.prerequisite.IndirectCharmLearnPrerequisite;
 import net.sf.anathema.character.main.magic.charm.prerequisite.impl.SimpleCharmLearnPrerequisite;
-import net.sf.anathema.character.main.magic.charm.requirements.IndirectCharmRequirement;
 import net.sf.anathema.character.main.magic.charm.requirements.SelectiveCharmGroup;
 import net.sf.anathema.character.main.magic.charm.requirements.SelectiveCharmGroups;
 import net.sf.anathema.character.main.magic.charm.type.ICharmTypeModel;
@@ -236,7 +236,8 @@ public class CharmImpl extends AbstractMagic implements Charm {
 
   @Override
   public boolean isTreeRoot() {
-    return parentCharms.size() == 0 && selectiveCharmGroups.isEmpty() && getAttributeRequirements().length == 0;
+    return parentCharms.size() == 0 && selectiveCharmGroups.isEmpty() &&
+    	   getPrerequisitesOfType(IndirectCharmLearnPrerequisite.class).isEmpty();
   }
 
   @Override
@@ -275,11 +276,6 @@ public class CharmImpl extends AbstractMagic implements Charm {
       }
     }
     return true;
-  }
-
-  @Override
-  public IndirectCharmRequirement[] getAttributeRequirements() {
-    return prerequisisteList.getAttributeRequirements();
   }
 
   public void addFavoredCasteId(String casteId) {
