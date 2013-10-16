@@ -9,6 +9,7 @@ import net.sf.anathema.character.main.magic.charm.CharmImpl;
 import net.sf.anathema.character.main.magic.charm.ICharmLearnArbitrator;
 import net.sf.anathema.character.main.magic.charm.ICharmLearnableArbitrator;
 import net.sf.anathema.character.main.magic.charm.prerequisite.CharmLearnPrerequisite;
+import net.sf.anathema.character.main.magic.charm.prerequisite.CharmLearnPrerequisiteVisitor;
 import net.sf.anathema.character.main.magic.charm.prerequisite.DirectCharmLearnPrerequisite;
 
 import com.google.common.base.Preconditions;
@@ -34,6 +35,11 @@ public class SimpleCharmLearnPrerequisite implements DirectCharmLearnPrerequisit
 	@Override
 	public boolean isSatisfied(ICharmLearnArbitrator arbitrator) {
 		return arbitrator.isLearned(prerequisite);
+	}
+
+	@Override
+	public void visitCharmLearnPrerequisite(CharmLearnPrerequisiteVisitor visitor) {
+		visitor.visitSimpleCharmPrerequisite(this);		
 	}
 	
 	@Override

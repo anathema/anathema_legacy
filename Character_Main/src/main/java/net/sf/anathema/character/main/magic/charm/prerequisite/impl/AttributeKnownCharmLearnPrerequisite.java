@@ -5,6 +5,7 @@ import java.util.Map;
 import net.sf.anathema.character.main.magic.basic.attribute.MagicAttribute;
 import net.sf.anathema.character.main.magic.charm.CharmImpl;
 import net.sf.anathema.character.main.magic.charm.ICharmLearnArbitrator;
+import net.sf.anathema.character.main.magic.charm.prerequisite.CharmLearnPrerequisiteVisitor;
 import net.sf.anathema.character.main.magic.charm.ICharmLearnableArbitrator;
 import net.sf.anathema.character.main.magic.charm.prerequisite.IndirectCharmLearnPrerequisite;
 import net.sf.anathema.character.main.magic.charm.prerequisite.MultipleCharmLearnPrerequisite;
@@ -37,6 +38,11 @@ public class AttributeKnownCharmLearnPrerequisite implements IndirectCharmLearnP
 	@Override
 	public String getStringLabel() {
 		return "Requirement." + attribute.getId() + "." + count;
+	}
+
+	@Override
+	public void visitCharmLearnPrerequisite(CharmLearnPrerequisiteVisitor visitor) {
+		visitor.visitAttributeKnownCharmLearnPrerequisite(this);
 	}
 
 	@Override
