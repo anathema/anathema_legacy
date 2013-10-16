@@ -1,5 +1,10 @@
 dependencies {
   compile project(':Platform')
-  compile project(':Platform_FX')
-  compile project(':Platform_Swing')
+  //TODO (Swing->FX): Separate Namegenerator backend and NG-module so this doesn't introduce FX-dependencies into Character_Main
+  compile project(':Platform_FX') {
+    transitive = false
+  }
+  compile project(':Platform_Swing') {
+    transitive = false
+  }
 }

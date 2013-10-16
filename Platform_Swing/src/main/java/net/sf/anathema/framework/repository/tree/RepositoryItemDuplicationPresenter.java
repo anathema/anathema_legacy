@@ -4,7 +4,7 @@ import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.IRepositoryFileAccess;
-import net.sf.anathema.framework.swing.ExceptionIndicator;
+import net.sf.anathema.framework.fx.ExceptionIndicator;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.initialization.FxApplicationFrame;
 import net.sf.anathema.lib.control.ChangeListener;
