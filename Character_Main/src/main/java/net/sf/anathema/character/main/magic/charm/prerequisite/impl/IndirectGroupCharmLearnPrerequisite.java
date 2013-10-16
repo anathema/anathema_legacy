@@ -1,6 +1,5 @@
 package net.sf.anathema.character.main.magic.charm.prerequisite.impl;
 
-import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.charm.prerequisite.AbstractGroupCharmLearnPrerequisite;
 import net.sf.anathema.character.main.magic.charm.prerequisite.IndirectCharmLearnPrerequisite;
 
@@ -8,7 +7,7 @@ public class IndirectGroupCharmLearnPrerequisite extends AbstractGroupCharmLearn
 
 	String keyword;
 	
-	public IndirectGroupCharmLearnPrerequisite(String keyword, Charm[] charms, int threshold) {
+	public IndirectGroupCharmLearnPrerequisite(String keyword, String[] charms, int threshold) {
 		super(charms, threshold);
 	}
 

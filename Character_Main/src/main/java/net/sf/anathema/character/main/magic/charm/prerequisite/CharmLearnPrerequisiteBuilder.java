@@ -5,24 +5,16 @@ import java.util.Arrays;
 import java.util.List;
 
 import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.character.main.magic.charm.prerequisite.impl.DirectGroupCharmLearnPrerequisite;
-import net.sf.anathema.character.main.magic.charm.prerequisite.impl.IndirectGroupCharmLearnPrerequisite;
 import net.sf.anathema.character.main.magic.charm.prerequisite.impl.SimpleCharmLearnPrerequisite;
-import net.sf.anathema.character.main.magic.charm.requirements.SelectiveCharmGroup;
 import net.sf.anathema.character.main.magic.parser.charms.CharmPrerequisiteList;
 
 public class CharmLearnPrerequisiteBuilder {
 	private final CharmPrerequisiteList prerequisiteList;
 	private final Charm[] parents;
-	private final SelectiveCharmGroup[] openGroups;
-	private final SelectiveCharmGroup[] combinedGroups;
 	
-	public CharmLearnPrerequisiteBuilder(CharmPrerequisiteList list, Charm[] parents,
-			SelectiveCharmGroup[] openGroups, SelectiveCharmGroup[] combinedGroups) {
+	public CharmLearnPrerequisiteBuilder(CharmPrerequisiteList list, Charm[] parents) {
 		this.prerequisiteList = list;
 		this.parents = parents;
-		this.openGroups = openGroups;
-		this.combinedGroups = combinedGroups;
 	}
 	
 	public CharmLearnPrerequisite[] getPrerequisites() {
@@ -34,13 +26,8 @@ public class CharmLearnPrerequisiteBuilder {
 		for (Charm charm : parents) {
 			prerequisites.add(new SimpleCharmLearnPrerequisite(charm));
 		}
-		for (SelectiveCharmGroup group : combinedGroups) {
-			prerequisites.add(new DirectGroupCharmLearnPrerequisite(group.getAllGroupCharms(), group.getThreshold()));
-		}
-		for (SelectiveCharmGroup group : openGroups) {
-			prerequisites.add(new IndirectGroupCharmLearnPrerequisite(group.getLabel(), group.getAllGroupCharms(), group.getThreshold()));
-		}
-		prerequisites.addAll(Arrays.asList(prerequisiteList.getIndirectPrerequisites()));
+		
+		prerequisites.addAll(Arrays.asList(prerequisiteList.getLearnPrerequisites()));
 		
 		return prerequisites.toArray(new CharmLearnPrerequisite[0]);
 	}

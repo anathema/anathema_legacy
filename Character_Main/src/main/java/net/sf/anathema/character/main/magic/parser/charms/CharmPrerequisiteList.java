@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic.parser.charms;
 
-import net.sf.anathema.character.main.magic.charm.prerequisite.IndirectCharmLearnPrerequisite;
+import net.sf.anathema.character.main.magic.charm.prerequisite.CharmLearnPrerequisite;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 
 import com.google.common.base.Preconditions;
@@ -10,20 +10,18 @@ public class CharmPrerequisiteList {
   private final String[] parentCharmIDs;
   private final ValuedTraitType[] prerequisites;
   private final ValuedTraitType essence;
-  private final SelectiveCharmGroupTemplate[] selectiveCharmGroups;
-  private final IndirectCharmLearnPrerequisite[] indirectPrerequisites;
+  private final CharmLearnPrerequisite[] learnPrerequisites;
 
   public CharmPrerequisiteList(ValuedTraitType[] prerequisites, ValuedTraitType essence, String[] prerequisiteCharmID,
-                               SelectiveCharmGroupTemplate[] selectiveCharmGroups, IndirectCharmLearnPrerequisite[] indirectPrerequisites) {
+                               CharmLearnPrerequisite[] learnPrerequisites) {
     Preconditions.checkNotNull(prerequisites);
     Preconditions.checkNotNull(essence);
     Preconditions.checkNotNull(prerequisiteCharmID);
-    Preconditions.checkNotNull(selectiveCharmGroups);
+    Preconditions.checkNotNull(learnPrerequisites);
     this.prerequisites = prerequisites;
     this.essence = essence;
     this.parentCharmIDs = prerequisiteCharmID;
-    this.selectiveCharmGroups = selectiveCharmGroups;
-    this.indirectPrerequisites = indirectPrerequisites;
+    this.learnPrerequisites = learnPrerequisites;
   }
 
   public ValuedTraitType getEssence() {
@@ -38,11 +36,7 @@ public class CharmPrerequisiteList {
     return parentCharmIDs;
   }
 
-  public SelectiveCharmGroupTemplate[] getSelectiveCharmGroups() {
-    return selectiveCharmGroups;
-  }
-
-  public IndirectCharmLearnPrerequisite[] getIndirectPrerequisites() {
-    return indirectPrerequisites;
+  public CharmLearnPrerequisite[] getLearnPrerequisites() {
+    return learnPrerequisites;
   }
 }

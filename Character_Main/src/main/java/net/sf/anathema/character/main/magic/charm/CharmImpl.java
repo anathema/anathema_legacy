@@ -20,11 +20,8 @@ import net.sf.anathema.character.main.magic.charm.prerequisite.CharmLearnPrerequ
 import net.sf.anathema.character.main.magic.charm.prerequisite.DirectCharmLearnPrerequisite;
 import net.sf.anathema.character.main.magic.charm.prerequisite.IndirectCharmLearnPrerequisite;
 import net.sf.anathema.character.main.magic.charm.prerequisite.impl.SimpleCharmLearnPrerequisite;
-import net.sf.anathema.character.main.magic.charm.requirements.SelectiveCharmGroup;
-import net.sf.anathema.character.main.magic.charm.requirements.SelectiveCharmGroups;
 import net.sf.anathema.character.main.magic.charm.type.ICharmTypeModel;
 import net.sf.anathema.character.main.magic.parser.charms.CharmPrerequisiteList;
-import net.sf.anathema.character.main.magic.parser.charms.SelectiveCharmGroupTemplate;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.traits.types.OtherTraitType;
@@ -56,7 +53,6 @@ public class CharmImpl extends AbstractMagic implements Charm {
   private final List<Charm> parentCharms = new ArrayList<>();
   private final List<CharmImpl> children = new ArrayList<>();
   private final List<CharmLearnPrerequisite> prerequisites = new ArrayList<>();
-  private final SelectiveCharmGroups selectiveCharmGroups = new SelectiveCharmGroups();
   private final Set<String> favoredCasteIds = new HashSet<>();
 
   private final ICharmTypeModel typeModel;
@@ -83,9 +79,6 @@ public class CharmImpl extends AbstractMagic implements Charm {
     this.duration = duration;
     this.typeModel = charmTypeModel;
     this.sources = sources;
-    for (SelectiveCharmGroupTemplate template : prerequisiteList.getSelectiveCharmGroups()) {
-      selectiveCharmGroups.add(new SelectiveCharmGroup(template));
-    }
   }
 
   @Override
@@ -192,15 +185,14 @@ public class CharmImpl extends AbstractMagic implements Charm {
       Preconditions.checkNotNull(parentCharm, "Parent Charm " + parentId + " not defined for " + getId());
       parentCharms.add(parentCharm);
       parentCharm.addChild(this);
-    }
-    for (SelectiveCharmGroup charmGroup : selectiveCharmGroups) {
-      charmGroup.extractCharms(charmsById, this);
-    }
+    }    
     
     prerequisites.addAll(Arrays.asList(new CharmLearnPrerequisiteBuilder(prerequisisteList,
-    		parentCharms.toArray(new Charm[0]),
-    		selectiveCharmGroups.getOpenGroups().toArray(new SelectiveCharmGroup[0]),
-    		selectiveCharmGroups.getCombinedGroups().toArray(new SelectiveCharmGroup[0])).getPrerequisites()));
+    		parentCharms.toArray(new Charm[0])).getPrerequisites()));
+    
+    for (CharmLearnPrerequisite prerequisite : prerequisites) {
+    	prerequisite.link(charmsById);
+    }
   }
   
   @Override
@@ -224,19 +216,15 @@ public class CharmImpl extends AbstractMagic implements Charm {
   @Override
   public Set<Charm> getLearnPrerequisitesCharms(ICharmLearnArbitrator learnArbitrator) {
     Set<Charm> prerequisiteCharms = new HashSet<>();
-    for (Charm charm : getParentCharms()) {
-      prerequisiteCharms.addAll(charm.getLearnPrerequisitesCharms(learnArbitrator));
-      prerequisiteCharms.add(charm);
-    }
-    for (SelectiveCharmGroup charmGroup : selectiveCharmGroups) {
-      prerequisiteCharms.addAll(charmGroup.getLearnPrerequisitesCharms(learnArbitrator));
+    for (DirectCharmLearnPrerequisite prerequisite : getPrerequisitesOfType(DirectCharmLearnPrerequisite.class)) {
+    	prerequisiteCharms.addAll(Arrays.asList(prerequisite.getLearnPrerequisites(learnArbitrator)));
     }
     return prerequisiteCharms;
   }
 
   @Override
   public boolean isTreeRoot() {
-    return parentCharms.size() == 0 && selectiveCharmGroups.isEmpty() &&
+    return getPrerequisitesOfType(DirectCharmLearnPrerequisite.class).isEmpty() &&
     	   getPrerequisitesOfType(IndirectCharmLearnPrerequisite.class).isEmpty();
   }
 
@@ -265,16 +253,11 @@ public class CharmImpl extends AbstractMagic implements Charm {
   }
 
   private boolean isCharmPrerequisiteListFullfilled(ICharmLearnArbitrator learnArbitrator) {
-    for (Charm parent : parentCharms) {
-      if (!learnArbitrator.isLearned(parent)) {
-        return false;
-      }
-    }
-    for (SelectiveCharmGroup selectiveGroup : selectiveCharmGroups) {
-      if (!selectiveGroup.holdsThreshold(learnArbitrator)) {
-        return false;
-      }
-    }
+	for (CharmLearnPrerequisite prerequisite : getPrerequisitesOfType(DirectCharmLearnPrerequisite.class)) {
+		if (!prerequisite.isFulfilled(learnArbitrator)) {
+			return false;
+		}
+	}
     return true;
   }
 

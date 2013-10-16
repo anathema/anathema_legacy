@@ -11,11 +11,10 @@ import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.charm.CharmImpl;
 import net.sf.anathema.character.main.magic.charm.combos.ComboRestrictions;
 import net.sf.anathema.character.main.magic.charm.duration.SimpleDuration;
-import net.sf.anathema.character.main.magic.charm.prerequisite.IndirectCharmLearnPrerequisite;
+import net.sf.anathema.character.main.magic.charm.prerequisite.CharmLearnPrerequisite;
 import net.sf.anathema.character.main.magic.charm.type.CharmType;
 import net.sf.anathema.character.main.magic.charm.type.CharmTypeModel;
 import net.sf.anathema.character.main.magic.parser.charms.CharmPrerequisiteList;
-import net.sf.anathema.character.main.magic.parser.charms.SelectiveCharmGroupTemplate;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.traits.types.OtherTraitType;
@@ -39,7 +38,7 @@ public class CharmTest {
     ValuedTraitType[] prerequisites = new ValuedTraitType[]{new net.sf.anathema.character.main.traits.types.ValuedTraitType(AbilityType.Archery, 5)};
     ValuedTraitType essence = new net.sf.anathema.character.main.traits.types.ValuedTraitType(OtherTraitType.Essence, 3);
     CharmPrerequisiteList prerequisiteList =
-            new CharmPrerequisiteList(prerequisites, essence, new String[0], new SelectiveCharmGroupTemplate[0], new IndirectCharmLearnPrerequisite[0]);
+            new CharmPrerequisiteList(prerequisites, essence, new String[0], new CharmLearnPrerequisite[0]);
     CharmTypeModel model = new CharmTypeModel();
     model.setCharmType(CharmType.Simple);
     CharmImpl charmImpl =
@@ -55,7 +54,7 @@ public class CharmTest {
     ValuedTraitType[] prerequisites = new ValuedTraitType[]{new net.sf.anathema.character.main.traits.types.ValuedTraitType(AbilityType.Archery, 5)};
     ValuedTraitType essence = new net.sf.anathema.character.main.traits.types.ValuedTraitType(OtherTraitType.Essence, 3);
     CharmPrerequisiteList prerequisiteList =
-            new CharmPrerequisiteList(prerequisites, essence, new String[0], new SelectiveCharmGroupTemplate[0], new IndirectCharmLearnPrerequisite[0]);
+            new CharmPrerequisiteList(prerequisites, essence, new String[0], new CharmLearnPrerequisite[0]);
     CharmTypeModel model = new CharmTypeModel();
     model.setCharmType(CharmType.Simple);
     try {
