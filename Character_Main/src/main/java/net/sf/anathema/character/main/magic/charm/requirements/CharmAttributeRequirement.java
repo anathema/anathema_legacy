@@ -34,4 +34,12 @@ public class CharmAttributeRequirement extends ReflectionEqualsObject implements
     }
     return amount >= count;
   }
+  
+  public MagicAttribute getAttribute() {
+	  return attribute;
+  }
+  
+  public int getThreshold() {
+	  return count;
+  }
 }

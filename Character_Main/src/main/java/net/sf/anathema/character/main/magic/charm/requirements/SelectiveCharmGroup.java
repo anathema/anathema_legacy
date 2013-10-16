@@ -84,4 +84,8 @@ public class SelectiveCharmGroup {
   public Charm[] getAllGroupCharms() {
     return charms.toArray(new Charm[charms.size()]);
   }
+
+  public int getThreshold() {
+	  return template.getThreshold();
+  }
 }
