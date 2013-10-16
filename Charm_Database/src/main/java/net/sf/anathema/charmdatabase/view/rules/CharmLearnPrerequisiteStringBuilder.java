@@ -52,12 +52,12 @@ public class CharmLearnPrerequisiteStringBuilder {
 
 			@Override
 			public void visitIndirectGroupCharmLearnPrerequisite(IndirectGroupCharmLearnPrerequisite prerequisite) {
-				label[0] = resources.getString(prerequisite.getRequirementLabel());
+				label[0] = resources.getString(prerequisite.getStringLabel());
 			}
 
 			@Override
 			public void visitAttributeKnownCharmLearnPrerequisite(AttributeKnownCharmLearnPrerequisite prerequisite) {
-				label[0] = prerequisite.getRequirementLabel();
+				label[0] = prerequisite.getStringLabel();
 			}
 			
 		});
