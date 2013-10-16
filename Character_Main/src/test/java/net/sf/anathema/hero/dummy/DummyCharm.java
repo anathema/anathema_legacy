@@ -110,11 +110,6 @@ public class DummyCharm extends SimpleIdentifier implements Charm {
   }
 
   @Override
-  public List<String> getParentSubEffects() {
-    return new ArrayList<>();
-  }
-
-  @Override
   public IComboRestrictions getComboRules() {
     return comboRestrictions;
   }

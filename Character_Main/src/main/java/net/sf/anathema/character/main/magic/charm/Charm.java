@@ -37,8 +37,6 @@ public interface Charm extends Magic {
 
   Set<Charm> getParentCharms();
 
-  List<String> getParentSubEffects();
-
   ICharmTypeModel getCharmTypeModel();
 
   boolean isInstanceOfGenericCharm();

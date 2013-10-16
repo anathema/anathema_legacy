@@ -54,7 +54,6 @@ public class CharmImpl extends AbstractMagic implements Charm {
 
   private final List<Set<Charm>> alternatives = new ArrayList<>();
   private final List<Set<Charm>> merges = new ArrayList<>();
-  private final List<String> requiredSubEffects = new ArrayList<>();
   private final List<Charm> parentCharms = new ArrayList<>();
   private final List<CharmImpl> children = new ArrayList<>();
   private final List<CharmLearnPrerequisite> prerequisites = new ArrayList<>();
@@ -184,34 +183,14 @@ public class CharmImpl extends AbstractMagic implements Charm {
   public Set<Charm> getParentCharms() {
     return new HashSet<>(parentCharms);
   }
-
-  private boolean isSubeffectReference(String id) {
-    return id.split("\\.").length == 4;
-  }
-
-  private boolean isGenericSubeffectReference(String id) {
-    return id.split("\\.").length == 5;
-  }
-
+  
   public void extractParentCharms(Map<String, CharmImpl> charmsById) {
     if (parentCharms.size() > 0) {
       return;
     }
     for (String parentId : prerequisisteList.getParentIDs()) {
-      String id = parentId;
-
-      if (isSubeffectReference(parentId)) {
-        String[] split = parentId.split("\\.");
-        id = split[0] + "." + split[1];
-        requiredSubEffects.add(parentId);
-      }
-      if (isGenericSubeffectReference(parentId)) {
-        String[] split = parentId.split("\\.");
-        id = split[0] + "." + split[1] + "." + split[4];
-        requiredSubEffects.add(parentId);
-      }
-      CharmImpl parentCharm = charmsById.get(id);
-      Preconditions.checkNotNull(parentCharm, "Parent Charm " + id + " not defined for " + getId());
+      CharmImpl parentCharm = charmsById.get(parentId);
+      Preconditions.checkNotNull(parentCharm, "Parent Charm " + parentId + " not defined for " + getId());
       parentCharms.add(parentCharm);
       parentCharm.addChild(this);
     }
@@ -232,11 +211,6 @@ public class CharmImpl extends AbstractMagic implements Charm {
 
   public void addChild(CharmImpl child) {
     children.add(child);
-  }
-
-  @Override
-  public List<String> getParentSubEffects() {
-    return requiredSubEffects;
   }
 
   @Override

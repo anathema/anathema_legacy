@@ -1,21 +1,19 @@
 package net.sf.anathema.hero.charms.model.learn;
 
-import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.character.main.magic.charm.CharmAttributeList;
-import net.sf.anathema.hero.charms.model.CharmGroup;
-import net.sf.anathema.hero.charms.model.CharmsModel;
-import net.sf.anathema.hero.charms.model.ICharmGroup;
-import net.sf.anathema.hero.charms.model.special.CharmSpecialsModel;
-import net.sf.anathema.hero.charms.model.special.multilearn.MultiLearnCharmSpecials;
-import net.sf.anathema.hero.charms.model.special.subeffects.MultipleEffectCharmSpecials;
-import org.jmock.example.announcer.Announcer;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.character.main.magic.charm.CharmAttributeList;
+import net.sf.anathema.hero.charms.model.CharmGroup;
+import net.sf.anathema.hero.charms.model.CharmsModel;
+import net.sf.anathema.hero.charms.model.ICharmGroup;
+
+import org.jmock.example.announcer.Announcer;
 
 public class LearningCharmGroup extends CharmGroup implements ILearningCharmGroup {
 
@@ -123,39 +121,10 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
   private void learnParents(Charm charm, boolean experienced) {
     for (Charm parent : charm.getLearnPrerequisitesCharms(learnArbitrator)) {
       ILearningCharmGroup parentGroup = charmGroupContainer.getLearningCharmGroup(parent);
-      boolean subeffectHandled = false;
-      for (String subeffectRequirement : charm.getParentSubEffects()) {
-        if (getSubeffectParent(subeffectRequirement).equals(parent.getId())) {
-          CharmSpecialsModel config = charmConfig.getSpecialCharmConfiguration(getSubeffectParent(subeffectRequirement));
-          if (config instanceof MultipleEffectCharmSpecials) {
-            subeffectHandled = true;
-            MultipleEffectCharmSpecials mConfig = (MultipleEffectCharmSpecials) config;
-            mConfig.getEffectById(getSubeffect(subeffectRequirement)).setLearned(true);
-          }
-          if (config instanceof MultiLearnCharmSpecials) {
-            subeffectHandled = true;
-            MultiLearnCharmSpecials mConfig = (MultiLearnCharmSpecials) config;
-            String effect = getSubeffect(subeffectRequirement);
-            int requiredCount = Integer.parseInt(effect.replace("Repurchase", ""));
-            if (mConfig.getCurrentLearnCount() < requiredCount) {
-              mConfig.setCurrentLearnCount(requiredCount);
-            }
-          }
-        }
-      }
-      if (!subeffectHandled && !parentGroup.isLearned(parent)) {
+      if (!parentGroup.isLearned(parent)) {
         parentGroup.learnCharm(parent, experienced);
       }
     }
-  }
-
-  private String getSubeffectParent(String subeffect) {
-    String[] split = subeffect.split("\\.");
-    return split[0] + "." + split[1] + (split.length == 5 ? "." + split[4] : "");
-  }
-
-  private String getSubeffect(String subeffect) {
-    return subeffect.split("\\.")[3];
   }
 
   private void fireCharmLearned(Charm charm) {

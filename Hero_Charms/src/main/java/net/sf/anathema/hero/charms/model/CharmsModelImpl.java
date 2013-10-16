@@ -1,11 +1,31 @@
 package net.sf.anathema.hero.charms.model;
 
-import com.google.common.base.Functions;
-import net.sf.anathema.hero.charms.compiler.CharmCache;
-import net.sf.anathema.hero.charms.compiler.CharmProvider;
+import static net.sf.anathema.character.main.magic.charm.martial.MartialArtsLevel.Sidereal;
+import static net.sf.anathema.character.main.magic.charm.martial.MartialArtsUtilities.hasLevel;
+import static net.sf.anathema.character.main.magic.charm.martial.MartialArtsUtilities.isFormMagic;
+import static net.sf.anathema.character.main.magic.charm.martial.MartialArtsUtilities.isMartialArts;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.charm.CharmAttributeList;
+import net.sf.anathema.character.main.magic.charm.martial.MartialArtsLevel;
+import net.sf.anathema.character.main.magic.charm.martial.MartialArtsUtilities;
+import net.sf.anathema.character.main.magic.charm.requirements.IndirectCharmRequirement;
+import net.sf.anathema.character.main.template.HeroTemplate;
+import net.sf.anathema.character.main.type.CharacterType;
+import net.sf.anathema.hero.charms.advance.creation.MagicCreationCostEvaluator;
+import net.sf.anathema.hero.charms.compiler.CharmCache;
+import net.sf.anathema.hero.charms.compiler.CharmProvider;
 import net.sf.anathema.hero.charms.display.special.CharmSpecialistImpl;
+import net.sf.anathema.hero.charms.model.context.CreationCharmLearnStrategy;
+import net.sf.anathema.hero.charms.model.context.ExperiencedCharmLearnStrategy;
+import net.sf.anathema.hero.charms.model.context.ProxyCharmLearnStrategy;
 import net.sf.anathema.hero.charms.model.learn.CharmLearnAdapter;
 import net.sf.anathema.hero.charms.model.learn.CharmLearner;
 import net.sf.anathema.hero.charms.model.learn.ICharmLearnListener;
@@ -15,25 +35,16 @@ import net.sf.anathema.hero.charms.model.learn.LearningCharmGroup;
 import net.sf.anathema.hero.charms.model.learn.MagicLearner;
 import net.sf.anathema.hero.charms.model.learn.MartialArtsLearnModel;
 import net.sf.anathema.hero.charms.model.learn.MartialArtsLearnModelImpl;
-import net.sf.anathema.hero.charms.model.special.ISpecialCharmManager;
-import net.sf.anathema.character.main.magic.charm.requirements.IndirectCharmRequirement;
-import net.sf.anathema.hero.charms.model.special.prerequisite.PrerequisiteModifyingCharms;
-import net.sf.anathema.hero.charms.model.special.CharmSpecialsModel;
-import net.sf.anathema.hero.charms.model.special.ISpecialCharm;
-import net.sf.anathema.hero.charms.model.special.multilearn.MultiLearnCharmSpecials;
-import net.sf.anathema.hero.charms.model.special.subeffects.MultipleEffectCharmSpecials;
-import net.sf.anathema.hero.charms.sheet.content.IMagicStats;
-import net.sf.anathema.character.main.template.HeroTemplate;
-import net.sf.anathema.character.main.type.CharacterType;
-import net.sf.anathema.hero.charms.advance.creation.MagicCreationCostEvaluator;
-import net.sf.anathema.hero.charms.model.context.CreationCharmLearnStrategy;
-import net.sf.anathema.hero.charms.model.context.ExperiencedCharmLearnStrategy;
-import net.sf.anathema.hero.charms.model.context.ProxyCharmLearnStrategy;
 import net.sf.anathema.hero.charms.model.options.MartialArtsOptions;
 import net.sf.anathema.hero.charms.model.options.NonMartialArtsOptions;
 import net.sf.anathema.hero.charms.model.rules.CharmsRules;
 import net.sf.anathema.hero.charms.model.rules.CharmsRulesImpl;
+import net.sf.anathema.hero.charms.model.special.CharmSpecialsModel;
+import net.sf.anathema.hero.charms.model.special.ISpecialCharm;
+import net.sf.anathema.hero.charms.model.special.ISpecialCharmManager;
 import net.sf.anathema.hero.charms.model.special.SpecialCharmManager;
+import net.sf.anathema.hero.charms.model.special.prerequisite.PrerequisiteModifyingCharms;
+import net.sf.anathema.hero.charms.sheet.content.IMagicStats;
 import net.sf.anathema.hero.charms.sheet.content.PrintCharmsProvider;
 import net.sf.anathema.hero.charms.template.model.CharmsTemplate;
 import net.sf.anathema.hero.concept.CasteType;
@@ -41,8 +52,6 @@ import net.sf.anathema.hero.concept.HeroConceptFetcher;
 import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.framework.HeroEnvironment;
-import net.sf.anathema.character.main.magic.charm.martial.MartialArtsLevel;
-import net.sf.anathema.character.main.magic.charm.martial.MartialArtsUtilities;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.change.ChangeFlavor;
@@ -53,20 +62,11 @@ import net.sf.anathema.hero.traits.TraitModel;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
+
 import org.apache.commons.lang3.ArrayUtils;
 import org.jmock.example.announcer.Announcer;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import static net.sf.anathema.character.main.magic.charm.martial.MartialArtsLevel.Sidereal;
-import static net.sf.anathema.character.main.magic.charm.martial.MartialArtsUtilities.hasLevel;
-import static net.sf.anathema.character.main.magic.charm.martial.MartialArtsUtilities.isFormMagic;
-import static net.sf.anathema.character.main.magic.charm.martial.MartialArtsUtilities.isMartialArts;
+import com.google.common.base.Functions;
 
 public class CharmsModelImpl implements CharmsModel {
 
@@ -252,53 +252,15 @@ public class CharmsModelImpl implements CharmsModel {
         }
       }
     };
-    ICharmLearnListener specialCharmListener = new CharmLearnAdapter() {
-
-      @Override
-      public void recalculateRequested() {
-        for (Charm charm : getLearnedCharms(true)) {
-          boolean prereqsMet = true;
-          for (Charm parent : charm.getParentCharms()) {
-            for (String subeffectRequirement : charm.getParentSubEffects()) {
-              if (getSubeffectParent(subeffectRequirement).equals(parent.getId())) {
-                CharmSpecialsModel config = getSpecialCharmConfiguration(getSubeffectParent(subeffectRequirement));
-                if (config instanceof MultipleEffectCharmSpecials) {
-                  MultipleEffectCharmSpecials mConfig = (MultipleEffectCharmSpecials) config;
-                  prereqsMet = prereqsMet && mConfig.getEffectById(getSubeffect(subeffectRequirement)).isLearned();
-                }
-                if (config instanceof MultiLearnCharmSpecials) {
-                  MultiLearnCharmSpecials mConfig = (MultiLearnCharmSpecials) config;
-                  String effect = getSubeffect(subeffectRequirement);
-                  int requiredCount = Integer.parseInt(effect.replace("Repurchase", ""));
-                  prereqsMet = mConfig.getCurrentLearnCount() >= requiredCount;
-                }
-              }
-            }
-          }
-          if (!prereqsMet) {
-            getGroup(charm).forgetCharm(charm, isExperienced());
-          }
-        }
-      }
-    };
     for (ICharmGroup charmGroup : charmGroups) {
       ILearningCharmGroup group = new LearningCharmGroup(charmLearnStrategy, charmGroup, this, learningCharmGroupContainer, this);
       newGroups.add(group);
 
       group.addCharmLearnListener(mergedListener);
-      group.addCharmLearnListener(specialCharmListener);
     }
     return newGroups.toArray(new ILearningCharmGroup[newGroups.size()]);
   }
-
-  private String getSubeffectParent(String subeffect) {
-    return subeffect.split("\\.")[0] + "." + subeffect.split("\\.")[1];
-  }
-
-  private String getSubeffect(String subeffect) {
-    return subeffect.split("\\.")[3];
-  }
-
+  
   @Override
   public ILearningCharmGroup[] getAllGroups() {
     List<ILearningCharmGroup> allGroups = new ArrayList<>();
