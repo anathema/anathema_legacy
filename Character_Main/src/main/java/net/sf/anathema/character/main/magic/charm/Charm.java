@@ -32,8 +32,6 @@ public interface Charm extends Magic {
   
   List<CharmLearnPrerequisite> getLearnPrerequisites();
 
-  Set<Charm> getParentCharms();
-
   ICharmTypeModel getCharmTypeModel();
 
   boolean isInstanceOfGenericCharm();

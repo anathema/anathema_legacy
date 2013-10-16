@@ -150,11 +150,6 @@ public class DummyCharm extends SimpleIdentifier implements Charm {
   }
 
   @Override
-  public Set<Charm> getParentCharms() {
-    return parentCharms;
-  }
-
-  @Override
   public ValuedTraitType[] getPrerequisites() {
     return prerequisites;
   }

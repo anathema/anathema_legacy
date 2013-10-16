@@ -14,6 +14,7 @@ import net.sf.anathema.character.main.magic.charm.CharmException;
 import net.sf.anathema.character.main.magic.charm.prerequisite.CharmLearnPrerequisite;
 import net.sf.anathema.character.main.magic.charm.prerequisite.impl.DirectGroupCharmLearnPrerequisite;
 import net.sf.anathema.character.main.magic.charm.prerequisite.impl.IndirectGroupCharmLearnPrerequisite;
+import net.sf.anathema.character.main.magic.charm.prerequisite.impl.SimpleCharmLearnPrerequisite;
 import net.sf.anathema.character.main.magic.parser.charms.CharmPrerequisiteList;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -41,6 +42,7 @@ public class PrerequisiteListBuilder {
     ValuedTraitType essence = buildEssencePrerequisite(prerequisiteListElement);
     String[] prerequisiteCharmIDs = charmBuilder.buildCharmPrerequisites(prerequisiteListElement);
     List<CharmLearnPrerequisite> prerequisites = new ArrayList<>();
+    prerequisites.addAll(Arrays.asList(buildSimpleCharmPrerequisites(prerequisiteCharmIDs)));
     prerequisites.addAll(Arrays.asList(buildSelectiveCharmGroups(prerequisiteListElement)));
     prerequisites.addAll(Arrays.asList(attributeBuilder.getCharmAttributePrerequisites(prerequisiteListElement)));
     return new CharmPrerequisiteList(allPrerequisites, essence, prerequisiteCharmIDs, prerequisites.toArray(new CharmLearnPrerequisite[0]));
@@ -58,6 +60,14 @@ public class PrerequisiteListBuilder {
       throw new CharmException("Bad value on essence prerequisite.");
     }
     return new net.sf.anathema.character.main.traits.types.ValuedTraitType(Essence, minValue);
+  }
+  
+  private CharmLearnPrerequisite[] buildSimpleCharmPrerequisites(String[] ids) {
+	  List<CharmLearnPrerequisite> prerequisites = new ArrayList<>();
+	  for (String id : ids) {
+		  prerequisites.add(new SimpleCharmLearnPrerequisite(id));
+	  }
+	  return prerequisites.toArray(new CharmLearnPrerequisite[0]);
   }
 
   private CharmLearnPrerequisite[] buildSelectiveCharmGroups(Element prerequisiteListElement) throws PersistenceException {

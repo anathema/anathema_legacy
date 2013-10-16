@@ -12,6 +12,7 @@ import net.sf.anathema.character.main.magic.charm.CharmImpl;
 import net.sf.anathema.character.main.magic.charm.combos.ComboRestrictions;
 import net.sf.anathema.character.main.magic.charm.duration.SimpleDuration;
 import net.sf.anathema.character.main.magic.charm.prerequisite.CharmLearnPrerequisite;
+import net.sf.anathema.character.main.magic.charm.prerequisite.impl.SimpleCharmLearnPrerequisite;
 import net.sf.anathema.character.main.magic.charm.type.CharmType;
 import net.sf.anathema.character.main.magic.charm.type.CharmTypeModel;
 import net.sf.anathema.character.main.magic.parser.charms.CharmPrerequisiteList;
@@ -30,8 +31,8 @@ public class CharmTest {
     DummyCharm dummy = new DummyCharm("OtherDummy");
     CharmImpl charm = createCharm(dummy);
     charm.extractParentCharms(new HashMap<String, CharmImpl>());
-    assertEquals(1, charm.getParentCharms().size());
-    assertEquals(dummy, charm.getParentCharms().toArray(new Charm[1])[0]);
+    assertEquals(1, charm.getPrerequisitesOfType(SimpleCharmLearnPrerequisite.class).size());
+    assertEquals(dummy, charm.getPrerequisitesOfType(SimpleCharmLearnPrerequisite.class).toArray(new Charm[1])[0]);
   }
 
   private CharmImpl createCharm(DummyCharm parent) {

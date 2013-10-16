@@ -16,7 +16,6 @@ import net.sf.anathema.character.main.magic.basic.source.SourceBook;
 import net.sf.anathema.character.main.magic.charm.combos.IComboRestrictions;
 import net.sf.anathema.character.main.magic.charm.duration.Duration;
 import net.sf.anathema.character.main.magic.charm.prerequisite.CharmLearnPrerequisite;
-import net.sf.anathema.character.main.magic.charm.prerequisite.CharmLearnPrerequisiteBuilder;
 import net.sf.anathema.character.main.magic.charm.prerequisite.DirectCharmLearnPrerequisite;
 import net.sf.anathema.character.main.magic.charm.prerequisite.IndirectCharmLearnPrerequisite;
 import net.sf.anathema.character.main.magic.charm.prerequisite.impl.SimpleCharmLearnPrerequisite;
@@ -50,7 +49,6 @@ public class CharmImpl extends AbstractMagic implements Charm {
 
   private final List<Set<Charm>> alternatives = new ArrayList<>();
   private final List<Set<Charm>> merges = new ArrayList<>();
-  private final List<Charm> parentCharms = new ArrayList<>();
   private final List<CharmImpl> children = new ArrayList<>();
   private final List<CharmLearnPrerequisite> prerequisites = new ArrayList<>();
   private final Set<String> favoredCasteIds = new HashSet<>();
@@ -170,25 +168,9 @@ public class CharmImpl extends AbstractMagic implements Charm {
     }
     return mergedCharms;
   }
-
-  @Override
-  public Set<Charm> getParentCharms() {
-    return new HashSet<>(parentCharms);
-  }
   
   public void extractParentCharms(Map<String, CharmImpl> charmsById) {
-    if (parentCharms.size() > 0) {
-      return;
-    }
-    for (String parentId : prerequisisteList.getParentIDs()) {
-      CharmImpl parentCharm = charmsById.get(parentId);
-      Preconditions.checkNotNull(parentCharm, "Parent Charm " + parentId + " not defined for " + getId());
-      parentCharms.add(parentCharm);
-      parentCharm.addChild(this);
-    }    
-    
-    prerequisites.addAll(Arrays.asList(new CharmLearnPrerequisiteBuilder(prerequisisteList,
-    		parentCharms.toArray(new Charm[0])).getPrerequisites()));
+    prerequisites.addAll(Arrays.asList(prerequisisteList.getLearnPrerequisites()));
     
     for (CharmLearnPrerequisite prerequisite : prerequisites) {
     	prerequisite.link(charmsById);
@@ -302,7 +284,6 @@ public class CharmImpl extends AbstractMagic implements Charm {
   }
 
   public void addParentCharms(Charm... parent) {
-    parentCharms.addAll(Arrays.asList(parent));
     for (Charm charm : parent) {
     	prerequisites.add(new SimpleCharmLearnPrerequisite(charm));
     }
