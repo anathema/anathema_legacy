@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.charms.model.special.prerequisite;
 
 import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.hero.charms.model.learn.ICharmLearnableArbitrator;
+import net.sf.anathema.character.main.magic.charm.ICharmLearnableArbitrator;
 import net.sf.anathema.hero.charms.model.special.subeffects.SubEffect;
 import net.sf.anathema.hero.charms.model.special.subeffects.SubEffects;
 import net.sf.anathema.lib.data.Condition;

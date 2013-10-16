@@ -7,6 +7,7 @@ import java.util.Set;
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.charm.CharmImpl;
 import net.sf.anathema.character.main.magic.charm.ICharmLearnArbitrator;
+import net.sf.anathema.character.main.magic.charm.ICharmLearnableArbitrator;
 import net.sf.anathema.character.main.magic.charm.prerequisite.CharmLearnPrerequisite;
 import net.sf.anathema.character.main.magic.charm.prerequisite.DirectCharmLearnPrerequisite;
 
@@ -31,8 +32,13 @@ public class SimpleCharmLearnPrerequisite implements DirectCharmLearnPrerequisit
 	}
 
 	@Override
-	public boolean isFulfilled(ICharmLearnArbitrator arbitrator) {
+	public boolean isSatisfied(ICharmLearnArbitrator arbitrator) {
 		return arbitrator.isLearned(prerequisite);
+	}
+	
+	@Override
+	public boolean isAutoSatisfiable(ICharmLearnableArbitrator arbitrator) {
+		return arbitrator.isLearnable(prerequisite);
 	}
 	
 	@Override

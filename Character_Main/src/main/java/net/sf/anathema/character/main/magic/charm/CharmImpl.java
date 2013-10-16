@@ -236,7 +236,7 @@ public class CharmImpl extends AbstractMagic implements Charm {
 
   private boolean isCharmPrerequisiteListFullfilled(ICharmLearnArbitrator learnArbitrator) {
 	for (CharmLearnPrerequisite prerequisite : getPrerequisitesOfType(DirectCharmLearnPrerequisite.class)) {
-		if (!prerequisite.isFulfilled(learnArbitrator)) {
+		if (!prerequisite.isSatisfied(learnArbitrator)) {
 			return false;
 		}
 	}

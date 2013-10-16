@@ -17,7 +17,7 @@ import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.charm.CharmAttributeList;
 import net.sf.anathema.character.main.magic.charm.martial.MartialArtsLevel;
 import net.sf.anathema.character.main.magic.charm.martial.MartialArtsUtilities;
-import net.sf.anathema.character.main.magic.charm.prerequisite.IndirectCharmLearnPrerequisite;
+import net.sf.anathema.character.main.magic.charm.prerequisite.CharmLearnPrerequisite;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.hero.charms.advance.creation.MagicCreationCostEvaluator;
@@ -384,18 +384,13 @@ public class CharmsModelImpl implements CharmsModel {
         return false;
       }
     }
-    for (IndirectCharmLearnPrerequisite prerequisite : charm.getPrerequisitesOfType(IndirectCharmLearnPrerequisite.class)) {
-    	if (!prerequisite.isFulfilled(this)) {
+    for (CharmLearnPrerequisite prerequisite : charm.getLearnPrerequisites()) {
+    	if (!prerequisite.isSatisfied(this) && !prerequisite.isAutoSatisfiable(this)) {
     		return false;
     	}
     }
     if (!(new CharmTraitRequirementChecker(getPrerequisiteModifyingCharms(), traits, this).areTraitMinimumsSatisfied(charm))) {
       return false;
-    }
-    for (Charm parentCharm : charm.getLearnPrerequisitesCharms(this)) {
-      if (!isLearnable(parentCharm)) {
-        return false;
-      }
     }
     return true;
   }

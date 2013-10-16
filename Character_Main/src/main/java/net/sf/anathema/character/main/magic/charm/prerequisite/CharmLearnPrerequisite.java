@@ -4,9 +4,12 @@ import java.util.Map;
 
 import net.sf.anathema.character.main.magic.charm.CharmImpl;
 import net.sf.anathema.character.main.magic.charm.ICharmLearnArbitrator;
+import net.sf.anathema.character.main.magic.charm.ICharmLearnableArbitrator;
 
 public interface CharmLearnPrerequisite {
 	void link(Map<String, CharmImpl> charmsById);
 	
-	boolean isFulfilled(ICharmLearnArbitrator arbitrator);
+	boolean isSatisfied(ICharmLearnArbitrator arbitrator);
+	
+	boolean isAutoSatisfiable(ICharmLearnableArbitrator arbitrator);
 }

@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.google.common.base.Preconditions;
-
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.charm.CharmImpl;
 import net.sf.anathema.character.main.magic.charm.ICharmLearnArbitrator;
+
+import com.google.common.base.Preconditions;
 
 public abstract class AbstractGroupCharmLearnPrerequisite implements MultipleCharmLearnPrerequisite {
 
@@ -22,7 +22,7 @@ public abstract class AbstractGroupCharmLearnPrerequisite implements MultipleCha
 	}
 
 	@Override
-	public boolean isFulfilled(ICharmLearnArbitrator arbitrator) {
+	public boolean isSatisfied(ICharmLearnArbitrator arbitrator) {
 		int known = 0;
 		for (Charm charm : prerequisites) {
 			if (arbitrator.isLearned(charm)) {

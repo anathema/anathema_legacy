@@ -26,42 +26,42 @@ public class AttributeKnownCharmLearnPrerequisiteTest {
   @Test
   public void isNotFulfilledWithoutCharms() throws Exception {
     AttributeKnownCharmLearnPrerequisite requirement = new AttributeKnownCharmLearnPrerequisite(attribute, 1);
-    Assert.assertFalse(requirement.isFulfilled(getLearnArbiter(new Charm[0])));
+    Assert.assertFalse(requirement.isSatisfied(getLearnArbiter(new Charm[0])));
   }
 
   @Test
   public void isFulfilledIfAttributeIsPresent() throws Exception {
     AttributeKnownCharmLearnPrerequisite requirement = new AttributeKnownCharmLearnPrerequisite(attribute, 1);
     DummyCharm charm = createAttributedDummyCharm();
-    Assert.assertTrue(requirement.isFulfilled(getLearnArbiter(new Charm[]{charm})));
+    Assert.assertTrue(requirement.isSatisfied(getLearnArbiter(new Charm[]{charm})));
   }
 
   @Test
   public void isNotFulfilledWithoutCorrectAttribute() throws Exception {
     AttributeKnownCharmLearnPrerequisite requirement = new AttributeKnownCharmLearnPrerequisite(attribute, 1);
     DummyCharm charm = new DummyCharm();
-    Assert.assertFalse(requirement.isFulfilled(getLearnArbiter(new Charm[]{charm})));
+    Assert.assertFalse(requirement.isSatisfied(getLearnArbiter(new Charm[]{charm})));
   }
 
   @Test
   public void isNotFulfilledWithoutCorrectCount() throws Exception {
     AttributeKnownCharmLearnPrerequisite requirement = new AttributeKnownCharmLearnPrerequisite(attribute, 2);
     DummyCharm charm = createAttributedDummyCharm();
-    Assert.assertFalse(requirement.isFulfilled(getLearnArbiter(new Charm[]{charm})));
+    Assert.assertFalse(requirement.isSatisfied(getLearnArbiter(new Charm[]{charm})));
   }
 
   @Test
   public void isNotFulfilledWithoutCorrectAttributesAndCount() throws Exception {
     AttributeKnownCharmLearnPrerequisite requirement = new AttributeKnownCharmLearnPrerequisite(attribute, 2);
     DummyCharm charm = createAttributedDummyCharm();
-    Assert.assertFalse(requirement.isFulfilled(getLearnArbiter(new Charm[]{charm, new DummyCharm()})));
+    Assert.assertFalse(requirement.isSatisfied(getLearnArbiter(new Charm[]{charm, new DummyCharm()})));
   }
 
   @Test
   public void isFulfilledEvenIfChainIsBroken() throws Exception {
     AttributeKnownCharmLearnPrerequisite requirement = new AttributeKnownCharmLearnPrerequisite(attribute, 2);
     DummyCharm charm = createAttributedDummyCharm();
-    Assert.assertTrue(requirement.isFulfilled(getLearnArbiter(new Charm[]{charm, new DummyCharm(), charm})));
+    Assert.assertTrue(requirement.isSatisfied(getLearnArbiter(new Charm[]{charm, new DummyCharm(), charm})));
   }
   
   private ICharmLearnArbitrator getLearnArbiter(final Charm[] charms) {
