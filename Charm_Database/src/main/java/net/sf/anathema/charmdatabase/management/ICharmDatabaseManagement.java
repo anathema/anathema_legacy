@@ -14,7 +14,7 @@ public interface ICharmDatabaseManagement {
 	
 	Identifier[] getGroupsForCharmType(Identifier type);
 	
-	Charm[] getCharms();
+	Charm[] getFilteredCharms();
 	
 	void addFilter(CharmDatabaseFilter filter);
 	

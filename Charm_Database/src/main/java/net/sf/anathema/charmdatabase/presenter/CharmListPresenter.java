@@ -53,6 +53,6 @@ public class CharmListPresenter implements Presenter {
   }
 
   private void updateCharmList() {
-    view.getTemplateListView().setObjects(model.getCharms());
+    view.getTemplateListView().setObjects(model.getFilteredCharms());
   }
 }

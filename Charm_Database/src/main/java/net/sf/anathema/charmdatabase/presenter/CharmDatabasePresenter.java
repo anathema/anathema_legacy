@@ -22,6 +22,7 @@ import net.sf.anathema.charmdatabase.view.rules.CharmPrerequisitesPanel;
 import net.sf.anathema.charmdatabase.view.rules.CharmRulesPanel;
 import net.sf.anathema.charmdatabase.view.rules.CharmTraitMinimumsPanel;
 import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.hero.charms.display.MagicDisplayLabeler;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
@@ -54,7 +55,7 @@ public class CharmDatabasePresenter implements Presenter {
     Platform.runLater(new Runnable() {
 		@Override
 		public void run() {
-			model.getCharmEditModel().setEditCharm(model.getCharms()[0]);	
+			model.getCharmEditModel().setEditCharm(model.getFilteredCharms()[0]);	
 		}
     });
   }
@@ -70,7 +71,7 @@ public class CharmDatabasePresenter implements Presenter {
   
   private void initCharmListFilterView() {
 	  final ITextView filterView = view.addTextualFilter(resources.getString("Charms.Filter"));
-	  final CharmNameFilter filter = new CharmNameFilter(resources);
+	  final CharmNameFilter filter = new CharmNameFilter(new MagicDisplayLabeler(resources));
 	  model.addFilter(filter);
 	  filterView.addTextChangedListener(new ObjectValueListener<String>() {
 

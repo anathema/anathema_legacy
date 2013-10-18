@@ -2,6 +2,7 @@ package net.sf.anathema.charmdatabase.management;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -29,28 +30,37 @@ public class CharmDatabaseManagement implements ICharmDatabaseManagement {
 	
 	private final Announcer<ChangeListener> charmListChangedControl = Announcer.to(ChangeListener.class);
 	
+	private List<Charm> currentCharmList;
+	
 	public CharmDatabaseManagement(Resources resources,
 			HeroEnvironment characterGenerics,
 			MagicDescriptionProvider magicDescriptionProvider) {
 		cache = characterGenerics.getDataSet(CharmCache.class);
 		editModel = new CharmEditModel(new MagicDisplayLabeler(resources), magicDescriptionProvider);
 		this.resources = resources;
+		
+		prepareCharmList();
 	}
 
 	@Override
 	public ICharmEditModel getCharmEditModel() {
 		return editModel;
 	}
-
-	@Override
-	public Charm[] getCharms() {
+	
+	private void prepareCharmList() {
 		// TODO: Handle generics
-		List<Charm> charms = new ArrayList<Charm>();
+		currentCharmList = new ArrayList<Charm>();
 		for (Identifier set : cache.getCharmTypes()) {
-			charms.addAll(Arrays.asList(cache.getCharms(set)));
+			currentCharmList.addAll(Arrays.asList(cache.getCharms(set)));
 		}
-		
-		for (Charm charm : new ArrayList<Charm>(charms)) {
+
+		Collections.sort(currentCharmList, new CharmComparator());
+	}
+	
+	@Override
+	public Charm[] getFilteredCharms() {
+		List<Charm> charms = new ArrayList<Charm>(currentCharmList);
+		for (Charm charm : currentCharmList) {
 			for (CharmDatabaseFilter filter : filters) {
 				if (!filter.approvesCharm(charm)) {
 					charms.remove(charm);
@@ -58,11 +68,7 @@ public class CharmDatabaseManagement implements ICharmDatabaseManagement {
 				}
 			}
 		}
-		
-		Charm[] charmArray = charms.toArray(new Charm[0]);
-		Arrays.sort(charmArray, new CharmComparator());
-		
-		return charmArray;
+		return charms.toArray(new Charm[0]);
 	}
 
 	@Override

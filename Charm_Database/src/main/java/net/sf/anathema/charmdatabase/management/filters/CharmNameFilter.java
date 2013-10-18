@@ -1,15 +1,15 @@
 package net.sf.anathema.charmdatabase.management.filters;
 
 import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.hero.charms.display.MagicDisplayLabeler;
 
 public class CharmNameFilter implements CharmDatabaseFilter {
 
-	private final Resources resources;
+	private final MagicDisplayLabeler labeler;
 	String currentText = "";
 	
-	public CharmNameFilter(Resources resources) {
-		this.resources = resources;
+	public CharmNameFilter(MagicDisplayLabeler labeler) {
+		this.labeler = labeler;
 	}
 	
 	public void setCurrentText(String text) {
@@ -18,7 +18,7 @@ public class CharmNameFilter implements CharmDatabaseFilter {
 	
 	@Override
 	public boolean approvesCharm(Charm charm) {
-		return resources.getString(charm.getId()).toLowerCase().contains(currentText);
+		return labeler.getLabelForMagic(charm).toLowerCase().contains(currentText);
 	}
 
 }
