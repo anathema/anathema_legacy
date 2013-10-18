@@ -1,13 +1,9 @@
 package net.sf.anathema.charmdatabase.presenter;
 
-import java.util.Arrays;
-import java.util.Comparator;
-
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.charmdatabase.management.ICharmDatabaseManagement;
 import net.sf.anathema.charmdatabase.management.model.ICharmEditModel;
 import net.sf.anathema.charmdatabase.view.CharmNavigation;
-import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
@@ -25,15 +21,12 @@ public class CharmListPresenter implements Presenter {
     }
   }
 
-  private final Resources resources;
   private final CharmNavigation view;
   private final ICharmDatabaseManagement model;
 
   public CharmListPresenter(
-      Resources resources,
       ICharmDatabaseManagement model,
       CharmNavigation view) {
-    this.resources = resources;
     this.model = model;
     this.view = view;
   }
