@@ -3,9 +3,8 @@ package net.sf.anathema.charmdatabase.view.fx;
 import net.miginfocom.layout.AC;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
-import net.sf.anathema.charmdatabase.presenter.DirectUi;
-import net.sf.anathema.charmdatabase.presenter.TypeUi;
 import net.sf.anathema.charmdatabase.view.CharmBasicsPanel;
+import net.sf.anathema.lib.gui.AbstractUIConfiguration;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
@@ -24,12 +23,12 @@ public class FxCharmBasicsPanel extends AbstractFxContainerPanel implements Char
   }
 
   @Override
-  public ObjectSelectionView<Identifier> addTypeView(String label, DirectUi ui) {
+  public ObjectSelectionView<Identifier> addTypeView(String label, AbstractUIConfiguration<Identifier> ui) {
 	  return addSelectionView(label, ui, new CC().grow());
   }
 
   @Override
-  public ObjectSelectionView<Identifier> addGroupView(String label, TypeUi ui) {
+  public ObjectSelectionView<Identifier> addGroupView(String label, AbstractUIConfiguration<Identifier> ui) {
 	  return addSelectionView(label, ui, new CC().grow());
   }
 }

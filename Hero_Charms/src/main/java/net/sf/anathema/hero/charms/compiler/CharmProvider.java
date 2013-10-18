@@ -12,6 +12,8 @@ public interface CharmProvider {
   Charm[] getMartialArtsCharms();
 
   Charm[] getCharms(CharacterType characterType);
+  
+  Identifier[] getGroupsForCharmType(Identifier type);
 
   ISpecialCharm[] getSpecialCharms(Identifier type);
 

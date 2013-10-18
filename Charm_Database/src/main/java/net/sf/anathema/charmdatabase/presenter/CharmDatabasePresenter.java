@@ -4,12 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javafx.application.Platform;
-
 import net.sf.anathema.character.main.magic.charm.duration.Duration;
 import net.sf.anathema.character.main.magic.charm.duration.QualifiedAmountDuration;
 import net.sf.anathema.character.main.magic.charm.duration.SimpleDuration;
 import net.sf.anathema.character.main.magic.charm.type.CharmType;
-import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.charmdatabase.management.ICharmDatabaseManagement;
 import net.sf.anathema.charmdatabase.management.filters.CharmNameFilter;
 import net.sf.anathema.charmdatabase.management.model.ICharmEditModel;
@@ -29,6 +27,7 @@ import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.lib.util.SimpleIdentifier;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 
@@ -91,7 +90,7 @@ public class CharmDatabasePresenter implements Presenter {
     new TextualPresentation().initView(nameView, model.getCharmEditModel().getName());
     
     final ObjectSelectionView<Identifier> typeView = basicsPanel.addTypeView(resources.getString("Charms.Creation.Basics.CharmType"),
-    		new DirectUi());
+    		new TypeUi(resources));
     typeView.setObjects(model.getCharmTypes());
     final ObjectSelectionView<Identifier> groupView = basicsPanel.addGroupView(resources.getString("Charms.Creation.Basics.GroupType"),
     		new TypeUi(resources));
@@ -99,17 +98,9 @@ public class CharmDatabasePresenter implements Presenter {
 
 		@Override
 		public void changeOccurred() {
-			typeView.setSelectedObject(model.getCharmEditModel().getCharmType());
-			// TODO: We need a more generalized means to handle this
-			if (model.getCharmEditModel().getCharmType() instanceof CharacterType) {
-				groupView.setObjects(((CharacterType)model.getCharmEditModel().getCharmType()).getFavoringTraitType().getTraitTypesForGenericCharms());
-				groupView.setSelectedObject(model.getCharmEditModel().getCharmGroup());
-			} else {
-				Identifier[] objects = new Identifier[1];
-				objects[0] = model.getCharmEditModel().getCharmGroup();
-				groupView.setObjects(objects);
-				groupView.setEnabled(false);
-			}
+			typeView.setSelectedObject(new SimpleIdentifier(model.getCharmEditModel().getCharmType().getId()));
+			groupView.setObjects(model.getGroupsForCharmType(model.getCharmEditModel().getCharmType()));
+			groupView.setSelectedObject(model.getCharmEditModel().getCharmGroup());
 		}
     });
     typeView.addObjectSelectionChangedListener(new ObjectValueListener<Identifier>() {

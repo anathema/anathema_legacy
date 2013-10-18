@@ -6,23 +6,36 @@ import net.sf.anathema.hero.charms.model.CharmIdMap;
 import net.sf.anathema.hero.charms.model.special.ISpecialCharm;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.lib.util.SimpleIdentifier;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
+
 import static net.sf.anathema.character.main.magic.charm.martial.MartialArtsUtilities.MARTIAL_ARTS;
 
 public class CharmProviderImpl implements CharmProvider {
 
+  private final Multimap<String, Identifier> groupsByType = HashMultimap.create();
   private final Map<String, ISpecialCharm[]> specialCharmsByType = new HashMap<>();
   private final Map<String, Charm[]> charmsByType = new HashMap<>();
 
   public CharmProviderImpl(CharmCache cache) {
     for (Identifier type : cache.getCharmTypes()) {
       specialCharmsByType.put(type.getId(), cache.getSpecialCharmData(type));
-      charmsByType.put(type.getId(), cache.getCharms(type));
+      Charm[] charms = cache.getCharms(type);
+      charmsByType.put(type.getId(), charms);
+      
+      for (Charm charm : charms) {
+    	  SimpleIdentifier group = new SimpleIdentifier(charm.getGroupId()); 
+    	  if (!groupsByType.containsEntry(type, group)) {
+    		  groupsByType.put(type.getId(), group);
+    	  }
+      }
     }
     charmsByType.put(MARTIAL_ARTS.getId(), cache.getCharms(MARTIAL_ARTS));
   }
@@ -42,6 +55,11 @@ public class CharmProviderImpl implements CharmProvider {
       return new Charm[0];
     }
     return charmsByType.get(id);
+  }
+  
+  @Override
+  public Identifier[] getGroupsForCharmType(Identifier type) {
+  	return groupsByType.get(type.getId()).toArray(new Identifier[0]);
   }
 
   @Override
@@ -80,4 +98,5 @@ public class CharmProviderImpl implements CharmProvider {
     }
     return set.toArray(new ISpecialCharm[set.size()]);
   }
+
 }

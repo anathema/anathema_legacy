@@ -17,12 +17,12 @@ import net.sf.anathema.hero.charms.display.MagicDisplayLabeler;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.lib.util.SimpleIdentifier;
 
 public class CharmDatabaseManagement implements ICharmDatabaseManagement {
 
 	private final CharmCache cache;
 	private final CharmEditModel editModel;
-	private final Identifier[] characterTypes;
 	private final Resources resources;
 	
 	private final List<CharmDatabaseFilter> filters = new ArrayList<CharmDatabaseFilter>();
@@ -35,9 +35,6 @@ public class CharmDatabaseManagement implements ICharmDatabaseManagement {
 		cache = characterGenerics.getDataSet(CharmCache.class);
 		editModel = new CharmEditModel(new MagicDisplayLabeler(resources), magicDescriptionProvider);
 		this.resources = resources;
-		
-		// TODO: We eventually want Charm Types, rather than Character Types here.
-		characterTypes = characterGenerics.getCharacterTypes().findAll();
 	}
 
 	@Override
@@ -70,7 +67,23 @@ public class CharmDatabaseManagement implements ICharmDatabaseManagement {
 
 	@Override
 	public Identifier[] getCharmTypes() {
-		return characterTypes;
+		List<Identifier> types = new ArrayList<>();
+		for (Identifier type : cache.getCharmTypes()) {
+			types.add(new SimpleIdentifier(type.getId()));
+		}
+		return types.toArray(new Identifier[0]);
+	}
+	
+	@Override
+	public Identifier[] getGroupsForCharmType(Identifier type) {
+		Identifier[] groups = cache.getCharmProvider().getGroupsForCharmType(type);
+		Arrays.sort(groups, new Comparator<Identifier>() {
+			@Override
+			public int compare(Identifier o1, Identifier o2) {
+				return o1.getId().compareTo(o2.getId());
+			}
+		});
+		return groups;
 	}
 
 	@Override
