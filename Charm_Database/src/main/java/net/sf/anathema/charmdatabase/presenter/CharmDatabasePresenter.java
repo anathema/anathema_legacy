@@ -3,6 +3,8 @@ package net.sf.anathema.charmdatabase.presenter;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.application.Platform;
+
 import net.sf.anathema.character.main.magic.charm.duration.Duration;
 import net.sf.anathema.character.main.magic.charm.duration.QualifiedAmountDuration;
 import net.sf.anathema.character.main.magic.charm.duration.SimpleDuration;
@@ -48,7 +50,12 @@ public class CharmDatabasePresenter implements Presenter {
     initBasicDetailsView();
     initRulesDetailsView();
     initInformationDetailsView();
-    model.getCharmEditModel().setNewTemplate();
+    Platform.runLater(new Runnable() {
+		@Override
+		public void run() {
+			model.getCharmEditModel().setEditCharm(model.getCharms()[0]);	
+		}
+    });
   }
   
   private void addEditTemplateActions() {

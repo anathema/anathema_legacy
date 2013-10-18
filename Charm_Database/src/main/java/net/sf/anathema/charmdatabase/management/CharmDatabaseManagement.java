@@ -2,6 +2,7 @@ package net.sf.anathema.charmdatabase.management;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 import net.sf.anathema.character.main.magic.charm.Charm;
@@ -22,6 +23,7 @@ public class CharmDatabaseManagement implements ICharmDatabaseManagement {
 	private final CharmCache cache;
 	private final CharmEditModel editModel;
 	private final Identifier[] characterTypes;
+	private final Resources resources;
 	
 	private final List<CharmDatabaseFilter> filters = new ArrayList<CharmDatabaseFilter>();
 	
@@ -32,6 +34,7 @@ public class CharmDatabaseManagement implements ICharmDatabaseManagement {
 			MagicDescriptionProvider magicDescriptionProvider) {
 		cache = characterGenerics.getDataSet(CharmCache.class);
 		editModel = new CharmEditModel(new MagicDisplayLabeler(resources), magicDescriptionProvider);
+		this.resources = resources;
 		
 		// TODO: We eventually want Charm Types, rather than Character Types here.
 		characterTypes = characterGenerics.getCharacterTypes().findAll();
@@ -59,7 +62,10 @@ public class CharmDatabaseManagement implements ICharmDatabaseManagement {
 			}
 		}
 		
-		return charms.toArray(new Charm[0]);
+		Charm[] charmArray = charms.toArray(new Charm[0]);
+		Arrays.sort(charmArray, new CharmComparator());
+		
+		return charmArray;
 	}
 
 	@Override
@@ -87,4 +93,21 @@ public class CharmDatabaseManagement implements ICharmDatabaseManagement {
 		charmListChangedControl.addListener(listener);
 	}
 
+	private class CharmComparator implements Comparator<Charm> {
+
+		@Override
+		public int compare(Charm o1, Charm o2) {
+			if (o1.getGroupId().compareTo(o2.getGroupId()) != 0) {
+				return o1.getGroupId().compareTo(o2.getGroupId());
+			}
+			if (o1.isInstanceOfGenericCharm() && !o2.isInstanceOfGenericCharm()) {
+				return -1;
+			}
+			if (o2.isInstanceOfGenericCharm() && !o1.isInstanceOfGenericCharm()) {
+				return 1;
+			}
+			return resources.getString(o1.getId()).compareTo(resources.getString(o2.getId()));
+		}
+
+	}
 }

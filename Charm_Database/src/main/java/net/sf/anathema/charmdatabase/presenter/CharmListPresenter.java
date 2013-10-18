@@ -60,26 +60,6 @@ public class CharmListPresenter implements Presenter {
   }
 
   private void updateCharmList() {
-	Charm[] charms = model.getCharms();
-    Arrays.sort(charms, new CharmComparator());
-    view.getTemplateListView().setObjects(charms);
-  }
-  
-  private class CharmComparator implements Comparator<Charm> {
-
-	@Override
-	public int compare(Charm o1, Charm o2) {
-		if (o1.getGroupId().compareTo(o2.getGroupId()) != 0) {
-			return o1.getGroupId().compareTo(o2.getGroupId());
-		}
-		if (o1.isInstanceOfGenericCharm() && !o2.isInstanceOfGenericCharm()) {
-			return -1;
-		}
-		if (o2.isInstanceOfGenericCharm() && !o1.isInstanceOfGenericCharm()) {
-			return 1;
-		}
-		return resources.getString(o1.getId()).compareTo(resources.getString(o2.getId()));
-	}
-	  
+    view.getTemplateListView().setObjects(model.getCharms());
   }
 }

@@ -6,7 +6,7 @@ import net.sf.anathema.framework.environment.Resources;
 public class CharmNameFilter implements CharmDatabaseFilter {
 
 	private final Resources resources;
-	String currentText;
+	String currentText = "";
 	
 	public CharmNameFilter(Resources resources) {
 		this.resources = resources;
