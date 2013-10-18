@@ -61,7 +61,6 @@ public class CharmEditModel implements ICharmEditModel {
 	
 	// TODO: Don't like these hardcoded values at all, read them from somewhere.
 	private final Identifier DEFAULT_CHARM_TYPE = new SimpleIdentifier("Solar");
-	private final Identifier DEFAULT_CHARM_GROUP = new SimpleIdentifier("Archery");
 	private final ValuedTraitType[] DEFAULT_CHARM_TRAIT_MINIMUMS = new ValuedTraitType[] {
 			new SimpleValuedTraitType(OtherTraitType.Essence, 1)};
 	private final ICharmTypeModel DEFAULT_CHARM_ACTION_TYPE = new CharmTypeModel(CharmType.Simple, null);
