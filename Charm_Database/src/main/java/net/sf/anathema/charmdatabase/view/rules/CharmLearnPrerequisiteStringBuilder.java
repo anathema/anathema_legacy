@@ -57,7 +57,7 @@ public class CharmLearnPrerequisiteStringBuilder {
 
 			@Override
 			public void visitAttributeKnownCharmLearnPrerequisite(AttributeKnownCharmLearnPrerequisite prerequisite) {
-				label[0] = prerequisite.getStringLabel();
+				label[0] = resources.getString(prerequisite.getStringLabel());
 			}
 			
 		});
