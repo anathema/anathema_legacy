@@ -44,7 +44,7 @@ public class CharmDatabasePresenter implements Presenter {
 
   @Override
   public void initPresentation() {
-    new CharmListPresenter(resources, model, view).initPresentation();
+    new CharmListPresenter(model, view).initPresentation();
     addEditTemplateActions();
     initCharmListFilterView();
     initBasicDetailsView();
