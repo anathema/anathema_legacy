@@ -4,10 +4,10 @@ import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.gui.AbstractUIConfiguration;
 import net.sf.anathema.lib.util.Identifier;
 
-public class TypeUi extends AbstractUIConfiguration<Identifier> {
+public class IdentifierUi extends AbstractUIConfiguration<Identifier> {
   private Resources resources;
 
-  public TypeUi(Resources resources) {
+  public IdentifierUi(Resources resources) {
     this.resources = resources;
   }
 

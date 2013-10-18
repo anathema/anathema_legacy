@@ -24,7 +24,7 @@ public class FxCharmBasicsPanel extends AbstractFxContainerPanel implements Char
 
   @Override
   public ObjectSelectionView<Identifier> addTypeView(String label, AbstractUIConfiguration<Identifier> ui) {
-	  return addSelectionView(label, ui, new CC().grow());
+	  return addSelectionView(label, ui, new CC().growX());
   }
 
   @Override

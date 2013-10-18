@@ -90,10 +90,10 @@ public class CharmDatabasePresenter implements Presenter {
     new TextualPresentation().initView(nameView, model.getCharmEditModel().getName());
     
     final ObjectSelectionView<Identifier> typeView = basicsPanel.addTypeView(resources.getString("Charms.Creation.Basics.CharmType"),
-    		new TypeUi(resources));
+    		new IdentifierUi(resources));
     typeView.setObjects(model.getCharmTypes());
     final ObjectSelectionView<Identifier> groupView = basicsPanel.addGroupView(resources.getString("Charms.Creation.Basics.GroupType"),
-    		new TypeUi(resources));
+    		new IdentifierUi(resources));
     model.getCharmEditModel().addCharmTypeChangedListening(new ChangeListener() {
 
 		@Override
