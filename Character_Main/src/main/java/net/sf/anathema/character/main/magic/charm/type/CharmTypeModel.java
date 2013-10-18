@@ -4,6 +4,14 @@ public class CharmTypeModel implements ICharmTypeModel {
 
   private CharmType type;
   private ITypeSpecialsModel model;
+  
+  public CharmTypeModel() {
+  }
+  
+  public CharmTypeModel(CharmType type, ITypeSpecialsModel model) {
+	  this.type = type;
+	  this.model = model;
+  }
 
   @Override
   public CharmType getCharmType() {

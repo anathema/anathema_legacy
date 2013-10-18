@@ -47,8 +47,7 @@ public class FxCharmDatabaseView implements CharmDatabaseView {
 
 	@Override
 	public Tool addEditTemplateTool() {
-		// TODO Auto-generated method stub
-		return null;
+		return navigation.addEditTemplateTool();
 	}
 
 	@Override

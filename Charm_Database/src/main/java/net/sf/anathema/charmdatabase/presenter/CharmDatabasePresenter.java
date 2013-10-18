@@ -12,6 +12,8 @@ import net.sf.anathema.character.main.magic.charm.type.CharmType;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.charmdatabase.management.ICharmDatabaseManagement;
 import net.sf.anathema.charmdatabase.management.filters.CharmNameFilter;
+import net.sf.anathema.charmdatabase.management.model.ICharmEditModel;
+import net.sf.anathema.charmdatabase.tools.NewCharmAction;
 import net.sf.anathema.charmdatabase.view.CharmBasicsPanel;
 import net.sf.anathema.charmdatabase.view.CharmDatabaseView;
 import net.sf.anathema.charmdatabase.view.info.CharmInformationPanel;
@@ -59,10 +61,12 @@ public class CharmDatabasePresenter implements Presenter {
   }
   
   private void addEditTemplateActions() {
-    /*new NewEquipmentTemplateAction(resources, model).addToolTo(view);
-    new SaveEquipmentTemplateAction(resources, model).addToolTo(view);
-    new CopyEquipmentTemplateAction(resources, model).addToolTo(view);
-    new RemoveEquipmentTemplateAction(resources, model).addToolTo(view);*/
+	if (ICharmEditModel.EDIT_ENABLED) {
+		new NewCharmAction(resources, model).addToolTo(view);
+	    /*new SaveEquipmentTemplateAction(resources, model).addToolTo(view);
+	    new CopyEquipmentTemplateAction(resources, model).addToolTo(view);
+	    new RemoveEquipmentTemplateAction(resources, model).addToolTo(view);*/	
+	}
   }
   
   private void initCharmListFilterView() {

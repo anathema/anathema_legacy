@@ -5,14 +5,20 @@ import java.util.Arrays;
 import java.util.List;
 
 import net.sf.anathema.character.main.magic.basic.attribute.MagicAttribute;
+import net.sf.anathema.character.main.magic.basic.cost.CostList;
 import net.sf.anathema.character.main.magic.basic.cost.ICostList;
 import net.sf.anathema.character.main.magic.basic.source.SourceBook;
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.charm.duration.Duration;
+import net.sf.anathema.character.main.magic.charm.duration.SimpleDuration;
 import net.sf.anathema.character.main.magic.charm.prerequisite.CharmLearnPrerequisite;
+import net.sf.anathema.character.main.magic.charm.type.CharmType;
+import net.sf.anathema.character.main.magic.charm.type.CharmTypeModel;
 import net.sf.anathema.character.main.magic.charm.type.ICharmTypeModel;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
+import net.sf.anathema.character.main.traits.types.OtherTraitType;
+import net.sf.anathema.character.main.traits.types.SimpleValuedTraitType;
 import net.sf.anathema.characterengine.support.Announcer;
 import net.sf.anathema.hero.charms.display.MagicDisplayLabeler;
 import net.sf.anathema.lib.control.ChangeListener;
@@ -53,6 +59,16 @@ public class CharmEditModel implements ICharmEditModel {
 	private final Announcer<ChangeListener> canonSelectedControl = Announcer.to(ChangeListener.class);
 	private final Announcer<ChangeListener> customSelectedControl = Announcer.to(ChangeListener.class);
 	
+	// TODO: Don't like these hardcoded values at all, read them from somewhere.
+	private final Identifier DEFAULT_CHARM_TYPE = new SimpleIdentifier("Solar");
+	private final Identifier DEFAULT_CHARM_GROUP = new SimpleIdentifier("Archery");
+	private final ValuedTraitType[] DEFAULT_CHARM_TRAIT_MINIMUMS = new ValuedTraitType[] {
+			new SimpleValuedTraitType(OtherTraitType.Essence, 1)};
+	private final ICharmTypeModel DEFAULT_CHARM_ACTION_TYPE = new CharmTypeModel(CharmType.Simple, null);
+	private final Duration DEFAULT_CHARM_DURATION = SimpleDuration.INSTANT_DURATION;
+	
+	boolean isDirty;
+	
 	public CharmEditModel(MagicDisplayLabeler labeler, MagicDescriptionProvider provider) {
 		this.labeler = labeler;
 		name = new SimpleTextualDescription();
@@ -64,6 +80,22 @@ public class CharmEditModel implements ICharmEditModel {
 	public void setNewTemplate() {
 		name.setText("");
 		description.setText("");
+		
+		setCharmType(DEFAULT_CHARM_TYPE);
+		setCharmGroup(null);
+		setCharmPrerequisites(new CharmLearnPrerequisite[0]);
+		setCharmTraitMinimums(DEFAULT_CHARM_TRAIT_MINIMUMS);
+		setCharmTemporaryCosts(new CostList(null, null, null, null));
+		
+		setCharmKeywords(new MagicAttribute[0]);
+		setCharmActionType(DEFAULT_CHARM_ACTION_TYPE);
+		setCharmDuration(DEFAULT_CHARM_DURATION);
+		
+		setCharmSources(new SourceBook[] { ICharmEditModel.CUSTOM_SOURCE });
+		
+		isDirty = false;
+		
+		customSelectedControl.announce().changeOccurred();
 	}
 	
 	@Override
@@ -88,8 +120,18 @@ public class CharmEditModel implements ICharmEditModel {
 		
 		setCharmSources(charm.getSources());
 		
-		// TODO: Check charm classification
-		canonSelectedControl.announce().changeOccurred();
+		isDirty = false;
+		
+		if (Arrays.asList(charm.getSources()).contains(ICharmEditModel.CUSTOM_SOURCE)) {
+			customSelectedControl.announce().changeOccurred();
+		} else {
+			canonSelectedControl.announce().changeOccurred();
+		}
+	}
+	
+	@Override
+	public boolean isDirty() {
+		return isDirty;
 	}
 
 	@Override
@@ -301,5 +343,4 @@ public class CharmEditModel implements ICharmEditModel {
 	public void addCharmSourcesChangedListening(ChangeListener listener) {
 		sourcesChangedControl.addListener(listener);
 	}
-	
 }
