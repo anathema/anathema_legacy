@@ -43,4 +43,13 @@ public class AttributeKnownCharmLearnPrerequisite implements IndirectCharmLearnP
 	public void link(Map<String, CharmImpl> charmsById) {
 		// nothing to do
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof AttributeKnownCharmLearnPrerequisite) {
+			AttributeKnownCharmLearnPrerequisite prerequisite = (AttributeKnownCharmLearnPrerequisite) obj;
+			return prerequisite.attribute.equals(attribute) && prerequisite.count == count;
+		}
+		return false;
+	}
 }

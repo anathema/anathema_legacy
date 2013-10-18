@@ -42,6 +42,9 @@ public abstract class AbstractGroupCharmLearnPrerequisite implements MultipleCha
 	
 	@Override
 	public void link(Map<String, CharmImpl> charmsById) {
+		if (prerequisites != null) {
+			return;
+		}
 		List<Charm> prerequisites = new ArrayList<>();
 		for (String id : prerequisiteIds) {
 			Charm parentCharm = charmsById.get(id);

@@ -51,8 +51,19 @@ public class SimpleCharmLearnPrerequisite implements DirectCharmLearnPrerequisit
 
 	@Override
 	public void link(Map<String, CharmImpl> charmsById) {
+		if (prerequisite != null) {
+			return;
+		}
 		prerequisite = charmsById.get(prerequisiteId);
 		Preconditions.checkNotNull(prerequisite, "Parent Charm " + prerequisiteId + " not defined" );
-		
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof SimpleCharmLearnPrerequisite) {
+			SimpleCharmLearnPrerequisite prerequisite = (SimpleCharmLearnPrerequisite) obj;
+			return prerequisite.prerequisite.equals(prerequisite);
+		}
+		return false;
 	}
 }

@@ -1,6 +1,7 @@
 package net.sf.anathema.character.main.magic.charm.prerequisite.impl;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -66,5 +67,14 @@ public class DirectGroupCharmLearnPrerequisite extends AbstractGroupCharmLearnPr
 			}
 		}
 		return charmsToLearn;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof DirectGroupCharmLearnPrerequisite) {
+			DirectGroupCharmLearnPrerequisite prerequisite = (DirectGroupCharmLearnPrerequisite) obj;
+			return Arrays.deepEquals(prerequisites, prerequisite.prerequisites) && prerequisite.getThreshold() == getThreshold();
+		}
+		return false;
 	}
 }

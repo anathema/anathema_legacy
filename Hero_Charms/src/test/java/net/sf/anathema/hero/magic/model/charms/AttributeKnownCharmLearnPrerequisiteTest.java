@@ -74,6 +74,15 @@ public class AttributeKnownCharmLearnPrerequisiteTest {
 			
 		@Override
 		public boolean hasLearnedThresholdCharmsWithKeyword(MagicAttribute attribute, int threshold) {
+			int count = 0;
+			for (Charm charm : charms) {
+				if (charm.hasAttribute(attribute)) {
+					count++;
+				}
+				if (count >= threshold) {
+					return true;
+				}
+			}
 			return false;
 		}
 		  

@@ -7,7 +7,6 @@ import java.util.HashMap;
 
 import net.sf.anathema.character.main.magic.basic.cost.CostList;
 import net.sf.anathema.character.main.magic.basic.source.SourceBook;
-import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.charm.CharmImpl;
 import net.sf.anathema.character.main.magic.charm.combos.ComboRestrictions;
 import net.sf.anathema.character.main.magic.charm.duration.SimpleDuration;
@@ -32,7 +31,7 @@ public class CharmTest {
     CharmImpl charm = createCharm(dummy);
     charm.extractParentCharms(new HashMap<String, CharmImpl>());
     assertEquals(1, charm.getPrerequisitesOfType(SimpleCharmLearnPrerequisite.class).size());
-    assertEquals(dummy, charm.getPrerequisitesOfType(SimpleCharmLearnPrerequisite.class).toArray(new Charm[1])[0]);
+    assertEquals(dummy, charm.getPrerequisitesOfType(SimpleCharmLearnPrerequisite.class).toArray(new SimpleCharmLearnPrerequisite[1])[0].getDirectPredecessors()[0]);
   }
 
   private CharmImpl createCharm(DummyCharm parent) {
