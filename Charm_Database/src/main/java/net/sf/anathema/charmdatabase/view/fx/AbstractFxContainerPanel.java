@@ -50,7 +50,9 @@ public abstract class AbstractFxContainerPanel {
 
   public <T> ObjectSelectionView<T> addSelectionView(String label, AgnosticUIConfiguration<T> ui,
                                                      final CC constraints) {
-    // TODO: Throw exception if no factory is installed
+    if (selectionViewFactory == null) {
+    	throw new RuntimeException("No selection view factory installed");
+    }
     final FxObjectSelectionView<T> selectionView = selectionViewFactory.create(label, ui);
     Platform.runLater(new Runnable() {
       @Override
