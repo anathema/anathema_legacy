@@ -2,6 +2,7 @@ dependencies {
     compile project(':Platform')
     compile project(':Platform_TreeFramework')
     compile project(':GraphLayout')
+    compile project(':Engine_Exalted')
     testCompile testDependencies
     testCompile project(path: ':Platform', configuration: 'tests')
 }

@@ -1,6 +1,5 @@
 package net.sf.anathema.hero.framework.perspective;
 
-import net.sf.anathema.character.main.HeroTemplateHolder;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITemplateRegistry;
 import net.sf.anathema.character.main.type.CharacterType;
@@ -9,7 +8,6 @@ import net.sf.anathema.hero.dummy.DummyMundaneCharacterType;
 import net.sf.anathema.hero.dummy.template.SimpleDummyCharacterTemplate;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.lib.control.ChangeListener;
-
 import org.junit.Test;
 import org.mockito.Mockito;
 
@@ -18,7 +16,6 @@ public class CharacterItemCreationModelTest {
   @Test
   public void comparesNewlySetCharacterTypeViaEqualsNotIdentity() throws Exception {
     HeroEnvironment generics = createGenericsWithCharacterType(new DummyMundaneCharacterType());
-    HeroTemplateHolder configuration = Mockito.mock(HeroTemplateHolder.class);
     CharacterItemCreationModel model = new CharacterItemCreationModel(generics);
     ChangeListener listener = Mockito.mock(ChangeListener.class);
     model.addListener(listener);
