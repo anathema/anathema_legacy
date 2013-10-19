@@ -20,10 +20,10 @@ subprojects {
 
     repositories {
         maven {
-            url 'https://github.com/anathema/anathema-thirdparty/raw/54fa618c58770d0ad6c66426e7b5e52fc76fc69a/snapshots/'
+            url 'https://github.com/anathema/anathema-thirdparty/raw/v3.x/snapshots/'
         }
         maven {
-            url 'https://github.com/anathema/anathema-thirdparty/raw/54fa618c58770d0ad6c66426e7b5e52fc76fc69a/releases/'
+            url 'https://github.com/anathema/anathema-thirdparty/raw/v3.x/releases/'
         }
         mavenCentral()
     }
