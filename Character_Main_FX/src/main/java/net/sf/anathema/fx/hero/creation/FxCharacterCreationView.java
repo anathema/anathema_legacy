@@ -28,7 +28,6 @@ public class FxCharacterCreationView implements CharacterCreationView {
 
   public FxCharacterCreationView(Window parent) {
     this.parent = parent;
-    component.add(buttonBar, new CC().newline().gapTop("10").span().push().grow());
   }
 
   @Override
@@ -52,6 +51,7 @@ public class FxCharacterCreationView implements CharacterCreationView {
   @Override
   public void show() {
     Scene scene = new Scene(component);
+    component.add(buttonBar, new CC().newline().gapTop("10").span().push().grow());
     stage.initOwner(parent);
     stage.setScene(scene);
     stage.setHeight(200);
