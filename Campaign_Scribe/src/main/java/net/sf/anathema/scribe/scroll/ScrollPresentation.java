@@ -25,7 +25,7 @@ public class ScrollPresentation implements IItemTypeViewProperties {
 
   @Override
   public String getLabelKey() {
-    return "Scrolls";
+    return "Scribe.Export.ItemType";
   }
 
   @Override
