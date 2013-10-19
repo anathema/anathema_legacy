@@ -9,9 +9,4 @@ public class NullMenu implements IMenu {
     //nothing to do
   }
 
-  @Override
-  public void addSeparator() {
-    //nothing to do
-  }
-
 }

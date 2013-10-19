@@ -5,6 +5,4 @@ import net.sf.anathema.interaction.Command;
 public interface IMenu {
 
   void addMenuItem(Command action, String label);
-
-  void addSeparator();
 }

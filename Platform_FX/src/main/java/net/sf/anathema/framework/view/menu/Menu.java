@@ -1,6 +1,5 @@
 package net.sf.anathema.framework.view.menu;
 
-import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import net.sf.anathema.interaction.Command;
@@ -34,8 +33,4 @@ public class Menu implements IMenu {
     menu.getItems().add(tool.getNode());
   }
 
-  @Override
-  public void addSeparator() {
-    menu.getItems().add(new SeparatorMenuItem());
-  }
 }
