@@ -1,11 +1,11 @@
 package net.sf.anathema;
 
 import com.google.inject.Inject;
-import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.hero.charms.model.special.subeffects.MultipleEffectCharmSpecials;
 import net.sf.anathema.hero.charms.model.CharmsModel;
+import net.sf.anathema.hero.charms.model.special.subeffects.MultipleEffectCharmSpecials;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -19,10 +19,14 @@ public class CharmSteps {
     this.character = character;
   }
 
-  @And("^she learns the Charm (.*)$")
+  @When("^she learns the Charm (.*)$")
   public void she_learns_the_Charm(String id) throws Throwable {
-    Charm charm = character.getCharms().getCharmById(id);
-    character.getCharms().getGroup(charm).toggleLearned(charm);
+    toggleLearned(id);
+  }
+
+  @When("^she forgets the Charm (.*)$")
+  public void she_forgets_the_Charm(String id) throws Throwable {
+    toggleLearned(id);
   }
 
   @Then("^she can learn the Charm (.*)$")
@@ -39,6 +43,12 @@ public class CharmSteps {
     assertThat(learnable, is(false));
   }
 
+  @Then("^she knows the Charm (.*)$")
+  public void she_knows_the_Charm(String id) throws Throwable {
+    boolean learned = character.getCharms().isLearned(id);
+    assertThat(learned, is(true));
+  }
+
   @Then("^she does not know the Charm (.*)$")
   public void she_does_not_know_the_Charm(String id) throws Throwable {
     boolean learned = character.getCharms().isLearned(id);
@@ -52,5 +62,10 @@ public class CharmSteps {
     MultipleEffectCharmSpecials configuration = (MultipleEffectCharmSpecials) charms.getSpecialCharmConfiguration(charmId);
     boolean effectLearned = configuration.getEffectById(effect).isLearned();
     assertThat(effectLearned, is(true));
+  }
+
+  private void toggleLearned(String id) {
+    Charm charm = character.getCharms().getCharmById(id);
+    character.getCharms().getGroup(charm).toggleLearned(charm);
   }
 }
