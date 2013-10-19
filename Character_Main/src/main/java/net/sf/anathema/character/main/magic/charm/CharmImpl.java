@@ -171,7 +171,6 @@ public class CharmImpl extends AbstractMagic implements Charm {
   
   public void extractParentCharms(Map<String, CharmImpl> charmsById) {
     prerequisites.addAll(Arrays.asList(prerequisisteList.getLearnPrerequisites()));
-    
     for (CharmLearnPrerequisite prerequisite : prerequisites) {
     	prerequisite.link(charmsById);
     }

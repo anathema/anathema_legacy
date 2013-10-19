@@ -8,11 +8,12 @@ import net.sf.anathema.character.main.magic.charm.prerequisite.IndirectCharmLear
 
 public class IndirectGroupCharmLearnPrerequisite extends AbstractGroupCharmLearnPrerequisite implements IndirectCharmLearnPrerequisite {
 
-	String keyword;
+	private final String keyword;
 	
 	public IndirectGroupCharmLearnPrerequisite(String keyword, String[] charms, int threshold) {
 		super(charms, threshold);
-	}
+        this.keyword = keyword;
+    }
 
 	@Override
 	public String getStringLabel() {
@@ -33,5 +34,4 @@ public class IndirectGroupCharmLearnPrerequisite extends AbstractGroupCharmLearn
 		}
 		return false;
 	}
-
 }

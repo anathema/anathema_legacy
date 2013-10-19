@@ -45,7 +45,8 @@ public class PrerequisiteListBuilder {
     prerequisites.addAll(Arrays.asList(buildSimpleCharmPrerequisites(prerequisiteCharmIDs)));
     prerequisites.addAll(Arrays.asList(buildSelectiveCharmGroups(prerequisiteListElement)));
     prerequisites.addAll(Arrays.asList(attributeBuilder.getCharmAttributePrerequisites(prerequisiteListElement)));
-    return new CharmPrerequisiteList(allPrerequisites, essence, prerequisiteCharmIDs, prerequisites.toArray(new CharmLearnPrerequisite[0]));
+    CharmLearnPrerequisite[] learnPrerequisites = prerequisites.toArray(new CharmLearnPrerequisite[prerequisites.size()]);
+    return new CharmPrerequisiteList(allPrerequisites, essence, prerequisiteCharmIDs, learnPrerequisites);
   }
 
   private ValuedTraitType buildEssencePrerequisite(Element prerequisiteListElement) throws CharmException {
@@ -67,7 +68,7 @@ public class PrerequisiteListBuilder {
 	  for (String id : ids) {
 		  prerequisites.add(new SimpleCharmLearnPrerequisite(id));
 	  }
-	  return prerequisites.toArray(new CharmLearnPrerequisite[0]);
+	  return prerequisites.toArray(new CharmLearnPrerequisite[prerequisites.size()]);
   }
 
   private CharmLearnPrerequisite[] buildSelectiveCharmGroups(Element prerequisiteListElement) throws PersistenceException {
