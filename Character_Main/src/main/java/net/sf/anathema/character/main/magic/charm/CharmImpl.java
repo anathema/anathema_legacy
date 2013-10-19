@@ -181,10 +181,6 @@ public class CharmImpl extends AbstractMagic implements Charm {
 	  return prerequisites;
   }
 
-  public void addChild(CharmImpl child) {
-    children.add(child);
-  }
-
   @Override
   public Set<Charm> getRenderingPrerequisiteCharms() {
     Set<Charm> prerequisiteCharms = new HashSet<>();
