@@ -22,6 +22,6 @@ Feature: Characters can learn their native Charm
     Given a new default Solar
     And I set her Archery to 4
     And I set her Essence to 3
-    And she learns the Charm Solar.RainFeatheredDeath
+    And she learns the Charm Solar.PhantomArrowTechnique
     When she forgets the Charm Solar.EssenceArrowAttack
     Then she does not know the Charm Solar.PhantomArrowTechnique
