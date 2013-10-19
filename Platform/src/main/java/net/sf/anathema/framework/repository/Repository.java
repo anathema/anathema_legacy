@@ -4,7 +4,7 @@ import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.action.IFileProvider;
 import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
-import net.sf.anathema.framework.repository.access.printname.IPrintNameFileAccess;
+import net.sf.anathema.framework.repository.access.printname.PrintNameFileAccess;
 import net.sf.anathema.framework.repository.access.printname.ReferenceAccess;
 import net.sf.anathema.framework.repository.access.printname.ReferenceBuilder;
 import net.sf.anathema.framework.view.PrintNameFile;
@@ -22,7 +22,7 @@ public interface Repository extends DataFileProvider {
 
   boolean knowsItem(IItemType type, String id);
 
-  IPrintNameFileAccess getPrintNameFileAccess();
+  PrintNameFileAccess getPrintNameFileAccess();
 
   <R> ReferenceAccess<R> createReferenceAccess(IItemType type, ReferenceBuilder<R> builder);
 

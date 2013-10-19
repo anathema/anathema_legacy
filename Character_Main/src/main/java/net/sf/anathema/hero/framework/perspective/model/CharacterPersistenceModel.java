@@ -8,7 +8,7 @@ import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.framework.repository.Repository;
 import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
-import net.sf.anathema.framework.repository.access.printname.IPrintNameFileAccess;
+import net.sf.anathema.framework.repository.access.printname.PrintNameFileAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 
@@ -29,7 +29,7 @@ public class CharacterPersistenceModel {
 
   public Collection<PrintNameFile> collectCharacterPrintNameFiles() {
     IItemType characterItemType = getCharacterItemType();
-    IPrintNameFileAccess access = model.getRepository().getPrintNameFileAccess();
+    PrintNameFileAccess access = model.getRepository().getPrintNameFileAccess();
     return access.collectAllPrintNameFiles(characterItemType);
   }
 

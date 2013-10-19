@@ -11,8 +11,8 @@ import net.sf.anathema.framework.repository.access.MultiFileWriteAccess;
 import net.sf.anathema.framework.repository.access.SingleFileReadAccess;
 import net.sf.anathema.framework.repository.access.SingleFileWriteAccess;
 import net.sf.anathema.framework.repository.access.printname.FileReferenceAccess;
-import net.sf.anathema.framework.repository.access.printname.IPrintNameFileAccess;
 import net.sf.anathema.framework.repository.access.printname.PrintNameFileAccess;
+import net.sf.anathema.framework.repository.access.printname.XmlPrintNameFileAccess;
 import net.sf.anathema.framework.repository.access.printname.ReferenceAccess;
 import net.sf.anathema.framework.repository.access.printname.ReferenceBuilder;
 import net.sf.anathema.framework.view.PrintNameFile;
@@ -33,7 +33,7 @@ public class FileSystemRepository implements Repository {
     Preconditions.checkArgument(repositoryFolder.exists());
     this.resolver = new RepositoryFileResolver(repositoryFolder);
     this.repositoryFolder = repositoryFolder;
-    this.printNameFileAccess = new PrintNameFileAccess(resolver);
+    this.printNameFileAccess = new XmlPrintNameFileAccess(resolver);
   }
 
   @Override
@@ -42,7 +42,7 @@ public class FileSystemRepository implements Repository {
   }
 
   @Override
-  public IPrintNameFileAccess getPrintNameFileAccess() {
+  public PrintNameFileAccess getPrintNameFileAccess() {
     return printNameFileAccess;
   }
 
