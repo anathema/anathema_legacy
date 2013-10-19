@@ -1,10 +1,9 @@
-package net.sf.anathema.character.main.view;
+package net.sf.anathema.hero.display;
 
-import net.sf.anathema.hero.display.ContentProperties;
-import net.sf.anathema.hero.display.MultipleContentView;
+import net.sf.anathema.character.main.view.SectionView;
+import net.sf.anathema.character.main.view.SubViewRegistry;
 import net.sf.anathema.platform.fx.NodeHolder;
 
-//TODO (Swing->FX): Move to Character_Main_FX
 public class CharacterViewSection implements SectionView {
 
   private final MultipleContentView view;

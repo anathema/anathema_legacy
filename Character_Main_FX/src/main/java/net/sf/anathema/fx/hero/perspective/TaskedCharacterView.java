@@ -4,19 +4,20 @@ import javafx.scene.Node;
 import net.miginfocom.layout.AC;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.character.main.view.CharacterView;
-import net.sf.anathema.character.main.view.CharacterViewSection;
+import net.sf.anathema.hero.display.CharacterViewSection;
 import net.sf.anathema.character.main.view.SectionView;
 import net.sf.anathema.character.main.view.SubViewRegistry;
 import net.sf.anathema.framework.view.util.OptionalViewBar;
 import net.sf.anathema.fx.hero.overview.DefaultCategorizedOverview;
 import net.sf.anathema.fx.hero.overview.NullOverviewContainer;
 import net.sf.anathema.hero.advance.overview.view.CategorizedOverview;
+import net.sf.anathema.platform.fx.NodeHolder;
 import net.sf.anathema.platform.fx.Stylesheet;
 import org.tbee.javafx.scene.layout.MigPane;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 
-public class TaskedCharacterView implements CharacterView {
+public class TaskedCharacterView implements CharacterView, NodeHolder {
 
   private CategorizedOverview creationOverviewView;
   private CategorizedOverview experienceOverviewView;

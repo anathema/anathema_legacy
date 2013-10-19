@@ -1,11 +1,11 @@
 package net.sf.anathema.fx.hero.perspective;
 
 import net.sf.anathema.character.main.library.util.CssSkinner;
-import net.sf.anathema.character.main.view.CharacterView;
 import net.sf.anathema.character.main.view.SubViewMap;
 import net.sf.anathema.character.main.view.SubViewRegistry;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.environment.Environment;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.hero.advance.creation.BonusPointManagement;
 import net.sf.anathema.hero.advance.creation.IBonusPointManagement;
@@ -15,7 +15,6 @@ import net.sf.anathema.hero.advance.overview.presenter.OverviewPresenter;
 import net.sf.anathema.hero.advance.overview.view.OverviewContainer;
 import net.sf.anathema.hero.display.presenter.CharacterPresenter;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.platform.fx.NodeHolder;
 import net.sf.anathema.platform.fx.Stylesheet;
 
@@ -35,7 +34,7 @@ public class CharacterViewFactory {
     Hero hero = (Hero) item.getItemData();
     SubViewRegistry viewFactory = new SubViewMap(environment);
     Stylesheet[] stylesheets = createStylesheets(hero);
-    CharacterView characterView = new TaskedCharacterView(viewFactory, stylesheets);
+    TaskedCharacterView characterView = new TaskedCharacterView(viewFactory, stylesheets);
     new CharacterPresenter(hero, characterView, environment, applicationModel).initPresentation();
     initOverviewPresentation(hero, characterView, environment);
     item.getChangeManagement().setClean();
