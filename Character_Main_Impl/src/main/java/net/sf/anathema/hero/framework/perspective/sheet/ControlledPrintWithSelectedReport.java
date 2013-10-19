@@ -4,6 +4,8 @@ import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.reporting.Report;
 import net.sf.anathema.framework.repository.Item;
 
+import static net.sf.anathema.hero.framework.perspective.sheet.PrintCommand.PDF_EXTENSION;
+
 public class ControlledPrintWithSelectedReport {
   private final Item item;
   private final Environment environment;
@@ -16,7 +18,8 @@ public class ControlledPrintWithSelectedReport {
   }
 
   public void execute() {
-    ControlledFileChooser fileChooser = new ControlledFileChooser();
+    FileChooserConfiguration configuration = new FileChooserConfiguration("PDF Files", "*" + PDF_EXTENSION);
+    ControlledFileChooser fileChooser = new ControlledFileChooser(environment, configuration);
     new PrintCommand(environment, item, report, fileChooser).execute();
   }
 }
