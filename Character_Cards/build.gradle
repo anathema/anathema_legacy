@@ -1,7 +1,6 @@
 dependencies {
     compile project(':Platform')
     compile project(':Character_Main')
-    compile project(':Character_Main_Impl')
     compile project(':Character_Equipment')
     compile project(':Hero_Charms')
     compile project(':Hero_Spells')
