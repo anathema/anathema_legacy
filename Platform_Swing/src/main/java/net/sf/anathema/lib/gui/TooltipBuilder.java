@@ -3,9 +3,6 @@ package net.sf.anathema.lib.gui;
 public class TooltipBuilder implements ConfigurableTooltip {
 
   public static final String HtmlLineBreak = "<br>";
-  public static final String CommaSpace = ", ";
-  public static final String Space = " ";
-  public static final String ColonSpace = ": ";
 
   private final StringBuilder builder = new StringBuilder();
   private boolean showNoTooltip = false;

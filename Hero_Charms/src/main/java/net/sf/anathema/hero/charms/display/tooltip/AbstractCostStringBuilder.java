@@ -2,8 +2,8 @@ package net.sf.anathema.hero.charms.display.tooltip;
 
 import com.google.common.base.Strings;
 import net.sf.anathema.character.main.magic.basic.cost.Cost;
-import net.sf.anathema.lib.gui.TooltipBuilder;
 import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.lib.gui.ConfigurableTooltip;
 
 import static net.sf.anathema.lib.lang.StringUtilities.EMPTY_STRING;
 
@@ -35,7 +35,7 @@ public abstract class AbstractCostStringBuilder<T extends Cost> implements ICost
       }
     }
     if (!Strings.isNullOrEmpty(text)) {
-      costString = costString.concat(TooltipBuilder.Space + text);
+      costString = costString.concat(ConfigurableTooltip.Space + text);
     }
     return costString;
   }

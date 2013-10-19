@@ -2,6 +2,10 @@ package net.sf.anathema.lib.gui;
 
 public interface ConfigurableTooltip {
 
+  String CommaSpace = ", ";
+  String Space = " ";
+  String ColonSpace = ": ";
+
   void showNoTooltip();
 
   void appendLine(String text);

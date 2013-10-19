@@ -2,8 +2,8 @@ package net.sf.anathema.hero.charms.display.tooltip.type;
 
 import net.sf.anathema.character.main.magic.charm.type.ISimpleSpecialsModel;
 import net.sf.anathema.character.main.magic.charm.type.TurnType;
-import net.sf.anathema.lib.gui.TooltipBuilder;
 import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.lib.gui.ConfigurableTooltip;
 
 public class ShortCharmTypeContributor extends AbstractCharmTypeContributor {
 
@@ -14,7 +14,7 @@ public class ShortCharmTypeContributor extends AbstractCharmTypeContributor {
   @Override
   protected StringBuilder buildDefenseString(ISimpleSpecialsModel model, boolean defaultSpeed, boolean longAction) {
     StringBuilder builder = new StringBuilder();
-    builder.append(TooltipBuilder.CommaSpace);
+    builder.append(ConfigurableTooltip.CommaSpace);
     int defenseModifier = model.getDefenseModifier();
     if (defenseModifier == 0) {
       builder.append("-");
@@ -28,7 +28,7 @@ public class ShortCharmTypeContributor extends AbstractCharmTypeContributor {
     StringBuilder builder = new StringBuilder();
     builder.append(model.getSpeed());
     if (model.getTurnType() == TurnType.LongTick) {
-      builder.append(TooltipBuilder.Space);
+      builder.append(ConfigurableTooltip.Space);
       builder.append(getResources().getString("CharmTreeView.ToolTip.Type.LongTick.Short"));
     }
     return builder;

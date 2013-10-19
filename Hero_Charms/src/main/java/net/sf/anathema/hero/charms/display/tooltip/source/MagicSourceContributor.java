@@ -1,13 +1,12 @@
 package net.sf.anathema.hero.charms.display.tooltip.source;
 
-import net.sf.anathema.hero.charms.display.tooltip.IMagicSourceStringBuilder;
-import net.sf.anathema.hero.charms.display.tooltip.MagicTooltipContributor;
 import net.sf.anathema.character.main.magic.basic.Magic;
 import net.sf.anathema.character.main.magic.basic.source.SourceBook;
-import net.sf.anathema.lib.gui.ConfigurableTooltip;
-import net.sf.anathema.lib.gui.TooltipBuilder;
-import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.hero.charms.display.tooltip.IMagicSourceStringBuilder;
+import net.sf.anathema.hero.charms.display.tooltip.MagicTooltipContributor;
+import net.sf.anathema.lib.gui.ConfigurableTooltip;
+import net.sf.anathema.lib.lang.StringUtilities;
 
 public class MagicSourceContributor<T extends Magic> implements IMagicSourceStringBuilder<T>, MagicTooltipContributor {
 
@@ -38,9 +37,9 @@ public class MagicSourceContributor<T extends Magic> implements IMagicSourceStri
       builder.append(resources.getString(createSourceBookKey(sources[i])));
       String pageKey = createPageKey(t.getId(), sources[i]);
       if (resources.supportsKey(pageKey)) {
-        builder.append(TooltipBuilder.CommaSpace);
+        builder.append(ConfigurableTooltip.CommaSpace);
         builder.append(resources.getString("CharmTreeView.ToolTip.Page"));
-        builder.append(TooltipBuilder.Space);
+        builder.append(ConfigurableTooltip.Space);
         builder.append(resources.getString(pageKey));
       }
       sourceStrings[i] = builder.toString();
@@ -73,7 +72,7 @@ public class MagicSourceContributor<T extends Magic> implements IMagicSourceStri
     builder.append(resources.getString(createSourceBookKey(source) + ".Short"));
     String pageKey = createPageKey(magicId, source);
     if (resources.supportsKey(pageKey)) {
-      builder.append(TooltipBuilder.CommaSpace);
+      builder.append(ConfigurableTooltip.CommaSpace);
       builder.append(resources.getString(pageKey));
     }
     return builder.toString();

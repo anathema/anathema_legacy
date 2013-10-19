@@ -1,8 +1,8 @@
 dependencies {
     compile project(':Platform')
     compile project(':Platform_TreeFramework')
+    compile project(':Platform_FX')
     compile project(':GraphLayout')
-    compile project(':Namegenerator')
     testCompile testDependencies
     testCompile project(path: ':Platform', configuration: 'tests')
 }

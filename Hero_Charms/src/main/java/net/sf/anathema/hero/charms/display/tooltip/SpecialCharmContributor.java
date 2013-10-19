@@ -12,7 +12,6 @@ import net.sf.anathema.character.main.magic.basic.Magic;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.types.OtherTraitType;
 import net.sf.anathema.lib.gui.ConfigurableTooltip;
-import net.sf.anathema.lib.gui.TooltipBuilder;
 import net.sf.anathema.framework.environment.Resources;
 
 public class SpecialCharmContributor implements MagicTooltipContributor {
@@ -57,11 +56,11 @@ public class SpecialCharmContributor implements MagicTooltipContributor {
       }
       if (tier == last && tier != second) {
         builder.append(resources.getString("CharmTreeView.ToolTip.Repurchases.And"));
-        builder.append(TooltipBuilder.Space);
+        builder.append(ConfigurableTooltip.Space);
       }
       if (tier == second || tiers.length <= 3) {
         builder.append(resources.getString("Essence"));
-        builder.append(TooltipBuilder.Space);
+        builder.append(ConfigurableTooltip.Space);
       }
       builder.append(tier.getRequirement(OtherTraitType.Essence));
 
@@ -70,12 +69,12 @@ public class SpecialCharmContributor implements MagicTooltipContributor {
         builder.append("/");
         if (tier == second || tiers.length <= 3) {
           builder.append(resources.getString(charm.getPrimaryTraitType().getId()));
-          builder.append(TooltipBuilder.Space);
+          builder.append(ConfigurableTooltip.Space);
         }
         builder.append(traitRequirement);
       }
       if (tier != last) {
-        builder.append(TooltipBuilder.CommaSpace);
+        builder.append(ConfigurableTooltip.CommaSpace);
       }
     }
     return builder.toString();
@@ -90,7 +89,7 @@ public class SpecialCharmContributor implements MagicTooltipContributor {
       builder.append(details.getModifier());
     }
     builder.append(")");
-    builder.append(TooltipBuilder.Space);
+    builder.append(ConfigurableTooltip.Space);
     builder.append(resources.getString("CharmTreeView.ToolTip.Repurchases.Times"));
     return builder.toString();
   }
