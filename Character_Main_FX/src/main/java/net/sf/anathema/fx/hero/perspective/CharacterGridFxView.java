@@ -65,7 +65,7 @@ public class CharacterGridFxView implements CharacterGridView {
 
   @Override
   public CharacterTemplateCreator createNewCharacter() {
-    return new FxCharacterTemplateCreator();
+    return new FxCharacterTemplateCreator(gridPane.getScene().getWindow());
   }
 
   private CharacterGridButton createGridButton(CharacterButtonDto dto,
