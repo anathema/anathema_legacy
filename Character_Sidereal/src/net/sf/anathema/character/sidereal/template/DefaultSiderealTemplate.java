@@ -29,6 +29,7 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.sidereal.caste.SiderealCaste;
 import net.sf.anathema.character.sidereal.colleges.SiderealCollegeTemplate;
+import net.sf.anathema.character.sidereal.paradox.SiderealParadoxTemplate;
 import net.sf.anathema.character.sidereal.presentation.SiderealPresentationProperties;
 import net.sf.anathema.character.sidereal.template.trait.SiderealTraitTemplateCollection;
 
@@ -136,7 +137,7 @@ public class DefaultSiderealTemplate extends AbstractCharacterTemplate {
   @Override
   public IAdditionalTemplate[] getAdditionalTemplates() {
     return new IAdditionalTemplate[]{new SiderealCollegeTemplate(creationPoints.getCollegeCreationPoints(),
-            bonusPointCosts, experienceCosts)};
+            bonusPointCosts, experienceCosts), new SiderealParadoxTemplate()};
   }
 
   @Override
