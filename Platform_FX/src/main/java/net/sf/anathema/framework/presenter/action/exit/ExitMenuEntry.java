@@ -1,4 +1,4 @@
-package net.sf.anathema.framework.presenter.action;
+package net.sf.anathema.framework.presenter.action.exit;
 
 import javafx.stage.Stage;
 import net.sf.anathema.framework.IApplicationModel;
