@@ -174,11 +174,22 @@ public class CharmImpl extends AbstractMagic implements Charm {
     for (CharmLearnPrerequisite prerequisite : prerequisites) {
     	prerequisite.link(charmsById);
     }
+    List<DirectCharmLearnPrerequisite> directPrerequisites = getPrerequisitesOfType(DirectCharmLearnPrerequisite.class);
+    for (DirectCharmLearnPrerequisite prerequisite : directPrerequisites) {
+      Charm[] charms = prerequisite.getDirectPredecessors();
+      for (Charm charm : charms) {
+        ((CharmImpl)charm).addChild(this);
+      }
+    }
   }
   
   @Override
   public List<CharmLearnPrerequisite> getLearnPrerequisites() {
 	  return prerequisites;
+  }
+
+  public void addChild(CharmImpl child) {
+    children.add(child);
   }
 
   @Override
