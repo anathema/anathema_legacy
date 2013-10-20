@@ -5,8 +5,6 @@ import net.sf.anathema.framework.repository.ChangeManagement;
 
 public interface Item {
 
-  String DEFAULT_PRINT_NAME = "Unnamed";
-
   ItemData getItemData();
 
   IItemType getItemType();

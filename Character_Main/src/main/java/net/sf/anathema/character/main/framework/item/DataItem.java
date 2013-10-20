@@ -9,12 +9,12 @@ import net.sf.anathema.lib.util.Identifier;
 
 public class DataItem implements Item {
 
-  private final static String NOT_SET = null;
+  private static final String DEFAULT_PRINT_NAME = "Unnamed";
   private final ItemData itemData;
   private final IItemType itemType;
   private final RepositoryLocation repositoryLocation;
   private final Identifier identifier;
-  private String printName;
+  private String printName = "";
 
   public DataItem(IItemType type, ItemData itemData) {
     Preconditions.checkArgument(type.supportsRepository());
@@ -53,14 +53,11 @@ public class DataItem implements Item {
 
   @Override
   public String getDisplayName() {
-    return printName == NOT_SET ? DEFAULT_PRINT_NAME : printName;
+    return Strings.isNullOrEmpty(printName) ? DEFAULT_PRINT_NAME : printName;
   }
 
   @Override
   public void setPrintName(String printName) {
-    if (Strings.isNullOrEmpty(printName)) {
-      printName = NOT_SET;
-    }
     if (Objects.equal(this.printName, printName)) {
       return;
     }
