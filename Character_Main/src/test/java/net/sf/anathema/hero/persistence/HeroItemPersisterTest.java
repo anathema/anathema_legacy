@@ -5,7 +5,7 @@ import net.sf.anathema.character.main.framework.data.IExtensibleDataSetProvider;
 import net.sf.anathema.character.main.persistence.HeroItemPersister;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.messaging.IMessaging;
-import net.sf.anathema.framework.repository.Item;
+import net.sf.anathema.character.main.framework.item.Item;
 import net.sf.anathema.hero.dummy.DummyExaltCharacterType;
 import net.sf.anathema.hero.dummy.DummyObjectFactory;
 import net.sf.anathema.hero.dummy.template.SimpleDummyCharacterTemplate;

@@ -4,7 +4,7 @@ import net.sf.anathema.framework.desktop.DesktopEnvironment;
 import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.reporting.Report;
 import net.sf.anathema.framework.reporting.ReportException;
-import net.sf.anathema.framework.repository.Item;
+import net.sf.anathema.character.main.framework.item.Item;
 import net.sf.anathema.interaction.Command;
 import org.apache.commons.io.IOUtils;
 

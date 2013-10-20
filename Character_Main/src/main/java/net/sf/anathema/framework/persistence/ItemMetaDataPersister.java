@@ -1,7 +1,7 @@
 package net.sf.anathema.framework.persistence;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.framework.repository.Item;
+import net.sf.anathema.character.main.framework.item.Item;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;

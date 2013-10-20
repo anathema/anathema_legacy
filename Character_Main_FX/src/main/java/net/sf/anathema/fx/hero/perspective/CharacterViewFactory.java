@@ -6,7 +6,7 @@ import net.sf.anathema.character.main.view.SubViewRegistry;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.environment.Resources;
-import net.sf.anathema.framework.repository.Item;
+import net.sf.anathema.character.main.framework.item.Item;
 import net.sf.anathema.hero.advance.creation.BonusPointManagement;
 import net.sf.anathema.hero.advance.creation.IBonusPointManagement;
 import net.sf.anathema.hero.advance.experience.ExperiencePointManagement;

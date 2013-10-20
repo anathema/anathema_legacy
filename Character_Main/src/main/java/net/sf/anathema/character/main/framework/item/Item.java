@@ -1,7 +1,7 @@
-package net.sf.anathema.framework.repository;
+package net.sf.anathema.character.main.framework.item;
 
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.itemdata.model.ItemData;
+import net.sf.anathema.framework.repository.ChangeManagement;
 
 public interface Item {
 

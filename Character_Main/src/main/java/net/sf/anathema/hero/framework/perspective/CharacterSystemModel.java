@@ -9,7 +9,7 @@ import net.sf.anathema.framework.persistence.RepositoryItemPersister;
 import net.sf.anathema.framework.presenter.ItemReceiver;
 import net.sf.anathema.framework.reporting.Report;
 import net.sf.anathema.framework.repository.IRepositoryFileResolver;
-import net.sf.anathema.framework.repository.Item;
+import net.sf.anathema.character.main.framework.item.Item;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.framework.HeroEnvironment;

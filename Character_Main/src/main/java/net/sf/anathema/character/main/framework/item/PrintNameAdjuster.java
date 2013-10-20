@@ -1,6 +1,5 @@
-package net.sf.anathema.framework.presenter.itemmanagement;
+package net.sf.anathema.character.main.framework.item;
 
-import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.lib.control.ObjectValueListener;
 
 public class PrintNameAdjuster implements ObjectValueListener<String> {

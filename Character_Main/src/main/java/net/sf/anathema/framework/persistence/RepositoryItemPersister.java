@@ -1,7 +1,7 @@
 package net.sf.anathema.framework.persistence;
 
 import net.sf.anathema.character.main.template.HeroTemplate;
-import net.sf.anathema.framework.repository.Item;
+import net.sf.anathema.character.main.framework.item.Item;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;

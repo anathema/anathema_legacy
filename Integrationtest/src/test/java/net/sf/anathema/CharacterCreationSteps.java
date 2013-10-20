@@ -13,7 +13,7 @@ import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.persistence.RepositoryItemPersister;
-import net.sf.anathema.framework.repository.Item;
+import net.sf.anathema.character.main.framework.item.Item;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.framework.HeroEnvironmentExtractor;
 import net.sf.anathema.lib.util.SimpleIdentifier;

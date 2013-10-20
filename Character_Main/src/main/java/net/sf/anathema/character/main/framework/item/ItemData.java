@@ -1,6 +1,6 @@
-package net.sf.anathema.framework.itemdata.model;
+package net.sf.anathema.character.main.framework.item;
 
-import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
+import net.sf.anathema.character.main.framework.item.PrintNameAdjuster;
 import net.sf.anathema.framework.repository.ChangeManagement;
 
 public interface ItemData {

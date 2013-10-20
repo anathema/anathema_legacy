@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.framework.presenter.ItemReceiver;
 import net.sf.anathema.framework.presenter.action.IItemCreator;
 import net.sf.anathema.lib.workflow.wizard.selection.IItemOperator;
-import net.sf.anathema.framework.repository.Item;
+import net.sf.anathema.character.main.framework.item.Item;
 import net.sf.anathema.lib.exception.PersistenceException;
 
 public class ItemCreator implements IItemOperator {

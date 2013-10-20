@@ -1,4 +1,4 @@
-package net.sf.anathema.framework.repository;
+package net.sf.anathema.character.main.framework.item;
 
 import com.google.common.base.Preconditions;
 import net.sf.anathema.framework.item.IItemType;

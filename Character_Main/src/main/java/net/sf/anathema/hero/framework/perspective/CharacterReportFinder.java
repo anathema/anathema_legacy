@@ -4,7 +4,7 @@ import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.initialization.IReportFactory;
 import net.sf.anathema.framework.reporting.Report;
-import net.sf.anathema.framework.repository.Item;
+import net.sf.anathema.character.main.framework.item.Item;
 import net.sf.anathema.hero.framework.perspective.sheet.AllReportFinder;
 import net.sf.anathema.hero.framework.perspective.sheet.DefaultReportFinder;
 import net.sf.anathema.initialization.RegisteredReportFactory;

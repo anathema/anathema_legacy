@@ -3,7 +3,7 @@ package net.sf.anathema.hero.framework.perspective;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.framework.persistence.RepositoryItemPersister;
 import net.sf.anathema.framework.presenter.action.IItemCreator;
-import net.sf.anathema.framework.repository.Item;
+import net.sf.anathema.character.main.framework.item.Item;
 import net.sf.anathema.lib.exception.PersistenceException;
 
 public class NewItemCreator implements IItemCreator {
