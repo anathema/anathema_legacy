@@ -39,7 +39,7 @@ public class CharmTest {
     ValuedTraitType[] prerequisites = new ValuedTraitType[]{new net.sf.anathema.character.main.traits.types.ValuedTraitType(AbilityType.Archery, 5)};
     ValuedTraitType essence = new net.sf.anathema.character.main.traits.types.ValuedTraitType(OtherTraitType.Essence, 3);
     CharmPrerequisiteList prerequisiteList =
-            new CharmPrerequisiteList(prerequisites, essence, new String[0], new CharmLearnPrerequisite[0]);
+            new CharmPrerequisiteList(prerequisites, essence, new CharmLearnPrerequisite[0]);
     CharmTypeModel model = new CharmTypeModel();
     model.setCharmType(CharmType.Simple);
     try {
@@ -56,7 +56,7 @@ public class CharmTest {
     ValuedTraitType[] prerequisites = new ValuedTraitType[]{new net.sf.anathema.character.main.traits.types.ValuedTraitType(AbilityType.Archery, 5)};
     ValuedTraitType essence = new net.sf.anathema.character.main.traits.types.ValuedTraitType(OtherTraitType.Essence, 3);
     CharmPrerequisiteList prerequisiteList =
-            new CharmPrerequisiteList(prerequisites, essence, new String[0], new CharmLearnPrerequisite[0]);
+            new CharmPrerequisiteList(prerequisites, essence, new CharmLearnPrerequisite[0]);
     CharmTypeModel model = new CharmTypeModel();
     model.setCharmType(CharmType.Simple);
     CharmImpl charmImpl =

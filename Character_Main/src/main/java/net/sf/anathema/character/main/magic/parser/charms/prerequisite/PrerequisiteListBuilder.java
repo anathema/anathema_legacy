@@ -1,36 +1,34 @@
 package net.sf.anathema.character.main.magic.parser.charms.prerequisite;
 
-import static net.sf.anathema.character.main.magic.charm.ICharmXMLConstants.ATTRIB_THRESHOLD;
-import static net.sf.anathema.character.main.magic.charm.ICharmXMLConstants.ATTRIB_VALUE;
-import static net.sf.anathema.character.main.magic.charm.ICharmXMLConstants.TAG_ESSENCE;
-import static net.sf.anathema.character.main.magic.charm.ICharmXMLConstants.TAG_SELECTIVE_CHARM_GROUP;
-import static net.sf.anathema.character.main.traits.types.OtherTraitType.Essence;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import net.sf.anathema.character.main.magic.charm.CharmException;
 import net.sf.anathema.character.main.magic.charm.prerequisite.CharmLearnPrerequisite;
 import net.sf.anathema.character.main.magic.charm.prerequisite.impl.DirectGroupCharmLearnPrerequisite;
-import net.sf.anathema.character.main.magic.charm.prerequisite.impl.IndirectGroupCharmLearnPrerequisite;
 import net.sf.anathema.character.main.magic.charm.prerequisite.impl.SimpleCharmLearnPrerequisite;
 import net.sf.anathema.character.main.magic.parser.charms.CharmPrerequisiteList;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
-
 import org.dom4j.Element;
 
-public class PrerequisiteListBuilder {
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-  private static final String ATTRIB_LABEL = "label";
+import static net.sf.anathema.character.main.magic.charm.ICharmXMLConstants.ATTRIB_THRESHOLD;
+import static net.sf.anathema.character.main.magic.charm.ICharmXMLConstants.ATTRIB_VALUE;
+import static net.sf.anathema.character.main.magic.charm.ICharmXMLConstants.TAG_ESSENCE;
+import static net.sf.anathema.character.main.magic.charm.ICharmXMLConstants.TAG_SELECTIVE_CHARM_GROUP;
+import static net.sf.anathema.character.main.traits.types.OtherTraitType.Essence;
+import static net.sf.anathema.lib.xml.ElementUtilities.elements;
+
+public class PrerequisiteListBuilder {
 
   private final ITraitPrerequisitesBuilder traitBuilder;
   private final IAttributePrerequisiteBuilder attributeBuilder;
   private final ICharmPrerequisiteBuilder charmBuilder;
 
-  public PrerequisiteListBuilder(ITraitPrerequisitesBuilder traitBuilder, IAttributePrerequisiteBuilder attributeBuilder,
+  public PrerequisiteListBuilder(ITraitPrerequisitesBuilder traitBuilder,
+                                 IAttributePrerequisiteBuilder attributeBuilder,
                                  ICharmPrerequisiteBuilder charmBuilder) {
     this.traitBuilder = traitBuilder;
     this.attributeBuilder = attributeBuilder;
@@ -38,15 +36,27 @@ public class PrerequisiteListBuilder {
   }
 
   public CharmPrerequisiteList buildPrerequisiteList(Element prerequisiteListElement) throws PersistenceException {
-    ValuedTraitType[] allPrerequisites = traitBuilder.buildTraitPrerequisites(prerequisiteListElement);
-    ValuedTraitType essence = buildEssencePrerequisite(prerequisiteListElement);
+    ValuedTraitType[] traitPrerequisites = traitBuilder.buildTraitPrerequisites(prerequisiteListElement);
+    ValuedTraitType essencePrerequisite = buildEssencePrerequisite(prerequisiteListElement);
+    CharmLearnPrerequisite[] learnPrerequisites = buildCharmPrerequisites(prerequisiteListElement);
+    return new CharmPrerequisiteList(traitPrerequisites, essencePrerequisite, learnPrerequisites);
+  }
+
+  private CharmLearnPrerequisite[] buildCharmPrerequisites(Element prerequisiteListElement) {
+    List<CharmLearnPrerequisite> prerequisites = new ArrayList<>();
+    prerequisites.addAll(buildSimpleCharmPrerequisites(prerequisiteListElement));
+    prerequisites.addAll(buildSelectiveCharmGroups(prerequisiteListElement));
+    prerequisites.addAll(Arrays.asList(attributeBuilder.getCharmAttributePrerequisites(prerequisiteListElement)));
+    return prerequisites.toArray(new CharmLearnPrerequisite[prerequisites.size()]);
+  }
+
+  private List<CharmLearnPrerequisite> buildSimpleCharmPrerequisites(Element prerequisiteListElement) {
     String[] prerequisiteCharmIDs = charmBuilder.buildCharmPrerequisites(prerequisiteListElement);
     List<CharmLearnPrerequisite> prerequisites = new ArrayList<>();
-    prerequisites.addAll(Arrays.asList(buildSimpleCharmPrerequisites(prerequisiteCharmIDs)));
-    prerequisites.addAll(Arrays.asList(buildSelectiveCharmGroups(prerequisiteListElement)));
-    prerequisites.addAll(Arrays.asList(attributeBuilder.getCharmAttributePrerequisites(prerequisiteListElement)));
-    CharmLearnPrerequisite[] learnPrerequisites = prerequisites.toArray(new CharmLearnPrerequisite[prerequisites.size()]);
-    return new CharmPrerequisiteList(allPrerequisites, essence, prerequisiteCharmIDs, learnPrerequisites);
+    for (String id : prerequisiteCharmIDs) {
+      prerequisites.add(new SimpleCharmLearnPrerequisite(id));
+    }
+    return prerequisites;
   }
 
   private ValuedTraitType buildEssencePrerequisite(Element prerequisiteListElement) throws CharmException {
@@ -62,27 +72,16 @@ public class PrerequisiteListBuilder {
     }
     return new net.sf.anathema.character.main.traits.types.ValuedTraitType(Essence, minValue);
   }
-  
-  private CharmLearnPrerequisite[] buildSimpleCharmPrerequisites(String[] ids) {
-	  List<CharmLearnPrerequisite> prerequisites = new ArrayList<>();
-	  for (String id : ids) {
-		  prerequisites.add(new SimpleCharmLearnPrerequisite(id));
-	  }
-	  return prerequisites.toArray(new CharmLearnPrerequisite[prerequisites.size()]);
-  }
 
-  private CharmLearnPrerequisite[] buildSelectiveCharmGroups(Element prerequisiteListElement) throws PersistenceException {
-    List<Element> selectiveCharmGroupElements = ElementUtilities.elements(prerequisiteListElement, TAG_SELECTIVE_CHARM_GROUP);
-    CharmLearnPrerequisite[] charmGroups = new CharmLearnPrerequisite[selectiveCharmGroupElements.size()];
-    for (int index = 0; index < selectiveCharmGroupElements.size(); index++) {
-      Element groupElement = selectiveCharmGroupElements.get(index);
+  private List<CharmLearnPrerequisite> buildSelectiveCharmGroups(
+          Element prerequisiteListElement) throws PersistenceException {
+    List<Element> selectiveCharmGroupElements = elements(prerequisiteListElement, TAG_SELECTIVE_CHARM_GROUP);
+    List<CharmLearnPrerequisite> prerequisites = new ArrayList<>();
+    for (Element groupElement : selectiveCharmGroupElements) {
       String[] groupCharmIds = charmBuilder.buildCharmPrerequisites(groupElement);
       int threshold = ElementUtilities.getRequiredIntAttrib(groupElement, ATTRIB_THRESHOLD);
-      String label = groupElement.attributeValue(ATTRIB_LABEL);
-      charmGroups[index] = label == null ?
-    		  new DirectGroupCharmLearnPrerequisite(groupCharmIds, threshold) : 
-    		  new IndirectGroupCharmLearnPrerequisite(label, groupCharmIds, threshold);
+      prerequisites.add(new DirectGroupCharmLearnPrerequisite(groupCharmIds, threshold));
     }
-    return charmGroups;
+    return prerequisites;
   }
 }

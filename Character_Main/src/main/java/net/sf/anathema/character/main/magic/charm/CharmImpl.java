@@ -96,12 +96,12 @@ public class CharmImpl extends AbstractMagic implements Charm, CharmParent {
 
   @Override
   public ValuedTraitType getEssence() {
-    return prerequisisteList.getEssence();
+    return prerequisisteList.getEssencePrerequisite();
   }
 
   @Override
   public ValuedTraitType[] getPrerequisites() {
-    return prerequisisteList.getPrerequisites();
+    return prerequisisteList.getTraitPrerequisites();
   }
 
   @Override
@@ -170,7 +170,7 @@ public class CharmImpl extends AbstractMagic implements Charm, CharmParent {
   }
   
   public void extractParentCharms(Map<String, CharmImpl> charmsById) {
-    prerequisites.addAll(Arrays.asList(prerequisisteList.getLearnPrerequisites()));
+    prerequisites.addAll(Arrays.asList(prerequisisteList.getCharmPrerequisites()));
     for (CharmLearnPrerequisite prerequisite : prerequisites) {
     	prerequisite.link(charmsById);
     }
