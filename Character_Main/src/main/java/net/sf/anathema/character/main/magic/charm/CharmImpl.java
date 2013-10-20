@@ -34,7 +34,7 @@ import net.sf.anathema.lib.util.SimpleIdentifier;
 
 import com.google.common.base.Preconditions;
 
-public class CharmImpl extends AbstractMagic implements Charm {
+public class CharmImpl extends AbstractMagic implements Charm, CharmParent {
 
   private final CharmPrerequisiteList prerequisisteList;
 
@@ -178,7 +178,7 @@ public class CharmImpl extends AbstractMagic implements Charm {
     for (DirectCharmLearnPrerequisite prerequisite : directPrerequisites) {
       Charm[] charms = prerequisite.getDirectPredecessors();
       for (Charm charm : charms) {
-        ((CharmImpl)charm).addChild(this);
+        ((CharmParent)charm).addChild(this);
       }
     }
   }
@@ -188,6 +188,7 @@ public class CharmImpl extends AbstractMagic implements Charm {
 	  return prerequisites;
   }
 
+  @Override
   public void addChild(CharmImpl child) {
     children.add(child);
   }

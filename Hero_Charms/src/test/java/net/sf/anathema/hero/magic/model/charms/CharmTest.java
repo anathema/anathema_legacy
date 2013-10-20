@@ -34,21 +34,6 @@ public class CharmTest {
     assertEquals(dummy, charm.getPrerequisitesOfType(SimpleCharmLearnPrerequisite.class).toArray(new SimpleCharmLearnPrerequisite[1])[0].getDirectPredecessors()[0]);
   }
 
-  private CharmImpl createCharm(DummyCharm parent) {
-    ValuedTraitType[] prerequisites = new ValuedTraitType[]{new net.sf.anathema.character.main.traits.types.ValuedTraitType(AbilityType.Archery, 5)};
-    ValuedTraitType essence = new net.sf.anathema.character.main.traits.types.ValuedTraitType(OtherTraitType.Essence, 3);
-    CharmPrerequisiteList prerequisiteList =
-            new CharmPrerequisiteList(prerequisites, essence, new String[0], new CharmLearnPrerequisite[0]);
-    CharmTypeModel model = new CharmTypeModel();
-    model.setCharmType(CharmType.Simple);
-    CharmImpl charmImpl =
-            new CharmImpl(new DummyExaltCharacterType(), "ATTRIBUTES", "Group", false, prerequisiteList, new CostList(null, null, null, null),
-              new ComboRestrictions(), SimpleDuration.getDuration("Duration"),
-              model, new SourceBook[0]);
-    charmImpl.addParentCharms(parent);
-    return charmImpl;
-  }
-
   @Test
   public void testCharmNoSource() throws Exception {
     ValuedTraitType[] prerequisites = new ValuedTraitType[]{new net.sf.anathema.character.main.traits.types.ValuedTraitType(AbilityType.Archery, 5)};
@@ -65,5 +50,20 @@ public class CharmTest {
     } catch (NullPointerException e) {
       // Nothing to do
     }
+  }
+
+  private CharmImpl createCharm(DummyCharm parent) {
+    ValuedTraitType[] prerequisites = new ValuedTraitType[]{new net.sf.anathema.character.main.traits.types.ValuedTraitType(AbilityType.Archery, 5)};
+    ValuedTraitType essence = new net.sf.anathema.character.main.traits.types.ValuedTraitType(OtherTraitType.Essence, 3);
+    CharmPrerequisiteList prerequisiteList =
+            new CharmPrerequisiteList(prerequisites, essence, new String[0], new CharmLearnPrerequisite[0]);
+    CharmTypeModel model = new CharmTypeModel();
+    model.setCharmType(CharmType.Simple);
+    CharmImpl charmImpl =
+            new CharmImpl(new DummyExaltCharacterType(), "ATTRIBUTES", "Group", false, prerequisiteList, new CostList(null, null, null, null),
+                    new ComboRestrictions(), SimpleDuration.getDuration("Duration"),
+                    model, new SourceBook[0]);
+    charmImpl.addParentCharms(parent);
+    return charmImpl;
   }
 }
