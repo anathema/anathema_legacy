@@ -6,7 +6,6 @@ import net.sf.anathema.character.main.magic.charm.CharmImpl;
 import net.sf.anathema.character.main.magic.charm.ICharmLearnArbitrator;
 import net.sf.anathema.character.main.magic.charm.ICharmLearnableArbitrator;
 import net.sf.anathema.character.main.magic.charm.prerequisite.DirectCharmLearnPrerequisite;
-import net.sf.anathema.character.main.magic.charm.prerequisite.MultipleCharmLearnPrerequisite;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class DirectGroupCharmLearnPrerequisite implements DirectCharmLearnPrerequisite, MultipleCharmLearnPrerequisite {
+public class DirectGroupCharmLearnPrerequisite implements DirectCharmLearnPrerequisite {
 
   private final int threshold;
   private final String[] prerequisiteIds;
@@ -109,8 +108,7 @@ public class DirectGroupCharmLearnPrerequisite implements DirectCharmLearnPrereq
   public boolean equals(Object obj) {
     if (obj instanceof DirectGroupCharmLearnPrerequisite) {
       DirectGroupCharmLearnPrerequisite prerequisite = (DirectGroupCharmLearnPrerequisite) obj;
-      return Arrays.deepEquals(prerequisites,
-              prerequisite.prerequisites) && prerequisite.threshold == threshold;
+      return Arrays.deepEquals(prerequisites, prerequisite.prerequisites) && prerequisite.threshold == threshold;
     }
     return false;
   }

@@ -1,15 +1,14 @@
 package net.sf.anathema.character.main.magic.charm.prerequisite.impl;
 
-import java.util.Map;
-
 import net.sf.anathema.character.main.magic.basic.attribute.MagicAttribute;
 import net.sf.anathema.character.main.magic.charm.CharmImpl;
 import net.sf.anathema.character.main.magic.charm.ICharmLearnArbitrator;
 import net.sf.anathema.character.main.magic.charm.ICharmLearnableArbitrator;
 import net.sf.anathema.character.main.magic.charm.prerequisite.IndirectCharmLearnPrerequisite;
-import net.sf.anathema.character.main.magic.charm.prerequisite.MultipleCharmLearnPrerequisite;
 
-public class AttributeKnownCharmLearnPrerequisite implements IndirectCharmLearnPrerequisite, MultipleCharmLearnPrerequisite {
+import java.util.Map;
+
+public class AttributeKnownCharmLearnPrerequisite implements IndirectCharmLearnPrerequisite {
 
 	private final MagicAttribute attribute;
 	private final int count;
