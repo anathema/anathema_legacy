@@ -30,11 +30,6 @@ public class AttributeKnownCharmLearnPrerequisite implements IndirectCharmLearnP
 	}
 
 	@Override
-	public int getThreshold() {
-		return count;
-	}
-
-	@Override
 	public String getStringLabel() {
 		return "Requirement." + attribute.getId() + "." + count;
 	}

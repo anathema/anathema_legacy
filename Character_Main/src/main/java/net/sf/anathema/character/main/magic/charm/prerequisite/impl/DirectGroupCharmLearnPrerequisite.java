@@ -42,11 +42,6 @@ public class DirectGroupCharmLearnPrerequisite implements DirectCharmLearnPrereq
   }
 
   @Override
-  public int getThreshold() {
-    return threshold;
-  }
-
-  @Override
   public void link(Map<String, CharmImpl> charmsById) {
     if (prerequisites != null) {
       return;
@@ -72,7 +67,7 @@ public class DirectGroupCharmLearnPrerequisite implements DirectCharmLearnPrereq
       if (arbitrator.isLearnable(charm)) {
         knowable++;
       }
-      if (knowable >= getThreshold()) {
+      if (knowable >= threshold) {
         return true;
       }
     }
@@ -86,13 +81,13 @@ public class DirectGroupCharmLearnPrerequisite implements DirectCharmLearnPrereq
       prerequisiteCharms.addAll(learnCharm.getLearnPrerequisitesCharms(learnArbitrator));
       prerequisiteCharms.add(learnCharm);
     }
-    return prerequisiteCharms.toArray(new Charm[0]);
+    return prerequisiteCharms.toArray(new Charm[prerequisiteCharms.size()]);
   }
 
   private List<Charm> selectCharmsToLearn(ICharmLearnArbitrator learnArbitrator) {
     List<Charm> charmsToLearn = new ArrayList<>();
     for (Charm charm : getDirectPredecessors()) {
-      if (charmsToLearn.size() >= getThreshold()) {
+      if (charmsToLearn.size() >= threshold) {
         return charmsToLearn;
       }
       if (learnArbitrator.isLearned(charm)) {
@@ -100,7 +95,7 @@ public class DirectGroupCharmLearnPrerequisite implements DirectCharmLearnPrereq
       }
     }
     for (Charm charm : getDirectPredecessors()) {
-      if (charmsToLearn.size() >= getThreshold()) {
+      if (charmsToLearn.size() >= threshold) {
         return charmsToLearn;
       }
       if (!learnArbitrator.isLearned(charm)) {
@@ -115,7 +110,7 @@ public class DirectGroupCharmLearnPrerequisite implements DirectCharmLearnPrereq
     if (obj instanceof DirectGroupCharmLearnPrerequisite) {
       DirectGroupCharmLearnPrerequisite prerequisite = (DirectGroupCharmLearnPrerequisite) obj;
       return Arrays.deepEquals(prerequisites,
-              prerequisite.prerequisites) && prerequisite.getThreshold() == getThreshold();
+              prerequisite.prerequisites) && prerequisite.threshold == threshold;
     }
     return false;
   }
