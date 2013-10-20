@@ -12,8 +12,6 @@ import net.sf.anathema.initialization.repository.DataFileProvider;
 
 public interface Repository extends DataFileProvider {
 
-  IRepositoryWriteAccess createWriteAccess(Item item) throws RepositoryException;
-
   IRepositoryWriteAccess createWriteAccess(IItemType type, String id) throws RepositoryException;
 
   IRepositoryReadAccess openReadAccess(IItemType type, IFileProvider provider);

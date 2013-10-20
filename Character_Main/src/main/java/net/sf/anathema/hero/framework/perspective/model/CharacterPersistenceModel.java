@@ -41,9 +41,21 @@ public class CharacterPersistenceModel {
 
   public void save(Item item) throws IOException {
     RepositoryItemPersister persister = findPersister();
-    Repository repository = model.getRepository();
-    IRepositoryWriteAccess writeAccess = repository.createWriteAccess(item);
+    assignUniqueIdAsRequired(item);
+    IRepositoryWriteAccess writeAccess = createWriteAccessFor(item);
     persister.save(writeAccess, item);
+  }
+
+  private void assignUniqueIdAsRequired(Item item) {
+    if (item.getId() == null) {
+      Repository repository = model.getRepository();
+      String id = repository.createUniqueRepositoryId(item.getRepositoryLocation());
+      item.getRepositoryLocation().setId(id);
+    }
+  }
+
+  private IRepositoryWriteAccess createWriteAccessFor(Item item) {
+    return model.getRepository().createWriteAccess(item.getItemType(), item.getId());
   }
 
   private RepositoryItemPersister findPersister() {
