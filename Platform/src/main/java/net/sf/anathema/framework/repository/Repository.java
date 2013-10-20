@@ -28,7 +28,7 @@ public interface Repository extends DataFileProvider {
 
   void deleteAssociatedItem(PrintNameFile userObject) throws RepositoryException;
 
-  String createUniqueRepositoryId(IBasicRepositoryIdData repositoryLocation);
+  String createUniqueRepositoryId(BasicRepositoryIdData repositoryLocation);
 
   IRepositoryFileResolver getRepositoryFileResolver();
 }

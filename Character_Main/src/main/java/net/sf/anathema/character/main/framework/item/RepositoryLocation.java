@@ -4,7 +4,7 @@ import com.google.common.base.Preconditions;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.lib.lang.StringUtilities;
 
-public class RepositoryLocation implements IItemRepositoryLocation {
+public class RepositoryLocation implements ItemRepositoryLocation {
 
   private final Item item;
   private String id;

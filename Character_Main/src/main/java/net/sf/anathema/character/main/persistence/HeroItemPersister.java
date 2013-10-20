@@ -1,14 +1,12 @@
 package net.sf.anathema.character.main.persistence;
 
 import net.sf.anathema.character.main.ExaltedCharacter;
-import net.sf.anathema.character.main.framework.item.DataItem;
+import net.sf.anathema.character.main.framework.item.CharacterItem;
+import net.sf.anathema.character.main.framework.item.Item;
 import net.sf.anathema.character.main.magic.spells.SpellException;
 import net.sf.anathema.character.main.template.HeroTemplate;
-import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.messaging.IMessaging;
-import net.sf.anathema.framework.persistence.ItemMetaDataPersister;
 import net.sf.anathema.framework.persistence.RepositoryItemPersister;
-import net.sf.anathema.character.main.framework.item.Item;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
@@ -36,13 +34,11 @@ public class HeroItemPersister implements RepositoryItemPersister {
 
   private final ItemMetaDataPersister repositoryItemPersister = new ItemMetaDataPersister();
   private final HeroTemplatePersister templatePersister;
-  private final IItemType characterType;
   private final HeroEnvironment generics;
   private final IMessaging messaging;
   private final HeroPersisterList persisterList;
 
-  public HeroItemPersister(IItemType characterType, HeroEnvironment generics, IMessaging messaging) {
-    this.characterType = characterType;
+  public HeroItemPersister(HeroEnvironment generics, IMessaging messaging) {
     this.generics = generics;
     this.messaging = messaging;
     this.templatePersister = new HeroTemplatePersister(generics);
@@ -125,7 +121,7 @@ public class HeroItemPersister implements RepositoryItemPersister {
   }
 
   private Item createItem(ExaltedCharacter character) {
-    return new DataItem(characterType, character);
+    return new CharacterItem(character);
   }
 
   private void markCharacterReadyForWork(ExaltedCharacter character) {

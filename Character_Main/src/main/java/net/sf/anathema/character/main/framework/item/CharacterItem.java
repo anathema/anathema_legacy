@@ -3,31 +3,30 @@ package net.sf.anathema.character.main.framework.item;
 import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
+import net.sf.anathema.character.main.itemtype.CharacterItemTypeRetrieval;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.repository.ChangeManagement;
 import net.sf.anathema.lib.util.Identifier;
 
-public class DataItem implements Item {
+public class CharacterItem implements Item {
 
   private static final String DEFAULT_PRINT_NAME = "Unnamed";
   private final ItemData itemData;
-  private final IItemType itemType;
+  private final IItemType itemType = CharacterItemTypeRetrieval.retrieveCharacterItemType();
   private final RepositoryLocation repositoryLocation;
   private final Identifier identifier;
   private String printName = "";
 
-  public DataItem(IItemType type, ItemData itemData) {
-    Preconditions.checkArgument(type.supportsRepository());
+  public CharacterItem(ItemData itemData) {
     Preconditions.checkNotNull(itemData);
-    this.itemType = type;
     this.repositoryLocation = new RepositoryLocation(this);
+    this.itemData = itemData;
     this.identifier = new Identifier() {
       @Override
       public String getId() {
         return repositoryLocation.getId();
       }
     };
-    this.itemData = itemData;
     itemData.setPrintNameAdjuster(new PrintNameAdjuster(this));
   }
 
@@ -65,7 +64,7 @@ public class DataItem implements Item {
   }
 
   @Override
-  public IItemRepositoryLocation getRepositoryLocation() {
+  public ItemRepositoryLocation getRepositoryLocation() {
     return repositoryLocation;
   }
 

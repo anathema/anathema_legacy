@@ -1,4 +1,4 @@
-package net.sf.anathema.framework.persistence;
+package net.sf.anathema.character.main.persistence;
 
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.main.framework.item.Item;
@@ -6,10 +6,10 @@ import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
-import static net.sf.anathema.framework.persistence.IAnathemaXmlConstants.ATTRIB_REPOSITORY_ID;
-import static net.sf.anathema.framework.persistence.IAnathemaXmlConstants.ATTRIB_REPOSITORY_PRINT_NAME;
-
 public class ItemMetaDataPersister {
+
+  private static final String ATTRIB_REPOSITORY_ID = "repositoryId";
+  private static final String ATTRIB_REPOSITORY_PRINT_NAME = "repositoryPrintName";
 
   public void save(Element element, Item item) {
     String repositoryId = item.getId();

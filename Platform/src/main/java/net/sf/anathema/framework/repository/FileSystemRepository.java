@@ -97,7 +97,7 @@ public class FileSystemRepository implements Repository {
   }
 
   @Override
-  public String createUniqueRepositoryId(IBasicRepositoryIdData repositoryLocation) {
+  public String createUniqueRepositoryId(BasicRepositoryIdData repositoryLocation) {
     int count = 0;
     String repositoryId = repositoryLocation.getIdProposal();
     IItemType itemType = repositoryLocation.getItemType();

@@ -34,7 +34,7 @@ public class HeroItemPersisterTest {
   @Test
   public void createsFullyLoadedCharacter() throws Exception {
     HeroEnvironment generics = createEnvironment();
-    HeroItemPersister persister = new HeroItemPersister(type, generics, messaging);
+    HeroItemPersister persister = new HeroItemPersister(generics, messaging);
     Character character = createNewCharacter(persister);
     assertThat(character.isFullyLoaded(), is(true));
   }

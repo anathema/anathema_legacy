@@ -95,7 +95,7 @@ public class CharacterCreationSteps {
 
   private Character createCharacter(HeroTemplate template) {
     IItemType characterItemType = CharacterItemTypeRetrieval.retrieveCharacterItemType();
-    RepositoryItemPersister itemPersister = new HeroItemPersister(characterItemType, getCharacterGenerics(), model.getMessaging());
+    RepositoryItemPersister itemPersister = new HeroItemPersister(getCharacterGenerics(), model.getMessaging());
     Item item = itemPersister.createNew(template);
     return (Character) item.getItemData();
   }

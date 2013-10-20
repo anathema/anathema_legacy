@@ -60,8 +60,7 @@ public class CharacterPersistenceModel {
 
   private RepositoryItemPersister findPersister() {
     HeroEnvironment generics = heroEnvironment;
-    IItemType itemType = getCharacterItemType();
-    return new HeroItemPersister(itemType, generics, model.getMessaging());
+    return new HeroItemPersister(generics, model.getMessaging());
   }
 
   private IRepositoryReadAccess createReadAccess(String repositoryId) {

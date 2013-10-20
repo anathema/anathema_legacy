@@ -161,7 +161,7 @@ public class CharacterSystemModel implements ItemSystemModel {
     };
     IItemType itemType = retrieveCharacterItemType();
     HeroEnvironment heroEnvironment = getHeroEnvironment();
-    RepositoryItemPersister persister = new HeroItemPersister(itemType, heroEnvironment, model.getMessaging());
+    RepositoryItemPersister persister = new HeroItemPersister(heroEnvironment, model.getMessaging());
     ItemCreator itemCreator = new ItemCreator(new NewItemCreator(persister), receiver);
     CharacterItemCreationModel creationModel = new CharacterItemCreationModel(heroEnvironment);
     try {

@@ -11,7 +11,7 @@ public interface Item {
 
   ChangeManagement getChangeManagement();
 
-  IItemRepositoryLocation getRepositoryLocation();
+  ItemRepositoryLocation getRepositoryLocation();
 
   String getDisplayName();
 
