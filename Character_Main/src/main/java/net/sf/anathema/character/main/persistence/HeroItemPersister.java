@@ -57,6 +57,7 @@ public class HeroItemPersister implements RepositoryItemPersister {
       saveModels(writeAccess, hero);
       templatePersister.saveTemplate(rootElement, hero);
       DocumentUtilities.save(DocumentHelper.createDocument(rootElement), stream);
+      messaging.addMessage("CharacterPersistence.SavingCharacterDone", MessageType.INFORMATION, item.getDisplayName());
     }
     finally {
       IOUtils.closeQuietly(stream);
