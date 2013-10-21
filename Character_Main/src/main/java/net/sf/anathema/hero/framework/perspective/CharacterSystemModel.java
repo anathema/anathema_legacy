@@ -100,7 +100,7 @@ public class CharacterSystemModel implements ItemSystemModel {
   }
 
   private void initCharacterListening(Item item) {
-    item.getChangeManagement().addDirtyListener(dirtyListener);
+    item.getItemData().getChangeManagement().addDirtyListener(dirtyListener);
   }
 
   @Override
@@ -213,7 +213,7 @@ public class CharacterSystemModel implements ItemSystemModel {
     if (item == null) {
       return;
     }
-    boolean dirty = item.getChangeManagement().isDirty();
+    boolean dirty = item.getItemData().getChangeManagement().isDirty();
     if (dirty) {
       becomesDirtyAnnouncer.announce().changeOccurred();
     } else {
@@ -236,7 +236,7 @@ public class CharacterSystemModel implements ItemSystemModel {
 
   private void save(Item item) throws IOException {
     persistenceModel.save(item);
-    item.getChangeManagement().setClean();
+    item.getItemData().getChangeManagement().setClean();
   }
 
   private CharacterReportFinder createReportFinder(Environment environment) {

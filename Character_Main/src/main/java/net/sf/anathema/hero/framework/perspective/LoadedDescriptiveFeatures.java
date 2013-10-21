@@ -42,7 +42,7 @@ public class LoadedDescriptiveFeatures implements DescriptiveFeatures {
 
   @Override
   public boolean isDirty() {
-    return characterItem.getChangeManagement().isDirty();
+    return characterItem.getItemData().getChangeManagement().isDirty();
   }
 
   private Hero getHero() {

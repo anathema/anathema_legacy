@@ -17,7 +17,7 @@ public class NewItemCreator implements IItemCreator {
   @Override
   public Item createItem(HeroTemplate template) throws PersistenceException {
     Item item = persister.createNew(template);
-    item.getChangeManagement().setClean();
+    item.getItemData().getChangeManagement().setClean();
     return item;
   }
 }

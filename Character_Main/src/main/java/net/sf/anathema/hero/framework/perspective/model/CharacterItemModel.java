@@ -44,7 +44,7 @@ public class CharacterItemModel {
         featuresChangeAnnouncer.announce().changeOccurred();
       }
     });
-    item.getChangeManagement().addDirtyListener(new AnnouncingChangeListener());
+    item.getItemData().getChangeManagement().addDirtyListener(new AnnouncingChangeListener());
   }
 
   public boolean isLoaded() {
