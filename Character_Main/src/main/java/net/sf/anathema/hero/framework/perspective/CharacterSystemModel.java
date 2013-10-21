@@ -1,15 +1,14 @@
 package net.sf.anathema.hero.framework.perspective;
 
 import net.sf.anathema.character.main.framework.item.CharacterPrintNameFileScanner;
+import net.sf.anathema.character.main.framework.item.Item;
 import net.sf.anathema.character.main.persistence.HeroItemPersister;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.environment.Environment;
-import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.persistence.RepositoryItemPersister;
 import net.sf.anathema.framework.presenter.ItemReceiver;
 import net.sf.anathema.framework.reporting.Report;
 import net.sf.anathema.framework.repository.IRepositoryFileResolver;
-import net.sf.anathema.character.main.framework.item.Item;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.framework.HeroEnvironment;
@@ -35,8 +34,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static net.sf.anathema.character.main.itemtype.CharacterItemTypeRetrieval.retrieveCharacterItemType;
 
 public class CharacterSystemModel implements ItemSystemModel {
 
@@ -159,7 +156,6 @@ public class CharacterSystemModel implements ItemSystemModel {
         characterAddedListener.announce().added(character);
       }
     };
-    IItemType itemType = retrieveCharacterItemType();
     HeroEnvironment heroEnvironment = getHeroEnvironment();
     RepositoryItemPersister persister = new HeroItemPersister(heroEnvironment, model.getMessaging());
     ItemCreator itemCreator = new ItemCreator(new NewItemCreator(persister), receiver);

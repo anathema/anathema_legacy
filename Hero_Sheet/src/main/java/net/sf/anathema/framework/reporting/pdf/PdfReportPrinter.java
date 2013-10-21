@@ -5,7 +5,6 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.PdfWriter;
 import net.sf.anathema.character.main.framework.item.HeroNameFetcher;
 import net.sf.anathema.framework.reporting.ReportException;
-import net.sf.anathema.character.main.framework.item.Item;
 import net.sf.anathema.hero.model.Hero;
 
 import java.io.OutputStream;

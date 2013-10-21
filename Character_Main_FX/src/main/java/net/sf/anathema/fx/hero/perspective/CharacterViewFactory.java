@@ -6,7 +6,6 @@ import net.sf.anathema.character.main.view.SubViewRegistry;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.environment.Resources;
-import net.sf.anathema.character.main.framework.item.Item;
 import net.sf.anathema.hero.advance.creation.BonusPointManagement;
 import net.sf.anathema.hero.advance.creation.IBonusPointManagement;
 import net.sf.anathema.hero.advance.experience.ExperiencePointManagement;
@@ -30,14 +29,14 @@ public class CharacterViewFactory {
     this.applicationModel = applicationModel;
   }
 
-  public NodeHolder createView(Item item) {
-    Hero hero = (Hero) item.getItemData();
+  public NodeHolder createView(net.sf.anathema.character.main.Character character) {
+    Hero hero = character;
     SubViewRegistry viewFactory = new SubViewMap(environment);
     Stylesheet[] stylesheets = createStylesheets(hero);
     TaskedCharacterView characterView = new TaskedCharacterView(viewFactory, stylesheets);
     new CharacterPresenter(hero, characterView, environment, applicationModel).initPresentation();
     initOverviewPresentation(hero, characterView, environment);
-    item.getChangeManagement().setClean();
+    character.getChangeManagement().setClean();
     return characterView;
   }
 
