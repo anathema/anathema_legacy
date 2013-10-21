@@ -2,7 +2,7 @@ package net.sf.anathema.framework.reporting.pdf;
 
 import net.sf.anathema.framework.reporting.Report;
 import net.sf.anathema.framework.reporting.ReportException;
-import net.sf.anathema.framework.repository.Item;
+import net.sf.anathema.character.main.framework.item.Item;
 
 import java.io.OutputStream;
 

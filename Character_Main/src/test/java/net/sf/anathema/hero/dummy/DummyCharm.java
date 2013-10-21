@@ -12,6 +12,8 @@ import net.sf.anathema.character.main.magic.basic.attribute.MagicAttributeImpl;
 import net.sf.anathema.character.main.magic.basic.cost.CostList;
 import net.sf.anathema.character.main.magic.basic.source.SourceBook;
 import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.character.main.magic.charm.CharmImpl;
+import net.sf.anathema.character.main.magic.charm.CharmParent;
 import net.sf.anathema.character.main.magic.charm.ICharmLearnArbitrator;
 import net.sf.anathema.character.main.magic.charm.combos.ComboRestrictions;
 import net.sf.anathema.character.main.magic.charm.combos.IComboRestrictions;
@@ -30,7 +32,7 @@ import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
-public class DummyCharm extends SimpleIdentifier implements Charm {
+public class DummyCharm extends SimpleIdentifier implements Charm, CharmParent {
 
   private Duration duration;
   private IComboRestrictions comboRestrictions = new ComboRestrictions();
@@ -252,5 +254,10 @@ public class DummyCharm extends SimpleIdentifier implements Charm {
 
   public void addKeyword(MagicAttributeImpl attribute) {
     this.attributes.add(attribute);
+  }
+
+  @Override
+  public void addChild(CharmImpl child) {
+    //nothing to do
   }
 }

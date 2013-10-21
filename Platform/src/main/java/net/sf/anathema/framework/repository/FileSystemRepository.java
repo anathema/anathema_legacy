@@ -11,8 +11,8 @@ import net.sf.anathema.framework.repository.access.MultiFileWriteAccess;
 import net.sf.anathema.framework.repository.access.SingleFileReadAccess;
 import net.sf.anathema.framework.repository.access.SingleFileWriteAccess;
 import net.sf.anathema.framework.repository.access.printname.FileReferenceAccess;
-import net.sf.anathema.framework.repository.access.printname.IPrintNameFileAccess;
 import net.sf.anathema.framework.repository.access.printname.PrintNameFileAccess;
+import net.sf.anathema.framework.repository.access.printname.XmlPrintNameFileAccess;
 import net.sf.anathema.framework.repository.access.printname.ReferenceAccess;
 import net.sf.anathema.framework.repository.access.printname.ReferenceBuilder;
 import net.sf.anathema.framework.view.PrintNameFile;
@@ -33,7 +33,7 @@ public class FileSystemRepository implements Repository {
     Preconditions.checkArgument(repositoryFolder.exists());
     this.resolver = new RepositoryFileResolver(repositoryFolder);
     this.repositoryFolder = repositoryFolder;
-    this.printNameFileAccess = new PrintNameFileAccess(resolver);
+    this.printNameFileAccess = new XmlPrintNameFileAccess(resolver);
   }
 
   @Override
@@ -42,7 +42,7 @@ public class FileSystemRepository implements Repository {
   }
 
   @Override
-  public IPrintNameFileAccess getPrintNameFileAccess() {
+  public PrintNameFileAccess getPrintNameFileAccess() {
     return printNameFileAccess;
   }
 
@@ -54,22 +54,6 @@ public class FileSystemRepository implements Repository {
   @Override
   public IRepositoryFileResolver getRepositoryFileResolver() {
     return resolver;
-  }
-
-  @Override
-  public synchronized IRepositoryWriteAccess createWriteAccess(Item item) throws RepositoryException {
-    try {
-      if (item.getId() == null) {
-        item.getRepositoryLocation().setId(createUniqueRepositoryId(item.getRepositoryLocation()));
-      }
-      if (item.getItemType().getRepositoryConfiguration().isItemSavedToSingleFile()) {
-        return createSingleFileWriteAccess(item);
-      }
-      return createMultiFileWriteAccess(item);
-    } catch (RepositoryException e) {
-      String pattern = "Could not create RepositoryItem for {0}, {1}.";
-      throw new RepositoryException(MessageFormat.format(pattern, item.getItemType(), item.getId()), e);
-    }
   }
 
   @Override
@@ -90,11 +74,6 @@ public class FileSystemRepository implements Repository {
     return createMultiFileWriteAccess(type, itemFolder);
   }
 
-  private IRepositoryWriteAccess createMultiFileWriteAccess(Item item) {
-    File itemFolder = resolver.getExistingItemFolder(item);
-    return createMultiFileWriteAccess(item.getItemType(), itemFolder);
-  }
-
   private IRepositoryWriteAccess createMultiFileWriteAccess(IItemType type, File itemFolder) {
     IRepositoryConfiguration configuration = type.getRepositoryConfiguration();
     return new MultiFileWriteAccess(itemFolder, configuration.getMainFileName(), configuration.getFileExtension());
@@ -102,11 +81,6 @@ public class FileSystemRepository implements Repository {
 
   private IRepositoryWriteAccess createSingleFileWriteAccess(IItemType type, String id) throws RepositoryException {
     File file = resolver.getMainFile(type.getRepositoryConfiguration(), id);
-    return createSingleFileWriteAccess(file);
-  }
-
-  private IRepositoryWriteAccess createSingleFileWriteAccess(Item item) throws RepositoryException {
-    File file = resolver.getItemFile(item);
     return createSingleFileWriteAccess(file);
   }
 
@@ -123,7 +97,7 @@ public class FileSystemRepository implements Repository {
   }
 
   @Override
-  public String createUniqueRepositoryId(IBasicRepositoryIdData repositoryLocation) {
+  public String createUniqueRepositoryId(BasicRepositoryIdData repositoryLocation) {
     int count = 0;
     String repositoryId = repositoryLocation.getIdProposal();
     IItemType itemType = repositoryLocation.getItemType();
@@ -147,7 +121,8 @@ public class FileSystemRepository implements Repository {
       return new SingleFileReadAccess(provider.getFile());
     }
     IRepositoryConfiguration repositoryConfiguration = type.getRepositoryConfiguration();
-    return new MultiFileReadAccess(provider.getFile(), repositoryConfiguration.getMainFileName(), repositoryConfiguration.getFileExtension());
+    return new MultiFileReadAccess(provider.getFile(), repositoryConfiguration.getMainFileName(),
+            repositoryConfiguration.getFileExtension());
   }
 
   @Override
@@ -158,7 +133,8 @@ public class FileSystemRepository implements Repository {
     IRepositoryConfiguration repositoryConfiguration = type.getRepositoryConfiguration();
     File itemTypeFolder = getRepositoryFileResolver().getFolder(type.getRepositoryConfiguration());
     File itemFolder = new File(itemTypeFolder, id);
-    return new MultiFileReadAccess(itemFolder, repositoryConfiguration.getMainFileName(), repositoryConfiguration.getFileExtension());
+    return new MultiFileReadAccess(itemFolder, repositoryConfiguration.getMainFileName(),
+            repositoryConfiguration.getFileExtension());
   }
 
   @Override

@@ -1,14 +1,15 @@
 package net.sf.anathema.hero.framework.perspective.model;
 
+import net.sf.anathema.character.main.itemtype.CharacterItemTypeRetrieval;
 import net.sf.anathema.character.main.persistence.HeroItemPersister;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.persistence.RepositoryItemPersister;
-import net.sf.anathema.framework.repository.Item;
+import net.sf.anathema.character.main.framework.item.Item;
 import net.sf.anathema.framework.repository.Repository;
 import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
-import net.sf.anathema.framework.repository.access.printname.IPrintNameFileAccess;
+import net.sf.anathema.framework.repository.access.printname.PrintNameFileAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 
@@ -29,7 +30,7 @@ public class CharacterPersistenceModel {
 
   public Collection<PrintNameFile> collectCharacterPrintNameFiles() {
     IItemType characterItemType = getCharacterItemType();
-    IPrintNameFileAccess access = model.getRepository().getPrintNameFileAccess();
+    PrintNameFileAccess access = model.getRepository().getPrintNameFileAccess();
     return access.collectAllPrintNameFiles(characterItemType);
   }
 
@@ -41,15 +42,26 @@ public class CharacterPersistenceModel {
 
   public void save(Item item) throws IOException {
     RepositoryItemPersister persister = findPersister();
-    Repository repository = model.getRepository();
-    IRepositoryWriteAccess writeAccess = repository.createWriteAccess(item);
+    assignUniqueIdAsRequired(item);
+    IRepositoryWriteAccess writeAccess = createWriteAccessFor(item);
     persister.save(writeAccess, item);
+  }
+
+  private void assignUniqueIdAsRequired(Item item) {
+    if (item.getId() == null) {
+      Repository repository = model.getRepository();
+      String id = repository.createUniqueRepositoryId(item.getRepositoryLocation());
+      item.getRepositoryLocation().setId(id);
+    }
+  }
+
+  private IRepositoryWriteAccess createWriteAccessFor(Item item) {
+    return model.getRepository().createWriteAccess(CharacterItemTypeRetrieval.retrieveCharacterItemType(), item.getId());
   }
 
   private RepositoryItemPersister findPersister() {
     HeroEnvironment generics = heroEnvironment;
-    IItemType itemType = getCharacterItemType();
-    return new HeroItemPersister(itemType, generics, model.getMessaging());
+    return new HeroItemPersister(generics, model.getMessaging());
   }
 
   private IRepositoryReadAccess createReadAccess(String repositoryId) {

@@ -3,7 +3,7 @@ package net.sf.anathema.fx.hero.perspective;
 import javafx.scene.Node;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
-import net.sf.anathema.character.main.view.CharacterPane;
+import net.sf.anathema.hero.display.CharacterPane;
 import net.sf.anathema.framework.view.util.OptionalView;
 import net.sf.anathema.fx.hero.overview.FxOverviewDisplay;
 import net.sf.anathema.hero.display.MultipleContentView;

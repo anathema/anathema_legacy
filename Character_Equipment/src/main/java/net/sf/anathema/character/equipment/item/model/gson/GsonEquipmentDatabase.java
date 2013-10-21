@@ -6,10 +6,6 @@ import net.sf.anathema.character.equipment.module.EquipmentDatabaseItemTypeConfi
 import net.sf.anathema.equipment.core.IEquipmentTemplate;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.itemdata.model.ItemData;
-import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
-import net.sf.anathema.framework.repository.ChangeManagement;
-import net.sf.anathema.framework.repository.NullChangeManagement;
 import net.sf.anathema.framework.repository.Repository;
 import net.sf.anathema.lib.control.ChangeListener;
 import org.apache.commons.io.FilenameUtils;
@@ -18,7 +14,7 @@ import org.jmock.example.announcer.Announcer;
 import java.nio.file.Path;
 import java.util.List;
 
-public class GsonEquipmentDatabase implements IEquipmentDatabase, ItemData {
+public class GsonEquipmentDatabase implements IEquipmentDatabase {
   public static final String DATABASE_FOLDER = "equipment";
 
   public static GsonEquipmentDatabase CreateFrom(IApplicationModel anathemaModel) {
@@ -104,15 +100,5 @@ public class GsonEquipmentDatabase implements IEquipmentDatabase, ItemData {
 
   public boolean isEmpty() {
     return getAllAvailableTemplateIds().length == 0;
-  }
-
-  @Override
-  public void setPrintNameAdjuster(PrintNameAdjuster adjuster) {
-    // nothing to do;
-  }
-
-  @Override
-  public ChangeManagement getChangeManagement() {
-    return new NullChangeManagement();
   }
 }

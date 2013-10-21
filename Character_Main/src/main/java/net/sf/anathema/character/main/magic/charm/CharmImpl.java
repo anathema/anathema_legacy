@@ -34,7 +34,7 @@ import net.sf.anathema.lib.util.SimpleIdentifier;
 
 import com.google.common.base.Preconditions;
 
-public class CharmImpl extends AbstractMagic implements Charm {
+public class CharmImpl extends AbstractMagic implements Charm, CharmParent {
 
   private final CharmPrerequisiteList prerequisisteList;
 
@@ -96,12 +96,12 @@ public class CharmImpl extends AbstractMagic implements Charm {
 
   @Override
   public ValuedTraitType getEssence() {
-    return prerequisisteList.getEssence();
+    return prerequisisteList.getEssencePrerequisite();
   }
 
   @Override
   public ValuedTraitType[] getPrerequisites() {
-    return prerequisisteList.getPrerequisites();
+    return prerequisisteList.getTraitPrerequisites();
   }
 
   @Override
@@ -170,10 +170,16 @@ public class CharmImpl extends AbstractMagic implements Charm {
   }
   
   public void extractParentCharms(Map<String, CharmImpl> charmsById) {
-    prerequisites.addAll(Arrays.asList(prerequisisteList.getLearnPrerequisites()));
-    
+    prerequisites.addAll(Arrays.asList(prerequisisteList.getCharmPrerequisites()));
     for (CharmLearnPrerequisite prerequisite : prerequisites) {
     	prerequisite.link(charmsById);
+    }
+    List<DirectCharmLearnPrerequisite> directPrerequisites = getPrerequisitesOfType(DirectCharmLearnPrerequisite.class);
+    for (DirectCharmLearnPrerequisite prerequisite : directPrerequisites) {
+      Charm[] charms = prerequisite.getDirectPredecessors();
+      for (Charm charm : charms) {
+        ((CharmParent)charm).addChild(this);
+      }
     }
   }
   
@@ -182,6 +188,7 @@ public class CharmImpl extends AbstractMagic implements Charm {
 	  return prerequisites;
   }
 
+  @Override
   public void addChild(CharmImpl child) {
     children.add(child);
   }

@@ -9,7 +9,7 @@ public class SimpleIdentifier implements Identifier {
   }
 
   @Override
-  public final String getId() {
+  public String getId() {
     return id;
   }
 
@@ -19,7 +19,7 @@ public class SimpleIdentifier implements Identifier {
   }
 
   @Override
-  public final boolean equals(Object obj) {
+  public boolean equals(Object obj) {
     if (!(obj instanceof SimpleIdentifier)) {
       return false;
     }
@@ -28,7 +28,7 @@ public class SimpleIdentifier implements Identifier {
   }
 
   @Override
-  public final int hashCode() {
+  public int hashCode() {
     return getId().hashCode();
   }
 }

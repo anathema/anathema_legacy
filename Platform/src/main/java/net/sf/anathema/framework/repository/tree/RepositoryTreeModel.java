@@ -1,7 +1,7 @@
 package net.sf.anathema.framework.repository.tree;
 
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.repository.IBasicRepositoryIdData;
+import net.sf.anathema.framework.repository.BasicRepositoryIdData;
 import net.sf.anathema.framework.repository.Repository;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.IRepositoryFileAccess;
@@ -103,7 +103,7 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
 
   @Override
   public String createUniqueId(final IItemType type, final String id) {
-    return repository.createUniqueRepositoryId(new IBasicRepositoryIdData() {
+    return repository.createUniqueRepositoryId(new BasicRepositoryIdData() {
       @Override
       public String getIdProposal() {
         return id;

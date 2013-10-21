@@ -1,28 +1,32 @@
 package net.sf.anathema.character.equipment.creation.view;
 
 import net.miginfocom.layout.CC;
+import net.miginfocom.layout.LC;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.lib.gui.layout.AdditiveView;
-import net.sf.anathema.lib.workflow.container.factory.MigPanelBuilder;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
+import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;
+import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 
 import javax.swing.JComponent;
+import javax.swing.JPanel;
 
 public class WeaponStatisticsView implements IWeaponStatisticsView {
   private static final int COLUMN_COUNT = 30;
-  private final MigPanelBuilder panelBuilder = new MigPanelBuilder(4);
-  private JComponent content;
+  private final JPanel panel = new JPanel(new MigLayout(new LC().wrapAfter(4).fill().insets("2")));
+
 
   @Override
   public JComponent getContent() {
-    if (content == null) {
-      content = panelBuilder.getUntitledContent();
-    }
-    return content;
+    return panel;
   }
 
   @Override
   public ITextView addLineTextView(String label) {
-    return panelBuilder.addSpanningLineTextView(label, COLUMN_COUNT);
+    LineTextView textView = new LineTextView(COLUMN_COUNT);
+    LabelTextView labelTextView = new LabelTextView(label, textView);
+    labelTextView.addToMigPanelSpanning(panel);
+    return textView;
   }
 
   @Override
@@ -32,6 +36,6 @@ public class WeaponStatisticsView implements IWeaponStatisticsView {
 
   @Override
   public void addView(AdditiveView additiveView, CC cc) {
-    panelBuilder.addView(additiveView, cc);
+    additiveView.addTo(panel, cc);
   }
 }

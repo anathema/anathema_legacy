@@ -3,6 +3,7 @@ package net.sf.anathema.fx.hero.creation;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.sf.anathema.character.main.template.HeroTemplate;
@@ -23,9 +24,10 @@ public class FxCharacterCreationView implements CharacterCreationView {
   private final Stage stage = new Stage();
   private final MigPane component = new MigPane(new LC().gridGapX("10").gridGapY("10").wrapAfter(2));
   private final MigPane buttonBar = new MigPane(LayoutUtils.withoutInsets());
+  private final Window parent;
 
-  public FxCharacterCreationView() {
-    component.add(buttonBar, new CC().newline().gapTop("10").span().push().grow());
+  public FxCharacterCreationView(Window parent) {
+    this.parent = parent;
   }
 
   @Override
@@ -49,8 +51,8 @@ public class FxCharacterCreationView implements CharacterCreationView {
   @Override
   public void show() {
     Scene scene = new Scene(component);
-    //TODO (Swing->FX): Show with main window as parent stage
-    stage.initOwner(null);
+    component.add(buttonBar, new CC().newline().gapTop("10").span().push().grow());
+    stage.initOwner(parent);
     stage.setScene(scene);
     stage.setHeight(200);
     stage.setWidth(300);

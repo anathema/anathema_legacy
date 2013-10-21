@@ -78,7 +78,7 @@ public class CharmBuilder implements ICharmBuilder {
       ICharmTypeModel charmTypeModel = charmTypeBuilder.build(charmElement);
       SourceBook[] sources = sourceBuilder.buildSourceList(charmElement);
       CharmPrerequisiteList prerequisiteList = getPrerequisites(charmElement);
-      ValuedTraitType[] prerequisites = prerequisiteList.getPrerequisites();
+      ValuedTraitType[] prerequisites = prerequisiteList.getTraitPrerequisites();
       ValuedTraitType primaryPrerequisite = prerequisites.length != 0 ? prerequisites[0] : null;
       String group = groupBuilder.build(charmElement, primaryPrerequisite);
       CharmImpl charm =

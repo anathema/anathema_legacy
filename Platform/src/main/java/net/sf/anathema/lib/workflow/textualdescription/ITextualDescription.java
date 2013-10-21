@@ -14,6 +14,7 @@ public interface ITextualDescription {
 
   void addTextChangedListener(ObjectValueListener<String> listener);
 
+  @SuppressWarnings("UnusedDeclaration")
   void removeTextChangeListener(ObjectValueListener<String> listener);
 
   String getText();

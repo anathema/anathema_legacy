@@ -41,12 +41,6 @@ public class RepositoryFileResolver implements IRepositoryFileResolver {
     return new File(repositoryFile, configuration.getFolderName());
   }
 
-  public File getItemFile(Item item) {
-    IItemType type = item.getItemType();
-    String id = item.getId();
-    return getItemFile(type.getRepositoryConfiguration(), id);
-  }
-
   public File getExistingItemTypeFolder(IRepositoryConfiguration configuration) {
     File typeFolder = getFolder(configuration);
     createNonExistentFolder(typeFolder);
@@ -57,10 +51,6 @@ public class RepositoryFileResolver implements IRepositoryFileResolver {
     File itemFolder = getItemFolder(type.getRepositoryConfiguration(), id);
     createNonExistentFolder(itemFolder);
     return itemFolder;
-  }
-
-  public File getExistingItemFolder(Item item) {
-    return getExistingItemFolder(item.getItemType(), item.getId());
   }
 
   public File getExistingDataFolder(String folderName) {

@@ -7,36 +7,28 @@ import com.google.common.base.Preconditions;
 
 public class CharmPrerequisiteList {
 
-  private final String[] parentCharmIDs;
-  private final ValuedTraitType[] prerequisites;
-  private final ValuedTraitType essence;
-  private final CharmLearnPrerequisite[] learnPrerequisites;
+  private final ValuedTraitType[] traitPrerequisites;
+  private final ValuedTraitType essencePrerequisite;
+  private final CharmLearnPrerequisite[] charmPrerequisites;
 
-  public CharmPrerequisiteList(ValuedTraitType[] prerequisites, ValuedTraitType essence, String[] prerequisiteCharmID,
-                               CharmLearnPrerequisite[] learnPrerequisites) {
-    Preconditions.checkNotNull(prerequisites);
-    Preconditions.checkNotNull(essence);
-    Preconditions.checkNotNull(prerequisiteCharmID);
-    Preconditions.checkNotNull(learnPrerequisites);
-    this.prerequisites = prerequisites;
-    this.essence = essence;
-    this.parentCharmIDs = prerequisiteCharmID;
-    this.learnPrerequisites = learnPrerequisites;
+  public CharmPrerequisiteList(ValuedTraitType[] traitPrerequisites, ValuedTraitType essencePrerequisite, CharmLearnPrerequisite[] charmPrerequisites) {
+    Preconditions.checkNotNull(traitPrerequisites);
+    Preconditions.checkNotNull(essencePrerequisite);
+    Preconditions.checkNotNull(charmPrerequisites);
+    this.traitPrerequisites = traitPrerequisites;
+    this.essencePrerequisite = essencePrerequisite;
+    this.charmPrerequisites = charmPrerequisites;
   }
 
-  public ValuedTraitType getEssence() {
-    return essence;
+  public ValuedTraitType getEssencePrerequisite() {
+    return essencePrerequisite;
   }
 
-  public ValuedTraitType[] getPrerequisites() {
-    return prerequisites;
+  public ValuedTraitType[] getTraitPrerequisites() {
+    return traitPrerequisites;
   }
 
-  public String[] getParentIDs() {
-    return parentCharmIDs;
-  }
-
-  public CharmLearnPrerequisite[] getLearnPrerequisites() {
-    return learnPrerequisites;
+  public CharmLearnPrerequisite[] getCharmPrerequisites() {
+    return charmPrerequisites;
   }
 }

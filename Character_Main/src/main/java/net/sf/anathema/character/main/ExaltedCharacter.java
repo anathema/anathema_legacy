@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main;
 
 import net.sf.anathema.character.main.template.HeroTemplate;
-import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
+import net.sf.anathema.character.main.framework.item.PrintNameAdjuster;
 import net.sf.anathema.framework.repository.ChangeManagement;
 import net.sf.anathema.hero.description.HeroDescription;
 import net.sf.anathema.hero.description.HeroDescriptionFetcher;
@@ -31,7 +31,7 @@ public class ExaltedCharacter implements Character {
     initializer.addModels(environment, hero);
   }
 
-  // todo (sandra): remove itemDate-Relicts in Character (see ExaltedCharacterPersister)
+  // todo (sandra): remove itemDate-Relicts in Character (see HeroItemPersister)
   public void setPrintNameAdjuster(PrintNameAdjuster adjuster) {
     HeroDescription characterDescription = HeroDescriptionFetcher.fetch(this);
     if (characterDescription == null) {

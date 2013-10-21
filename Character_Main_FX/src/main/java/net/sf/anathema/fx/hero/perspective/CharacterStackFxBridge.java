@@ -1,6 +1,6 @@
 package net.sf.anathema.fx.hero.perspective;
 
-import net.sf.anathema.framework.repository.Item;
+import net.sf.anathema.character.main.framework.item.Item;
 import net.sf.anathema.hero.framework.perspective.CharacterStackBridge;
 import net.sf.anathema.hero.framework.perspective.model.CharacterIdentifier;
 import net.sf.anathema.platform.fx.NodeHolder;

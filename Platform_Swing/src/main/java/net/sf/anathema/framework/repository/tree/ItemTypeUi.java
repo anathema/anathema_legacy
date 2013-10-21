@@ -1,6 +1,9 @@
 package net.sf.anathema.framework.repository.tree;
 
 import net.sf.anathema.framework.item.IItemType;
+import net.sf.anathema.lib.file.RelativePath;
+import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
+import net.sf.anathema.lib.gui.icon.EmptyIcon;
 import net.sf.anathema.lib.gui.icon.ImageProvider;
 import net.sf.anathema.lib.gui.ui.ObjectUi;
 import net.sf.anathema.framework.environment.Resources;
@@ -18,7 +21,11 @@ public class ItemTypeUi implements ObjectUi<Object> {
 
   @Override
   public Icon getIcon(Object value) {
-    return new ImageProvider().getImageIcon(propertiesMap.get((IItemType) value).getIcon());
+    RelativePath icon = propertiesMap.get((IItemType) value).getIcon();
+    if (icon == AgnosticUIConfiguration.NO_ICON) {
+      return new EmptyIcon();
+    }
+    return new ImageProvider().getImageIcon(icon);
   }
 
   @Override

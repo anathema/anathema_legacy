@@ -1,18 +1,17 @@
 package net.sf.anathema.hero.charms.display.tooltip.type;
 
+import net.sf.anathema.character.main.magic.basic.Magic;
 import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.character.main.magic.charm.type.ICharmTypeVisitor;
 import net.sf.anathema.character.main.magic.charm.type.CharmType;
 import net.sf.anathema.character.main.magic.charm.type.ICharmTypeModel;
+import net.sf.anathema.character.main.magic.charm.type.ICharmTypeVisitor;
 import net.sf.anathema.character.main.magic.charm.type.IReflexiveSpecialsModel;
 import net.sf.anathema.character.main.magic.charm.type.ISimpleSpecialsModel;
 import net.sf.anathema.character.main.magic.charm.type.TurnType;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.charms.display.tooltip.ICharmTypeStringBuilder;
 import net.sf.anathema.hero.charms.display.tooltip.MagicTooltipContributor;
-import net.sf.anathema.character.main.magic.basic.Magic;
 import net.sf.anathema.lib.gui.ConfigurableTooltip;
-import net.sf.anathema.lib.gui.TooltipBuilder;
-import net.sf.anathema.framework.environment.Resources;
 
 import java.text.MessageFormat;
 
@@ -39,7 +38,7 @@ public abstract class AbstractCharmTypeContributor implements ICharmTypeStringBu
 
   private StringBuilder buildReflexiveModelString(IReflexiveSpecialsModel model) {
     StringBuilder builder = new StringBuilder();
-    builder.append(TooltipBuilder.Space);
+    builder.append(ConfigurableTooltip.Space);
     builder.append("(");
     MessageFormat formatter = new MessageFormat("");
     Object[] objects;
@@ -71,7 +70,7 @@ public abstract class AbstractCharmTypeContributor implements ICharmTypeStringBu
     if (defaultSpeed && defaultDefense && defaultTurnType) {
       return builder;
     }
-    builder.append(TooltipBuilder.Space);
+    builder.append(ConfigurableTooltip.Space);
     builder.append("(");
     boolean dramaticAction = model.getTurnType() == TurnType.DramaticAction;
     boolean longTick = model.getTurnType() == TurnType.LongTick;

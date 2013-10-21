@@ -2,8 +2,8 @@ package net.sf.anathema.hero.charms.display.tooltip.type;
 
 import net.sf.anathema.character.main.magic.charm.type.ISimpleSpecialsModel;
 import net.sf.anathema.character.main.magic.charm.type.TurnType;
-import net.sf.anathema.lib.gui.TooltipBuilder;
 import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.lib.gui.ConfigurableTooltip;
 
 public class VerboseCharmTypeContributor extends AbstractCharmTypeContributor {
 
@@ -15,10 +15,10 @@ public class VerboseCharmTypeContributor extends AbstractCharmTypeContributor {
   protected StringBuilder buildDefenseString(ISimpleSpecialsModel model, boolean defaultSpeed, boolean longAction) {
     StringBuilder builder = new StringBuilder();
     if (!defaultSpeed || longAction) {
-      builder.append(TooltipBuilder.CommaSpace);
+      builder.append(ConfigurableTooltip.CommaSpace);
     }
     builder.append(getResources().getString("CharmTreeView.ToolTip.Type.Defense"));
-    builder.append(TooltipBuilder.Space);
+    builder.append(ConfigurableTooltip.Space);
     int defenseModifier = model.getDefenseModifier();
     if (defenseModifier == 0) {
       builder.append("-");
@@ -31,10 +31,10 @@ public class VerboseCharmTypeContributor extends AbstractCharmTypeContributor {
   protected StringBuilder buildSpeedString(ISimpleSpecialsModel model) {
     StringBuilder builder = new StringBuilder();
     builder.append(getResources().getString("CharmTreeView.ToolTip.Type.Speed"));
-    builder.append(TooltipBuilder.Space);
+    builder.append(ConfigurableTooltip.Space);
     builder.append(model.getSpeed());
     if (model.getTurnType() == TurnType.LongTick) {
-      builder.append(TooltipBuilder.Space);
+      builder.append(ConfigurableTooltip.Space);
       builder.append(getResources().getString("CharmTreeView.ToolTip.Type.LongTick"));
     }
     return builder;
