@@ -44,11 +44,11 @@ public class LandscapeExaltSheetReport extends AbstractPdfReport {
   }
 
   @Override
-  public void performPrint(Item item, Document document, PdfWriter writer) throws ReportException {
+  public void performPrint(Hero hero, Document document, PdfWriter writer) throws ReportException {
     PageSize pageSize = pageSizePreference.getPageSize();
     PdfContentByte directContent = writer.getDirectContent();
     try {
-      ReportSession session = createSession(item);
+      ReportSession session = new ReportSession(getContentRegistry(), hero);
       Sheet sheet = new Sheet(document, getEncoderRegistry(), resources, pageSize);
       for (PageEncoder encoder : collectPageEncoders(pageSize, session)) {
         SheetGraphics graphics = SheetGraphics.WithHelvetica(directContent);
@@ -57,11 +57,6 @@ public class LandscapeExaltSheetReport extends AbstractPdfReport {
     } catch (Exception e) {
       throw new ReportException(e);
     }
-  }
-
-  private ReportSession createSession(Item item) {
-    Hero hero = (Hero) item.getItemData();
-    return new ReportSession(getContentRegistry(), hero);
   }
 
   private List<PageEncoder> collectPageEncoders(PageSize pageSize, ReportSession session) {

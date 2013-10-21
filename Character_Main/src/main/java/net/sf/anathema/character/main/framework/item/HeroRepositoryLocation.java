@@ -20,9 +20,7 @@ public class HeroRepositoryLocation implements ItemRepositoryLocation {
 
   @Override
   public String getIdProposal() {
-    HeroDescription heroDescription = HeroDescriptionFetcher.fetch(hero);
-    ITextualDescription nameDescription = heroDescription.getName();
-    String name = nameDescription.getText();
+    String name = new HeroNameFetcher().getName(hero);
     return StringUtilities.getFileNameRepresentation(name);
   }
 

@@ -33,10 +33,9 @@ public class TextReport extends AbstractPdfReport {
   }
 
   @Override
-  public void performPrint(Item item, Document document, PdfWriter writer) throws ReportException {
+  public void performPrint(Hero hero, Document document, PdfWriter writer) throws ReportException {
     MultiColumnText columnText = new MultiColumnText(document.top() - document.bottom() - 15);
     columnText.addRegularColumns(document.left(), document.right(), 20, 2);
-    Hero hero = (Hero) item.getItemData();
     Collection<HeroTextEncoderFactory> encoderFactories = environment.getObjectFactory().instantiateOrdered(RegisteredTextEncoderFactory.class);
     try {
       for (HeroTextEncoderFactory factory : encoderFactories) {

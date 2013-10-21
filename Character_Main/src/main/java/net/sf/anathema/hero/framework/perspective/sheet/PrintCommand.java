@@ -5,6 +5,7 @@ import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.reporting.Report;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.character.main.framework.item.Item;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.interaction.Command;
 import org.apache.commons.io.IOUtils;
 
@@ -59,7 +60,7 @@ public class PrintCommand implements Command {
     OutputStream stream = null;
     try {
       stream = Files.newOutputStream(selectedFile);
-      selectedReport.print(item, stream);
+      selectedReport.print((Hero)item.getItemData(), stream);
     } finally {
       IOUtils.closeQuietly(stream);
     }

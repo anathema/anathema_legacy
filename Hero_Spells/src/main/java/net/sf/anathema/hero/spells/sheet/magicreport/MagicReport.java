@@ -50,13 +50,12 @@ public class MagicReport extends AbstractPdfReport {
   }
 
   @Override
-  public void performPrint(Item item, Document document, PdfWriter writer) throws ReportException {
+  public void performPrint(Hero hero, Document document, PdfWriter writer) throws ReportException {
     MultiColumnText columnText = new MultiColumnText(document.top() - document.bottom() - 15);
     columnText.addRegularColumns(document.left(), document.right(), 20, 2);
-    Hero character = (Hero) item.getItemData();
     try {
-      printCharms(columnText, character);
-      printSpells(columnText, character);
+      printCharms(columnText, hero);
+      printSpells(columnText, hero);
       writeColumnText(document, columnText);
     } catch (DocumentException e) {
       throw new ReportException(e);

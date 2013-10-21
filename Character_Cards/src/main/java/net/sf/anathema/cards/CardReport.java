@@ -37,7 +37,7 @@ public class CardReport extends AbstractPdfReport {
   }
 
   @Override
-  public void performPrint(Item item, Document document, PdfWriter writer) throws ReportException {
+  public void performPrint(Hero hero, Document document, PdfWriter writer) throws ReportException {
     try {
       PdfContentByte directContent = writer.getDirectContent();
       document.setMargins(20, 20, document.topMargin(), document.bottomMargin());
@@ -46,7 +46,7 @@ public class CardReport extends AbstractPdfReport {
       // all spells and charms
       List<ICardData> cardDataSet = new ArrayList<>();
       for (ICardDataProvider provider : cardDataProviders) {
-        Collections.addAll(cardDataSet, provider.getCards((Hero) item.getItemData(), layout.getResourceProvider()));
+        Collections.addAll(cardDataSet, provider.getCards(hero, layout.getResourceProvider()));
       }
 
       float documentWidth = document.right() - document.left();

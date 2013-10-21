@@ -45,9 +45,8 @@ public class PortraitSimpleExaltSheetReport extends AbstractPdfReport {
   }
 
   @Override
-  public void performPrint(Item item, Document document, PdfWriter writer) throws ReportException {
+  public void performPrint(Hero hero, Document document, PdfWriter writer) throws ReportException {
     PageSize pageSize = pageSizePreference.getPageSize();
-    Hero hero = (Hero) item.getItemData();
     PdfContentByte directContent = writer.getDirectContent();
     PageConfiguration configuration = PageConfiguration.ForPortrait(pageSize);
     try {
