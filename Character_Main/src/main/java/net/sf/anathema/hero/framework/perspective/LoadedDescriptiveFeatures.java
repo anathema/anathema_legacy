@@ -1,7 +1,8 @@
 package net.sf.anathema.hero.framework.perspective;
 
-import net.sf.anathema.character.main.template.ITemplateType;
+import net.sf.anathema.character.main.framework.item.HeroNameFetcher;
 import net.sf.anathema.character.main.framework.item.Item;
+import net.sf.anathema.character.main.template.ITemplateType;
 import net.sf.anathema.hero.concept.HeroConceptFetcher;
 import net.sf.anathema.hero.framework.perspective.model.CharacterIdentifier;
 import net.sf.anathema.hero.model.Hero;
@@ -19,7 +20,7 @@ public class LoadedDescriptiveFeatures implements DescriptiveFeatures {
 
   @Override
   public String getPrintName() {
-    return characterItem.getDisplayName();
+    return new HeroNameFetcher().getName(getHero());
   }
 
   @Override
@@ -29,18 +30,22 @@ public class LoadedDescriptiveFeatures implements DescriptiveFeatures {
 
   @Override
   public ITemplateType getTemplateType() {
-    Hero hero = (Hero) characterItem.getItemData();
+    Hero hero = getHero();
     return hero.getTemplate().getTemplateType();
   }
 
   @Override
   public Identifier getCasteType() {
-    Hero hero = (Hero) characterItem.getItemData();
+    Hero hero = getHero();
     return HeroConceptFetcher.fetch(hero).getCaste().getType();
   }
 
   @Override
   public boolean isDirty() {
     return characterItem.getChangeManagement().isDirty();
+  }
+
+  private Hero getHero() {
+    return (Hero) characterItem.getItemData();
   }
 }

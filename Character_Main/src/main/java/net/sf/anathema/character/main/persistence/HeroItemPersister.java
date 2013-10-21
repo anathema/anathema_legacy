@@ -2,6 +2,7 @@ package net.sf.anathema.character.main.persistence;
 
 import net.sf.anathema.character.main.ExaltedCharacter;
 import net.sf.anathema.character.main.framework.item.CharacterItem;
+import net.sf.anathema.character.main.framework.item.HeroNameFetcher;
 import net.sf.anathema.character.main.framework.item.Item;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.framework.messaging.IMessaging;
@@ -29,7 +30,7 @@ public class HeroItemPersister implements RepositoryItemPersister {
 
   private static final String TAG_EXALTED_CHARACTER_ROOT = "ExaltedCharacter";
 
-  private final ItemMetaDataPersister repositoryItemPersister = new ItemMetaDataPersister();
+  private final RepositoryIdPersister repositoryIdPersister = new RepositoryIdPersister();
   private final HeroTemplatePersister templatePersister;
   private final HeroEnvironment generics;
   private final IMessaging messaging;
@@ -49,14 +50,15 @@ public class HeroItemPersister implements RepositoryItemPersister {
 
   @Override
   public void save(RepositoryWriteAccess writeAccess, Item item) throws PersistenceException {
-    messaging.addMessage("CharacterPersistence.SavingCharacter", MessageType.INFORMATION, item.getDisplayName());
-    Element rootElement = DocumentHelper.createElement(TAG_EXALTED_CHARACTER_ROOT);
     Hero hero = (Hero) item.getItemData();
-    repositoryItemPersister.save(rootElement, item);
+    String name = new HeroNameFetcher().getName(hero);
+    messaging.addMessage("CharacterPersistence.SavingCharacter", MessageType.INFORMATION, name);
+    Element rootElement = DocumentHelper.createElement(TAG_EXALTED_CHARACTER_ROOT);
+    repositoryIdPersister.save(rootElement, item);
     saveModels(writeAccess, hero);
     templatePersister.saveTemplate(rootElement, hero);
     saveCharacterXml(writeAccess, rootElement);
-    messaging.addMessage("CharacterPersistence.SavingCharacterDone", MessageType.INFORMATION, item.getDisplayName());
+    messaging.addMessage("CharacterPersistence.SavingCharacterDone", MessageType.INFORMATION, name);
   }
 
   @Override
@@ -65,7 +67,7 @@ public class HeroItemPersister implements RepositoryItemPersister {
     HeroTemplate template = templatePersister.loadTemplate(documentRoot);
     CharacterInitializer initializer = new LoadingCharacterInitializer(readAccess, persisterList, messaging);
     Item item = createCharacterInItem(template, initializer);
-    repositoryItemPersister.load(documentRoot, item);
+    repositoryIdPersister.load(documentRoot, item);
     return item;
   }
 

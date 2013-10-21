@@ -10,7 +10,5 @@ public interface Item {
 
   ItemRepositoryLocation getRepositoryLocation();
 
-  String getDisplayName();
-
   String getId();
 }

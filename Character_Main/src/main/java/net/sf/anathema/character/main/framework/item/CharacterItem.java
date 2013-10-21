@@ -37,17 +37,12 @@ public class CharacterItem implements Item {
   }
 
   @Override
-  public String getDisplayName() {
-    return new HeroNameFetcher().getName(itemData);
-  }
-
-  @Override
   public ItemRepositoryLocation getRepositoryLocation() {
     return repositoryLocation;
   }
 
   @Override
   public String toString() {
-    return "Character: " + getDisplayName();
+    return "Character: " + identifier.getId();
   }
 }
