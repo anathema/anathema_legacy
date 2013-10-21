@@ -87,8 +87,7 @@ public class HeroItemPersister implements RepositoryItemPersister {
       Element documentRoot = document.getRootElement();
       ExaltedCharacter character = templatePersister.loadTemplate(documentRoot);
       loadModels(readAccess, character);
-      markCharacterReadyForWork(character);
-      Item item = createItem(character);
+      Item item = initItem(character);
       repositoryItemPersister.load(documentRoot, item);
       return item;
     }
@@ -114,14 +113,14 @@ public class HeroItemPersister implements RepositoryItemPersister {
   public Item createNew(HeroTemplate template) throws PersistenceException {
     try {
       ExaltedCharacter character = new ExaltedCharacter(template, generics);
-      markCharacterReadyForWork(character);
-      return createItem(character);
+      return initItem(character);
     } catch (SpellException e) {
       throw new PersistenceException("A problem occured while creating a new character", e);
     }
   }
 
-  private Item createItem(ExaltedCharacter character) {
+  private Item initItem(ExaltedCharacter character) {
+    markCharacterReadyForWork(character);
     return new CharacterItem(character);
   }
 
