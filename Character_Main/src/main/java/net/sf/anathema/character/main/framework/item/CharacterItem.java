@@ -15,7 +15,6 @@ public class CharacterItem implements Item {
   private String printName = "";
 
   public CharacterItem(ItemData itemData) {
-    Preconditions.checkNotNull(itemData);
     this.repositoryLocation = new CharacterRepositoryLocation(this);
     this.itemData = itemData;
     this.identifier = new Identifier() {
