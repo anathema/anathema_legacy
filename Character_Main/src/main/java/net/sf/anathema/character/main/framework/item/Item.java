@@ -9,6 +9,4 @@ public interface Item {
   ChangeManagement getChangeManagement();
 
   ItemRepositoryLocation getRepositoryLocation();
-
-  String getId();
 }

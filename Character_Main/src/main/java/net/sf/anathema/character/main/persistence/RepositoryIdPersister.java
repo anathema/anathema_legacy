@@ -11,7 +11,7 @@ public class RepositoryIdPersister {
   private static final String ATTRIB_REPOSITORY_ID = "repositoryId";
 
   public void save(Element element, Item item) {
-    String repositoryId = item.getId();
+    String repositoryId = item.getRepositoryLocation().getId();
     Preconditions.checkNotNull(repositoryId, "Repository item must have an id for saving.");
     element.addAttribute(ATTRIB_REPOSITORY_ID, repositoryId);
   }

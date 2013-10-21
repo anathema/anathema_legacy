@@ -1,5 +1,6 @@
 package net.sf.anathema.hero.framework.perspective.model;
 
+import net.sf.anathema.character.main.framework.item.ItemRepositoryLocation;
 import net.sf.anathema.character.main.itemtype.CharacterItemTypeRetrieval;
 import net.sf.anathema.character.main.persistence.HeroItemPersister;
 import net.sf.anathema.framework.IApplicationModel;
@@ -48,15 +49,16 @@ public class CharacterPersistenceModel {
   }
 
   private void assignUniqueIdAsRequired(Item item) {
-    if (item.getId() == null) {
+    ItemRepositoryLocation repositoryLocation = item.getRepositoryLocation();
+    if (repositoryLocation.getId() == null) {
       Repository repository = model.getRepository();
-      String id = repository.createUniqueRepositoryId(item.getRepositoryLocation());
-      item.getRepositoryLocation().setId(id);
+      String id = repository.createUniqueRepositoryId(repositoryLocation);
+      repositoryLocation.setId(id);
     }
   }
 
   private RepositoryWriteAccess createWriteAccessFor(Item item) {
-    return model.getRepository().createWriteAccess(CharacterItemTypeRetrieval.retrieveCharacterItemType(), item.getId());
+    return model.getRepository().createWriteAccess(CharacterItemTypeRetrieval.retrieveCharacterItemType(), item.getRepositoryLocation().getId());
   }
 
   private RepositoryItemPersister findPersister() {
