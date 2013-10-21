@@ -3,12 +3,10 @@ package net.sf.anathema.hero.sheet.pdf;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfWriter;
-import net.sf.anathema.character.main.framework.item.ItemData;
-import net.sf.anathema.hero.sheet.preferences.PageSizePreference;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
 import net.sf.anathema.framework.reporting.pdf.PageSize;
-import net.sf.anathema.character.main.framework.item.Item;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.sheet.pdf.content.ReportContentRegistry;
@@ -21,7 +19,7 @@ import net.sf.anathema.hero.sheet.pdf.page.layout.Sheet;
 import net.sf.anathema.hero.sheet.pdf.page.layout.simple.FirstPageEncoder;
 import net.sf.anathema.hero.sheet.pdf.page.layout.simple.SecondPageEncoder;
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
-import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.hero.sheet.preferences.PageSizePreference;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -84,15 +82,7 @@ public class PortraitSimpleExaltSheetReport extends AbstractPdfReport {
   }
 
   @Override
-  public boolean supports(Item item) {
-    if (item == null) {
-      return false;
-    }
-    ItemData itemData = item.getItemData();
-    if (!(itemData instanceof Hero)) {
-      return false;
-    }
-    Hero hero = (Hero) itemData;
+  public boolean supports(Hero hero) {
     return hero.getTemplate().getTemplateType().getCharacterType().isEssenceUser();
   }
 }

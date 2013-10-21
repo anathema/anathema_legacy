@@ -7,7 +7,7 @@ import java.io.OutputStream;
 
 public interface Report {
 
-  boolean supports(Item item);
+  boolean supports(Hero hero);
 
   void print(Hero hero, OutputStream stream) throws ReportException;
 }

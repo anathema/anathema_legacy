@@ -20,7 +20,6 @@ import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
 import net.sf.anathema.framework.reporting.pdf.PdfReportUtils;
-import net.sf.anathema.character.main.framework.item.Item;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.charms.model.CharmsModelFetcher;
 import net.sf.anathema.hero.charms.sheet.content.CharmContentHelper;
@@ -174,11 +173,7 @@ public class MagicReport extends AbstractPdfReport {
   }
 
   @Override
-  public boolean supports(Item item) {
-    if (item == null || !(item.getItemData() instanceof Hero)) {
-      return false;
-    }
-    Hero hero = (Hero) item.getItemData();
+  public boolean supports(Hero hero) {
     return getCurrentCharms(hero).length > 0;
   }
 

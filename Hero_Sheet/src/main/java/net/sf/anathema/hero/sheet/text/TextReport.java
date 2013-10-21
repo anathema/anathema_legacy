@@ -4,14 +4,12 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.MultiColumnText;
 import com.itextpdf.text.pdf.PdfWriter;
-import net.sf.anathema.character.main.Character;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
 import net.sf.anathema.framework.reporting.pdf.PdfReportUtils;
-import net.sf.anathema.character.main.framework.item.Item;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.framework.environment.Resources;
 
 import java.util.Collection;
 
@@ -36,7 +34,8 @@ public class TextReport extends AbstractPdfReport {
   public void performPrint(Hero hero, Document document, PdfWriter writer) throws ReportException {
     MultiColumnText columnText = new MultiColumnText(document.top() - document.bottom() - 15);
     columnText.addRegularColumns(document.left(), document.right(), 20, 2);
-    Collection<HeroTextEncoderFactory> encoderFactories = environment.getObjectFactory().instantiateOrdered(RegisteredTextEncoderFactory.class);
+    Collection<HeroTextEncoderFactory> encoderFactories = environment.getObjectFactory().instantiateOrdered(
+            RegisteredTextEncoderFactory.class);
     try {
       for (HeroTextEncoderFactory factory : encoderFactories) {
         factory.create(utils, resources).createParagraphs(columnText, hero);
@@ -55,7 +54,7 @@ public class TextReport extends AbstractPdfReport {
   }
 
   @Override
-  public boolean supports(Item item) {
-    return item != null && item.getItemData() instanceof Character;
+  public boolean supports(Hero hero) {
+    return true;
   }
 }

@@ -7,6 +7,7 @@ import net.sf.anathema.framework.reporting.Report;
 import net.sf.anathema.character.main.framework.item.Item;
 import net.sf.anathema.hero.framework.perspective.sheet.AllReportFinder;
 import net.sf.anathema.hero.framework.perspective.sheet.DefaultReportFinder;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.initialization.RegisteredReportFactory;
 import net.sf.anathema.framework.environment.Resources;
 
@@ -40,9 +41,12 @@ public class CharacterReportFinder implements DefaultReportFinder, AllReportFind
 
   @Override
   public List<Report> getAllReports(Item item) {
+    if (item == null){
+      return Collections.emptyList();
+    }
     List<Report> supportedReports = new ArrayList<>();
     for (Report report : reports) {
-      if (report.supports(item)) {
+      if (report.supports((Hero) item.getItemData())) {
         supportedReports.add(report);
       }
     }
