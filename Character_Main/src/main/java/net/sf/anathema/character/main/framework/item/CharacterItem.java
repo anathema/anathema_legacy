@@ -1,17 +1,14 @@
 package net.sf.anathema.character.main.framework.item;
 
-import com.google.common.base.Objects;
-import com.google.common.base.Strings;
 import net.sf.anathema.framework.repository.ChangeManagement;
 import net.sf.anathema.lib.util.Identifier;
 
 public class CharacterItem implements Item {
 
-  private static final String DEFAULT_PRINT_NAME = "Unnamed";
-  private final ItemData itemData;
+  public static final String DEFAULT_PRINT_NAME = "Unnamed";
+  private final net.sf.anathema.character.main.Character itemData;
   private final ItemRepositoryLocation repositoryLocation;
   private final Identifier identifier;
-  private String printName = "";
 
   public CharacterItem(net.sf.anathema.character.main.Character character) {
     this.repositoryLocation = new HeroRepositoryLocation(character);
@@ -22,7 +19,6 @@ public class CharacterItem implements Item {
         return repositoryLocation.getId();
       }
     };
-    character.setPrintNameAdjuster(new PrintNameAdjuster(this));
   }
 
   @Override
@@ -42,15 +38,7 @@ public class CharacterItem implements Item {
 
   @Override
   public String getDisplayName() {
-    return Strings.isNullOrEmpty(printName) ? DEFAULT_PRINT_NAME : printName;
-  }
-
-  @Override
-  public void setPrintName(String printName) {
-    if (Objects.equal(this.printName, printName)) {
-      return;
-    }
-    this.printName = printName;
+    return new HeroNameFetcher().getName(itemData);
   }
 
   @Override

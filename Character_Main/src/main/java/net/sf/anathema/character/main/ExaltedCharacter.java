@@ -1,17 +1,13 @@
 package net.sf.anathema.character.main;
 
 import net.sf.anathema.character.main.template.HeroTemplate;
-import net.sf.anathema.character.main.framework.item.PrintNameAdjuster;
 import net.sf.anathema.framework.repository.ChangeManagement;
-import net.sf.anathema.hero.description.HeroDescription;
-import net.sf.anathema.hero.description.HeroDescriptionFetcher;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.initialization.HeroModelInitializer;
 import net.sf.anathema.hero.model.DefaultHero;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.lib.util.Identifier;
-import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
 import java.util.Iterator;
 
@@ -29,16 +25,6 @@ public class ExaltedCharacter implements Character {
   private void addModels(HeroEnvironment environment) {
     HeroModelInitializer initializer = new HeroModelInitializer(environment, getTemplate());
     initializer.addModels(environment, hero);
-  }
-
-  // todo (sandra): remove itemDate-Relicts in Character (see HeroItemPersister)
-  public void setPrintNameAdjuster(PrintNameAdjuster adjuster) {
-    HeroDescription characterDescription = HeroDescriptionFetcher.fetch(this);
-    if (characterDescription == null) {
-      return;
-    }
-    ITextualDescription characterName = characterDescription.getName();
-    characterName.addTextChangedListener(adjuster);
   }
 
   @Override

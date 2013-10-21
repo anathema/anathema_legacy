@@ -12,7 +12,5 @@ public interface Item {
 
   String getDisplayName();
 
-  void setPrintName(String printName);
-
   String getId();
 }

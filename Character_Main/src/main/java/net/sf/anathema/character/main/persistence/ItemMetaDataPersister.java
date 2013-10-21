@@ -20,6 +20,5 @@ public class ItemMetaDataPersister {
 
   public void load(Element element, Item item) throws PersistenceException {
     item.getRepositoryLocation().setId(ElementUtilities.getRequiredAttrib(element, ATTRIB_REPOSITORY_ID));
-    item.setPrintName(ElementUtilities.getRequiredAttrib(element, ATTRIB_REPOSITORY_PRINT_NAME));
   }
 }
