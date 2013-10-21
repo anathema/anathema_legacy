@@ -61,8 +61,8 @@ public class ExaltedCharacter implements Character {
     return hero.getModel(id);
   }
 
-  public void setFullyLoaded(boolean loaded) {
-    hero.setFullyLoaded(loaded);
+  public void markReadyForWork() {
+    hero.setFullyLoaded(true);
   }
 
   @Override
