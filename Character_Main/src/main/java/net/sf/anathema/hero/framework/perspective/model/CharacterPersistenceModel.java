@@ -1,5 +1,6 @@
 package net.sf.anathema.hero.framework.perspective.model;
 
+import net.sf.anathema.character.main.itemtype.CharacterItemTypeRetrieval;
 import net.sf.anathema.character.main.persistence.HeroItemPersister;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;
@@ -55,7 +56,7 @@ public class CharacterPersistenceModel {
   }
 
   private IRepositoryWriteAccess createWriteAccessFor(Item item) {
-    return model.getRepository().createWriteAccess(item.getItemType(), item.getId());
+    return model.getRepository().createWriteAccess(CharacterItemTypeRetrieval.retrieveCharacterItemType(), item.getId());
   }
 
   private RepositoryItemPersister findPersister() {

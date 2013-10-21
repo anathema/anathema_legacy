@@ -31,7 +31,7 @@ public class ExaltedCharacter implements Character {
     initializer.addModels(environment, hero);
   }
 
-  // todo (sandra): remove itemDate-Relicts in Character (see ExaltedCharacterPersister)
+  // todo (sandra): remove itemDate-Relicts in Character (see HeroItemPersister)
   public void setPrintNameAdjuster(PrintNameAdjuster adjuster) {
     HeroDescription characterDescription = HeroDescriptionFetcher.fetch(this);
     if (characterDescription == null) {
