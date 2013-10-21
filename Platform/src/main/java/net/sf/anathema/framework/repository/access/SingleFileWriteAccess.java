@@ -7,7 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 
-public class SingleFileWriteAccess implements IRepositoryWriteAccess {
+public class SingleFileWriteAccess implements RepositoryWriteAccess {
 
   private final File repositoryFile;
 

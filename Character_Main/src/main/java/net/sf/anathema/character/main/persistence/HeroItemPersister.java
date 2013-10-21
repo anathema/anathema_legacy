@@ -7,8 +7,8 @@ import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.framework.persistence.RepositoryItemPersister;
 import net.sf.anathema.framework.repository.RepositoryException;
-import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
-import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
+import net.sf.anathema.framework.repository.access.RepositoryReadAccess;
+import net.sf.anathema.framework.repository.access.RepositoryWriteAccess;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
@@ -45,7 +45,7 @@ public class HeroItemPersister implements RepositoryItemPersister {
   }
 
   @Override
-  public void save(final IRepositoryWriteAccess writeAccess, Item item) throws IOException, RepositoryException {
+  public void save(final RepositoryWriteAccess writeAccess, Item item) throws IOException, RepositoryException {
     OutputStream stream = null;
     try {
       stream = writeAccess.createMainOutputStream();
@@ -68,7 +68,7 @@ public class HeroItemPersister implements RepositoryItemPersister {
   }
 
   @Override
-  public Item load(IRepositoryReadAccess readAccess) throws PersistenceException, RepositoryException {
+  public Item load(RepositoryReadAccess readAccess) throws PersistenceException, RepositoryException {
     InputStream stream = null;
     try {
       if (readAccess == null) {
@@ -96,7 +96,7 @@ public class HeroItemPersister implements RepositoryItemPersister {
     return initItem(character);
   }
 
-  private void saveModels(IRepositoryWriteAccess writeAccess, Hero hero) {
+  private void saveModels(RepositoryWriteAccess writeAccess, Hero hero) {
     for (HeroModelPersister persister : persisterList.iterator(hero)) {
       HeroModel heroModel = hero.getModel(persister.getModelId());
       if (heroModel != null) {

@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.repository.tree;
 
-import net.sf.anathema.framework.repository.access.IRepositoryFileAccess;
+import net.sf.anathema.framework.repository.access.RepositoryFileAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.framework.environment.Resources;
 import org.apache.commons.io.IOUtils;
@@ -29,7 +29,7 @@ public class FileExporter {
     zipOutputStream.setComment(resources.getString("Anathema.Version.Numeric"));
     PrintNameFile[] printNameFiles = model.getPrintNameFilesInSelection();
     for (PrintNameFile printNameFile : printNameFiles) {
-      IRepositoryFileAccess access = model.getFileAccess(printNameFile);
+      RepositoryFileAccess access = model.getFileAccess(printNameFile);
       for (File file : access.getFiles()) {
         ZipEntry entry = createZipEntry(file, printNameFile);
         InputStream input = access.openInputStream(file);

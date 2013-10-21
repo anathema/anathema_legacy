@@ -1,8 +1,8 @@
 package net.sf.anathema.scribe.scroll.persistence;
 
 import net.sf.anathema.framework.repository.Repository;
-import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
-import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
+import net.sf.anathema.framework.repository.access.RepositoryReadAccess;
+import net.sf.anathema.framework.repository.access.RepositoryWriteAccess;
 import net.sf.anathema.framework.repository.access.printname.ReferenceAccess;
 import net.sf.anathema.framework.repository.access.printname.ReferenceBuilder;
 import net.sf.anathema.scribe.scroll.ScrollItemType;
@@ -38,13 +38,13 @@ public class RepositoryScrollPersister implements ScrollPersister {
 
   private OutputStream createOutputStreamFor(Scroll scroll) {
     String repositoryId = scroll.repositoryId.getStringRepresentation();
-    IRepositoryWriteAccess writeAccess = model.createWriteAccess(ScrollItemType.ITEM_TYPE, repositoryId);
+    RepositoryWriteAccess writeAccess = model.createWriteAccess(ScrollItemType.ITEM_TYPE, repositoryId);
     return writeAccess.createMainOutputStream();
   }
 
   @Override
   public Scroll loadScroll(RepositoryId id) {
-    IRepositoryReadAccess readAccess = model.openReadAccess(ScrollItemType.ITEM_TYPE, id.getStringRepresentation());
+    RepositoryReadAccess readAccess = model.openReadAccess(ScrollItemType.ITEM_TYPE, id.getStringRepresentation());
     InputStream inputStream = null;
     try {
       inputStream = readAccess.openMainInputStream();

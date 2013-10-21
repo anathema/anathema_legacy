@@ -7,7 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 
-public class MultiFileWriteAccess implements IRepositoryWriteAccess {
+public class MultiFileWriteAccess implements RepositoryWriteAccess {
 
   private final File itemFolder;
   private final String mainFileName;

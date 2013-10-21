@@ -4,8 +4,8 @@ import com.google.common.base.Preconditions;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IRepositoryConfiguration;
 import net.sf.anathema.framework.presenter.action.IFileProvider;
-import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
-import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
+import net.sf.anathema.framework.repository.access.RepositoryReadAccess;
+import net.sf.anathema.framework.repository.access.RepositoryWriteAccess;
 import net.sf.anathema.framework.repository.access.MultiFileReadAccess;
 import net.sf.anathema.framework.repository.access.MultiFileWriteAccess;
 import net.sf.anathema.framework.repository.access.SingleFileReadAccess;
@@ -57,7 +57,7 @@ public class FileSystemRepository implements Repository {
   }
 
   @Override
-  public synchronized IRepositoryWriteAccess createWriteAccess(IItemType type, String id) throws RepositoryException {
+  public synchronized RepositoryWriteAccess createWriteAccess(IItemType type, String id) throws RepositoryException {
     try {
       if (type.getRepositoryConfiguration().isItemSavedToSingleFile()) {
         return createSingleFileWriteAccess(type, id);
@@ -69,23 +69,23 @@ public class FileSystemRepository implements Repository {
     }
   }
 
-  private IRepositoryWriteAccess createMultiFileWriteAccess(IItemType type, String id) {
+  private RepositoryWriteAccess createMultiFileWriteAccess(IItemType type, String id) {
     File itemFolder = resolver.getExistingItemFolder(type, id);
     return createMultiFileWriteAccess(type, itemFolder);
   }
 
-  private IRepositoryWriteAccess createMultiFileWriteAccess(IItemType type, File itemFolder) {
+  private RepositoryWriteAccess createMultiFileWriteAccess(IItemType type, File itemFolder) {
     IRepositoryConfiguration configuration = type.getRepositoryConfiguration();
     return new MultiFileWriteAccess(itemFolder, configuration.getMainFileName(), configuration.getFileExtension());
   }
 
-  private IRepositoryWriteAccess createSingleFileWriteAccess(IItemType type, String id) throws RepositoryException {
+  private RepositoryWriteAccess createSingleFileWriteAccess(IItemType type, String id) throws RepositoryException {
     File file = resolver.getMainFile(type.getRepositoryConfiguration(), id);
     return createSingleFileWriteAccess(file);
   }
 
   @SuppressWarnings("ResultOfMethodCallIgnored")
-  private IRepositoryWriteAccess createSingleFileWriteAccess(File file) throws RepositoryException {
+  private RepositoryWriteAccess createSingleFileWriteAccess(File file) throws RepositoryException {
     if (!file.exists()) {
       try {
         file.createNewFile();
@@ -113,7 +113,7 @@ public class FileSystemRepository implements Repository {
   }
 
   @Override
-  public IRepositoryReadAccess openReadAccess(IItemType type, IFileProvider provider) {
+  public RepositoryReadAccess openReadAccess(IItemType type, IFileProvider provider) {
     if (provider.getFile() == null) {
       return null;
     }
@@ -126,7 +126,7 @@ public class FileSystemRepository implements Repository {
   }
 
   @Override
-  public IRepositoryReadAccess openReadAccess(IItemType type, String id) {
+  public RepositoryReadAccess openReadAccess(IItemType type, String id) {
     if (type.getRepositoryConfiguration().isItemSavedToSingleFile()) {
       return new SingleFileReadAccess(getRepositoryFileResolver().getMainFile(type.getRepositoryConfiguration(), id));
     }

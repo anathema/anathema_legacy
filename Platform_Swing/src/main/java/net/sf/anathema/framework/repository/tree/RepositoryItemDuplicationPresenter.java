@@ -3,7 +3,7 @@ package net.sf.anathema.framework.repository.tree;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.framework.repository.RepositoryException;
-import net.sf.anathema.framework.repository.access.IRepositoryFileAccess;
+import net.sf.anathema.framework.repository.access.RepositoryFileAccess;
 import net.sf.anathema.framework.fx.ExceptionIndicator;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.initialization.FxApplicationFrame;
@@ -46,7 +46,7 @@ public class RepositoryItemDuplicationPresenter implements Presenter {
           for (PrintNameFile printNameFile : printNameFiles) {
             String id = printNameFile.getRepositoryId();
             IItemType type = printNameFile.getItemType();
-            IRepositoryFileAccess readAccess = model.getFileAccess(printNameFile);
+            RepositoryFileAccess readAccess = model.getFileAccess(printNameFile);
             String mainFilePath = model.getMainFilePath(type, id);
             RepositoryImportHandler handler = new RepositoryImportHandler(model, type, id);
             for (File file : readAccess.getFiles()) {

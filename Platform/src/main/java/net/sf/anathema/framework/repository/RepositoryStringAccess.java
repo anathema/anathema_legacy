@@ -1,8 +1,8 @@
 package net.sf.anathema.framework.repository;
 
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
-import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
+import net.sf.anathema.framework.repository.access.RepositoryReadAccess;
+import net.sf.anathema.framework.repository.access.RepositoryWriteAccess;
 import net.sf.anathema.lib.exception.PersistenceException;
 import org.apache.commons.io.IOUtils;
 
@@ -23,7 +23,7 @@ public class RepositoryStringAccess {
   public void write(String id, String representation) {
     OutputStream stream = null;
     try {
-      IRepositoryWriteAccess writeAccess = repository.createWriteAccess(itemType, id);
+      RepositoryWriteAccess writeAccess = repository.createWriteAccess(itemType, id);
       stream = writeAccess.createMainOutputStream();
       stream.write(representation.getBytes());
     } catch (IOException e) {
@@ -36,7 +36,7 @@ public class RepositoryStringAccess {
   public String read(String id) {
     InputStream stream = null;
     try {
-      IRepositoryReadAccess access = repository.openReadAccess(itemType, id);
+      RepositoryReadAccess access = repository.openReadAccess(itemType, id);
       stream = access.openMainInputStream();
       ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
       IOUtils.copy(stream, outputStream);

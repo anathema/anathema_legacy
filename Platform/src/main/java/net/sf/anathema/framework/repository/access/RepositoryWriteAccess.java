@@ -4,7 +4,7 @@ import net.sf.anathema.framework.repository.RepositoryException;
 
 import java.io.OutputStream;
 
-public interface IRepositoryWriteAccess {
+public interface RepositoryWriteAccess {
 
   OutputStream createMainOutputStream() throws RepositoryException;
 

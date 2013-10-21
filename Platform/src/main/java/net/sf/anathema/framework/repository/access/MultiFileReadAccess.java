@@ -8,7 +8,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-public class MultiFileReadAccess implements IRepositoryReadAccess {
+public class MultiFileReadAccess implements RepositoryReadAccess {
 
   private final File itemFolder;
   private final String mainFileName;

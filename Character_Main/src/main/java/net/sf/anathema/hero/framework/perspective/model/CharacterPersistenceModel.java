@@ -7,8 +7,8 @@ import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.persistence.RepositoryItemPersister;
 import net.sf.anathema.character.main.framework.item.Item;
 import net.sf.anathema.framework.repository.Repository;
-import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
-import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
+import net.sf.anathema.framework.repository.access.RepositoryReadAccess;
+import net.sf.anathema.framework.repository.access.RepositoryWriteAccess;
 import net.sf.anathema.framework.repository.access.printname.PrintNameFileAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.hero.framework.HeroEnvironment;
@@ -35,7 +35,7 @@ public class CharacterPersistenceModel {
   }
 
   public Item loadItem(CharacterIdentifier identifier) {
-    IRepositoryReadAccess readAccess = createReadAccess(identifier.getId());
+    RepositoryReadAccess readAccess = createReadAccess(identifier.getId());
     RepositoryItemPersister persister = findPersister();
     return persister.load(readAccess);
   }
@@ -43,7 +43,7 @@ public class CharacterPersistenceModel {
   public void save(Item item) throws IOException {
     RepositoryItemPersister persister = findPersister();
     assignUniqueIdAsRequired(item);
-    IRepositoryWriteAccess writeAccess = createWriteAccessFor(item);
+    RepositoryWriteAccess writeAccess = createWriteAccessFor(item);
     persister.save(writeAccess, item);
   }
 
@@ -55,7 +55,7 @@ public class CharacterPersistenceModel {
     }
   }
 
-  private IRepositoryWriteAccess createWriteAccessFor(Item item) {
+  private RepositoryWriteAccess createWriteAccessFor(Item item) {
     return model.getRepository().createWriteAccess(CharacterItemTypeRetrieval.retrieveCharacterItemType(), item.getId());
   }
 
@@ -64,7 +64,7 @@ public class CharacterPersistenceModel {
     return new HeroItemPersister(generics, model.getMessaging());
   }
 
-  private IRepositoryReadAccess createReadAccess(String repositoryId) {
+  private RepositoryReadAccess createReadAccess(String repositoryId) {
     Repository repository = model.getRepository();
     return repository.openReadAccess(getCharacterItemType(), repositoryId);
   }

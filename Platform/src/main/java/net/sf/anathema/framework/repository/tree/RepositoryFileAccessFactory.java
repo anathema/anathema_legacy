@@ -2,8 +2,8 @@ package net.sf.anathema.framework.repository.tree;
 
 import net.sf.anathema.framework.presenter.action.ConfigurableFileProvider;
 import net.sf.anathema.framework.repository.Repository;
-import net.sf.anathema.framework.repository.access.IRepositoryFileAccess;
-import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
+import net.sf.anathema.framework.repository.access.RepositoryFileAccess;
+import net.sf.anathema.framework.repository.access.RepositoryReadAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
 
 import java.io.File;
@@ -18,11 +18,11 @@ public class RepositoryFileAccessFactory {
     this.repository = repository;
   }
 
-  public IRepositoryFileAccess getFileAccess(PrintNameFile printNameFile) {
+  public RepositoryFileAccess getFileAccess(PrintNameFile printNameFile) {
     ConfigurableFileProvider provider = new ConfigurableFileProvider();
     provider.setFile(printNameFile.getFile());
-    final IRepositoryReadAccess access = repository.openReadAccess(printNameFile.getItemType(), provider);
-    return new IRepositoryFileAccess() {
+    final RepositoryReadAccess access = repository.openReadAccess(printNameFile.getItemType(), provider);
+    return new RepositoryFileAccess() {
       @Override
       public File[] getFiles() {
         return access.getFiles();
