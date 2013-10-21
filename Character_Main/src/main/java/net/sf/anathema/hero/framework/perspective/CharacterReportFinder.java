@@ -2,14 +2,13 @@ package net.sf.anathema.hero.framework.perspective;
 
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.environment.Environment;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.framework.initialization.IReportFactory;
 import net.sf.anathema.framework.reporting.Report;
-import net.sf.anathema.character.main.framework.item.Item;
 import net.sf.anathema.hero.framework.perspective.sheet.AllReportFinder;
 import net.sf.anathema.hero.framework.perspective.sheet.DefaultReportFinder;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.initialization.RegisteredReportFactory;
-import net.sf.anathema.framework.environment.Resources;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -29,9 +28,9 @@ public class CharacterReportFinder implements DefaultReportFinder, AllReportFind
     this.resources = environment;
   }
 
-  public Report getDefaultReport(Item item) {
+  public Report getDefaultReport(Hero hero) {
     String reportName = resources.getString("CharacterModule.Reporting.Sheet.Name");
-    for (Report report : getAllReports(item)) {
+    for (Report report : getAllReports(hero)) {
       if (reportName.equals(report.toString())) {
         return report;
       }
@@ -40,13 +39,10 @@ public class CharacterReportFinder implements DefaultReportFinder, AllReportFind
   }
 
   @Override
-  public List<Report> getAllReports(Item item) {
-    if (item == null){
-      return Collections.emptyList();
-    }
+  public List<Report> getAllReports(Hero hero) {
     List<Report> supportedReports = new ArrayList<>();
     for (Report report : reports) {
-      if (report.supports((Hero) item.getItemData())) {
+      if (report.supports(hero)) {
         supportedReports.add(report);
       }
     }

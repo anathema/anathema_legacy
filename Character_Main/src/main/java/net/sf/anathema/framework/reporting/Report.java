@@ -1,6 +1,5 @@
 package net.sf.anathema.framework.reporting;
 
-import net.sf.anathema.character.main.framework.item.Item;
 import net.sf.anathema.hero.model.Hero;
 
 import java.io.OutputStream;

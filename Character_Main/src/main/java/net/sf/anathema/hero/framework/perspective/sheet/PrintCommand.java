@@ -4,7 +4,6 @@ import net.sf.anathema.framework.desktop.DesktopEnvironment;
 import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.reporting.Report;
 import net.sf.anathema.framework.reporting.ReportException;
-import net.sf.anathema.character.main.framework.item.Item;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.interaction.Command;
 import org.apache.commons.io.IOUtils;
@@ -20,15 +19,15 @@ public class PrintCommand implements Command {
 
   public static final String PDF_EXTENSION = ".pdf";
   private final Environment environment;
-  private final Item item;
   private final Report report;
   private final FileChooser fileChooser;
+  private final Hero hero;
 
-  public PrintCommand(Environment environment, Item item, Report report, FileChooser fileChooser) {
+  public PrintCommand(Environment environment, Report report, FileChooser fileChooser, Hero hero) {
     this.environment = environment;
-    this.item = item;
     this.report = report;
     this.fileChooser = fileChooser;
+    this.hero = hero;
   }
 
   @Override
@@ -38,7 +37,7 @@ public class PrintCommand implements Command {
       if (selectedFile == null) {
         return;
       }
-      performPrint(item, report, selectedFile);
+      performPrint(report, selectedFile, hero);
       openFile(selectedFile);
     } catch (FileNotFoundException e) {
       handleAlreadyOpenException(e);
@@ -56,11 +55,11 @@ public class PrintCommand implements Command {
     environment.handle(e, errorMessage);
   }
 
-  private void performPrint(Item item, Report selectedReport, Path selectedFile) throws IOException, ReportException {
+  private void performPrint(Report selectedReport, Path selectedFile, Hero hero) throws IOException, ReportException {
     OutputStream stream = null;
     try {
       stream = Files.newOutputStream(selectedFile);
-      selectedReport.print((Hero)item.getItemData(), stream);
+      selectedReport.print(hero, stream);
     } finally {
       IOUtils.closeQuietly(stream);
     }
