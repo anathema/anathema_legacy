@@ -24,7 +24,7 @@ public class ExaltedCharacter implements Character {
 
   private void addModels(HeroEnvironment environment) {
     HeroModelInitializer initializer = new HeroModelInitializer(environment, getTemplate());
-    initializer.addModels(environment, hero);
+    initializer.addModels(hero);
   }
 
   @Override

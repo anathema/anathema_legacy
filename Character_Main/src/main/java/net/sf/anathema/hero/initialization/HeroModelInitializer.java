@@ -22,11 +22,11 @@ public class HeroModelInitializer {
     this.template = template;
   }
 
-  public void addModels(HeroEnvironment generics, DefaultHero hero) {
+  public void addModels(DefaultHero hero) {
     ModelFactoryAutoCollector collector = new ModelFactoryAutoCollector(environment.getObjectFactory());
     ModelFactoryMap factoryMap = new ModelFactoryMap(collector);
     Iterable<ConfiguredModel> sortedRelevantModelIds = getSortedModelIdsForHero(factoryMap);
-    Iterable<HeroModel> sortedModels = createSortedModels(generics, factoryMap, sortedRelevantModelIds);
+    Iterable<HeroModel> sortedModels = createSortedModels(environment, factoryMap, sortedRelevantModelIds);
     initializeModelsInOrder(hero, sortedModels);
   }
 
