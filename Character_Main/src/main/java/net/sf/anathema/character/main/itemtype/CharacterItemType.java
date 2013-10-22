@@ -1,6 +1,7 @@
 package net.sf.anathema.character.main.itemtype;
 
 import net.sf.anathema.framework.item.IItemType;
+import net.sf.anathema.framework.item.RepositoryConfiguration;
 import net.sf.anathema.framework.module.ItemTypeConfiguration;
 import net.sf.anathema.framework.repository.FolderRepositoryConfiguration;
 import net.sf.anathema.framework.repository.ItemType;
@@ -10,7 +11,8 @@ import net.sf.anathema.initialization.RegisteredItemTypeConfiguration;
 public class CharacterItemType implements ItemTypeConfiguration {
 
   public static final String CHARACTER_ITEM_TYPE_ID = "ExaltedCharacter";
-  private static final IItemType ITEM_TYPE = new ItemType(CHARACTER_ITEM_TYPE_ID, new FolderRepositoryConfiguration(".ecg", "ExaltedCharacter/", "main"));
+  private static final RepositoryConfiguration REPOSITORY_CONFIGURATION = new FolderRepositoryConfiguration(".ecg", "ExaltedCharacter/", "main");
+  private static final IItemType ITEM_TYPE = new ItemType(CHARACTER_ITEM_TYPE_ID, REPOSITORY_CONFIGURATION);
 
   @Override
   public final IItemType getItemType() {
