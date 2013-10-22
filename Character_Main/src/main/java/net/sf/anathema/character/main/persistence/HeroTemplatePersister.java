@@ -1,7 +1,6 @@
 package net.sf.anathema.character.main.persistence;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.character.main.ExaltedCharacter;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITemplateType;
 import net.sf.anathema.character.main.template.TemplateType;
@@ -33,10 +32,9 @@ public class HeroTemplatePersister {
     characterTypeElement.addText(template.getTemplateType().getCharacterType().getId());
   }
 
-  public ExaltedCharacter loadTemplate(Element parent) {
+  public HeroTemplate loadTemplate(Element parent) {
     ITemplateType templateType = loadTemplateType(parent);
-    HeroTemplate template = generics.getTemplateRegistry().getTemplate(templateType);
-    return new ExaltedCharacter(template, generics);
+    return generics.getTemplateRegistry().getTemplate(templateType);
   }
 
   private ITemplateType loadTemplateType(Element parent) throws PersistenceException {

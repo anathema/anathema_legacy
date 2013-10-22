@@ -4,7 +4,7 @@ import net.sf.anathema.framework.repository.RepositoryException;
 
 import java.io.InputStream;
 
-public interface IRepositoryReadAccess extends IRepositoryFileProvider {
+public interface RepositoryReadAccess extends RepositoryFileProvider {
 
   InputStream openMainInputStream() throws RepositoryException;
 

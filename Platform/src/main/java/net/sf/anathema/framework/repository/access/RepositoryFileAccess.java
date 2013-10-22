@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-public interface IRepositoryFileAccess extends IRepositoryFileProvider {
+public interface RepositoryFileAccess extends RepositoryFileProvider {
 
   InputStream openInputStream(File file) throws FileNotFoundException;
 }

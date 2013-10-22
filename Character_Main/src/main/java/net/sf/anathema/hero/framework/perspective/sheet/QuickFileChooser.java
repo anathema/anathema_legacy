@@ -1,8 +1,9 @@
 package net.sf.anathema.hero.framework.perspective.sheet;
 
-import net.sf.anathema.character.main.framework.item.Item;
-import net.sf.anathema.lib.lang.StringUtilities;
+import net.sf.anathema.character.main.framework.item.HeroNameFetcher;
 import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.lib.lang.StringUtilities;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -10,18 +11,18 @@ import java.nio.file.Path;
 
 public class QuickFileChooser implements FileChooser {
 
-  private Item item;
-  private Resources resources;
+  private final Resources resources;
+  private final Hero hero;
 
-  public QuickFileChooser(Item item, Resources resources) {
-    this.item = item;
+  public QuickFileChooser(Resources resources, Hero hero) {
     this.resources = resources;
+    this.hero = hero;
   }
 
   @Override
   public Path getPrintFile() {
       try {
-        String baseName = getBaseName(item);
+        String baseName = getBaseName();
         while (baseName.length() < 3) {
           baseName = baseName.concat("_");
         }
@@ -33,7 +34,8 @@ public class QuickFileChooser implements FileChooser {
       }
     }
 
-  private String getBaseName(Item item) {
-    return StringUtilities.getFileNameRepresentation(item.getDisplayName());
+  private String getBaseName() {
+    String name = new HeroNameFetcher().getName(hero);
+    return StringUtilities.getFileNameRepresentation(name);
   }
 }

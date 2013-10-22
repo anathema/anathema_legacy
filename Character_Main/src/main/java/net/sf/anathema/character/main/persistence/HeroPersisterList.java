@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.persistence;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
-import net.sf.anathema.hero.framework.HeroEnvironment;
+import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.hero.persistence.HeroModelPersister;
@@ -17,8 +17,8 @@ public class HeroPersisterList {
 
   private final HeroModelPersisterAutoCollector persisterAutoCollector;
 
-  public HeroPersisterList(HeroEnvironment environment) {
-    this.persisterAutoCollector = new HeroModelPersisterAutoCollector(environment);
+  public HeroPersisterList(ObjectFactory objectFactory) {
+    this.persisterAutoCollector = new HeroModelPersisterAutoCollector(objectFactory);
   }
 
   public Iterable<HeroModelPersister> iterator(Hero hero) {

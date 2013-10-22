@@ -2,14 +2,13 @@ package net.sf.anathema.character.main.persistence;
 
 import net.sf.anathema.character.main.ExaltedCharacter;
 import net.sf.anathema.character.main.framework.item.CharacterItem;
+import net.sf.anathema.character.main.framework.item.HeroNameFetcher;
 import net.sf.anathema.character.main.framework.item.Item;
-import net.sf.anathema.character.main.magic.spells.SpellException;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.framework.persistence.RepositoryItemPersister;
-import net.sf.anathema.framework.repository.RepositoryException;
-import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
-import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
+import net.sf.anathema.framework.repository.access.RepositoryReadAccess;
+import net.sf.anathema.framework.repository.access.RepositoryWriteAccess;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
@@ -17,7 +16,6 @@ import net.sf.anathema.hero.persistence.HeroModelPersister;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.message.MessageType;
 import net.sf.anathema.lib.xml.DocumentUtilities;
-import org.apache.commons.io.IOUtils;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.DocumentHelper;
@@ -32,7 +30,7 @@ public class HeroItemPersister implements RepositoryItemPersister {
 
   private static final String TAG_EXALTED_CHARACTER_ROOT = "ExaltedCharacter";
 
-  private final ItemMetaDataPersister repositoryItemPersister = new ItemMetaDataPersister();
+  private final RepositoryIdPersister repositoryIdPersister = new RepositoryIdPersister();
   private final HeroTemplatePersister templatePersister;
   private final HeroEnvironment generics;
   private final IMessaging messaging;
@@ -42,28 +40,46 @@ public class HeroItemPersister implements RepositoryItemPersister {
     this.generics = generics;
     this.messaging = messaging;
     this.templatePersister = new HeroTemplatePersister(generics);
-    this.persisterList = new HeroPersisterList(generics);
+    this.persisterList = new HeroPersisterList(generics.getObjectFactory());
   }
 
   @Override
-  public void save(final IRepositoryWriteAccess writeAccess, Item item) throws IOException, RepositoryException {
-    OutputStream stream = null;
-    try {
-      stream = writeAccess.createMainOutputStream();
-      messaging.addMessage("CharacterPersistence.SavingCharacter", MessageType.INFORMATION, item.getDisplayName());
-      Element rootElement = DocumentHelper.createElement(TAG_EXALTED_CHARACTER_ROOT);
-      Hero hero = (Hero) item.getItemData();
-      repositoryItemPersister.save(rootElement, item);
-      saveModels(writeAccess, hero);
-      templatePersister.saveTemplate(rootElement, hero);
+  public Item createNew(HeroTemplate template) throws PersistenceException {
+    return createCharacterInItem(template, new NewCharacterInitializer());
+  }
+
+  @Override
+  public void save(RepositoryWriteAccess writeAccess, Item item) throws PersistenceException {
+    Hero hero = (Hero) item.getItemData();
+    String name = new HeroNameFetcher().getName(hero);
+    messaging.addMessage("CharacterPersistence.SavingCharacter", MessageType.INFORMATION, name);
+    Element rootElement = DocumentHelper.createElement(TAG_EXALTED_CHARACTER_ROOT);
+    repositoryIdPersister.save(rootElement, item);
+    saveModels(writeAccess, hero);
+    templatePersister.saveTemplate(rootElement, hero);
+    saveCharacterXml(writeAccess, rootElement);
+    messaging.addMessage("CharacterPersistence.SavingCharacterDone", MessageType.INFORMATION, name);
+  }
+
+  @Override
+  public Item load(RepositoryReadAccess readAccess) throws PersistenceException {
+    Element documentRoot = loadCharacterXml(readAccess);
+    HeroTemplate template = templatePersister.loadTemplate(documentRoot);
+    CharacterInitializer initializer = new LoadingCharacterInitializer(readAccess, persisterList, messaging);
+    Item item = createCharacterInItem(template, initializer);
+    repositoryIdPersister.load(documentRoot, item);
+    return item;
+  }
+
+  private void saveCharacterXml(RepositoryWriteAccess writeAccess, Element rootElement) {
+    try (OutputStream stream = writeAccess.createMainOutputStream()) {
       DocumentUtilities.save(DocumentHelper.createDocument(rootElement), stream);
-    }
-    finally {
-      IOUtils.closeQuietly(stream);
+    } catch (IOException e) {
+      throw new PersistenceException(e);
     }
   }
 
-  private void saveModels(IRepositoryWriteAccess writeAccess, Hero hero) {
+  private void saveModels(RepositoryWriteAccess writeAccess, Hero hero) {
     for (HeroModelPersister persister : persisterList.iterator(hero)) {
       HeroModel heroModel = hero.getModel(persister.getModelId());
       if (heroModel != null) {
@@ -73,58 +89,24 @@ public class HeroItemPersister implements RepositoryItemPersister {
     }
   }
 
-  @Override
-  public Item load(IRepositoryReadAccess readAccess) throws PersistenceException, RepositoryException {
-    InputStream stream = null;
-    try {
-      if (readAccess == null) {
-        return null;
-      }
-      stream = readAccess.openMainInputStream();
+  private Element loadCharacterXml(RepositoryReadAccess readAccess) {
+    try (InputStream stream = readAccess.openMainInputStream()) {
       SAXReader saxReader = new SAXReader();
       Document document = saxReader.read(stream);
-      Element documentRoot = document.getRootElement();
-      ExaltedCharacter character = templatePersister.loadTemplate(documentRoot);
-      loadModels(readAccess, character);
-      markCharacterReadyForWork(character);
-      Item item = createItem(character);
-      repositoryItemPersister.load(documentRoot, item);
-      return item;
-    }
-    catch (DocumentException e) {
+      return document.getRootElement();
+    } catch (DocumentException | IOException e) {
       throw new PersistenceException(e);
     }
-    finally {
-      IOUtils.closeQuietly(stream);
-    }
   }
 
-  private void loadModels(IRepositoryReadAccess readAccess, Hero hero) {
-    for (HeroModelPersister persister : persisterList.iterator(hero)) {
-      HeroModel heroModel = hero.getModel(persister.getModelId());
-      if (heroModel != null) {
-        persister.setMessaging(messaging);
-        persister.load(hero, heroModel, new HeroModelLoaderImpl(readAccess));
-      }
-    }
+  private Item createCharacterInItem(HeroTemplate template, CharacterInitializer initializer) {
+    ExaltedCharacter character = new ExaltedCharacter(template, generics);
+    initializer.initialize(character);
+    return initItem(character);
   }
 
-  @Override
-  public Item createNew(HeroTemplate template) throws PersistenceException {
-    try {
-      ExaltedCharacter character = new ExaltedCharacter(template, generics);
-      markCharacterReadyForWork(character);
-      return createItem(character);
-    } catch (SpellException e) {
-      throw new PersistenceException("A problem occured while creating a new character", e);
-    }
-  }
-
-  private Item createItem(ExaltedCharacter character) {
+  private Item initItem(ExaltedCharacter character) {
+    character.markReadyForWork();
     return new CharacterItem(character);
-  }
-
-  private void markCharacterReadyForWork(ExaltedCharacter character) {
-    character.setFullyLoaded(true);
   }
 }

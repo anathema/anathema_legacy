@@ -1,6 +1,5 @@
 package net.sf.anathema.fx.hero.perspective;
 
-import net.sf.anathema.character.main.framework.item.Item;
 import net.sf.anathema.hero.framework.perspective.CharacterStackBridge;
 import net.sf.anathema.hero.framework.perspective.model.CharacterIdentifier;
 import net.sf.anathema.platform.fx.NodeHolder;
@@ -16,8 +15,8 @@ public class CharacterStackFxBridge implements CharacterStackBridge {
   }
 
   @Override
-  public void addViewForCharacter(CharacterIdentifier identifier, Item item) {
-    NodeHolder itemView = viewFactory.createView(item);
+  public void addViewForCharacter(CharacterIdentifier identifier, net.sf.anathema.character.main.Character character) {
+    NodeHolder itemView = viewFactory.createView(character);
     stackView.addView(identifier, itemView);
   }
 

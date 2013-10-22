@@ -4,8 +4,8 @@ import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.repository.BasicRepositoryIdData;
 import net.sf.anathema.framework.repository.Repository;
 import net.sf.anathema.framework.repository.RepositoryException;
-import net.sf.anathema.framework.repository.access.IRepositoryFileAccess;
-import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
+import net.sf.anathema.framework.repository.access.RepositoryFileAccess;
+import net.sf.anathema.framework.repository.access.RepositoryWriteAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.initialization.ItemTypeCollection;
 import net.sf.anathema.lib.control.ChangeListener;
@@ -127,7 +127,7 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
   }
 
   @Override
-  public IRepositoryFileAccess getFileAccess(PrintNameFile printNameFile) {
+  public RepositoryFileAccess getFileAccess(PrintNameFile printNameFile) {
     return repositoryFileAccessFactory.getFileAccess(printNameFile);
   }
 
@@ -136,7 +136,7 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
   }
 
   @Override
-  public IRepositoryWriteAccess getWriteAccess(IItemType type, String id) throws RepositoryException {
+  public RepositoryWriteAccess getWriteAccess(IItemType type, String id) throws RepositoryException {
     return repository.createWriteAccess(type, id);
   }
 

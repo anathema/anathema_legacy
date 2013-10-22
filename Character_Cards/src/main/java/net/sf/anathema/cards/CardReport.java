@@ -6,14 +6,11 @@ import com.itextpdf.text.pdf.PdfWriter;
 import net.sf.anathema.cards.data.ICardData;
 import net.sf.anathema.cards.data.providers.ICardDataProvider;
 import net.sf.anathema.cards.layout.ICardLayout;
-import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
-import net.sf.anathema.character.main.framework.item.Item;
-import net.sf.anathema.hero.charms.model.CharmsModelFetcher;
-import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.hero.spells.sheet.magicreport.CharmFetcher;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -37,7 +34,7 @@ public class CardReport extends AbstractPdfReport {
   }
 
   @Override
-  public void performPrint(Item item, Document document, PdfWriter writer) throws ReportException {
+  public void performPrint(Hero hero, Document document, PdfWriter writer) throws ReportException {
     try {
       PdfContentByte directContent = writer.getDirectContent();
       document.setMargins(20, 20, document.topMargin(), document.bottomMargin());
@@ -46,7 +43,7 @@ public class CardReport extends AbstractPdfReport {
       // all spells and charms
       List<ICardData> cardDataSet = new ArrayList<>();
       for (ICardDataProvider provider : cardDataProviders) {
-        Collections.addAll(cardDataSet, provider.getCards((Hero) item.getItemData(), layout.getResourceProvider()));
+        Collections.addAll(cardDataSet, provider.getCards(hero, layout.getResourceProvider()));
       }
 
       float documentWidth = document.right() - document.left();
@@ -77,15 +74,7 @@ public class CardReport extends AbstractPdfReport {
   }
 
   @Override
-  public boolean supports(Item item) {
-    if (item == null || !(item.getItemData() instanceof Hero)) {
-      return false;
-    }
-    Hero hero = (Hero) item.getItemData();
-    return getCurrentCharms(hero).length > 0;
-  }
-
-  private Charm[] getCurrentCharms(Hero hero) {
-    return CharmsModelFetcher.fetch(hero).getLearnedCharms(ExperienceModelFetcher.fetch(hero).isExperienced());
+  public boolean supports(Hero hero) {
+    return new CharmFetcher().hasCharms(hero);
   }
 }

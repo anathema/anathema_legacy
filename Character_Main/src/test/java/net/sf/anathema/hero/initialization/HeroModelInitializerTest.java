@@ -28,7 +28,7 @@ public class HeroModelInitializerTest {
 
   private final List<ConfiguredModel> configuredModels = new ArrayList<>();
   private final List availableModels = new ArrayList<>();
-  private final HeroEnvironment context = mock(HeroEnvironment.class);
+  private final HeroEnvironment context = createGenerics();
   private final HeroTemplate template = createTemplate();
   private final HeroModelInitializer initializer = new HeroModelInitializer(context, template);
 
@@ -46,8 +46,7 @@ public class HeroModelInitializerTest {
   }
 
   private void initializeModelsForHero(DefaultHero hero) {
-    HeroEnvironment generics = createGenerics();
-    initializer.addModels(generics, hero);
+    initializer.addModels(hero);
   }
 
   @SuppressWarnings("unchecked")

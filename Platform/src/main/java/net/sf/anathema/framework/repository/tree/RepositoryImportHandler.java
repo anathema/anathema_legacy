@@ -2,7 +2,7 @@ package net.sf.anathema.framework.repository.tree;
 
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.repository.RepositoryException;
-import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
+import net.sf.anathema.framework.repository.access.RepositoryWriteAccess;
 import org.apache.commons.io.IOUtils;
 
 import java.io.ByteArrayInputStream;
@@ -13,7 +13,7 @@ import java.io.OutputStream;
 
 public class RepositoryImportHandler {
 
-  private final IRepositoryWriteAccess access;
+  private final RepositoryWriteAccess access;
   private final String oldId;
   private final String newId;
 

@@ -7,7 +7,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-public class SingleFileReadAccess implements IRepositoryReadAccess {
+public class SingleFileReadAccess implements RepositoryReadAccess {
 
   private final File repositoryFile;
 

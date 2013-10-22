@@ -2,14 +2,14 @@ package net.sf.anathema.cascades.presenter;
 
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.main.type.CharacterTypes;
+import net.sf.anathema.framework.environment.Environment;
+import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.hero.charms.compiler.CharmCache;
 import net.sf.anathema.hero.charms.display.coloring.ConfigurableCharmDye;
 import net.sf.anathema.hero.charms.display.presenter.CharmDisplayPropertiesMap;
 import net.sf.anathema.hero.charms.display.tree.CascadePresenter;
 import net.sf.anathema.hero.charms.display.view.CharmView;
 import net.sf.anathema.hero.framework.HeroEnvironment;
-import net.sf.anathema.framework.environment.ObjectFactory;
-import net.sf.anathema.framework.environment.Resources;
 
 public class CharmCascadesPresenterImpl {
   private final CascadePresenter cascadePresenter;
@@ -19,15 +19,15 @@ public class CharmCascadesPresenterImpl {
   private final CharmView view;
   private final CharmTreeIdentifierMap identifierMap;
 
-  public CharmCascadesPresenterImpl(Resources resources, HeroEnvironment environment, CharmView view,
+  public CharmCascadesPresenterImpl(Environment environment, HeroEnvironment heroEnvironment, CharmView view,
                                     MagicDescriptionProvider magicDescriptionProvider,
                                     CharmTreeIdentifierMap identifierMap) {
     this.view = view;
     this.identifierMap = identifierMap;
-    this.cache = environment.getDataSet(CharmCache.class);
-    this.cascadePresenter = new CascadePresenter(resources, cache, magicDescriptionProvider);
-    this.objectFactory = environment.getObjectFactory();
-    this.characterTypes = environment.getCharacterTypes();
+    this.cache = heroEnvironment.getDataSet(CharmCache.class);
+    this.cascadePresenter = new CascadePresenter(environment, cache, magicDescriptionProvider);
+    this.objectFactory = environment;
+    this.characterTypes = heroEnvironment.getCharacterTypes();
   }
 
   public void initPresentation() {

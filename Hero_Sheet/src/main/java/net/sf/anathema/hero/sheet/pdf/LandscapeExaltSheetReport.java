@@ -3,13 +3,11 @@ package net.sf.anathema.hero.sheet.pdf;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfWriter;
-import net.sf.anathema.character.main.framework.item.ItemData;
-import net.sf.anathema.hero.sheet.preferences.PageSizePreference;
+import net.sf.anathema.framework.environment.Environment;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
 import net.sf.anathema.framework.reporting.pdf.PageSize;
-import net.sf.anathema.character.main.framework.item.Item;
-import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.sheet.pdf.content.ReportContentRegistry;
 import net.sf.anathema.hero.sheet.pdf.encoder.boxes.EncoderRegistry;
@@ -20,7 +18,7 @@ import net.sf.anathema.hero.sheet.pdf.page.layout.Sheet;
 import net.sf.anathema.hero.sheet.pdf.page.layout.landscape.FirstPageEncoder;
 import net.sf.anathema.hero.sheet.pdf.page.layout.landscape.SecondPageEncoder;
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
-import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.hero.sheet.preferences.PageSizePreference;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -31,11 +29,10 @@ public class LandscapeExaltSheetReport extends AbstractPdfReport {
   private PageSizePreference pageSizePreference;
   private final HeroReportingRegistries reportingModuleObject;
 
-  public LandscapeExaltSheetReport(Resources resources, HeroEnvironment characterGenerics,
-                                   PageSizePreference pageSizePreference) {
-    this.resources = resources;
+  public LandscapeExaltSheetReport(Environment environment, PageSizePreference pageSizePreference) {
+    this.resources = environment;
     this.pageSizePreference = pageSizePreference;
-    this.reportingModuleObject = new HeroReportingRegistries(characterGenerics.getObjectFactory(), resources);
+    this.reportingModuleObject = new HeroReportingRegistries(environment, resources);
   }
 
   @Override
@@ -44,11 +41,11 @@ public class LandscapeExaltSheetReport extends AbstractPdfReport {
   }
 
   @Override
-  public void performPrint(Item item, Document document, PdfWriter writer) throws ReportException {
+  public void performPrint(Hero hero, Document document, PdfWriter writer) throws ReportException {
     PageSize pageSize = pageSizePreference.getPageSize();
     PdfContentByte directContent = writer.getDirectContent();
     try {
-      ReportSession session = createSession(item);
+      ReportSession session = new ReportSession(getContentRegistry(), hero);
       Sheet sheet = new Sheet(document, getEncoderRegistry(), resources, pageSize);
       for (PageEncoder encoder : collectPageEncoders(pageSize, session)) {
         SheetGraphics graphics = SheetGraphics.WithHelvetica(directContent);
@@ -57,11 +54,6 @@ public class LandscapeExaltSheetReport extends AbstractPdfReport {
     } catch (Exception e) {
       throw new ReportException(e);
     }
-  }
-
-  private ReportSession createSession(Item item) {
-    Hero hero = (Hero) item.getItemData();
-    return new ReportSession(getContentRegistry(), hero);
   }
 
   private List<PageEncoder> collectPageEncoders(PageSize pageSize, ReportSession session) {
@@ -90,15 +82,7 @@ public class LandscapeExaltSheetReport extends AbstractPdfReport {
   }
 
   @Override
-  public boolean supports(Item item) {
-    if (item == null) {
-      return false;
-    }
-    ItemData itemData = item.getItemData();
-    if (!(itemData instanceof Hero)) {
-      return false;
-    }
-    Hero hero = (Hero) itemData;
+  public boolean supports(Hero hero) {
     return hero.getTemplate().getTemplateType().getCharacterType().isEssenceUser();
   }
 }

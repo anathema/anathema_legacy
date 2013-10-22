@@ -3,7 +3,7 @@ package net.sf.anathema.initialization.bootjob;
 import com.google.common.collect.Lists;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.repository.Repository;
-import net.sf.anathema.framework.repository.access.IRepositoryFileAccess;
+import net.sf.anathema.framework.repository.access.RepositoryFileAccess;
 import net.sf.anathema.framework.repository.tree.ExportModel;
 import net.sf.anathema.framework.repository.tree.RepositoryFileAccessFactory;
 import net.sf.anathema.framework.view.PrintNameFile;
@@ -34,7 +34,7 @@ public class CleanupExportModel implements ExportModel {
   }
 
   @Override
-  public IRepositoryFileAccess getFileAccess(PrintNameFile printNameFile) {
+  public RepositoryFileAccess getFileAccess(PrintNameFile printNameFile) {
     return accessFactory.getFileAccess(printNameFile);
   }
 }

@@ -8,6 +8,7 @@ public interface HeroModel {
 
   Identifier getId();
 
+  //TODO (urs): Only Charms, Spells and Equipment make use of the Environment parameter. Refactor to work without. 
   void initialize(HeroEnvironment environment, Hero hero);
 
   void initializeListening(ChangeAnnouncer announcer);

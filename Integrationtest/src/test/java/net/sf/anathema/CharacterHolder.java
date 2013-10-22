@@ -2,7 +2,6 @@ package net.sf.anathema;
 
 import com.google.inject.Singleton;
 import net.sf.anathema.character.main.Character;
-import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.charms.model.CharmsModelFetcher;
 import net.sf.anathema.hero.concept.HeroConcept;
@@ -20,10 +19,6 @@ public class CharacterHolder {
 
   public CharmsModel getCharms() {
     return CharmsModelFetcher.fetch(character);
-  }
-
-  public HeroTemplate getCharacterTemplate() {
-    return character.getTemplate();
   }
 
   public HeroConcept getCharacterConcept() {

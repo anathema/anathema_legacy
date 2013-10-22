@@ -1,14 +1,14 @@
 package net.sf.anathema.character.main.persistence;
 
-import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
+import net.sf.anathema.framework.repository.access.RepositoryWriteAccess;
 import net.sf.anathema.hero.persistence.HeroModelSaver;
 
 import java.io.OutputStream;
 
 public class HeroModelSaverImpl implements HeroModelSaver {
-  private final IRepositoryWriteAccess writeAccess;
+  private final RepositoryWriteAccess writeAccess;
 
-  public HeroModelSaverImpl(IRepositoryWriteAccess writeAccess) {
+  public HeroModelSaverImpl(RepositoryWriteAccess writeAccess) {
     this.writeAccess = writeAccess;
   }
 

@@ -1,15 +1,15 @@
 package net.sf.anathema.character.main.persistence;
 
-import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
+import net.sf.anathema.framework.repository.access.RepositoryReadAccess;
 import net.sf.anathema.hero.persistence.HeroModelLoader;
 
 import java.io.InputStream;
 
 public class HeroModelLoaderImpl implements HeroModelLoader {
 
-  private IRepositoryReadAccess readAccess;
+  private RepositoryReadAccess readAccess;
 
-  public HeroModelLoaderImpl(IRepositoryReadAccess readAccess) {
+  public HeroModelLoaderImpl(RepositoryReadAccess readAccess) {
     this.readAccess = readAccess;
   }
 

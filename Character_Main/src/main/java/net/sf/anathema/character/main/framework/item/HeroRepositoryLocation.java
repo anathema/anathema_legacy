@@ -3,25 +3,27 @@ package net.sf.anathema.character.main.framework.item;
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.main.itemtype.CharacterItemTypeRetrieval;
 import net.sf.anathema.framework.item.IItemType;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.lang.StringUtilities;
 
-public class CharacterRepositoryLocation implements ItemRepositoryLocation {
+public class HeroRepositoryLocation implements ItemRepositoryLocation {
 
-  private final Item item;
+  private final Hero hero;
   private String id;
 
-  public CharacterRepositoryLocation(Item item) {
-    this.item = item;
+  public HeroRepositoryLocation(Hero hero) {
+    this.hero = hero;
   }
 
   @Override
   public String getIdProposal() {
-    return StringUtilities.getFileNameRepresentation(item.getDisplayName());
+    String name = new HeroNameFetcher().getName(hero);
+    return StringUtilities.getFileNameRepresentation(name);
   }
 
   @Override
   public synchronized void setId(String id) {
-    Preconditions.checkArgument(this.id == null, "Item's id must not be changed.");
+    Preconditions.checkArgument(this.id == null, "Hero's id must not be changed.");
     this.id = id;
   }
 
