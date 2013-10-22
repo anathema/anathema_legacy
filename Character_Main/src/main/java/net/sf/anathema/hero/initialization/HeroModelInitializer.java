@@ -23,7 +23,7 @@ public class HeroModelInitializer {
   }
 
   public void addModels(HeroEnvironment generics, DefaultHero hero) {
-    ModelFactoryAutoCollector collector = new ModelFactoryAutoCollector(generics);
+    ModelFactoryAutoCollector collector = new ModelFactoryAutoCollector(environment.getObjectFactory());
     ModelFactoryMap factoryMap = new ModelFactoryMap(collector);
     Iterable<ConfiguredModel> sortedRelevantModelIds = getSortedModelIdsForHero(factoryMap);
     Iterable<HeroModel> sortedModels = createSortedModels(generics, factoryMap, sortedRelevantModelIds);
@@ -31,7 +31,7 @@ public class HeroModelInitializer {
   }
 
   private Iterable<ConfiguredModel> getSortedModelIdsForHero(ModelFactoryMap factoryMap) {
-    return new ModelInitializationList<ModelTreeEntry>(template.getModels(), factoryMap);
+    return new ModelInitializationList<>(template.getModels(), factoryMap);
   }
 
   private Iterable<HeroModel> createSortedModels(HeroEnvironment generics, ModelFactoryMap factoryMap, Iterable<ConfiguredModel> sortedRelevantModelIds) {

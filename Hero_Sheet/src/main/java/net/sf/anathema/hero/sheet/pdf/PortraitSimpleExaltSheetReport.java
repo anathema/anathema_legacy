@@ -3,11 +3,11 @@ package net.sf.anathema.hero.sheet.pdf;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfWriter;
+import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
 import net.sf.anathema.framework.reporting.pdf.PageSize;
-import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.sheet.pdf.content.ReportContentRegistry;
 import net.sf.anathema.hero.sheet.pdf.encoder.boxes.EncoderRegistry;
@@ -31,10 +31,10 @@ public class PortraitSimpleExaltSheetReport extends AbstractPdfReport {
   private final PageSizePreference pageSizePreference;
   private HeroReportingRegistries moduleObject;
 
-  public PortraitSimpleExaltSheetReport(Resources resources, HeroEnvironment characterGenerics, PageSizePreference pageSizePreference) {
-    this.resources = resources;
+  public PortraitSimpleExaltSheetReport(Environment environment, PageSizePreference pageSizePreference) {
+    this.resources = environment;
     this.pageSizePreference = pageSizePreference;
-    this.moduleObject = new HeroReportingRegistries(characterGenerics.getObjectFactory(), resources);
+    this.moduleObject = new HeroReportingRegistries(environment, resources);
   }
 
   @Override

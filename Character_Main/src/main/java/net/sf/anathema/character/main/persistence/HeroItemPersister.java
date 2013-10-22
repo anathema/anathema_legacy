@@ -40,7 +40,7 @@ public class HeroItemPersister implements RepositoryItemPersister {
     this.generics = generics;
     this.messaging = messaging;
     this.templatePersister = new HeroTemplatePersister(generics);
-    this.persisterList = new HeroPersisterList(generics);
+    this.persisterList = new HeroPersisterList(generics.getObjectFactory());
   }
 
   @Override
