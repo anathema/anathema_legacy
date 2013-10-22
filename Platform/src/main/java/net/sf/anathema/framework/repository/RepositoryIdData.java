@@ -2,7 +2,7 @@ package net.sf.anathema.framework.repository;
 
 import net.sf.anathema.framework.item.IItemType;
 
-public interface BasicRepositoryIdData {
+public interface RepositoryIdData {
   String getIdProposal();
 
   IItemType getItemType();

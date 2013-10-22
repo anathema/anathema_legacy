@@ -1,6 +1,6 @@
 package net.sf.anathema.scribe.scroll.persistence;
 
-import net.sf.anathema.framework.repository.BasicRepositoryIdData;
+import net.sf.anathema.framework.repository.RepositoryIdData;
 import net.sf.anathema.framework.repository.Repository;
 import net.sf.anathema.framework.repository.access.printname.ReferenceAccess;
 import net.sf.anathema.framework.repository.access.printname.ReferenceBuilder;
@@ -28,7 +28,7 @@ public class RepositoryScrollPersisterTest {
 
   @Test
   public void createsNewScrollWithIdFromRepository() throws Exception {
-    when(repository.createUniqueRepositoryId(isA(BasicRepositoryIdData.class))).thenReturn(createdId);
+    when(repository.createUniqueRepositoryId(isA(RepositoryIdData.class))).thenReturn(createdId);
     Scroll scroll = createScroll();
     RepositoryId expectedId = new SimpleRepositoryId(createdId);
     assertThat(scroll.repositoryId, is(expectedId));
@@ -50,18 +50,18 @@ public class RepositoryScrollPersisterTest {
 
   @Test
   public void requestsIdWithScrollItemType() throws Exception {
-    BasicRepositoryIdData data = createScrollAndCaptureData();
+    RepositoryIdData data = createScrollAndCaptureData();
     assertThat(data.getItemType(), is(ITEM_TYPE));
   }
 
   @Test
   public void suggestsTimeFromClockAsId() throws Exception {
-    BasicRepositoryIdData data = createScrollAndCaptureData();
+    RepositoryIdData data = createScrollAndCaptureData();
     assertThat(data.getIdProposal(), is(String.valueOf(date.getTime())));
   }
 
-  private BasicRepositoryIdData createScrollAndCaptureData() {
-    ArgumentCaptor<BasicRepositoryIdData> captor = ArgumentCaptor.forClass(BasicRepositoryIdData.class);
+  private RepositoryIdData createScrollAndCaptureData() {
+    ArgumentCaptor<RepositoryIdData> captor = ArgumentCaptor.forClass(RepositoryIdData.class);
     when(repository.createUniqueRepositoryId(captor.capture())).thenReturn(createdId);
     createScroll();
     return captor.getValue();

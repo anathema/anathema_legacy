@@ -1,7 +1,6 @@
 package net.sf.anathema.framework.repository.tree;
 
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.repository.BasicRepositoryIdData;
 import net.sf.anathema.framework.repository.Repository;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.RepositoryFileAccess;
@@ -103,17 +102,7 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
 
   @Override
   public String createUniqueId(final IItemType type, final String id) {
-    return repository.createUniqueRepositoryId(new BasicRepositoryIdData() {
-      @Override
-      public String getIdProposal() {
-        return id;
-      }
-
-      @Override
-      public IItemType getItemType() {
-        return type;
-      }
-    });
+    return repository.createUniqueRepositoryId(new ConfigurableRepositoryData(id, type));
   }
 
   @Override
@@ -144,4 +133,5 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
   public void refreshItem(IItemType type, String id) {
     control.announce().printNameFileAdded(repository.getPrintNameFileAccess().getPrintNameFile(type, id));
   }
+
 }

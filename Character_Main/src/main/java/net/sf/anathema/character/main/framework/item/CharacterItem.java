@@ -4,10 +4,9 @@ public class CharacterItem implements Item {
 
   public static final String DEFAULT_PRINT_NAME = "Unnamed";
   private final ItemData itemData;
-  private final ItemRepositoryLocation repositoryLocation;
+  private final ItemRepositoryLocation repositoryLocation = new SimpleRepositoryLocation();
 
   public CharacterItem(net.sf.anathema.character.main.Character character) {
-    this.repositoryLocation = new HeroRepositoryLocation(character);
     this.itemData = character;
   }
 

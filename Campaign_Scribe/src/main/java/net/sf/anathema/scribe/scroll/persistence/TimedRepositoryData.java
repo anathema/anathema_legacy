@@ -1,10 +1,10 @@
 package net.sf.anathema.scribe.scroll.persistence;
 
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.repository.BasicRepositoryIdData;
+import net.sf.anathema.framework.repository.RepositoryIdData;
 import net.sf.anathema.scribe.scroll.ScrollItemType;
 
-public class TimedRepositoryData implements BasicRepositoryIdData {
+public class TimedRepositoryData implements RepositoryIdData {
   private final Clock clock;
 
   public TimedRepositoryData(Clock clock) {
