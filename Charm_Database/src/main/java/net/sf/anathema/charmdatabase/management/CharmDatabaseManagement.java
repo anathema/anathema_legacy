@@ -57,10 +57,16 @@ public class CharmDatabaseManagement implements ICharmDatabaseManagement {
 	}
 	
 	private void prepareCharmList() {
-		// TODO: Handle generics
+		// TODO: We will need a lot of special cases to handle generics
+		// They seem to be much less of a thing in Ex3 anyway, so just
+		// filter them out for now and deal with it later.
 		currentCharmList = new ArrayList<Charm>();
 		for (Identifier set : cache.getCharmTypes()) {
-			currentCharmList.addAll(Arrays.asList(cache.getCharms(set)));
+			for (Charm charm : cache.getCharms(set)) {
+				if (!charm.isInstanceOfGenericCharm()) {
+					currentCharmList.add(charm);
+				}
+			}
 		}
 
 		Collections.sort(currentCharmList, new CharmComparator());
