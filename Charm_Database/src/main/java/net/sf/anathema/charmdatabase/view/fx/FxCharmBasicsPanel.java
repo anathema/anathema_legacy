@@ -14,7 +14,7 @@ import net.sf.anathema.platform.fx.selection.SelectionViewFactory;
 public class FxCharmBasicsPanel extends AbstractFxContainerPanel implements CharmBasicsPanel, NodeHolder {
 
   public FxCharmBasicsPanel(SelectionViewFactory selectionFactory) {
-	super(selectionFactory, new LC().wrapAfter(2).fill().insets("4"), new AC(), new AC().index(1).shrinkPrio(200));
+	super(selectionFactory, new LC().wrapAfter(3).fill().insets("4"), new AC(), new AC().index(1).shrinkPrio(200));
   }
 
   @Override
@@ -29,6 +29,11 @@ public class FxCharmBasicsPanel extends AbstractFxContainerPanel implements Char
 
   @Override
   public ObjectSelectionView<Identifier> addGroupView(String label, AbstractUIConfiguration<Identifier> ui) {
+	  return addSelectionView(label, ui, new CC().grow());
+  }
+
+  @Override
+  public ObjectSelectionView<Identifier> addTraitView(String label,  AbstractUIConfiguration<Identifier> ui) {
 	  return addSelectionView(label, ui, new CC().grow());
   }
 }

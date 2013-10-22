@@ -4,10 +4,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
+import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.characterengine.support.Announcer;
 import net.sf.anathema.charmdatabase.management.filters.CharmDatabaseFilter;
 import net.sf.anathema.charmdatabase.management.model.CharmEditModel;
@@ -25,6 +29,7 @@ public class CharmDatabaseManagement implements ICharmDatabaseManagement {
 	private final CharmCache cache;
 	private final CharmEditModel editModel;
 	private final Resources resources;
+	private final Map<String, TraitType[]> traitsByCharacterType = new HashMap<>();
 	
 	private final List<CharmDatabaseFilter> filters = new ArrayList<CharmDatabaseFilter>();
 	
@@ -38,6 +43,10 @@ public class CharmDatabaseManagement implements ICharmDatabaseManagement {
 		cache = characterGenerics.getDataSet(CharmCache.class);
 		editModel = new CharmEditModel(new MagicDisplayLabeler(resources), magicDescriptionProvider);
 		this.resources = resources;
+		
+		for (CharacterType type : characterGenerics.getCharacterTypes().findAll()) {
+			traitsByCharacterType.put(type.getId(), type.getFavoringTraitType().getTraitTypesForGenericCharms());
+		}
 		
 		prepareCharmList();
 	}
@@ -90,6 +99,22 @@ public class CharmDatabaseManagement implements ICharmDatabaseManagement {
 			}
 		});
 		return groups;
+	}
+	
+
+	@Override
+	public Identifier[] getTraitsForCharmType(Identifier type) {
+		if (!traitsByCharacterType.containsKey(type.getId())) {
+			return new Identifier[0];
+		}
+		Identifier[] traits = traitsByCharacterType.get(type.getId());
+		Arrays.sort(traits, new Comparator<Identifier>() {
+			@Override
+			public int compare(Identifier o1, Identifier o2) {
+				return o1.getId().compareTo(o2.getId());
+			}
+		});
+		return traits;
 	}
 
 	@Override

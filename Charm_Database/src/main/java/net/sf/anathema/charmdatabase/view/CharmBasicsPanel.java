@@ -12,4 +12,6 @@ public interface CharmBasicsPanel {
   ObjectSelectionView<Identifier> addTypeView(String string, AbstractUIConfiguration<Identifier> ui);
   
   ObjectSelectionView<Identifier> addGroupView(String string, AbstractUIConfiguration<Identifier> ui);
+  
+  ObjectSelectionView<Identifier> addTraitView(String string, AbstractUIConfiguration<Identifier> ui);
 }

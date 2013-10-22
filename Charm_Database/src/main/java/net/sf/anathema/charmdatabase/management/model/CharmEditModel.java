@@ -38,6 +38,7 @@ public class CharmEditModel implements ICharmEditModel {
 	ITextualDescription description;
 	Identifier charmType;
 	Identifier charmGroup;
+	Identifier charmTrait;
 	CharmLearnPrerequisite[] prerequisites;
 	ValuedTraitType[] traitMinimums;
 	ICostList costs;
@@ -47,6 +48,7 @@ public class CharmEditModel implements ICharmEditModel {
 	SourceBook[] sources;
 	
 	private final Announcer<ChangeListener> typeChangedControl = Announcer.to(ChangeListener.class);
+	private final Announcer<ChangeListener> groupChangedControl = Announcer.to(ChangeListener.class);
 	private final Announcer<ChangeListener> traitChangedControl = Announcer.to(ChangeListener.class);
 	private final Announcer<ChangeListener> prerequisitesChangedControl = Announcer.to(ChangeListener.class);
 	private final Announcer<ChangeListener> traitMinimumsChangedControl = Announcer.to(ChangeListener.class);
@@ -82,6 +84,7 @@ public class CharmEditModel implements ICharmEditModel {
 		
 		setCharmType(DEFAULT_CHARM_TYPE);
 		setCharmGroup(null);
+		setCharmPrimaryTraitType(null);
 		setCharmPrerequisites(new CharmLearnPrerequisite[0]);
 		setCharmTraitMinimums(DEFAULT_CHARM_TRAIT_MINIMUMS);
 		setCharmTemporaryCosts(new CostList(null, null, null, null));
@@ -104,6 +107,7 @@ public class CharmEditModel implements ICharmEditModel {
 		
 		setCharmType(charm.getCharacterType());
 		setCharmGroup(new SimpleIdentifier(charm.getGroupId()));
+		setCharmPrimaryTraitType(charm.getPrimaryTraitType());
 		
 		setCharmPrerequisites(charm.getLearnPrerequisites().toArray(new CharmLearnPrerequisite[0]));
 		
@@ -187,11 +191,32 @@ public class CharmEditModel implements ICharmEditModel {
 		
 		charmGroup = newValue;
 		
-		traitChangedControl.announce().changeOccurred();
+		groupChangedControl.announce().changeOccurred();
 	}
 
 	@Override
 	public void addCharmGroupChangedListening(ChangeListener listener) {
+		groupChangedControl.addListener(listener);
+	}
+	
+	@Override
+	public Identifier getCharmPrimaryTraitType() {
+		return charmTrait;
+	}
+
+	@Override
+	public void setCharmPrimaryTraitType(Identifier newValue) {
+		if (newValue == null || newValue.equals(charmTrait)) {
+			return;
+		}
+		
+		charmTrait = newValue;
+		
+		traitChangedControl.announce().changeOccurred();
+	}
+
+	@Override
+	public void addCharmPrimaryTraitTypeChangedListening(ChangeListener listener) {
 		traitChangedControl.addListener(listener);
 	}
 	

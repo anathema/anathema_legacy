@@ -95,6 +95,8 @@ public class CharmDatabasePresenter implements Presenter {
     typeView.setObjects(model.getCharmTypes());
     final ObjectSelectionView<Identifier> groupView = basicsPanel.addGroupView(resources.getString("Charms.Creation.Basics.GroupType"),
     		new IdentifierUi(resources));
+    final ObjectSelectionView<Identifier> traitView = basicsPanel.addTraitView(resources.getString("Charms.Creation.Basics.TraitType"),
+    		new IdentifierUi(resources));
     model.getCharmEditModel().addCharmTypeChangedListening(new ChangeListener() {
 
 		@Override
@@ -102,6 +104,8 @@ public class CharmDatabasePresenter implements Presenter {
 			typeView.setSelectedObject(new SimpleIdentifier(model.getCharmEditModel().getCharmType().getId()));
 			groupView.setObjects(model.getGroupsForCharmType(model.getCharmEditModel().getCharmType()));
 			groupView.setSelectedObject(model.getCharmEditModel().getCharmGroup());
+			traitView.setObjects(model.getTraitsForCharmType(model.getCharmEditModel().getCharmType()));
+			traitView.setSelectedObject(model.getCharmEditModel().getCharmPrimaryTraitType());
 		}
     });
     typeView.addObjectSelectionChangedListener(new ObjectValueListener<Identifier>() {
@@ -116,11 +120,26 @@ public class CharmDatabasePresenter implements Presenter {
 			groupView.setSelectedObject(model.getCharmEditModel().getCharmGroup());
 		}
     });
+    model.getCharmEditModel().addCharmPrimaryTraitTypeChangedListening(new ChangeListener() {
+
+		@Override
+		public void changeOccurred() {
+			traitView.setSelectedObject(model.getCharmEditModel().getCharmPrimaryTraitType());
+		}
+    	
+    });
     groupView.addObjectSelectionChangedListener(new ObjectValueListener<Identifier>() {
 
 		@Override
 		public void valueChanged(Identifier newValue) {
 			model.getCharmEditModel().setCharmGroup(newValue);
+		}
+    });
+    traitView.addObjectSelectionChangedListener(new ObjectValueListener<Identifier>() {
+
+		@Override
+		public void valueChanged(Identifier newValue) {
+			model.getCharmEditModel().setCharmPrimaryTraitType(newValue);
 		}
     });
         
@@ -131,6 +150,7 @@ public class CharmDatabasePresenter implements Presenter {
 			nameView.setEnabled(false);
 			typeView.setEnabled(false);
 			groupView.setEnabled(false);
+			traitView.setEnabled(false);
 		}
     	
     });
@@ -141,6 +161,7 @@ public class CharmDatabasePresenter implements Presenter {
 			nameView.setEnabled(true);
 			typeView.setEnabled(true);
 			groupView.setEnabled(true);
+			traitView.setEnabled(true);
 		}
     	
     });

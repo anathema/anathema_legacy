@@ -44,6 +44,14 @@ public interface ICharmEditModel {
 	
 	void addCharmGroupChangedListening(ChangeListener listener);
 	
+	
+	Identifier getCharmPrimaryTraitType();
+	
+	void setCharmPrimaryTraitType(Identifier newValue);
+	
+	void addCharmPrimaryTraitTypeChangedListening(ChangeListener listener);
+	
+	
 	CharmLearnPrerequisite[] getCharmPrerequisites();
 	
 	void setCharmPrerequisites(CharmLearnPrerequisite[] charms);
