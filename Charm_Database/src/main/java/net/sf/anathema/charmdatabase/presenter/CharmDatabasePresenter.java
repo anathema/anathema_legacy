@@ -104,8 +104,14 @@ public class CharmDatabasePresenter implements Presenter {
 			typeView.setSelectedObject(new SimpleIdentifier(model.getCharmEditModel().getCharmType().getId()));
 			groupView.setObjects(model.getGroupsForCharmType(model.getCharmEditModel().getCharmType()));
 			groupView.setSelectedObject(model.getCharmEditModel().getCharmGroup());
-			traitView.setObjects(model.getTraitsForCharmType(model.getCharmEditModel().getCharmType()));
-			traitView.setSelectedObject(model.getCharmEditModel().getCharmPrimaryTraitType());
+			Identifier[] traitsForType = model.getTraitsForCharmType(model.getCharmEditModel().getCharmType()); 
+			traitView.setObjects(traitsForType);
+			if (traitsForType.length > 0) {
+				traitView.setSelectedObject(model.getCharmEditModel().getCharmPrimaryTraitType());
+				traitView.setEnabled(true);
+			} else {
+				traitView.setEnabled(false);
+			}
 		}
     });
     typeView.addObjectSelectionChangedListener(new ObjectValueListener<Identifier>() {
