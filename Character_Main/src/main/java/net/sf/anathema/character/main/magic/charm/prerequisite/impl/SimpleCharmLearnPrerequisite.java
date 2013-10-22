@@ -1,20 +1,17 @@
 package net.sf.anathema.character.main.magic.charm.prerequisite.impl;
 
-import com.google.common.base.Preconditions;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.charm.CharmImpl;
 import net.sf.anathema.character.main.magic.charm.ICharmLearnArbitrator;
 import net.sf.anathema.character.main.magic.charm.ICharmLearnableArbitrator;
-<<<<<<< HEAD
-import net.sf.anathema.character.main.magic.charm.prerequisite.CharmLearnPrerequisite;
 import net.sf.anathema.character.main.magic.charm.prerequisite.CharmLearnPrerequisiteVisitor;
-=======
->>>>>>> fecc285840fd34c25557ca7295ed31d502d2dcd5
 import net.sf.anathema.character.main.magic.charm.prerequisite.DirectCharmLearnPrerequisite;
 
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import com.google.common.base.Preconditions;
 
 public class SimpleCharmLearnPrerequisite implements DirectCharmLearnPrerequisite {
     private static final Charm PREREQUISITE_NOT_SET = null;

@@ -1,12 +1,5 @@
 package net.sf.anathema.character.main.magic.charm.prerequisite.impl;
 
-import com.google.common.base.Preconditions;
-import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.character.main.magic.charm.CharmImpl;
-import net.sf.anathema.character.main.magic.charm.ICharmLearnArbitrator;
-import net.sf.anathema.character.main.magic.charm.ICharmLearnableArbitrator;
-import net.sf.anathema.character.main.magic.charm.prerequisite.DirectCharmLearnPrerequisite;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
@@ -15,11 +8,13 @@ import java.util.Map;
 import java.util.Set;
 
 import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.character.main.magic.charm.CharmImpl;
 import net.sf.anathema.character.main.magic.charm.ICharmLearnArbitrator;
 import net.sf.anathema.character.main.magic.charm.ICharmLearnableArbitrator;
-import net.sf.anathema.character.main.magic.charm.prerequisite.AbstractGroupCharmLearnPrerequisite;
 import net.sf.anathema.character.main.magic.charm.prerequisite.CharmLearnPrerequisiteVisitor;
 import net.sf.anathema.character.main.magic.charm.prerequisite.DirectCharmLearnPrerequisite;
+
+import com.google.common.base.Preconditions;
 public class DirectGroupCharmLearnPrerequisite implements DirectCharmLearnPrerequisite {
 
   private final int threshold;
@@ -117,5 +112,10 @@ public class DirectGroupCharmLearnPrerequisite implements DirectCharmLearnPrereq
       return Arrays.deepEquals(prerequisites, prerequisite.prerequisites) && prerequisite.threshold == threshold;
     }
     return false;
+  }
+
+  @Override
+  public void visitCharmLearnPrerequisite(CharmLearnPrerequisiteVisitor visitor) {
+	  visitor.visitDirectGroupCharmPrerequisite(this);
   }
 }

@@ -1,12 +1,9 @@
 package net.sf.anathema.charmdatabase.view.rules;
 
-import java.text.MessageFormat;
-
 import net.sf.anathema.character.main.magic.charm.prerequisite.CharmLearnPrerequisite;
 import net.sf.anathema.character.main.magic.charm.prerequisite.CharmLearnPrerequisiteVisitor;
 import net.sf.anathema.character.main.magic.charm.prerequisite.impl.AttributeKnownCharmLearnPrerequisite;
 import net.sf.anathema.character.main.magic.charm.prerequisite.impl.DirectGroupCharmLearnPrerequisite;
-import net.sf.anathema.character.main.magic.charm.prerequisite.impl.IndirectGroupCharmLearnPrerequisite;
 import net.sf.anathema.character.main.magic.charm.prerequisite.impl.SimpleCharmLearnPrerequisite;
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.charms.display.MagicDisplayLabeler;
@@ -42,17 +39,13 @@ public class CharmLearnPrerequisiteStringBuilder {
 					}
 					list.append(labeler.getLabelForMagic(prerequisite.getDirectPredecessors()[i]));
 				}
-				if (prerequisite.getThreshold() > 1) {
+				// TODO: May need to reinstate getThreshold
+				/*if (prerequisite.getThreshold() > 1) {
 					String pattern = resources.getString("Charms.DirectGroup.Pattern");
 					label[0] = MessageFormat.format(pattern, prerequisite.getThreshold() + "", list.toString());
-				} else {
+				} else*/ {
 					label[0] = list.toString();
 				}
-			}
-
-			@Override
-			public void visitIndirectGroupCharmLearnPrerequisite(IndirectGroupCharmLearnPrerequisite prerequisite) {
-				label[0] = resources.getString(prerequisite.getStringLabel());
 			}
 
 			@Override
