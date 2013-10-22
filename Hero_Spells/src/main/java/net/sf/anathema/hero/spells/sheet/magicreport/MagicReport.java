@@ -6,22 +6,20 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.MultiColumnText;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import net.sf.anathema.character.main.magic.description.MagicDescription;
-import net.sf.anathema.framework.environment.Environment;
-import net.sf.anathema.hero.charms.display.presenter.CharmDescriptionProviderExtractor;
-import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.hero.charms.display.MagicDisplayLabeler;
-import net.sf.anathema.hero.charms.display.tooltip.ScreenDisplayInfoContributor;
-import net.sf.anathema.hero.charms.display.tooltip.source.MagicSourceContributor;
-import net.sf.anathema.hero.charms.display.tooltip.type.VerboseCharmTypeContributor;
 import net.sf.anathema.character.main.magic.basic.Magic;
+import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.character.main.magic.description.MagicDescription;
 import net.sf.anathema.character.main.magic.spells.Spell;
 import net.sf.anathema.framework.IApplicationModel;
+import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
 import net.sf.anathema.framework.reporting.pdf.PdfReportUtils;
-import net.sf.anathema.hero.charms.model.CharmsModel;
-import net.sf.anathema.hero.charms.model.CharmsModelFetcher;
+import net.sf.anathema.hero.charms.display.MagicDisplayLabeler;
+import net.sf.anathema.hero.charms.display.presenter.CharmDescriptionProviderExtractor;
+import net.sf.anathema.hero.charms.display.tooltip.ScreenDisplayInfoContributor;
+import net.sf.anathema.hero.charms.display.tooltip.source.MagicSourceContributor;
+import net.sf.anathema.hero.charms.display.tooltip.type.VerboseCharmTypeContributor;
 import net.sf.anathema.hero.charms.sheet.content.CharmContentHelper;
 import net.sf.anathema.hero.charms.sheet.content.stats.CharmStats;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
@@ -79,7 +77,7 @@ public class MagicReport extends AbstractPdfReport {
 
   public void printCharms(MultiColumnText columnText, Hero hero) throws DocumentException {
     String currentGroup = "";
-    for (Charm charm : getCurrentCharms(hero)) {
+    for (Charm charm : new CharmFetcher().getCharms(hero)) {
       CharmStats charmStats = createCharmStats(hero, charm);
       if (!currentGroup.equals(charmStats.getGroupName(environment))) {
         currentGroup = charmStats.getGroupName(environment);
@@ -174,17 +172,11 @@ public class MagicReport extends AbstractPdfReport {
 
   @Override
   public boolean supports(Hero hero) {
-    return getCurrentCharms(hero).length > 0;
+    return new CharmFetcher().hasCharms(hero);
   }
 
   private Spell[] getCurrentSpells(Hero hero) {
     boolean experienced = ExperienceModelFetcher.fetch(hero).isExperienced();
     return SpellsModelFetcher.fetch(hero).getLearnedSpells(experienced);
-  }
-
-  private Charm[] getCurrentCharms(Hero hero) {
-    boolean experienced = ExperienceModelFetcher.fetch(hero).isExperienced();
-    CharmsModel charmsModel = CharmsModelFetcher.fetch(hero);
-    return charmsModel.getLearnedCharms(experienced);
   }
 }
