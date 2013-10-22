@@ -8,7 +8,7 @@ import net.sf.anathema.framework.repository.SingleFileConfiguration;
 import net.sf.anathema.initialization.RegisteredItemTypeConfiguration;
 
 @RegisteredItemTypeConfiguration
-public class MagicDescriptionItemTypeConfiguration implements ItemTypeConfiguration {
+public class MagicDescriptionItemType implements ItemTypeConfiguration {
 
   private static final String MAGIC_DESCRIPTION_ITEM_TYPE_ID = "MagicDescription";
   private static final RepositoryConfiguration REPOSITORY_CONFIGURATION = new SingleFileConfiguration(".mdsc", "MagicDescription/");

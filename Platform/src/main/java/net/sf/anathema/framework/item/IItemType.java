@@ -6,7 +6,5 @@ public interface IItemType extends Identifier {
 
   RepositoryConfiguration getRepositoryConfiguration();
 
-  boolean supportsRepository();
-
   boolean isIntegrated();
 }

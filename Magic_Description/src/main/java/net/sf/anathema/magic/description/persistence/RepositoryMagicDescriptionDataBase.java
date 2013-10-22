@@ -6,13 +6,13 @@ import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.repository.Repository;
 import net.sf.anathema.framework.repository.RepositoryStringAccess;
-import net.sf.anathema.magic.description.module.MagicDescriptionItemTypeConfiguration;
+import net.sf.anathema.magic.description.module.MagicDescriptionItemType;
 
 public class RepositoryMagicDescriptionDataBase implements MagicDescriptionDataBase {
 
   public static RepositoryMagicDescriptionDataBase CreateFrom(IApplicationModel anathemaModel) {
     Repository repository = anathemaModel.getRepository();
-    IItemType itemType = new MagicDescriptionItemTypeConfiguration().getItemType();
+    IItemType itemType = new MagicDescriptionItemType().getItemType();
     return new RepositoryMagicDescriptionDataBase(repository, itemType);
   }
 

@@ -2,7 +2,7 @@ package net.sf.anathema.character.equipment.item.model.gson;
 
 import com.google.common.collect.Lists;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabase;
-import net.sf.anathema.character.equipment.module.EquipmentDatabaseItemTypeConfiguration;
+import net.sf.anathema.character.equipment.module.EquipmentItemType;
 import net.sf.anathema.equipment.core.IEquipmentTemplate;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;
@@ -19,7 +19,7 @@ public class GsonEquipmentDatabase implements IEquipmentDatabase {
 
   public static GsonEquipmentDatabase CreateFrom(IApplicationModel anathemaModel) {
     Repository repository = anathemaModel.getRepository();
-    IItemType itemType = new EquipmentDatabaseItemTypeConfiguration().getItemType();
+    IItemType itemType = new EquipmentItemType().getItemType();
     return new GsonEquipmentDatabase(new EquipmentRepositoryAccess(repository, itemType));
   }
 

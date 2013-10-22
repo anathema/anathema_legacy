@@ -11,7 +11,7 @@ import net.sf.anathema.initialization.RegisteredItemTypePresentation;
 import net.sf.anathema.framework.environment.Resources;
 
 import static net.sf.anathema.character.main.itemtype.CharacterItemTypeRetrieval.retrieveCharacterItemType;
-import static net.sf.anathema.character.main.itemtype.ExaltedCharacterItemTypeConfiguration.CHARACTER_ITEM_TYPE_ID;
+import static net.sf.anathema.character.main.itemtype.CharacterItemType.CHARACTER_ITEM_TYPE_ID;
 
 @RegisteredItemTypePresentation(itemType = CHARACTER_ITEM_TYPE_ID)
 public class CharacterItemTypePresentationFactory implements ItemTypePresentationFactory {

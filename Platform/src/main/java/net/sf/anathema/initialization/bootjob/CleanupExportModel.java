@@ -26,9 +26,7 @@ public class CleanupExportModel implements ExportModel {
   public PrintNameFile[] getPrintNameFilesInSelection() {
     List<PrintNameFile> files = Lists.newArrayList();
     for (IItemType itemType : allItemTypes) {
-      if (itemType.supportsRepository()) {
-        files.addAll(repository.getPrintNameFileAccess().collectAllPrintNameFiles(itemType));
-      }
+      files.addAll(repository.getPrintNameFileAccess().collectAllPrintNameFiles(itemType));
     }
     return files.toArray(new PrintNameFile[files.size()]);
   }

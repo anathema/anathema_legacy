@@ -27,17 +27,17 @@ public class RepositoryTreePresenter implements Presenter {
   private final TreeCellRenderer renderer;
 
   public RepositoryTreePresenter(
-      Resources resources,
-      IRepositoryTreeModel repositoryModel,
-      IRepositoryTreeView treeView,
-      TreeCellRenderer renderer,
-      String rootKey) {
+          Resources resources,
+          IRepositoryTreeModel repositoryModel,
+          IRepositoryTreeView treeView,
+          TreeCellRenderer renderer,
+          String rootKey) {
     this.repositoryModel = repositoryModel;
     this.treeView = treeView;
     this.renderer = renderer;
     this.root = new DefaultMutableTreeNode(resources.getString(rootKey) + " ["
-        + repositoryModel.getRepositoryPath()
-        + "]", true);
+            + repositoryModel.getRepositoryPath()
+            + "]", true);
     this.treeModel = new DefaultTreeModel(root);
     repositoryModel.addRepositoryTreeModelListener(new IRepositoryTreeModelListener() {
       @Override
@@ -55,12 +55,10 @@ public class RepositoryTreePresenter implements Presenter {
   @Override
   public void initPresentation() {
     for (IItemType type : repositoryModel.getAllItemTypes()) {
-      if (type.supportsRepository()) {
-        DefaultMutableTreeNode node = new DefaultMutableTreeNode(type);
-        treeModel.insertNodeInto(node, root, 0);
-        for (PrintNameFile file : repositoryModel.getPrintNameFiles(type)) {
-          addPrintNameFileToTree(file);
-        }
+      DefaultMutableTreeNode node = new DefaultMutableTreeNode(type);
+      treeModel.insertNodeInto(node, root, 0);
+      for (PrintNameFile file : repositoryModel.getPrintNameFiles(type)) {
+        addPrintNameFileToTree(file);
       }
     }
     final JTree tree = treeView.addTree();
@@ -74,8 +72,7 @@ public class RepositoryTreePresenter implements Presenter {
         DefaultMutableTreeNode[] nodes = TreeUtilities.getSelectedHierachyNodes(tree);
         if (nodes.length == 0) {
           repositoryModel.setSelectedObject(new Object[0]);
-        }
-        else {
+        } else {
           repositoryModel.setSelectedObject(transform(
                   nodes,
                   Object.class,

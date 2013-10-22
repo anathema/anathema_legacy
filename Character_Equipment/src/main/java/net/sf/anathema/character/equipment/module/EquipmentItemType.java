@@ -7,7 +7,7 @@ import net.sf.anathema.framework.repository.SingleFileConfiguration;
 import net.sf.anathema.initialization.RegisteredItemTypeConfiguration;
 
 @RegisteredItemTypeConfiguration
-public class EquipmentDatabaseItemTypeConfiguration implements net.sf.anathema.framework.module.ItemTypeConfiguration {
+public class EquipmentItemType implements net.sf.anathema.framework.module.ItemTypeConfiguration {
 
   private static final String EQUIPMENT_DATABASE_ITEM_TYPE_ID = "EquipmentDatabase";
   private static final RepositoryConfiguration REPOSITORY_CONFIGURATION = new SingleFileConfiguration(".item", "equipment/");

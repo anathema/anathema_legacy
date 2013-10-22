@@ -7,7 +7,7 @@ import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.initialization.RegisteredItemTypeConfiguration;
 
 @RegisteredItemTypeConfiguration
-public class ExaltedCharacterItemTypeConfiguration implements ItemTypeConfiguration {
+public class CharacterItemType implements ItemTypeConfiguration {
 
   public static final String CHARACTER_ITEM_TYPE_ID = "ExaltedCharacter";
   private static final IItemType ITEM_TYPE = new ItemType(CHARACTER_ITEM_TYPE_ID, new FolderRepositoryConfiguration(".ecg", "ExaltedCharacter/", "main"));

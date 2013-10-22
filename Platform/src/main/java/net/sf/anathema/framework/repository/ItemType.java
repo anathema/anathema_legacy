@@ -11,7 +11,7 @@ public class ItemType implements IItemType, Identifier {
   private final boolean integrated;
 
   public ItemType(String id, RepositoryConfiguration configuration) {
-    this(id, configuration, configuration != null);
+    this(id, configuration, true);
   }
 
   public ItemType(String id, RepositoryConfiguration configuration, boolean integrated) {
@@ -23,17 +23,6 @@ public class ItemType implements IItemType, Identifier {
   @Override
   public final String getId() {
     return id;
-  }
-
-  @Override
-  public String toString() {
-    return id;
-  }
-
-
-  @Override
-  public boolean supportsRepository() {
-    return repositoryConfiguration != null;
   }
 
   @Override
@@ -53,6 +42,6 @@ public class ItemType implements IItemType, Identifier {
 
   @Override
   public int hashCode() {
-    return repositoryConfiguration != null ? repositoryConfiguration.hashCode() : 0;
+    return repositoryConfiguration.hashCode();
   }
 }
