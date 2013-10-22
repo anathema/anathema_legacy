@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.item;
 
-public interface IRepositoryConfiguration {
+public interface RepositoryConfiguration {
 
   String getMainFileName();
 

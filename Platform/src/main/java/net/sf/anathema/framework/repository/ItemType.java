@@ -1,20 +1,20 @@
 package net.sf.anathema.framework.repository;
 
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.item.IRepositoryConfiguration;
+import net.sf.anathema.framework.item.RepositoryConfiguration;
 import net.sf.anathema.lib.util.Identifier;
 
 public class ItemType implements IItemType, Identifier {
 
   private final String id;
-  private final IRepositoryConfiguration repositoryConfiguration;
+  private final RepositoryConfiguration repositoryConfiguration;
   private final boolean integrated;
 
-  public ItemType(String id, IRepositoryConfiguration configuration) {
+  public ItemType(String id, RepositoryConfiguration configuration) {
     this(id, configuration, configuration != null);
   }
 
-  public ItemType(String id, IRepositoryConfiguration configuration, boolean integrated) {
+  public ItemType(String id, RepositoryConfiguration configuration, boolean integrated) {
     this.id = id;
     this.repositoryConfiguration = configuration;
     this.integrated = integrated;
@@ -42,7 +42,7 @@ public class ItemType implements IItemType, Identifier {
   }
 
   @Override
-  public IRepositoryConfiguration getRepositoryConfiguration() {
+  public RepositoryConfiguration getRepositoryConfiguration() {
     return repositoryConfiguration;
   }
 

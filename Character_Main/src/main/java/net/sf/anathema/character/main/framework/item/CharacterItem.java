@@ -19,9 +19,4 @@ public class CharacterItem implements Item {
   public ItemRepositoryLocation getRepositoryLocation() {
     return repositoryLocation;
   }
-
-  @Override
-  public String toString() {
-    return "Character: " + repositoryLocation.getId();
-  }
 }

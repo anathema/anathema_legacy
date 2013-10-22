@@ -1,18 +1,14 @@
 package net.sf.anathema.framework.repository;
 
-import net.sf.anathema.framework.item.IRepositoryConfiguration;
+import net.sf.anathema.framework.item.RepositoryConfiguration;
 
-public class RepositoryConfiguration implements IRepositoryConfiguration {
+public class FolderRepositoryConfiguration implements RepositoryConfiguration {
 
   private final String folder;
   private final String extension;
   private final String mainFileName;
 
-  public RepositoryConfiguration(String extension, String folder) {
-    this(extension, folder, null);
-  }
-
-  public RepositoryConfiguration(String extension, String folder, String mainFileName) {
+  public FolderRepositoryConfiguration(String extension, String folder, String mainFileName) {
     this.extension = extension;
     this.folder = folder;
     this.mainFileName = mainFileName;
@@ -35,6 +31,6 @@ public class RepositoryConfiguration implements IRepositoryConfiguration {
 
   @Override
   public boolean isItemSavedToSingleFile() {
-    return mainFileName == null;
+    return false;
   }
 }

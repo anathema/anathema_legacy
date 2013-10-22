@@ -16,4 +16,9 @@ public class SimpleRepositoryLocation implements ItemRepositoryLocation {
   public synchronized String getId() {
     return id;
   }
+
+  @Override
+  public boolean requiresId() {
+    return id == null;
+  }
 }

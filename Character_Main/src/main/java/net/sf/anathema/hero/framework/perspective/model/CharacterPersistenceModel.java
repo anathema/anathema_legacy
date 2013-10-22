@@ -53,7 +53,7 @@ public class CharacterPersistenceModel {
 
   private void assignUniqueIdAsRequired(Item item) {
     ItemRepositoryLocation repositoryLocation = item.getRepositoryLocation();
-    if (repositoryLocation.getId() == null) {
+    if (repositoryLocation.requiresId()) {
       Repository repository = model.getRepository();
       RepositoryIdData data = new HeroRepositoryData((Hero) item.getItemData());
       String id = repository.createUniqueRepositoryId(data);

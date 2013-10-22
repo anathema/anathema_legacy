@@ -4,7 +4,7 @@ import net.sf.anathema.lib.util.Identifier;
 
 public interface IItemType extends Identifier {
 
-  IRepositoryConfiguration getRepositoryConfiguration();
+  RepositoryConfiguration getRepositoryConfiguration();
 
   boolean supportsRepository();
 

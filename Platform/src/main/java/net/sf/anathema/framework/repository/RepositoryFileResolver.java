@@ -1,7 +1,7 @@
 package net.sf.anathema.framework.repository;
 
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.item.IRepositoryConfiguration;
+import net.sf.anathema.framework.item.RepositoryConfiguration;
 import net.sf.anathema.lib.io.PathUtils;
 
 import java.io.File;
@@ -17,7 +17,7 @@ public class RepositoryFileResolver implements IRepositoryFileResolver {
   }
 
   @Override
-  public File getMainFile(IRepositoryConfiguration configuration, String id) {
+  public File getMainFile(RepositoryConfiguration configuration, String id) {
     if (configuration.isItemSavedToSingleFile()) {
       return getItemFile(configuration, id);
     }
@@ -25,23 +25,23 @@ public class RepositoryFileResolver implements IRepositoryFileResolver {
   }
 
   @Override
-  public File getMainFile(File folder, IRepositoryConfiguration configuration) {
+  public File getMainFile(File folder, RepositoryConfiguration configuration) {
     return new File(folder, configuration.getMainFileName() + configuration.getFileExtension());
   }
 
   @Override
-  public Collection<Path> listAllFiles(IRepositoryConfiguration configuration) {
+  public Collection<Path> listAllFiles(RepositoryConfiguration configuration) {
     File folder = getExistingItemTypeFolder(configuration);
     String fileExtension = getExtension(configuration);
     return PathUtils.listAll(folder.toPath(), "*." + fileExtension);
   }
 
   @Override
-  public File getFolder(IRepositoryConfiguration configuration) {
+  public File getFolder(RepositoryConfiguration configuration) {
     return new File(repositoryFile, configuration.getFolderName());
   }
 
-  public File getExistingItemTypeFolder(IRepositoryConfiguration configuration) {
+  public File getExistingItemTypeFolder(RepositoryConfiguration configuration) {
     File typeFolder = getFolder(configuration);
     createNonExistentFolder(typeFolder);
     return typeFolder;
@@ -66,12 +66,12 @@ public class RepositoryFileResolver implements IRepositoryFileResolver {
     }
   }
 
-  private File getItemFile(IRepositoryConfiguration configuration, String id) {
+  private File getItemFile(RepositoryConfiguration configuration, String id) {
     String extension = configuration.getFileExtension();
     return new File(getExistingItemTypeFolder(configuration), id + extension);
   }
 
-  private String getExtension(IRepositoryConfiguration configuration) {
+  private String getExtension(RepositoryConfiguration configuration) {
     String fileExtension = configuration.getFileExtension();
     if (fileExtension.startsWith(".")) {
       return fileExtension.substring(1);
@@ -79,7 +79,7 @@ public class RepositoryFileResolver implements IRepositoryFileResolver {
     return fileExtension;
   }
 
-  private File getItemFolder(IRepositoryConfiguration configuration, String id) {
+  private File getItemFolder(RepositoryConfiguration configuration, String id) {
     File typeFolder = getExistingItemTypeFolder(configuration);
     return new File(typeFolder, id);
   }

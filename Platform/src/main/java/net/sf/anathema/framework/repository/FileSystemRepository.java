@@ -2,7 +2,7 @@ package net.sf.anathema.framework.repository;
 
 import com.google.common.base.Preconditions;
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.item.IRepositoryConfiguration;
+import net.sf.anathema.framework.item.RepositoryConfiguration;
 import net.sf.anathema.framework.presenter.action.IFileProvider;
 import net.sf.anathema.framework.repository.access.RepositoryReadAccess;
 import net.sf.anathema.framework.repository.access.RepositoryWriteAccess;
@@ -75,7 +75,7 @@ public class FileSystemRepository implements Repository {
   }
 
   private RepositoryWriteAccess createMultiFileWriteAccess(IItemType type, File itemFolder) {
-    IRepositoryConfiguration configuration = type.getRepositoryConfiguration();
+    RepositoryConfiguration configuration = type.getRepositoryConfiguration();
     return new MultiFileWriteAccess(itemFolder, configuration.getMainFileName(), configuration.getFileExtension());
   }
 
@@ -120,7 +120,7 @@ public class FileSystemRepository implements Repository {
     if (type.getRepositoryConfiguration().isItemSavedToSingleFile()) {
       return new SingleFileReadAccess(provider.getFile());
     }
-    IRepositoryConfiguration repositoryConfiguration = type.getRepositoryConfiguration();
+    RepositoryConfiguration repositoryConfiguration = type.getRepositoryConfiguration();
     return new MultiFileReadAccess(provider.getFile(), repositoryConfiguration.getMainFileName(),
             repositoryConfiguration.getFileExtension());
   }
@@ -130,7 +130,7 @@ public class FileSystemRepository implements Repository {
     if (type.getRepositoryConfiguration().isItemSavedToSingleFile()) {
       return new SingleFileReadAccess(getRepositoryFileResolver().getMainFile(type.getRepositoryConfiguration(), id));
     }
-    IRepositoryConfiguration repositoryConfiguration = type.getRepositoryConfiguration();
+    RepositoryConfiguration repositoryConfiguration = type.getRepositoryConfiguration();
     File itemTypeFolder = getRepositoryFileResolver().getFolder(type.getRepositoryConfiguration());
     File itemFolder = new File(itemTypeFolder, id);
     return new MultiFileReadAccess(itemFolder, repositoryConfiguration.getMainFileName(),
