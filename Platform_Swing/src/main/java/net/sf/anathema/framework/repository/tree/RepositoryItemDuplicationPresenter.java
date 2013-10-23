@@ -1,25 +1,24 @@
 package net.sf.anathema.framework.repository.tree;
 
+import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.framework.fx.ExceptionIndicator;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.RepositoryFileAccess;
-import net.sf.anathema.framework.fx.ExceptionIndicator;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.initialization.FxApplicationFrame;
 import net.sf.anathema.lib.control.ChangeListener;
-import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.message.MessageType;
-import net.sf.anathema.framework.environment.Resources;
 
 import java.awt.Component;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class RepositoryItemDuplicationPresenter implements Presenter {
+public class RepositoryItemDuplicationPresenter {
 
   private final Resources resources;
   private final RepositoryTreeModel model;
@@ -34,7 +33,6 @@ public class RepositoryItemDuplicationPresenter implements Presenter {
     this.messaging = messaging;
   }
 
-  @Override
   public void initPresentation() {
     final SmartAction action = new SmartAction(resources.getString("AnathemaCore.Tools.RepositoryView.DuplicateName"),
             new FileUi().getDuplicateFileIcon()) {

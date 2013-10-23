@@ -3,7 +3,6 @@ package net.sf.anathema.framework.repository.tree;
 import com.google.common.base.Function;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.view.PrintNameFile;
-import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.util.TreeUtilities;
 
@@ -18,7 +17,7 @@ import javax.swing.tree.TreeSelectionModel;
 
 import static net.sf.anathema.lib.lang.ArrayUtilities.transform;
 
-public class RepositoryTreePresenter implements Presenter {
+public class RepositoryTreePresenter {
 
   private final DefaultMutableTreeNode root;
   private final DefaultTreeModel treeModel;
@@ -52,7 +51,6 @@ public class RepositoryTreePresenter implements Presenter {
     });
   }
 
-  @Override
   public void initPresentation() {
     for (IItemType type : repositoryModel.getAllItemTypes()) {
       DefaultMutableTreeNode node = new DefaultMutableTreeNode(type);
@@ -63,7 +61,6 @@ public class RepositoryTreePresenter implements Presenter {
     }
     final JTree tree = treeView.addTree();
     tree.setModel(treeModel);
-    tree.setCellRenderer(renderer);
     tree.getSelectionModel().setSelectionMode(TreeSelectionModel.DISCONTIGUOUS_TREE_SELECTION);
     tree.setCellRenderer(renderer);
     tree.addTreeSelectionListener(new TreeSelectionListener() {

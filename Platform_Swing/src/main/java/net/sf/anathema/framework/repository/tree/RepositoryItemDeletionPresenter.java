@@ -1,19 +1,18 @@
 package net.sf.anathema.framework.repository.tree;
 
-import net.sf.anathema.framework.repository.RepositoryException;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.framework.fx.ExceptionIndicator;
+import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.initialization.FxApplicationFrame;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.control.ChangeListener;
-import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.userdialog.buttons.ConfigurableVetor;
 import net.sf.anathema.lib.message.Message;
-import net.sf.anathema.framework.environment.Resources;
 
 import java.awt.Component;
 
-public class RepositoryItemDeletionPresenter implements Presenter {
+public class RepositoryItemDeletionPresenter {
 
   private final Resources resources;
   private final IRepositoryTreeModel repositoryModel;
@@ -28,7 +27,6 @@ public class RepositoryItemDeletionPresenter implements Presenter {
     this.messaging = fileCountMessaging;
   }
 
-  @Override
   public void initPresentation() {
     final SmartAction action = new SmartAction(resources.getString("AnathemaCore.Tools.RepositoryView.DeleteName"),
             new FileUi().getRemoveFileIcon()) {

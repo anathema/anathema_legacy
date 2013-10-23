@@ -1,15 +1,14 @@
 package net.sf.anathema.framework.repository.tree;
 
+import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.framework.fx.ExceptionIndicator;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.repository.RepositoryException;
-import net.sf.anathema.framework.fx.ExceptionIndicator;
 import net.sf.anathema.initialization.FxApplicationFrame;
 import net.sf.anathema.lib.collection.MultiEntryMap;
-import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.file.FileChoosingUtilities;
 import net.sf.anathema.lib.message.Message;
-import net.sf.anathema.framework.environment.Resources;
 
 import java.awt.Component;
 import java.io.IOException;
@@ -20,7 +19,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
 
-public class RepositoryItemImportPresenter implements Presenter {
+public class RepositoryItemImportPresenter {
 
   private final Resources resources;
   private final IRepositoryTreeModel model;
@@ -40,7 +39,6 @@ public class RepositoryItemImportPresenter implements Presenter {
     this.creator = new RepositoryZipPathCreator(model.getRepositoryPath());
   }
 
-  @Override
   public void initPresentation() {
     SmartAction action = new SmartAction(
             resources.getString("AnathemaCore.Tools.RepositoryView.ImportName"), new FileUi().getImportFileIcon()) {

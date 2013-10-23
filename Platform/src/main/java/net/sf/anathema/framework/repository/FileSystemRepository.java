@@ -4,10 +4,10 @@ import com.google.common.base.Preconditions;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.RepositoryConfiguration;
 import net.sf.anathema.framework.presenter.action.IFileProvider;
-import net.sf.anathema.framework.repository.access.RepositoryReadAccess;
-import net.sf.anathema.framework.repository.access.RepositoryWriteAccess;
 import net.sf.anathema.framework.repository.access.MultiFileReadAccess;
 import net.sf.anathema.framework.repository.access.MultiFileWriteAccess;
+import net.sf.anathema.framework.repository.access.RepositoryReadAccess;
+import net.sf.anathema.framework.repository.access.RepositoryWriteAccess;
 import net.sf.anathema.framework.repository.access.SingleFileReadAccess;
 import net.sf.anathema.framework.repository.access.SingleFileWriteAccess;
 import net.sf.anathema.framework.repository.access.printname.ConfigurablePrintNameFileAccess;
@@ -16,7 +16,6 @@ import net.sf.anathema.framework.repository.access.printname.PrintNameFileAccess
 import net.sf.anathema.framework.repository.access.printname.ReferenceAccess;
 import net.sf.anathema.framework.repository.access.printname.ReferenceBuilder;
 import net.sf.anathema.framework.view.PrintNameFile;
-import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -151,11 +150,9 @@ public class FileSystemRepository implements Repository {
   }
 
   @Override
-  public void deleteAssociatedItem(PrintNameFile file) throws RepositoryException {
+  public void deleteAssociatedItem(PrintNameFile file) {
     try {
-      if (file.getFile().exists()) {
-        FileUtils.forceDelete(file.getFile());
-      }
+      file.delete();
     } catch (IOException e) {
       throw new RepositoryException("Deletion failed.", e);
     }

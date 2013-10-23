@@ -41,6 +41,9 @@ public class ConfigurablePrintNameFileAccess implements PrintNameFileAccess {
   }
 
   private PrintNameFile createPrintNameFile(File file, IItemType itemType) {
+    if (itemType.getRepositoryConfiguration().isItemSavedToSingleFile()) {
+      return createSingleFilePrintNameFile(file, itemType);
+    }
     return createMultiFilePrintNameFile(file, itemType);
   }
 

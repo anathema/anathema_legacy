@@ -1,8 +1,10 @@
 package net.sf.anathema.framework.view;
 
 import net.sf.anathema.framework.item.IItemType;
+import org.apache.commons.io.FileUtils;
 
 import java.io.File;
+import java.io.IOException;
 
 public class PrintNameFile {
 
@@ -51,5 +53,12 @@ public class PrintNameFile {
   @Override
   public int hashCode() {
     return repositoryId.length() * 23 + printName.length() * 19;
+  }
+
+
+  public void delete() throws IOException {
+    if (file.exists()) {
+      FileUtils.forceDelete(file);
+    }
   }
 }
