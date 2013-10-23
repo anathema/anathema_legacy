@@ -3,29 +3,24 @@ package net.sf.anathema.framework.repository.access.printname;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.repository.IRepositoryFileResolver;
 import net.sf.anathema.framework.view.PrintNameFile;
-import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.logging.Logger;
-import net.sf.anathema.lib.xml.DocumentUtilities;
-import org.dom4j.Document;
-import org.dom4j.Element;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-public class XmlPrintNameFileAccess implements PrintNameFileAccess {
-  private static final Logger logger = Logger.getLogger(XmlPrintNameFileAccess.class);
+public class ConfigurablePrintNameFileAccess implements PrintNameFileAccess {
+  private static final Logger logger = Logger.getLogger(ConfigurablePrintNameFileAccess.class);
 
-  public static final String ATTRIBUTE_REPOSITORY_PRINTNAME = "repositoryPrintName";
-  public static final String ATTRIBUTE_REPOSITORY_ID = "repositoryId";
   private final IRepositoryFileResolver resolver;
+  private final PrintNameFileReader printNameFileReader;
 
-  public XmlPrintNameFileAccess(IRepositoryFileResolver resolver) {
+  public ConfigurablePrintNameFileAccess(IRepositoryFileResolver resolver) {
     this.resolver = resolver;
+    this.printNameFileReader = new JsonPrintNameFileReader();
   }
 
   @Override
@@ -67,27 +62,11 @@ public class XmlPrintNameFileAccess implements PrintNameFileAccess {
       return null;
     }
     try {
-      return readPrintName(file, itemType);
+      return printNameFileReader.readPrintName(file, itemType);
     } catch (IOException e) {
       logger.error(e);
       return null;
     }
-  }
-
-  private PrintNameFile readPrintName(File file, IItemType itemType) throws FileNotFoundException {
-    Document doc;
-    try {
-      doc = DocumentUtilities.read(file.toPath());
-    } catch (AnathemaException e) {
-      return null;
-    }
-    Element root = doc.getRootElement();
-    String printName = root.attributeValue(ATTRIBUTE_REPOSITORY_PRINTNAME);
-    String idName = root.attributeValue(ATTRIBUTE_REPOSITORY_ID);
-    if (printName == null || idName == null) {
-      return null;
-    }
-    return new PrintNameFile(file, printName, idName, itemType);
   }
 
   @Override

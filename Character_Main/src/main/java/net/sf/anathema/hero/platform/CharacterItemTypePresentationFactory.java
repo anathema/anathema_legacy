@@ -20,7 +20,7 @@ public class CharacterItemTypePresentationFactory implements ItemTypePresentatio
   public IItemTypeViewProperties createItemTypeCreationProperties(IApplicationModel anathemaModel, Resources resources) {
     HeroEnvironment generics = HeroEnvironmentExtractor.getGenerics(anathemaModel);
     IRepositoryFileResolver fileResolver = anathemaModel.getRepository().getRepositoryFileResolver();
-    CharacterPrintNameFileScanner scanner = new RegExCharacterPrintNameFileScanner(generics.getCharacterTypes(), fileResolver);
+    CharacterPrintNameFileScanner scanner = new JsonCharacterPrintNameFileScanner(generics.getCharacterTypes(), fileResolver);
     return new CharacterViewProperties(retrieveCharacterItemType(), resources, scanner);
   }
 }

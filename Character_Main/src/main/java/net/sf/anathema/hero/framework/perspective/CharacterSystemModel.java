@@ -22,7 +22,7 @@ import net.sf.anathema.hero.framework.perspective.model.ReportRegister;
 import net.sf.anathema.hero.framework.perspective.sheet.ControlledPrintWithSelectedReport;
 import net.sf.anathema.hero.framework.perspective.sheet.QuickPrintCommand;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.platform.RegExCharacterPrintNameFileScanner;
+import net.sf.anathema.hero.platform.JsonCharacterPrintNameFileScanner;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.workflow.wizard.selection.CharacterTemplateCreator;
@@ -80,7 +80,7 @@ public class CharacterSystemModel implements ItemSystemModel {
   private CharacterPrintNameFileScanner createFileScanner() {
     HeroEnvironment generics = getHeroEnvironment();
     IRepositoryFileResolver repositoryFileResolver = model.getRepository().getRepositoryFileResolver();
-    return new RegExCharacterPrintNameFileScanner(generics.getCharacterTypes(), repositoryFileResolver);
+    return new JsonCharacterPrintNameFileScanner(generics.getCharacterTypes(), repositoryFileResolver);
   }
 
   private HeroEnvironment getHeroEnvironment() {
