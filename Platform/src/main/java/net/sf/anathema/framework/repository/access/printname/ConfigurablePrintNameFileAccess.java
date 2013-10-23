@@ -79,6 +79,6 @@ public class ConfigurablePrintNameFileAccess implements PrintNameFileAccess {
         return printNameFile;
       }
     }
-    return null;
+    throw new IllegalStateException("Unknown file requested. Type " + itemType.getId() + ", id " + repositoryId);
   }
 }
