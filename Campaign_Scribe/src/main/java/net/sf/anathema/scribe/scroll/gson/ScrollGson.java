@@ -3,10 +3,10 @@ package net.sf.anathema.scribe.scroll.gson;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import net.sf.anathema.lib.exception.PersistenceException;
-import net.sf.anathema.scribe.scroll.persistence.RepositoryId;
+import net.sf.anathema.framework.repository.access.printname.RepositoryId;
 import net.sf.anathema.scribe.scroll.persistence.Scroll;
 import net.sf.anathema.scribe.scroll.persistence.ScrollDto;
-import net.sf.anathema.scribe.scroll.persistence.SimpleRepositoryId;
+import net.sf.anathema.framework.repository.access.printname.SimpleRepositoryId;
 import org.apache.commons.io.IOUtils;
 
 import java.io.ByteArrayOutputStream;

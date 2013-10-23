@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.platform;
 
-import net.sf.anathema.character.main.framework.item.CharacterPrintNameFileScanner;
+import net.sf.anathema.character.main.framework.item.CharacterReferenceScanner;
 import net.sf.anathema.character.main.persistence.HeroMainFileDto;
 import net.sf.anathema.character.main.persistence.HeroMainFilePersister;
 import net.sf.anathema.character.main.template.ITemplateType;
@@ -8,7 +8,7 @@ import net.sf.anathema.character.main.template.TemplateType;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.framework.repository.IRepositoryFileResolver;
-import net.sf.anathema.framework.view.PrintNameFile;
+import net.sf.anathema.hero.framework.perspective.model.CharacterReference;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
@@ -18,33 +18,34 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import static net.sf.anathema.character.main.itemtype.CharacterItemTypeRetrieval.retrieveCharacterItemType;
 import static net.sf.anathema.hero.concept.CasteType.NULL_CASTE_TYPE;
 
-public class JsonCharacterPrintNameFileScanner implements CharacterPrintNameFileScanner {
+public class JsonCharacterReferenceScanner implements CharacterReferenceScanner {
 
-  private final Map<PrintNameFile, ITemplateType> typesByFile = new HashMap<>();
-  private final Map<PrintNameFile, Identifier> castesByFile = new HashMap<>();
+  private final Map<CharacterReference, ITemplateType> typesByFile = new HashMap<>();
+  private final Map<CharacterReference, Identifier> castesByFile = new HashMap<>();
   private final IRepositoryFileResolver resolver;
   private final CharacterTypes characterTypes;
 
-  public JsonCharacterPrintNameFileScanner(CharacterTypes characterTypes, IRepositoryFileResolver repositoryFileResolver) {
+  public JsonCharacterReferenceScanner(CharacterTypes characterTypes, IRepositoryFileResolver repositoryFileResolver) {
     this.characterTypes = characterTypes;
     this.resolver = repositoryFileResolver;
   }
 
-  private void scan(PrintNameFile file) throws IOException {
-    File scanFile = resolver.getMainFile(file.getItemType().getRepositoryConfiguration(), file.getRepositoryId());
+  private void scan(CharacterReference reference) throws IOException {
+    File scanFile = resolver.getMainFile(retrieveCharacterItemType().getRepositoryConfiguration(), reference.repositoryId.getStringRepresentation());
     FileInputStream stream = new FileInputStream(scanFile);
     HeroMainFileDto mainFileDto = new HeroMainFilePersister().load(stream);
     CharacterType characterType = characterTypes.findById(mainFileDto.characterType.characterType);
     SimpleIdentifier subType = new SimpleIdentifier(mainFileDto.characterType.subType);
-    typesByFile.put(file, new TemplateType(characterType, subType));
-    castesByFile.put(file, NULL_CASTE_TYPE);
+    typesByFile.put(reference, new TemplateType(characterType, subType));
+    castesByFile.put(reference, NULL_CASTE_TYPE);
   }
 
   @Override
-  public CharacterType getCharacterType(PrintNameFile file) {
-    ITemplateType templateType = getTemplateType(file);
+  public CharacterType getCharacterType(CharacterReference reference) {
+    ITemplateType templateType = getTemplateType(reference);
     if (templateType == null) {
       return null;
     }
@@ -52,26 +53,26 @@ public class JsonCharacterPrintNameFileScanner implements CharacterPrintNameFile
   }
 
   @Override
-  public ITemplateType getTemplateType(PrintNameFile file) {
-    if (typesByFile.containsKey(file)) {
-      return typesByFile.get(file);
+  public ITemplateType getTemplateType(CharacterReference reference) {
+    if (typesByFile.containsKey(reference)) {
+      return typesByFile.get(reference);
     }
     try {
-      scan(file);
-      return typesByFile.get(file);
+      scan(reference);
+      return typesByFile.get(reference);
     } catch (IOException e) {
       return null;
     }
   }
 
   @Override
-  public Identifier getCasteType(PrintNameFile file) {
-    if (castesByFile.containsKey(file)) {
-      return castesByFile.get(file);
+  public Identifier getCasteType(CharacterReference reference) {
+    if (castesByFile.containsKey(reference)) {
+      return castesByFile.get(reference);
     }
     try {
-      scan(file);
-      return castesByFile.get(file);
+      scan(reference);
+      return castesByFile.get(reference);
     } catch (IOException e) {
       return NULL_CASTE_TYPE;
     }

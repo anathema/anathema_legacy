@@ -4,7 +4,7 @@ import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.platform.markdown.HtmlConverter;
 import net.sf.anathema.platform.markdown.HtmlText;
 import net.sf.anathema.platform.markdown.WikiText;
-import net.sf.anathema.scribe.scroll.persistence.RepositoryId;
+import net.sf.anathema.framework.repository.access.printname.RepositoryId;
 import net.sf.anathema.scribe.scroll.persistence.Scroll;
 import net.sf.anathema.scribe.scroll.persistence.ScrollDto;
 import net.sf.anathema.scribe.scroll.persistence.ScrollPersister;
@@ -31,9 +31,9 @@ public class ScrollModel {
     }
   }
 
-  private final Announcer<ScrollChangedListener> contentChangeAnnouncer = new Announcer(ScrollChangedListener.class);
-  private final Announcer<ScrollChangedListener> nameChangeAnnouncer = new Announcer(ScrollChangedListener.class);
-  private final Announcer<ChangeListener> listChangeAnnouncer = new Announcer(ChangeListener.class);
+  private final Announcer<ScrollChangedListener> contentChangeAnnouncer = new Announcer<>(ScrollChangedListener.class);
+  private final Announcer<ScrollChangedListener> nameChangeAnnouncer = new Announcer<>(ScrollChangedListener.class);
+  private final Announcer<ChangeListener> listChangeAnnouncer = new Announcer<>(ChangeListener.class);
   private final ScrollPersister persister;
   private WikiText wikiText;
   private String name;

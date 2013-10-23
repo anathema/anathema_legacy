@@ -1,21 +1,15 @@
-package net.sf.anathema.scribe.scroll;
+package net.sf.anathema.scribe.scroll.repositorytree;
 
-import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.framework.presenter.view.IItemTypeViewProperties;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
-import net.sf.anathema.scribe.scroll.persistence.RepositoryScrollPersister;
 
 public class ScrollPresentation implements IItemTypeViewProperties {
-  private final Resources resources;
-  private final RepositoryScrollPersister persister;
   private final ScrollUi ui;
 
-  public ScrollPresentation(Resources resources, RepositoryScrollPersister persister) {
-    this.resources = resources;
-    this.persister = persister;
-    this.ui = new ScrollUi(persister);
+  public ScrollPresentation() {
+    this.ui = new ScrollUi();
   }
 
   @Override

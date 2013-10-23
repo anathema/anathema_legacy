@@ -28,7 +28,13 @@ public class FileReferenceAccess<R> implements ReferenceAccess<R> {
   public Collection<R> collectAllItemReferences() {
     List<R> referenceList = new ArrayList<>();
     for (File subFile : collectItemFiles(type)) {
-      addReference(subFile, builder, referenceList);
+      if (type.getRepositoryConfiguration().isItemSavedToSingleFile()) {
+        addReference(subFile, builder, referenceList);
+      }
+      else {
+        File mainFile = resolver.getMainFile(subFile, type.getRepositoryConfiguration());
+        addReference(mainFile, builder, referenceList);
+      }
     }
     return referenceList;
   }
@@ -44,11 +50,11 @@ public class FileReferenceAccess<R> implements ReferenceAccess<R> {
 
   private <R> void addReference(File itemFile, ReferenceBuilder<R> builder, List<R> itemReferences) {
     try {
-    String itemContent = FileUtils.readFileToString(itemFile, COMPATIBILITY_ENCODING);
-    R reference = builder.create(itemContent);
-    if (reference != null) {
-      itemReferences.add(reference);
-    }
+      String itemContent = FileUtils.readFileToString(itemFile, COMPATIBILITY_ENCODING);
+      R reference = builder.create(itemContent);
+      if (reference != null) {
+        itemReferences.add(reference);
+      }
     } catch (Exception e) {
       logger.error(e);
     }

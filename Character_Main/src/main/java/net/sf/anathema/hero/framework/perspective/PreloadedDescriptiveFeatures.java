@@ -1,40 +1,40 @@
 package net.sf.anathema.hero.framework.perspective;
 
-import net.sf.anathema.character.main.framework.item.CharacterPrintNameFileScanner;
+import net.sf.anathema.character.main.framework.item.CharacterReferenceScanner;
 import net.sf.anathema.character.main.template.ITemplateType;
-import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.hero.framework.perspective.model.CharacterIdentifier;
+import net.sf.anathema.hero.framework.perspective.model.CharacterReference;
 import net.sf.anathema.lib.util.Identifier;
 
 public class PreloadedDescriptiveFeatures implements DescriptiveFeatures {
 
-  private CharacterPrintNameFileScanner fileScanner;
-  private PrintNameFile printNameFile;
+  private final CharacterReferenceScanner fileScanner;
+  private final CharacterReference reference;
 
-  public PreloadedDescriptiveFeatures(CharacterPrintNameFileScanner fileScanner, PrintNameFile printNameFile) {
+  public PreloadedDescriptiveFeatures(CharacterReferenceScanner fileScanner, CharacterReference reference) {
     this.fileScanner = fileScanner;
-    this.printNameFile = printNameFile;
+    this.reference = reference;
   }
 
   @Override
   public String getPrintName() {
-    return printNameFile.getPrintName();
+    return reference.printName;
   }
 
   @Override
   public CharacterIdentifier getIdentifier() {
-    String repositoryId = printNameFile.getRepositoryId();
+    String repositoryId = reference.repositoryId.getStringRepresentation();
     return new CharacterIdentifier(repositoryId);
   }
 
   @Override
   public ITemplateType getTemplateType() {
-    return fileScanner.getTemplateType(printNameFile);
+    return fileScanner.getTemplateType(reference);
   }
 
   @Override
   public Identifier getCasteType() {
-    return fileScanner.getCasteType(printNameFile);
+    return fileScanner.getCasteType(reference);
   }
 
   @Override

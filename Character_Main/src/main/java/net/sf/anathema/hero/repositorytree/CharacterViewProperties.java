@@ -1,7 +1,7 @@
-package net.sf.anathema.hero.platform;
+package net.sf.anathema.hero.repositorytree;
 
 import net.sf.anathema.character.main.CharacterUI;
-import net.sf.anathema.character.main.framework.item.CharacterPrintNameFileScanner;
+import net.sf.anathema.character.main.framework.item.CharacterReferenceScanner;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.view.IItemTypeViewProperties;
 import net.sf.anathema.framework.view.PrintNameFile;
@@ -15,7 +15,7 @@ public class CharacterViewProperties implements IItemTypeViewProperties {
   private final IItemType type;
   private final CharacterFileUi ui;
 
-  public CharacterViewProperties(IItemType type, Resources resources, CharacterPrintNameFileScanner scanner) {
+  public CharacterViewProperties(IItemType type, Resources resources, CharacterReferenceScanner scanner) {
     this.type = type;
     this.icon = new CharacterUI().getCharacterDescriptionTabIcon();
     this.ui = new CharacterFileUi(resources, scanner);

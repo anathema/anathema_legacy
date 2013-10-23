@@ -12,8 +12,8 @@ import net.sf.anathema.framework.repository.Repository;
 import net.sf.anathema.framework.repository.RepositoryIdData;
 import net.sf.anathema.framework.repository.access.RepositoryReadAccess;
 import net.sf.anathema.framework.repository.access.RepositoryWriteAccess;
-import net.sf.anathema.framework.repository.access.printname.PrintNameFileAccess;
-import net.sf.anathema.framework.view.PrintNameFile;
+import net.sf.anathema.framework.repository.access.printname.ReferenceAccess;
+import net.sf.anathema.framework.repository.access.printname.ReferenceBuilder;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.model.Hero;
 
@@ -32,10 +32,10 @@ public class CharacterPersistenceModel {
     this.heroEnvironment = environment;
   }
 
-  public Collection<PrintNameFile> collectCharacterPrintNameFiles() {
-    IItemType characterItemType = getCharacterItemType();
-    PrintNameFileAccess access = model.getRepository().getPrintNameFileAccess();
-    return access.collectAllPrintNameFiles(characterItemType);
+  public Collection<CharacterReference> collectCharacters() {
+    ReferenceBuilder<CharacterReference> builder = new CharacterReferenceBuilder();
+    ReferenceAccess<CharacterReference> access = model.getRepository().createReferenceAccess(retrieveCharacterItemType(), builder);
+    return access.collectAllItemReferences();
   }
 
   public Item loadItem(CharacterIdentifier identifier) {

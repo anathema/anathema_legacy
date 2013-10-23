@@ -5,6 +5,8 @@ import net.sf.anathema.framework.repository.access.RepositoryReadAccess;
 import net.sf.anathema.framework.repository.access.RepositoryWriteAccess;
 import net.sf.anathema.framework.repository.access.printname.ReferenceAccess;
 import net.sf.anathema.framework.repository.access.printname.ReferenceBuilder;
+import net.sf.anathema.framework.repository.access.printname.RepositoryId;
+import net.sf.anathema.framework.repository.access.printname.SimpleRepositoryId;
 import net.sf.anathema.scribe.scroll.ScrollItemType;
 import net.sf.anathema.scribe.scroll.gson.ScrollGson;
 import net.sf.anathema.scribe.scroll.gson.ScrollReferenceBuilder;

@@ -16,7 +16,7 @@ public class JsonPrintNameFileReader implements PrintNameFileReader {
   @Override
   public PrintNameFile readPrintName(File file, IItemType itemType) throws IOException {
     String content = IOUtils.toString(new FileInputStream(file));
-    PrintNameDto printNameDto = gson.fromJson(content, PrintNameDto.class);
-    return new PrintNameFile(file, printNameDto.printName, printNameDto.repositoryId, itemType);
+    ItemReference itemReference = gson.fromJson(content, ItemReference.class);
+    return new PrintNameFile(file, itemReference.printName, itemReference.repositoryId, itemType);
   }
 }

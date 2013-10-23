@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.framework.perspective;
 
-import net.sf.anathema.character.main.framework.item.CharacterPrintNameFileScanner;
+import net.sf.anathema.character.main.framework.item.CharacterReferenceScanner;
 import net.sf.anathema.character.main.framework.item.Item;
 import net.sf.anathema.character.main.persistence.HeroItemPersister;
 import net.sf.anathema.framework.IApplicationModel;
@@ -9,20 +9,20 @@ import net.sf.anathema.framework.persistence.RepositoryItemPersister;
 import net.sf.anathema.framework.presenter.ItemReceiver;
 import net.sf.anathema.framework.reporting.Report;
 import net.sf.anathema.framework.repository.IRepositoryFileResolver;
-import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.framework.HeroEnvironmentExtractor;
 import net.sf.anathema.hero.framework.perspective.model.CharacterIdentifier;
 import net.sf.anathema.hero.framework.perspective.model.CharacterItemModel;
 import net.sf.anathema.hero.framework.perspective.model.CharacterPersistenceModel;
+import net.sf.anathema.hero.framework.perspective.model.CharacterReference;
 import net.sf.anathema.hero.framework.perspective.model.ItemSystemModel;
 import net.sf.anathema.hero.framework.perspective.model.NewCharacterListener;
 import net.sf.anathema.hero.framework.perspective.model.ReportRegister;
 import net.sf.anathema.hero.framework.perspective.sheet.ControlledPrintWithSelectedReport;
 import net.sf.anathema.hero.framework.perspective.sheet.QuickPrintCommand;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.platform.JsonCharacterPrintNameFileScanner;
+import net.sf.anathema.hero.platform.JsonCharacterReferenceScanner;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.workflow.wizard.selection.CharacterTemplateCreator;
@@ -66,10 +66,10 @@ public class CharacterSystemModel implements ItemSystemModel {
 
   @Override
   public Collection<CharacterItemModel> collectAllExistingCharacters() {
-    Collection<PrintNameFile> printNameFiles = persistenceModel.collectCharacterPrintNameFiles();
+    Collection<CharacterReference> references = persistenceModel.collectCharacters();
     List<CharacterItemModel> characters = new ArrayList<>();
-    for (PrintNameFile file : printNameFiles) {
-      PreloadedDescriptiveFeatures features = new PreloadedDescriptiveFeatures(createFileScanner(), file);
+    for (CharacterReference reference : references) {
+      PreloadedDescriptiveFeatures features = new PreloadedDescriptiveFeatures(createFileScanner(), reference);
       CharacterItemModel character = new CharacterItemModel(features);
       modelsByIdentifier.put(features.getIdentifier(), character);
       characters.add(character);
@@ -77,10 +77,10 @@ public class CharacterSystemModel implements ItemSystemModel {
     return characters;
   }
 
-  private CharacterPrintNameFileScanner createFileScanner() {
+  private CharacterReferenceScanner createFileScanner() {
     HeroEnvironment generics = getHeroEnvironment();
     IRepositoryFileResolver repositoryFileResolver = model.getRepository().getRepositoryFileResolver();
-    return new JsonCharacterPrintNameFileScanner(generics.getCharacterTypes(), repositoryFileResolver);
+    return new JsonCharacterReferenceScanner(generics.getCharacterTypes(), repositoryFileResolver);
   }
 
   private HeroEnvironment getHeroEnvironment() {

@@ -4,6 +4,8 @@ import net.sf.anathema.framework.repository.RepositoryIdData;
 import net.sf.anathema.framework.repository.Repository;
 import net.sf.anathema.framework.repository.access.printname.ReferenceAccess;
 import net.sf.anathema.framework.repository.access.printname.ReferenceBuilder;
+import net.sf.anathema.framework.repository.access.printname.RepositoryId;
+import net.sf.anathema.framework.repository.access.printname.SimpleRepositoryId;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 

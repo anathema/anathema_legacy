@@ -1,4 +1,4 @@
-package net.sf.anathema.scribe.scroll.persistence;
+package net.sf.anathema.framework.repository.access.printname;
 
 public interface RepositoryId {
 

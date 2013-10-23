@@ -2,6 +2,8 @@ package net.sf.anathema.scribe.scroll.persistence;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Collections2;
+import net.sf.anathema.framework.repository.access.printname.RepositoryId;
+import net.sf.anathema.framework.repository.access.printname.SimpleRepositoryId;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -15,7 +17,6 @@ public class InMemoryScrollPersister implements ScrollPersister {
   @Override
   public void saveScroll(Scroll scroll) {
     RepositoryId repositoryId = scroll.repositoryId;
-    boolean isNew = !scrollsByRepositoryId.containsKey(repositoryId);
     scrollsByRepositoryId.put(repositoryId, scroll);
   }
 

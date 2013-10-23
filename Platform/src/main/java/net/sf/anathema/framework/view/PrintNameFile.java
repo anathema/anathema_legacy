@@ -28,11 +28,6 @@ public class PrintNameFile {
     return printName;
   }
 
-  @Override
-  public String toString() {
-    return printName;
-  }
-
   public String getRepositoryId() {
     return repositoryId;
   }
