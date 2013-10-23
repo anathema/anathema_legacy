@@ -1,5 +1,6 @@
 package net.sf.anathema.hero.advance.overview.presenter;
 
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.advance.creation.IBonusPointManagement;
 import net.sf.anathema.hero.advance.experience.ExperiencePointManagement;
 import net.sf.anathema.hero.advance.overview.view.CategorizedOverview;
@@ -9,10 +10,8 @@ import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.change.ChangeFlavor;
 import net.sf.anathema.hero.model.change.FlavoredChangeListener;
-import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.framework.environment.Resources;
 
-public class OverviewPresenter implements Presenter {
+public class OverviewPresenter {
 
   private Resources resources;
   private Hero hero;
@@ -29,7 +28,6 @@ public class OverviewPresenter implements Presenter {
     this.experiencePoints = experiencePoints;
   }
 
-  @Override
   public void initPresentation() {
     CategorizedOverview creationPointView = container.addCreationOverviewView();
     new CreationOverviewPresenter(resources, hero, creationPointView, bonusPoints).initPresentation();

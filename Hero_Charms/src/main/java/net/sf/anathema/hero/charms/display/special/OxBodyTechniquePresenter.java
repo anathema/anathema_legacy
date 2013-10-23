@@ -1,14 +1,13 @@
 package net.sf.anathema.hero.charms.display.special;
 
 import net.sf.anathema.character.main.library.trait.presenter.TraitPresenter;
+import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.framework.value.IntValueView;
 import net.sf.anathema.hero.charms.model.special.oxbody.OxBodyCategory;
 import net.sf.anathema.hero.charms.model.special.oxbody.OxBodyTechniqueSpecials;
-import net.sf.anathema.framework.value.IntValueView;
-import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.platform.tree.display.CategorizedSpecialNodeView;
 
-public class OxBodyTechniquePresenter implements Presenter {
+public class OxBodyTechniquePresenter {
 
   private final CategorizedSpecialNodeView view;
   private final OxBodyTechniqueSpecials model;
@@ -20,7 +19,6 @@ public class OxBodyTechniquePresenter implements Presenter {
     this.model = model;
   }
 
-  @Override
   public void initPresentation() {
     for (OxBodyCategory category : model.getCategories()) {
       String label = resources.getString("OxBodyTechnique." + category.getId());

@@ -1,15 +1,14 @@
 package net.sf.anathema.namegenerator.presenter;
 
 import com.google.common.base.Joiner;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.control.ChangeListener;
-import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.namegenerator.presenter.model.INameGeneratorModel;
 import net.sf.anathema.namegenerator.presenter.view.NameGeneratorView;
 
-public class NameGeneratorPresenter implements Presenter {
+public class NameGeneratorPresenter {
 
   private final NameGeneratorView view;
   private final INameGeneratorModel model;
@@ -21,7 +20,6 @@ public class NameGeneratorPresenter implements Presenter {
     this.resources = resources;
   }
 
-  @Override
   public void initPresentation() {
     for (Identifier generatorType : model.getGeneratorTypes()) {
       String formattedLabel = resources.getString(generatorType.getId());

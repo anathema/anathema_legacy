@@ -8,18 +8,17 @@ import net.sf.anathema.character.equipment.item.view.EquipmentDescriptionPanel;
 import net.sf.anathema.equipment.core.ItemCost;
 import net.sf.anathema.equipment.core.MagicalMaterial;
 import net.sf.anathema.equipment.core.MaterialComposition;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.selection.ISelectionIntValueChangedListener;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
-import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 
 import static net.sf.anathema.lib.lang.ArrayUtilities.transform;
 
-public class EquipmentDatabasePresenter implements Presenter {
+public class EquipmentDatabasePresenter {
   private final Resources resources;
   private final EquipmentDatabaseView view;
   private final IEquipmentDatabaseManagement model;
@@ -32,7 +31,6 @@ public class EquipmentDatabasePresenter implements Presenter {
     this.view = view;
   }
 
-  @Override
   public void initPresentation() {
     new EquipmentTemplateListPresenter(resources, model, view).initPresentation();
     addEditTemplateActions();

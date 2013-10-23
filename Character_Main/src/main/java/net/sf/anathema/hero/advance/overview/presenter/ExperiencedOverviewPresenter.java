@@ -3,6 +3,7 @@ package net.sf.anathema.hero.advance.overview.presenter;
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
 import net.sf.anathema.character.main.view.labelledvalue.IValueView;
 import net.sf.anathema.character.main.view.labelledvalue.LabelledAllotmentView;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.advance.experience.ExperiencePointConfigurationListener;
 import net.sf.anathema.hero.advance.experience.ExperiencePointManagement;
 import net.sf.anathema.hero.advance.overview.view.CategorizedOverview;
@@ -12,13 +13,11 @@ import net.sf.anathema.hero.model.change.ChangeFlavor;
 import net.sf.anathema.hero.model.change.FlavoredChangeListener;
 import net.sf.anathema.hero.points.overview.IValueModel;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
-import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.framework.environment.Resources;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExperiencedOverviewPresenter implements Presenter {
+public class ExperiencedOverviewPresenter {
 
   private final ExperiencePointManagement management;
   private final CategorizedOverview view;
@@ -44,7 +43,6 @@ public class ExperiencedOverviewPresenter implements Presenter {
     this.view = overview;
   }
 
-  @Override
   public void initPresentation() {
     OverviewCategory category = view.addOverviewCategory(getString("Overview.Experience.Title"));
     for (IValueModel<Integer> model : management.getAllModels()) {

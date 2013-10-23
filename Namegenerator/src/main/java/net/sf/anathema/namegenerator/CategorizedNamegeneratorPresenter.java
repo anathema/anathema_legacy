@@ -1,6 +1,5 @@
 package net.sf.anathema.namegenerator;
 
-import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.namegenerator.domain.category.AggregatedTokenCategory;
 import net.sf.anathema.namegenerator.domain.category.ICategorizedTokenConfiguration;
 import net.sf.anathema.namegenerator.domain.category.TokenCategory;
@@ -13,7 +12,7 @@ import java.awt.Component;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategorizedNamegeneratorPresenter implements Presenter {
+public class CategorizedNamegeneratorPresenter {
 
   private final ICategorizedNameGeneratorView view;
   private final ICategorizedTokenConfiguration tokenRegistry;
@@ -25,7 +24,6 @@ public class CategorizedNamegeneratorPresenter implements Presenter {
     this.tokenRegistry = tokenRegistry;
   }
 
-  @Override
   public void initPresentation() {
     Object[] categories = getAllVoidStateCategories();
     ListCellRenderer renderer = new DefaultListCellRenderer() {

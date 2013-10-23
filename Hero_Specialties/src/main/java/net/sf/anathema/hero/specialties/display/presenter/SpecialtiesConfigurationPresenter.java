@@ -7,6 +7,7 @@ import net.sf.anathema.character.main.library.trait.specialties.Specialty;
 import net.sf.anathema.character.main.library.trait.subtrait.ISpecialtyListener;
 import net.sf.anathema.character.main.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.hero.display.ExtensibleTraitView;
 import net.sf.anathema.hero.experience.ExperienceChange;
@@ -20,13 +21,11 @@ import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
-import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.framework.environment.Resources;
 
 import java.util.Arrays;
 import java.util.Comparator;
 
-public class SpecialtiesConfigurationPresenter implements Presenter {
+public class SpecialtiesConfigurationPresenter {
 
   private final IdentityMapping<Specialty, ExtensibleTraitView> viewsBySpecialty = new IdentityMapping<>();
   private final IdentityMapping<Specialty, Tool> deleteToolsBySpecialty = new IdentityMapping<>();
@@ -65,7 +64,6 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
     this.comparator = new TraitTypeByNameComparator(i18ner);
   }
 
-  @Override
   public void initPresentation() {
     initTraitListening();
     RelativePath addIcon = new BasicUi().getAddIconPath();

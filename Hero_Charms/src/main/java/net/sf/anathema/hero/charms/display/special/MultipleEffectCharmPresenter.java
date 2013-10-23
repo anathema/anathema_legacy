@@ -1,14 +1,13 @@
 package net.sf.anathema.hero.charms.display.special;
 
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.charms.model.special.subeffects.MultipleEffectCharmSpecials;
 import net.sf.anathema.hero.charms.model.special.subeffects.SubEffect;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
-import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;
 
-public class MultipleEffectCharmPresenter implements Presenter {
+public class MultipleEffectCharmPresenter {
 
   private final Resources resources;
   private final ToggleButtonSpecialNodeView view;
@@ -20,7 +19,6 @@ public class MultipleEffectCharmPresenter implements Presenter {
     this.model = model;
   }
 
-  @Override
   public void initPresentation() {
     for (final SubEffect subeffect : model.getEffects()) {
       String key = model.getCharm().getId() + ".Subeffects." + subeffect.getId();

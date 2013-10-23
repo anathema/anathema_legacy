@@ -6,7 +6,6 @@ import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.hero.display.HeroModelGroup;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.lib.gui.Presenter;
 
 import static net.sf.anathema.hero.display.HeroModelGroup.Magic;
 import static net.sf.anathema.hero.display.HeroModelGroup.Miscellaneous;
@@ -14,7 +13,7 @@ import static net.sf.anathema.hero.display.HeroModelGroup.NaturalTraits;
 import static net.sf.anathema.hero.display.HeroModelGroup.Outline;
 import static net.sf.anathema.hero.display.HeroModelGroup.SpiritualTraits;
 
-public class CharacterPresenter implements Presenter {
+public class CharacterPresenter {
 
   private final InitializerList initializerList;
   private final Hero hero;
@@ -27,8 +26,7 @@ public class CharacterPresenter implements Presenter {
     this.characterView = view;
     this.environment = environment;
   }
-
-  @Override
+  
   public void initPresentation() {
     initializeSection("CardView.Outline.Title", Outline);
     initializeSection("CardView.NaturalTraits.Title", NaturalTraits);

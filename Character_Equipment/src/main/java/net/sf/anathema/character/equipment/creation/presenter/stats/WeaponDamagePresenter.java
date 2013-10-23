@@ -3,15 +3,14 @@ package net.sf.anathema.character.equipment.creation.presenter.stats;
 import net.sf.anathema.character.equipment.creation.model.stats.IWeaponDamageModel;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.WeaponDamageProperties;
 import net.sf.anathema.character.equipment.creation.view.WeaponDamageView;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.health.HealthType;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
-import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.workflow.intvalue.IntValuePresentation;
 
-public class WeaponDamagePresenter implements Presenter {
+public class WeaponDamagePresenter {
 
   private final IWeaponDamageModel model;
   private final WeaponDamageView view;
@@ -23,7 +22,6 @@ public class WeaponDamagePresenter implements Presenter {
     this.properties = new WeaponDamageProperties(resources);
   }
 
-  @Override
   public void initPresentation() {
     view.setDamageLabelText(properties.getDamageLabel());
     IntegerSpinner damageSpinner = view.getDamageIntegerSpinner();

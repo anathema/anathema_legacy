@@ -3,6 +3,7 @@ package net.sf.anathema.hero.advance.overview.presenter;
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
 import net.sf.anathema.character.main.view.labelledvalue.IValueView;
 import net.sf.anathema.character.main.view.labelledvalue.LabelledAllotmentView;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.advance.creation.IBonusPointManagement;
 import net.sf.anathema.hero.advance.overview.view.CategorizedOverview;
 import net.sf.anathema.hero.model.Hero;
@@ -14,15 +15,13 @@ import net.sf.anathema.hero.points.overview.IOverviewModelVisitor;
 import net.sf.anathema.hero.points.overview.IValueModel;
 import net.sf.anathema.hero.points.overview.SpendingModel;
 import net.sf.anathema.hero.points.overview.WeightedCategory;
-import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.framework.environment.Resources;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CreationOverviewPresenter implements Presenter {
+public class CreationOverviewPresenter {
 
   private final Resources resources;
   private final CategorizedOverview view;
@@ -44,7 +43,6 @@ public class CreationOverviewPresenter implements Presenter {
     this.view = overviewView;
   }
 
-  @Override
   public void initPresentation() {
     initCategories();
     initModels();

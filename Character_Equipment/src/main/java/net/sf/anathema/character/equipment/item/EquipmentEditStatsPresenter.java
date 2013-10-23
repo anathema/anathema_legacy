@@ -2,13 +2,12 @@ package net.sf.anathema.character.equipment.item;
 
 import net.sf.anathema.character.equipment.item.view.EquipmentDetails;
 import net.sf.anathema.character.equipment.item.view.ToolListView;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 import net.sf.anathema.lib.control.ChangeListener;
-import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.util.Closure;
 
-public class EquipmentEditStatsPresenter implements Presenter {
+public class EquipmentEditStatsPresenter {
 
   private final Resources resources;
   private final EquipmentDetails equipmentView;
@@ -20,7 +19,6 @@ public class EquipmentEditStatsPresenter implements Presenter {
     this.equipmentView = equipmentView;
   }
 
-  @Override
   public void initPresentation() {
     String title = resources.getString("Equipment.Creation.Stats");
     ToolListView<IEquipmentStats> statsListView = equipmentView.initStatsListView(title,

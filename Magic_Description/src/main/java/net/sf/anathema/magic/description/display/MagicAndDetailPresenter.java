@@ -1,8 +1,6 @@
 package net.sf.anathema.magic.description.display;
 
-import net.sf.anathema.lib.gui.Presenter;
-
-public class MagicAndDetailPresenter implements Presenter {
+public class MagicAndDetailPresenter {
 
   private class OpenCharmDetailListener implements ShowMagicDetailListener {
 
@@ -27,7 +25,6 @@ public class MagicAndDetailPresenter implements Presenter {
     this.mainPresenter = mainPresenter;
   }
 
-  @Override
   public void initPresentation() {
     mainPresenter.initPresentation();
     detailPresenter.initPresentation();

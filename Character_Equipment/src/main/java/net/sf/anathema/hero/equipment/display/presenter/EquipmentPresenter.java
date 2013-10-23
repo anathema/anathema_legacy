@@ -6,6 +6,7 @@ import net.sf.anathema.character.equipment.creation.presenter.stats.properties.E
 import net.sf.anathema.character.equipment.item.EquipmentTemplateNameComparator;
 import net.sf.anathema.equipment.core.MagicalMaterial;
 import net.sf.anathema.equipment.core.MaterialComposition;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.hero.equipment.EquipmentModel;
 import net.sf.anathema.hero.equipment.model.EquipmentPersonalizationModel;
@@ -15,9 +16,7 @@ import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ICollectionListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
-import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.selection.VetoableObjectSelectionView;
-import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.util.Closure;
 
 import java.util.Arrays;
@@ -26,7 +25,7 @@ import java.util.Map;
 
 import static net.sf.anathema.lib.lang.StringUtilities.isNullOrTrimmedEmpty;
 
-public class EquipmentPresenter implements Presenter {
+public class EquipmentPresenter {
 
   private final Resources resources;
   private final EquipmentModel model;
@@ -51,8 +50,6 @@ public class EquipmentPresenter implements Presenter {
     });
   }
 
-
-  @Override
   public void initPresentation() {
     for (IEquipmentItem item : model.getNaturalWeapons()) {
       initEquipmentObjectPresentation(item);

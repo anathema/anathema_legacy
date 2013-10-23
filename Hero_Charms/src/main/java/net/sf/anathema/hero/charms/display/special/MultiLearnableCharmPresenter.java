@@ -2,13 +2,12 @@ package net.sf.anathema.hero.charms.display.special;
 
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.presenter.TraitPresenter;
-import net.sf.anathema.hero.charms.model.special.multilearn.MultiLearnCharmSpecials;
-import net.sf.anathema.framework.value.IntValueView;
-import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.framework.value.IntValueView;
+import net.sf.anathema.hero.charms.model.special.multilearn.MultiLearnCharmSpecials;
 import net.sf.anathema.platform.tree.display.CategorizedSpecialNodeView;
 
-public class MultiLearnableCharmPresenter implements Presenter {
+public class MultiLearnableCharmPresenter {
 
   private final CategorizedSpecialNodeView view;
   private final MultiLearnCharmSpecials model;
@@ -20,7 +19,6 @@ public class MultiLearnableCharmPresenter implements Presenter {
     this.model = model;
   }
 
-  @Override
   public void initPresentation() {
     String label = resources.getString("MultiLearnableCharm.Label");
     Trait category = model.getCategory();

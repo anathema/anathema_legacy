@@ -2,10 +2,9 @@ package net.sf.anathema.framework.repository.tree;
 
 import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.framework.view.PrintNameFile;
-import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.message.MessageType;
 
-public class RepositoryMessagingPresenter implements Presenter {
+public class RepositoryMessagingPresenter {
 
   private final RepositoryTreeModel repositoryTreeModel;
   private final IMessaging messaging;
@@ -15,21 +14,20 @@ public class RepositoryMessagingPresenter implements Presenter {
     this.messaging = messaging;
   }
 
-  @Override
   public void initPresentation() {
     repositoryTreeModel.addRepositoryTreeModelListener(new IRepositoryTreeModelListener() {
       @Override
       public void printNameFileAdded(PrintNameFile file) {
         messaging.addMessage("AnathemaCore.Tools.RepositoryView.ItemAddedMessage",
-            MessageType.INFORMATION,
-            file.getPrintName());
+                MessageType.INFORMATION,
+                file.getPrintName());
       }
 
       @Override
       public void printNameFileRemoved(PrintNameFile file) {
         messaging.addMessage("AnathemaCore.Tools.RepositoryView.ItemRemovedMessage",
-            MessageType.INFORMATION,
-            file.getPrintName());
+                MessageType.INFORMATION,
+                file.getPrintName());
       }
     });
   }

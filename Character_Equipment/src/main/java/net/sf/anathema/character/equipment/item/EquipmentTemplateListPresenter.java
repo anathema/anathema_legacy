@@ -3,14 +3,13 @@ package net.sf.anathema.character.equipment.item;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
 import net.sf.anathema.character.equipment.item.view.EquipmentNavigation;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.framework.environment.Resources;
 
 import java.util.Arrays;
 
-public class EquipmentTemplateListPresenter implements Presenter {
+public class EquipmentTemplateListPresenter {
 
   private final class EquipmentTemplateLoadListener implements ObjectValueListener<String> {
     @Override
@@ -28,15 +27,14 @@ public class EquipmentTemplateListPresenter implements Presenter {
   private final IEquipmentDatabaseManagement model;
 
   public EquipmentTemplateListPresenter(
-      Resources resources,
-      IEquipmentDatabaseManagement model,
-      EquipmentNavigation view) {
+          Resources resources,
+          IEquipmentDatabaseManagement model,
+          EquipmentNavigation view) {
     this.resources = resources;
     this.model = model;
     this.view = view;
   }
 
-  @Override
   public void initPresentation() {
     model.getDatabase().addAvailableTemplateChangeListener(new ChangeListener() {
       @Override
