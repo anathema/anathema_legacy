@@ -28,8 +28,9 @@ public class HeroTemplatePersister {
     Preconditions.checkNotNull(hero);
     HeroTemplate template = hero.getTemplate();
     Element characterTypeElement = parent.addElement(TAG_CHARACTER_TYPE);
-    characterTypeElement.addAttribute(ATTRIB_SUB_TYPE, template.getTemplateType().getSubType().getId());
-    characterTypeElement.addText(template.getTemplateType().getCharacterType().getId());
+    ITemplateType templateType = template.getTemplateType();
+    characterTypeElement.addAttribute(ATTRIB_SUB_TYPE, templateType.getSubType().getId());
+    characterTypeElement.addText(templateType.getCharacterType().getId());
   }
 
   public HeroTemplate loadTemplate(Element parent) {
