@@ -53,11 +53,8 @@ public class HeroItemPersister implements RepositoryItemPersister {
     Hero hero = (Hero) item.getItemData();
     String name = new HeroNameFetcher().getName(hero);
     messaging.addMessage("CharacterPersistence.SavingCharacter", MessageType.INFORMATION, name);
-    Element rootElement = DocumentHelper.createElement(TAG_EXALTED_CHARACTER_ROOT);
-    repositoryIdPersister.save(rootElement, item);
     saveModels(writeAccess, hero);
-    templatePersister.saveTemplate(rootElement, hero);
-    saveCharacterXml(writeAccess, rootElement);
+    saveMainFile(writeAccess, item);
     messaging.addMessage("CharacterPersistence.SavingCharacterDone", MessageType.INFORMATION, name);
   }
 
@@ -69,6 +66,14 @@ public class HeroItemPersister implements RepositoryItemPersister {
     Item item = createCharacterInItem(template, initializer);
     repositoryIdPersister.load(documentRoot, item);
     return item;
+  }
+
+  private void saveMainFile(RepositoryWriteAccess writeAccess, Item item) {
+    Hero hero = (Hero) item.getItemData();
+    Element rootElement = DocumentHelper.createElement(TAG_EXALTED_CHARACTER_ROOT);
+    repositoryIdPersister.save(rootElement, item);
+    templatePersister.saveTemplate(rootElement, hero);
+    saveCharacterXml(writeAccess, rootElement);
   }
 
   private void saveCharacterXml(RepositoryWriteAccess writeAccess, Element rootElement) {
