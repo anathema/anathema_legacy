@@ -6,7 +6,6 @@ import java.util.Collection;
 
 public class HeroModelPersisterAutoCollector {
 
-
   private ObjectFactory objectFactory;
 
   public HeroModelPersisterAutoCollector(ObjectFactory objectFactory) {
