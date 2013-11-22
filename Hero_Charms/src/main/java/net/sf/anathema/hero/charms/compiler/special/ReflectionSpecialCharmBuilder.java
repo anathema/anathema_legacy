@@ -12,7 +12,7 @@ public class ReflectionSpecialCharmBuilder {
   private final List<SpecialCharmBuilder> builders = new ArrayList<>();
 
   public ReflectionSpecialCharmBuilder(ObjectFactory objectFactory) {
-    this.builders.addAll(objectFactory.<SpecialCharmBuilder>instantiateAll(RegisteredSpecialCharmBuilder.class));
+    this.builders.addAll(objectFactory.instantiateAllImplementers(SpecialCharmBuilder.class));
   }
 
   public ISpecialCharm readCharm(SpecialCharmDto overallDto) {
