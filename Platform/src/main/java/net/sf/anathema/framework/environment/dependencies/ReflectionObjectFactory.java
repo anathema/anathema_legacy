@@ -8,6 +8,7 @@ import net.sf.anathema.framework.environment.ObjectFactory;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -44,16 +45,26 @@ public class ReflectionObjectFactory implements ObjectFactory {
   }
 
   public <T> Collection<T> instantiateAllImplementers(Class<T> interfaceClass, Object... parameter) {
-    Set<Class<?>> classes = interfaceFinder.findAll(interfaceClass);
-    Collection<Class<?>>  classesToUse = filterBlackListedClasses(classes);
-    return Collections2.transform(classesToUse, new Instantiate<T>(parameter));
+    Set<Class<? extends T>> classes = interfaceFinder.findAll(interfaceClass);
+    Collection<Class<? extends T>> filteredClasses = filterBlackListedClasses(classes);
+    filteredClasses = filterAbstractClasses(filteredClasses);
+    return Collections2.transform(filteredClasses, new Instantiate<T>(parameter));
   }
 
-  private Collection<Class<?>>  filterBlackListedClasses(Set<Class<?>> classes) {
-    return Collections2.filter(classes,new Predicate<Class<?>>() {
+  private <T> Collection<Class<? extends T>> filterBlackListedClasses(Set<Class<? extends T>> classes) {
+    return Collections2.filter(classes, new Predicate<Class<?>>() {
       @Override
       public boolean apply(Class<?> input) {
         return !input.isAnnotationPresent(DoNotUseInProduction.class);
+      }
+    });
+  }
+
+  private <T> Collection<Class<? extends T>> filterAbstractClasses(Collection<Class<? extends T>> classes) {
+    return Collections2.filter(classes, new Predicate<Class<?>>() {
+      @Override
+      public boolean apply(Class<?> input) {
+        return !Modifier.isAbstract(input.getModifiers());
       }
     });
   }

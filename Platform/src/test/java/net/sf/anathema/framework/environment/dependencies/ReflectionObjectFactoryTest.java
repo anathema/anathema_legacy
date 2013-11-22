@@ -58,7 +58,7 @@ public class ReflectionObjectFactoryTest {
 
   @Test
   public void instantiatesAllClassesImplementingInterface() {
-    Set<Class<?>> implementingClasses = new LinkedHashSet<>();
+    Set<Class<? extends DummyInterface>> implementingClasses = new LinkedHashSet<>();
     implementingClasses.add(AnnotatedDummy.class);
     implementingClasses.add(AnotherAnnotatedDummy.class);
     when(interfaceFinder.findAll(DummyInterface.class)).thenReturn(implementingClasses);
@@ -68,13 +68,22 @@ public class ReflectionObjectFactoryTest {
 
   @Test
   public void ignoresBlackListedImplementors() {
-    Set<Class<?>> implementingClasses = new LinkedHashSet<>();
+    Set<Class<? extends DummyInterface>> implementingClasses = new LinkedHashSet<>();
     implementingClasses.add(IgnoredDummy.class);
     when(interfaceFinder.findAll(DummyInterface.class)).thenReturn(implementingClasses);
     Collection<DummyInterface> result = factory.instantiateAllImplementers(DummyInterface.class);
     assertThat(result, hasSize(0));
   }
 
+  @Test
+  public void ignoresAbstractImplementors() {
+    Set<Class<? extends DummyInterface>> implementingClasses = new LinkedHashSet<>();
+    implementingClasses.add(AbstractDummy.class);
+    when(interfaceFinder.findAll(DummyInterface.class)).thenReturn(implementingClasses);
+    Collection<DummyInterface> result = factory.instantiateAllImplementers(DummyInterface.class);
+    assertThat(result, hasSize(0));
+  }
+  
   @Test
   public void ordersInstancesByWeight() {
     annotatedClasses.add(AnnotatedDummy.class);

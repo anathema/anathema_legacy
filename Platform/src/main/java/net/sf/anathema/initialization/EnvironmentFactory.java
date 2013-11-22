@@ -31,7 +31,7 @@ public class EnvironmentFactory {
     Preferences preferences = new PropertyPreferences();
     DefaultAnathemaReflections reflections = new DefaultAnathemaReflections();
     ResourceLoader loader = createResourceLoaderForInternalAndCustomResources(exceptionHandler, reflections, preferences);
-    ObjectFactory objectFactory = new ReflectionObjectFactory(reflections, new NullInterfaceFinder());
+    ObjectFactory objectFactory = new ReflectionObjectFactory(reflections, reflections);
     LocaleResources resources = initResources(loader);
     return new ApplicationEnvironment(resources, exceptionHandler, loader, objectFactory, preferences);
   }

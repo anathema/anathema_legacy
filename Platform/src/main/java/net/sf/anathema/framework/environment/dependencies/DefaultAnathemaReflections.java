@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 import static com.google.common.collect.Collections2.transform;
 import static com.google.common.collect.Sets.newHashSet;
 
-public class DefaultAnathemaReflections implements ResourceLoader, AnnotationFinder {
+public class DefaultAnathemaReflections implements ResourceLoader, AnnotationFinder, InterfaceFinder {
 
   private ClassLoader[] classLoaders;
   private Reflections reflections;
@@ -34,6 +34,11 @@ public class DefaultAnathemaReflections implements ResourceLoader, AnnotationFin
   public Set<ResourceFile> getResourcesMatching(String namePattern) {
     Pattern pattern = Pattern.compile(namePattern);
     return newHashSet(transform(reflections.getResources(pattern), new ToResource()));
+  }
+
+  @Override
+  public <T> Set<Class<? extends T>> findAll(Class<T> interfaceClass) {
+    return reflections.getSubTypesOf(interfaceClass);
   }
 
   private ConfigurationBuilder createConfiguration() {
