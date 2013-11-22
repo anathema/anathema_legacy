@@ -61,6 +61,11 @@ public class ApplicationEnvironment implements Environment {
   }
 
   @Override
+  public <T> Collection<T> instantiateAllImplementers(Class<T> interfaceClass, Object... parameter) {
+    return objectFactory.instantiateAllImplementers(interfaceClass, parameter);
+  }
+
+  @Override
   public Set<ResourceFile> getResourcesMatching(String namePattern) {
     return loader.getResourcesMatching(namePattern);
   }

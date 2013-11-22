@@ -18,13 +18,14 @@ import static org.mockito.Mockito.when;
 
 public class ReflectionObjectFactoryTest {
 
-  private AnnotationFinder finder = mock(AnnotationFinder.class);
-  private ReflectionObjectFactory factory = new ReflectionObjectFactory(finder);
+  private AnnotationFinder annotationFinder = mock(AnnotationFinder.class);
+  private InterfaceFinder interfaceFinder = mock(InterfaceFinder.class);
+  private ReflectionObjectFactory factory = new ReflectionObjectFactory(annotationFinder, interfaceFinder);
   private Set<Class<?>> annotatedClasses = new LinkedHashSet<>();
 
   @Before
   public void configureAnnotationFinder() throws Exception {
-    when(finder.getTypesAnnotatedWith(DummyAnnotation.class)).thenReturn(annotatedClasses);
+    when(annotationFinder.getTypesAnnotatedWith(DummyAnnotation.class)).thenReturn(annotatedClasses);
   }
 
   @Test
@@ -53,6 +54,25 @@ public class ReflectionObjectFactoryTest {
     annotatedClasses.add(AnotherAnnotatedDummy.class);
     Collection<AnnotatedDummy> result = factory.instantiateAll(DummyAnnotation.class);
     assertThat(result, hasSize(2));
+  }
+
+  @Test
+  public void instantiatesAllClassesImplementingInterface() {
+    Set<Class<?>> implementingClasses = new LinkedHashSet<>();
+    implementingClasses.add(AnnotatedDummy.class);
+    implementingClasses.add(AnotherAnnotatedDummy.class);
+    when(interfaceFinder.findAll(DummyInterface.class)).thenReturn(implementingClasses);
+    Collection<DummyInterface> result = factory.instantiateAllImplementers(DummyInterface.class);
+    assertThat(result, hasSize(2));
+  }
+
+  @Test
+  public void ignoresBlackListedImplementors() {
+    Set<Class<?>> implementingClasses = new LinkedHashSet<>();
+    implementingClasses.add(IgnoredDummy.class);
+    when(interfaceFinder.findAll(DummyInterface.class)).thenReturn(implementingClasses);
+    Collection<DummyInterface> result = factory.instantiateAllImplementers(DummyInterface.class);
+    assertThat(result, hasSize(0));
   }
 
   @Test

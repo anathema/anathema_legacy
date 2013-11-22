@@ -6,7 +6,7 @@ import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 @Weight(weight = 2)
-public class AnnotatedDummy {
+public class AnnotatedDummy implements DummyInterface{
 
   private String argument;
 

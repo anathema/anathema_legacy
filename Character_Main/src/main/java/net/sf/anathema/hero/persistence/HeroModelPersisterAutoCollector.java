@@ -14,6 +14,6 @@ public class HeroModelPersisterAutoCollector {
   }
 
   public Collection<HeroModelPersister> collect() {
-    return objectFactory.instantiateAll(RegisteredHeroModelPersister.class);
+    return objectFactory.instantiateAllImplementers(HeroModelPersister.class);
   }
 }
