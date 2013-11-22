@@ -15,7 +15,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-@RegisteredSpecialCharmBuilder
+@SuppressWarnings("UnusedDeclaration")
 public class OxBodyCharmBuilder implements SpecialCharmBuilder {
   private static final String TAG_ZERO_HEALTH = "zeroHealthLevel";
   private static final String TAG_ONE_HEALTH = "oneHealthLevel";

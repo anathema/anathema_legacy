@@ -5,7 +5,7 @@ import net.sf.anathema.hero.charms.model.special.ISpecialCharm;
 import net.sf.anathema.character.main.magic.parser.dto.special.MultiEffectDto;
 import net.sf.anathema.character.main.magic.parser.dto.special.SpecialCharmDto;
 
-@RegisteredSpecialCharmBuilder
+@SuppressWarnings("UnusedDeclaration")
 public class MultiEffectCharmBuilder implements SpecialCharmBuilder {
 
   @Override

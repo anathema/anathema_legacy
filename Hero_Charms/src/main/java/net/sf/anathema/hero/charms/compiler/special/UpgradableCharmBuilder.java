@@ -1,16 +1,16 @@
 package net.sf.anathema.hero.charms.compiler.special;
 
-import net.sf.anathema.hero.charms.model.special.ISpecialCharm;
-import net.sf.anathema.hero.charms.model.special.upgradable.UpgradableCharm;
 import net.sf.anathema.character.main.magic.parser.charms.TraitTypeFinder;
 import net.sf.anathema.character.main.magic.parser.dto.special.SpecialCharmDto;
 import net.sf.anathema.character.main.magic.parser.dto.special.UpgradableDto;
 import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.hero.charms.model.special.ISpecialCharm;
+import net.sf.anathema.hero.charms.model.special.upgradable.UpgradableCharm;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@RegisteredSpecialCharmBuilder
+@SuppressWarnings("UnusedDeclaration")
 public class UpgradableCharmBuilder implements SpecialCharmBuilder {
 
   private final TraitTypeFinder traitTypeFinder = new TraitTypeFinder();
@@ -18,8 +18,8 @@ public class UpgradableCharmBuilder implements SpecialCharmBuilder {
   @Override
   public ISpecialCharm readCharm(SpecialCharmDto overallDto) {
     UpgradableDto dto = overallDto.upgradable;
-    return new UpgradableCharm(overallDto.charmId, createUpgrades(dto), dto.requiresBase, dto.bpCostsByName, dto.xpCostsByName,
-            dto.essenceMinimumsByName, dto.traitMinimumsByName, createTraitsMap(dto));
+    return new UpgradableCharm(overallDto.charmId, createUpgrades(dto), dto.requiresBase, dto.bpCostsByName,
+            dto.xpCostsByName, dto.essenceMinimumsByName, dto.traitMinimumsByName, createTraitsMap(dto));
   }
 
   private Map<String, TraitType> createTraitsMap(UpgradableDto dto) {

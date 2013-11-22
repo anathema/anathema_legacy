@@ -1,12 +1,12 @@
 package net.sf.anathema.hero.charms.compiler.special;
 
-import net.sf.anathema.hero.charms.model.special.ISpecialCharm;
-import net.sf.anathema.hero.charms.model.special.traitcap.TraitCapModifyingCharm;
 import net.sf.anathema.character.main.magic.parser.charms.TraitTypeFinder;
 import net.sf.anathema.character.main.magic.parser.dto.special.SpecialCharmDto;
 import net.sf.anathema.character.main.magic.parser.dto.special.TraitCapModifierDto;
+import net.sf.anathema.hero.charms.model.special.ISpecialCharm;
+import net.sf.anathema.hero.charms.model.special.traitcap.TraitCapModifyingCharm;
 
-@RegisteredSpecialCharmBuilder
+@SuppressWarnings("UnusedDeclaration")
 public class TraitCapModifierCharmBuilder implements SpecialCharmBuilder {
 
   private final TraitTypeFinder traitTypeFinder = new TraitTypeFinder();

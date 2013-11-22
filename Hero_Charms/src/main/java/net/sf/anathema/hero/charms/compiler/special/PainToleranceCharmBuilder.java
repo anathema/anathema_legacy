@@ -4,7 +4,7 @@ import net.sf.anathema.hero.charms.model.special.ISpecialCharm;
 import net.sf.anathema.hero.charms.model.special.paintolerance.StaticPainToleranceCharm;
 import net.sf.anathema.character.main.magic.parser.dto.special.SpecialCharmDto;
 
-@RegisteredSpecialCharmBuilder
+@SuppressWarnings("UnusedDeclaration")
 public class PainToleranceCharmBuilder implements SpecialCharmBuilder {
 
   public ISpecialCharm readCharm(SpecialCharmDto overallDto) {

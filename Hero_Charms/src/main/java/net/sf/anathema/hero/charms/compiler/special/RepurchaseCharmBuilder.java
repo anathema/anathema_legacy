@@ -20,7 +20,7 @@ import net.sf.anathema.character.main.traits.types.ValuedTraitType;
 import java.util.ArrayList;
 import java.util.List;
 
-@RegisteredSpecialCharmBuilder
+@SuppressWarnings("UnusedDeclaration")
 public class RepurchaseCharmBuilder implements SpecialCharmBuilder {
 
   private final TraitTypeFinder traitTypeFinder = new TraitTypeFinder();

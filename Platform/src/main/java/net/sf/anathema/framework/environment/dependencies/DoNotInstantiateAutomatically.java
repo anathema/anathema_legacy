@@ -1,4 +1,5 @@
-package net.sf.anathema.hero.charms.compiler.special;
+package net.sf.anathema.framework.environment.dependencies;
+
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,6 +8,5 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface RegisteredSpecialCharmBuilder {
-  //nothing to do
+public @interface DoNotInstantiateAutomatically {
 }

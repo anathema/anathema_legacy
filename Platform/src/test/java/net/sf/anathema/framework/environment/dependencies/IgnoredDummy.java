@@ -1,5 +1,5 @@
 package net.sf.anathema.framework.environment.dependencies;
 
-@DoNotUseInProduction
+@DoNotInstantiateAutomatically
 public class IgnoredDummy implements DummyInterface{
 }

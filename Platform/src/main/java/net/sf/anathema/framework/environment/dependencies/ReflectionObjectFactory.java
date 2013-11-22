@@ -55,7 +55,7 @@ public class ReflectionObjectFactory implements ObjectFactory {
     return Collections2.filter(classes, new Predicate<Class<?>>() {
       @Override
       public boolean apply(Class<?> input) {
-        return !input.isAnnotationPresent(DoNotUseInProduction.class);
+        return !input.isAnnotationPresent(DoNotInstantiateAutomatically.class);
       }
     });
   }

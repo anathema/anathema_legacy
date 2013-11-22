@@ -6,7 +6,7 @@ import net.sf.anathema.character.main.magic.parser.charms.TraitTypeFinder;
 import net.sf.anathema.character.main.magic.parser.dto.special.SpecialCharmDto;
 import net.sf.anathema.character.main.traits.TraitType;
 
-@RegisteredSpecialCharmBuilder
+@SuppressWarnings("UnusedDeclaration")
 public class TranscendenceCharmBuilder implements SpecialCharmBuilder {
 
   private final TraitTypeFinder traitTypeFinder = new TraitTypeFinder();
