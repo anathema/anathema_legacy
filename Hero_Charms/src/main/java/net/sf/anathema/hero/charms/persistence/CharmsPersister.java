@@ -1,12 +1,11 @@
 package net.sf.anathema.hero.charms.persistence;
 
 import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.hero.charms.model.learn.ILearningCharmGroup;
 import net.sf.anathema.hero.charms.model.CharmsModel;
+import net.sf.anathema.hero.charms.model.learn.ILearningCharmGroup;
 import net.sf.anathema.hero.charms.persistence.special.SpecialCharmListPersister;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.persistence.AbstractModelJsonPersister;
-import net.sf.anathema.hero.persistence.RegisteredHeroModelPersister;
 import net.sf.anathema.lib.message.MessageType;
 import net.sf.anathema.lib.util.Identifier;
 
@@ -16,7 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@RegisteredHeroModelPersister
+@SuppressWarnings("UnusedDeclaration")
 public class CharmsPersister extends AbstractModelJsonPersister<CharmListPto, CharmsModel> {
 
   public CharmsPersister() {

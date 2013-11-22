@@ -2,13 +2,12 @@ package net.sf.anathema.hero.spiritual.persister;
 
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.persistence.AbstractModelJsonPersister;
-import net.sf.anathema.hero.persistence.RegisteredHeroModelPersister;
 import net.sf.anathema.hero.spiritual.SpiritualTraitModel;
 import net.sf.anathema.hero.traits.persistence.TraitListPto;
 import net.sf.anathema.hero.traits.persistence.TraitMapPersister;
 import net.sf.anathema.lib.util.Identifier;
 
-@RegisteredHeroModelPersister
+@SuppressWarnings("UnusedDeclaration")
 public class SpiritualTraitsPersister extends AbstractModelJsonPersister<TraitListPto, SpiritualTraitModel> {
 
   private final TraitMapPersister traitMapPersister = new TraitMapPersister(new SpiritualTraitTypeMap());

@@ -5,13 +5,12 @@ import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.hero.abilities.model.AbilitiesModel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.persistence.AbstractModelJsonPersister;
-import net.sf.anathema.hero.persistence.RegisteredHeroModelPersister;
 import net.sf.anathema.hero.traits.persistence.TraitListPto;
 import net.sf.anathema.hero.traits.persistence.TraitMapPersister;
 import net.sf.anathema.hero.traits.persistence.TraitTypeMap;
 import net.sf.anathema.lib.util.Identifier;
 
-@RegisteredHeroModelPersister
+@SuppressWarnings("UnusedDeclaration")
 public class AbilitiesPersister extends AbstractModelJsonPersister<TraitListPto, AbilitiesModel> {
 
   private final TraitMapPersister traitMapPersister = new TraitMapPersister(new TraitTypeMap() {

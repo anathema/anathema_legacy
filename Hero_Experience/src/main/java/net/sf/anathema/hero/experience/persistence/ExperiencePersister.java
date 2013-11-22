@@ -4,10 +4,9 @@ import net.sf.anathema.hero.advance.experience.ExperiencePointEntry;
 import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.persistence.AbstractModelJsonPersister;
-import net.sf.anathema.hero.persistence.RegisteredHeroModelPersister;
 import net.sf.anathema.lib.util.Identifier;
 
-@RegisteredHeroModelPersister
+@SuppressWarnings("UnusedDeclaration")
 public class ExperiencePersister extends AbstractModelJsonPersister<ExperiencePto, ExperienceModel> {
 
   public ExperiencePersister() {
