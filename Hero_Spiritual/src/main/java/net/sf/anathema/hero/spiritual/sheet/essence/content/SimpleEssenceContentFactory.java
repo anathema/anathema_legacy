@@ -1,11 +1,11 @@
 package net.sf.anathema.hero.spiritual.sheet.essence.content;
 
-import net.sf.anathema.hero.sheet.pdf.content.ForReportContent;
+import net.sf.anathema.framework.util.Produces;
 import net.sf.anathema.hero.sheet.pdf.content.ReportContentFactory;
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
 import net.sf.anathema.framework.environment.Resources;
 
-@ForReportContent(content = SimpleEssenceContent.class)
+@Produces(SimpleEssenceContent.class)
 public class SimpleEssenceContentFactory implements ReportContentFactory<SimpleEssenceContent> {
 
   private Resources resources;

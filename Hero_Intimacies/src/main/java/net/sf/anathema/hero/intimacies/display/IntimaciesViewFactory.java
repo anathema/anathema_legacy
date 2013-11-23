@@ -1,11 +1,9 @@
 package net.sf.anathema.hero.intimacies.display;
 
-import net.sf.anathema.character.main.framework.RegisteredCharacterView;
-import net.sf.anathema.character.main.library.util.CssSkinner;
 import net.sf.anathema.character.main.view.SubViewFactory;
-import net.sf.anathema.platform.fx.Stylesheet;
+import net.sf.anathema.framework.util.Produces;
 
-@RegisteredCharacterView(IntimaciesView.class)
+@Produces(IntimaciesView.class)
 public class IntimaciesViewFactory implements SubViewFactory {
   @SuppressWarnings("unchecked")
   @Override

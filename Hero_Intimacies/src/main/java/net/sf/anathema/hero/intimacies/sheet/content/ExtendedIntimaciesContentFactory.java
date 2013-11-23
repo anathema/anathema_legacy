@@ -1,11 +1,11 @@
 package net.sf.anathema.hero.intimacies.sheet.content;
 
-import net.sf.anathema.hero.sheet.pdf.content.ForReportContent;
+import net.sf.anathema.framework.util.Produces;
 import net.sf.anathema.hero.sheet.pdf.content.ReportContentFactory;
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
 import net.sf.anathema.framework.environment.Resources;
 
-@ForReportContent(content = ExtendedIntimaciesContent.class)
+@Produces(ExtendedIntimaciesContent.class)
 public class ExtendedIntimaciesContentFactory implements ReportContentFactory<ExtendedIntimaciesContent> {
   private Resources resources;
 

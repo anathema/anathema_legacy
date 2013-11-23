@@ -1,11 +1,9 @@
 package net.sf.anathema.hero.spiritual.display;
 
-import net.sf.anathema.character.main.framework.RegisteredCharacterView;
-import net.sf.anathema.character.main.library.util.CssSkinner;
 import net.sf.anathema.character.main.view.SubViewFactory;
-import net.sf.anathema.platform.fx.Stylesheet;
+import net.sf.anathema.framework.util.Produces;
 
-@RegisteredCharacterView(SpiritualTraitsView.class)
+@Produces(SpiritualTraitsView.class)
 public class SpiritualTraitsViewFactory implements SubViewFactory {
 
   @SuppressWarnings("unchecked")

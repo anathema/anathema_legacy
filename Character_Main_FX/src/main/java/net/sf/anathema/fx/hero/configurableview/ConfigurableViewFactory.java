@@ -1,10 +1,10 @@
 package net.sf.anathema.fx.hero.configurableview;
 
-import net.sf.anathema.character.main.framework.RegisteredCharacterView;
 import net.sf.anathema.character.main.view.SubViewFactory;
+import net.sf.anathema.framework.util.Produces;
 import net.sf.anathema.hero.display.configurableview.ConfigurableCharacterView;
 
-@RegisteredCharacterView(ConfigurableCharacterView.class)
+@Produces(ConfigurableCharacterView.class)
 public class ConfigurableViewFactory implements SubViewFactory {
   @SuppressWarnings("unchecked")
   @Override

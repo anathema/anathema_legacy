@@ -1,4 +1,5 @@
-package net.sf.anathema.hero.sheet.pdf.content;
+package net.sf.anathema.framework.util;
+
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,7 +8,6 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface ForReportContent {
-  
-  Class<? extends SubContent> content();
+public @interface Produces {
+  Class value();
 }

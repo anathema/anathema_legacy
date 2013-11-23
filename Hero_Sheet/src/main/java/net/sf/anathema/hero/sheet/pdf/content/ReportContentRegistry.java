@@ -1,5 +1,6 @@
 package net.sf.anathema.hero.sheet.pdf.content;
 
+import net.sf.anathema.framework.util.Produces;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.framework.environment.Resources;
@@ -19,8 +20,9 @@ public class ReportContentRegistry {
   @SuppressWarnings("unchecked")
   public <C extends SubContent> ReportContentFactory<C> getFactory(Class<C> contentClass) {
     for (ReportContentFactory factory : instantiateFactories(contentClass)) {
-      ForReportContent annotation = factory.getClass().getAnnotation(ForReportContent.class);
-      if (annotation.content().equals(contentClass)) {
+      Produces annotation = factory.getClass().getAnnotation(Produces.class);
+      Class producedClass = annotation.value();
+      if (producedClass.equals(contentClass)) {
         return (ReportContentFactory<C>) factory;
       }
     }

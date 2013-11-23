@@ -1,11 +1,11 @@
 package net.sf.anathema.hero.spells.display.view;
 
-import net.sf.anathema.character.main.framework.RegisteredCharacterView;
 import net.sf.anathema.character.main.view.SubViewFactory;
+import net.sf.anathema.framework.util.Produces;
 import net.sf.anathema.hero.spells.display.presenter.SpellView;
 import net.sf.anathema.platform.fx.Stylesheet;
 
-@RegisteredCharacterView(SpellView.class)
+@Produces(SpellView.class)
 public class SpellViewFactory implements SubViewFactory {
   @SuppressWarnings("unchecked")
   @Override

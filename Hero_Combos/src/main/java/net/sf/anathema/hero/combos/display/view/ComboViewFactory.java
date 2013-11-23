@@ -1,11 +1,11 @@
 package net.sf.anathema.hero.combos.display.view;
 
-import net.sf.anathema.character.main.framework.RegisteredCharacterView;
 import net.sf.anathema.character.main.view.SubViewFactory;
+import net.sf.anathema.framework.util.Produces;
 import net.sf.anathema.hero.combos.display.presenter.ComboConfigurationView;
 import net.sf.anathema.platform.fx.Stylesheet;
 
-@RegisteredCharacterView(ComboConfigurationView.class)
+@Produces(ComboConfigurationView.class)
 public class ComboViewFactory implements SubViewFactory {
   @SuppressWarnings("unchecked")
   @Override
