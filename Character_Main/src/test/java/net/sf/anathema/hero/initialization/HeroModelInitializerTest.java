@@ -2,11 +2,10 @@ package net.sf.anathema.hero.initialization;
 
 import net.sf.anathema.character.main.template.ConfiguredModel;
 import net.sf.anathema.character.main.template.HeroTemplate;
+import net.sf.anathema.framework.environment.ConfigurableDummyObjectFactory;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.model.DefaultHero;
-import net.sf.anathema.hero.model.HeroModelAutoCollector;
 import net.sf.anathema.hero.model.HeroModelFactory;
-import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 import org.junit.Test;
 
@@ -27,7 +26,8 @@ public class HeroModelInitializerTest {
   private static final String Transitively_Required_Model = "TransitiveRequiremmentOfRequiredModel";
 
   private final List<ConfiguredModel> configuredModels = new ArrayList<>();
-  private final List availableModels = new ArrayList<>();
+  private final List<HeroModelFactory> availableModels = new ArrayList<>();
+  private final ConfigurableDummyObjectFactory objectFactory = new ConfigurableDummyObjectFactory();
   private final HeroEnvironment context = createGenerics();
   private final HeroTemplate template = createTemplate();
   private final HeroModelInitializer initializer = new HeroModelInitializer(context, template);
@@ -57,6 +57,7 @@ public class HeroModelInitializerTest {
     availableModels.add(configuredModelFactory);
     availableModels.add(requiredModelFactory);
     availableModels.add(transitiveModelFactory);
+    registerAvailableModelsForInstantiation();
   }
 
   private void addModelToConfiguration(String id) {
@@ -66,8 +67,6 @@ public class HeroModelInitializerTest {
   @SuppressWarnings("unchecked")
   private HeroEnvironment createGenerics() {
     HeroEnvironment generics = mock(HeroEnvironment.class);
-    ObjectFactory objectFactory = mock(ObjectFactory.class);
-    when(objectFactory.instantiateAll(HeroModelAutoCollector.class)).thenReturn(availableModels);
     when(generics.getObjectFactory()).thenReturn(objectFactory);
     return generics;
   }
@@ -86,5 +85,11 @@ public class HeroModelInitializerTest {
     HeroTemplate template = mock(HeroTemplate.class);
     when(template.getModels()).thenReturn(configuredModels);
     return template;
+  }
+
+  private void registerAvailableModelsForInstantiation() {
+    for (HeroModelFactory availableModel : availableModels) {
+      objectFactory.add(HeroModelFactory.class, availableModel);
+    }
   }
 }

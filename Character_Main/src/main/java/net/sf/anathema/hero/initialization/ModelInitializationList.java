@@ -42,7 +42,8 @@ public class ModelInitializationList<E extends ModelTreeEntry> implements Iterab
     if (entryModel == null) {
       logger.warn("Not found entry " + entry.getId());
     }
-    for (Identifier id : entryModel.getRequiredModelIds()) {
+    Iterable<Identifier> modelIds = entryModel.getRequiredModelIds();
+    for (Identifier id : modelIds) {
       if (sortedModelIds.contains(id)) {
         continue;
       }
