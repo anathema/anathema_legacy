@@ -6,7 +6,7 @@ import org.junit.Test;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-public class ObjectFactoryMapTest {
+public class ReflectionFactoryMapTest {
 
   public static final String ADDITIONAL_PARAMETER = "AdditionalParameter";
 
