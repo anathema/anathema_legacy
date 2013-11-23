@@ -3,11 +3,12 @@ package net.sf.anathema.hero.equipment.model;
 import net.sf.anathema.equipment.core.MagicalMaterial;
 import net.sf.anathema.framework.environment.dependencies.DoNotInstantiateAutomatically;
 import net.sf.anathema.hero.equipment.sheet.content.stats.ArtifactAttuneType;
+import net.sf.anathema.hero.utilities.ForCharacterType;
 
 import static net.sf.anathema.hero.equipment.model.ReflectionMaterialRulesTest.ID_TEST_TYPE;
 
 @DoNotInstantiateAutomatically
-@ForCharacterType(characterType = ID_TEST_TYPE)
+@ForCharacterType(value = ID_TEST_TYPE)
 public class DummyMaterialRules implements CharacterTypeMaterialRules{
 
   private MagicalMaterial material;

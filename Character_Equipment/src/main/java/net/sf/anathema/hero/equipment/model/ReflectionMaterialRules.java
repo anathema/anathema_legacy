@@ -5,6 +5,7 @@ import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.equipment.core.MagicalMaterial;
 import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.hero.equipment.sheet.content.stats.ArtifactAttuneType;
+import net.sf.anathema.hero.utilities.ForCharacterType;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -17,7 +18,7 @@ public class ReflectionMaterialRules implements MaterialRules {
   public ReflectionMaterialRules(ObjectFactory objectFactory) {
     Collection<CharacterTypeMaterialRules> allRules = objectFactory.instantiateAllImplementers(CharacterTypeMaterialRules.class);
     for (CharacterTypeMaterialRules rules : allRules) {
-      String applicableType = rules.getClass().getAnnotation(ForCharacterType.class).characterType();
+      String applicableType = rules.getClass().getAnnotation(ForCharacterType.class).value();
       rulesByCharacterType.put(applicableType, rules);
     }
   }

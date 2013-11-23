@@ -26,7 +26,6 @@ public class DataSetInitializer {
 
   public IExtensibleDataSetProvider initializeExtensibleResources() throws InitializationException {
     ExtensibleDataManager manager = new ExtensibleDataManager();
-    ObjectFactory objectFactory = this.objectFactory;
     Collection<IExtensibleDataSetCompiler> compilers = objectFactory.instantiateAll(ExtensibleDataSetCompiler.class, objectFactory);
     for (IExtensibleDataSetCompiler compiler : compilers) {
       try {

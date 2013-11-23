@@ -3,10 +3,11 @@ package net.sf.anathema.herotype.solar.display.charms;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.hero.charms.display.presenter.AbstractCharmPresentationProperties;
-import net.sf.anathema.hero.charms.display.presenter.RegisteredCharmPresentationProperties;
+import net.sf.anathema.hero.utilities.ForCharacterType;
 import net.sf.anathema.herotype.solar.model.SolarCharacterType;
 
-@RegisteredCharmPresentationProperties
+@SuppressWarnings("UnusedDeclaration")
+@ForCharacterType("Solar")
 public class SolarCharmPresentationProperties extends AbstractCharmPresentationProperties {
 
   public SolarCharmPresentationProperties() {

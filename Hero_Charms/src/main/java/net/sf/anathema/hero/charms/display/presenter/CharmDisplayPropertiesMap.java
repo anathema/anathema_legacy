@@ -2,6 +2,7 @@ package net.sf.anathema.hero.charms.display.presenter;
 
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.framework.environment.ObjectFactory;
+import net.sf.anathema.hero.utilities.ForCharacterType;
 import net.sf.anathema.platform.tree.document.visualizer.TreePresentationProperties;
 
 import java.util.Collection;
@@ -14,17 +15,13 @@ public class CharmDisplayPropertiesMap {
   }
 
   public TreePresentationProperties getDisplayProperties(CharacterType characterType) {
-    Collection<CharmPresentationProperties> allObjects = objectFactory.instantiateAll(RegisteredCharmPresentationProperties.class);
+    Collection<CharmPresentationProperties> allObjects = objectFactory.instantiateAllImplementers(CharmPresentationProperties.class);
     for (CharmPresentationProperties properties : allObjects) {
-      if (properties.supportsCharacterType(characterType)) {
+      if (properties.getClass().getAnnotation(ForCharacterType.class).value().equals(characterType.getId())) {
         return properties;
       }
     }
-    return new AbstractCharmPresentationProperties() {
-      @Override
-      public boolean supportsCharacterType(CharacterType type) {
-        return true;
-      }
-    };
+    return new NullCharmPresentationProperties();
   }
+
 }
