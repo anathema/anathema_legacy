@@ -80,7 +80,6 @@ public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentMo
     EquipmentDirectAccess access = new EquipmentDirectAccess(dataBaseDirectory);
     ObjectFactory objectFactory = environment.getObjectFactory();
     MaterialRules materialRules = new ReflectionMaterialRules(objectFactory);
-    NaturalWeaponsMap naturalWeaponsMap = new ReflectionNaturalWeaponsMap(environment.getCharacterTypes(), environment.getObjectFactory());
     CharacterType characterType = hero.getTemplate().getTemplateType().getCharacterType();
     Trait stamina = TraitModelFetcher.fetch(hero).getTrait(AttributeType.Stamina);
     this.naturalArmor = new DefaultNaturalSoak(stamina, characterType);
@@ -89,14 +88,8 @@ public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentMo
     this.defaultMaterial = evaluateDefaultMaterial(materialRules);
     this.equipmentTemplateProvider = new GsonEquipmentDatabase(access);
     this.dataProvider = dataProvider;
-    for (IEquipmentTemplate template : new IEquipmentTemplate[]{new NaturalWeaponTemplate(),
-            naturalWeaponsMap.getNaturalWeaponTemplate(characterType)}) {
-      if (template == null) {
-        continue;
-      }
-      IEquipmentItem item = createItem(template, null);
-      naturalWeaponItems.add(item);
-    }
+    IEquipmentItem item = createItem(new NaturalWeaponTemplate(), null);
+    naturalWeaponItems.add(item);
     new SpecialtiesCollectionImpl(hero).addSpecialtyListChangeListener(new SpecialtyPrintRemover(dataProvider));
     EssencePoolModelFetcher.fetch(hero).addEssencePoolModifier(this);
   }
