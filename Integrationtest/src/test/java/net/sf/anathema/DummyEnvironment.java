@@ -7,7 +7,6 @@ import net.sf.anathema.framework.environment.dependencies.ReflectionObjectFactor
 import net.sf.anathema.framework.environment.exception.ConsoleExceptionHandler;
 import net.sf.anathema.framework.environment.resources.ResourceFile;
 import net.sf.anathema.initialization.InitializationException;
-import net.sf.anathema.initialization.NullInterfaceFinder;
 
 import java.lang.annotation.Annotation;
 import java.util.Collection;
@@ -16,7 +15,7 @@ import java.util.Set;
 public class DummyEnvironment implements Environment {
   
   private final DefaultAnathemaReflections finder = new DefaultAnathemaReflections();
-  private final ObjectFactory factory = new ReflectionObjectFactory(finder, new NullInterfaceFinder());
+  private final ObjectFactory factory = new ReflectionObjectFactory(finder, finder);
   
   @Override
   public void handle(Throwable exception) {
