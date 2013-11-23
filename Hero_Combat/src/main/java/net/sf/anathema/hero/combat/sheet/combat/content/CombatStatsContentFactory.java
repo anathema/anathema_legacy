@@ -1,11 +1,11 @@
 package net.sf.anathema.hero.combat.sheet.combat.content;
 
-import net.sf.anathema.hero.sheet.pdf.content.RegisteredReportContent;
+import net.sf.anathema.hero.sheet.pdf.content.ForReportContent;
 import net.sf.anathema.hero.sheet.pdf.content.ReportContentFactory;
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
 import net.sf.anathema.framework.environment.Resources;
 
-@RegisteredReportContent(produces = CombatStatsContent.class)
+@ForReportContent(content = CombatStatsContent.class)
 public class CombatStatsContentFactory implements ReportContentFactory<CombatStatsContent> {
   private Resources resources;
 

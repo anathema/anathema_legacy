@@ -3,10 +3,10 @@ package net.sf.anathema.hero.sheet.pdf.content;
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
 import net.sf.anathema.framework.environment.Resources;
 
-@RegisteredReportContent(produces = BasicContent.class)
+@ForReportContent(content = BasicContent.class)
 public class BasicContentFactory implements ReportContentFactory<BasicContent> {
 
-  @SuppressWarnings("UnusedDeclaration")
+  @SuppressWarnings("UnusedParameters")
   public BasicContentFactory(Resources resources) {
     //Just to adhere to protocol
   }

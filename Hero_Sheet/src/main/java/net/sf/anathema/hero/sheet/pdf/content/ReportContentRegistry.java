@@ -19,17 +19,17 @@ public class ReportContentRegistry {
   @SuppressWarnings("unchecked")
   public <C extends SubContent> ReportContentFactory<C> getFactory(Class<C> contentClass) {
     for (ReportContentFactory factory : instantiateFactories(contentClass)) {
-      RegisteredReportContent annotation = factory.getClass().getAnnotation(RegisteredReportContent.class);
-      if (annotation.produces().equals(contentClass)) {
+      ForReportContent annotation = factory.getClass().getAnnotation(ForReportContent.class);
+      if (annotation.content().equals(contentClass)) {
         return (ReportContentFactory<C>) factory;
       }
     }
     throw new RuntimeException("Could not find content for " + contentClass.getName());
   }
 
-  private <C extends SubContent> Collection<ReportContentFactory> instantiateFactories(Class<C> contentClass) {
+  private Collection<ReportContentFactory> instantiateFactories(Class contentClass) {
     try {
-      return objectFactory.instantiateAll(RegisteredReportContent.class, resources);
+      return objectFactory.instantiateAllImplementers(ReportContentFactory.class, resources);
     } catch (InitializationException e) {
       throw new RuntimeException("Could not create content for " + contentClass.getName(), e);
     }

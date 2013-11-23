@@ -1,11 +1,11 @@
 package net.sf.anathema.hero.combos.sheet.content;
 
-import net.sf.anathema.hero.sheet.pdf.content.RegisteredReportContent;
+import net.sf.anathema.hero.sheet.pdf.content.ForReportContent;
 import net.sf.anathema.hero.sheet.pdf.content.ReportContentFactory;
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
 import net.sf.anathema.framework.environment.Resources;
 
-@RegisteredReportContent(produces = ComboContent.class)
+@ForReportContent(content = ComboContent.class)
 public class ComboContentFactory implements ReportContentFactory<ComboContent> {
   private Resources resources;
 

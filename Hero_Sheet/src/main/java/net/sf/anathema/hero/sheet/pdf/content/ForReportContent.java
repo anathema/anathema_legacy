@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface RegisteredReportContent {
+public @interface ForReportContent {
   
-  Class<? extends SubContent> produces();
+  Class<? extends SubContent> content();
 }

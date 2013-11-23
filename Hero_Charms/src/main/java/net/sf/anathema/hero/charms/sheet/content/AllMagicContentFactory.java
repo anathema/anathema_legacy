@@ -1,11 +1,11 @@
 package net.sf.anathema.hero.charms.sheet.content;
 
-import net.sf.anathema.hero.sheet.pdf.content.RegisteredReportContent;
+import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.hero.sheet.pdf.content.ForReportContent;
 import net.sf.anathema.hero.sheet.pdf.content.ReportContentFactory;
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
-import net.sf.anathema.framework.environment.Resources;
 
-@RegisteredReportContent(produces = AllMagicContent.class)
+@ForReportContent(content = AllMagicContent.class)
 public class AllMagicContentFactory implements ReportContentFactory<AllMagicContent> {
 
   private Resources resources;
