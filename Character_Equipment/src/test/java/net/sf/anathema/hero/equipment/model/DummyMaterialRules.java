@@ -8,7 +8,7 @@ import net.sf.anathema.hero.utilities.ForCharacterType;
 import static net.sf.anathema.hero.equipment.model.ReflectionMaterialRulesTest.ID_TEST_TYPE;
 
 @DoNotInstantiateAutomatically
-@ForCharacterType(value = ID_TEST_TYPE)
+@ForCharacterType(ID_TEST_TYPE)
 public class DummyMaterialRules implements CharacterTypeMaterialRules{
 
   private MagicalMaterial material;

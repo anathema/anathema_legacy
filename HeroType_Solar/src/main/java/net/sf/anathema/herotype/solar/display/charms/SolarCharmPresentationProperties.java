@@ -6,7 +6,6 @@ import net.sf.anathema.hero.charms.display.presenter.AbstractCharmPresentationPr
 import net.sf.anathema.hero.utilities.ForCharacterType;
 import net.sf.anathema.herotype.solar.model.SolarCharacterType;
 
-@SuppressWarnings("UnusedDeclaration")
 @ForCharacterType("Solar")
 public class SolarCharmPresentationProperties extends AbstractCharmPresentationProperties {
 
