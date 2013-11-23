@@ -1,12 +1,11 @@
 package net.sf.anathema.character.main.magic.parser.charms.special.transcendence;
 
-import net.sf.anathema.character.main.magic.parser.charms.special.RegisteredSpecialCharmParser;
 import net.sf.anathema.character.main.magic.parser.charms.special.SpecialCharmParser;
 import net.sf.anathema.character.main.magic.parser.dto.special.SpecialCharmDto;
 import net.sf.anathema.character.main.magic.parser.dto.special.TranscendenceDto;
 import org.dom4j.Element;
 
-@RegisteredSpecialCharmParser
+@SuppressWarnings("UnusedDeclaration")
 public class TranscendenceParser implements SpecialCharmParser {
 
   private static final String TAG_TRANSCENDENCE = "transcendence";

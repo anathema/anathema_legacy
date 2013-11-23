@@ -4,6 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PainToleranceDto {
-  public int learnCount = 1;
-  public List levels = new ArrayList();
+  public int learnCount = 0;
+  public List<Integer> levels = new ArrayList<>();
 }

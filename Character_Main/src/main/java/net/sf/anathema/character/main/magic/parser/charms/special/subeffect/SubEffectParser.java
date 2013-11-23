@@ -1,13 +1,12 @@
 package net.sf.anathema.character.main.magic.parser.charms.special.subeffect;
 
-import net.sf.anathema.character.main.magic.parser.charms.special.RegisteredSpecialCharmParser;
 import net.sf.anathema.character.main.magic.parser.charms.special.SpecialCharmParser;
 import net.sf.anathema.character.main.magic.parser.dto.special.SpecialCharmDto;
 import net.sf.anathema.character.main.magic.parser.dto.special.SubEffectDto;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
-@RegisteredSpecialCharmParser
+@SuppressWarnings("UnusedDeclaration")
 public class SubEffectParser implements SpecialCharmParser {
 
   private static final String TAG_SUB_EFFECTS = "subeffects";

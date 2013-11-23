@@ -1,12 +1,11 @@
 package net.sf.anathema.character.main.magic.parser.charms.special.multi;
 
-import net.sf.anathema.character.main.magic.parser.charms.special.RegisteredSpecialCharmParser;
 import net.sf.anathema.character.main.magic.parser.charms.special.SpecialCharmParser;
 import net.sf.anathema.character.main.magic.parser.dto.special.MultiEffectDto;
 import net.sf.anathema.character.main.magic.parser.dto.special.SpecialCharmDto;
 import org.dom4j.Element;
 
-@RegisteredSpecialCharmParser
+@SuppressWarnings("UnusedDeclaration")
 public class MultiEffectParser implements SpecialCharmParser {
 
   private static final String TAG_MULTI_EFFECT = "multiEffects";

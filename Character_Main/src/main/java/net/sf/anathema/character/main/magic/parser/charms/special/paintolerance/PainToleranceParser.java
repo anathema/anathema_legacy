@@ -1,6 +1,5 @@
 package net.sf.anathema.character.main.magic.parser.charms.special.paintolerance;
 
-import net.sf.anathema.character.main.magic.parser.charms.special.RegisteredSpecialCharmParser;
 import net.sf.anathema.character.main.magic.parser.charms.special.SpecialCharmParser;
 import net.sf.anathema.character.main.magic.parser.dto.special.PainToleranceDto;
 import net.sf.anathema.character.main.magic.parser.dto.special.SpecialCharmDto;
@@ -8,7 +7,7 @@ import org.dom4j.Element;
 
 import java.util.List;
 
-@RegisteredSpecialCharmParser
+@SuppressWarnings("UnusedDeclaration")
 public class PainToleranceParser implements SpecialCharmParser {
 
   private static final String ATTRIB_VALUE = "value";
@@ -21,6 +20,7 @@ public class PainToleranceParser implements SpecialCharmParser {
     overallDto.painTolerance = createPaintToleranceDto(painToleranceElement);
   }
 
+  @SuppressWarnings("unchecked")
   private PainToleranceDto createPaintToleranceDto(Element painToleranceElement) {
     PainToleranceDto dto = new PainToleranceDto();
     List<Element> elements = painToleranceElement.elements(TAG_LEVEL);

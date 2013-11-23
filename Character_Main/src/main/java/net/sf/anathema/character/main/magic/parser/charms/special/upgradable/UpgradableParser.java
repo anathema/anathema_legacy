@@ -1,20 +1,12 @@
 package net.sf.anathema.character.main.magic.parser.charms.special.upgradable;
 
-import net.sf.anathema.character.main.magic.parser.charms.special.RegisteredSpecialCharmParser;
 import net.sf.anathema.character.main.magic.parser.charms.special.SpecialCharmParser;
 import net.sf.anathema.character.main.magic.parser.dto.special.SpecialCharmDto;
-import net.sf.anathema.character.main.magic.parser.dto.special.TranscendenceDto;
 import net.sf.anathema.character.main.magic.parser.dto.special.UpgradableDto;
-import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-@RegisteredSpecialCharmParser
+@SuppressWarnings("UnusedDeclaration")
 public class UpgradableParser implements SpecialCharmParser {
 
   private static final String TAG_UPGRADABLE = "upgradeable";

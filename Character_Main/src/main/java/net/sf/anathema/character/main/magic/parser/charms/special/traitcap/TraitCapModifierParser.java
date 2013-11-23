@@ -1,12 +1,11 @@
 package net.sf.anathema.character.main.magic.parser.charms.special.traitcap;
 
-import net.sf.anathema.character.main.magic.parser.charms.special.RegisteredSpecialCharmParser;
 import net.sf.anathema.character.main.magic.parser.charms.special.SpecialCharmParser;
 import net.sf.anathema.character.main.magic.parser.dto.special.SpecialCharmDto;
 import net.sf.anathema.character.main.magic.parser.dto.special.TraitCapModifierDto;
 import org.dom4j.Element;
 
-@RegisteredSpecialCharmParser
+@SuppressWarnings("UnusedDeclaration")
 public class TraitCapModifierParser implements SpecialCharmParser {
 
   private static final String TAG_TRAIT_CAP_MODIFIER = "traitCapModifier";

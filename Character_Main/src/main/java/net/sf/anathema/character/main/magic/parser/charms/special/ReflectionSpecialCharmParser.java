@@ -12,7 +12,7 @@ public class ReflectionSpecialCharmParser {
   private final List<SpecialCharmParser> parsers = new ArrayList<>();
 
   public ReflectionSpecialCharmParser(ObjectFactory objectFactory) {
-    this.parsers.addAll(objectFactory.<SpecialCharmParser>instantiateAll(RegisteredSpecialCharmParser.class));
+    this.parsers.addAll(objectFactory.instantiateAllImplementers(SpecialCharmParser.class));
   }
 
   public SpecialCharmDto readCharmDto(Element charmElement, String id) {

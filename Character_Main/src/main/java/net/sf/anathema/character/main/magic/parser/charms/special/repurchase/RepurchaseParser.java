@@ -1,6 +1,5 @@
 package net.sf.anathema.character.main.magic.parser.charms.special.repurchase;
 
-import net.sf.anathema.character.main.magic.parser.charms.special.RegisteredSpecialCharmParser;
 import net.sf.anathema.character.main.magic.parser.charms.special.SpecialCharmParser;
 import net.sf.anathema.character.main.magic.parser.dto.special.RepurchaseDto;
 import net.sf.anathema.character.main.magic.parser.dto.special.RequirementDto;
@@ -13,7 +12,7 @@ import net.sf.anathema.character.main.traits.EssenceTemplate;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
-@RegisteredSpecialCharmParser
+@SuppressWarnings("UnusedDeclaration")
 public class RepurchaseParser implements SpecialCharmParser {
 
   private static final String TAG_REPURCHASES = "repurchases";

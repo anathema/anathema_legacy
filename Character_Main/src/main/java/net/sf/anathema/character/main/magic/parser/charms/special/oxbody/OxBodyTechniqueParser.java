@@ -1,6 +1,5 @@
 package net.sf.anathema.character.main.magic.parser.charms.special.oxbody;
 
-import net.sf.anathema.character.main.magic.parser.charms.special.RegisteredSpecialCharmParser;
 import net.sf.anathema.character.main.magic.parser.charms.special.SpecialCharmParser;
 import net.sf.anathema.character.main.magic.parser.dto.special.OxBodyPickDto;
 import net.sf.anathema.character.main.magic.parser.dto.special.OxBodyTechniqueDto;
@@ -9,7 +8,7 @@ import org.dom4j.Element;
 
 import java.util.Arrays;
 
-@RegisteredSpecialCharmParser
+@SuppressWarnings("UnusedDeclaration")
 public class OxBodyTechniqueParser implements SpecialCharmParser {
 
   private static final String TAG_OX_BODY_CHARM = "oxbody";

@@ -16,6 +16,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
+import static com.google.common.collect.Collections2.filter;
 import static java.text.MessageFormat.format;
 import static org.apache.commons.lang3.reflect.ConstructorUtils.invokeConstructor;
 
@@ -52,7 +53,7 @@ public class ReflectionObjectFactory implements ObjectFactory {
   }
 
   private <T> Collection<Class<? extends T>> filterBlackListedClasses(Set<Class<? extends T>> classes) {
-    return Collections2.filter(classes, new Predicate<Class<?>>() {
+    return filter(classes, new Predicate<Class<?>>() {
       @Override
       public boolean apply(Class<?> input) {
         return !input.isAnnotationPresent(DoNotInstantiateAutomatically.class);
@@ -61,7 +62,7 @@ public class ReflectionObjectFactory implements ObjectFactory {
   }
 
   private <T> Collection<Class<? extends T>> filterAbstractClasses(Collection<Class<? extends T>> classes) {
-    return Collections2.filter(classes, new Predicate<Class<?>>() {
+    return filter(classes, new Predicate<Class<?>>() {
       @Override
       public boolean apply(Class<?> input) {
         return !Modifier.isAbstract(input.getModifiers());
