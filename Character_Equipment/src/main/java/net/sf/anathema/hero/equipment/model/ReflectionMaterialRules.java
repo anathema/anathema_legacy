@@ -1,10 +1,10 @@
 package net.sf.anathema.hero.equipment.model;
 
 import com.google.common.base.Functions;
-import net.sf.anathema.hero.equipment.sheet.content.stats.ArtifactAttuneType;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.equipment.core.MagicalMaterial;
 import net.sf.anathema.framework.environment.ObjectFactory;
+import net.sf.anathema.hero.equipment.sheet.content.stats.ArtifactAttuneType;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -15,9 +15,9 @@ public class ReflectionMaterialRules implements MaterialRules {
   private final Map<String, CharacterTypeMaterialRules> rulesByCharacterType = new HashMap<>();
 
   public ReflectionMaterialRules(ObjectFactory objectFactory) {
-    Collection<CharacterTypeMaterialRules> allRules = objectFactory.instantiateAll(MaterialRulesDefinition.class);
+    Collection<CharacterTypeMaterialRules> allRules = objectFactory.instantiateAllImplementers(CharacterTypeMaterialRules.class);
     for (CharacterTypeMaterialRules rules : allRules) {
-      String applicableType = rules.getClass().getAnnotation(MaterialRulesDefinition.class).characterType();
+      String applicableType = rules.getClass().getAnnotation(ForCharacterType.class).characterType();
       rulesByCharacterType.put(applicableType, rules);
     }
   }
