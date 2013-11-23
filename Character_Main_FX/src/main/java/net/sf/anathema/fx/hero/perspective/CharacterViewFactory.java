@@ -29,14 +29,13 @@ public class CharacterViewFactory {
     this.applicationModel = applicationModel;
   }
 
-  public NodeHolder createView(net.sf.anathema.character.main.Character character) {
-    Hero hero = character;
+  public NodeHolder createView(net.sf.anathema.character.main.Character hero) {
     SubViewRegistry viewFactory = new SubViewMap(environment);
     Stylesheet[] stylesheets = createStylesheets(hero);
     TaskedCharacterView characterView = new TaskedCharacterView(viewFactory, stylesheets);
     new CharacterPresenter(hero, characterView, environment, applicationModel).initPresentation();
     initOverviewPresentation(hero, characterView, environment);
-    character.getChangeManagement().setClean();
+    hero.getChangeManagement().setClean();
     return characterView;
   }
 

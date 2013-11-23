@@ -6,11 +6,11 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ObjectFactoryMap<FACTORYTYPE> {
+public class ReflectionFactoryMap<FACTORYTYPE> {
 
   private final Map<Class, FACTORYTYPE> factories = new HashMap<>();
 
-  public ObjectFactoryMap(ObjectFactory objectFactory, Class<FACTORYTYPE> factoryType, Object... parameters) {
+  public ReflectionFactoryMap(ObjectFactory objectFactory, Class<FACTORYTYPE> factoryType, Object... parameters) {
     Collection<FACTORYTYPE> discoveredFactories = objectFactory.instantiateAllImplementers(factoryType, parameters);
     for (FACTORYTYPE factory : discoveredFactories) {
       Class producedClass = factory.getClass().getAnnotation(Produces.class).value();

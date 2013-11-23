@@ -13,7 +13,7 @@ public class ObjectFactoryMapTest {
   @Test
   public void usesAllGivenParameters() throws Exception {
     ObjectFactory factory = mock(ObjectFactory.class);
-    new ObjectFactoryMap<>(factory, DummyTypeFactory.class, ADDITIONAL_PARAMETER).get(DummyType.class);
+    new ReflectionFactoryMap<>(factory, DummyTypeFactory.class, ADDITIONAL_PARAMETER).get(DummyType.class);
     verify(factory).instantiateAllImplementers(DummyTypeFactory.class, ADDITIONAL_PARAMETER);
   }
 }

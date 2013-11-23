@@ -2,14 +2,14 @@ package net.sf.anathema.hero.sheet.pdf.content;
 
 import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.framework.environment.Resources;
-import net.sf.anathema.framework.util.ObjectFactoryMap;
+import net.sf.anathema.framework.util.ReflectionFactoryMap;
 
 public class ReportContentRegistry {
 
-  private final ObjectFactoryMap<ReportContentFactory> map;
+  private final ReflectionFactoryMap<ReportContentFactory> map;
 
   public ReportContentRegistry(ObjectFactory objectFactory, Resources resources) {
-    this.map = new ObjectFactoryMap<>(objectFactory, ReportContentFactory.class, resources);
+    this.map = new ReflectionFactoryMap<>(objectFactory, ReportContentFactory.class, resources);
   }
 
   @SuppressWarnings("unchecked")
