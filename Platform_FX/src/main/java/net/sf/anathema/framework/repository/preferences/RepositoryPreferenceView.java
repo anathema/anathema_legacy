@@ -4,7 +4,6 @@ import javafx.scene.Node;
 import javafx.stage.DirectoryChooser;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.framework.preferences.elements.PreferenceView;
-import net.sf.anathema.framework.preferences.elements.RegisteredPreferenceView;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
@@ -18,12 +17,10 @@ import org.tbee.javafx.scene.layout.MigPane;
 import java.io.File;
 import java.nio.file.Path;
 
-@RegisteredPreferenceView
 public class RepositoryPreferenceView implements PreferenceView, NodeHolder {
 
   private final MigPane pane = new MigPane(LayoutUtils.fillWithoutInsets());
   private final Announcer<ObjectValueListener> announcer = Announcer.to(ObjectValueListener.class);
-  private ObjectValueListener<Path> objectValueListener;
 
   public ITextView addRepositoryDisplay(String label) {
     FxTextView view = FxTextView.SingleLine(label);
@@ -54,5 +51,4 @@ public class RepositoryPreferenceView implements PreferenceView, NodeHolder {
   public void whenRepositoryChangeIsRequested(ObjectValueListener<Path> objectValueListener) {
     announcer.addListener(objectValueListener);
   }
-  //button: Default
 }

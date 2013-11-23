@@ -1,8 +1,7 @@
 package net.sf.anathema.framework.preferences.perspective;
 
-import net.sf.anathema.framework.preferences.elements.PreferenceView;
-import net.sf.anathema.framework.preferences.elements.RegisteredPreferenceView;
 import net.sf.anathema.framework.environment.ObjectFactory;
+import net.sf.anathema.framework.preferences.elements.PreferenceView;
 import net.sf.anathema.platform.fx.PerspectivePane;
 
 import java.util.ArrayList;
@@ -14,7 +13,7 @@ public class PreferencesSystemView {
   public final FxPreferencesView preferencesView;
 
   public PreferencesSystemView(ObjectFactory objectFactory) {
-    Collection<PreferenceView> views = objectFactory.instantiateAll(RegisteredPreferenceView.class);
+    Collection<PreferenceView> views = objectFactory.instantiateAllImplementers(PreferenceView.class);
     this.preferencesView = new FxPreferencesView();
     this.preferencesNavigation = new FxPreferencesNavigation(new ArrayList<>(views), preferencesView);
     perspectivePane.setNavigationComponent(preferencesNavigation.getNode());

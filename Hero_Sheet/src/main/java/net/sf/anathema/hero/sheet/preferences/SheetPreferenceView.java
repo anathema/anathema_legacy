@@ -2,7 +2,6 @@ package net.sf.anathema.hero.sheet.preferences;
 
 import javafx.scene.Node;
 import net.sf.anathema.framework.preferences.elements.PreferenceView;
-import net.sf.anathema.framework.preferences.elements.RegisteredPreferenceView;
 import net.sf.anathema.framework.reporting.pdf.PageSize;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
@@ -11,7 +10,6 @@ import net.sf.anathema.platform.fx.NodeHolder;
 import net.sf.anathema.platform.fx.selection.ComboBoxSelectionView;
 import org.tbee.javafx.scene.layout.MigPane;
 
-@RegisteredPreferenceView
 public class SheetPreferenceView implements PreferenceView, NodeHolder {
   private final MigPane pane = new MigPane(LayoutUtils.fillWithoutInsets());
 
