@@ -8,13 +8,12 @@ import net.sf.anathema.hero.concept.HeroConcept;
 import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.hero.health.HealthModel;
 import net.sf.anathema.hero.initialization.SimpleModelTreeEntry;
-import net.sf.anathema.hero.model.HeroModelAutoCollector;
 import net.sf.anathema.hero.model.HeroModelFactory;
 import net.sf.anathema.hero.spiritual.SpiritualTraitModel;
 import net.sf.anathema.hero.template.TemplateFactory;
 import net.sf.anathema.hero.traits.TraitModel;
 
-@HeroModelAutoCollector
+@SuppressWarnings("UnusedDeclaration")
 public class SpellsModelFactory extends SimpleModelTreeEntry implements HeroModelFactory {
 
   public SpellsModelFactory() {
@@ -22,6 +21,7 @@ public class SpellsModelFactory extends SimpleModelTreeEntry implements HeroMode
             HeroConcept.ID, HealthModel.ID, MagicPointsModel.ID);
   }
 
+  @SuppressWarnings("unchecked")
   @Override
   public SpellsModel create(TemplateFactory templateFactory, String templateId) {
     return new SpellsModelImpl();

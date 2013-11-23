@@ -1,5 +1,6 @@
 package net.sf.anathema.hero.initialization;
 
+import net.sf.anathema.framework.environment.dependencies.DoNotInstantiateAutomatically;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.hero.model.HeroModelFactory;
 import net.sf.anathema.hero.template.TemplateFactory;
@@ -7,6 +8,7 @@ import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;
 
+@DoNotInstantiateAutomatically
 public class DummyModelFactory implements HeroModelFactory {
   private final Identifier id;
   private final ArrayList<Identifier> requirements = new ArrayList<>();
