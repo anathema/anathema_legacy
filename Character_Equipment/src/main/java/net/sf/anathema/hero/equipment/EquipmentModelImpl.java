@@ -80,7 +80,7 @@ public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentMo
     EquipmentDirectAccess access = new EquipmentDirectAccess(dataBaseDirectory);
     ObjectFactory objectFactory = environment.getObjectFactory();
     MaterialRules materialRules = new ReflectionMaterialRules(objectFactory);
-    NaturalWeaponsMap naturalWeaponsMap = new NaturalWeaponsMapImpl(environment.getCharacterTypes(), environment.getObjectFactory());
+    NaturalWeaponsMap naturalWeaponsMap = new ReflectionNaturalWeaponsMap(environment.getCharacterTypes(), environment.getObjectFactory());
     CharacterType characterType = hero.getTemplate().getTemplateType().getCharacterType();
     Trait stamina = TraitModelFetcher.fetch(hero).getTrait(AttributeType.Stamina);
     this.naturalArmor = new DefaultNaturalSoak(stamina, characterType);
