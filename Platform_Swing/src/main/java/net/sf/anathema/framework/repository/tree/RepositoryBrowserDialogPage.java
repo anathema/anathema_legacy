@@ -5,8 +5,8 @@ import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.framework.module.ItemTypePresentationFactory;
 import net.sf.anathema.framework.presenter.view.IItemTypeViewProperties;
+import net.sf.anathema.initialization.ForItemType;
 import net.sf.anathema.initialization.ItemTypeCollection;
-import net.sf.anathema.initialization.RegisteredItemTypePresentation;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.AbstractDialogPage;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.IBasicMessage;
@@ -46,11 +46,11 @@ public class RepositoryBrowserDialogPage extends AbstractDialogPage {
 
 
   private ItemTypePropertiesMap registerItemTypePresentations(ItemTypeCollection itemTypeCollection) {
-    Collection<ItemTypePresentationFactory> presentationFactories = environment.instantiateAll(RegisteredItemTypePresentation.class);
+    Collection<ItemTypePresentationFactory> presentationFactories = environment.instantiateAllImplementers(ItemTypePresentationFactory.class);
     ItemTypePropertiesMap map = new ItemTypePropertiesMap();
     for (ItemTypePresentationFactory factory : presentationFactories) {
       IItemTypeViewProperties properties = factory.createItemTypeCreationProperties(model, environment);
-      String itemType = factory.getClass().getAnnotation(RegisteredItemTypePresentation.class).itemType();
+      String itemType = factory.getClass().getAnnotation(ForItemType.class).value();
       map.put(itemTypeCollection.getById(itemType), properties);
     }
     return map;
