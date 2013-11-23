@@ -22,6 +22,6 @@ public class CharacterSpecificsMap<TYPE> {
   }
 
   public TYPE getForCharacterType(CharacterType type) {
-    return Functions.<String, TYPE>forMap(objectsByCharacterType, defaultValue).apply(type.getId());
+    return Functions.forMap(objectsByCharacterType, defaultValue).apply(type.getId());
   }
 }
