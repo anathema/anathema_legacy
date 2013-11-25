@@ -67,6 +67,25 @@ public class ReflectionObjectFactoryTest {
   }
 
   @Test
+  public void returnsTheFirstClassWhenOnlyOneIsRequested() {
+    Set<Class<? extends DummyInterface>> implementingClasses = new LinkedHashSet<>();
+    implementingClasses.add(AnnotatedDummy.class);
+    when(interfaceFinder.findAll(DummyInterface.class)).thenReturn(implementingClasses);
+    DummyInterface result = factory.instantiateOnlyImplementer(DummyInterface.class);
+    assertThat(result, is(instanceOf(AnnotatedDummy.class)));
+  }
+
+  @Test (expected = IllegalArgumentException.class)
+  public void reportsErrorWhenMultipleClassesAreRegisteredButOnlyOneIsExpected() {
+    Set<Class<? extends DummyInterface>> implementingClasses = new LinkedHashSet<>();
+    implementingClasses.add(AnnotatedDummy.class);
+    implementingClasses.add(AnotherAnnotatedDummy.class);
+    when(interfaceFinder.findAll(DummyInterface.class)).thenReturn(implementingClasses);
+    DummyInterface result = factory.instantiateOnlyImplementer(DummyInterface.class);
+    assertThat(result, is(instanceOf(AnnotatedDummy.class)));
+  }
+
+  @Test
   public void ignoresBlackListedImplementors() {
     Set<Class<? extends DummyInterface>> implementingClasses = new LinkedHashSet<>();
     implementingClasses.add(IgnoredDummy.class);

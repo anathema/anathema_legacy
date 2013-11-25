@@ -66,6 +66,11 @@ public class ApplicationEnvironment implements Environment {
   }
 
   @Override
+  public <T> T instantiateOnlyImplementer(Class<T> interfaceClass, Object... parameter) {
+    return objectFactory.instantiateOnlyImplementer(interfaceClass, parameter);
+  }
+
+  @Override
   public Set<ResourceFile> getResourcesMatching(String namePattern) {
     return loader.getResourcesMatching(namePattern);
   }
