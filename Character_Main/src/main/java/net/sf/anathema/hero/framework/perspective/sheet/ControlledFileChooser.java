@@ -1,33 +1,26 @@
 package net.sf.anathema.hero.framework.perspective.sheet;
 
-import net.sf.anathema.framework.environment.Environment;
+import net.sf.anathema.framework.environment.ObjectFactory;
 
 import java.nio.file.Path;
-import java.util.Collection;
 
 public class ControlledFileChooser implements FileChooser {
 
-  private final Environment environment;
+  private final ObjectFactory factory;
   private final FileChooserConfiguration configuration;
 
-  public ControlledFileChooser(Environment environment, FileChooserConfiguration configuration) {
-    this.environment = environment;
+  public ControlledFileChooser(ObjectFactory factory, FileChooserConfiguration configuration) {
+    this.factory = factory;
     this.configuration = configuration;
   }
 
   @Override
   public Path getPrintFile() {
-    SingleFileChooser chooser = createFileChooser();
+    SingleFileChooser chooser = factory.instantiateOnlyImplementer(SingleFileChooser.class);
     Path selectedFile = chooser.selectSaveFile(configuration);
     if (selectedFile == null) {
       return null;
     }
     return selectedFile;
-  }
-
-  private SingleFileChooser createFileChooser() {
-    //TODO Call "instantiateSingle(RegisteredFileChooser.class)" instead.
-    Collection<SingleFileChooser> choosers = environment.instantiateAll(RegisteredFileChooser.class);
-    return choosers.iterator().next();
   }
 }
