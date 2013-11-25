@@ -26,6 +26,7 @@ public class ControlledFileChooser implements FileChooser {
   }
 
   private SingleFileChooser createFileChooser() {
+    //TODO Call "instantiateSingle(RegisteredFileChooser.class)" instead.
     Collection<SingleFileChooser> choosers = environment.instantiateAll(RegisteredFileChooser.class);
     return choosers.iterator().next();
   }

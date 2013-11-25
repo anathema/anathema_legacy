@@ -1,21 +1,21 @@
 package net.sf.anathema.hero.sheet.pdf.encoder.boxes;
 
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.framework.environment.dependencies.DoNotInstantiateAutomatically;
 import net.sf.anathema.hero.sheet.pdf.content.BasicContent;
-import net.sf.anathema.framework.environment.Resources;
-import net.sf.anathema.lib.util.SimpleIdentifier;
 
 @DoNotInstantiateAutomatically
-public class NullEncoderFactory extends SimpleIdentifier implements EncoderFactory {
-  public static final NullBoxContentEncoder NULL_ENCODER = new NullBoxContentEncoder("Unknown");
+public class DummyEncoderFactory implements EncoderFactory{
 
-  public NullEncoderFactory(String id) {
-    super(id);
+  private String id;
+
+  public DummyEncoderFactory(String id) {
+    this.id = id;
   }
 
   @Override
   public ContentEncoder create(Resources resources, BasicContent content) {
-    return NULL_ENCODER;
+    throw new UnsupportedOperationException();
   }
 
   @Override
@@ -25,6 +25,11 @@ public class NullEncoderFactory extends SimpleIdentifier implements EncoderFacto
 
   @Override
   public float getPreferredHeight(EncodingMetrics metrics, float width) {
-    return 30;
+    return 0; 
+  }
+
+  @Override
+  public String getId() {
+    return id;
   }
 }

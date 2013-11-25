@@ -1,13 +1,12 @@
 package net.sf.anathema.hero.abilities.sheet.encoder;
 
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.sheet.pdf.content.BasicContent;
 import net.sf.anathema.hero.sheet.pdf.encoder.EncoderIds;
 import net.sf.anathema.hero.sheet.pdf.encoder.boxes.ContentEncoder;
 import net.sf.anathema.hero.sheet.pdf.encoder.boxes.GlobalEncoderFactory;
-import net.sf.anathema.hero.sheet.pdf.encoder.boxes.RegisteredEncoderFactory;
-import net.sf.anathema.framework.environment.Resources;
 
-@RegisteredEncoderFactory
+@SuppressWarnings("UnusedDeclaration")
 public class ExtendedSpecialtiesEncoderFactory extends GlobalEncoderFactory {
 
   public ExtendedSpecialtiesEncoderFactory() {
