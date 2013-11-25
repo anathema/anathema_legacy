@@ -13,5 +13,5 @@ public interface ObjectFactory {
 
   <T> Collection<T> instantiateAllImplementers(Class<T> interfaceClass, Object... parameter);
 
-  <T> T instantiateOnlyImplementer(Class<T> dummyInterfaceClass, Object... parameter);
+  <T> T instantiateOnlyImplementer(Class<T> interfaceClass, Object... parameter);
 }

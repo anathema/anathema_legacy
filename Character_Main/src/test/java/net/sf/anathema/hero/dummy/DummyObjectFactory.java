@@ -24,7 +24,7 @@ public class DummyObjectFactory implements ObjectFactory {
   }
 
   @Override
-  public <T> T instantiateOnlyImplementer(Class<T> dummyInterfaceClass, Object... parameter) {
+  public <T> T instantiateOnlyImplementer(Class<T> interfaceClass, Object... parameter) {
     throw new UnsupportedOperationException();
   }
 }

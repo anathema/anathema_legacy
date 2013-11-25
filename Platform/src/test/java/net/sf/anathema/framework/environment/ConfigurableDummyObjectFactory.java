@@ -33,8 +33,8 @@ public class ConfigurableDummyObjectFactory implements ObjectFactory {
   }
 
   @Override
-  public <T> T instantiateOnlyImplementer(Class<T> dummyInterfaceClass, Object... parameter) {
-    Collection<T> collection = instantiateAllImplementers(dummyInterfaceClass, parameter);
+  public <T> T instantiateOnlyImplementer(Class<T> interfaceClass, Object... parameter) {
+    Collection<T> collection = instantiateAllImplementers(interfaceClass, parameter);
     return Iterables.getOnlyElement(collection);
   }
 
