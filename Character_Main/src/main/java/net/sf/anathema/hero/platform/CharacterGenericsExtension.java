@@ -4,12 +4,12 @@ import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.framework.HeroEnvironmentExtension;
 import net.sf.anathema.hero.framework.HeroEnvironmentInitializer;
-import net.sf.anathema.initialization.Extension;
+import net.sf.anathema.initialization.Id;
 import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.framework.environment.ResourceLoader;
 import net.sf.anathema.initialization.repository.DataFileProvider;
 
-@Extension(id = HeroEnvironmentExtension.ID)
+@Id(HeroEnvironmentExtension.ID)
 public class CharacterGenericsExtension implements HeroEnvironmentExtension, IAnathemaExtension {
 
   private HeroEnvironment environment;

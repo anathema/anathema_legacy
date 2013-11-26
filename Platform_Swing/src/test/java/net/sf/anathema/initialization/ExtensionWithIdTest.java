@@ -8,6 +8,8 @@ import net.sf.anathema.framework.repository.Repository;
 import net.sf.anathema.lib.registry.Registry;
 import org.junit.Test;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -25,5 +27,15 @@ public class ExtensionWithIdTest {
     when(model.getExtensionPointRegistry()).thenReturn(new Registry<String, IAnathemaExtension>());
     new ExtensionWithId("id", extension).register(model, environment);
     verify(extension).initialize(repository, environment, environment);
+  }
+
+  @Test
+  public void equalsExtensionsWithIdenticalIdsAndPayload() throws Exception {
+    assertThat(new ExtensionWithId("id", extension).equals(new ExtensionWithId("id", extension)), is(true));
+  }
+
+  @Test
+  public void hasSameHashCodeAsIdenticalElements() throws Exception {
+    assertThat(new ExtensionWithId("id", extension).hashCode(), is(new ExtensionWithId("id", extension).hashCode()));
   }
 }
