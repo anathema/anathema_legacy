@@ -1,5 +1,5 @@
 dependencies {
     compile project(':Platform_FX')
     compile project(':Platform_TreeFramework')
-    testCompile ext.testDependencies //includes JUnit etc.
+    testCompile testDependencies //includes JUnit etc.
 }

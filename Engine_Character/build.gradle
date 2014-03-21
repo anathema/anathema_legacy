@@ -4,9 +4,3 @@ dependencies {
     testCompile testDependencies
     testCompile integrationTestDependencies
 }
-
-apply from: "../gradle/cucumber.gradle"
-
-test {
-    exclude "**/integration/**"
-}

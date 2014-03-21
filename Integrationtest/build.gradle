@@ -13,9 +13,3 @@ dependencies {
 private boolean isRelevant(project) {
   return project.name != "Anathema" && project.name != "Integrationtest"
 }
-
-apply from: "../gradle/cucumber.gradle"
-
-test {
-    exclude "**"
-}
