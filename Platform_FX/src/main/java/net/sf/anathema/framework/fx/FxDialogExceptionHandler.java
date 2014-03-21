@@ -1,6 +1,5 @@
 package net.sf.anathema.framework.fx;
 
-//import fr.xmichel.javafx.dialog.Dialog;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Window;
@@ -44,12 +43,12 @@ public class FxDialogExceptionHandler implements ExceptionHandler {
       @Override
       public void run() {
         String title = getString("CentralExceptionHandling.ErrorOccured.Title");
-        /*Dialog.buildConfirmation(title, message).addYesButton(new EventHandler<ActionEvent>() {
+        Dialog.buildConfirmation(title, message).addYesButton(new EventHandler<ActionEvent>() {
           @Override
           public void handle(ActionEvent actionEvent) {
             System.exit(0);
           }
-        });*/
+        });
       }
     });
   }
@@ -59,7 +58,7 @@ public class FxDialogExceptionHandler implements ExceptionHandler {
       @Override
       public void run() {
         String title = getString("CentralExceptionHandling.ExceptionOccured.Title");
-        //Dialog.showThrowable(title, message, exception, stage);
+        Dialog.showThrowable(title, message, exception, stage);
       }
     });
   }
