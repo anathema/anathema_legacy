@@ -59,9 +59,7 @@ public class FxCharmView implements CharmView, NodeHolder {
 
   @Override
   public ObjectSelectionView<Identifier> addSelectionViewAndSizeItFor(String title, AgnosticUIConfiguration<Identifier> uiConfig, Identifier[] objects) {
-    ComboBoxSelectionView<Identifier> selectionView = addSelectionView(title, uiConfig);
-    selectionView.sizeComboboxFor(objects);
-    return selectionView;
+    return addSelectionView(title, uiConfig);
   }
 
   @Override
