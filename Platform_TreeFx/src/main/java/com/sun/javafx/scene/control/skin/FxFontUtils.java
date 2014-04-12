@@ -1,6 +1,7 @@
 package com.sun.javafx.scene.control.skin;
 
 import javafx.scene.text.Font;
+import javafx.scene.text.TextBoundsType;
 
 public class FxFontUtils {
 
@@ -9,6 +10,6 @@ public class FxFontUtils {
   }
 
   public static double calculateStringHeight(Font font, String text) {
-    return Utils.computeTextHeight(font, text, 0);
+    return Utils.computeTextHeight(font, text, 0, TextBoundsType.VISUAL);
   }
 }

@@ -1,21 +1,20 @@
 package net.sf.anathema.platform.fx.dot;
 
 import com.sun.javafx.Utils;
-import com.sun.javafx.scene.control.skin.SkinBase;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.SkinBase;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import jfxtras.labs.internal.scene.control.behavior.ListSpinnerBehavior;
-import jfxtras.labs.scene.control.ListSpinner;
+import jfxtras.scene.control.ListSpinner;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,7 +28,7 @@ import static javafx.scene.input.MouseEvent.MOUSE_RELEASED;
  * A heavily modified version of Jonathan Giles's RatingSkin from the ControlsFX project
  */
 @SuppressWarnings("UnusedDeclaration")
-public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>, ListSpinnerBehavior<T>> {
+public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>> {
 
   private static final String INVISIBLECONTAINER = "invisiblecontainer";
   private static final String RATING_PROPERTY = "RATING";
@@ -66,13 +65,13 @@ public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>, ListSpi
   };
 
   public DotSelectionSpinnerSkin(ListSpinner<T> control) {
-    super(control, new ListSpinnerBehavior<>(control));
-    getStyleClass().add(INVISIBLECONTAINER);
+    super(control);
+    control.getStyleClass().add(INVISIBLECONTAINER);
     createOuterContainer();
     createOverlay();
     createButtons();
     updateRating((Integer) getSkinnable().getValue());
-    registerChangeListener(control.valueProperty(), RATING_PROPERTY);
+    //((BehaviorSkinBase)this).getBehavior().registerChangeListener(control.valueProperty(), RATING_PROPERTY);
   }
 
   private void createOuterContainer() {
@@ -88,9 +87,8 @@ public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>, ListSpi
   }
 
 
-  @Override
+ // @Override
   protected void handleControlPropertyChanged(String p) {
-    super.handleControlPropertyChanged(p);
     if (p.equals(RATING_PROPERTY)) {
       updateRating();
     }

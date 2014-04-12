@@ -9,7 +9,6 @@ import javafx.scene.control.Label;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.lang.StringUtilities;
-import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.platform.fx.ConfigurableListCellFactory;
 import net.sf.anathema.platform.fx.FxObjectSelectionView;
 import net.sf.anathema.platform.fx.FxThreading;
@@ -82,8 +81,6 @@ public class ComboBoxSelectionView<V> implements FxObjectSelectionView<V> {
       @Override
       public void run() {
         comboBox.setItems(new ObservableListWrapper<>(Arrays.asList(objects)));
-        comboBox.show();
-        comboBox.hide();
       }
     });
   }
@@ -133,9 +130,5 @@ public class ComboBoxSelectionView<V> implements FxObjectSelectionView<V> {
   public void makeEditable() {
     waitForContent();
     comboBox.setEditable(true);
-  }
-
-  public void sizeComboboxFor(V[] objects) {
-    //To change body of created methods use File | Settings | File Templates.
   }
 }

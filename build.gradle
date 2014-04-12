@@ -1,5 +1,4 @@
 import org.apache.tools.ant.filters.FixCrLfFilter
-import org.apache.tools.ant.filters.ReplaceTokens
 
 ext.jreVersion = "1.7.0_21"
 ext.dependenciesDir = new File(buildDir, 'dependencies')
@@ -12,6 +11,9 @@ allprojects {
 
     repositories {
         mavenCentral()
+        maven {
+            url 'https://oss.sonatype.org/content/repositories/snapshots/'
+        }
         maven {
             url 'http://anathema.butatopanto.de:8081/maven/releases/'
         }
