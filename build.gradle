@@ -1,13 +1,13 @@
 import org.apache.tools.ant.filters.FixCrLfFilter
 
-ext.jreVersion = "1.7.0_21"
+ext.jreVersion = "1.8.0"
 ext.dependenciesDir = new File(buildDir, 'dependencies')
 ext.pluginsDir = new File(buildDir, 'plugins')
 ext.versionString = "${version_major}.${version_minor}.${version_revision}"
 
 allprojects {
     apply plugin: 'java'
-    sourceCompatibility = 1.7
+    sourceCompatibility = 1.8
 
     repositories {
         mavenCentral()
@@ -21,7 +21,7 @@ allprojects {
 }
 
 apply plugin: 'idea'
-idea { project { languageLevel = '1.7' } }
+idea { project { languageLevel = '1.8' } }
 
 subprojects {
     apply from: "../gradle/subprojectPresets.gradle"
