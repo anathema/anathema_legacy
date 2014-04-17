@@ -1,7 +1,6 @@
 package net.sf.anathema.hero.charms.display.view;
 
 import javafx.scene.Node;
-import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.hero.charms.display.special.BooleanSelectionSpecialNodeView;
@@ -10,7 +9,6 @@ import net.sf.anathema.hero.charms.display.special.ToggleButtonSpecialNodeView;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.util.Identifier;
-import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.platform.fx.NodeHolder;
 import net.sf.anathema.platform.fx.StyledTitledPane;
 import net.sf.anathema.platform.fx.selection.ComboBoxSelectionView;
@@ -33,7 +31,7 @@ public class FxCharmView implements CharmView, NodeHolder {
   private final AgnosticTreeView treeView = new AgnosticTreeView(new AgnosticPolygonPanel(viewComponent));
 
   public FxCharmView() {
-    content.add(selectionPanel, new CC().growX().push().minHeight("44"));
+    content.add(selectionPanel, new CC().growX().pushX().minHeight("44"));
     content.add(viewComponent.getNode(), new CC().grow().push());
   }
 
@@ -43,34 +41,21 @@ public class FxCharmView implements CharmView, NodeHolder {
   }
 
   @Override
-  public ComboBoxSelectionView<Identifier> addSelectionView(final String title, final AgnosticUIConfiguration<Identifier> uiConfig) {
+  public ComboBoxSelectionView<Identifier> addSelectionView(String title,
+                                                            AgnosticUIConfiguration<Identifier> uiConfig) {
     final BorderPane borderPane = new BorderPane();
     ComboBoxSelectionView<Identifier> selectionView = new ComboBoxSelectionView<>(title, uiConfig);
     borderPane.centerProperty().set(selectionView.getNode());
     final Node titledBorder = StyledTitledPane.Create(title, borderPane);
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        selectionPanel.add(titledBorder);
-      }
-    });
+    selectionPanel.add(titledBorder);
     return selectionView;
   }
 
   @Override
-  public ObjectSelectionView<Identifier> addSelectionViewAndSizeItFor(String title, AgnosticUIConfiguration<Identifier> uiConfig, Identifier[] objects) {
+  public ObjectSelectionView<Identifier> addSelectionViewAndSizeItFor(String title,
+                                                                      AgnosticUIConfiguration<Identifier> uiConfig,
+                                                                      Identifier[] objects) {
     return addSelectionView(title, uiConfig);
-  }
-
-  @Override
-  public void addCharmCascadeHelp(final String helpText) {
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        Label help = new Label(helpText);
-        selectionPanel.add(help, new CC().growX().pushX());
-      }
-    });
   }
 
   @Override
