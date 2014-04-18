@@ -1,6 +1,8 @@
 package net.sf.anathema.platform.fx.dot;
 
 import com.sun.javafx.Utils;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -31,7 +33,6 @@ import static javafx.scene.input.MouseEvent.MOUSE_RELEASED;
 public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>> {
 
   private static final String INVISIBLECONTAINER = "invisiblecontainer";
-  private static final String RATING_PROPERTY = "RATING";
   private static final String MAXIMUM_PROPERTY = "MAX";
 
   private StackPane outerContainer = new StackPane();
@@ -71,7 +72,12 @@ public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>> {
     createOverlay();
     createButtons();
     updateRating((Integer) getSkinnable().getValue());
-    //((BehaviorSkinBase)this).getBehavior().registerChangeListener(control.valueProperty(), RATING_PROPERTY);
+    control.valueProperty().addListener(new ChangeListener<T>() {
+      @Override
+      public void changed(ObservableValue<? extends T> observableValue, T t, T t2) {
+        updateRating();
+      }
+    });
   }
 
   private void createOuterContainer() {
@@ -84,14 +90,6 @@ public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>> {
     overlay.setStroke(Color.BLACK);
     overlay.setStrokeWidth(1);
     outerContainer.getChildren().add(overlay);
-  }
-
-
- // @Override
-  protected void handleControlPropertyChanged(String p) {
-    if (p.equals(RATING_PROPERTY)) {
-      updateRating();
-    }
   }
 
   private void createButtons() {
