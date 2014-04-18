@@ -1,5 +1,5 @@
 dependencies {
-    compile 'com.miglayout:miglayout-swing:4.2'
+    compile 'com.miglayout:miglayout-swing:5.0-SNAPSHOT'
     compile project(':Platform')
     compile project(':Platform_FX')
     testCompile project(path: ':Platform', configuration: 'tests')
