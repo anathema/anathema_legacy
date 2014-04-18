@@ -1,43 +1,40 @@
 package net.sf.anathema.framework.repository.tree;
 
-import com.google.common.base.Function;
+import net.sf.anathema.framework.IApplicationModel;
+import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.item.IItemType;
+import net.sf.anathema.framework.module.ItemTypePresentationFactory;
+import net.sf.anathema.framework.presenter.view.IItemTypeViewProperties;
 import net.sf.anathema.framework.view.PrintNameFile;
-import net.sf.anathema.framework.environment.Resources;
-import net.sf.anathema.lib.util.TreeUtilities;
+import net.sf.anathema.initialization.ForItemType;
+import net.sf.anathema.initialization.ItemTypeCollection;
+import net.sf.anathema.lib.util.Closure;
 
-import javax.swing.JTree;
-import javax.swing.event.TreeSelectionEvent;
-import javax.swing.event.TreeSelectionListener;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.DefaultTreeModel;
-import javax.swing.tree.MutableTreeNode;
-import javax.swing.tree.TreeCellRenderer;
-import javax.swing.tree.TreeSelectionModel;
-
-import static net.sf.anathema.lib.lang.ArrayUtilities.transform;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 public class RepositoryTreePresenter {
 
-  private final DefaultMutableTreeNode root;
-  private final DefaultTreeModel treeModel;
+  private final Environment environment;
+  private final IApplicationModel model;
+  private final ItemTypeCollection itemTypeCollection;
   private final IRepositoryTreeModel repositoryModel;
   private final IRepositoryTreeView treeView;
-  private final TreeCellRenderer renderer;
+  private final String rootKey;
+  private final List<AgnosticTreeNode> typeNodes = new ArrayList<>();
 
   public RepositoryTreePresenter(
-          Resources resources,
-          IRepositoryTreeModel repositoryModel,
+          Environment environment,
+          IApplicationModel model, ItemTypeCollection itemTypeCollection, IRepositoryTreeModel repositoryModel,
           IRepositoryTreeView treeView,
-          TreeCellRenderer renderer,
           String rootKey) {
+    this.environment = environment;
+    this.model = model;
+    this.itemTypeCollection = itemTypeCollection;
     this.repositoryModel = repositoryModel;
     this.treeView = treeView;
-    this.renderer = renderer;
-    this.root = new DefaultMutableTreeNode(resources.getString(rootKey) + " ["
-            + repositoryModel.getRepositoryPath()
-            + "]", true);
-    this.treeModel = new DefaultTreeModel(root);
+    this.rootKey = rootKey;
     repositoryModel.addRepositoryTreeModelListener(new IRepositoryTreeModelListener() {
       @Override
       public void printNameFileAdded(PrintNameFile file) {
@@ -52,64 +49,65 @@ public class RepositoryTreePresenter {
   }
 
   public void initPresentation() {
-    for (IItemType type : repositoryModel.getAllItemTypes()) {
-      DefaultMutableTreeNode node = new DefaultMutableTreeNode(type);
-      treeModel.insertNodeInto(node, root, 0);
-      for (PrintNameFile file : repositoryModel.getPrintNameFiles(type)) {
-        addPrintNameFileToTree(file);
-      }
-    }
-    final JTree tree = treeView.addTree();
-    tree.setModel(treeModel);
-    tree.getSelectionModel().setSelectionMode(TreeSelectionModel.DISCONTIGUOUS_TREE_SELECTION);
-    tree.setCellRenderer(renderer);
-    tree.addTreeSelectionListener(new TreeSelectionListener() {
+    AgnosticTree tree = treeView.addAgnosticTree();
+    setUiConfiguration(tree);
+    tree.whenSelectionChangesDo(new Closure<Object[]>() {
       @Override
-      public void valueChanged(TreeSelectionEvent e) {
-        DefaultMutableTreeNode[] nodes = TreeUtilities.getSelectedHierachyNodes(tree);
-        if (nodes.length == 0) {
+      public void execute(Object[] value) {
+        if (value.length == 0) {
           repositoryModel.setSelectedObject(new Object[0]);
         } else {
-          repositoryModel.setSelectedObject(transform(
-                  nodes,
-                  Object.class,
-                  new Function<DefaultMutableTreeNode, Object>() {
-                    @Override
-                    public Object apply(DefaultMutableTreeNode input) {
-                      return input.getUserObject();
-                    }
-                  }));
+          repositoryModel.setSelectedObject(value);
         }
       }
     });
+    AgnosticTreeNode root = tree.createRootNode(environment.getString(rootKey) + " ["
+            + repositoryModel.getRepositoryPath()
+            + "]");
+    for (IItemType type : repositoryModel.getAllItemTypes()) {
+      AgnosticTreeNode typeNode = root.addChildNode(type);
+      typeNodes.add(typeNode);
+      for (PrintNameFile file : repositoryModel.getPrintNameFiles(type)) {
+        typeNode.addChildNode(file);
+      }
+    }
+  }
+
+  private void setUiConfiguration(AgnosticTree tree) {
+    ItemTypePropertiesMap propertiesMap = registerItemTypePresentations(itemTypeCollection);
+    ItemTreeUiConfiguration configuration = new ItemTreeUiConfiguration(environment, propertiesMap);
+    tree.setUiConfiguration(configuration);
+  }
+
+  private ItemTypePropertiesMap registerItemTypePresentations(ItemTypeCollection itemTypeCollection) {
+    Collection<ItemTypePresentationFactory> presentationFactories = environment.instantiateAllImplementers(ItemTypePresentationFactory.class);
+    ItemTypePropertiesMap map = new ItemTypePropertiesMap();
+    for (ItemTypePresentationFactory factory : presentationFactories) {
+      IItemTypeViewProperties properties = factory.createItemTypeCreationProperties(model, environment);
+      String itemType = factory.getClass().getAnnotation(ForItemType.class).value();
+      map.put(itemTypeCollection.getById(itemType), properties);
+    }
+    return map;
   }
 
   private void addPrintNameFileToTree(PrintNameFile file) {
-    for (int index = 0; index < root.getChildCount(); index++) {
-      DefaultMutableTreeNode node = (DefaultMutableTreeNode) root.getChildAt(index);
-      if (file.getItemType() == node.getUserObject()) {
-        treeModel.insertNodeInto(new DefaultMutableTreeNode(file, false), node, node.getChildCount());
+    for (AgnosticTreeNode typeNode : typeNodes) {
+      if (typeNode.getObject().equals(file.getItemType())) {
+        typeNode.addChildNode(file);
       }
     }
   }
 
   private void removePrintNameFileFromTree(PrintNameFile file) {
-    MutableTreeNode foundNode = null;
-    for (int typeIndex = 0; typeIndex < root.getChildCount(); typeIndex++) {
-      DefaultMutableTreeNode typeNode = (DefaultMutableTreeNode) root.getChildAt(typeIndex);
-      if (file.getItemType() == typeNode.getUserObject()) {
-        for (int fileIndex = 0; fileIndex < typeNode.getChildCount(); fileIndex++) {
-          DefaultMutableTreeNode fileNode = (DefaultMutableTreeNode) typeNode.getChildAt(fileIndex);
-          if (file == fileNode.getUserObject()) {
-            foundNode = fileNode;
-            break;
+    for (AgnosticTreeNode typeNode : typeNodes) {
+      if (typeNode.getObject().equals(file.getItemType())) {
+        for (AgnosticTreeNode childNode : typeNode.getChildren()) {
+          if (childNode.getObject().equals(file)) {
+            childNode.remove();
+            return;
           }
         }
-        break;
       }
-    }
-    if (foundNode != null) {
-      treeModel.removeNodeFromParent(foundNode);
     }
   }
 }

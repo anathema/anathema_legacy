@@ -4,12 +4,12 @@ import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.framework.fx.ExceptionIndicator;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.initialization.FxApplicationFrame;
+import net.sf.anathema.interaction.Command;
+import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ChangeListener;
-import net.sf.anathema.lib.gui.action.SmartAction;
-import net.sf.anathema.lib.gui.file.FileChoosingUtilities;
+import net.sf.anathema.lib.gui.file.Extension;
 import net.sf.anathema.lib.message.Message;
 
-import java.awt.Component;
 import java.io.IOException;
 import java.nio.file.Path;
 
@@ -17,14 +17,14 @@ public class RepositoryItemExportPresenter {
 
   private final Resources resources;
   private final IRepositoryTreeModel model;
-  private final RepositoryTreeView view;
+  private final IRepositoryTreeView view;
   private final AmountMessaging messaging;
   private final FileExporter fileExporter;
 
   public RepositoryItemExportPresenter(
           Resources resources,
           RepositoryTreeModel repositoryTreeModel,
-          RepositoryTreeView treeView,
+          IRepositoryTreeView treeView,
           AmountMessaging fileCountMessaging) {
     this.resources = resources;
     this.model = repositoryTreeModel;
@@ -34,13 +34,16 @@ public class RepositoryItemExportPresenter {
   }
 
   public void initPresentation() {
-    final SmartAction action = new SmartAction(resources.getString("AnathemaCore.Tools.RepositoryView.ExportName"),
-            new FileUi().getExportFileIcon()) {
-
+    Tool tool = view.addTool();
+    tool.setTooltip(resources.getString("AnathemaCore.Tools.RepositoryView.ExportToolTip"));
+    tool.setText(resources.getString("AnathemaCore.Tools.RepositoryView.ExportName"));
+    tool.setIcon(new FileUi().getExportFilePath());
+    tool.setCommand(new Command() {
       @Override
-      protected void execute(Component parentComponent) {
+      public void execute() {
         try {
-          Path saveFile = FileChoosingUtilities.selectSaveFile(parentComponent, "Export.zip");
+          String description = resources.getString("Filetype.all");
+          Path saveFile = view.showSaveFile("Export.zip", new Extension(description, "*.*"));
           if (saveFile == null) {
             return;
           }
@@ -51,15 +54,17 @@ public class RepositoryItemExportPresenter {
           ExceptionIndicator.indicate(resources, FxApplicationFrame.getOwner(), message);
         }
       }
-    };
-    action.setToolTipText(resources.getString("AnathemaCore.Tools.RepositoryView.ExportToolTip"));
-    view.addActionButton(action);
+    });
     model.addTreeSelectionChangeListener(new ChangeListener() {
       @Override
       public void changeOccurred() {
-        action.setEnabled(model.canSelectionBeDeleted());
+        if (model.canSelectionBeDeleted()) {
+          tool.enable();
+        } else {
+          tool.disable();
+        }
       }
     });
-    action.setEnabled(false);
+    tool.disable();
   }
 }

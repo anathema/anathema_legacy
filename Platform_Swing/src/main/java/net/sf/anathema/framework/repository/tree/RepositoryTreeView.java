@@ -1,38 +1,59 @@
 package net.sf.anathema.framework.repository.tree;
 
+import javafx.scene.Node;
+import javafx.scene.control.SelectionMode;
+import javafx.scene.control.TreeView;
 import net.miginfocom.layout.CC;
-import net.miginfocom.layout.LC;
-import net.miginfocom.swing.MigLayout;
+import net.sf.anathema.interaction.Tool;
+import net.sf.anathema.lib.gui.file.Extension;
+import net.sf.anathema.lib.gui.file.FileChoosingUtilities;
+import net.sf.anathema.lib.gui.layout.LayoutUtils;
+import net.sf.anathema.lib.gui.list.veto.Vetor;
+import net.sf.anathema.platform.tool.FxButtonTool;
+import org.tbee.javafx.scene.layout.MigPane;
 
-import javax.swing.Action;
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTree;
-
-import static javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER;
-import static javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED;
+import java.nio.file.Path;
 
 public class RepositoryTreeView implements IRepositoryTreeView {
-  private final JPanel panel = new JPanel(new MigLayout(new LC().wrapAfter(1).fill()));
-  private final JPanel buttonPanel = new JPanel(new MigLayout(new LC().fill()));
+  private final MigPane panel = new MigPane(LayoutUtils.fillWithoutInsets().wrapAfter(1));
+  private final MigPane buttonPanel = new MigPane(LayoutUtils.fillWithoutInsets());
 
-  @Override
-  public JTree addTree() {
-    JTree tree = new JTree();
-    panel.add(new JScrollPane(tree, VERTICAL_SCROLLBAR_AS_NEEDED, HORIZONTAL_SCROLLBAR_NEVER), new CC().grow().push());
-    return tree;
+  public RepositoryTreeView() {
+    panel.add(buttonPanel, new CC().pushX().growX());
   }
 
   @Override
-  public void addActionButton(Action action) {
-    buttonPanel.add(new JButton(action), new CC().growX());
+  public Vetor createVetor(String message, String title) {
+    return new FxVetor(title, message);
   }
 
   @Override
-  public JComponent getComponent() {
-    panel.add(buttonPanel);
+  public Tool addTool() {
+    FxButtonTool tool = FxButtonTool.ForAnyPurpose();
+    buttonPanel.add(tool.getNode(), new CC().grow());
+    return tool;
+  }
+
+  @Override
+  public Path showSaveFile(String recommendedFileName, Extension defaultExtension) {
+    return FileChoosingUtilities.selectSaveFile(panel.getScene().getWindow(), recommendedFileName, defaultExtension);
+  }
+
+  @Override
+  public Path showLoadFile(Extension extension) {
+    return FileChoosingUtilities.chooseFile(panel.getScene().getWindow(), extension);
+  }
+
+  @Override
+  public AgnosticTree addAgnosticTree() {
+    TreeView<Object> treeView = new TreeView<>();
+    treeView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+    treeView.setPrefHeight(300);
+    panel.add(treeView, new CC().grow().push());
+    return new FxTree(treeView);
+  }
+
+  public Node getNode() {
     return panel;
   }
 }

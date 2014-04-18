@@ -8,12 +8,12 @@ import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.RepositoryFileAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.initialization.FxApplicationFrame;
+import net.sf.anathema.interaction.Command;
+import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ChangeListener;
-import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.message.MessageType;
 
-import java.awt.Component;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -34,11 +34,13 @@ public class RepositoryItemDuplicationPresenter {
   }
 
   public void initPresentation() {
-    final SmartAction action = new SmartAction(resources.getString("AnathemaCore.Tools.RepositoryView.DuplicateName"),
-            new FileUi().getDuplicateFileIcon()) {
-
+    Tool tool = view.addTool();
+    tool.setTooltip(resources.getString("AnathemaCore.Tools.RepositoryView.DuplicateToolTip"));
+    tool.setText(resources.getString("AnathemaCore.Tools.RepositoryView.DuplicateName"));
+    tool.setIcon(new FileUi().getDuplicateFilePath());
+    tool.setCommand(new Command() {
       @Override
-      protected void execute(Component parentComponent) {
+      public void execute() {
         try {
           PrintNameFile[] printNameFiles = model.getPrintNameFilesInSelection();
           for (PrintNameFile printNameFile : printNameFiles) {
@@ -63,15 +65,17 @@ public class RepositoryItemDuplicationPresenter {
           ExceptionIndicator.indicate(resources, FxApplicationFrame.getOwner(), message);
         }
       }
-    };
-    action.setToolTipText(resources.getString("AnathemaCore.Tools.RepositoryView.DuplicateToolTip"));
-    view.addActionButton(action);
+    });
     model.addTreeSelectionChangeListener(new ChangeListener() {
       @Override
       public void changeOccurred() {
-        action.setEnabled(model.getPrintNameFilesInSelection().length == 1);
+        if (model.getPrintNameFilesInSelection().length == 1) {
+          tool.enable();
+        } else {
+          tool.disable();
+        }
       }
     });
-    action.setEnabled(false);
+    tool.disable();
   }
 }

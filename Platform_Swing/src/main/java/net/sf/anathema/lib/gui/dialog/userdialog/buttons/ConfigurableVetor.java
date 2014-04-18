@@ -7,6 +7,7 @@ import net.sf.anathema.lib.gui.dialog.core.DialogResult;
 import net.sf.anathema.lib.gui.dialog.message.MessageUserDialogConfiguration;
 import net.sf.anathema.lib.gui.dialog.userdialog.DialogCloseHandler;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
+import net.sf.anathema.lib.gui.list.veto.Vetor;
 import net.sf.anathema.lib.message.IMessage;
 import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.message.MessageType;
@@ -14,7 +15,7 @@ import net.sf.anathema.lib.message.MessageType;
 import javax.swing.SwingUtilities;
 import java.awt.Component;
 
-public class ConfigurableVetor {
+public class ConfigurableVetor implements Vetor {
 
   private final Component parentComponent;
   private final String messageText;
@@ -26,6 +27,7 @@ public class ConfigurableVetor {
     this.okButtonText = okButtonText;
   }
 
+  @Override
   public void requestPermissionFor(final Command command) {
     IMessage message = new Message(messageText, MessageType.WARNING);
     final MessageUserDialogConfiguration configuration = new MessageUserDialogConfiguration(message,
@@ -34,7 +36,8 @@ public class ConfigurableVetor {
               public IActionConfiguration getOkActionConfiguration() {
                 return new ActionConfiguration(okButtonText);
               }
-            });
+            }
+    );
     SwingUtilities.invokeLater(new Runnable() {
       @Override
       public void run() {

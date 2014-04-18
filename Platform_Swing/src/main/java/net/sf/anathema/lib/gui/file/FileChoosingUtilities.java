@@ -1,44 +1,38 @@
 package net.sf.anathema.lib.gui.file;
 
-import javax.swing.JFileChooser;
-import javax.swing.filechooser.FileFilter;
-import javax.swing.plaf.FileChooserUI;
-import java.awt.Component;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import javafx.stage.FileChooser;
+import javafx.stage.Window;
+
+import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class FileChoosingUtilities {
 
+  public static final Path NO_FILE_SELECTED = null;
   private static Path workingDirectory = Paths.get(".");
 
-  public static Path selectSaveFile(Component parentComponent, String suggestedFileName) {
-    JFileChooser chooser = new JFileChooser(workingDirectory.toFile());
-    setSuggestedFileName(suggestedFileName, chooser);
-    int approveOption = chooser.showSaveDialog(parentComponent);
-    if (approveOption != JFileChooser.APPROVE_OPTION) {
-      return null;
+  public static Path selectSaveFile(Window parent, String suggestedFileName, Extension defaultExtension) {
+    FileChooser fileChooser = new FileChooser();
+    fileChooser.setInitialDirectory(workingDirectory.toFile());
+    fileChooser.setInitialFileName(suggestedFileName);
+    fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter(defaultExtension.description, defaultExtension.pattern));
+    File file = fileChooser.showSaveDialog(parent);
+    if (file == null) {
+      return NO_FILE_SELECTED;
     }
-    Path selectedFile = chooser.getSelectedFile().toPath();
+    Path selectedFile = file.toPath();
     workingDirectory = selectedFile.getParent();
     return selectedFile;
   }
 
-  private static void setSuggestedFileName(String suggestedFileName, JFileChooser chooser) {
-    FileChooserUI chooserUi = chooser.getUI();
-    try {
-      Method method = chooserUi.getClass().getMethod("setFileName", String.class);
-      method.invoke(chooserUi, suggestedFileName);
-    } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
-      //Don't set the name, we can live with that.
+  public static Path chooseFile(Window parent, Extension extension) {
+    FileChooser chooser = new FileChooser();
+    chooser.setSelectedExtensionFilter(new FileChooser.ExtensionFilter(extension.description, extension.pattern));
+    File file = chooser.showOpenDialog(parent);
+    if (file == null) {
+      return NO_FILE_SELECTED;
     }
-  }
-
-  public static Path chooseFile(String confirm, Component parentComponent, FileFilter filter) {
-    JFileChooser chooser = new JFileChooser();
-    chooser.setFileFilter(filter);
-    chooser.showDialog(parentComponent, confirm);
-    return chooser.getSelectedFile().toPath();
+    return file.toPath();
   }
 }

@@ -1,13 +1,20 @@
 package net.sf.anathema.framework.repository.tree;
 
-import net.sf.anathema.framework.swing.IView;
+import net.sf.anathema.interaction.Tool;
+import net.sf.anathema.lib.gui.file.Extension;
+import net.sf.anathema.lib.gui.list.veto.Vetor;
 
-import javax.swing.Action;
-import javax.swing.JTree;
+import java.nio.file.Path;
 
-public interface IRepositoryTreeView extends IView {
+public interface IRepositoryTreeView {
 
-  void addActionButton(Action action);
+  Tool addTool();
 
-  JTree addTree();
+  Vetor createVetor(String message, String title);
+
+  Path showSaveFile(String recommendedFileName, Extension defaultExtension);
+
+  Path showLoadFile(Extension extension);
+
+  AgnosticTree addAgnosticTree();
 }

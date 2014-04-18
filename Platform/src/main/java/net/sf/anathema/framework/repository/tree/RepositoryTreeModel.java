@@ -58,6 +58,11 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
 
   @Override
   public boolean canSelectionBeDeleted() {
+    for (Object currentlySelectedUserObject : currentlySelectedUserObjects) {
+      if (!(currentlySelectedUserObject instanceof PrintNameFile)) {
+        return false;
+      }
+    }
     return true;
   }
 

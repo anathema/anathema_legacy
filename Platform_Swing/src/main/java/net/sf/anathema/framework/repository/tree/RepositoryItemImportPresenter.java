@@ -5,12 +5,12 @@ import net.sf.anathema.framework.fx.ExceptionIndicator;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.initialization.FxApplicationFrame;
+import net.sf.anathema.interaction.Command;
+import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.collection.MultiEntryMap;
-import net.sf.anathema.lib.gui.action.SmartAction;
-import net.sf.anathema.lib.gui.file.FileChoosingUtilities;
+import net.sf.anathema.lib.gui.file.Extension;
 import net.sf.anathema.lib.message.Message;
 
-import java.awt.Component;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Path;
@@ -40,14 +40,16 @@ public class RepositoryItemImportPresenter {
   }
 
   public void initPresentation() {
-    SmartAction action = new SmartAction(
-            resources.getString("AnathemaCore.Tools.RepositoryView.ImportName"), new FileUi().getImportFileIcon()) {
-
+    Tool tool = view.addTool();
+    tool.setTooltip(resources.getString("AnathemaCore.Tools.RepositoryView.ImportToolTip"));
+    tool.setText(resources.getString("AnathemaCore.Tools.RepositoryView.ImportName"));
+    tool.setIcon(new FileUi().getImportFilePath());
+    tool.setCommand(new Command() {
       @Override
-      protected void execute(Component parentComponent) {
+      public void execute() {
         try {
-          Path loadFile = FileChoosingUtilities.chooseFile(
-                  resources.getString("AnathemaCore.Tools.RepositoryView.ImportOk"), parentComponent, new ZipFileFilter(resources));
+          String description = resources.getString("Filetype.zip");
+          Path loadFile = view.showLoadFile(new Extension(description, "*.zip"));
           if (loadFile == null) {
             return;
           }
@@ -82,9 +84,7 @@ public class RepositoryItemImportPresenter {
           ExceptionIndicator.indicate(resources, FxApplicationFrame.getOwner(), message);
         }
       }
-    };
-    action.setToolTipText(resources.getString("AnathemaCore.Tools.RepositoryView.ImportToolTip"));
-    view.addActionButton(action);
+    });
   }
 
   private MultiEntryMap<String, ZipEntry> groupEntriesByItems(ZipFile importZipFile) {
