@@ -71,6 +71,6 @@ public class FxExtensibleTraitView implements ExtensibleTraitView {
   }
 
   private void addToPanel(MigPane pane, FxComponent toggleTool) {
-    pane.add(toggleTool.getNode());
+    pane.add(toggleTool.getNode(), new CC().alignY("center"));
   }
 }
