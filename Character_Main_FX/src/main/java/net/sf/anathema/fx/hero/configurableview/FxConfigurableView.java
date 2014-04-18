@@ -97,7 +97,7 @@ public class FxConfigurableView implements ConfigurableCharacterView, NodeHolder
         pane.add(view.getNode(), new CC().growX());
         MigPane buttonPanel = new MigPane(withoutInsets());
         buttonPanels.add(buttonPanel);
-        pane.add(buttonPanel);
+        pane.add(buttonPanel, new CC().alignY("center"));
       }
     });
   }
