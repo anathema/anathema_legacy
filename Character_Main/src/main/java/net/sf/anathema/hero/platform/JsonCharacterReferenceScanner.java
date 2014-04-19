@@ -35,12 +35,13 @@ public class JsonCharacterReferenceScanner implements CharacterReferenceScanner 
 
   private void scan(CharacterReference reference) throws IOException {
     File scanFile = resolver.getMainFile(retrieveCharacterItemType().getRepositoryConfiguration(), reference.repositoryId.getStringRepresentation());
-    FileInputStream stream = new FileInputStream(scanFile);
-    HeroMainFileDto mainFileDto = new HeroMainFilePersister().load(stream);
-    CharacterType characterType = characterTypes.findById(mainFileDto.characterType.characterType);
-    SimpleIdentifier subType = new SimpleIdentifier(mainFileDto.characterType.subType);
-    typesByFile.put(reference, new TemplateType(characterType, subType));
-    castesByFile.put(reference, NULL_CASTE_TYPE);
+    try (FileInputStream stream = new FileInputStream(scanFile)) {
+      HeroMainFileDto mainFileDto = new HeroMainFilePersister().load(stream);
+      CharacterType characterType = characterTypes.findById(mainFileDto.characterType.characterType);
+      SimpleIdentifier subType = new SimpleIdentifier(mainFileDto.characterType.subType);
+      typesByFile.put(reference, new TemplateType(characterType, subType));
+      castesByFile.put(reference, NULL_CASTE_TYPE);
+    }
   }
 
   @Override
