@@ -1,6 +1,6 @@
 import org.apache.tools.ant.filters.FixCrLfFilter
 
-ext.jreVersion = "1.8.0"
+ext.jreVersion = "1.8.0_05"
 ext.dependenciesDir = new File(buildDir, 'dependencies')
 ext.pluginsDir = new File(buildDir, 'plugins')
 ext.versionString = "${version_major}.${version_minor}.${version_revision}"
