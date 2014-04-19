@@ -138,5 +138,4 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
   public void refreshItem(IItemType type, String id) {
     control.announce().printNameFileAdded(repository.getPrintNameFileAccess().getPrintNameFile(type, id));
   }
-
 }
