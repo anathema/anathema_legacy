@@ -102,14 +102,10 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
     new TextualPresentation().initView(textView, textModel);
   }
 
-  protected boolean isInLegalState() {
-    return canFinish();
-  }
-
   protected abstract void addAdditionalContent();
 
   @Override
-  protected final void initModelListening(CheckInputListener inputListener) {
+  protected void initModelListening(CheckInputListener inputListener) {
     getPageModel().getName().addTextChangedListener(inputListener);
   }
 

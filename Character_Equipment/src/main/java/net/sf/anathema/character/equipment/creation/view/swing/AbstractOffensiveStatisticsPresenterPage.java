@@ -4,16 +4,27 @@ import net.miginfocom.layout.CC;
 import net.sf.anathema.character.equipment.creation.presenter.IEquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.creation.presenter.IOffensiveStatisticsModel;
 import net.sf.anathema.character.equipment.creation.presenter.IWeaponDamageModel;
+import net.sf.anathema.character.equipment.creation.presenter.IWeaponTag;
+import net.sf.anathema.character.equipment.creation.presenter.IWeaponTagsModel;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.OffensiveStatisticsProperties;
+import net.sf.anathema.character.equipment.creation.presenter.stats.properties.TagPageProperties;
+import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
 import net.sf.anathema.equipment.editor.wizard.CheckInputListener;
 import net.sf.anathema.framework.environment.Resources;
-import net.sf.anathema.lib.data.Condition;
+import net.sf.anathema.lib.control.IBooleanValueChangedListener;
+import net.sf.anathema.lib.gui.layout.AdditiveView;
+import net.sf.anathema.lib.gui.widgets.HorizontalLine;
+import net.sf.anathema.lib.workflow.booleanvalue.BooleanValueModel;
+import net.sf.anathema.lib.workflow.booleanvalue.BooleanValuePresentation;
 
+import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 import java.awt.Component;
 
 public abstract class AbstractOffensiveStatisticsPresenterPage<O extends IOffensiveStatisticsModel, P extends OffensiveStatisticsProperties> extends
-    AbstractEquipmentStatisticsPresenterPage<O, P> {
+        AbstractEquipmentStatisticsPresenterPage<O, P> {
+
+  private final TagPageProperties tagProperties;
 
   public AbstractOffensiveStatisticsPresenterPage(
           Resources resources,
@@ -21,6 +32,7 @@ public abstract class AbstractOffensiveStatisticsPresenterPage<O extends IOffens
           IEquipmentStatisticsCreationModel overallModel,
           O pageModel) {
     super(resources, properties, overallModel, pageModel);
+    this.tagProperties = new TagPageProperties(resources);
   }
 
   @Override
@@ -28,6 +40,50 @@ public abstract class AbstractOffensiveStatisticsPresenterPage<O extends IOffens
     addIndividualRows();
     initAccuracyAndRateRow(getPageModel().supportsRate());
     initWeaponDamageRow(getPageModel().getWeaponDamageModel());
+    addHorizontalSeparator();
+    addTags();
+  }
+
+  protected void addTags() {
+    getPageContent().addView(new AdditiveView() {
+      @Override
+      public void addTo(JPanel panel, CC data) {
+        WeaponTagsView tagsView = new WeaponTagsView();
+        BooleanValuePresentation booleanValuePresentation = new BooleanValuePresentation();
+        for (IWeaponTag tag : getOverallModel().getWeaponTagsModel().getAllTags()) {
+          final JCheckBox checkBox = tagsView.addCheckBox(tagProperties.getLabel(tag));
+          checkBox.setToolTipText(tagProperties.getToolTip(tag));
+          booleanValuePresentation.initPresentation(checkBox, getOverallModel().getWeaponTagsModel().getSelectedModel(tag));
+          final BooleanValueModel enabledModel = getOverallModel().getWeaponTagsModel().getEnabledModel(tag);
+          enabledModel.addChangeListener(new IBooleanValueChangedListener() {
+            @Override
+            public void valueChanged(boolean newValue) {
+              checkBox.setEnabled(enabledModel.getValue());
+            }
+          });
+          checkBox.setEnabled(enabledModel.getValue());
+        }
+        panel.add(tagsView.getContent(), data);
+      }
+    }, new CC().spanX().growX().pushX());
+  }
+
+  @Override
+  protected void initModelListening(CheckInputListener inputListener) {
+    super.initModelListening(inputListener);
+    IWeaponTagsModel weaponTagsModel = getOverallModel().getWeaponTagsModel();
+    for (IWeaponTag tag : weaponTagsModel.getAllTags()) {
+      weaponTagsModel.getSelectedModel(tag).addChangeListener(inputListener);
+    }
+  }
+
+  protected void addHorizontalSeparator() {
+    getPageContent().addView(new AdditiveView() {
+      @Override
+      public void addTo(JPanel panel, CC data) {
+        panel.add(new HorizontalLine(), data);
+      }
+    }, new CC().newline().pushX().growX().spanX());
   }
 
   protected abstract void addIndividualRows();
@@ -37,15 +93,14 @@ public abstract class AbstractOffensiveStatisticsPresenterPage<O extends IOffens
     String[] labels;
     if (showRate) {
       secondComponent = initIntegerSpinner(getPageModel().getRateModel()).getComponent();
-      labels = new String[] { getProperties().getAccuracyLabel(), getProperties().getRateLabel() };
-    }
-    else {
+      labels = new String[]{getProperties().getAccuracyLabel(), getProperties().getRateLabel()};
+    } else {
       secondComponent = new JPanel();
-      labels = new String[] { getProperties().getAccuracyLabel(), "" };
+      labels = new String[]{getProperties().getAccuracyLabel(), ""};
     }
-    addLabelledComponentRow(labels, new Component[] {
-        initIntegerSpinner(getPageModel().getAccuracyModel()).getComponent(),
-        secondComponent });
+    addLabelledComponentRow(labels, new Component[]{
+            initIntegerSpinner(getPageModel().getAccuracyModel()).getComponent(),
+            secondComponent});
   }
 
   private void initWeaponDamageRow(IWeaponDamageModel damageModel) {
@@ -55,13 +110,21 @@ public abstract class AbstractOffensiveStatisticsPresenterPage<O extends IOffens
   }
 
   @Override
-  protected final void addFollowUpPages(CheckInputListener inputListener) {
-    WeaponTagsPresenterPage page = new WeaponTagsPresenterPage(getResources(), getOverallModel());
-    addFollowupPage(page, inputListener, new Condition() {
-      @Override
-      public boolean isFulfilled() {
-        return isInLegalState();
+  public boolean canFinish() {
+    return !isIllegalRangedWeapon();
+  }
+
+  private boolean isIllegalRangedWeapon() {
+    if (getOverallModel().getEquipmentType() == EquipmentStatisticsType.RangedCombat) {
+      IWeaponTagsModel weaponTagsModel = getOverallModel().getWeaponTagsModel();
+      if (!weaponTagsModel.isRangedTypeTagSelected()) {
+        return true;
       }
-    });
+      if (!weaponTagsModel.isThrownTypeTagSelected()
+              && weaponTagsModel.isThrownWeaponTagSelected()) {
+        return true;
+      }
+    }
+    return false;
   }
 }
