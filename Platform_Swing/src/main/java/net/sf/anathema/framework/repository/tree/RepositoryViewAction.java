@@ -1,6 +1,7 @@
 package net.sf.anathema.framework.repository.tree;
 
 import javafx.scene.Node;
+import javafx.stage.Stage;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.messaging.IMessaging;
@@ -11,18 +12,19 @@ import org.controlsfx.dialog.Dialog;
 public class RepositoryViewAction implements Command {
   private final IApplicationModel model;
   private final Environment environment;
+  private Stage stage;
 
-  public RepositoryViewAction(IApplicationModel model, Environment environment) {
+  public RepositoryViewAction(IApplicationModel model, Environment environment, Stage stage) {
     this.model = model;
     this.environment = environment;
+    this.stage = stage;
   }
 
   @Override
   public void execute() {
-    Dialog dialog = new Dialog(null, getTitle(), false, true);
+    Dialog dialog = new Dialog(stage, getTitle(), false, true);
     dialog.setMasthead(createCurrentMessage());
     dialog.getActions().setAll(Dialog.Actions.OK);
-    //dialog.setResizable(false);
     dialog.setContent(createContent());
     dialog.show();
   }
