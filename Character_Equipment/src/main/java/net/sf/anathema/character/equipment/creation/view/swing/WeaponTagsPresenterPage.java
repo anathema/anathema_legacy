@@ -1,8 +1,8 @@
 package net.sf.anathema.character.equipment.creation.view.swing;
 
-import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
-import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTag;
-import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTagsModel;
+import net.sf.anathema.character.equipment.creation.presenter.IEquipmentStatisticsCreationModel;
+import net.sf.anathema.character.equipment.creation.presenter.IWeaponTag;
+import net.sf.anathema.character.equipment.creation.presenter.IWeaponTagsModel;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.TagPageProperties;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
 import net.sf.anathema.equipment.editor.wizard.AbstractAnathemaWizardPage;

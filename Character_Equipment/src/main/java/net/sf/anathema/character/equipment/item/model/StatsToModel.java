@@ -2,12 +2,12 @@ package net.sf.anathema.character.equipment.item.model;
 
 import net.sf.anathema.character.equipment.creation.model.EquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.creation.model.WeaponTag;
-import net.sf.anathema.character.equipment.creation.model.stats.IArmourStatisticsModel;
-import net.sf.anathema.character.equipment.creation.model.stats.IArtifactStatisticsModel;
-import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
-import net.sf.anathema.character.equipment.creation.model.stats.IOffensiveStatisticsModel;
-import net.sf.anathema.character.equipment.creation.model.stats.ITraitModifyingStatisticsModel;
-import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTagsModel;
+import net.sf.anathema.character.equipment.creation.presenter.IArmourStatisticsModel;
+import net.sf.anathema.character.equipment.creation.presenter.IArtifactStatisticsModel;
+import net.sf.anathema.character.equipment.creation.presenter.IEquipmentStatisticsCreationModel;
+import net.sf.anathema.character.equipment.creation.presenter.IOffensiveStatisticsModel;
+import net.sf.anathema.character.equipment.creation.presenter.ITraitModifyingStatisticsModel;
+import net.sf.anathema.character.equipment.creation.presenter.IWeaponTagsModel;
 import net.sf.anathema.hero.equipment.sheet.content.stats.ArtifactStats;
 import net.sf.anathema.hero.equipment.sheet.content.stats.ITraitModifyingStats;
 import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IArmourStats;

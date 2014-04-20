@@ -1,9 +1,9 @@
 package net.sf.anathema.character.equipment.creation.view.swing;
 
 import net.miginfocom.layout.CC;
-import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
-import net.sf.anathema.character.equipment.creation.model.stats.IOffensiveStatisticsModel;
-import net.sf.anathema.character.equipment.creation.model.stats.IWeaponDamageModel;
+import net.sf.anathema.character.equipment.creation.presenter.IEquipmentStatisticsCreationModel;
+import net.sf.anathema.character.equipment.creation.presenter.IOffensiveStatisticsModel;
+import net.sf.anathema.character.equipment.creation.presenter.IWeaponDamageModel;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.OffensiveStatisticsProperties;
 import net.sf.anathema.equipment.editor.wizard.CheckInputListener;
 import net.sf.anathema.framework.environment.Resources;

@@ -1,6 +1,6 @@
 package net.sf.anathema.character.equipment.item;
 
-import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
+import net.sf.anathema.character.equipment.creation.presenter.IEquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.item.model.StatsEditor;
 import net.sf.anathema.character.equipment.item.model.StatsToModel;
 import net.sf.anathema.framework.environment.Resources;

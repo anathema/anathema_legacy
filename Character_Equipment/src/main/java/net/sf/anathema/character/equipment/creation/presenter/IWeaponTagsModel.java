@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.creation.model.stats;
+package net.sf.anathema.character.equipment.creation.presenter;
 
 import net.sf.anathema.lib.workflow.booleanvalue.BooleanValueModel;
 

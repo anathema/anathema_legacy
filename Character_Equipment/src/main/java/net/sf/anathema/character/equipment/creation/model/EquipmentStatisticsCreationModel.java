@@ -1,12 +1,12 @@
 package net.sf.anathema.character.equipment.creation.model;
 
-import net.sf.anathema.character.equipment.creation.model.stats.IArmourStatisticsModel;
-import net.sf.anathema.character.equipment.creation.model.stats.IArtifactStatisticsModel;
-import net.sf.anathema.character.equipment.creation.model.stats.ICloseCombatStatsticsModel;
-import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
-import net.sf.anathema.character.equipment.creation.model.stats.IRangedCombatStatisticsModel;
-import net.sf.anathema.character.equipment.creation.model.stats.ITraitModifyingStatisticsModel;
-import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTagsModel;
+import net.sf.anathema.character.equipment.creation.presenter.IArmourStatisticsModel;
+import net.sf.anathema.character.equipment.creation.presenter.IArtifactStatisticsModel;
+import net.sf.anathema.character.equipment.creation.presenter.ICloseCombatStatsticsModel;
+import net.sf.anathema.character.equipment.creation.presenter.IEquipmentStatisticsCreationModel;
+import net.sf.anathema.character.equipment.creation.presenter.IRangedCombatStatisticsModel;
+import net.sf.anathema.character.equipment.creation.presenter.ITraitModifyingStatisticsModel;
+import net.sf.anathema.character.equipment.creation.presenter.IWeaponTagsModel;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.data.Range;

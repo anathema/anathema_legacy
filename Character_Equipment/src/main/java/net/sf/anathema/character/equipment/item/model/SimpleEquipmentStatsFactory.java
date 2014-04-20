@@ -2,10 +2,10 @@ package net.sf.anathema.character.equipment.item.model;
 
 import net.sf.anathema.character.equipment.creation.model.EquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.creation.model.WeaponTag;
-import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
-import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsModel;
-import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
+import net.sf.anathema.character.equipment.creation.presenter.IEquipmentStatisticsCreationModel;
+import net.sf.anathema.character.equipment.creation.presenter.IEquipmentStatisticsModel;
 import net.sf.anathema.equipment.core.MaterialComposition;
+import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 
 import static net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType.Artifact;
 

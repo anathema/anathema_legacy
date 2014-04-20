@@ -1,7 +1,7 @@
 package net.sf.anathema.character.equipment.creation.view.swing;
 
-import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
-import net.sf.anathema.character.equipment.creation.model.stats.IRangedCombatStatisticsModel;
+import net.sf.anathema.character.equipment.creation.presenter.IEquipmentStatisticsCreationModel;
+import net.sf.anathema.character.equipment.creation.presenter.IRangedCombatStatisticsModel;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.RangedCombatStatisticsProperties;
 import net.sf.anathema.framework.environment.Resources;
 

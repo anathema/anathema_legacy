@@ -1,6 +1,6 @@
 package net.sf.anathema.character.equipment.creation.model;
 
-import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTag;
+import net.sf.anathema.character.equipment.creation.presenter.IWeaponTag;
 
 public enum WeaponTag implements IWeaponTag {
 

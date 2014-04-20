@@ -1,9 +1,9 @@
 package net.sf.anathema.character.equipment.creation.presenter.stats.properties;
 
-import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTag;
+import net.sf.anathema.character.equipment.creation.presenter.IWeaponTag;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.IBasicMessage;
-import net.sf.anathema.framework.environment.Resources;
 
 public class TagPageProperties {
 

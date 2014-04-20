@@ -1,8 +1,8 @@
 package net.sf.anathema.character.equipment.creation.view.swing;
 
 import net.miginfocom.layout.CC;
-import net.sf.anathema.character.equipment.creation.model.stats.IArmourStatisticsModel;
-import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
+import net.sf.anathema.character.equipment.creation.presenter.IArmourStatisticsModel;
+import net.sf.anathema.character.equipment.creation.presenter.IEquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.ArmourStatisticsProperties;
 import net.sf.anathema.character.main.CharacterUI;
 import net.sf.anathema.framework.environment.Resources;

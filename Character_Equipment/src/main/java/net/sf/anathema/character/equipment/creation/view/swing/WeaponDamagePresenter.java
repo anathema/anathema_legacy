@@ -1,6 +1,6 @@
 package net.sf.anathema.character.equipment.creation.view.swing;
 
-import net.sf.anathema.character.equipment.creation.model.stats.IWeaponDamageModel;
+import net.sf.anathema.character.equipment.creation.presenter.IWeaponDamageModel;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.WeaponDamageProperties;
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.health.HealthType;
