@@ -1,5 +1,7 @@
 package net.sf.anathema.character.equipment.item.model;
 
+import net.sf.anathema.character.equipment.creation.view.swing.SwingStatsEditor;
+
 public class EquipmentDatabaseManagement implements IEquipmentDatabaseManagement {
 
   private final EquipmentTemplateEditModel templateEditModel;

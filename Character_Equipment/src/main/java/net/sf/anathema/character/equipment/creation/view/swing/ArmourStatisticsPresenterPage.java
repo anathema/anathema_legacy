@@ -1,16 +1,16 @@
-package net.sf.anathema.character.equipment.creation.presenter.stats;
+package net.sf.anathema.character.equipment.creation.view.swing;
 
 import net.miginfocom.layout.CC;
 import net.sf.anathema.character.equipment.creation.model.stats.IArmourStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.ArmourStatisticsProperties;
 import net.sf.anathema.character.main.CharacterUI;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.health.HealthType;
 import net.sf.anathema.lib.control.IntValueChangedListener;
 import net.sf.anathema.lib.gui.icon.ImageProvider;
 import net.sf.anathema.lib.gui.layout.AdditiveView;
 import net.sf.anathema.lib.gui.layout.SwingLayoutUtils;
-import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
 
 import javax.swing.JComponent;

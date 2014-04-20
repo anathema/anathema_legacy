@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.creation.presenter.stats;
+package net.sf.anathema.character.equipment.creation.view.swing;
 
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IRangedCombatStatisticsModel;

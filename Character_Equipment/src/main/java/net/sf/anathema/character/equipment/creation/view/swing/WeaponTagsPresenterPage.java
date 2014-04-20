@@ -1,17 +1,16 @@
-package net.sf.anathema.character.equipment.creation.presenter.stats;
+package net.sf.anathema.character.equipment.creation.view.swing;
 
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTag;
 import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTagsModel;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.TagPageProperties;
-import net.sf.anathema.character.equipment.creation.view.IWeaponTagsView;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
 import net.sf.anathema.equipment.editor.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.equipment.editor.wizard.CheckInputListener;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.gui.dialog.core.IPageContent;
 import net.sf.anathema.lib.message.IBasicMessage;
-import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.workflow.booleanvalue.BooleanValueModel;
 import net.sf.anathema.lib.workflow.booleanvalue.BooleanValuePresentation;
 

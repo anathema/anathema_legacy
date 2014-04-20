@@ -1,14 +1,13 @@
-package net.sf.anathema.character.equipment.creation.presenter.stats;
+package net.sf.anathema.character.equipment.creation.view.swing;
 
 import net.miginfocom.layout.CC;
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IOffensiveStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IWeaponDamageModel;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.OffensiveStatisticsProperties;
-import net.sf.anathema.character.equipment.creation.view.WeaponDamageView;
 import net.sf.anathema.equipment.editor.wizard.CheckInputListener;
-import net.sf.anathema.lib.data.Condition;
 import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.lib.data.Condition;
 
 import javax.swing.JPanel;
 import java.awt.Component;

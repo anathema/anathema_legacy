@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.creation.view;
+package net.sf.anathema.character.equipment.creation.view.swing;
 
 import net.miginfocom.layout.CC;
 import net.sf.anathema.lib.gui.dialog.core.IPageContent;

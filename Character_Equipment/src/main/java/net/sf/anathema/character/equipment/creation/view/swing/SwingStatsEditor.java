@@ -1,13 +1,9 @@
-package net.sf.anathema.character.equipment.item.model;
+package net.sf.anathema.character.equipment.creation.view.swing;
 
-import net.sf.anathema.character.equipment.creation.EquipmentStatisticsCreationViewFactory;
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
-import net.sf.anathema.character.equipment.creation.presenter.stats.ArmourStatisticsPresenterPage;
-import net.sf.anathema.character.equipment.creation.presenter.stats.ArtifactStatisticsPresenterPage;
-import net.sf.anathema.character.equipment.creation.presenter.stats.CloseCombatStatisticsPresenterPage;
-import net.sf.anathema.character.equipment.creation.presenter.stats.IEquipmentStatisticsCreationViewFactory;
-import net.sf.anathema.character.equipment.creation.presenter.stats.RangedCombatStatisticsPresenterPage;
-import net.sf.anathema.character.equipment.creation.presenter.stats.TraitModifyingStatisticsPresenterPage;
+import net.sf.anathema.character.equipment.item.model.ModelToStats;
+import net.sf.anathema.character.equipment.item.model.NullClosure;
+import net.sf.anathema.character.equipment.item.model.StatsEditor;
 import net.sf.anathema.equipment.editor.wizard.AnathemaWizardDialog;
 import net.sf.anathema.equipment.editor.wizard.IAnathemaWizardPage;
 import net.sf.anathema.equipment.editor.wizard.WizardDialog;
