@@ -16,12 +16,11 @@ public abstract class AbstractOffensiveStatisticsPresenterPage<O extends IOffens
     AbstractEquipmentStatisticsPresenterPage<O, P> {
 
   public AbstractOffensiveStatisticsPresenterPage(
-      Resources resources,
-      P properties,
-      IEquipmentStatisticsCreationModel overallModel,
-      O pageModel,
-      IEquipmentStatisticsCreationViewFactory viewFactory) {
-    super(resources, properties, overallModel, pageModel, viewFactory);
+          Resources resources,
+          P properties,
+          IEquipmentStatisticsCreationModel overallModel,
+          O pageModel) {
+    super(resources, properties, overallModel, pageModel);
   }
 
   @Override
@@ -50,14 +49,14 @@ public abstract class AbstractOffensiveStatisticsPresenterPage<O extends IOffens
   }
 
   private void initWeaponDamageRow(IWeaponDamageModel damageModel) {
-    WeaponDamageView damageView = getViewFactory().createWeaponDamageView();
+    WeaponDamageView damageView = new SwingWeaponDamageView();
     new WeaponDamagePresenter(getResources(), damageModel, damageView).initPresentation();
     getPageContent().addView(damageView, new CC());
   }
 
   @Override
   protected final void addFollowUpPages(CheckInputListener inputListener) {
-    WeaponTagsPresenterPage page = new WeaponTagsPresenterPage(getResources(), getOverallModel(), getViewFactory());
+    WeaponTagsPresenterPage page = new WeaponTagsPresenterPage(getResources(), getOverallModel());
     addFollowupPage(page, inputListener, new Condition() {
       @Override
       public boolean isFulfilled() {

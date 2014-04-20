@@ -21,9 +21,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ArmourStatisticsPresenterPage extends AbstractEquipmentStatisticsPresenterPage<IArmourStatisticsModel, ArmourStatisticsProperties> {
-  public ArmourStatisticsPresenterPage(Resources resources, IEquipmentStatisticsCreationModel model,
-                                       IEquipmentStatisticsCreationViewFactory viewFactory) {
-    super(resources, new ArmourStatisticsProperties(resources), model, model.getArmourStatisticsModel(), viewFactory);
+  public ArmourStatisticsPresenterPage(Resources resources, IEquipmentStatisticsCreationModel model) {
+    super(resources, new ArmourStatisticsProperties(resources), model, model.getArmourStatisticsModel());
   }
 
   @Override

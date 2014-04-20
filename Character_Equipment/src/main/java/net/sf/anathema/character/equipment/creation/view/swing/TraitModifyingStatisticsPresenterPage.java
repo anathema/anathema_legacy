@@ -11,10 +11,9 @@ public class TraitModifyingStatisticsPresenterPage extends
     AbstractEquipmentStatisticsPresenterPage<ITraitModifyingStatisticsModel, TraitBoostStatisticsProperties> {
 
   public TraitModifyingStatisticsPresenterPage(
-      Resources resources,
-      IEquipmentStatisticsCreationModel model,
-      IEquipmentStatisticsCreationViewFactory viewFactory) {
-    super(resources, new TraitBoostStatisticsProperties(resources), model, model.getTraitModifyingStatisticsModel(), viewFactory);
+          Resources resources,
+          IEquipmentStatisticsCreationModel model) {
+    super(resources, new TraitBoostStatisticsProperties(resources), model, model.getTraitModifyingStatisticsModel());
   }
 
   @Override

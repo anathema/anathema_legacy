@@ -13,10 +13,9 @@ public class ArtifactStatisticsPresenterPage extends
     AbstractEquipmentStatisticsPresenterPage<IArtifactStatisticsModel, ArtifactStatisticsProperties> {
 
   public ArtifactStatisticsPresenterPage(
-      Resources resources,
-      IEquipmentStatisticsCreationModel model,
-      IEquipmentStatisticsCreationViewFactory viewFactory) {
-    super(resources, new ArtifactStatisticsProperties(resources), model, model.getArtifactStatisticsModel(), viewFactory);
+          Resources resources,
+          IEquipmentStatisticsCreationModel model) {
+    super(resources, new ArtifactStatisticsProperties(resources), model, model.getArtifactStatisticsModel());
   }
 
   @Override

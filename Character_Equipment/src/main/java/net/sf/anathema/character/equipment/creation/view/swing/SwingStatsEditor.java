@@ -41,25 +41,23 @@ public class SwingStatsEditor implements StatsEditor {
   }
 
   private void runDialog(Resources resources, final IEquipmentStatisticsCreationModel model) {
-    IEquipmentStatisticsCreationViewFactory viewFactory = new EquipmentStatisticsCreationViewFactory();
-    IAnathemaWizardPage startPage = chooseStartPage(resources, model, viewFactory);
+    IAnathemaWizardPage startPage = chooseStartPage(resources, model);
     WizardDialog dialog = new AnathemaWizardDialog(SwingApplicationFrame.getParentComponent(), startPage);
     dialog.show(new CreateStatsHandler(model));
   }
 
-  private IAnathemaWizardPage chooseStartPage(Resources resources, IEquipmentStatisticsCreationModel model,
-                                              IEquipmentStatisticsCreationViewFactory viewFactory) {
+  private IAnathemaWizardPage chooseStartPage(Resources resources, IEquipmentStatisticsCreationModel model) {
     switch (model.getEquipmentType()) {
       case CloseCombat:
-        return new CloseCombatStatisticsPresenterPage(resources, model, viewFactory);
+        return new CloseCombatStatisticsPresenterPage(resources, model);
       case RangedCombat:
-        return new RangedCombatStatisticsPresenterPage(resources, model, viewFactory);
+        return new RangedCombatStatisticsPresenterPage(resources, model);
       case Armor:
-        return new ArmourStatisticsPresenterPage(resources, model, viewFactory);
+        return new ArmourStatisticsPresenterPage(resources, model);
       case Artifact:
-        return new ArtifactStatisticsPresenterPage(resources, model, viewFactory);
+        return new ArtifactStatisticsPresenterPage(resources, model);
       case TraitModifying:
-        return new TraitModifyingStatisticsPresenterPage(resources, model, viewFactory);
+        return new TraitModifyingStatisticsPresenterPage(resources, model);
       default:
         throw new IllegalArgumentException("Type must be defined to edit.");
     }
@@ -77,7 +75,8 @@ public class SwingStatsEditor implements StatsEditor {
       if (result.isCanceled()) {
         return;
       }
-      whenChangesAreFinished.execute(modelToStats.createStats(model));
+      IEquipmentStats stats = modelToStats.createStats(model);
+      whenChangesAreFinished.execute(stats);
     }
   }
 }

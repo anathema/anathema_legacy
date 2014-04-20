@@ -22,26 +22,23 @@ import javax.swing.JPanel;
 import java.awt.Component;
 
 public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipmentStatisticsModel, P extends AbstractEquipmentStatisticsProperties> extends
-    AbstractAnathemaWizardPage {
+        AbstractAnathemaWizardPage {
 
   private final P properties;
   private final M pageModel;
   private final IEquipmentStatisticsCreationModel overallModel;
-  private final IEquipmentStatisticsCreationViewFactory viewFactory;
   private final Resources resources;
   private IWeaponStatisticsView view;
 
   public AbstractEquipmentStatisticsPresenterPage(
-      Resources resources,
-      P properties,
-      IEquipmentStatisticsCreationModel overallModel,
-      M pageModel,
-      IEquipmentStatisticsCreationViewFactory viewFactory) {
+          Resources resources,
+          P properties,
+          IEquipmentStatisticsCreationModel overallModel,
+          M pageModel) {
     this.properties = properties;
     this.pageModel = pageModel;
     this.resources = resources;
     this.overallModel = overallModel;
-    this.viewFactory = viewFactory;
     ITextualDescription name = getPageModel().getName();
     if (name.isEmpty()) {
       name.setText(properties.getDefaultName());
@@ -54,10 +51,6 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
 
   protected final M getPageModel() {
     return pageModel;
-  }
-
-  protected final IEquipmentStatisticsCreationViewFactory getViewFactory() {
-    return viewFactory;
   }
 
   protected final Resources getResources() {
@@ -99,7 +92,7 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
 
   @Override
   protected final void initPageContent() {
-    this.view = viewFactory.createEquipmentStatisticsView();
+    this.view = new WeaponStatisticsView();
     initNameRow(getProperties().getNameLabel(), getPageModel().getName());
     addAdditionalContent();
   }

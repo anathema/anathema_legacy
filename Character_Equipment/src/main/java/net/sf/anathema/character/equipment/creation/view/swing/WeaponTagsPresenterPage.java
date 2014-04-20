@@ -19,16 +19,13 @@ import javax.swing.JCheckBox;
 public class WeaponTagsPresenterPage extends AbstractAnathemaWizardPage {
 
   private final IEquipmentStatisticsCreationModel model;
-  private final IEquipmentStatisticsCreationViewFactory viewFactory;
   private final TagPageProperties properties;
   private IWeaponTagsView content;
 
   public WeaponTagsPresenterPage(
-      Resources resources,
-      IEquipmentStatisticsCreationModel model,
-      IEquipmentStatisticsCreationViewFactory viewFactory) {
+          Resources resources,
+          IEquipmentStatisticsCreationModel model) {
     this.model = model;
-    this.viewFactory = viewFactory;
     this.properties = new TagPageProperties(resources);
   }
 
@@ -47,7 +44,7 @@ public class WeaponTagsPresenterPage extends AbstractAnathemaWizardPage {
 
   @Override
   protected void initPageContent() {
-    content = viewFactory.createWeaponTagsView();
+    content = new WeaponTagsView();
     BooleanValuePresentation booleanValuePresentation = new BooleanValuePresentation();
     for (IWeaponTag tag : model.getWeaponTagsModel().getAllTags()) {
       final JCheckBox checkBox = content.addCheckBox(properties.getLabel(tag));
@@ -75,7 +72,7 @@ public class WeaponTagsPresenterPage extends AbstractAnathemaWizardPage {
         return true;
       }
       if (!model.getWeaponTagsModel().isThrownTypeTagSelected()
-    	  && model.getWeaponTagsModel().isThrownWeaponTagSelected()) {
+              && model.getWeaponTagsModel().isThrownWeaponTagSelected()) {
         return true;
       }
     }
@@ -94,7 +91,7 @@ public class WeaponTagsPresenterPage extends AbstractAnathemaWizardPage {
         return properties.getSelectRangedWeaponTagMessage();
       }
       if (!model.getWeaponTagsModel().isThrownTypeTagSelected()
-          && model.getWeaponTagsModel().isThrownWeaponTagSelected()) {
+              && model.getWeaponTagsModel().isThrownWeaponTagSelected()) {
         return properties.getThrownTagButNotThrownTypeMessage();
       }
     }

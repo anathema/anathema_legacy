@@ -11,15 +11,14 @@ public class RangedCombatStatisticsPresenterPage extends
     AbstractOffensiveStatisticsPresenterPage<IRangedCombatStatisticsModel, RangedCombatStatisticsProperties> {
 
   public RangedCombatStatisticsPresenterPage(
-      Resources resources,
-      IEquipmentStatisticsCreationModel model,
-      IEquipmentStatisticsCreationViewFactory viewFactory) {
+          Resources resources,
+          IEquipmentStatisticsCreationModel model) {
     super(
         resources,
         new RangedCombatStatisticsProperties(resources),
         model,
-        model.getRangedWeaponStatisticsModel(),
-        viewFactory);
+        model.getRangedWeaponStatisticsModel()
+    );
   }
 
   @Override

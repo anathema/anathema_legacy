@@ -11,15 +11,14 @@ public class CloseCombatStatisticsPresenterPage extends
     AbstractOffensiveStatisticsPresenterPage<ICloseCombatStatsticsModel, CloseCombatStatisticsProperties> {
 
   public CloseCombatStatisticsPresenterPage(
-      Resources resources,
-      IEquipmentStatisticsCreationModel model,
-      IEquipmentStatisticsCreationViewFactory viewFactory) {
+          Resources resources,
+          IEquipmentStatisticsCreationModel model) {
     super(
         resources,
         new CloseCombatStatisticsProperties(resources),
         model,
-        model.getCloseCombatStatsticsModel(),
-        viewFactory);
+        model.getCloseCombatStatsticsModel()
+    );
   }
 
   @Override
