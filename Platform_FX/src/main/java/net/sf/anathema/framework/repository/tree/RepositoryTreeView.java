@@ -6,7 +6,6 @@ import javafx.scene.control.TreeView;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.file.Extension;
-import net.sf.anathema.lib.gui.file.FileChoosingUtilities;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.lib.gui.list.veto.Vetor;
 import net.sf.anathema.platform.tool.FxButtonTool;

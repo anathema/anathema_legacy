@@ -1,15 +1,12 @@
 package net.sf.anathema.framework.repository.tree;
 
-import net.sf.anathema.framework.environment.Resources;
-import net.sf.anathema.framework.fx.ExceptionIndicator;
+import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.repository.RepositoryException;
-import net.sf.anathema.initialization.FxApplicationFrame;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.gui.file.Extension;
-import net.sf.anathema.lib.message.Message;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -21,18 +18,18 @@ import java.util.zip.ZipFile;
 
 public class RepositoryItemImportPresenter {
 
-  private final Resources resources;
   private final IRepositoryTreeModel model;
   private final IRepositoryTreeView view;
   private final RepositoryZipPathCreator creator;
   private final AmountMessaging messaging;
+  private final Environment environment;
 
   public RepositoryItemImportPresenter(
-          Resources resources,
+          Environment environment,
           IRepositoryTreeModel repositoryTreeModel,
           IRepositoryTreeView treeView,
           AmountMessaging fileCountMessaging) {
-    this.resources = resources;
+    this.environment = environment;
     this.model = repositoryTreeModel;
     this.view = treeView;
     this.messaging = fileCountMessaging;
@@ -41,14 +38,14 @@ public class RepositoryItemImportPresenter {
 
   public void initPresentation() {
     Tool tool = view.addTool();
-    tool.setTooltip(resources.getString("AnathemaCore.Tools.RepositoryView.ImportToolTip"));
-    tool.setText(resources.getString("AnathemaCore.Tools.RepositoryView.ImportName"));
+    tool.setTooltip(environment.getString("AnathemaCore.Tools.RepositoryView.ImportToolTip"));
+    tool.setText(environment.getString("AnathemaCore.Tools.RepositoryView.ImportName"));
     tool.setIcon(new FileUi().getImportFilePath());
     tool.setCommand(new Command() {
       @Override
       public void execute() {
         try {
-          String description = resources.getString("Filetype.zip");
+          String description = environment.getString("Filetype.zip");
           Path loadFile = view.showLoadFile(new Extension(description, "*.zip"));
           if (loadFile == null) {
             return;
@@ -57,7 +54,7 @@ public class RepositoryItemImportPresenter {
           MultiEntryMap<String, ZipEntry> entriesByItem = groupEntriesByItems(importZipFile);
           for (String comment : entriesByItem.keySet()) {
             String[] splitComment = comment.split("#", 3);
-            if (!splitComment[0].equals(resources.getString("Anathema.Version.Numeric"))) {
+            if (!splitComment[0].equals(environment.getString("Anathema.Version.Numeric"))) {
               continue;
             }
             IItemType type = model.getItemTypeForId(splitComment[1]);
@@ -74,14 +71,11 @@ public class RepositoryItemImportPresenter {
           importZipFile.close();
           messaging.addMessage("AnathemaCore.Tools.RepositoryView.ImportDoneMessage", entriesByItem.keySet().size());
         } catch (ZipException e) {
-          Message message = new Message(resources.getString("AnathemaCore.Tools.RepositoryView.NoZipFileError"), e);
-          ExceptionIndicator.indicate(resources, FxApplicationFrame.getOwner(), message);
+          environment.handle(e, environment.getString("AnathemaCore.Tools.RepositoryView.NoZipFileError"));
         } catch (IOException e) {
-          Message message = new Message(resources.getString("AnathemaCore.Tools.RepositoryView.FileError"), e);
-          ExceptionIndicator.indicate(resources, FxApplicationFrame.getOwner(), message);
+          environment.handle(e, environment.getString("AnathemaCore.Tools.RepositoryView.FileError"));
         } catch (RepositoryException e) {
-          Message message = new Message(resources.getString("AnathemaCore.Tools.RepositoryView.RepositoryError"), e);
-          ExceptionIndicator.indicate(resources, FxApplicationFrame.getOwner(), message);
+          environment.handle(e, environment.getString("AnathemaCore.Tools.RepositoryView.RepositoryError"));
         }
       }
     });

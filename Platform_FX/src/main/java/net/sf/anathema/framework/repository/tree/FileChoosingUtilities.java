@@ -1,7 +1,8 @@
-package net.sf.anathema.lib.gui.file;
+package net.sf.anathema.framework.repository.tree;
 
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
+import net.sf.anathema.lib.gui.file.Extension;
 
 import java.io.File;
 import java.nio.file.Path;
