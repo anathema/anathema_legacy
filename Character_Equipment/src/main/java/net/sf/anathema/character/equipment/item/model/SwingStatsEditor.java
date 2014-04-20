@@ -26,9 +26,7 @@ public class SwingStatsEditor implements StatsEditor {
   private final ModelToStats modelToStats = new ModelToStats();
 
   @Override
-  public void editStats(Resources resources, String[] definedNames, IEquipmentStats stats) {
-    IEquipmentStatisticsCreationModel model = new StatsToModel().createModel(stats);
-    model.setForbiddenNames(definedNames);
+  public void editStats(Resources resources, IEquipmentStatisticsCreationModel model) {
     doIt(resources, model);
   }
 
