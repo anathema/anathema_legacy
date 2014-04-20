@@ -9,8 +9,8 @@ import net.sf.anathema.character.equipment.creation.presenter.IWeaponTagsModel;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.OffensiveStatisticsProperties;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.TagPageProperties;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
-import net.sf.anathema.equipment.editor.wizard.CheckInputListener;
 import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.gui.layout.AdditiveView;
 import net.sf.anathema.lib.gui.widgets.HorizontalLine;
@@ -69,11 +69,16 @@ public abstract class AbstractOffensiveStatisticsPresenterPage<O extends IOffens
   }
 
   @Override
-  protected void initModelListening(CheckInputListener inputListener) {
-    super.initModelListening(inputListener);
+  public void setInputValidListener(ChangeListener inputValidListener) {
+    super.setInputValidListener(inputValidListener);
     IWeaponTagsModel weaponTagsModel = getOverallModel().getWeaponTagsModel();
     for (IWeaponTag tag : weaponTagsModel.getAllTags()) {
-      weaponTagsModel.getSelectedModel(tag).addChangeListener(inputListener);
+      weaponTagsModel.getSelectedModel(tag).addChangeListener(new CheckInputListener(new Runnable() {
+        @Override
+        public void run() {
+          inputValidListener.changeOccurred();
+        }
+      }));
     }
   }
 

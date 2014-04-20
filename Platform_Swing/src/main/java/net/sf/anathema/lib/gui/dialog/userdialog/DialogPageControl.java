@@ -75,6 +75,7 @@ public class DialogPageControl implements IInputValidCheckable, IMessageSetable 
   @Override
   public void checkInputValid() {
     setMessage(dialogPage.createCurrentMessage());
+    updateButtons();
   }
 
   public String getTitle() {

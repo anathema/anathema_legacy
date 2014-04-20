@@ -5,9 +5,9 @@ import net.miginfocom.layout.CC;
 import net.sf.anathema.character.equipment.creation.presenter.IEquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.creation.presenter.IEquipmentStatisticsModel;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.AbstractEquipmentStatisticsProperties;
-import net.sf.anathema.equipment.editor.wizard.AbstractAnathemaWizardPage;
-import net.sf.anathema.equipment.editor.wizard.CheckInputListener;
 import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.lib.control.ChangeListener;
+import net.sf.anathema.lib.gui.dialog.userdialog.page.AbstractDialogPage;
 import net.sf.anathema.lib.gui.layout.AdditiveView;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.message.IBasicMessage;
@@ -17,12 +17,13 @@ import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.Component;
 
 public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipmentStatisticsModel, P extends AbstractEquipmentStatisticsProperties> extends
-        AbstractAnathemaWizardPage {
+        AbstractDialogPage {
 
   private final P properties;
   private final M pageModel;
@@ -35,6 +36,7 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
           P properties,
           IEquipmentStatisticsCreationModel overallModel,
           M pageModel) {
+    super(properties.getDefaultMessage().getText());
     this.properties = properties;
     this.pageModel = pageModel;
     this.resources = resources;
@@ -66,7 +68,7 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
   }
 
   @Override
-  public IBasicMessage getMessage() {
+  public IBasicMessage createCurrentMessage() {
     if (!isNameDefined()) {
       return properties.getUndefinedNameMessage();
     }
@@ -81,6 +83,11 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
   }
 
   @Override
+  public String getTitle() {
+    return properties.getPageDescription();
+  }
+
+  @Override
   public final String getDescription() {
     return properties.getPageDescription();
   }
@@ -91,10 +98,11 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
   }
 
   @Override
-  protected final void initPageContent() {
+  public final JComponent createContent() {
     this.view = new WeaponStatisticsView();
     initNameRow(getProperties().getNameLabel(), getPageModel().getName());
     addAdditionalContent();
+    return getPageContent().getContent();
   }
 
   private void initNameRow(String label, ITextualDescription textModel) {
@@ -105,18 +113,17 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
   protected abstract void addAdditionalContent();
 
   @Override
-  protected void initModelListening(CheckInputListener inputListener) {
-    getPageModel().getName().addTextChangedListener(inputListener);
+  public void setInputValidListener(ChangeListener inputValidListener) {
+    getPageModel().getName().addTextChangedListener(new CheckInputListener(new Runnable() {
+      @Override
+      public void run() {
+        inputValidListener.changeOccurred();
+      }
+    }));
   }
 
-  @Override
   public final IWeaponStatisticsView getPageContent() {
     return view;
-  }
-
-  @Override
-  protected void addFollowUpPages(CheckInputListener inputListener) {
-    //nothing to do
   }
 
   protected final void addLabelledComponentRow(final String[] labels, final Component[] contents) {

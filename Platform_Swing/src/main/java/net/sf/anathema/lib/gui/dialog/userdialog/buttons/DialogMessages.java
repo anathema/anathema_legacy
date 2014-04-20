@@ -1,4 +1,4 @@
-package net.sf.anathema.lib.gui.dialog;
+package net.sf.anathema.lib.gui.dialog.userdialog.buttons;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -13,12 +13,6 @@ public class DialogMessages {
 
   public static final String CANCEL = getString("SmartAction.cancel");
   public static final String OK = getString("SmartAction.okay");
-
-  public static final String SELECT_ALL = getString("SmartAction.selectAll");
-
-  public static final String WIZARD_NEXT = getString("Wizard.SmartNext");
-  public static final String WIZARD_BACK = getString("Wizard.SmartBack");
-  public static final String WIZARD_FINISH = getString("Wizard.SmartFinish");
 
   public static String getString(String key) {
     return RESOURCE_BUNDLE.getString(key);

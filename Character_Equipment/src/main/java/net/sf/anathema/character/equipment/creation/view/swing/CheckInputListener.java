@@ -1,4 +1,4 @@
-package net.sf.anathema.equipment.editor.wizard;
+package net.sf.anathema.character.equipment.creation.view.swing;
 
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;

@@ -4,14 +4,13 @@ import net.sf.anathema.character.equipment.creation.presenter.IEquipmentStatisti
 import net.sf.anathema.character.equipment.item.model.ModelToStats;
 import net.sf.anathema.character.equipment.item.model.NullClosure;
 import net.sf.anathema.character.equipment.item.model.StatsEditor;
-import net.sf.anathema.equipment.editor.wizard.AnathemaWizardDialog;
-import net.sf.anathema.equipment.editor.wizard.IAnathemaWizardPage;
-import net.sf.anathema.equipment.editor.wizard.WizardDialog;
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 import net.sf.anathema.lib.gui.dialog.core.DialogResult;
 import net.sf.anathema.lib.gui.dialog.userdialog.DialogCloseHandler;
+import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
+import net.sf.anathema.lib.gui.dialog.userdialog.page.IDialogPage;
 import net.sf.anathema.lib.util.Closure;
 
 import javax.swing.SwingUtilities;
@@ -41,12 +40,12 @@ public class SwingStatsEditor implements StatsEditor {
   }
 
   private void runDialog(Resources resources, final IEquipmentStatisticsCreationModel model) {
-    IAnathemaWizardPage startPage = chooseStartPage(resources, model);
-    WizardDialog dialog = new AnathemaWizardDialog(SwingApplicationFrame.getParentComponent(), startPage);
+    IDialogPage startPage = chooseStartPage(resources, model);
+    UserDialog dialog = new UserDialog(SwingApplicationFrame.getParentComponent(), startPage);
     dialog.show(new CreateStatsHandler(model));
   }
 
-  private IAnathemaWizardPage chooseStartPage(Resources resources, IEquipmentStatisticsCreationModel model) {
+  private IDialogPage chooseStartPage(Resources resources, IEquipmentStatisticsCreationModel model) {
     switch (model.getEquipmentType()) {
       case CloseCombat:
         return new CloseCombatStatisticsPresenterPage(resources, model);
