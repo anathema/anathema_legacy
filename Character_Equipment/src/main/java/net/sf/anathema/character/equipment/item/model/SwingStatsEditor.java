@@ -8,14 +8,14 @@ import net.sf.anathema.character.equipment.creation.presenter.stats.CloseCombatS
 import net.sf.anathema.character.equipment.creation.presenter.stats.IEquipmentStatisticsCreationViewFactory;
 import net.sf.anathema.character.equipment.creation.presenter.stats.RangedCombatStatisticsPresenterPage;
 import net.sf.anathema.character.equipment.creation.presenter.stats.TraitModifyingStatisticsPresenterPage;
-import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 import net.sf.anathema.equipment.editor.wizard.AnathemaWizardDialog;
 import net.sf.anathema.equipment.editor.wizard.IAnathemaWizardPage;
 import net.sf.anathema.equipment.editor.wizard.WizardDialog;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.framework.view.SwingApplicationFrame;
+import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 import net.sf.anathema.lib.gui.dialog.core.DialogResult;
 import net.sf.anathema.lib.gui.dialog.userdialog.DialogCloseHandler;
-import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.util.Closure;
 
 import javax.swing.SwingUtilities;
@@ -26,19 +26,19 @@ public class SwingStatsEditor implements StatsEditor {
   private final ModelToStats modelToStats = new ModelToStats();
 
   @Override
-  public void editStats(final Resources resources, final String[] definedNames, final IEquipmentStats stats) {
+  public void editStats(Resources resources, String[] definedNames, IEquipmentStats stats) {
+    IEquipmentStatisticsCreationModel model = new StatsToModel().createModel(stats);
+    model.setForbiddenNames(definedNames);
+    doIt(resources, model);
+  }
+
+  private void doIt(Resources resources, IEquipmentStatisticsCreationModel model) {
     SwingUtilities.invokeLater(new Runnable() {
       @Override
       public void run() {
-        doIt(resources, definedNames, stats);
+        runDialog(resources, model);
       }
     });
-  }
-
-  private void doIt(Resources resources, String[] definedNames, IEquipmentStats stats) {
-    IEquipmentStatisticsCreationModel model = new StatsToModel().createModel(stats);
-    model.setForbiddenNames(definedNames);
-    runDialog(resources, model);
   }
 
   @Override
