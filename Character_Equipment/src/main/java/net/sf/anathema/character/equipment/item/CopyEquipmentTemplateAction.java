@@ -2,11 +2,11 @@ package net.sf.anathema.character.equipment.item;
 
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.view.EquipmentNavigation;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.file.RelativePath;
-import net.sf.anathema.framework.environment.Resources;
 
 public class CopyEquipmentTemplateAction {
   private final IEquipmentDatabaseManagement model;
@@ -22,7 +22,7 @@ public class CopyEquipmentTemplateAction {
     copyTool.setIcon(new RelativePath("icons/ButtonDuplicate24.png"));
     copyTool.setTooltip(resources.getString("Equipment.Creation.Item.CopyActionTooltip"));
     copyTool.enable();
-    copyTool.setCommand(new CopyEquipmentItem(copyTool));
+    copyTool.setCommand(new CopyEquipmentItem(copyTool, view));
     model.getTemplateEditModel().getDescription().getName().addTextChangedListener(new EnableToolOnChange(copyTool));
   }
 
@@ -41,15 +41,17 @@ public class CopyEquipmentTemplateAction {
 
   private class CopyEquipmentItem implements Command {
     private final Tool copyTool;
+    private EquipmentNavigation view;
 
-    public CopyEquipmentItem(Tool copyTool) {
+    public CopyEquipmentItem(Tool copyTool, EquipmentNavigation view) {
       this.copyTool = copyTool;
+      this.view = view;
     }
 
     @SuppressWarnings({"RedundantStringConstructorCall", "StatementWithEmptyBody"})
     @Override
     public void execute() {
-      DiscardChangesVetor vetor = new DiscardChangesVetor(resources, new DirtyEquipmentCondition(model));
+      DiscardChangesVetor vetor = new DiscardChangesVetor(model, view, resources);
       vetor.requestPermissionFor(new Command() {
         @Override
         public void execute() {

@@ -2,10 +2,9 @@ package net.sf.anathema.character.equipment.item;
 
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.view.EquipmentNavigation;
-import net.sf.anathema.framework.view.SwingApplicationFrame;
-import net.sf.anathema.interaction.Command;
-import net.sf.anathema.lib.gui.dialog.userdialog.buttons.ConfigurableVetor;
 import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.interaction.Command;
+import net.sf.anathema.lib.gui.list.veto.Vetor;
 
 import static java.text.MessageFormat.format;
 
@@ -23,10 +22,10 @@ public class RemoveEquipmentItem implements Command {
   @Override
   public void execute() {
     String itemId = model.getTemplateEditModel().getEditTemplateId();
+    String title = resources.getString("AnathemaCore.DialogTitle.ConfirmationDialog");
     String deleteNotification = resources.getString("Equipment.Creation.DeleteMessage.Text");
     String messageText = format("{0} - {1}", itemId, deleteNotification);
-    String okText = resources.getString("Equipment.Creation.DeleteMessage.OKButton");
-    ConfigurableVetor vetor = new ConfigurableVetor(SwingApplicationFrame.getParentComponent(), messageText, okText);
+    Vetor vetor = view.createVetor(title, messageText);
     vetor.requestPermissionFor(new Command() {
       @Override
       public void execute() {

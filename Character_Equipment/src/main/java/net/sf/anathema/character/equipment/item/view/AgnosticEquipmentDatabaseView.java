@@ -3,6 +3,7 @@ package net.sf.anathema.character.equipment.item.view;
 import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
+import net.sf.anathema.lib.gui.list.veto.Vetor;
 import net.sf.anathema.lib.gui.selection.VetoableObjectSelectionView;
 
 public class AgnosticEquipmentDatabaseView implements EquipmentDatabaseView {
@@ -34,5 +35,10 @@ public class AgnosticEquipmentDatabaseView implements EquipmentDatabaseView {
   @Override
   public Tool addEditTemplateTool() {
     return navigation.addEditTemplateTool();
+  }
+
+  @Override
+  public Vetor createVetor(String title, String message) {
+    return navigation.createVetor(title, message);
   }
 }

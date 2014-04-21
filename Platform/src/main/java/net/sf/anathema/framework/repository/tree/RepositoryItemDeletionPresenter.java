@@ -31,7 +31,7 @@ public class RepositoryItemDeletionPresenter {
       @Override
       public void execute() {
         String message = environment.getString("AnathemaCore.Tools.RepositoryView.DeleteMessage");
-        String title = environment.getString("AnathemaCore.Tools.RepositoryView.ConfirmTitle");
+        String title = environment.getString("AnathemaCore.DialogTitle.ConfirmationDialog");
         Vetor vetor = treeView.createVetor(message, title);
         vetor.requestPermissionFor(new Command() {
           @Override
