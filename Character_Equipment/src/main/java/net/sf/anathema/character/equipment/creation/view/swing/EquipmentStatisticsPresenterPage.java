@@ -5,7 +5,6 @@ import net.miginfocom.layout.CC;
 import net.sf.anathema.character.equipment.creation.presenter.IEquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.creation.presenter.IEquipmentStatisticsModel;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.AbstractEquipmentStatisticsProperties;
-import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.AbstractDialogPage;
 import net.sf.anathema.lib.gui.layout.AdditiveView;
@@ -13,50 +12,30 @@ import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
 import net.sf.anathema.lib.workflow.intvalue.IntValuePresentation;
-import net.sf.anathema.lib.workflow.textualdescription.ITextView;
-import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
-import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.Component;
 
-public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipmentStatisticsModel, P extends AbstractEquipmentStatisticsProperties> extends
+public class EquipmentStatisticsPresenterPage<M extends IEquipmentStatisticsModel, P extends AbstractEquipmentStatisticsProperties> extends
         AbstractDialogPage {
 
   private final P properties;
   private final M pageModel;
   private final IEquipmentStatisticsCreationModel overallModel;
-  private final Resources resources;
   private IWeaponStatisticsView view;
 
-  public AbstractEquipmentStatisticsPresenterPage(
-          Resources resources,
+  public EquipmentStatisticsPresenterPage(
           P properties,
           IEquipmentStatisticsCreationModel overallModel,
-          M pageModel) {
+          M pageModel,
+          IWeaponStatisticsView view) {
     super(properties.getDefaultMessage().getText());
     this.properties = properties;
     this.pageModel = pageModel;
-    this.resources = resources;
     this.overallModel = overallModel;
-    ITextualDescription name = getPageModel().getName();
-    if (name.isEmpty()) {
-      name.setText(properties.getDefaultName());
-    }
-  }
-
-  protected final P getProperties() {
-    return properties;
-  }
-
-  protected final M getPageModel() {
-    return pageModel;
-  }
-
-  protected final Resources getResources() {
-    return resources;
+    this.view = view;
   }
 
   public IEquipmentStatisticsCreationModel getOverallModel() {
@@ -99,22 +78,12 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
 
   @Override
   public final JComponent createContent() {
-    this.view = new WeaponStatisticsView();
-    initNameRow(getProperties().getNameLabel(), getPageModel().getName());
-    addAdditionalContent();
     return view.getComponent();
   }
 
-  private void initNameRow(String label, ITextualDescription textModel) {
-    ITextView textView = view.addLineTextView(label);
-    new TextualPresentation().initView(textView, textModel);
-  }
-
-  protected abstract void addAdditionalContent();
-
   @Override
   public void setInputValidListener(ChangeListener inputValidListener) {
-    getPageModel().getName().addTextChangedListener(new CheckInputListener(new Runnable() {
+    pageModel.getName().addTextChangedListener(new CheckInputListener(new Runnable() {
       @Override
       public void run() {
         inputValidListener.changeOccurred();
@@ -122,11 +91,11 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
     }));
   }
 
-  protected final void addView(AdditiveView view) {
+  public final void addView(AdditiveView view) {
     this.view.addView(view);
   }
 
-  protected final void addLabelledComponentRow(final String[] labels, final Component[] contents) {
+  public final void addLabelledComponentRow(final String[] labels, final Component[] contents) {
     Preconditions.checkArgument(labels.length == contents.length, "Same number of labels and content items required");
     addView(new AdditiveView() {
       @Override
@@ -139,7 +108,7 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
     });
   }
 
-  protected final IntegerSpinner initIntegerSpinner(IIntValueModel intModel) {
+  public final IntegerSpinner initIntegerSpinner(IIntValueModel intModel) {
     IntegerSpinner spinner = new IntegerSpinner(intModel.getValue());
     new IntValuePresentation().initView(spinner, intModel);
     return spinner;

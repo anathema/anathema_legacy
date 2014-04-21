@@ -2,7 +2,6 @@ package net.sf.anathema.character.equipment.creation.view.swing;
 
 import net.sf.anathema.character.equipment.creation.presenter.IWeaponDamageModel;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.WeaponDamageProperties;
-import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.health.HealthType;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
@@ -15,10 +14,10 @@ public class WeaponDamagePresenter {
   private final WeaponDamageView view;
   private final WeaponDamageProperties properties;
 
-  public WeaponDamagePresenter(Resources resources, IWeaponDamageModel model, WeaponDamageView view) {
+  public WeaponDamagePresenter(WeaponDamageProperties properties, IWeaponDamageModel model, WeaponDamageView view) {
     this.model = model;
     this.view = view;
-    this.properties = new WeaponDamageProperties(resources);
+    this.properties = properties;
   }
 
   public void initPresentation() {

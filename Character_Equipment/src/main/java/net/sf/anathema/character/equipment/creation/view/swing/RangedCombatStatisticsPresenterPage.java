@@ -5,31 +5,16 @@ import net.sf.anathema.character.equipment.creation.presenter.IRangedCombatStati
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.RangedCombatStatisticsProperties;
 import net.sf.anathema.framework.environment.Resources;
 
-import java.awt.Component;
-
 public class RangedCombatStatisticsPresenterPage extends
-    AbstractOffensiveStatisticsPresenterPage<IRangedCombatStatisticsModel, RangedCombatStatisticsProperties> {
+        WeaponPresenterPage<IRangedCombatStatisticsModel, RangedCombatStatisticsProperties> {
 
   public RangedCombatStatisticsPresenterPage(
           Resources resources,
-          IEquipmentStatisticsCreationModel model) {
+          IEquipmentStatisticsCreationModel model, IWeaponStatisticsView view) {
     super(
-        resources,
-        new RangedCombatStatisticsProperties(resources),
-        model,
-        model.getRangedWeaponStatisticsModel()
+            new RangedCombatStatisticsProperties(resources),
+            model,
+            model.getRangedWeaponStatisticsModel(), view
     );
-  }
-
-  @Override
-  protected void addIndividualRows() {
-    initSpeedAndRangeRow();
-  }
-
-  private void initSpeedAndRangeRow() {
-    String[] labels = new String[] { getProperties().getSpeedLabel(), getProperties().getRangeLabel() };
-    addLabelledComponentRow(labels, new Component[] {
-        initIntegerSpinner(getPageModel().getSpeedModel()).getComponent(),
-        initIntegerSpinner(getPageModel().getRangeModel()).getComponent() });
   }
 }
