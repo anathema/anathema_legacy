@@ -22,7 +22,7 @@ public class SwingWeaponDamageView implements WeaponDamageView {
   private final IChangeableJComboBox<HealthType> typeBox = new ChangeableJComboBox<>(new HealthType[0]);
 
   @Override
-  public void addTo(JPanel panel, CC data) {
+  public void addTo(JPanel panel) {
     panel.add(damageLabel);
     panel.add(damageValueSpinner.getComponent(), new CC().growX());
     panel.add(typeBox.getComponent(), new CC().growX().spanX());

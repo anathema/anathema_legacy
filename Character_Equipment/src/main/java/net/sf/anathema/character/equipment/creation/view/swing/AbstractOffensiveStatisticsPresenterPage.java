@@ -45,9 +45,9 @@ public abstract class AbstractOffensiveStatisticsPresenterPage<O extends IOffens
   }
 
   protected void addTags() {
-    getPageContent().addView(new AdditiveView() {
+    addView(new AdditiveView() {
       @Override
-      public void addTo(JPanel panel, CC data) {
+      public void addTo(JPanel panel) {
         WeaponTagsView tagsView = new WeaponTagsView();
         BooleanValuePresentation booleanValuePresentation = new BooleanValuePresentation();
         for (IWeaponTag tag : getOverallModel().getWeaponTagsModel().getAllTags()) {
@@ -63,9 +63,9 @@ public abstract class AbstractOffensiveStatisticsPresenterPage<O extends IOffens
           });
           checkBox.setEnabled(enabledModel.getValue());
         }
-        panel.add(tagsView.getContent(), data);
+        panel.add(tagsView.getContent(), new CC().spanX().growX().pushX());
       }
-    }, new CC().spanX().growX().pushX());
+    });
   }
 
   @Override
@@ -83,12 +83,12 @@ public abstract class AbstractOffensiveStatisticsPresenterPage<O extends IOffens
   }
 
   protected void addHorizontalSeparator() {
-    getPageContent().addView(new AdditiveView() {
+    addView(new AdditiveView() {
       @Override
-      public void addTo(JPanel panel, CC data) {
-        panel.add(new HorizontalLine(), data);
+      public void addTo(JPanel panel) {
+        panel.add(new HorizontalLine(), new CC().newline().pushX().growX().spanX());
       }
-    }, new CC().newline().pushX().growX().spanX());
+    });
   }
 
   protected abstract void addIndividualRows();
@@ -111,7 +111,7 @@ public abstract class AbstractOffensiveStatisticsPresenterPage<O extends IOffens
   private void initWeaponDamageRow(IWeaponDamageModel damageModel) {
     WeaponDamageView damageView = new SwingWeaponDamageView();
     new WeaponDamagePresenter(getResources(), damageModel, damageView).initPresentation();
-    getPageContent().addView(damageView, new CC());
+    addView(damageView);
   }
 
   @Override

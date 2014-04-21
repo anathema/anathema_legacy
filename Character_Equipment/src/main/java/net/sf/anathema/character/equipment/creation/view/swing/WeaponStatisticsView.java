@@ -1,6 +1,5 @@
 package net.sf.anathema.character.equipment.creation.view.swing;
 
-import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.lib.gui.layout.AdditiveView;
@@ -35,7 +34,7 @@ public class WeaponStatisticsView implements IWeaponStatisticsView {
   }
 
   @Override
-  public void addView(AdditiveView additiveView, CC cc) {
-    additiveView.addTo(panel, cc);
+  public void addView(AdditiveView additiveView) {
+    additiveView.addTo(panel);
   }
 }

@@ -102,7 +102,7 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
     this.view = new WeaponStatisticsView();
     initNameRow(getProperties().getNameLabel(), getPageModel().getName());
     addAdditionalContent();
-    return getPageContent().getContent();
+    return view.getContent();
   }
 
   private void initNameRow(String label, ITextualDescription textModel) {
@@ -122,21 +122,21 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
     }));
   }
 
-  public final IWeaponStatisticsView getPageContent() {
-    return view;
+  protected final void addView(AdditiveView view) {
+    this.view.addView(view);
   }
 
   protected final void addLabelledComponentRow(final String[] labels, final Component[] contents) {
     Preconditions.checkArgument(labels.length == contents.length, "Same number of labels and content items required");
-    getPageContent().addView(new AdditiveView() {
+    addView(new AdditiveView() {
       @Override
-      public void addTo(JPanel panel, CC data) {
+      public void addTo(JPanel panel) {
         for (int index = 0; index < contents.length; index++) {
           panel.add(new JLabel(labels[index]));
           panel.add(contents[index], new CC().growX().pushX());
         }
       }
-    }, new CC());
+    });
   }
 
   protected final IntegerSpinner initIntegerSpinner(IIntValueModel intModel) {

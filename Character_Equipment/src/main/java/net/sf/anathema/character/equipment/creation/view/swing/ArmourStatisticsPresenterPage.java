@@ -39,16 +39,16 @@ public class ArmourStatisticsPresenterPage extends AbstractEquipmentStatisticsPr
     final IconToggleButton linkToggleButton = new IconToggleButton(new ImageProvider().getImageIcon(new CharacterUI().getLinkIconPath()));
     final IIntValueModel aggravatedSoakModel = getPageModel().getSoakModel(HealthType.Aggravated);
     final JComponent aggravatedSoakSpinner = initIntegerSpinner(aggravatedSoakModel).getComponent();
-    getPageContent().addView(new AdditiveView() {
+    addView(new AdditiveView() {
       @Override
-      public void addTo(JPanel panel, CC data) {
+      public void addTo(JPanel panel) {
         panel.add(new JLabel(getProperties().getAggravatedSoakLabel()));
         panel.add(aggravatedSoakSpinner, new CC().growX());
         JComponent button = linkToggleButton.getComponent();
         panel.add(button, SwingLayoutUtils.constraintsForImageButton(button).split(2).spanX());
         panel.add(new JLabel(getProperties().getLinkSoakLabel()));
       }
-    }, new CC());
+    });
     addLabelledComponentRow(new String[]{getProperties().getMobilityPenaltyLabel(), getProperties().getFatigueLabel()},
             new Component[]{initIntegerSpinner(
                     getPageModel().getMobilityPenaltyModel()).getComponent(), initIntegerSpinner(
