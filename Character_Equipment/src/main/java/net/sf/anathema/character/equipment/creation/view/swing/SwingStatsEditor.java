@@ -22,10 +22,6 @@ public class SwingStatsEditor implements StatsEditor {
 
   @Override
   public void editStats(Resources resources, IEquipmentStatisticsCreationModel model) {
-    doIt(resources, model);
-  }
-
-  private void doIt(Resources resources, IEquipmentStatisticsCreationModel model) {
     SwingUtilities.invokeLater(new Runnable() {
       @Override
       public void run() {
