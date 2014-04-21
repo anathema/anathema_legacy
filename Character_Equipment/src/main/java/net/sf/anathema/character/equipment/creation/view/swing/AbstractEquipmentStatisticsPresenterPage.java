@@ -102,7 +102,7 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
     this.view = new WeaponStatisticsView();
     initNameRow(getProperties().getNameLabel(), getPageModel().getName());
     addAdditionalContent();
-    return view.getContent();
+    return view.getComponent();
   }
 
   private void initNameRow(String label, ITextualDescription textModel) {

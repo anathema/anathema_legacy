@@ -16,7 +16,7 @@ public class WeaponStatisticsView implements IWeaponStatisticsView {
 
 
   @Override
-  public JComponent getContent() {
+  public JComponent getComponent() {
     return panel;
   }
 
@@ -26,11 +26,6 @@ public class WeaponStatisticsView implements IWeaponStatisticsView {
     LabelTextView labelTextView = new LabelTextView(label, textView);
     labelTextView.addToMigPanelSpanning(panel);
     return textView;
-  }
-
-  @Override
-  public void requestFocus() {
-    //nothing to do
   }
 
   @Override

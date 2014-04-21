@@ -48,7 +48,7 @@ public abstract class AbstractOffensiveStatisticsPresenterPage<O extends IOffens
     addView(new AdditiveView() {
       @Override
       public void addTo(JPanel panel) {
-        WeaponTagsView tagsView = new WeaponTagsView();
+        IWeaponTagsView tagsView = new WeaponTagsView();
         BooleanValuePresentation booleanValuePresentation = new BooleanValuePresentation();
         for (IWeaponTag tag : getOverallModel().getWeaponTagsModel().getAllTags()) {
           final JCheckBox checkBox = tagsView.addCheckBox(tagProperties.getLabel(tag));
@@ -63,7 +63,7 @@ public abstract class AbstractOffensiveStatisticsPresenterPage<O extends IOffens
           });
           checkBox.setEnabled(enabledModel.getValue());
         }
-        panel.add(tagsView.getContent(), new CC().spanX().growX().pushX());
+        panel.add(tagsView.getComponent(), new CC().spanX().growX().pushX());
       }
     });
   }

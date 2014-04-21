@@ -12,13 +12,8 @@ public class WeaponTagsView implements IWeaponTagsView {
   private final JPanel content = new JPanel(new MigLayout(LayoutUtils.fillWithoutInsets().wrapAfter(3)));
 
   @Override
-  public JComponent getContent() {
+  public JComponent getComponent() {
     return content;
-  }
-
-  @Override
-  public void requestFocus() {
-    //nothing to do
   }
 
   @Override
