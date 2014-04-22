@@ -58,6 +58,11 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
 
   @Override
   public boolean canSelectionBeDeleted() {
+    for (Object currentlySelectedUserObject : currentlySelectedUserObjects) {
+      if (!(currentlySelectedUserObject instanceof PrintNameFile)) {
+        return false;
+      }
+    }
     return true;
   }
 
@@ -133,5 +138,4 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
   public void refreshItem(IItemType type, String id) {
     control.announce().printNameFileAdded(repository.getPrintNameFileAccess().getPrintNameFile(type, id));
   }
-
 }

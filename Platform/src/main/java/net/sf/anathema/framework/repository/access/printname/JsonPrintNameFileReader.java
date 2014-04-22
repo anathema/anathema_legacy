@@ -8,6 +8,7 @@ import org.apache.commons.io.IOUtils;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 public class JsonPrintNameFileReader implements PrintNameFileReader {
 
@@ -15,8 +16,10 @@ public class JsonPrintNameFileReader implements PrintNameFileReader {
 
   @Override
   public PrintNameFile readPrintName(File file, IItemType itemType) throws IOException {
-    String content = IOUtils.toString(new FileInputStream(file));
-    ItemReference itemReference = gson.fromJson(content, ItemReference.class);
-    return new PrintNameFile(file, itemReference.printName, itemReference.repositoryId, itemType);
+    try (InputStream stream = new FileInputStream(file)) {
+      String content = IOUtils.toString(stream);
+      ItemReference itemReference = gson.fromJson(content, ItemReference.class);
+      return new PrintNameFile(file, itemReference.printName, itemReference.repositoryId, itemType);
+    }
   }
 }

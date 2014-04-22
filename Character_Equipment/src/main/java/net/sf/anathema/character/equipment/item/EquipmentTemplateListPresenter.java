@@ -43,7 +43,7 @@ public class EquipmentTemplateListPresenter {
       }
     });
     updateAvailableTemplates();
-    view.getTemplateListView().addSelectionVetor(new DiscardChangesVetor(resources, new DirtyEquipmentCondition(model)));
+    view.getTemplateListView().addSelectionVetor(new DiscardChangesVetor(model, view, resources));
     view.getTemplateListView().addObjectSelectionChangedListener(new EquipmentTemplateLoadListener());
   }
 

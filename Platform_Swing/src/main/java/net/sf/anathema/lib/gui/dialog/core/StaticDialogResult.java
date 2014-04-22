@@ -20,5 +20,4 @@ public class StaticDialogResult implements DialogResult {
   public boolean isCanceled() {
     return canceled;
   }
-
 }

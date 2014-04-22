@@ -53,7 +53,7 @@ public class EquipmentPersonalizationPresenterPage extends AbstractDialogPage {
 
   @Override
   public JComponent createContent() {
-    return view.getContent();
+    return view.getComponent();
   }
 
   private ITextView addField(String label, ObjectValueListener<String> listener) {

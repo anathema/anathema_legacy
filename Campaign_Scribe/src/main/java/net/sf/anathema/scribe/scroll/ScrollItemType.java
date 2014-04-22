@@ -1,5 +1,6 @@
 package net.sf.anathema.scribe.scroll;
 
+import net.sf.anathema.framework.environment.dependencies.Weight;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.RepositoryConfiguration;
 import net.sf.anathema.framework.module.ItemTypeConfiguration;
@@ -8,6 +9,7 @@ import net.sf.anathema.framework.repository.SingleFileConfiguration;
 import net.sf.anathema.initialization.RegisteredItemTypeConfiguration;
 
 @RegisteredItemTypeConfiguration
+@Weight(weight=20)
 public class ScrollItemType implements ItemTypeConfiguration {
 
   public static final String SCROLL_ITEM_TYPE_ID = "Scroll";

@@ -1,5 +1,6 @@
 package net.sf.anathema.character.main.itemtype;
 
+import net.sf.anathema.framework.environment.dependencies.Weight;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.RepositoryConfiguration;
 import net.sf.anathema.framework.module.ItemTypeConfiguration;
@@ -8,6 +9,7 @@ import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.initialization.RegisteredItemTypeConfiguration;
 
 @RegisteredItemTypeConfiguration
+@Weight(weight=10)
 public class CharacterItemType implements ItemTypeConfiguration {
 
   public static final String CHARACTER_ITEM_TYPE_ID = "ExaltedCharacter";

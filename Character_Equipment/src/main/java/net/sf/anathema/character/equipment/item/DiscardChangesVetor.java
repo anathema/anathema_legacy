@@ -1,20 +1,22 @@
 package net.sf.anathema.character.equipment.item;
 
-import net.sf.anathema.framework.view.SwingApplicationFrame;
+import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
+import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.framework.repository.tree.VetorFactory;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.data.Condition;
-import net.sf.anathema.lib.gui.dialog.userdialog.buttons.ConfigurableVetor;
 import net.sf.anathema.lib.gui.list.veto.Vetor;
-import net.sf.anathema.framework.environment.Resources;
 
 public class DiscardChangesVetor implements Vetor {
 
   private final Condition preCondition;
   private final Resources resources;
+  private final VetorFactory factory;
 
-  public DiscardChangesVetor(Resources resources, Condition preCondition) {
+  public DiscardChangesVetor(IEquipmentDatabaseManagement model, VetorFactory factory, Resources resources) {
+    this.preCondition = new DirtyEquipmentCondition(model);
+    this.factory = factory;
     this.resources = resources;
-    this.preCondition = preCondition;
   }
 
   @Override
@@ -24,9 +26,8 @@ public class DiscardChangesVetor implements Vetor {
       return;
     }
     String messageText = resources.getString("Equipment.Creation.UnsavedChangesMessage.Text");
-    final String okButtonText = resources.getString("Equipment.Creation.UnsavedChangesMessage.OKButton");
-    ConfigurableVetor vetor = new ConfigurableVetor(SwingApplicationFrame.getParentComponent(), messageText,
-            okButtonText);
+    String title = resources.getString("AnathemaCore.DialogTitle.ConfirmationDialog");
+    Vetor vetor = factory.createVetor(title, messageText);
     vetor.requestPermissionFor(command);
   }
 }

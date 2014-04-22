@@ -4,14 +4,15 @@ import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManageme
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
 import net.sf.anathema.character.equipment.item.view.EquipmentNavigation;
 import net.sf.anathema.equipment.core.IEquipmentTemplate;
-import net.sf.anathema.framework.view.SwingApplicationFrame;
+import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.framework.repository.tree.VetorFactory;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Hotkey;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.file.RelativePath;
-import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.lib.gui.list.veto.Vetor;
 
 public class SaveEquipmentTemplateAction {
   private final Resources resources;
@@ -27,7 +28,7 @@ public class SaveEquipmentTemplateAction {
     saveTool.setIcon(new RelativePath("icons/TaskBarSave24.png"));
     saveTool.setTooltip(resources.getString("Equipment.Creation.Item.SaveActionTooltip"));
     initListening(saveTool);
-    saveTool.setCommand(new SaveChangedEquipment());
+    saveTool.setCommand(new SaveChangedEquipment(view));
     saveTool.setHotkey(new Hotkey('s'));
   }
 
@@ -71,6 +72,12 @@ public class SaveEquipmentTemplateAction {
   }
 
   private class SaveChangedEquipment implements Command {
+    private VetorFactory factory;
+
+    public SaveChangedEquipment(VetorFactory factory) {
+      this.factory = factory;
+    }
+
     @Override
     public void execute() {
       IEquipmentTemplateEditModel editModel = model.getTemplateEditModel();
@@ -79,10 +86,15 @@ public class SaveEquipmentTemplateAction {
       if (!saveTemplate.getName().equals(editTemplateId)) {
         IEquipmentTemplate existingTemplate = model.getDatabase().loadTemplate(saveTemplate.getName());
         if (existingTemplate != null) {
-          if (new OverwriteItemsVetor(SwingApplicationFrame.getParentComponent(), resources).vetos()) {
-            return;
-          }
-          model.getDatabase().deleteTemplate(existingTemplate.getName());
+          String message = resources.getString("Equipment.Creation.OverwriteMessage.Text");
+          String title = resources.getString("AnathemaCore.DialogTitle.ConfirmationDialog");
+          Vetor vetor = factory.createVetor(title, message);
+          vetor.requestPermissionFor(new Command() {
+            @Override
+            public void execute() {
+              model.getDatabase().deleteTemplate(existingTemplate.getName());
+            }
+          });
         }
       }
       if (editTemplateId != null) {

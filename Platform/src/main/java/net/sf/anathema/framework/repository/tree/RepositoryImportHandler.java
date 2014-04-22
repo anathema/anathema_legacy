@@ -5,7 +5,6 @@ import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.RepositoryWriteAccess;
 import org.apache.commons.io.IOUtils;
 
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -26,17 +25,18 @@ public class RepositoryImportHandler {
   public void importStream(String mainFilePath, InputStream inputStream,
                            String entryName) throws RepositoryException, IOException {
     if (entryName.equals(mainFilePath)) {
-      writeMainFile(inputStream);
+      writeMainFileWithLegalId(inputStream);
     } else {
       writeSubFile(inputStream, entryName);
     }
   }
 
-  private void writeMainFile(InputStream inputStream) throws RepositoryException, IOException {
-    String string = IOUtils.toString(inputStream);
-    string = string.replaceFirst("repositoryId=\"" + oldId + "\"",
-            "repositoryId=\"" + newId + "\"");
-    ByteArrayInputStream modifiedInput = new ByteArrayInputStream(string.getBytes());
+  private void writeMainFileWithLegalId(InputStream inputStream) throws RepositoryException, IOException {
+    InputStream modifiedInput = new ImportIdReplacer(oldId, newId).createStreamWithLegalId(inputStream);
+    writeMainFile(modifiedInput);
+  }
+
+  private void writeMainFile(InputStream modifiedInput) throws IOException {
     OutputStream outputStream = access.createMainOutputStream();
     importStreamToRepository(modifiedInput, outputStream);
     outputStream.close();

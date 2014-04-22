@@ -1,31 +1,35 @@
 package net.sf.anathema.character.equipment.item;
 
+import net.sf.anathema.character.equipment.creation.presenter.IEquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.item.model.StatsEditor;
+import net.sf.anathema.character.equipment.item.model.StatsToModel;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 import net.sf.anathema.interaction.Command;
-import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.util.Closure;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class EditStatsCommand implements Command {
-  private final StatsEditor factory;
+  private final StatsEditor statsEditor;
   private final StatsEditModel editModel;
   private final Resources resources;
 
-  public EditStatsCommand(StatsEditor factory, StatsEditModel editModel, Resources resources) {
-    this.factory = factory;
+  public EditStatsCommand(StatsEditor statsEditor, StatsEditModel editModel, Resources resources) {
+    this.statsEditor = statsEditor;
     this.editModel = editModel;
     this.resources = resources;
   }
 
   @Override
   public void execute() {
-    String[] names = getNamesOfAllOtherStats();
-    factory.whenChangesAreConfirmed(new ReplaceStats());
+    String[] forbiddenNames = getNamesOfAllOtherStats();
+    statsEditor.whenChangesAreConfirmed(new ReplaceStats());
     IEquipmentStats selectedStats = editModel.getSelectedStats();
-    factory.editStats(resources, names, selectedStats);
+    IEquipmentStatisticsCreationModel model = new StatsToModel().createModel(selectedStats);
+    model.setForbiddenNames(forbiddenNames);
+    statsEditor.editStats(resources, model);
   }
 
   private String[] getNamesOfAllOtherStats() {

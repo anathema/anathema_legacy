@@ -2,7 +2,6 @@ package net.sf.anathema.lib.gui.dialog.userdialog.buttons;
 
 import net.sf.anathema.lib.gui.action.ActionConfiguration;
 import net.sf.anathema.lib.gui.action.IActionConfiguration;
-import net.sf.anathema.lib.gui.dialog.DialogMessages;
 
 public class DialogButtonConfiguration implements IDialogButtonConfiguration {
 
@@ -17,10 +16,6 @@ public class DialogButtonConfiguration implements IDialogButtonConfiguration {
 
   public DialogButtonConfiguration(IActionConfiguration okConfiguration) {
     this(okConfiguration, DEFAULT_CANCEL_CONFIG);
-  }
-
-  public DialogButtonConfiguration(String okText, String cancelText) {
-    this(new ActionConfiguration(okText), new ActionConfiguration(cancelText));
   }
 
   public DialogButtonConfiguration(IActionConfiguration okConfiguration, IActionConfiguration cancelConfiguration) {

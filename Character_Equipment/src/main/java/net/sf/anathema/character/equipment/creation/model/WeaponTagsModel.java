@@ -1,7 +1,7 @@
 package net.sf.anathema.character.equipment.creation.model;
 
-import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTag;
-import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTagsModel;
+import net.sf.anathema.character.equipment.creation.presenter.IWeaponTag;
+import net.sf.anathema.character.equipment.creation.presenter.IWeaponTagsModel;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.workflow.booleanvalue.BooleanValueModel;
 
