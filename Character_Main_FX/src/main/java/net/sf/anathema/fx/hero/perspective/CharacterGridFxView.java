@@ -74,7 +74,7 @@ public class CharacterGridFxView implements CharacterGridView {
     characterGridButton.initContent(dto, characterSelector);
     characterGridButton.setToggleGroup(toggleGroup);
     buttonsByIdentifier.put(dto.identifier, characterGridButton);
-    gridPane.getChildren().add(0, characterGridButton.getNode());
+    gridPane.add(characterGridButton.getNode());
     scrollPane.setVvalue(0);
     return characterGridButton;
   }

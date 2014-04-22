@@ -11,10 +11,10 @@ allprojects {
 
     repositories {
         mavenCentral()
-        maven {
+        maven { //MigLayout 5.0-SNAPSHOT
             url 'https://oss.sonatype.org/content/repositories/snapshots/'
         }
-        maven {
+        maven { //JRE
             url 'http://anathema.butatopanto.de:8081/maven/releases/'
         }
     }
