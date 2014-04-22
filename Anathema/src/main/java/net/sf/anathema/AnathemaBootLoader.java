@@ -3,8 +3,6 @@ package net.sf.anathema;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLClassLoader;
 import java.nio.file.Paths;
 import java.util.Properties;
 
@@ -27,51 +25,18 @@ public class AnathemaBootLoader {
   }
 
   private static ClassLoader useSystemClassLoader() throws IOException {
-    if (!isJavaFxOnClasspath()) {
-      URL javaFxUrl = lookupJavaFx();
-      addURLToSystemClassLoader(javaFxUrl);
-    }
     return ClassLoader.getSystemClassLoader();
   }
 
   private static ClassLoader useCustomClassLoader() throws MalformedURLException {
     Properties properties = new PropertiesLoader("anathema.properties").load();
     String libraryFolder = properties.getProperty("library.folder");
-    URL javaFxUrl = lookupJavaFx();
-    return new EasyLoader(Paths.get(libraryFolder), javaFxUrl);
-  }
-
-  private static URL lookupJavaFx() throws MalformedURLException {
-    String fxPath = System.getProperty("java.home") + "/lib/jfxrt.jar";
-    System.out.println("Loading JavaFX from " + fxPath);
-    return Paths.get(fxPath).toUri().toURL();
-  }
-
-  @SuppressWarnings("unchecked")
-  public static void addURLToSystemClassLoader(URL url) throws IOException {
-    URLClassLoader loader = (URLClassLoader) ClassLoader.getSystemClassLoader();
-    Class sysclass = URLClassLoader.class;
-    try {
-      Method method = sysclass.getDeclaredMethod("addURL", new Class[]{URL.class});
-      method.setAccessible(true);
-      method.invoke(loader, url);
-    } catch (Throwable t) {
-      throw new RuntimeException("Could not add URL to system classloader: " + url.toExternalForm());
-    }
+    return new EasyLoader(Paths.get(libraryFolder));
   }
 
   private static boolean isClasspathConfigured() {
     try {
       loadMainClass(ClassLoader.getSystemClassLoader());
-      return true;
-    } catch (ClassNotFoundException e) {
-      return false;
-    }
-  }
-
-  private static boolean isJavaFxOnClasspath() {
-    try {
-      ClassLoader.getSystemClassLoader().loadClass("javafx.application.Application");
       return true;
     } catch (ClassNotFoundException e) {
       return false;

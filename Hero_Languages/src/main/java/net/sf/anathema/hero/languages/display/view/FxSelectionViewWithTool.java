@@ -1,5 +1,6 @@
 package net.sf.anathema.hero.languages.display.view;
 
+import net.miginfocom.layout.CC;
 import net.sf.anathema.hero.languages.display.presenter.ObjectSelectionViewWithTool;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ObjectValueListener;
@@ -73,7 +74,7 @@ public class FxSelectionViewWithTool<V> implements ObjectSelectionViewWithTool<V
       @Override
       public void run() {
         selectionPanel.add(comboBox.getNode());
-        selectionPanel.add(buttonPanel);
+        selectionPanel.add(buttonPanel, new CC().alignY("center"));
       }
     });
   }

@@ -6,7 +6,6 @@ import net.sf.anathema.hero.display.ExtensibleTraitView;
 import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.platform.fx.FxComponent;
-import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.platform.tool.FxButtonTool;
 import net.sf.anathema.platform.tool.FxToggleTool;
 import org.tbee.javafx.scene.layout.MigPane;
@@ -66,17 +65,12 @@ public class FxExtensibleTraitView implements ExtensibleTraitView {
 
   public void addTo(TraitViewPanel panel) {
     this.parent = panel;
-    panel.add(front);
-    panel.add(center, new CC().growX().pushX());
-    panel.add(rear);
+    panel.add(front, new CC().alignY("center"));
+    panel.add(center, new CC().growX().pushX().alignY("center"));
+    panel.add(rear, new CC().alignY("center"));
   }
 
-  private void addToPanel(final MigPane pane, final FxComponent toggleTool) {
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        pane.add(toggleTool.getNode());
-      }
-    });
+  private void addToPanel(MigPane pane, FxComponent toggleTool) {
+    pane.add(toggleTool.getNode(), new CC().alignY("center"));
   }
 }

@@ -15,7 +15,5 @@ public interface CharmView extends SpecialCharmViewContainer {
                                                                AgnosticUIConfiguration<Identifier> uiConfig,
                                                                Identifier[] objects);
 
-  void addCharmCascadeHelp(String helpText);
-
   void whenCursorLeavesCharmAreaResetAllPopups();
 }

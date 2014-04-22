@@ -3,7 +3,7 @@ package net.sf.anathema.fx.hero.configurableview;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.Node;
-import jfxtras.labs.scene.control.ListSpinner;
+import jfxtras.scene.control.ListSpinner;
 import net.sf.anathema.lib.control.IntValueChangedListener;
 import net.sf.anathema.lib.gui.widgets.IIntegerView;
 

@@ -21,5 +21,4 @@ task copyExternalDependencies(type: Copy) {
         return allDependencies
     }
     into dependenciesDir
-    exclude "**/jfxrt.jar"
 }

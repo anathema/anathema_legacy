@@ -4,6 +4,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
+import net.miginfocom.layout.CC;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.hero.specialties.display.presenter.SpecialtyCreationView;
 import net.sf.anathema.interaction.Command;
@@ -28,7 +29,7 @@ public class FxSpecialtyCreationView implements SpecialtyCreationView {
     this.box = new ComboBoxSelectionView<>("", configuration);
     pane.add(box.getNode());
     pane.add(field);
-    pane.add(tool.getNode());
+    pane.add(tool.getNode(), new CC().alignY("center"));
     tool.setIcon(addIcon);
   }
 

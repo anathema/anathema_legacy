@@ -60,7 +60,6 @@ public class CascadePresenter {
     initListening(typeSelector, groupSelector);
     specialCharmPresenter.initPresentation();
     view.whenCursorLeavesCharmAreaResetAllPopups();
-    createHelpText();
     alienPresenter.initPresentation(typeSelector);
     interactionPresenter.initPresentation();
   }
@@ -125,10 +124,6 @@ public class CascadePresenter {
     selector.setObjects(allGroups);
     selector.setSelectedObject(null);
     return selector;
-  }
-
-  private void createHelpText() {
-    view.addCharmCascadeHelp(resources.getString("CharmTreeView.GUI.HelpText"));
   }
 
   private List<ICharmGroup> sortCharmGroups(ICharmGroup[] originalGroups) {

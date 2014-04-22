@@ -78,14 +78,6 @@ public class CharacterCreationPresenter {
   }
 
   private void initButtons() {
-    Tool cancel = view.addButton();
-    cancel.setText(properties.getCancelButtonString());
-    cancel.setCommand(new Command() {
-      @Override
-      public void execute() {
-        view.close();
-      }
-    });
     Tool ok = view.addButton();
     ok.setText(properties.getOkButtonString());
     ok.setCommand(new Command() {
@@ -93,6 +85,14 @@ public class CharacterCreationPresenter {
       public void execute() {
         view.close();
         operator.operate(model.getSelectedTemplate());
+      }
+    });
+    Tool cancel = view.addButton();
+    cancel.setText(properties.getCancelButtonString());
+    cancel.setCommand(new Command() {
+      @Override
+      public void execute() {
+        view.close();
       }
     });
   }

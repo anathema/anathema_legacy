@@ -3,7 +3,7 @@ package net.sf.anathema.platform.fx.dot;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.Node;
-import jfxtras.labs.scene.control.ListSpinner;
+import jfxtras.scene.control.ListSpinner;
 import net.sf.anathema.platform.fx.FxThreading;
 import org.jmock.example.announcer.Announcer;
 

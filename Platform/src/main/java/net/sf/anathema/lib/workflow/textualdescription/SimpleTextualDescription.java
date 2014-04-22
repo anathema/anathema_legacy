@@ -8,7 +8,7 @@ import org.jmock.example.announcer.Announcer;
 public class SimpleTextualDescription implements ITextualDescription {
 
   private final Announcer<ObjectValueListener> control = Announcer.to(ObjectValueListener.class);
-  private String text;
+  private String text = "";
   private boolean dirty = true;
 
   public SimpleTextualDescription() {
@@ -33,6 +33,7 @@ public class SimpleTextualDescription implements ITextualDescription {
     setDirty(true);
   }
 
+  @SuppressWarnings("unchecked")
   protected void fireChangedEvent() {
     control.announce().valueChanged(text);
   }
