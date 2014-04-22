@@ -1,21 +1,20 @@
 package net.sf.anathema.hero.combos;
 
-import net.sf.anathema.hero.dummy.DummyCharmUtilities;
 import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.character.main.magic.charm.duration.SimpleDuration;
-import net.sf.anathema.character.main.magic.charm.type.CharmType;
 import net.sf.anathema.character.main.magic.charm.combos.ComboRestrictions;
 import net.sf.anathema.character.main.magic.charm.combos.IComboRestrictions;
+import net.sf.anathema.character.main.magic.charm.duration.SimpleDuration;
+import net.sf.anathema.character.main.magic.charm.type.CharmType;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.traits.types.AttributeType;
 import net.sf.anathema.character.main.traits.types.ValuedTraitType;
 import net.sf.anathema.hero.combos.model.ComboImpl;
 import net.sf.anathema.hero.combos.model.rules.AbstractComboArbitrator;
+import net.sf.anathema.hero.dummy.DummyCharmUtilities;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 public class ComboTest {
@@ -48,8 +47,8 @@ public class ComboTest {
   @Test
   public void testCreation() throws Exception {
     assertEquals(0, combo.getCharms().length);
-    assertNull(combo.getName().getText());
-    assertNull(combo.getDescription().getText());
+    assertTrue(combo.getName().getText().isEmpty());
+    assertTrue(combo.getDescription().getText().isEmpty());
   }
 
   @Test
