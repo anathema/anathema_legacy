@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.creation.view.swing;
+package net.sf.anathema.character.equipment.creation.presenter;
 
 import net.sf.anathema.lib.gui.layout.AdditiveView;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;

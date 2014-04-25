@@ -2,7 +2,6 @@ package net.sf.anathema.character.equipment.creation.presenter;
 
 import net.miginfocom.layout.CC;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.ArmourStatisticsProperties;
-import net.sf.anathema.character.equipment.creation.view.swing.EquipmentStatsView;
 import net.sf.anathema.character.equipment.creation.view.swing.IconToggleButton;
 import net.sf.anathema.character.main.CharacterUI;
 import net.sf.anathema.hero.health.HealthType;

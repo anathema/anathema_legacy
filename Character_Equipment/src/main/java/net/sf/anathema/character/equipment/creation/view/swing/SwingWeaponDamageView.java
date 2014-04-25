@@ -1,6 +1,7 @@
 package net.sf.anathema.character.equipment.creation.view.swing;
 
 import net.miginfocom.layout.CC;
+import net.sf.anathema.character.equipment.creation.presenter.WeaponDamageView;
 import net.sf.anathema.hero.health.HealthType;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.exception.NotYetImplementedException;

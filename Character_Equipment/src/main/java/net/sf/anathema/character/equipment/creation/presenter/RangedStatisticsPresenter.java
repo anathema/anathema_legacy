@@ -3,7 +3,6 @@ package net.sf.anathema.character.equipment.creation.presenter;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.RangedCombatStatisticsProperties;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.TagPageProperties;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.WeaponDamageProperties;
-import net.sf.anathema.character.equipment.creation.view.swing.EquipmentStatsView;
 
 import java.awt.Component;
 

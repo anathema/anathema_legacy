@@ -4,12 +4,8 @@ import net.miginfocom.layout.CC;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.OffensiveStatisticsProperties;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.TagPageProperties;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.WeaponDamageProperties;
-import net.sf.anathema.character.equipment.creation.view.swing.EquipmentStatsView;
-import net.sf.anathema.character.equipment.creation.view.swing.IWeaponTagsView;
 import net.sf.anathema.character.equipment.creation.view.swing.SwingWeaponDamageView;
-import net.sf.anathema.character.equipment.creation.view.swing.WeaponDamagePresenter;
-import net.sf.anathema.character.equipment.creation.view.swing.WeaponDamageView;
-import net.sf.anathema.character.equipment.creation.view.swing.WeaponTagsView;
+import net.sf.anathema.character.equipment.creation.view.swing.SwingWeaponTagsView;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.gui.layout.AdditiveView;
 import net.sf.anathema.lib.gui.widgets.HorizontalLine;
@@ -79,7 +75,7 @@ public class AbstractWeaponPresenter {
     view.addView(new AdditiveView() {
       @Override
       public void addTo(JPanel panel) {
-        IWeaponTagsView tagsView = new WeaponTagsView();
+        WeaponTagsView tagsView = new SwingWeaponTagsView();
         BooleanValuePresentation booleanValuePresentation = new BooleanValuePresentation();
         for (IWeaponTag tag : weaponTagsModel.getAllTags()) {
           final JCheckBox checkBox = tagsView.addCheckBox(tagProperties.getLabel(tag));

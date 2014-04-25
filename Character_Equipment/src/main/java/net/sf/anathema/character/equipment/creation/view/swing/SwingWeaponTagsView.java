@@ -1,13 +1,14 @@
 package net.sf.anathema.character.equipment.creation.view.swing;
 
 import net.miginfocom.swing.MigLayout;
+import net.sf.anathema.character.equipment.creation.presenter.WeaponTagsView;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
-public class WeaponTagsView implements IWeaponTagsView {
+public class SwingWeaponTagsView implements WeaponTagsView {
 
   private final JPanel content = new JPanel(new MigLayout(LayoutUtils.fillWithoutInsets().wrapAfter(3)));
 

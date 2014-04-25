@@ -1,7 +1,6 @@
 package net.sf.anathema.character.equipment.creation.presenter;
 
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.TraitBoostStatisticsProperties;
-import net.sf.anathema.character.equipment.creation.view.swing.EquipmentStatsView;
 
 import java.awt.Component;
 

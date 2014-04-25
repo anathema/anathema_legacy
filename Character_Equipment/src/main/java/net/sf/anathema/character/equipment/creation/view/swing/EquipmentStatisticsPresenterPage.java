@@ -2,6 +2,7 @@ package net.sf.anathema.character.equipment.creation.view.swing;
 
 import com.google.common.base.Preconditions;
 import net.miginfocom.layout.CC;
+import net.sf.anathema.character.equipment.creation.presenter.EquipmentStatsView;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.AbstractEquipmentStatisticsProperties;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.AbstractDialogPage;
