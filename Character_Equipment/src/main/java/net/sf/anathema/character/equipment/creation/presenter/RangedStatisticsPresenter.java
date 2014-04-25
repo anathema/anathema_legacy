@@ -3,19 +3,19 @@ package net.sf.anathema.character.equipment.creation.presenter;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.RangedCombatStatisticsProperties;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.TagPageProperties;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.WeaponDamageProperties;
-import net.sf.anathema.character.equipment.creation.view.swing.RangedCombatStatisticsPresenterPage;
+import net.sf.anathema.character.equipment.creation.view.swing.EquipmentStatsView;
 
 import java.awt.Component;
 
 public class RangedStatisticsPresenter {
   private final IRangedCombatStatisticsModel rangedModel;
   private final IWeaponTagsModel weaponTagsModel;
-  private final RangedCombatStatisticsPresenterPage view;
+  private final EquipmentStatsView view;
   private final RangedCombatStatisticsProperties properties;
   private final WeaponDamageProperties damageProperties;
   private final TagPageProperties tagProperties;
 
-  public RangedStatisticsPresenter(IRangedCombatStatisticsModel rangedModel, IWeaponTagsModel weaponTagsModel, RangedCombatStatisticsPresenterPage view, RangedCombatStatisticsProperties properties, TagPageProperties tagProperties, WeaponDamageProperties damageProperties) {
+  public RangedStatisticsPresenter(IRangedCombatStatisticsModel rangedModel, IWeaponTagsModel weaponTagsModel, EquipmentStatsView view, RangedCombatStatisticsProperties properties, TagPageProperties tagProperties, WeaponDamageProperties damageProperties) {
     this.rangedModel = rangedModel;
     this.weaponTagsModel = weaponTagsModel;
     this.view = view;

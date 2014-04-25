@@ -3,19 +3,19 @@ package net.sf.anathema.character.equipment.creation.presenter;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.CloseCombatStatisticsProperties;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.TagPageProperties;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.WeaponDamageProperties;
-import net.sf.anathema.character.equipment.creation.view.swing.CloseCombatStatisticsPresenterPage;
+import net.sf.anathema.character.equipment.creation.view.swing.EquipmentStatsView;
 
 import java.awt.Component;
 
 public class CloseCombatStatisticsPresenter {
   private final ICloseCombatStatsticsModel closeModel;
   private final IWeaponTagsModel tagModel;
-  private final CloseCombatStatisticsPresenterPage page;
+  private final EquipmentStatsView page;
   private final CloseCombatStatisticsProperties properties;
   private final TagPageProperties tagProperties;
   private final WeaponDamageProperties damageProperties;
 
-  public CloseCombatStatisticsPresenter(ICloseCombatStatsticsModel closeModel, IWeaponTagsModel tagModel, CloseCombatStatisticsPresenterPage page, CloseCombatStatisticsProperties properties, TagPageProperties tagProperties, WeaponDamageProperties damageProperties) {
+  public CloseCombatStatisticsPresenter(ICloseCombatStatsticsModel closeModel, IWeaponTagsModel tagModel, EquipmentStatsView page, CloseCombatStatisticsProperties properties, TagPageProperties tagProperties, WeaponDamageProperties damageProperties) {
     this.closeModel = closeModel;
     this.tagModel = tagModel;
     this.page = page;

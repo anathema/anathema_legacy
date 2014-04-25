@@ -22,8 +22,15 @@ public class GeneralStatsPresenter {
   }
 
   public void initPresentation() {
+    initBasicPresentation();
     initNamePresentation();
     initCompletionPresentation();
+  }
+
+  private void initBasicPresentation() {
+    view.setMessage(properties.getDefaultMessage());
+    view.setTitle(properties.getPageDescription());
+    view.setDescription(properties.getPageDescription());
   }
 
   private void initCompletionPresentation() {

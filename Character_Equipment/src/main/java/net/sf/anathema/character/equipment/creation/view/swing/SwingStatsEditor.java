@@ -82,7 +82,7 @@ public class SwingStatsEditor implements StatsEditor {
     CloseCombatStatisticsProperties properties = new CloseCombatStatisticsProperties(resources);
     ICloseCombatStatsticsModel closeModel = model.getCloseCombatStatsticsModel();
     IWeaponTagsModel tagModel = model.getWeaponTagsModel();
-    CloseCombatStatisticsPresenterPage page = new CloseCombatStatisticsPresenterPage(resources);
+    EquipmentStatisticsPresenterPage page = new EquipmentStatisticsPresenterPage();
     TagPageProperties tagProperties = new TagPageProperties(resources);
     WeaponDamageProperties damageProperties = new WeaponDamageProperties(resources);
     new GeneralStatsPresenter(page, closeModel, properties, model).initPresentation();
@@ -94,7 +94,7 @@ public class SwingStatsEditor implements StatsEditor {
     RangedCombatStatisticsProperties properties = new RangedCombatStatisticsProperties(resources);
     IRangedCombatStatisticsModel rangedModel = model.getRangedWeaponStatisticsModel();
     IWeaponTagsModel tagModel = model.getWeaponTagsModel();
-    RangedCombatStatisticsPresenterPage page = new RangedCombatStatisticsPresenterPage(resources);
+    EquipmentStatisticsPresenterPage page = new EquipmentStatisticsPresenterPage<>();
     TagPageProperties tagProperties = new TagPageProperties(resources);
     WeaponDamageProperties damageProperties = new WeaponDamageProperties(resources);
     new GeneralStatsPresenter(page, rangedModel, properties, model).initPresentation();
@@ -105,7 +105,7 @@ public class SwingStatsEditor implements StatsEditor {
   private IDialogPage createArtifactPage(Resources resources, IEquipmentStatisticsCreationModel model) {
     ArtifactStatisticsProperties properties = new ArtifactStatisticsProperties(resources);
     IArtifactStatisticsModel artifactModel = model.getArtifactStatisticsModel();
-    EquipmentStatisticsPresenterPage<ArtifactStatisticsProperties> page = new EquipmentStatisticsPresenterPage<>(properties);
+    EquipmentStatisticsPresenterPage<ArtifactStatisticsProperties> page = new EquipmentStatisticsPresenterPage<>();
     new GeneralStatsPresenter(page, artifactModel, properties, model).initPresentation();
     new ArtifactStatisticsPresenter(artifactModel, page, properties).initPresentation();
     return page;
@@ -114,7 +114,7 @@ public class SwingStatsEditor implements StatsEditor {
   private IDialogPage createTraitModifyingPage(Resources resources, IEquipmentStatisticsCreationModel model) {
     TraitBoostStatisticsProperties properties = new TraitBoostStatisticsProperties(resources);
     ITraitModifyingStatisticsModel modModel = model.getTraitModifyingStatisticsModel();
-    EquipmentStatisticsPresenterPage<TraitBoostStatisticsProperties> page = new EquipmentStatisticsPresenterPage<>(properties);
+    EquipmentStatisticsPresenterPage<TraitBoostStatisticsProperties> page = new EquipmentStatisticsPresenterPage<>();
     new GeneralStatsPresenter(page, modModel, properties, model).initPresentation();
     new ModifierStatisticsPresenter(modModel, page, properties).initPresentation();
     return page;
@@ -123,7 +123,7 @@ public class SwingStatsEditor implements StatsEditor {
   private IDialogPage createArmourPage(Resources resources, IEquipmentStatisticsCreationModel model) {
     ArmourStatisticsProperties armourStatisticsProperties = new ArmourStatisticsProperties(resources);
     IArmourStatisticsModel armourModel = model.getArmourStatisticsModel();
-    EquipmentStatisticsPresenterPage<ArmourStatisticsProperties> page = new EquipmentStatisticsPresenterPage<>(armourStatisticsProperties);
+    EquipmentStatisticsPresenterPage<ArmourStatisticsProperties> page = new EquipmentStatisticsPresenterPage<>();
     new GeneralStatsPresenter(page, armourModel, armourStatisticsProperties, model).initPresentation();
     new ArmourStatisticsPresenter(armourModel, page, armourStatisticsProperties).initPresentation();
     return page;

@@ -2,6 +2,7 @@ package net.sf.anathema.character.equipment.creation.view.swing;
 
 import net.sf.anathema.lib.gui.layout.AdditiveView;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
+import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
@@ -19,4 +20,10 @@ public interface EquipmentStatsView {
   void setCanFinish();
 
   void setCannotFinish();
+
+  void setMessage(IBasicMessage message);
+
+  void setTitle(String title);
+
+  void setDescription(String description);
 }

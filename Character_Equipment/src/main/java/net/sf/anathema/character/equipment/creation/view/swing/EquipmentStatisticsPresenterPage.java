@@ -20,29 +20,30 @@ import java.awt.Component;
 
 public class EquipmentStatisticsPresenterPage<P extends AbstractEquipmentStatisticsProperties> extends AbstractDialogPage implements EquipmentStatsView {
 
-  private final P properties;
   private ExtensibleEquipmentStatsView view = new ExtensibleEquipmentStatsView();
   private final Announcer<ChangeListener> announcer = Announcer.to(ChangeListener.class);
   private boolean canCurrentlyFinish;
+  private IBasicMessage message;
+  private String title;
+  private String description;
 
-  public EquipmentStatisticsPresenterPage(P properties) {
-    super(properties.getDefaultMessage().getText());
-    this.properties = properties;
+  public EquipmentStatisticsPresenterPage() {
+    super("");
   }
 
   @Override
   public IBasicMessage createCurrentMessage() {
-    return properties.getDefaultMessage();
+    return message;
   }
 
   @Override
   public String getTitle() {
-    return properties.getPageDescription();
+    return title;
   }
 
   @Override
   public final String getDescription() {
-    return properties.getPageDescription();
+    return description;
   }
 
   @Override
@@ -96,6 +97,21 @@ public class EquipmentStatisticsPresenterPage<P extends AbstractEquipmentStatist
   public void setCannotFinish() {
     this.canCurrentlyFinish = false;
     refreshFinishingState();
+  }
+
+  @Override
+  public void setMessage(IBasicMessage message) {
+    this.message = message;
+  }
+
+  @Override
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+  @Override
+  public void setDescription(String description) {
+    this.description = description;
   }
 
   private void refreshFinishingState() {
