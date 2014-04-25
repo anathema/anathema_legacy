@@ -3,6 +3,7 @@ package net.sf.anathema.character.equipment.creation.view.swing;
 import net.sf.anathema.character.equipment.creation.presenter.ArmourStatisticsPresenter;
 import net.sf.anathema.character.equipment.creation.presenter.ArtifactStatisticsPresenter;
 import net.sf.anathema.character.equipment.creation.presenter.CloseCombatStatisticsPresenter;
+import net.sf.anathema.character.equipment.creation.presenter.GeneralStatsPresenter;
 import net.sf.anathema.character.equipment.creation.presenter.IArmourStatisticsModel;
 import net.sf.anathema.character.equipment.creation.presenter.IArtifactStatisticsModel;
 import net.sf.anathema.character.equipment.creation.presenter.ICloseCombatStatsticsModel;
@@ -12,7 +13,6 @@ import net.sf.anathema.character.equipment.creation.presenter.ITraitModifyingSta
 import net.sf.anathema.character.equipment.creation.presenter.IWeaponTagsModel;
 import net.sf.anathema.character.equipment.creation.presenter.ModifierStatisticsPresenter;
 import net.sf.anathema.character.equipment.creation.presenter.RangedStatisticsPresenter;
-import net.sf.anathema.character.equipment.creation.presenter.StatsNamePresenter;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.ArmourStatisticsProperties;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.ArtifactStatisticsProperties;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.CloseCombatStatisticsProperties;
@@ -61,70 +61,70 @@ public class SwingStatsEditor implements StatsEditor {
   }
 
   private IDialogPage chooseStartPage(Resources resources, IEquipmentStatisticsCreationModel model) {
-    WeaponStatisticsView view = new WeaponStatisticsView();
+    ExtensibleEquipmentStatsView view = new ExtensibleEquipmentStatsView();
     switch (model.getEquipmentType()) {
       case CloseCombat:
         return createCloseCombatPage(resources, model, view);
       case RangedCombat:
         return createRangedCombatPage(resources, model, view);
       case Armor:
-        return createArmourPage(resources, model, view);
+        return createArmourPage(resources, model);
       case Artifact:
-        return createArtifactPage(resources, model, view);
+        return createArtifactPage(resources, model);
       case TraitModifying:
-        return createTraitModifyingPage(resources, model, view);
+        return createTraitModifyingPage(resources, model);
       default:
         throw new IllegalArgumentException("Type must be defined to edit.");
     }
   }
 
-  private IDialogPage createCloseCombatPage(Resources resources, IEquipmentStatisticsCreationModel model, WeaponStatisticsView view) {
+  private IDialogPage createCloseCombatPage(Resources resources, IEquipmentStatisticsCreationModel model, ExtensibleEquipmentStatsView view) {
     CloseCombatStatisticsProperties properties = new CloseCombatStatisticsProperties(resources);
     ICloseCombatStatsticsModel closeModel = model.getCloseCombatStatsticsModel();
     IWeaponTagsModel tagModel = model.getWeaponTagsModel();
-    CloseCombatStatisticsPresenterPage page = new CloseCombatStatisticsPresenterPage(resources, model, view);
+    CloseCombatStatisticsPresenterPage page = new CloseCombatStatisticsPresenterPage(resources);
     TagPageProperties tagProperties = new TagPageProperties(resources);
     WeaponDamageProperties damageProperties = new WeaponDamageProperties(resources);
-    new StatsNamePresenter(view, closeModel, properties).initPresentation();
+    new GeneralStatsPresenter(page, closeModel, properties, model).initPresentation();
     new CloseCombatStatisticsPresenter(closeModel, tagModel,  page, properties, tagProperties, damageProperties).initPresentation();
     return page;
   }
 
-  private IDialogPage createRangedCombatPage(Resources resources, IEquipmentStatisticsCreationModel model, WeaponStatisticsView view) {
+  private IDialogPage createRangedCombatPage(Resources resources, IEquipmentStatisticsCreationModel model, ExtensibleEquipmentStatsView view) {
     RangedCombatStatisticsProperties properties = new RangedCombatStatisticsProperties(resources);
     IRangedCombatStatisticsModel rangedModel = model.getRangedWeaponStatisticsModel();
     IWeaponTagsModel tagModel = model.getWeaponTagsModel();
-    RangedCombatStatisticsPresenterPage page = new RangedCombatStatisticsPresenterPage(resources, model, view);
+    RangedCombatStatisticsPresenterPage page = new RangedCombatStatisticsPresenterPage(resources);
     TagPageProperties tagProperties = new TagPageProperties(resources);
     WeaponDamageProperties damageProperties = new WeaponDamageProperties(resources);
-    new StatsNamePresenter(view, rangedModel, properties).initPresentation();
+    new GeneralStatsPresenter(page, rangedModel, properties, model).initPresentation();
     new RangedStatisticsPresenter(rangedModel, tagModel,  page, properties, tagProperties, damageProperties).initPresentation();
     return page;
   }
 
-  private IDialogPage createArtifactPage(Resources resources, IEquipmentStatisticsCreationModel model, WeaponStatisticsView view) {
+  private IDialogPage createArtifactPage(Resources resources, IEquipmentStatisticsCreationModel model) {
     ArtifactStatisticsProperties properties = new ArtifactStatisticsProperties(resources);
     IArtifactStatisticsModel artifactModel = model.getArtifactStatisticsModel();
-    EquipmentStatisticsPresenterPage<IArtifactStatisticsModel, ArtifactStatisticsProperties> page = new EquipmentStatisticsPresenterPage<>(properties, model, artifactModel, view);
-    new StatsNamePresenter(view, artifactModel, properties).initPresentation();
+    EquipmentStatisticsPresenterPage<ArtifactStatisticsProperties> page = new EquipmentStatisticsPresenterPage<>(properties);
+    new GeneralStatsPresenter(page, artifactModel, properties, model).initPresentation();
     new ArtifactStatisticsPresenter(artifactModel, page, properties).initPresentation();
     return page;
   }
 
-  private IDialogPage createTraitModifyingPage(Resources resources, IEquipmentStatisticsCreationModel model, WeaponStatisticsView view) {
+  private IDialogPage createTraitModifyingPage(Resources resources, IEquipmentStatisticsCreationModel model) {
     TraitBoostStatisticsProperties properties = new TraitBoostStatisticsProperties(resources);
     ITraitModifyingStatisticsModel modModel = model.getTraitModifyingStatisticsModel();
-    EquipmentStatisticsPresenterPage<ITraitModifyingStatisticsModel, TraitBoostStatisticsProperties> page = new EquipmentStatisticsPresenterPage<>(properties, model, modModel, view);
-    new StatsNamePresenter(view, modModel, properties).initPresentation();
+    EquipmentStatisticsPresenterPage<TraitBoostStatisticsProperties> page = new EquipmentStatisticsPresenterPage<>(properties);
+    new GeneralStatsPresenter(page, modModel, properties, model).initPresentation();
     new ModifierStatisticsPresenter(modModel, page, properties).initPresentation();
     return page;
   }
 
-  private IDialogPage createArmourPage(Resources resources, IEquipmentStatisticsCreationModel model, WeaponStatisticsView view) {
+  private IDialogPage createArmourPage(Resources resources, IEquipmentStatisticsCreationModel model) {
     ArmourStatisticsProperties armourStatisticsProperties = new ArmourStatisticsProperties(resources);
     IArmourStatisticsModel armourModel = model.getArmourStatisticsModel();
-    EquipmentStatisticsPresenterPage<IArmourStatisticsModel, ArmourStatisticsProperties> page = new EquipmentStatisticsPresenterPage<>(armourStatisticsProperties, model, armourModel, view);
-    new StatsNamePresenter(view, armourModel, armourStatisticsProperties).initPresentation();
+    EquipmentStatisticsPresenterPage<ArmourStatisticsProperties> page = new EquipmentStatisticsPresenterPage<>(armourStatisticsProperties);
+    new GeneralStatsPresenter(page, armourModel, armourStatisticsProperties, model).initPresentation();
     new ArmourStatisticsPresenter(armourModel, page, armourStatisticsProperties).initPresentation();
     return page;
   }

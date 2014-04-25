@@ -1,16 +1,16 @@
 package net.sf.anathema.character.equipment.creation.presenter;
 
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.TraitBoostStatisticsProperties;
-import net.sf.anathema.character.equipment.creation.view.swing.EquipmentStatisticsPresenterPage;
+import net.sf.anathema.character.equipment.creation.view.swing.WeaponStatsView;
 
 import java.awt.Component;
 
 public class ModifierStatisticsPresenter {
   private final ITraitModifyingStatisticsModel modModel;
-  private EquipmentStatisticsPresenterPage<?, ?> view;
+  private WeaponStatsView view;
   private final TraitBoostStatisticsProperties properties;
 
-  public ModifierStatisticsPresenter(ITraitModifyingStatisticsModel modModel, EquipmentStatisticsPresenterPage<?,?> view, TraitBoostStatisticsProperties properties) {
+  public ModifierStatisticsPresenter(ITraitModifyingStatisticsModel modModel, WeaponStatsView view, TraitBoostStatisticsProperties properties) {
     this.modModel = modModel;
     this.view = view;
     this.properties = properties;

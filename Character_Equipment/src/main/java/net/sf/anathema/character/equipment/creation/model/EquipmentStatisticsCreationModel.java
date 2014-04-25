@@ -17,13 +17,15 @@ import org.jmock.example.announcer.Announcer;
 
 public class EquipmentStatisticsCreationModel implements IEquipmentStatisticsCreationModel {
 
-  private final ICloseCombatStatsticsModel closeCombatStatisticsModel = new CloseCombatStatsticsModel(createOffensiveSpeedModel());
-  private final IRangedCombatStatisticsModel rangedWeaponStatisticsModel = new RangedWeaponStatisticsModel(createOffensiveSpeedModel());
+  private final IWeaponTagsModel weaponTagsModel = new WeaponTagsModel();
+  private final ICloseCombatStatsticsModel closeCombatStatisticsModel = new CloseCombatStatsticsModel(
+          createOffensiveSpeedModel());
+  private final IRangedCombatStatisticsModel rangedWeaponStatisticsModel = new RangedWeaponStatisticsModel(
+          createOffensiveSpeedModel(), weaponTagsModel);
   private final IArmourStatisticsModel armourStatisticsModel = new ArmourStatsticsModel();
   private final IArtifactStatisticsModel artifactStatisticsModel = new ArtifactStatisticsModel();
   private final ITraitModifyingStatisticsModel traitModifyingStatisticsModel = new TraitModifyingStatisticsModel();
   private final Announcer<ChangeListener> equipmentTypeChangeControl = Announcer.to(ChangeListener.class);
-  private final IWeaponTagsModel weaponTagsModel = new WeaponTagsModel();
   private EquipmentStatisticsType statisticsType;
   private String[] existingNames;
 
