@@ -4,11 +4,11 @@ import net.miginfocom.layout.CC;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.OffensiveStatisticsProperties;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.TagPageProperties;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.WeaponDamageProperties;
+import net.sf.anathema.character.equipment.creation.view.swing.EquipmentStatsView;
 import net.sf.anathema.character.equipment.creation.view.swing.IWeaponTagsView;
 import net.sf.anathema.character.equipment.creation.view.swing.SwingWeaponDamageView;
 import net.sf.anathema.character.equipment.creation.view.swing.WeaponDamagePresenter;
 import net.sf.anathema.character.equipment.creation.view.swing.WeaponDamageView;
-import net.sf.anathema.character.equipment.creation.view.swing.WeaponStatsView;
 import net.sf.anathema.character.equipment.creation.view.swing.WeaponTagsView;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.gui.layout.AdditiveView;
@@ -24,12 +24,12 @@ public class AbstractWeaponPresenter {
 
   private final IOffensiveStatisticsModel model;
   private IWeaponTagsModel weaponTagsModel;
-  private final WeaponStatsView view;
+  private final EquipmentStatsView view;
   private final OffensiveStatisticsProperties properties;
   private final TagPageProperties tagProperties;
   private final WeaponDamageProperties damageProperties;
 
-  public AbstractWeaponPresenter(IOffensiveStatisticsModel model, IWeaponTagsModel weaponTagsModel, WeaponStatsView view, OffensiveStatisticsProperties properties, WeaponDamageProperties damageProperties, TagPageProperties tagProperties) {
+  public AbstractWeaponPresenter(IOffensiveStatisticsModel model, IWeaponTagsModel weaponTagsModel, EquipmentStatsView view, OffensiveStatisticsProperties properties, WeaponDamageProperties damageProperties, TagPageProperties tagProperties) {
     this.model = model;
     this.weaponTagsModel = weaponTagsModel;
     this.view = view;

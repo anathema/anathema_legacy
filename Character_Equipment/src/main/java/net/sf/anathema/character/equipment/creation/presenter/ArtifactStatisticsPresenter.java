@@ -1,7 +1,7 @@
 package net.sf.anathema.character.equipment.creation.presenter;
 
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.ArtifactStatisticsProperties;
-import net.sf.anathema.character.equipment.creation.view.swing.WeaponStatsView;
+import net.sf.anathema.character.equipment.creation.view.swing.EquipmentStatsView;
 import net.sf.anathema.lib.workflow.booleanvalue.BooleanValuePresentation;
 
 import javax.swing.JCheckBox;
@@ -9,10 +9,10 @@ import java.awt.Component;
 
 public class ArtifactStatisticsPresenter {
   private final IArtifactStatisticsModel artifactModel;
-  private final WeaponStatsView view;
+  private final EquipmentStatsView view;
   private final ArtifactStatisticsProperties properties;
 
-  public ArtifactStatisticsPresenter(IArtifactStatisticsModel artifactModel, WeaponStatsView view, ArtifactStatisticsProperties properties) {
+  public ArtifactStatisticsPresenter(IArtifactStatisticsModel artifactModel, EquipmentStatsView view, ArtifactStatisticsProperties properties) {
     this.artifactModel = artifactModel;
     this.view = view;
     this.properties = properties;

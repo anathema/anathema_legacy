@@ -1,18 +1,18 @@
 package net.sf.anathema.character.equipment.creation.presenter;
 
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.AbstractEquipmentStatisticsProperties;
-import net.sf.anathema.character.equipment.creation.view.swing.WeaponStatsView;
+import net.sf.anathema.character.equipment.creation.view.swing.EquipmentStatsView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 
 public class GeneralStatsPresenter {
-  private final WeaponStatsView view;
+  private final EquipmentStatsView view;
   private final IEquipmentStatisticsModel model;
   private final AbstractEquipmentStatisticsProperties properties;
   private IEquipmentStatisticsCreationModel overallModel;
 
-  public GeneralStatsPresenter(WeaponStatsView view, IEquipmentStatisticsModel model,
+  public GeneralStatsPresenter(EquipmentStatsView view, IEquipmentStatisticsModel model,
                                AbstractEquipmentStatisticsProperties properties,
                                IEquipmentStatisticsCreationModel overallModel) {
     this.view = view;

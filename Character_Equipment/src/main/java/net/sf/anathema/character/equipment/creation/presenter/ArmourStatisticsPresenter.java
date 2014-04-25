@@ -2,8 +2,8 @@ package net.sf.anathema.character.equipment.creation.presenter;
 
 import net.miginfocom.layout.CC;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.ArmourStatisticsProperties;
+import net.sf.anathema.character.equipment.creation.view.swing.EquipmentStatsView;
 import net.sf.anathema.character.equipment.creation.view.swing.IconToggleButton;
-import net.sf.anathema.character.equipment.creation.view.swing.WeaponStatsView;
 import net.sf.anathema.character.main.CharacterUI;
 import net.sf.anathema.hero.health.HealthType;
 import net.sf.anathema.lib.control.IntValueChangedListener;
@@ -20,12 +20,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ArmourStatisticsPresenter {
-  private final WeaponStatsView view;
+  private final EquipmentStatsView view;
   private final ArmourStatisticsProperties properties;
   private final IArmourStatisticsModel armourModel;
 
 
-  public ArmourStatisticsPresenter(IArmourStatisticsModel armourModel, WeaponStatsView view, ArmourStatisticsProperties properties) {
+  public ArmourStatisticsPresenter(IArmourStatisticsModel armourModel, EquipmentStatsView view, ArmourStatisticsProperties properties) {
     this.view = view;
     this.properties = properties;
     this.armourModel = armourModel;

@@ -18,7 +18,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.Component;
 
-public class EquipmentStatisticsPresenterPage<P extends AbstractEquipmentStatisticsProperties> extends AbstractDialogPage implements WeaponStatsView {
+public class EquipmentStatisticsPresenterPage<P extends AbstractEquipmentStatisticsProperties> extends AbstractDialogPage implements EquipmentStatsView {
 
   private final P properties;
   private ExtensibleEquipmentStatsView view = new ExtensibleEquipmentStatsView();

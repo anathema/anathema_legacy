@@ -29,7 +29,6 @@ public class CloseCombatStatisticsPresenter {
     page.addLabelledComponentRow(labels, new Component[]{
             page.initIntegerSpinner(closeModel.getSpeedModel()).getComponent(),
             page.initIntegerSpinner(closeModel.getDefenseModel()).getComponent()});
-
     new AbstractWeaponPresenter(closeModel, tagModel, page, properties, damageProperties, tagProperties).initPresentation();
   }
 }

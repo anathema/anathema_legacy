@@ -7,7 +7,7 @@ import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
 import java.awt.Component;
 
-public interface WeaponStatsView {
+public interface EquipmentStatsView {
   IntegerSpinner initIntegerSpinner(IIntValueModel rateModel);
 
   void addLabelledComponentRow(String[] labels, Component[] components);
