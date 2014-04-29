@@ -3,7 +3,6 @@ package net.sf.anathema.character.equipment.creation.view.swing;
 import com.google.common.base.Preconditions;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.character.equipment.creation.presenter.EquipmentStatsView;
-import net.sf.anathema.character.equipment.creation.presenter.stats.properties.AbstractEquipmentStatisticsProperties;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.AbstractDialogPage;
 import net.sf.anathema.lib.gui.layout.AdditiveView;
@@ -19,7 +18,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.Component;
 
-public class EquipmentStatisticsPresenterPage<P extends AbstractEquipmentStatisticsProperties> extends AbstractDialogPage implements EquipmentStatsView {
+public class EquipmentStatisticsPresenterPage extends AbstractDialogPage implements EquipmentStatsView {
 
   private ExtensibleEquipmentStatsView view = new ExtensibleEquipmentStatsView();
   private final Announcer<ChangeListener> announcer = Announcer.to(ChangeListener.class);

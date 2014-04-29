@@ -1,16 +1,11 @@
 package net.sf.anathema.character.equipment.creation.presenter.stats.properties;
 
-import net.sf.anathema.lib.message.BasicMessage;
-import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.framework.environment.Resources;
 
-public class ArmourStatisticsProperties extends AbstractEquipmentStatisticsProperties {
-
-  private final BasicMessage defaultMessage;
+public class ArmourStatisticsProperties extends AbstractProperties {
 
   public ArmourStatisticsProperties(Resources resources) {
     super(resources);
-    this.defaultMessage = new BasicMessage(getString("Equipment.Creation.Armour.DefaultMessage"));
   }
 
   public String getBashingSoakLabel() {
@@ -35,21 +30,6 @@ public class ArmourStatisticsProperties extends AbstractEquipmentStatisticsPrope
 
   public String getFatigueLabel() {
     return getLabelString("Equipment.Stats.Long.Fatigue");
-  }
-
-  @Override
-  public IBasicMessage getDefaultMessage() {
-    return defaultMessage;
-  }
-
-  @Override
-  public String getPageDescription() {
-    return getString("Equipment.Creation.Armour.PageTitle");
-  }
-
-  @Override
-  public String getDefaultName() {
-    return getString("Equipment.Creation.Armour.DefaultName");
   }
 
   public String getLinkSoakLabel() {

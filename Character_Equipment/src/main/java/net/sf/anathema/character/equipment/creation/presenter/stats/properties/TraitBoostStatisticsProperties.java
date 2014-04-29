@@ -1,16 +1,11 @@
 package net.sf.anathema.character.equipment.creation.presenter.stats.properties;
 
-import net.sf.anathema.lib.message.BasicMessage;
-import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.framework.environment.Resources;
 
-public class TraitBoostStatisticsProperties extends AbstractEquipmentStatisticsProperties {
-
-  private final BasicMessage defaultMessage;
+public class TraitBoostStatisticsProperties extends AbstractProperties {
 
   public TraitBoostStatisticsProperties(Resources resources) {
     super(resources);
-    this.defaultMessage = new BasicMessage(getString("Equipment.Creation.TraitModifying.DefaultMessage"));
   }
 
   public String getDDVLabel() {
@@ -72,19 +67,4 @@ public class TraitBoostStatisticsProperties extends AbstractEquipmentStatisticsP
 	public String getJoinWarLabel() {
 	    return getLabelString("Equipment.Stats.Long.JoinWar");
 	  }
-
-  @Override
-  public IBasicMessage getDefaultMessage() {
-    return defaultMessage;
-  }
-
-  @Override
-  public String getPageDescription() {
-    return getString("Equipment.Creation.TraitModifying.PageTitle");
-  }
-
-  @Override
-  public String getDefaultName() {
-    return getString("Equipment.Creation.TraitModifying.DefaultName");
-  }
 }
