@@ -18,11 +18,10 @@ import org.jmock.example.announcer.Announcer;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import java.awt.Component;
 
-public class EquipmentStatsEditPage extends AbstractDialogPage implements EquipmentStatsView {
+public class SwingEditStatsView extends AbstractDialogPage implements EquipmentStatsView {
 
   private ExtensibleEquipmentStatsView view = new ExtensibleEquipmentStatsView();
   private final Announcer<ChangeListener> announcer = Announcer.to(ChangeListener.class);
@@ -31,7 +30,7 @@ public class EquipmentStatsEditPage extends AbstractDialogPage implements Equipm
   private String title;
   private String description;
 
-  public EquipmentStatsEditPage() {
+  public SwingEditStatsView() {
     super("");
   }
 
@@ -72,13 +71,10 @@ public class EquipmentStatsEditPage extends AbstractDialogPage implements Equipm
 
   public final void addLabelledComponentRow(final String[] labels, final Component[] contents) {
     Preconditions.checkArgument(labels.length == contents.length, "Same number of labels and content items required");
-    addView(new AdditiveView() {
-      @Override
-      public void addTo(JPanel panel) {
-        for (int index = 0; index < contents.length; index++) {
-          panel.add(new JLabel(labels[index]));
-          panel.add(contents[index], new CC().growX().pushX());
-        }
+    addView(panel -> {
+      for (int index = 0; index < contents.length; index++) {
+        panel.add(new JLabel(labels[index]));
+        panel.add(contents[index], new CC().growX().pushX());
       }
     });
   }

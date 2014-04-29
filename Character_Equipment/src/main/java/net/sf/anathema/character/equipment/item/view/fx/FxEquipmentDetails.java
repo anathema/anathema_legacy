@@ -5,7 +5,7 @@ import javafx.scene.Node;
 import net.miginfocom.layout.AC;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.character.equipment.creation.presenter.EquipmentStatsView;
-import net.sf.anathema.character.equipment.creation.view.swing.EquipmentStatsEditPage;
+import net.sf.anathema.character.equipment.creation.view.swing.SwingEditStatsView;
 import net.sf.anathema.character.equipment.item.view.EquipmentDescriptionPanel;
 import net.sf.anathema.character.equipment.item.view.EquipmentDetails;
 import net.sf.anathema.character.equipment.item.view.ToolListView;
@@ -34,31 +34,25 @@ public class FxEquipmentDetails implements EquipmentDetails {
   public ToolListView<IEquipmentStats> initStatsListView(final String title,
                                                          AgnosticUIConfiguration<IEquipmentStats> configuration) {
     listView.setUiConfiguration(configuration);
-    Platform.runLater(new Runnable() {
-      @Override
-      public void run() {
-        Node node = listView.getNode();
-        Node titledPane = StyledTitledPane.Create(title, node);
-        outerPane.add(titledPane, new CC().push().grow());
-      }
+    Platform.runLater(() -> {
+      Node node = listView.getNode();
+      Node titledPane = StyledTitledPane.Create(title, node);
+      outerPane.add(titledPane, new CC().push().grow());
     });
     return listView;
   }
 
   @Override
   public EquipmentDescriptionPanel addDescriptionPanel(final String title) {
-    Platform.runLater(new Runnable() {
-      @Override
-      public void run() {
-        Node titledPane = StyledTitledPane.Create(title, descriptionPanel.getNode());
-        outerPane.add(titledPane, new CC().grow().push());
-      }
+    Platform.runLater(() -> {
+      Node titledPane = StyledTitledPane.Create(title, descriptionPanel.getNode());
+      outerPane.add(titledPane, new CC().grow().push());
     });
     return descriptionPanel;
   }
 
   @Override
   public EquipmentStatsView createEquipmentStatsView() {
-    return new EquipmentStatsEditPage();
+    return new SwingEditStatsView();
   }
 }
