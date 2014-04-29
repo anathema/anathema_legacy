@@ -1,6 +1,5 @@
 package net.sf.anathema.character.equipment.creation.view.swing;
 
-import com.google.common.base.Preconditions;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.character.equipment.creation.presenter.EquipmentStatsView;
 import net.sf.anathema.framework.view.SwingApplicationFrame;
@@ -19,7 +18,6 @@ import org.jmock.example.announcer.Announcer;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
-import java.awt.Component;
 
 public class SwingEditStatsView extends AbstractDialogPage implements EquipmentStatsView {
 
@@ -69,16 +67,6 @@ public class SwingEditStatsView extends AbstractDialogPage implements EquipmentS
     this.view.addView(view);
   }
 
-  public final void addLabelledComponentRow(final String[] labels, final Component[] contents) {
-    Preconditions.checkArgument(labels.length == contents.length, "Same number of labels and content items required");
-    addView(panel -> {
-      for (int index = 0; index < contents.length; index++) {
-        panel.add(new JLabel(labels[index]));
-        panel.add(contents[index], new CC().growX().pushX());
-      }
-    });
-  }
-
   public final SwingIntegerSpinner initIntegerSpinner(IIntValueModel intModel) {
     SwingIntegerSpinner spinner = new SwingIntegerSpinner(intModel.getValue());
     new IntValuePresentation().initPresentation(spinner, intModel);
@@ -119,6 +107,14 @@ public class SwingEditStatsView extends AbstractDialogPage implements EquipmentS
     SwingUtilities.invokeLater(() -> {
       UserDialog dialog = new UserDialog(SwingApplicationFrame.getParentComponent(), this);
       dialog.show(handler);
+    });
+  }
+
+  @Override
+  public void addElement(String label, JComponent component) {
+    addView(panel -> {
+      panel.add(new JLabel(label));
+      panel.add(component, new CC().growX().pushX());
     });
   }
 

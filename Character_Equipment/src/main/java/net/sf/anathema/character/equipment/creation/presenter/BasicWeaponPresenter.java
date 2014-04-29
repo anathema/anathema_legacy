@@ -14,9 +14,8 @@ import net.sf.anathema.lib.workflow.booleanvalue.BooleanValuePresentation;
 
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
-import java.awt.Component;
 
-public class AbstractWeaponPresenter {
+public class BasicWeaponPresenter {
 
   private final IOffensiveStatisticsModel model;
   private IWeaponTagsModel weaponTagsModel;
@@ -25,7 +24,9 @@ public class AbstractWeaponPresenter {
   private final TagPageProperties tagProperties;
   private final WeaponDamageProperties damageProperties;
 
-  public AbstractWeaponPresenter(IOffensiveStatisticsModel model, IWeaponTagsModel weaponTagsModel, EquipmentStatsView view, OffensiveStatisticsProperties properties, WeaponDamageProperties damageProperties, TagPageProperties tagProperties) {
+  public BasicWeaponPresenter(IOffensiveStatisticsModel model, IWeaponTagsModel weaponTagsModel,
+                              EquipmentStatsView view, OffensiveStatisticsProperties properties,
+                              WeaponDamageProperties damageProperties, TagPageProperties tagProperties) {
     this.model = model;
     this.weaponTagsModel = weaponTagsModel;
     this.view = view;
@@ -35,25 +36,15 @@ public class AbstractWeaponPresenter {
   }
 
   public void initPresentation() {
-    initAccuracyAndRateRow(model.supportsRate());
+    initAccuracyAndRateRow();
     initWeaponDamageRow(model.getWeaponDamageModel());
     addHorizontalSeparator();
     addTags();
   }
 
-  protected void initAccuracyAndRateRow(boolean showRate) {
-    Component secondComponent;
-    String[] labels;
-    if (showRate) {
-      secondComponent = view.initIntegerSpinner(model.getRateModel()).getComponent();
-      labels = new String[]{properties.getAccuracyLabel(), properties.getRateLabel()};
-    } else {
-      secondComponent = new JPanel();
-      labels = new String[]{properties.getAccuracyLabel(), ""};
-    }
-    view.addLabelledComponentRow(labels, new Component[]{
-            view.initIntegerSpinner(model.getAccuracyModel()).getComponent(),
-            secondComponent});
+  protected void initAccuracyAndRateRow() {
+      view.addElement(properties.getAccuracyLabel(), view.initIntegerSpinner(model.getAccuracyModel()).getComponent());
+      view.addElement(properties.getRateLabel(), view.initIntegerSpinner(model.getRateModel()).getComponent());
   }
 
   private void initWeaponDamageRow(IWeaponDamageModel damageModel) {

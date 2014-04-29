@@ -7,12 +7,10 @@ import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
-import java.awt.Component;
+import javax.swing.JComponent;
 
 public interface EquipmentStatsView {
   SwingIntegerSpinner initIntegerSpinner(IIntValueModel rateModel);
-
-  void addLabelledComponentRow(String[] labels, Component[] components);
 
   void addView(AdditiveView view);
 
@@ -29,4 +27,6 @@ public interface EquipmentStatsView {
   void setDescription(String description);
 
   void show(OperationResultHandler handler);
+
+  void addElement(String label, JComponent component);
 }

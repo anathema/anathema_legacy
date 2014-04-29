@@ -86,7 +86,7 @@ public class ModelToStats {
     stats.setDamage(model.getWeaponDamageModel().getDamageModel().getValue());
     stats.setMinimumDamage(model.getWeaponDamageModel().getMinDamageModel().getValue());
     stats.setDamageType(model.getWeaponDamageModel().getHealthType());
-    stats.setRate(model.supportsRate() ? model.getRateModel().getValue() : null);
+    stats.setRate(model.getRateModel().getValue());
     stats.setSpeed(model.getSpeedModel().getValue());
     for (IWeaponTag tag : tagsModel.getSelectedTags()) {
       stats.addTag(tag);

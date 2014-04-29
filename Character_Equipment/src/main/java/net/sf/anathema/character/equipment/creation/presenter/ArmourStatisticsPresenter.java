@@ -15,7 +15,6 @@ import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -32,16 +31,16 @@ public class ArmourStatisticsPresenter {
   }
 
   public void initPresentation() {
-    view.addLabelledComponentRow(new String[]{properties.getBashingSoakLabel(), properties.getBashingHardnessLabel()},
-            new Component[]{view.initIntegerSpinner(
-                    armourModel.getBashingSoakModel()).getComponent(), view.initIntegerSpinner(
-                    armourModel.getBashingHardnessModel()).getComponent()}
-    );
-    final IIntValueModel lethalSoakModel = armourModel.getLethalSoakModel();
-    view.addLabelledComponentRow(new String[]{properties.getLethalSoakLabel(), properties.getLethalHardnessLabel()},
-            new Component[]{view.initIntegerSpinner(lethalSoakModel).getComponent(), view.initIntegerSpinner(
-                    armourModel.getLethalHardnessModel()).getComponent()}
-    );
+    view.addElement(properties.getBashingSoakLabel(),
+            view.initIntegerSpinner(armourModel.getBashingSoakModel()).getComponent());
+    view.addElement(properties.getBashingHardnessLabel(),
+            view.initIntegerSpinner(armourModel.getBashingHardnessModel()).getComponent());
+
+    IIntValueModel lethalSoakModel = armourModel.getLethalSoakModel();
+    view.addElement(properties.getLethalSoakLabel(), view.initIntegerSpinner(lethalSoakModel).getComponent());
+    view.addElement(properties.getLethalHardnessLabel(),
+            view.initIntegerSpinner(armourModel.getLethalHardnessModel()).getComponent());
+
     final IconToggleButton linkToggleButton = new IconToggleButton(
             new ImageProvider().getImageIcon(new CharacterUI().getLinkIconPath()));
     final IIntValueModel aggravatedSoakModel = armourModel.getSoakModel(HealthType.Aggravated);
@@ -56,11 +55,12 @@ public class ArmourStatisticsPresenter {
         panel.add(new JLabel(properties.getLinkSoakLabel()));
       }
     });
-    view.addLabelledComponentRow(new String[]{properties.getMobilityPenaltyLabel(), properties.getFatigueLabel()},
-            new Component[]{view.initIntegerSpinner(
-                    armourModel.getMobilityPenaltyModel()).getComponent(), view.initIntegerSpinner(
-                    armourModel.getFatigueModel()).getComponent()}
-    );
+
+    view.addElement(properties.getMobilityPenaltyLabel(),
+            view.initIntegerSpinner(armourModel.getMobilityPenaltyModel()).getComponent());
+    view.addElement(properties.getFatigueLabel(),
+            view.initIntegerSpinner(armourModel.getFatigueModel()).getComponent());
+
     linkToggleButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {

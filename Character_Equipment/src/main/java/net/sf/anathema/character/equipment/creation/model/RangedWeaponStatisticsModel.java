@@ -26,11 +26,6 @@ public class RangedWeaponStatisticsModel extends OffensiveStatisticsModel implem
   }
 
   @Override
-  public boolean supportsRate() {
-    return true;
-  }
-
-  @Override
   public boolean isValid() {
     return super.isValid() && isRangedWeaponValid();
   }

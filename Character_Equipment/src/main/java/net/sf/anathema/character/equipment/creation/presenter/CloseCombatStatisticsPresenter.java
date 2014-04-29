@@ -5,8 +5,6 @@ import net.sf.anathema.character.equipment.creation.presenter.stats.properties.T
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.WeaponDamageProperties;
 import net.sf.anathema.framework.environment.Resources;
 
-import java.awt.Component;
-
 public class CloseCombatStatisticsPresenter {
   private final ICloseCombatStatsticsModel closeModel;
   private final IWeaponTagsModel tagModel;
@@ -26,12 +24,9 @@ public class CloseCombatStatisticsPresenter {
   }
 
   public void initPresentation() {
-    String[] labels = new String[]{properties.getSpeedLabel(), properties.getDefenseLabel()};
-    page.addLabelledComponentRow(labels,
-            new Component[]{page.initIntegerSpinner(closeModel.getSpeedModel()).getComponent(), page.initIntegerSpinner(
-                    closeModel.getDefenseModel()).getComponent()}
-    );
-    new AbstractWeaponPresenter(closeModel, tagModel, page, properties, damageProperties,
+    page.addElement(properties.getSpeedLabel(), page.initIntegerSpinner(closeModel.getSpeedModel()).getComponent());
+    page.addElement(properties.getDefenseLabel(), page.initIntegerSpinner(closeModel.getDefenseModel()).getComponent());
+    new BasicWeaponPresenter(closeModel, tagModel, page, properties, damageProperties,
             tagProperties).initPresentation();
   }
 }

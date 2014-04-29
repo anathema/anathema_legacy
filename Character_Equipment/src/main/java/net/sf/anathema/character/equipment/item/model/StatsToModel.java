@@ -87,9 +87,7 @@ public class StatsToModel {
   private void fillOffensiveModel(IOffensiveStatisticsModel offensiveModel, IWeaponStats weaponStats) {
     offensiveModel.getAccuracyModel().setValue(weaponStats.getAccuracy());
     offensiveModel.getName().setText(weaponStats.getName().getId());
-    if (offensiveModel.supportsRate()) {
-      offensiveModel.getRateModel().setValue(weaponStats.getRate());
-    }
+    offensiveModel.getRateModel().setValue(weaponStats.getRate());
     offensiveModel.getSpeedModel().setValue(weaponStats.getSpeed());
     offensiveModel.getWeaponDamageModel().getDamageModel().setValue(weaponStats.getDamage());
     offensiveModel.getWeaponDamageModel().getMinDamageModel().setValue(weaponStats.getMinimumDamage());

@@ -5,7 +5,6 @@ import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.workflow.booleanvalue.BooleanValuePresentation;
 
 import javax.swing.JCheckBox;
-import java.awt.Component;
 
 public class ArtifactStatisticsPresenter {
   private final IArtifactStatisticsModel artifactModel;
@@ -20,8 +19,8 @@ public class ArtifactStatisticsPresenter {
   }
 
   public void initPresentation() {
-    view.addLabelledComponentRow(new String[]{properties.getAttuneCostLabel()},
-            new Component[]{view.initIntegerSpinner(artifactModel.getAttuneCostModel()).getComponent()});
+    view.addElement(properties.getAttuneCostLabel(),
+            view.initIntegerSpinner(artifactModel.getAttuneCostModel()).getComponent());
     JCheckBox foreignAttuneBox = new JCheckBox();
     JCheckBox requireAttuneBox = new JCheckBox();
     BooleanValuePresentation booleanValuePresentation = new BooleanValuePresentation();
@@ -32,7 +31,7 @@ public class ArtifactStatisticsPresenter {
     booleanValuePresentation.initPresentation(foreignAttuneBox, artifactModel.getForeignAttunementModel());
     booleanValuePresentation.initPresentation(requireAttuneBox, artifactModel.getRequireAttunementModel());
 
-    view.addLabelledComponentRow(new String[]{properties.getForeignAttuneLabel()}, new Component[]{foreignAttuneBox});
-    view.addLabelledComponentRow(new String[]{properties.getRequireAttuneLabel()}, new Component[]{requireAttuneBox});
+    view.addElement(properties.getForeignAttuneLabel(), foreignAttuneBox);
+    view.addElement(properties.getRequireAttuneLabel(), requireAttuneBox);
   }
 }

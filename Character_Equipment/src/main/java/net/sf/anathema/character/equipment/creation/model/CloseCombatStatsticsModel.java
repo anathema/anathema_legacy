@@ -17,8 +17,4 @@ public class CloseCombatStatsticsModel extends OffensiveStatisticsModel implemen
     return defenseModel;
   }
 
-  @Override
-  public boolean supportsRate() {
-    return true;
-  }
 }

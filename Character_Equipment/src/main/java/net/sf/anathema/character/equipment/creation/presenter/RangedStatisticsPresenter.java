@@ -5,8 +5,6 @@ import net.sf.anathema.character.equipment.creation.presenter.stats.properties.T
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.WeaponDamageProperties;
 import net.sf.anathema.framework.environment.Resources;
 
-import java.awt.Component;
-
 public class RangedStatisticsPresenter {
   private final IRangedCombatStatisticsModel rangedModel;
   private final IWeaponTagsModel weaponTagsModel;
@@ -27,11 +25,9 @@ public class RangedStatisticsPresenter {
   }
 
   public void initPresentation() {
-    String[] labels = new String[]{properties.getSpeedLabel(), properties.getRangeLabel()};
-    view.addLabelledComponentRow(labels, new Component[]{view.initIntegerSpinner(
-            rangedModel.getSpeedModel()).getComponent(), view.initIntegerSpinner(
-            rangedModel.getRangeModel()).getComponent()});
-    new AbstractWeaponPresenter(rangedModel, weaponTagsModel, view, properties, damageProperties,
+    view.addElement(properties.getSpeedLabel(), view.initIntegerSpinner(rangedModel.getSpeedModel()).getComponent());
+    view.addElement(properties.getRangeLabel(), view.initIntegerSpinner(rangedModel.getRangeModel()).getComponent());
+    new BasicWeaponPresenter(rangedModel, weaponTagsModel, view, properties, damageProperties,
             tagProperties).initPresentation();
   }
 }
