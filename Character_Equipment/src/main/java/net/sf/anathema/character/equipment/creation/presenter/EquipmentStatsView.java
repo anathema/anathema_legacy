@@ -28,4 +28,6 @@ public interface EquipmentStatsView {
   void setDescription(String description);
 
   void show(OperationResultHandler handler);
+
+  void addHorizontalSeparator();
 }

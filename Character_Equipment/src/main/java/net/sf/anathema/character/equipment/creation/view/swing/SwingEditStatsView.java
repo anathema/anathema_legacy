@@ -8,6 +8,7 @@ import net.sf.anathema.lib.gui.dialog.userdialog.OperationResultHandler;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.AbstractDialogPage;
 import net.sf.anathema.lib.gui.layout.AdditiveView;
+import net.sf.anathema.lib.gui.widgets.HorizontalLine;
 import net.sf.anathema.lib.gui.widgets.IIntegerSpinner;
 import net.sf.anathema.lib.gui.widgets.SwingIntegerSpinner;
 import net.sf.anathema.lib.message.IBasicMessage;
@@ -102,6 +103,11 @@ public class SwingEditStatsView extends AbstractDialogPage implements EquipmentS
       UserDialog dialog = new UserDialog(SwingApplicationFrame.getParentComponent(), this);
       dialog.show(handler);
     });
+  }
+
+  @Override
+  public void addHorizontalSeparator() {
+    view.addView(panel -> panel.add(new HorizontalLine(), new CC().newline().pushX().growX().spanX()));
   }
 
   @Override

@@ -8,7 +8,6 @@ import net.sf.anathema.character.equipment.creation.view.swing.SwingWeaponDamage
 import net.sf.anathema.character.equipment.creation.view.swing.SwingWeaponTagsView;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.gui.layout.AdditiveView;
-import net.sf.anathema.lib.gui.widgets.HorizontalLine;
 import net.sf.anathema.lib.gui.widgets.IIntegerSpinner;
 import net.sf.anathema.lib.workflow.booleanvalue.BooleanValueModel;
 import net.sf.anathema.lib.workflow.booleanvalue.BooleanValuePresentation;
@@ -57,12 +56,7 @@ public class BasicWeaponPresenter {
   }
 
   protected void addHorizontalSeparator() {
-    view.addView(new AdditiveView() {
-      @Override
-      public void addTo(JPanel panel) {
-        panel.add(new HorizontalLine(), new CC().newline().pushX().growX().spanX());
-      }
-    });
+    view.addHorizontalSeparator();
   }
 
   protected void addTags() {
