@@ -3,7 +3,7 @@ package net.sf.anathema.lib.gui.dialog.core;
 import com.google.common.base.Preconditions;
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
-import net.sf.anathema.lib.gui.dialog.userdialog.DialogCloseHandler;
+import net.sf.anathema.lib.gui.dialog.userdialog.OperationResultHandler;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.lib.gui.swing.GuiUtilities;
 import net.sf.anathema.lib.gui.widgets.HorizontalLine;
@@ -16,7 +16,7 @@ import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import static net.sf.anathema.lib.gui.dialog.core.StaticDialogResult.Canceled;
+import static net.sf.anathema.lib.gui.dialog.core.StaticOperationResult.Canceled;
 
 public abstract class AbstractDialog {
 
@@ -33,7 +33,7 @@ public abstract class AbstractDialog {
   private final IGenericDialogConfiguration dialogConfiguration;
   private boolean canceled = false;
   private final DialogPagePanel dialogPagePanel;
-  private DialogCloseHandler closeHandler = DialogCloseHandler.NULL_HANDLER;
+  private OperationResultHandler closeHandler = OperationResultHandler.NULL_HANDLER;
 
   public AbstractDialog(Component parent, IGenericDialogConfiguration dialogConfiguration) {
     Preconditions.checkNotNull(dialogConfiguration);
@@ -46,7 +46,7 @@ public abstract class AbstractDialog {
     CloseOnEscapeKeyActionBehavior.attachTo(this);
   }
 
-  protected void setCloseHandler(DialogCloseHandler handler) {
+  protected void setCloseHandler(OperationResultHandler handler) {
     this.closeHandler = handler;
   }
 
@@ -57,7 +57,7 @@ public abstract class AbstractDialog {
   public final void performCancel() {
     canceled = true;
     closeDialog();
-    closeHandler.handleDialogClose(Canceled());
+    closeHandler.handleOperationResult(Canceled());
   }
 
   protected final IGenericDialogConfiguration getGenericDialog() {
@@ -131,14 +131,14 @@ public abstract class AbstractDialog {
     return dialog;
   }
 
-  protected DialogCloseHandler getCloseHandler() {
+  protected OperationResultHandler getCloseHandler() {
     return closeHandler;
   }
 
-  protected DialogResult createDialogResult() {
+  protected OperationResult createDialogResult() {
     if (canceled) {
-      return StaticDialogResult.Canceled();
+      return StaticOperationResult.Canceled();
     }
-    return StaticDialogResult.Confirmed();
+    return StaticOperationResult.Confirmed();
   }
 }

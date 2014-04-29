@@ -21,10 +21,9 @@ import net.sf.anathema.character.equipment.item.model.StatsEditor;
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
-import net.sf.anathema.lib.gui.dialog.core.DialogResult;
-import net.sf.anathema.lib.gui.dialog.userdialog.DialogCloseHandler;
+import net.sf.anathema.lib.gui.dialog.core.OperationResult;
+import net.sf.anathema.lib.gui.dialog.userdialog.OperationResultHandler;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
-import net.sf.anathema.lib.gui.dialog.userdialog.page.IDialogPage;
 import net.sf.anathema.lib.util.Closure;
 
 import javax.swing.SwingUtilities;
@@ -36,12 +35,7 @@ public class SwingStatsEditor implements StatsEditor {
 
   @Override
   public void editStats(Resources resources, IEquipmentStatisticsCreationModel model) {
-    SwingUtilities.invokeLater(new Runnable() {
-      @Override
-      public void run() {
-        runDialog(resources, model);
-      }
-    });
+    SwingUtilities.invokeLater(() -> runDialog(resources, model));
   }
 
   @Override
@@ -56,19 +50,24 @@ public class SwingStatsEditor implements StatsEditor {
     dialog.show(new CreateStatsHandler(model));
   }
 
-  private IDialogPage initPresentation(Resources resources, IEquipmentStatisticsCreationModel model,
+  private void initPresentation(Resources resources, IEquipmentStatisticsCreationModel model,
                                        EquipmentStatsView view) {
     switch (model.getEquipmentType()) {
       case CloseCombat:
         initCloseCombatPresentation(resources, model, view);
+        break;
       case RangedCombat:
         initRangedCombatPresentation(resources, model, view);
+        break;
       case Armor:
         initArmourPresentation(resources, model, view);
+        break;
       case Artifact:
         initArtifactPresentation(resources, model, view);
+        break;
       case TraitModifying:
         initTraitModifyingPresentation(resources, model, view);
+        break;
       default:
         throw new IllegalArgumentException("Type must be defined to edit.");
     }
@@ -112,7 +111,7 @@ public class SwingStatsEditor implements StatsEditor {
     new ArmourStatisticsPresenter(armourModel, view, resources).initPresentation();
   }
 
-  private class CreateStatsHandler implements DialogCloseHandler {
+  private class CreateStatsHandler implements OperationResultHandler {
     private final IEquipmentStatisticsCreationModel model;
 
     public CreateStatsHandler(IEquipmentStatisticsCreationModel model) {
@@ -120,7 +119,7 @@ public class SwingStatsEditor implements StatsEditor {
     }
 
     @Override
-    public void handleDialogClose(DialogResult result) {
+    public void handleOperationResult(OperationResult result) {
       if (result.isCanceled()) {
         return;
       }

@@ -3,7 +3,7 @@ package net.sf.anathema.hero.equipment.display.view.personalization;
 import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.hero.equipment.display.presenter.EquipmentPersonalizationProperties;
 import net.sf.anathema.hero.equipment.display.presenter.PersonalizationEditView;
-import net.sf.anathema.lib.gui.dialog.core.DialogResult;
+import net.sf.anathema.lib.gui.dialog.core.OperationResult;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.util.Closure;
 
@@ -18,7 +18,7 @@ public class DialogPersonalizationEditView implements PersonalizationEditView {
   @Override
   public void show() {
     UserDialog dialog = new UserDialog(SwingApplicationFrame.getParentComponent(), page);
-    DialogResult result = dialog.show();
+    OperationResult result = dialog.show();
     if (!result.isCanceled()) {
       onConfirmation.run();
     }
