@@ -11,6 +11,7 @@ import net.sf.anathema.lib.gui.layout.AdditiveView;
 import net.sf.anathema.lib.gui.widgets.IIntegerSpinner;
 import net.sf.anathema.lib.gui.widgets.SwingIntegerSpinner;
 import net.sf.anathema.lib.message.IBasicMessage;
+import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import org.jmock.example.announcer.Announcer;
 
@@ -104,21 +105,27 @@ public class SwingEditStatsView extends AbstractDialogPage implements EquipmentS
   }
 
   @Override
-  public void addElement(String label, JComponent component) {
-    addView(panel -> {
-      panel.add(new JLabel(label));
-      panel.add(component, new CC().growX().pushX());
-    });
-  }
-
-  @Override
   public IIntegerSpinner addIntegerSpinner(String label, int initialValue) {
     SwingIntegerSpinner spinner = new SwingIntegerSpinner(initialValue);
     addElement(label, spinner.getComponent());
     return spinner;
   }
 
+  @Override
+  public IBooleanValueView addBooleanSelector(String label) {
+    SwingBooleanView booleanView = new SwingBooleanView();
+    addElement(label, booleanView.getComponent());
+    return booleanView;
+  }
+
   private void refreshFinishingState() {
     announcer.announce().changeOccurred();
+  }
+
+  private void addElement(String label, JComponent component) {
+    addView(panel -> {
+      panel.add(new JLabel(label));
+      panel.add(component, new CC().growX().pushX());
+    });
   }
 }
