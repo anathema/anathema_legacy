@@ -2,7 +2,10 @@ package net.sf.anathema.character.equipment.creation.presenter;
 
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.ArtifactStatisticsProperties;
 import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.lib.gui.widgets.IIntegerSpinner;
 import net.sf.anathema.lib.workflow.booleanvalue.BooleanValuePresentation;
+import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
+import net.sf.anathema.lib.workflow.intvalue.IntValuePresentation;
 
 import javax.swing.JCheckBox;
 
@@ -19,8 +22,7 @@ public class ArtifactStatisticsPresenter {
   }
 
   public void initPresentation() {
-    view.addElement(properties.getAttuneCostLabel(),
-            view.initIntegerSpinner(artifactModel.getAttuneCostModel()).getComponent());
+    addSpinner(properties.getAttuneCostLabel(), artifactModel.getAttuneCostModel());
     JCheckBox foreignAttuneBox = new JCheckBox();
     JCheckBox requireAttuneBox = new JCheckBox();
     BooleanValuePresentation booleanValuePresentation = new BooleanValuePresentation();
@@ -33,5 +35,10 @@ public class ArtifactStatisticsPresenter {
 
     view.addElement(properties.getForeignAttuneLabel(), foreignAttuneBox);
     view.addElement(properties.getRequireAttuneLabel(), requireAttuneBox);
+  }
+
+  private void addSpinner(String label, IIntValueModel model) {
+    IIntegerSpinner spinner = view.addIntegerSpinner(label, model.getValue());
+    new IntValuePresentation().initPresentation(spinner, model);
   }
 }

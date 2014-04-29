@@ -9,8 +9,11 @@ import net.sf.anathema.character.equipment.creation.view.swing.SwingWeaponTagsVi
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.gui.layout.AdditiveView;
 import net.sf.anathema.lib.gui.widgets.HorizontalLine;
+import net.sf.anathema.lib.gui.widgets.IIntegerSpinner;
 import net.sf.anathema.lib.workflow.booleanvalue.BooleanValueModel;
 import net.sf.anathema.lib.workflow.booleanvalue.BooleanValuePresentation;
+import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
+import net.sf.anathema.lib.workflow.intvalue.IntValuePresentation;
 
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
@@ -43,8 +46,8 @@ public class BasicWeaponPresenter {
   }
 
   protected void initAccuracyAndRateRow() {
-      view.addElement(properties.getAccuracyLabel(), view.initIntegerSpinner(model.getAccuracyModel()).getComponent());
-      view.addElement(properties.getRateLabel(), view.initIntegerSpinner(model.getRateModel()).getComponent());
+    addSpinner(properties.getAccuracyLabel(), model.getAccuracyModel());
+    addSpinner(properties.getRateLabel(), model.getRateModel());
   }
 
   private void initWeaponDamageRow(IWeaponDamageModel damageModel) {
@@ -84,5 +87,10 @@ public class BasicWeaponPresenter {
         panel.add(tagsView.getComponent(), new CC().spanX().growX().pushX());
       }
     });
+  }
+
+  private void addSpinner(String label, IIntValueModel model) {
+    IIntegerSpinner spinner = view.addIntegerSpinner(label, model.getValue());
+    new IntValuePresentation().initPresentation(spinner, model);
   }
 }

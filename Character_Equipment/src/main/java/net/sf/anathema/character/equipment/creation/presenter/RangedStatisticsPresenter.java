@@ -4,6 +4,9 @@ import net.sf.anathema.character.equipment.creation.presenter.stats.properties.R
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.TagPageProperties;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.WeaponDamageProperties;
 import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.lib.gui.widgets.IIntegerSpinner;
+import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
+import net.sf.anathema.lib.workflow.intvalue.IntValuePresentation;
 
 public class RangedStatisticsPresenter {
   private final IRangedCombatStatisticsModel rangedModel;
@@ -25,9 +28,14 @@ public class RangedStatisticsPresenter {
   }
 
   public void initPresentation() {
-    view.addElement(properties.getSpeedLabel(), view.initIntegerSpinner(rangedModel.getSpeedModel()).getComponent());
-    view.addElement(properties.getRangeLabel(), view.initIntegerSpinner(rangedModel.getRangeModel()).getComponent());
+    addSpinner(properties.getSpeedLabel(), rangedModel.getSpeedModel());
+    addSpinner(properties.getRangeLabel(), rangedModel.getSpeedModel());
     new BasicWeaponPresenter(rangedModel, weaponTagsModel, view, properties, damageProperties,
             tagProperties).initPresentation();
+  }
+
+  private void addSpinner(String label, IIntValueModel model) {
+    IIntegerSpinner spinner = view.addIntegerSpinner(label, model.getValue());
+    new IntValuePresentation().initPresentation(spinner, model);
   }
 }

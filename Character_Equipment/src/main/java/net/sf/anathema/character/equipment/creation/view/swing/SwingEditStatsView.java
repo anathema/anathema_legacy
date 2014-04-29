@@ -8,6 +8,7 @@ import net.sf.anathema.lib.gui.dialog.userdialog.OperationResultHandler;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.AbstractDialogPage;
 import net.sf.anathema.lib.gui.layout.AdditiveView;
+import net.sf.anathema.lib.gui.widgets.IIntegerSpinner;
 import net.sf.anathema.lib.gui.widgets.SwingIntegerSpinner;
 import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
@@ -116,6 +117,13 @@ public class SwingEditStatsView extends AbstractDialogPage implements EquipmentS
       panel.add(new JLabel(label));
       panel.add(component, new CC().growX().pushX());
     });
+  }
+
+  @Override
+  public IIntegerSpinner addIntegerSpinner(String label, int initialValue) {
+    SwingIntegerSpinner spinner = new SwingIntegerSpinner(initialValue);
+    addElement(label, spinner.getComponent());
+    return spinner;
   }
 
   private void refreshFinishingState() {

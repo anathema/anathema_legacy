@@ -2,6 +2,9 @@ package net.sf.anathema.character.equipment.creation.presenter;
 
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.TraitBoostStatisticsProperties;
 import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.lib.gui.widgets.IIntegerSpinner;
+import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
+import net.sf.anathema.lib.workflow.intvalue.IntValuePresentation;
 
 public class ModifierStatisticsPresenter {
   private final ITraitModifyingStatisticsModel modModel;
@@ -16,33 +19,28 @@ public class ModifierStatisticsPresenter {
   }
 
   public void initPresentation() {
-    view.addElement(properties.getDDVLabel(), view.initIntegerSpinner(modModel.getDDVModel()).getComponent());
-    view.addElement(properties.getPDVLabel(), view.initIntegerSpinner(modModel.getPDVModel()).getComponent());
-    view.addElement(properties.getMDDVLabel(), view.initIntegerSpinner(modModel.getMDDVModel()).getComponent());
-    view.addElement(properties.getMPDVLabel(), view.initIntegerSpinner(modModel.getMPDVModel()).getComponent());
+    addSpinner(properties.getDDVLabel(), modModel.getDDVModel());
+    addSpinner(properties.getPDVLabel(), modModel.getPDVModel());
+    addSpinner(properties.getMDDVLabel(), modModel.getMDDVModel());
+    addSpinner(properties.getMPDVLabel(), modModel.getMPDVModel());
 
-    view.addElement(properties.getMeleeSpeedLabel(),
-            view.initIntegerSpinner(modModel.getMeleeWeaponSpeedModel()).getComponent());
-    view.addElement(properties.getMeleeAccuracyLabel(),
-            view.initIntegerSpinner(modModel.getMeleeWeaponAccuracyModel()).getComponent());
-    view.addElement(properties.getMeleeDamageLabel(),
-            view.initIntegerSpinner(modModel.getMeleeWeaponDamageModel()).getComponent());
-    view.addElement(properties.getMeleeRateLabel(),
-            view.initIntegerSpinner(modModel.getMeleeWeaponRateModel()).getComponent());
+    addSpinner(properties.getMeleeSpeedLabel(), modModel.getMeleeWeaponSpeedModel());
+    addSpinner(properties.getMeleeAccuracyLabel(), modModel.getMeleeWeaponAccuracyModel());
+    addSpinner(properties.getMeleeDamageLabel(), modModel.getMeleeWeaponDamageModel());
+    addSpinner(properties.getMeleeRateLabel(), modModel.getMeleeWeaponRateModel());
 
-    view.addElement(properties.getRangedSpeedLabel(),
-            view.initIntegerSpinner(modModel.getRangedWeaponSpeedModel()).getComponent());
-    view.addElement(properties.getRangedAccuracyLabel(),
-            view.initIntegerSpinner(modModel.getRangedWeaponAccuracyModel()).getComponent());
-    view.addElement(properties.getRangedDamageLabel(),
-            view.initIntegerSpinner(modModel.getRangedWeaponDamageModel()).getComponent());
-    view.addElement(properties.getRangedRateLabel(),
-            view.initIntegerSpinner(modModel.getRangedWeaponRateModel()).getComponent());
+    addSpinner(properties.getRangedSpeedLabel(), modModel.getRangedWeaponSpeedModel());
+    addSpinner(properties.getRangedAccuracyLabel(), modModel.getRangedWeaponAccuracyModel());
+    addSpinner(properties.getRangedDamageLabel(), modModel.getRangedWeaponDamageModel());
+    addSpinner(properties.getRangedRateLabel(), modModel.getRangedWeaponRateModel());
 
-    view.addElement(properties.getJoinBattleLabel(),
-            view.initIntegerSpinner(modModel.getJoinBattleModel()).getComponent());
-    view.addElement(properties.getJoinDebateLabel(),
-            view.initIntegerSpinner(modModel.getJoinDebateModel()).getComponent());
-    view.addElement(properties.getJoinWarLabel(), view.initIntegerSpinner(modModel.getJoinWarModel()).getComponent());
+    addSpinner(properties.getJoinBattleLabel(), modModel.getJoinBattleModel());
+    addSpinner(properties.getJoinDebateLabel(), modModel.getJoinDebateModel());
+    addSpinner(properties.getJoinWarLabel(), modModel.getJoinWarModel());
+  }
+
+  private void addSpinner(String label, IIntValueModel model) {
+    IIntegerSpinner spinner = view.addIntegerSpinner(label, model.getValue());
+    new IntValuePresentation().initPresentation(spinner, model);
   }
 }

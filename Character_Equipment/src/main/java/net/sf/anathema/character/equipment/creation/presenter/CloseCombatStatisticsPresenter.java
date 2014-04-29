@@ -4,29 +4,37 @@ import net.sf.anathema.character.equipment.creation.presenter.stats.properties.C
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.TagPageProperties;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.WeaponDamageProperties;
 import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.lib.gui.widgets.IIntegerSpinner;
+import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
+import net.sf.anathema.lib.workflow.intvalue.IntValuePresentation;
 
 public class CloseCombatStatisticsPresenter {
   private final ICloseCombatStatsticsModel closeModel;
   private final IWeaponTagsModel tagModel;
-  private final EquipmentStatsView page;
+  private final EquipmentStatsView view;
   private final CloseCombatStatisticsProperties properties;
   private final TagPageProperties tagProperties;
   private final WeaponDamageProperties damageProperties;
 
   public CloseCombatStatisticsPresenter(ICloseCombatStatsticsModel closeModel, IWeaponTagsModel tagModel,
-                                        EquipmentStatsView page, Resources resources) {
+                                        EquipmentStatsView view, Resources resources) {
     this.closeModel = closeModel;
     this.tagModel = tagModel;
-    this.page = page;
+    this.view = view;
     this.properties = new CloseCombatStatisticsProperties(resources);
     this.tagProperties = new TagPageProperties(resources);
     this.damageProperties = new WeaponDamageProperties(resources);
   }
 
   public void initPresentation() {
-    page.addElement(properties.getSpeedLabel(), page.initIntegerSpinner(closeModel.getSpeedModel()).getComponent());
-    page.addElement(properties.getDefenseLabel(), page.initIntegerSpinner(closeModel.getDefenseModel()).getComponent());
-    new BasicWeaponPresenter(closeModel, tagModel, page, properties, damageProperties,
+    addSpinner(properties.getSpeedLabel(), closeModel.getSpeedModel());
+    addSpinner(properties.getDefenseLabel(), closeModel.getDefenseModel());
+    new BasicWeaponPresenter(closeModel, tagModel, view, properties, damageProperties,
             tagProperties).initPresentation();
+  }
+
+  private void addSpinner(String label, IIntValueModel model) {
+    IIntegerSpinner spinner = view.addIntegerSpinner(label, model.getValue());
+    new IntValuePresentation().initPresentation(spinner, model);
   }
 }

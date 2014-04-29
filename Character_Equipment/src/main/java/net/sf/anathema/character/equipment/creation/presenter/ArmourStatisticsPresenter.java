@@ -10,7 +10,9 @@ import net.sf.anathema.lib.control.IntValueChangedListener;
 import net.sf.anathema.lib.gui.icon.ImageProvider;
 import net.sf.anathema.lib.gui.layout.AdditiveView;
 import net.sf.anathema.lib.gui.layout.SwingLayoutUtils;
+import net.sf.anathema.lib.gui.widgets.IIntegerSpinner;
 import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
+import net.sf.anathema.lib.workflow.intvalue.IntValuePresentation;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -31,15 +33,12 @@ public class ArmourStatisticsPresenter {
   }
 
   public void initPresentation() {
-    view.addElement(properties.getBashingSoakLabel(),
-            view.initIntegerSpinner(armourModel.getBashingSoakModel()).getComponent());
-    view.addElement(properties.getBashingHardnessLabel(),
-            view.initIntegerSpinner(armourModel.getBashingHardnessModel()).getComponent());
+    addSpinner(properties.getBashingSoakLabel(), armourModel.getBashingSoakModel());
+    addSpinner(properties.getBashingHardnessLabel(), armourModel.getBashingHardnessModel());
 
     IIntValueModel lethalSoakModel = armourModel.getLethalSoakModel();
-    view.addElement(properties.getLethalSoakLabel(), view.initIntegerSpinner(lethalSoakModel).getComponent());
-    view.addElement(properties.getLethalHardnessLabel(),
-            view.initIntegerSpinner(armourModel.getLethalHardnessModel()).getComponent());
+    addSpinner(properties.getLethalSoakLabel(), lethalSoakModel);
+    addSpinner(properties.getLethalHardnessLabel(), armourModel.getLethalHardnessModel());
 
     final IconToggleButton linkToggleButton = new IconToggleButton(
             new ImageProvider().getImageIcon(new CharacterUI().getLinkIconPath()));
@@ -56,10 +55,8 @@ public class ArmourStatisticsPresenter {
       }
     });
 
-    view.addElement(properties.getMobilityPenaltyLabel(),
-            view.initIntegerSpinner(armourModel.getMobilityPenaltyModel()).getComponent());
-    view.addElement(properties.getFatigueLabel(),
-            view.initIntegerSpinner(armourModel.getFatigueModel()).getComponent());
+    addSpinner(properties.getMobilityPenaltyLabel(), armourModel.getMobilityPenaltyModel());
+    addSpinner(properties.getFatigueLabel(), armourModel.getFatigueModel());
 
     linkToggleButton.addActionListener(new ActionListener() {
       @Override
@@ -83,5 +80,10 @@ public class ArmourStatisticsPresenter {
         }
       }
     });
+  }
+
+  private void addSpinner(String label, IIntValueModel model) {
+    IIntegerSpinner spinner = view.addIntegerSpinner(label, model.getValue());
+    new IntValuePresentation().initPresentation(spinner, model);
   }
 }

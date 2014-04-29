@@ -2,6 +2,7 @@ package net.sf.anathema.character.equipment.creation.presenter;
 
 import net.sf.anathema.lib.gui.dialog.userdialog.OperationResultHandler;
 import net.sf.anathema.lib.gui.layout.AdditiveView;
+import net.sf.anathema.lib.gui.widgets.IIntegerSpinner;
 import net.sf.anathema.lib.gui.widgets.SwingIntegerSpinner;
 import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
@@ -29,4 +30,6 @@ public interface EquipmentStatsView {
   void show(OperationResultHandler handler);
 
   void addElement(String label, JComponent component);
+
+  IIntegerSpinner addIntegerSpinner(String label, int initialValue);
 }
