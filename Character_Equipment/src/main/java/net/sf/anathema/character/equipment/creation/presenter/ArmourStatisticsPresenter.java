@@ -4,6 +4,7 @@ import net.miginfocom.layout.CC;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.ArmourStatisticsProperties;
 import net.sf.anathema.character.equipment.creation.view.swing.IconToggleButton;
 import net.sf.anathema.character.main.CharacterUI;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.health.HealthType;
 import net.sf.anathema.lib.control.IntValueChangedListener;
 import net.sf.anathema.lib.gui.icon.ImageProvider;
@@ -24,25 +25,25 @@ public class ArmourStatisticsPresenter {
   private final IArmourStatisticsModel armourModel;
 
 
-  public ArmourStatisticsPresenter(IArmourStatisticsModel armourModel, EquipmentStatsView view, ArmourStatisticsProperties properties) {
+  public ArmourStatisticsPresenter(IArmourStatisticsModel armourModel, EquipmentStatsView view, Resources resources) {
     this.view = view;
-    this.properties = properties;
+    this.properties = new ArmourStatisticsProperties(resources);
     this.armourModel = armourModel;
   }
 
   public void initPresentation() {
-    view.addLabelledComponentRow(
-            new String[]{properties.getBashingSoakLabel(), properties.getBashingHardnessLabel()},
-            new Component[]{view.initIntegerSpinner(armourModel.getBashingSoakModel()).getComponent(), view.initIntegerSpinner(
+    view.addLabelledComponentRow(new String[]{properties.getBashingSoakLabel(), properties.getBashingHardnessLabel()},
+            new Component[]{view.initIntegerSpinner(
+                    armourModel.getBashingSoakModel()).getComponent(), view.initIntegerSpinner(
                     armourModel.getBashingHardnessModel()).getComponent()}
     );
     final IIntValueModel lethalSoakModel = armourModel.getLethalSoakModel();
-    view.addLabelledComponentRow(
-            new String[]{properties.getLethalSoakLabel(), properties.getLethalHardnessLabel()},
+    view.addLabelledComponentRow(new String[]{properties.getLethalSoakLabel(), properties.getLethalHardnessLabel()},
             new Component[]{view.initIntegerSpinner(lethalSoakModel).getComponent(), view.initIntegerSpinner(
                     armourModel.getLethalHardnessModel()).getComponent()}
     );
-    final IconToggleButton linkToggleButton = new IconToggleButton(new ImageProvider().getImageIcon(new CharacterUI().getLinkIconPath()));
+    final IconToggleButton linkToggleButton = new IconToggleButton(
+            new ImageProvider().getImageIcon(new CharacterUI().getLinkIconPath()));
     final IIntValueModel aggravatedSoakModel = armourModel.getSoakModel(HealthType.Aggravated);
     final JComponent aggravatedSoakSpinner = view.initIntegerSpinner(aggravatedSoakModel).getComponent();
     view.addView(new AdditiveView() {
