@@ -4,13 +4,13 @@ import net.sf.anathema.hero.health.HealthType;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.layout.AdditiveView;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
-import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
+import net.sf.anathema.lib.gui.widgets.IIntegerSpinner;
 
 public interface WeaponDamageView extends AdditiveView, ObjectSelectionView<HealthType> {
 
-  IntegerSpinner getDamageIntegerSpinner();
-  
-  IntegerSpinner getMinDamageIntegerSpinner();
+  IIntegerSpinner getDamageIntegerSpinner();
+
+  IIntegerSpinner getMinDamageIntegerSpinner();
 
   void setHealthTypeRenderer(AgnosticUIConfiguration<HealthType> renderer);
 

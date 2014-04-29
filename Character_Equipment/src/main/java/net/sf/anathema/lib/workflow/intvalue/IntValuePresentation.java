@@ -1,11 +1,11 @@
 package net.sf.anathema.lib.workflow.intvalue;
 
 import net.sf.anathema.lib.control.IntValueChangedListener;
-import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
+import net.sf.anathema.lib.gui.widgets.IIntegerSpinner;
 
 public class IntValuePresentation {
 
-  public void initView(final IntegerSpinner integerSpinner, final IIntValueModel intValueModel) {
+  public void initPresentation(IIntegerSpinner integerSpinner, IIntValueModel intValueModel) {
     intValueModel.addIntValueChangeListener(new IntValueChangedListener() {
       @Override
       public void valueChanged(int newValue) {

@@ -4,7 +4,7 @@ import net.sf.anathema.character.equipment.creation.presenter.stats.properties.W
 import net.sf.anathema.hero.health.HealthType;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
+import net.sf.anathema.lib.gui.widgets.IIntegerSpinner;
 import net.sf.anathema.lib.workflow.intvalue.IntValuePresentation;
 
 public class WeaponDamagePresenter {
@@ -21,8 +21,8 @@ public class WeaponDamagePresenter {
 
   public void initPresentation() {
     view.setDamageLabelText(properties.getDamageLabel());
-    IntegerSpinner damageSpinner = view.getDamageIntegerSpinner();
-    new IntValuePresentation().initView(damageSpinner, model.getDamageModel());
+    IIntegerSpinner damageSpinner = view.getDamageIntegerSpinner();
+    new IntValuePresentation().initPresentation(damageSpinner, model.getDamageModel());
     damageSpinner.setMinimum(0);
     view.setObjects(HealthType.values());
     model.addHealthTypeChangeListener(new ChangeListener() {
@@ -40,8 +40,8 @@ public class WeaponDamagePresenter {
     view.setHealthTypeRenderer(properties.getHealthTypeUi());
     updateHealthTypeInView();
     view.setMinDamageLabelText(properties.getMinDamageLabel());
-    IntegerSpinner minDamageSpinner = view.getMinDamageIntegerSpinner();
-    new IntValuePresentation().initView(minDamageSpinner, model.getMinDamageModel());
+    IIntegerSpinner minDamageSpinner = view.getMinDamageIntegerSpinner();
+    new IntValuePresentation().initPresentation(minDamageSpinner, model.getMinDamageModel());
     minDamageSpinner.setMinimum(0);
   }
 

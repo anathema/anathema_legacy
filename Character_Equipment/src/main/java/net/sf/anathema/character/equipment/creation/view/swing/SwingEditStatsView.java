@@ -9,7 +9,7 @@ import net.sf.anathema.lib.gui.dialog.userdialog.OperationResultHandler;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.AbstractDialogPage;
 import net.sf.anathema.lib.gui.layout.AdditiveView;
-import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
+import net.sf.anathema.lib.gui.widgets.SwingIntegerSpinner;
 import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
 import net.sf.anathema.lib.workflow.intvalue.IntValuePresentation;
@@ -79,9 +79,9 @@ public class SwingEditStatsView extends AbstractDialogPage implements EquipmentS
     });
   }
 
-  public final IntegerSpinner initIntegerSpinner(IIntValueModel intModel) {
-    IntegerSpinner spinner = new IntegerSpinner(intModel.getValue());
-    new IntValuePresentation().initView(spinner, intModel);
+  public final SwingIntegerSpinner initIntegerSpinner(IIntValueModel intModel) {
+    SwingIntegerSpinner spinner = new SwingIntegerSpinner(intModel.getValue());
+    new IntValuePresentation().initPresentation(spinner, intModel);
     return spinner;
   }
 

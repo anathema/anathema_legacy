@@ -13,18 +13,17 @@ import javax.swing.event.ChangeListener;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.JTextComponent;
-import java.awt.Dimension;
 import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 
-public class IntegerSpinner implements IView, IIntegerView {
+public class SwingIntegerSpinner implements IView, IIntegerView, IIntegerSpinner {
 
   private final JSpinner spinner;
   private final Map<IntValueChangedListener, ChangeListener> listenerMap = new HashMap<>();
   private final SpinnerNumberModel numberModel;
 
-  public IntegerSpinner(int initialValue) {
+  public SwingIntegerSpinner(int initialValue) {
     numberModel = new SpinnerNumberModel(initialValue, null, null, 1);
     spinner = new JSpinner(numberModel);
     DecimalFormat decimalFormat = new DecimalFormat();
@@ -35,10 +34,12 @@ public class IntegerSpinner implements IView, IIntegerView {
     numberEditor.getTextField().setValue(initialValue);
   }
 
+  @Override
   public void setMaximum(Integer maximum) {
     getSpinnerModel().setMaximum(maximum);
   }
 
+  @Override
   public void setMinimum(Integer minimum) {
     getSpinnerModel().setMinimum(minimum);
   }
@@ -116,12 +117,9 @@ public class IntegerSpinner implements IView, IIntegerView {
     return ((Number) numberModel.getValue()).intValue();
   }
 
-  public void setValue(Object newValue) {
+  @Override
+  public void setValue(int newValue) {
     spinner.setValue(newValue);
-  }
-
-  public void setPreferredWidth(int width) {
-    spinner.setPreferredSize(new Dimension(width, spinner.getPreferredSize().height));
   }
 
   @SuppressWarnings("UnusedDeclaration")

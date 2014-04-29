@@ -9,7 +9,8 @@ import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.ui.ConfigurableListCellRenderer;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
-import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
+import net.sf.anathema.lib.gui.widgets.IIntegerSpinner;
+import net.sf.anathema.lib.gui.widgets.SwingIntegerSpinner;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,8 +19,8 @@ public class SwingWeaponDamageView implements WeaponDamageView {
 
   private final JLabel damageLabel = new JLabel();
   private final JLabel minDamageLabel = new JLabel();
-  private final IntegerSpinner damageValueSpinner = new IntegerSpinner(0);
-  private final IntegerSpinner minDamageValueSpinner = new IntegerSpinner(0);
+  private final SwingIntegerSpinner damageValueSpinner = new SwingIntegerSpinner(0);
+  private final SwingIntegerSpinner minDamageValueSpinner = new SwingIntegerSpinner(0);
   private final IChangeableJComboBox<HealthType> typeBox = new ChangeableJComboBox<>(new HealthType[0]);
 
   @Override
@@ -37,12 +38,12 @@ public class SwingWeaponDamageView implements WeaponDamageView {
   }
 
   @Override
-  public IntegerSpinner getDamageIntegerSpinner() {
+  public IIntegerSpinner getDamageIntegerSpinner() {
     return damageValueSpinner;
   }
 
   @Override
-  public IntegerSpinner getMinDamageIntegerSpinner() {
+  public IIntegerSpinner getMinDamageIntegerSpinner() {
     return minDamageValueSpinner;
   }
 
