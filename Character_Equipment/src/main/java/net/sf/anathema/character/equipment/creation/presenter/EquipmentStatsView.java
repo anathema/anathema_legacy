@@ -1,5 +1,6 @@
 package net.sf.anathema.character.equipment.creation.presenter;
 
+import net.sf.anathema.lib.gui.dialog.userdialog.OperationResultHandler;
 import net.sf.anathema.lib.gui.layout.AdditiveView;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.message.IBasicMessage;
@@ -26,4 +27,6 @@ public interface EquipmentStatsView {
   void setTitle(String title);
 
   void setDescription(String description);
+
+  void show(OperationResultHandler handler);
 }

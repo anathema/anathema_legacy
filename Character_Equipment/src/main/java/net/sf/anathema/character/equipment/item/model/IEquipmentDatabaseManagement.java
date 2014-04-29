@@ -7,6 +7,4 @@ public interface IEquipmentDatabaseManagement {
   IEquipmentDatabase getDatabase();
 
   EquipmentStatsFactory getStatsCreationFactory();
-
-  StatsEditor getStatsEditor();
 }

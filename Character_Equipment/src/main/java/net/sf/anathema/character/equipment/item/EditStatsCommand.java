@@ -15,11 +15,14 @@ public class EditStatsCommand implements Command {
   private final StatsEditor statsEditor;
   private final StatsEditModel editModel;
   private final Resources resources;
+  private final StatsEditViewFactory view;
 
-  public EditStatsCommand(StatsEditor statsEditor, StatsEditModel editModel, Resources resources) {
+  public EditStatsCommand(StatsEditor statsEditor, StatsEditModel editModel, Resources resources,
+                          StatsEditViewFactory view) {
     this.statsEditor = statsEditor;
     this.editModel = editModel;
     this.resources = resources;
+    this.view = view;
   }
 
   @Override
@@ -29,7 +32,7 @@ public class EditStatsCommand implements Command {
     IEquipmentStats selectedStats = editModel.getSelectedStats();
     IEquipmentStatisticsCreationModel model = new StatsToModel().createModel(selectedStats);
     model.setForbiddenNames(forbiddenNames);
-    statsEditor.editStats(resources, model);
+    statsEditor.editStats(resources, model, view.createEquipmentStatsView());
   }
 
   private String[] getNamesOfAllOtherStats() {

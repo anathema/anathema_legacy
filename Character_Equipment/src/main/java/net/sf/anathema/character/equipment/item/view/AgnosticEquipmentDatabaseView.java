@@ -1,5 +1,6 @@
 package net.sf.anathema.character.equipment.item.view;
 
+import net.sf.anathema.character.equipment.creation.presenter.EquipmentStatsView;
 import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
@@ -40,5 +41,10 @@ public class AgnosticEquipmentDatabaseView implements EquipmentDatabaseView {
   @Override
   public Vetor createVetor(String title, String message) {
     return navigation.createVetor(title, message);
+  }
+
+  @Override
+  public EquipmentStatsView createEquipmentStatsView() {
+    return details.createEquipmentStatsView();
   }
 }

@@ -3,9 +3,8 @@ package net.sf.anathema.character.equipment.item;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatsFactory;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
-import net.sf.anathema.character.equipment.item.model.StatsEditor;
-import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 import net.sf.anathema.equipment.core.MaterialComposition;
+import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 import net.sf.anathema.lib.control.ChangeListener;
 import org.jmock.example.announcer.Announcer;
 
@@ -50,11 +49,6 @@ public class WrappingStatsEditModel implements StatsEditModel {
   @Override
   public MaterialComposition getMaterialComposition() {
     return editModel().getMaterialComposition();
-  }
-
-  @Override
-  public StatsEditor getStatsEditor() {
-    return model.getStatsEditor();
   }
 
   @Override

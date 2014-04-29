@@ -1,57 +1,32 @@
-package net.sf.anathema.character.equipment.creation.view.swing;
+package net.sf.anathema.character.equipment.creation.presenter;
 
-import net.sf.anathema.character.equipment.creation.presenter.ArmourStatisticsPresenter;
-import net.sf.anathema.character.equipment.creation.presenter.ArtifactStatisticsPresenter;
-import net.sf.anathema.character.equipment.creation.presenter.CloseCombatStatisticsPresenter;
-import net.sf.anathema.character.equipment.creation.presenter.EquipmentStatsView;
-import net.sf.anathema.character.equipment.creation.presenter.GeneralStatsPresenter;
-import net.sf.anathema.character.equipment.creation.presenter.IArmourStatisticsModel;
-import net.sf.anathema.character.equipment.creation.presenter.IArtifactStatisticsModel;
-import net.sf.anathema.character.equipment.creation.presenter.ICloseCombatStatsticsModel;
-import net.sf.anathema.character.equipment.creation.presenter.IEquipmentStatisticsCreationModel;
-import net.sf.anathema.character.equipment.creation.presenter.IRangedCombatStatisticsModel;
-import net.sf.anathema.character.equipment.creation.presenter.ITraitModifyingStatisticsModel;
-import net.sf.anathema.character.equipment.creation.presenter.IWeaponTagsModel;
-import net.sf.anathema.character.equipment.creation.presenter.ModifierStatisticsPresenter;
-import net.sf.anathema.character.equipment.creation.presenter.RangedStatisticsPresenter;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.WeaponDamageProperties;
 import net.sf.anathema.character.equipment.item.model.ModelToStats;
 import net.sf.anathema.character.equipment.item.model.NullClosure;
 import net.sf.anathema.character.equipment.item.model.StatsEditor;
 import net.sf.anathema.framework.environment.Resources;
-import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 import net.sf.anathema.lib.gui.dialog.core.OperationResult;
 import net.sf.anathema.lib.gui.dialog.userdialog.OperationResultHandler;
-import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.util.Closure;
 
-import javax.swing.SwingUtilities;
-
-public class SwingStatsEditor implements StatsEditor {
+public class AgnosticStatsEditor implements StatsEditor {
 
   private Closure<IEquipmentStats> whenChangesAreFinished = new NullClosure<>();
   private final ModelToStats modelToStats = new ModelToStats();
-
-  @Override
-  public void editStats(Resources resources, IEquipmentStatisticsCreationModel model) {
-    SwingUtilities.invokeLater(() -> runDialog(resources, model));
-  }
 
   @Override
   public void whenChangesAreConfirmed(Closure<IEquipmentStats> action) {
     this.whenChangesAreFinished = action;
   }
 
-  private void runDialog(Resources resources, final IEquipmentStatisticsCreationModel model) {
-    EquipmentStatisticsPresenterPage view = new EquipmentStatisticsPresenterPage();
+  @Override
+  public void editStats(Resources resources, IEquipmentStatisticsCreationModel model, EquipmentStatsView view) {
     initPresentation(resources, model, view);
-    UserDialog dialog = new UserDialog(SwingApplicationFrame.getParentComponent(), view);
-    dialog.show(new CreateStatsHandler(model));
+    view.show(new CreateStatsHandler(model));
   }
 
-  private void initPresentation(Resources resources, IEquipmentStatisticsCreationModel model,
-                                       EquipmentStatsView view) {
+  private void initPresentation(Resources resources, IEquipmentStatisticsCreationModel model, EquipmentStatsView view) {
     switch (model.getEquipmentType()) {
       case CloseCombat:
         initCloseCombatPresentation(resources, model, view);

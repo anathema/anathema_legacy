@@ -3,7 +3,10 @@ package net.sf.anathema.character.equipment.creation.view.swing;
 import com.google.common.base.Preconditions;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.character.equipment.creation.presenter.EquipmentStatsView;
+import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.lib.control.ChangeListener;
+import net.sf.anathema.lib.gui.dialog.userdialog.OperationResultHandler;
+import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.AbstractDialogPage;
 import net.sf.anathema.lib.gui.layout.AdditiveView;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
@@ -16,9 +19,10 @@ import org.jmock.example.announcer.Announcer;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import java.awt.Component;
 
-public class EquipmentStatisticsPresenterPage extends AbstractDialogPage implements EquipmentStatsView {
+public class EquipmentStatsEditPage extends AbstractDialogPage implements EquipmentStatsView {
 
   private ExtensibleEquipmentStatsView view = new ExtensibleEquipmentStatsView();
   private final Announcer<ChangeListener> announcer = Announcer.to(ChangeListener.class);
@@ -27,7 +31,7 @@ public class EquipmentStatisticsPresenterPage extends AbstractDialogPage impleme
   private String title;
   private String description;
 
-  public EquipmentStatisticsPresenterPage() {
+  public EquipmentStatsEditPage() {
     super("");
   }
 
@@ -112,6 +116,14 @@ public class EquipmentStatisticsPresenterPage extends AbstractDialogPage impleme
   @Override
   public void setDescription(String description) {
     this.description = description;
+  }
+
+  @Override
+  public void show(OperationResultHandler handler) {
+    SwingUtilities.invokeLater(() -> {
+      UserDialog dialog = new UserDialog(SwingApplicationFrame.getParentComponent(), this);
+      dialog.show(handler);
+    });
   }
 
   private void refreshFinishingState() {

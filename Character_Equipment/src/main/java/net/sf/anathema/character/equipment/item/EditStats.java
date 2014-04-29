@@ -1,6 +1,8 @@
 package net.sf.anathema.character.equipment.item;
 
+import net.sf.anathema.character.equipment.creation.presenter.EquipmentStatsView;
 import net.sf.anathema.character.equipment.item.model.StatsEditor;
+import net.sf.anathema.character.equipment.item.view.EquipmentDetails;
 import net.sf.anathema.character.equipment.item.view.ToolListView;
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
@@ -12,18 +14,21 @@ public class EditStats {
   private final StatsEditor statsEditor;
   private final Resources resources;
   private final StatsEditModel editModel;
+  private final StatsEditViewFactory view;
 
-  public EditStats(Resources resources, StatsEditModel editModel, StatsEditor statsEditor) {
+  public EditStats(Resources resources, StatsEditModel editModel, StatsEditor statsEditor,
+                   StatsEditViewFactory view) {
     this.resources = resources;
     this.editModel = editModel;
     this.statsEditor = statsEditor;
+    this.view = view;
   }
 
   public void addToolTo(final ToolListView<IEquipmentStats> statsListView) {
     final Tool tool = statsListView.addTool();
     tool.setIcon(new BasicUi().getEditIconPath());
     tool.setTooltip(resources.getString("Equipment.Creation.Stats.EditActionTooltip"));
-    tool.setCommand(new EditStatsCommand(statsEditor, editModel, resources));
+    tool.setCommand(new EditStatsCommand(statsEditor, editModel, resources, view));
     editModel.whenSelectedStatsChanges(new ChangeListener() {
       @Override
       public void changeOccurred() {

@@ -1,13 +1,10 @@
 package net.sf.anathema.character.equipment.item.model;
 
-import net.sf.anathema.character.equipment.creation.view.swing.SwingStatsEditor;
-
 public class EquipmentDatabaseManagement implements IEquipmentDatabaseManagement {
 
   private final EquipmentTemplateEditModel templateEditModel;
   private final IEquipmentDatabase database;
   private final EquipmentStatsFactory statsFactory = new SimpleEquipmentStatsFactory();
-  private final SwingStatsEditor statsEditor = new SwingStatsEditor();
 
   public EquipmentDatabaseManagement(IEquipmentDatabase database) {
     this.database = database;
@@ -29,8 +26,4 @@ public class EquipmentDatabaseManagement implements IEquipmentDatabaseManagement
     return statsFactory;
   }
 
-  @Override
-  public StatsEditor getStatsEditor() {
-    return statsEditor;
-  }
 }

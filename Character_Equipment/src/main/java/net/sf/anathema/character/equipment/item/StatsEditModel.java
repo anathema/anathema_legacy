@@ -1,9 +1,8 @@
 package net.sf.anathema.character.equipment.item;
 
 import net.sf.anathema.character.equipment.item.model.EquipmentStatsFactory;
-import net.sf.anathema.character.equipment.item.model.StatsEditor;
-import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 import net.sf.anathema.equipment.core.MaterialComposition;
+import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 import net.sf.anathema.lib.control.ChangeListener;
 
 import java.util.List;
@@ -20,8 +19,6 @@ public interface StatsEditModel {
   void addCompositionChangeListener(ChangeListener changeListener);
 
   MaterialComposition getMaterialComposition();
-
-  StatsEditor getStatsEditor();
 
   void replaceSelectedStatistics(IEquipmentStats newStats);
 

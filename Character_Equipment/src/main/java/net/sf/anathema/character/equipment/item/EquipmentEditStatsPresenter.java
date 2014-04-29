@@ -1,5 +1,6 @@
 package net.sf.anathema.character.equipment.item;
 
+import net.sf.anathema.character.equipment.creation.presenter.AgnosticStatsEditor;
 import net.sf.anathema.character.equipment.item.view.EquipmentDetails;
 import net.sf.anathema.character.equipment.item.view.ToolListView;
 import net.sf.anathema.framework.environment.Resources;
@@ -49,7 +50,7 @@ public class EquipmentEditStatsPresenter {
     addNewStats.addTool(new ArmourStatsConfiguration(), statsListView);
     addNewStats.addTool(new ArtifactStatsConfiguration(), statsListView);
     addNewStats.addTool(new TraitModifierStatsConfiguration(), statsListView);
-    new EditStats(resources, model, model.getStatsEditor()).addToolTo(statsListView);
+    new EditStats(resources, model, new AgnosticStatsEditor(), equipmentView).addToolTo(statsListView);
     new RemoveStats(resources, model).addToolTo(statsListView);
   }
 
