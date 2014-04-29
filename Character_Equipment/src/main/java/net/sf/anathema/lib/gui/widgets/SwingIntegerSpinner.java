@@ -65,6 +65,11 @@ public class SwingIntegerSpinner implements IView, IIntegerView, IIntegerSpinner
     numberModel.addChangeListener(changeListener);
   }
 
+  @Override
+  public void setEnabled(boolean enabled) {
+    spinner.setEnabled(enabled);
+  }
+
   private void initDigitsOnlyDocument(final JTextComponent textField) {
     DigitsOnlyDocument document = new DigitsOnlyDocument(true, new IOverline() {
       @Override

@@ -1,6 +1,5 @@
 package net.sf.anathema.character.equipment.creation.presenter;
 
-import net.miginfocom.layout.CC;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.ArmourStatisticsProperties;
 import net.sf.anathema.character.equipment.creation.view.swing.IconToggleButton;
 import net.sf.anathema.character.main.CharacterUI;
@@ -43,12 +42,10 @@ public class ArmourStatisticsPresenter {
     final IconToggleButton linkToggleButton = new IconToggleButton(
             new ImageProvider().getImageIcon(new CharacterUI().getLinkIconPath()));
     final IIntValueModel aggravatedSoakModel = armourModel.getSoakModel(HealthType.Aggravated);
-    final JComponent aggravatedSoakSpinner = view.initIntegerSpinner(aggravatedSoakModel).getComponent();
+    IIntegerSpinner aggravatedSoakSpinner = addSpinner(properties.getAggravatedSoakLabel(), aggravatedSoakModel);
     view.addView(new AdditiveView() {
       @Override
       public void addTo(JPanel panel) {
-        panel.add(new JLabel(properties.getAggravatedSoakLabel()));
-        panel.add(aggravatedSoakSpinner, new CC().growX());
         JComponent button = linkToggleButton.getComponent();
         panel.add(button, SwingLayoutUtils.constraintsForImageButton(button).split(2).spanX());
         panel.add(new JLabel(properties.getLinkSoakLabel()));
@@ -82,8 +79,9 @@ public class ArmourStatisticsPresenter {
     });
   }
 
-  private void addSpinner(String label, IIntValueModel model) {
+  private IIntegerSpinner addSpinner(String label, IIntValueModel model) {
     IIntegerSpinner spinner = view.addIntegerSpinner(label, model.getValue());
     new IntValuePresentation().initPresentation(spinner, model);
+    return spinner;
   }
 }

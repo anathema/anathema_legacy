@@ -11,8 +11,6 @@ import net.sf.anathema.lib.gui.layout.AdditiveView;
 import net.sf.anathema.lib.gui.widgets.IIntegerSpinner;
 import net.sf.anathema.lib.gui.widgets.SwingIntegerSpinner;
 import net.sf.anathema.lib.message.IBasicMessage;
-import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
-import net.sf.anathema.lib.workflow.intvalue.IntValuePresentation;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import org.jmock.example.announcer.Announcer;
 
@@ -66,12 +64,6 @@ public class SwingEditStatsView extends AbstractDialogPage implements EquipmentS
 
   public final void addView(AdditiveView view) {
     this.view.addView(view);
-  }
-
-  public final SwingIntegerSpinner initIntegerSpinner(IIntValueModel intModel) {
-    SwingIntegerSpinner spinner = new SwingIntegerSpinner(intModel.getValue());
-    new IntValuePresentation().initPresentation(spinner, intModel);
-    return spinner;
   }
 
   public ITextView addLineTextView(String nameLabel) {

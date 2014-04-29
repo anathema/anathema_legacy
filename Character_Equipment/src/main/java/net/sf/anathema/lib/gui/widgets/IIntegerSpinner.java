@@ -10,4 +10,6 @@ public interface IIntegerSpinner {
   void setMaximum(Integer maximum);
 
   void addChangeListener(IntValueChangedListener listener);
+
+  void setEnabled(boolean enabled);
 }
