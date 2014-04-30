@@ -3,6 +3,7 @@ package net.sf.anathema.character.equipment.creation.view.swing;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
+import net.sf.anathema.character.equipment.creation.presenter.EquipmentStatsView;
 import net.sf.anathema.character.equipment.creation.presenter.IIntegerSpinner;
 import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
@@ -17,7 +18,7 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class ExtensibleEquipmentStatsView {
+public class ExtensibleEquipmentStatsView implements EquipmentStatsView {
   private static final int COLUMN_COUNT = 30;
   private final JPanel panel = new JPanel(new MigLayout(new LC().wrapAfter(4).fill().insets("2")));
 

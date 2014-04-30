@@ -5,7 +5,7 @@ import net.sf.anathema.framework.environment.Resources;
 
 public class ModifierStatisticsPresenter {
   private final ITraitModifyingStatisticsModel modModel;
-  private EquipmentStatsView view;
+  private final EquipmentStatsView view;
   private final TraitBoostStatisticsProperties properties;
 
   public ModifierStatisticsPresenter(ITraitModifyingStatisticsModel modModel, EquipmentStatsView view,

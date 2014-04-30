@@ -1,8 +1,6 @@
 package net.sf.anathema.character.equipment.item;
 
-import net.sf.anathema.character.equipment.creation.presenter.EquipmentStatsView;
 import net.sf.anathema.character.equipment.item.model.StatsEditor;
-import net.sf.anathema.character.equipment.item.view.EquipmentDetails;
 import net.sf.anathema.character.equipment.item.view.ToolListView;
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.framework.presenter.resources.BasicUi;

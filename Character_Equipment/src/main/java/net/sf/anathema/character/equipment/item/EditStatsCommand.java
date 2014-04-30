@@ -32,7 +32,7 @@ public class EditStatsCommand implements Command {
     IEquipmentStats selectedStats = editModel.getSelectedStats();
     IEquipmentStatisticsCreationModel model = new StatsToModel().createModel(selectedStats);
     model.setForbiddenNames(forbiddenNames);
-    statsEditor.editStats(resources, model, view.createEquipmentStatsView());
+    statsEditor.editStats(resources, model, view.createEquipmentStatsDialog());
   }
 
   private String[] getNamesOfAllOtherStats() {

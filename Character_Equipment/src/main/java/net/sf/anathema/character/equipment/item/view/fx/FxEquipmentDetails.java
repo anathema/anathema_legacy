@@ -4,8 +4,8 @@ import javafx.application.Platform;
 import javafx.scene.Node;
 import net.miginfocom.layout.AC;
 import net.miginfocom.layout.CC;
-import net.sf.anathema.character.equipment.creation.presenter.EquipmentStatsView;
-import net.sf.anathema.character.equipment.creation.view.swing.SwingEditStatsView;
+import net.sf.anathema.character.equipment.creation.presenter.EquipmentStatsDialog;
+import net.sf.anathema.character.equipment.creation.view.swing.SwingEditStatsDialog;
 import net.sf.anathema.character.equipment.item.view.EquipmentDescriptionPanel;
 import net.sf.anathema.character.equipment.item.view.EquipmentDetails;
 import net.sf.anathema.character.equipment.item.view.ToolListView;
@@ -52,7 +52,7 @@ public class FxEquipmentDetails implements EquipmentDetails {
   }
 
   @Override
-  public EquipmentStatsView createEquipmentStatsView() {
-    return new SwingEditStatsView();
+  public EquipmentStatsDialog createEquipmentStatsDialog() {
+    return new SwingEditStatsDialog();
   }
 }

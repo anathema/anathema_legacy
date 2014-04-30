@@ -9,13 +9,15 @@ import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 
 public class GeneralStatsPresenter {
   private final EquipmentStatsView view;
+  private EquipmentStatsDialog dialog;
   private final IEquipmentStatisticsModel model;
   private IEquipmentStatisticsCreationModel overallModel;
   private Resources resources;
 
-  public GeneralStatsPresenter(EquipmentStatsView view, IEquipmentStatisticsModel model,
+  public GeneralStatsPresenter(EquipmentStatsView view, EquipmentStatsDialog dialog, IEquipmentStatisticsModel model,
                                IEquipmentStatisticsCreationModel overallModel, Resources resources) {
     this.view = view;
+    this.dialog = dialog;
     this.model = model;
     this.overallModel = overallModel;
     this.resources = resources;
@@ -28,9 +30,9 @@ public class GeneralStatsPresenter {
   }
 
   private void initBasicPresentation() {
-    view.setMessage(getDefaultMessage());
-    view.setTitle(getPageDescription());
-    view.setDescription(getPageDescription());
+    dialog.setMessage(getDefaultMessage());
+    dialog.setTitle(getPageDescription());
+    dialog.setDescription(getPageDescription());
   }
 
   private void initCompletionPresentation() {
@@ -42,9 +44,9 @@ public class GeneralStatsPresenter {
 
   private void updateValidity() {
     if (model.isValid() && isNameUnique()) {
-      view.setCanFinish();
+      dialog.setCanFinish();
     } else {
-      view.setCannotFinish();
+      dialog.setCannotFinish();
     }
   }
 
