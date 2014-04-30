@@ -10,6 +10,12 @@ import net.sf.anathema.lib.gui.dialog.core.OperationResult;
 import net.sf.anathema.lib.gui.dialog.userdialog.OperationResultHandler;
 import net.sf.anathema.lib.util.Closure;
 
+import static net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType.Armor;
+import static net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType.Artifact;
+import static net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType.CloseCombat;
+import static net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType.RangedCombat;
+import static net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType.TraitModifying;
+
 public class AgnosticStatsEditor implements StatsEditor {
 
   private Closure<IEquipmentStats> whenChangesAreFinished = new NullClosure<>();
@@ -27,24 +33,16 @@ public class AgnosticStatsEditor implements StatsEditor {
   }
 
   private void initPresentation(Resources resources, IEquipmentStatisticsCreationModel model, EquipmentStatsView view) {
-    switch (model.getEquipmentType()) {
-      case CloseCombat:
-        initCloseCombatPresentation(resources, model, view);
-        break;
-      case RangedCombat:
-        initRangedCombatPresentation(resources, model, view);
-        break;
-      case Armor:
-        initArmourPresentation(resources, model, view);
-        break;
-      case Artifact:
-        initArtifactPresentation(resources, model, view);
-        break;
-      case TraitModifying:
-        initTraitModifyingPresentation(resources, model, view);
-        break;
-      default:
-        throw new IllegalArgumentException("Type must be defined to edit.");
+    if (CloseCombat == model.getEquipmentType()) {
+      initCloseCombatPresentation(resources, model, view);
+    } else if (RangedCombat == model.getEquipmentType()) {
+      initRangedCombatPresentation(resources, model, view);
+    } else if (Armor == model.getEquipmentType()) {
+      initArmourPresentation(resources, model, view);
+    } else if (Artifact == model.getEquipmentType()) {
+      initArtifactPresentation(resources, model, view);
+    } else if (TraitModifying == model.getEquipmentType()) {
+      initTraitModifyingPresentation(resources, model, view);
     }
   }
 
