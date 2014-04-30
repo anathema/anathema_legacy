@@ -8,16 +8,14 @@ import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.icon.ImageProvider;
 
 import javax.swing.ImageIcon;
+import javax.swing.JCheckBox;
+import javax.swing.JComponent;
 import javax.swing.JToggleButton;
 import java.awt.Component;
 
 public class SwingToggleTool implements ToggleTool {
 
-  private final JToggleButton button;
-
-  public SwingToggleTool(JToggleButton button) {
-    this.button = button;
-  }
+  private final JToggleButton button = new JCheckBox();
 
   @Override
   public void select() {
@@ -73,5 +71,9 @@ public class SwingToggleTool implements ToggleTool {
   @Override
   public void setHotkey(Hotkey s) {
     //nothing to do
+  }
+
+  public JComponent getComponent() {
+    return button;
   }
 }

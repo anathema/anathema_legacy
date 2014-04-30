@@ -17,7 +17,6 @@ import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import org.jmock.example.announcer.Announcer;
 
-import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
@@ -110,9 +109,9 @@ public class SwingEditStatsView extends AbstractDialogPage implements EquipmentS
 
   @Override
   public ToggleTool addToggleTool() {
-    JCheckBox button = new JCheckBox();
-    view.addView(panel -> panel.add(button, new CC().spanX(2)));
-    return new SwingToggleTool(button);
+    SwingToggleTool tool = new SwingToggleTool();
+    view.addView(panel -> panel.add(tool.getComponent(), new CC().spanX(2)));
+    return tool;
   }
 
   @Override
