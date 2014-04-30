@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.creation.view.swing;
+package net.sf.anathema.character.equipment.creation.view.swing.combobox;
 
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.ConfigurableSwingUI;

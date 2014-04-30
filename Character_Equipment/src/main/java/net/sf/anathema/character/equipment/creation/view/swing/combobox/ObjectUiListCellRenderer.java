@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.creation.view.swing;
+package net.sf.anathema.character.equipment.creation.view.swing.combobox;
 
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;

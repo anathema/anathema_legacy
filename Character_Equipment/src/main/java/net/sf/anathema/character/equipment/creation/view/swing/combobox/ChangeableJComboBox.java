@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.creation.view.swing;
+package net.sf.anathema.character.equipment.creation.view.swing.combobox;
 
 import net.sf.anathema.lib.control.ObjectValueListener;
 import org.jmock.example.announcer.Announcer;
