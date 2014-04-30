@@ -4,6 +4,7 @@ import net.sf.anathema.character.equipment.creation.presenter.IArmourStatisticsM
 import net.sf.anathema.hero.health.HealthType;
 import net.sf.anathema.hero.health.IHealthTypeVisitor;
 import net.sf.anathema.lib.data.Range;
+import net.sf.anathema.lib.workflow.booleanvalue.BooleanValueModel;
 import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
 import net.sf.anathema.lib.workflow.intvalue.RangedIntValueModel;
 
@@ -16,6 +17,7 @@ public class ArmourStatsticsModel extends EquipmentStatisticsModel implements IA
   private final IIntValueModel lethalSoak = new RangedIntValueModel(new Range(0, Integer.MAX_VALUE), 0);
   private final IIntValueModel aggravatedSoak = new RangedIntValueModel(new Range(0, Integer.MAX_VALUE), 0);
   private final IIntValueModel mobilityPenalty = new RangedIntValueModel(new Range(Integer.MIN_VALUE, 0), 0);
+  private final BooleanValueModel soakLinkModel = new BooleanValueModel(true);
 
   @Override
   public IIntValueModel getBashingHardnessModel() {
@@ -94,5 +96,10 @@ public class ArmourStatsticsModel extends EquipmentStatisticsModel implements IA
   @Override
   public IIntValueModel getAggravatedSoakModel() {
     return aggravatedSoak;
+  }
+
+  @Override
+  public BooleanValueModel getSoakLinkModel() {
+    return soakLinkModel;
   }
 }

@@ -8,13 +8,16 @@ import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.icon.ImageProvider;
 
 import javax.swing.ImageIcon;
-import javax.swing.JComponent;
 import javax.swing.JToggleButton;
 import java.awt.Component;
 
 public class SwingToggleTool implements ToggleTool {
 
-  private final JToggleButton button = new JToggleButton();
+  private final JToggleButton button;
+
+  public SwingToggleTool(JToggleButton button) {
+    this.button = button;
+  }
 
   @Override
   public void select() {
@@ -59,7 +62,7 @@ public class SwingToggleTool implements ToggleTool {
 
   @Override
   public void setCommand(Command command) {
-    button.setAction(new SmartAction() {
+    button.setAction(new SmartAction(button.getText()) {
       @Override
       protected void execute(Component parentComponent) {
         command.execute();
@@ -70,9 +73,5 @@ public class SwingToggleTool implements ToggleTool {
   @Override
   public void setHotkey(Hotkey s) {
     //nothing to do
-  }
-
-  public JComponent getComponent() {
-    return button;
   }
 }

@@ -9,7 +9,6 @@ import net.sf.anathema.lib.gui.dialog.userdialog.OperationResultHandler;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.AbstractDialogPage;
 import net.sf.anathema.lib.gui.layout.AdditiveView;
-import net.sf.anathema.lib.gui.layout.SwingLayoutUtils;
 import net.sf.anathema.lib.gui.widgets.HorizontalLine;
 import net.sf.anathema.lib.gui.widgets.IIntegerSpinner;
 import net.sf.anathema.lib.gui.widgets.SwingIntegerSpinner;
@@ -18,6 +17,7 @@ import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import org.jmock.example.announcer.Announcer;
 
+import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -114,17 +114,15 @@ public class SwingEditStatsView extends AbstractDialogPage implements EquipmentS
   }
 
   @Override
-  public ToggleTool addToggleTool(String label) {
-    SwingToggleTool tool = new SwingToggleTool();
+  public ToggleTool addToggleTool() {
+    JCheckBox button = new JCheckBox();
     view.addView(new AdditiveView() {
       @Override
       public void addTo(JPanel panel) {
-        JComponent button = tool.getComponent();
-        panel.add(button, SwingLayoutUtils.constraintsForImageButton(button).split(2).spanX());
-        panel.add(new JLabel(label));
+        panel.add(button, new CC().spanX(2));
       }
     });
-    return tool;
+    return new SwingToggleTool(button);
   }
 
   @Override

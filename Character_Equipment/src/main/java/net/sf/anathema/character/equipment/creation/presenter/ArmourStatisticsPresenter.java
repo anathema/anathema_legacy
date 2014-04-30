@@ -1,7 +1,6 @@
 package net.sf.anathema.character.equipment.creation.presenter;
 
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.ArmourStatisticsProperties;
-import net.sf.anathema.character.main.CharacterUI;
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.health.HealthType;
 import net.sf.anathema.interaction.ToggleTool;
@@ -32,8 +31,8 @@ public class ArmourStatisticsPresenter {
 
     final IIntValueModel aggravatedSoakModel = armourModel.getSoakModel(HealthType.Aggravated);
     IIntegerSpinner aggravatedSoakSpinner = addSpinner(properties.getAggravatedSoakLabel(), aggravatedSoakModel);
-    ToggleTool tool = view.addToggleTool(properties.getLinkSoakLabel());
-    tool.setIcon(new CharacterUI().getLinkIconPath());
+    ToggleTool tool = view.addToggleTool();
+    tool.setText(properties.getLinkSoakLabel());
 
     addSpinner(properties.getMobilityPenaltyLabel(), armourModel.getMobilityPenaltyModel());
     addSpinner(properties.getFatigueLabel(), armourModel.getFatigueModel());
@@ -46,12 +45,11 @@ public class ArmourStatisticsPresenter {
       if (isLinkToggled) {
         aggravatedSoakModel.setValue(lethalSoakModel.getValue());
       }
-      aggravatedSoakSpinner.setEnabled(!isLinkToggled);
-      setSelectionBasedOnLinkState(tool);
+      setToolBasedOnLinkState(tool, aggravatedSoakSpinner);
     });
     boolean linked = lethalSoakModel.getValue() == aggravatedSoakModel.getValue();
-    setSelectionBasedOnLinkState(tool);
-    aggravatedSoakSpinner.setEnabled(!linked);
+    armourModel.getSoakLinkModel().setValue(linked);
+    setToolBasedOnLinkState(tool, aggravatedSoakSpinner);
     lethalSoakModel.addIntValueChangeListener(newValue -> {
       if (armourModel.getSoakLinkModel().getValue()) {
         aggravatedSoakModel.setValue(newValue);
@@ -59,10 +57,12 @@ public class ArmourStatisticsPresenter {
     });
   }
 
-  private void setSelectionBasedOnLinkState(ToggleTool tool) {
+  private void setToolBasedOnLinkState(ToggleTool tool, IIntegerSpinner aggravatedSoakSpinner) {
     if (armourModel.getSoakLinkModel().getValue()) {
+      aggravatedSoakSpinner.setEnabled(false);
       tool.select();
     } else {
+      aggravatedSoakSpinner.setEnabled(true);
       tool.deselect();
     }
   }

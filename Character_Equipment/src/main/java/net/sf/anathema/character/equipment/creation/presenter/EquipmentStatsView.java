@@ -18,7 +18,7 @@ public interface EquipmentStatsView {
 
   IBooleanValueView addBooleanSelector(String label);
 
-  ToggleTool addToggleTool(String label);
+  ToggleTool addToggleTool();
 
   void setCanFinish();
 

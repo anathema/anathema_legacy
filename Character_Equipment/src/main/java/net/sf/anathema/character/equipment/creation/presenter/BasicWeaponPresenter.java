@@ -1,21 +1,15 @@
 package net.sf.anathema.character.equipment.creation.presenter;
 
-import net.miginfocom.layout.CC;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.OffensiveStatisticsProperties;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.TagPageProperties;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.WeaponDamageProperties;
 import net.sf.anathema.character.equipment.creation.view.swing.SwingWeaponDamageView;
-import net.sf.anathema.character.equipment.creation.view.swing.SwingWeaponTagsView;
-import net.sf.anathema.lib.control.IBooleanValueChangedListener;
-import net.sf.anathema.lib.gui.layout.AdditiveView;
+import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.lib.gui.widgets.IIntegerSpinner;
 import net.sf.anathema.lib.workflow.booleanvalue.BooleanValueModel;
 import net.sf.anathema.lib.workflow.booleanvalue.BooleanValuePresentation;
 import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
 import net.sf.anathema.lib.workflow.intvalue.IntValuePresentation;
-
-import javax.swing.JCheckBox;
-import javax.swing.JPanel;
 
 public class BasicWeaponPresenter {
 
@@ -60,27 +54,25 @@ public class BasicWeaponPresenter {
   }
 
   protected void addTags() {
-    view.addView(new AdditiveView() {
-      @Override
-      public void addTo(JPanel panel) {
-        WeaponTagsView tagsView = new SwingWeaponTagsView();
-        BooleanValuePresentation booleanValuePresentation = new BooleanValuePresentation();
-        for (IWeaponTag tag : weaponTagsModel.getAllTags()) {
-          final JCheckBox checkBox = tagsView.addCheckBox(tagProperties.getLabel(tag));
-          checkBox.setToolTipText(tagProperties.getToolTip(tag));
-          booleanValuePresentation.initPresentation(checkBox, weaponTagsModel.getSelectedModel(tag));
-          final BooleanValueModel enabledModel = weaponTagsModel.getEnabledModel(tag);
-          enabledModel.addChangeListener(new IBooleanValueChangedListener() {
-            @Override
-            public void valueChanged(boolean newValue) {
-              checkBox.setEnabled(enabledModel.getValue());
-            }
-          });
-          checkBox.setEnabled(enabledModel.getValue());
-        }
-        panel.add(tagsView.getComponent(), new CC().spanX().growX().pushX());
-      }
-    });
+    BooleanValuePresentation booleanValuePresentation = new BooleanValuePresentation();
+    for (IWeaponTag tag : weaponTagsModel.getAllTags()) {
+      ToggleTool tool = view.addToggleTool();
+      tool.setText(tagProperties.getLabel(tag));
+      tool.setTooltip(tagProperties.getToolTip(tag));
+      booleanValuePresentation.initPresentation(tool, weaponTagsModel.getSelectedModel(tag));
+      final BooleanValueModel enabledModel = weaponTagsModel.getEnabledModel(tag);
+      enabledModel.addChangeListener(newValue -> enableBasedOnModelState(enabledModel, tool));
+      enableBasedOnModelState(enabledModel, tool);
+    }
+  }
+
+  private void enableBasedOnModelState(BooleanValueModel enabledModel, ToggleTool tool) {
+    if (enabledModel.getValue()){
+      tool.enable();
+    }
+    else{
+      tool.disable();
+    }
   }
 
   private void addSpinner(String label, IIntValueModel model) {

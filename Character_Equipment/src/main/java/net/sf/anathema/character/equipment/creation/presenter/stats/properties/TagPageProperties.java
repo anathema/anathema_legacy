@@ -2,8 +2,6 @@ package net.sf.anathema.character.equipment.creation.presenter.stats.properties;
 
 import net.sf.anathema.character.equipment.creation.presenter.IWeaponTag;
 import net.sf.anathema.framework.environment.Resources;
-import net.sf.anathema.lib.message.BasicMessage;
-import net.sf.anathema.lib.message.IBasicMessage;
 
 public class TagPageProperties {
 
@@ -13,25 +11,8 @@ public class TagPageProperties {
     this.resources = resources;
   }
 
-  public IBasicMessage getDefaultMessage() {
-    return new BasicMessage(resources.getString("Equipment.Creation.Tags.DefaultMessage"));
-  }
-
-  public String getPageTitle() {
-    return resources.getString("Equipment.Creation.Tags.PageTitle");
-  }
-
   public String getLabel(IWeaponTag tag) {
     return resources.getString("Equipment.Tag." + tag.getId());
-  }
-
-  public IBasicMessage getSelectRangedWeaponTagMessage() {
-    return new BasicMessage(resources.getString("Equipment.Creation.Tags.SelectRangedTagMessage"));
-  }
-
-  public IBasicMessage getThrownTagButNotThrownTypeMessage() {
-    return new BasicMessage(
-            resources.getString("Equipment.Creation.Tags.ThrownTagButNotThrownTypeMessage"));
   }
 
   public String getToolTip(IWeaponTag tag) {
