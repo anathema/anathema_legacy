@@ -1,5 +1,6 @@
 package net.sf.anathema.character.equipment.creation.view.fx;
 
+import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.workflow.booleanvalue.BooleanValueView;
@@ -22,5 +23,9 @@ public class FxBooleanView implements BooleanValueView {
   @Override
   public void addChangeListener(IBooleanValueChangedListener listener) {
     announcer.addListener(listener);
+  }
+
+  public Node getNode() {
+    return checkBox;
   }
 }

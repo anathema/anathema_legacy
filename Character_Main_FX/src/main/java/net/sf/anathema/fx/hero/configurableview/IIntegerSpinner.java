@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.creation.presenter;
+package net.sf.anathema.fx.hero.configurableview;
 
 import net.sf.anathema.lib.control.IntValueChangedListener;
 

@@ -4,6 +4,7 @@ import net.sf.anathema.character.equipment.creation.presenter.stats.properties.R
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.TagPageProperties;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.WeaponDamageProperties;
 import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.fx.hero.configurableview.IIntegerSpinner;
 
 public class RangedStatisticsPresenter {
   private final IRangedCombatStatisticsModel rangedModel;

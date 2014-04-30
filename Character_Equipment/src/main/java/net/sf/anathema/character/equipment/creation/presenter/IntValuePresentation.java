@@ -1,5 +1,6 @@
 package net.sf.anathema.character.equipment.creation.presenter;
 
+import net.sf.anathema.fx.hero.configurableview.IIntegerSpinner;
 import net.sf.anathema.lib.control.IntValueChangedListener;
 
 public class IntValuePresentation {

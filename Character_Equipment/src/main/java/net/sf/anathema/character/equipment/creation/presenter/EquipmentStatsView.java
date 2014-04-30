@@ -1,5 +1,6 @@
 package net.sf.anathema.character.equipment.creation.presenter;
 
+import net.sf.anathema.fx.hero.configurableview.IIntegerSpinner;
 import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;

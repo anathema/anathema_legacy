@@ -3,6 +3,7 @@ package net.sf.anathema.character.equipment.creation.presenter;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.OffensiveStatisticsProperties;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.TagPageProperties;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.WeaponDamageProperties;
+import net.sf.anathema.fx.hero.configurableview.IIntegerSpinner;
 import net.sf.anathema.hero.health.HealthType;
 import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
