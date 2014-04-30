@@ -1,4 +1,4 @@
-package net.sf.anathema.lib.gui.widgets;
+package net.sf.anathema.character.equipment.creation.view.swing;
 
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.control.ObjectValueListener;

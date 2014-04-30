@@ -1,4 +1,4 @@
-package net.sf.anathema.lib;
+package net.sf.anathema.character.equipment.creation.view.swing;
 
 import com.google.common.base.Objects;
 

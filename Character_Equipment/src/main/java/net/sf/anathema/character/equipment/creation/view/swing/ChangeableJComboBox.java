@@ -1,8 +1,6 @@
 package net.sf.anathema.character.equipment.creation.view.swing;
 
-import net.sf.anathema.lib.UnselectingComboBoxModel;
 import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
 import org.jmock.example.announcer.Announcer;
 
 import javax.swing.JComboBox;

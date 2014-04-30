@@ -1,22 +1,15 @@
 package net.sf.anathema.character.equipment.creation.view.swing;
 
-import net.miginfocom.layout.CC;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
-import net.sf.anathema.lib.gui.layout.AdditiveView;
+import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
-import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
 
-import javax.swing.JPanel;
+import javax.swing.JComponent;
 
-public class AdditiveObjectSelectionView<T> implements AdditiveView, ObjectSelectionView<T> {
+public class AdditiveObjectSelectionView<T> implements ObjectSelectionView<T> {
 
   private final IChangeableJComboBox<T> typeBox = new ChangeableJComboBox<>();
-
-  @Override
-  public void addTo(JPanel panel) {
-    panel.add(typeBox.getComponent(), new CC().growX().spanX());
-  }
 
   @Override
   public void setEnabled(boolean enabled) {
@@ -51,5 +44,13 @@ public class AdditiveObjectSelectionView<T> implements AdditiveView, ObjectSelec
   @Override
   public boolean isObjectSelected() {
     return getSelectedObject() != null;
+  }
+
+  public JComponent getComponent() {
+    return typeBox.getComponent();
+  }
+
+  public void setRenderer(AgnosticUIConfiguration<T> agnosticUIConfiguration) {
+    typeBox.setRenderer(new ConfigurableListCellRenderer(agnosticUIConfiguration));
   }
 }

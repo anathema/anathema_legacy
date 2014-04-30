@@ -1,6 +1,5 @@
 package net.sf.anathema.character.equipment.creation.view.swing;
 
-import net.miginfocom.layout.CC;
 import net.sf.anathema.character.equipment.creation.presenter.EquipmentStatsView;
 import net.sf.anathema.character.equipment.creation.presenter.IIntegerSpinner;
 import net.sf.anathema.framework.view.SwingApplicationFrame;
@@ -11,14 +10,12 @@ import net.sf.anathema.lib.gui.dialog.userdialog.OperationResultHandler;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.AbstractDialogPage;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
-import net.sf.anathema.lib.gui.widgets.HorizontalLine;
 import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import org.jmock.example.announcer.Announcer;
 
 import javax.swing.JComponent;
-import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 
 public class SwingEditStatsView extends AbstractDialogPage implements EquipmentStatsView {
@@ -104,45 +101,30 @@ public class SwingEditStatsView extends AbstractDialogPage implements EquipmentS
 
   @Override
   public void addHorizontalSeparator() {
-    view.addView(panel -> panel.add(new HorizontalLine(), new CC().newline().pushX().growX().spanX()));
+    view.addHorizontalSeparator();
   }
 
   @Override
   public ToggleTool addToggleTool() {
-    SwingToggleTool tool = new SwingToggleTool();
-    view.addView(panel -> panel.add(tool.getComponent(), new CC().spanX(2)));
-    return tool;
+    return view.addToggleTool();
   }
 
   @Override
   public <T> ObjectSelectionView<T> addObjectSelection(AgnosticUIConfiguration<T> agnosticUIConfiguration) {
-    AdditiveObjectSelectionView<T> selectionView = new AdditiveObjectSelectionView<>();
-    view.addView(selectionView);
-    return selectionView;
+    return view.addObjectSelection(agnosticUIConfiguration);
   }
 
   @Override
   public IIntegerSpinner addIntegerSpinner(String label, int initialValue) {
-    SwingIntegerSpinner spinner = new SwingIntegerSpinner(initialValue);
-    addElement(label, spinner.getComponent());
-    return spinner;
+    return view.addIntegerSpinner(label, initialValue);
   }
 
   @Override
   public IBooleanValueView addBooleanSelector(String label) {
-    SwingBooleanView booleanView = new SwingBooleanView();
-    addElement(label, booleanView.getComponent());
-    return booleanView;
+    return view.addBooleanSelector(label);
   }
 
   private void refreshFinishingState() {
     announcer.announce().changeOccurred();
-  }
-
-  private void addElement(String label, JComponent component) {
-    view.addView(panel -> {
-      panel.add(new JLabel(label));
-      panel.add(component, new CC().growX().pushX());
-    });
   }
 }
