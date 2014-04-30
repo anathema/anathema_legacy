@@ -1,4 +1,4 @@
-package net.sf.anathema.lib.gui.event;
+package net.sf.anathema.lib.workflow.textualdescription.view;
 
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;

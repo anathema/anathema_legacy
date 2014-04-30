@@ -3,7 +3,6 @@ package net.sf.anathema.lib.workflow.textualdescription.view;
 import com.google.common.base.Objects;
 import com.google.common.base.Strings;
 import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.gui.event.AbstractDocumentListener;
 import net.sf.anathema.lib.workflow.textualdescription.SwingTextView;
 
 import javax.swing.JComponent;
