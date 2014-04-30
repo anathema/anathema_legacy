@@ -8,7 +8,6 @@ import net.sf.anathema.lib.gui.dialog.userdialog.OperationResultHandler;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.AbstractDialogPage;
 import net.sf.anathema.lib.message.IBasicMessage;
-import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import org.jmock.example.announcer.Announcer;
 
 import javax.swing.JComponent;
@@ -56,10 +55,6 @@ public class SwingEditStatsDialog extends AbstractDialogPage implements Equipmen
   public void setInputValidListener(ChangeListener inputValidListener) {
     announcer.addListener(inputValidListener);
     refreshFinishingState();
-  }
-
-  public ITextView addLineTextView(String nameLabel) {
-    return view.addLineTextView(nameLabel);
   }
 
   public void setCanFinish() {
