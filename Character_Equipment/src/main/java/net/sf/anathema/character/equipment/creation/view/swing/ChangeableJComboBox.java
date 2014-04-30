@@ -17,7 +17,7 @@ public class ChangeableJComboBox<V> implements IChangeableJComboBox<V> {
   private final Announcer<ObjectValueListener> control = Announcer.to(ObjectValueListener.class);
 
   public ChangeableJComboBox() {
-    this.comboBox = new ColoredJComboBox(new UnselectingComboBoxModel());
+    this.comboBox = new JComboBox<V>(new UnselectingComboBoxModel());
     this.comboBox.setEditable(false);
     setSelectedObject(null);
     comboBox.addItemListener(new ItemListener() {
