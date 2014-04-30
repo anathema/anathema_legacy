@@ -5,10 +5,11 @@ import net.sf.anathema.character.equipment.creation.presenter.EquipmentStatsView
 import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.lib.control.ChangeListener;
+import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.dialog.userdialog.OperationResultHandler;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.AbstractDialogPage;
-import net.sf.anathema.lib.gui.layout.AdditiveView;
+import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.gui.widgets.HorizontalLine;
 import net.sf.anathema.lib.gui.widgets.IIntegerSpinner;
 import net.sf.anathema.lib.gui.widgets.SwingIntegerSpinner;
@@ -20,7 +21,6 @@ import org.jmock.example.announcer.Announcer;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 public class SwingEditStatsView extends AbstractDialogPage implements EquipmentStatsView {
@@ -65,10 +65,6 @@ public class SwingEditStatsView extends AbstractDialogPage implements EquipmentS
   public void setInputValidListener(ChangeListener inputValidListener) {
     announcer.addListener(inputValidListener);
     refreshFinishingState();
-  }
-
-  public final void addView(AdditiveView view) {
-    this.view.addView(view);
   }
 
   public ITextView addLineTextView(String nameLabel) {
@@ -116,13 +112,15 @@ public class SwingEditStatsView extends AbstractDialogPage implements EquipmentS
   @Override
   public ToggleTool addToggleTool() {
     JCheckBox button = new JCheckBox();
-    view.addView(new AdditiveView() {
-      @Override
-      public void addTo(JPanel panel) {
-        panel.add(button, new CC().spanX(2));
-      }
-    });
+    view.addView(panel -> panel.add(button, new CC().spanX(2)));
     return new SwingToggleTool(button);
+  }
+
+  @Override
+  public <T> ObjectSelectionView<T> addObjectSelection(AgnosticUIConfiguration<T> agnosticUIConfiguration) {
+    AdditiveObjectSelectionView<T> selectionView = new AdditiveObjectSelectionView<>();
+    view.addView(selectionView);
+    return selectionView;
   }
 
   @Override
@@ -144,7 +142,7 @@ public class SwingEditStatsView extends AbstractDialogPage implements EquipmentS
   }
 
   private void addElement(String label, JComponent component) {
-    addView(panel -> {
+    view.addView(panel -> {
       panel.add(new JLabel(label));
       panel.add(component, new CC().growX().pushX());
     });

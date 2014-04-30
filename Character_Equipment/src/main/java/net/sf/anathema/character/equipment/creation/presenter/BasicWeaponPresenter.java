@@ -3,8 +3,9 @@ package net.sf.anathema.character.equipment.creation.presenter;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.OffensiveStatisticsProperties;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.TagPageProperties;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.WeaponDamageProperties;
-import net.sf.anathema.character.equipment.creation.view.swing.SwingWeaponDamageView;
+import net.sf.anathema.hero.health.HealthType;
 import net.sf.anathema.interaction.ToggleTool;
+import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.gui.widgets.IIntegerSpinner;
 import net.sf.anathema.lib.workflow.booleanvalue.BooleanValueModel;
 import net.sf.anathema.lib.workflow.booleanvalue.BooleanValuePresentation;
@@ -44,9 +45,19 @@ public class BasicWeaponPresenter {
   }
 
   private void initWeaponDamageRow(IWeaponDamageModel damageModel) {
-    WeaponDamageView damageView = new SwingWeaponDamageView();
-    new WeaponDamagePresenter(damageProperties, damageModel, damageView).initPresentation();
-    view.addView(damageView);
+    IIntegerSpinner damageSpinner = addSpinner(damageProperties.getDamageLabel(), damageModel.getDamageModel());
+    damageSpinner.setMinimum(0);
+    ObjectSelectionView<HealthType> selectionView = view.addObjectSelection(damageProperties.getHealthTypeUi());
+    initDamageTypePresentation(selectionView, damageModel);
+    IIntegerSpinner minDamageSpinner = addSpinner(damageProperties.getMinDamageLabel(), damageModel.getMinDamageModel());
+    minDamageSpinner.setMinimum(0);
+  }
+
+  private void initDamageTypePresentation(ObjectSelectionView<HealthType> damageView, IWeaponDamageModel damageModel) {
+    damageView.setObjects(HealthType.values());
+    damageModel.addHealthTypeChangeListener(() -> damageView.setSelectedObject(damageModel.getHealthType()));
+    damageView.addObjectSelectionChangedListener(newValue -> damageModel.setHealthType(newValue));
+    damageView.setSelectedObject(damageModel.getHealthType());
   }
 
   protected void addHorizontalSeparator() {
@@ -67,16 +78,16 @@ public class BasicWeaponPresenter {
   }
 
   private void enableBasedOnModelState(BooleanValueModel enabledModel, ToggleTool tool) {
-    if (enabledModel.getValue()){
+    if (enabledModel.getValue()) {
       tool.enable();
-    }
-    else{
+    } else {
       tool.disable();
     }
   }
 
-  private void addSpinner(String label, IIntValueModel model) {
+  private IIntegerSpinner addSpinner(String label, IIntValueModel model) {
     IIntegerSpinner spinner = view.addIntegerSpinner(label, model.getValue());
     new IntValuePresentation().initPresentation(spinner, model);
+    return spinner;
   }
 }
