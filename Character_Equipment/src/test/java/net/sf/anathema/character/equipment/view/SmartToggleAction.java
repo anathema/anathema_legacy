@@ -1,5 +1,6 @@
-package net.sf.anathema.lib.gui.action;
+package net.sf.anathema.character.equipment.view;
 
+import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.model.IModifiableBooleanModel;
 
 import java.awt.Component;

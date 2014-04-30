@@ -1,4 +1,4 @@
-package net.sf.anathema.lib.workflow.intvalue;
+package net.sf.anathema.character.equipment.creation.presenter;
 
 import net.sf.anathema.lib.control.IntValueChangedListener;
 import net.sf.anathema.lib.data.Range;

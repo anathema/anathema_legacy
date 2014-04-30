@@ -1,7 +1,8 @@
-package net.sf.anathema.lib.gui.widgets;
+package net.sf.anathema.character.equipment.creation.view.swing;
 
 import net.sf.anathema.lib.UnselectingComboBoxModel;
 import net.sf.anathema.lib.control.ObjectValueListener;
+import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
 import org.jmock.example.announcer.Announcer;
 
 import javax.swing.JComboBox;
@@ -16,11 +17,7 @@ public class ChangeableJComboBox<V> implements IChangeableJComboBox<V> {
   private final Announcer<ObjectValueListener> control = Announcer.to(ObjectValueListener.class);
 
   public ChangeableJComboBox() {
-    this(new UnselectingComboBoxModel());
-  }
-
-  private ChangeableJComboBox(UnselectingComboBoxModel model) {
-    this.comboBox = new ColoredJComboBox(model);
+    this.comboBox = new ColoredJComboBox(new UnselectingComboBoxModel());
     this.comboBox.setEditable(false);
     setSelectedObject(null);
     comboBox.addItemListener(new ItemListener() {

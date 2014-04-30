@@ -1,11 +1,11 @@
 package net.sf.anathema.character.equipment.creation.model;
 
+import net.sf.anathema.character.equipment.creation.presenter.IIntValueModel;
 import net.sf.anathema.character.equipment.creation.presenter.IRangedCombatStatisticsModel;
 import net.sf.anathema.character.equipment.creation.presenter.IWeaponTag;
 import net.sf.anathema.character.equipment.creation.presenter.IWeaponTagsModel;
+import net.sf.anathema.character.equipment.creation.presenter.RangedIntValueModel;
 import net.sf.anathema.lib.data.Range;
-import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
-import net.sf.anathema.lib.workflow.intvalue.RangedIntValueModel;
 
 public class RangedWeaponStatisticsModel extends OffensiveStatisticsModel implements IRangedCombatStatisticsModel {
 

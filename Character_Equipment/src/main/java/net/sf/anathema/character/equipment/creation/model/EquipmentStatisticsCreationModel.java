@@ -4,14 +4,14 @@ import net.sf.anathema.character.equipment.creation.presenter.IArmourStatisticsM
 import net.sf.anathema.character.equipment.creation.presenter.IArtifactStatisticsModel;
 import net.sf.anathema.character.equipment.creation.presenter.ICloseCombatStatsticsModel;
 import net.sf.anathema.character.equipment.creation.presenter.IEquipmentStatisticsCreationModel;
+import net.sf.anathema.character.equipment.creation.presenter.IIntValueModel;
 import net.sf.anathema.character.equipment.creation.presenter.IRangedCombatStatisticsModel;
 import net.sf.anathema.character.equipment.creation.presenter.ITraitModifyingStatisticsModel;
 import net.sf.anathema.character.equipment.creation.presenter.IWeaponTagsModel;
+import net.sf.anathema.character.equipment.creation.presenter.RangedIntValueModel;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.data.Range;
-import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
-import net.sf.anathema.lib.workflow.intvalue.RangedIntValueModel;
 import org.apache.commons.lang3.ArrayUtils;
 import org.jmock.example.announcer.Announcer;
 

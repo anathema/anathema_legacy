@@ -1,8 +1,6 @@
-package net.sf.anathema.lib.gui.widgets;
+package net.sf.anathema.character.equipment.creation.view.swing;
 
 import com.sun.java.swing.plaf.windows.WindowsComboBoxUI;
-import net.sf.anathema.lib.gui.ui.ColoredMetalComboBoxUI;
-import net.sf.anathema.lib.gui.ui.ColoredWindowsComboBoxUI;
 
 import javax.swing.ComboBoxModel;
 import javax.swing.JComboBox;

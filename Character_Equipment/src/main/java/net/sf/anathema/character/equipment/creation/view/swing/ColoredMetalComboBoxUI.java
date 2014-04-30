@@ -1,4 +1,4 @@
-package net.sf.anathema.lib.gui.ui;
+package net.sf.anathema.character.equipment.creation.view.swing;
 
 import javax.swing.plaf.metal.MetalComboBoxUI;
 import javax.swing.plaf.metal.MetalLookAndFeel;

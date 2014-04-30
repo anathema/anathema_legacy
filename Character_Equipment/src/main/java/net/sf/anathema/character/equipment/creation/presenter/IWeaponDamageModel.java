@@ -2,7 +2,6 @@ package net.sf.anathema.character.equipment.creation.presenter;
 
 import net.sf.anathema.hero.health.HealthType;
 import net.sf.anathema.lib.control.ChangeListener;
-import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
 
 public interface IWeaponDamageModel {
 

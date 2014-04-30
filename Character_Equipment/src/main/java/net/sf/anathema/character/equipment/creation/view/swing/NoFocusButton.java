@@ -1,4 +1,4 @@
-package net.sf.anathema.framework.value;
+package net.sf.anathema.character.equipment.creation.view.swing;
 
 import javax.swing.JButton;
 

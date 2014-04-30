@@ -1,4 +1,4 @@
-package net.sf.anathema.lib.gui.ui;
+package net.sf.anathema.character.equipment.creation.view.swing;
 
 import sun.swing.DefaultLookup;
 

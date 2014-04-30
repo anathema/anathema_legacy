@@ -1,8 +1,8 @@
 package net.sf.anathema.character.equipment.creation.model;
 
 import net.sf.anathema.character.equipment.creation.presenter.ICloseCombatStatsticsModel;
-import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
-import net.sf.anathema.lib.workflow.intvalue.RangedIntValueModel;
+import net.sf.anathema.character.equipment.creation.presenter.IIntValueModel;
+import net.sf.anathema.character.equipment.creation.presenter.RangedIntValueModel;
 
 public class CloseCombatStatsticsModel extends OffensiveStatisticsModel implements ICloseCombatStatsticsModel {
 

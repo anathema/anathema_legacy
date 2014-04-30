@@ -3,8 +3,6 @@ package net.sf.anathema.character.equipment.view;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.hero.equipment.display.presenter.StatsView;
 import net.sf.anathema.lib.control.ChangeListener;
-import net.sf.anathema.lib.gui.action.ActionWidgetFactory;
-import net.sf.anathema.lib.gui.action.SmartToggleAction;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.lib.gui.swing.GuiUtilities;
 import net.sf.anathema.lib.model.BooleanModel;

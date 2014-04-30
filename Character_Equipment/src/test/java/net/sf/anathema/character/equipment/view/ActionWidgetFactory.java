@@ -1,4 +1,4 @@
-package net.sf.anathema.lib.gui.action;
+package net.sf.anathema.character.equipment.view;
 
 import net.sf.anathema.lib.control.ChangeListener;
 

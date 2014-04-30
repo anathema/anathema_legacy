@@ -2,9 +2,6 @@ package net.sf.anathema.character.equipment.creation.presenter;
 
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.TraitBoostStatisticsProperties;
 import net.sf.anathema.framework.environment.Resources;
-import net.sf.anathema.lib.gui.widgets.IIntegerSpinner;
-import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
-import net.sf.anathema.lib.workflow.intvalue.IntValuePresentation;
 
 public class ModifierStatisticsPresenter {
   private final ITraitModifyingStatisticsModel modModel;

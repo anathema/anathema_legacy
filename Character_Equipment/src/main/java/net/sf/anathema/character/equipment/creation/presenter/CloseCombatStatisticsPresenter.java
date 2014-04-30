@@ -4,9 +4,6 @@ import net.sf.anathema.character.equipment.creation.presenter.stats.properties.C
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.TagPageProperties;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.WeaponDamageProperties;
 import net.sf.anathema.framework.environment.Resources;
-import net.sf.anathema.lib.gui.widgets.IIntegerSpinner;
-import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
-import net.sf.anathema.lib.workflow.intvalue.IntValuePresentation;
 
 public class CloseCombatStatisticsPresenter {
   private final ICloseCombatStatsticsModel closeModel;

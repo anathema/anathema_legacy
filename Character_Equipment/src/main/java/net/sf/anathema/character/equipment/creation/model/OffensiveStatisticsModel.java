@@ -1,10 +1,10 @@
 package net.sf.anathema.character.equipment.creation.model;
 
+import net.sf.anathema.character.equipment.creation.presenter.IIntValueModel;
 import net.sf.anathema.character.equipment.creation.presenter.IOffensiveStatisticsModel;
 import net.sf.anathema.character.equipment.creation.presenter.IWeaponDamageModel;
+import net.sf.anathema.character.equipment.creation.presenter.RangedIntValueModel;
 import net.sf.anathema.lib.data.Range;
-import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
-import net.sf.anathema.lib.workflow.intvalue.RangedIntValueModel;
 
 public abstract class OffensiveStatisticsModel extends EquipmentStatisticsModel implements IOffensiveStatisticsModel {
 

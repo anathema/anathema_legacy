@@ -1,9 +1,12 @@
-package net.sf.anathema.lib.gui.widgets;
+package net.sf.anathema.character.equipment.creation.view.swing;
 
+import net.sf.anathema.character.equipment.creation.presenter.IIntegerSpinner;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.control.IntValueChangedListener;
 import net.sf.anathema.lib.data.IOverline;
 import net.sf.anathema.lib.data.Range;
+import net.sf.anathema.lib.gui.widgets.DigitsOnlyDocument;
+import net.sf.anathema.lib.gui.widgets.IIntegerView;
 
 import javax.swing.JComponent;
 import javax.swing.JSpinner;

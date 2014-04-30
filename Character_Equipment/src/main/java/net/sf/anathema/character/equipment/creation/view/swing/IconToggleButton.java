@@ -1,7 +1,5 @@
 package net.sf.anathema.character.equipment.creation.view.swing;
 
-import net.sf.anathema.framework.value.NoFocusButton;
-
 import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JComponent;

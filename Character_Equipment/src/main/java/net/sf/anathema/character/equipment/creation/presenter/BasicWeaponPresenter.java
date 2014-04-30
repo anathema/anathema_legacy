@@ -6,11 +6,7 @@ import net.sf.anathema.character.equipment.creation.presenter.stats.properties.W
 import net.sf.anathema.hero.health.HealthType;
 import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
-import net.sf.anathema.lib.gui.widgets.IIntegerSpinner;
 import net.sf.anathema.lib.workflow.booleanvalue.BooleanValueModel;
-import net.sf.anathema.lib.workflow.booleanvalue.BooleanValuePresentation;
-import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
-import net.sf.anathema.lib.workflow.intvalue.IntValuePresentation;
 
 public class BasicWeaponPresenter {
 
