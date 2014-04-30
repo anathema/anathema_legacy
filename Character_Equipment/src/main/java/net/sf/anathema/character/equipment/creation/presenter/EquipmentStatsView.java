@@ -1,5 +1,6 @@
 package net.sf.anathema.character.equipment.creation.presenter;
 
+import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.lib.gui.dialog.userdialog.OperationResultHandler;
 import net.sf.anathema.lib.gui.layout.AdditiveView;
 import net.sf.anathema.lib.gui.widgets.IIntegerSpinner;
@@ -16,6 +17,8 @@ public interface EquipmentStatsView {
   IIntegerSpinner addIntegerSpinner(String label, int initialValue);
 
   IBooleanValueView addBooleanSelector(String label);
+
+  ToggleTool addToggleTool(String label);
 
   void setCanFinish();
 

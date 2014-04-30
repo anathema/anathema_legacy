@@ -1,23 +1,14 @@
 package net.sf.anathema.character.equipment.creation.presenter;
 
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.ArmourStatisticsProperties;
-import net.sf.anathema.character.equipment.creation.view.swing.IconToggleButton;
 import net.sf.anathema.character.main.CharacterUI;
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.health.HealthType;
-import net.sf.anathema.lib.control.IntValueChangedListener;
-import net.sf.anathema.lib.gui.icon.ImageProvider;
-import net.sf.anathema.lib.gui.layout.AdditiveView;
-import net.sf.anathema.lib.gui.layout.SwingLayoutUtils;
+import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.lib.gui.widgets.IIntegerSpinner;
+import net.sf.anathema.lib.workflow.booleanvalue.BooleanValueModel;
 import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
 import net.sf.anathema.lib.workflow.intvalue.IntValuePresentation;
-
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class ArmourStatisticsPresenter {
   private final EquipmentStatsView view;
@@ -39,44 +30,41 @@ public class ArmourStatisticsPresenter {
     addSpinner(properties.getLethalSoakLabel(), lethalSoakModel);
     addSpinner(properties.getLethalHardnessLabel(), armourModel.getLethalHardnessModel());
 
-    final IconToggleButton linkToggleButton = new IconToggleButton(
-            new ImageProvider().getImageIcon(new CharacterUI().getLinkIconPath()));
     final IIntValueModel aggravatedSoakModel = armourModel.getSoakModel(HealthType.Aggravated);
     IIntegerSpinner aggravatedSoakSpinner = addSpinner(properties.getAggravatedSoakLabel(), aggravatedSoakModel);
-    view.addView(new AdditiveView() {
-      @Override
-      public void addTo(JPanel panel) {
-        JComponent button = linkToggleButton.getComponent();
-        panel.add(button, SwingLayoutUtils.constraintsForImageButton(button).split(2).spanX());
-        panel.add(new JLabel(properties.getLinkSoakLabel()));
-      }
-    });
+    ToggleTool tool = view.addToggleTool(properties.getLinkSoakLabel());
+    tool.setIcon(new CharacterUI().getLinkIconPath());
 
     addSpinner(properties.getMobilityPenaltyLabel(), armourModel.getMobilityPenaltyModel());
     addSpinner(properties.getFatigueLabel(), armourModel.getFatigueModel());
 
-    linkToggleButton.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        boolean isLinkToggled = !linkToggleButton.isSelected();
-        if (isLinkToggled) {
-          aggravatedSoakModel.setValue(lethalSoakModel.getValue());
-        }
-        aggravatedSoakSpinner.setEnabled(!isLinkToggled);
-        linkToggleButton.setSelected(isLinkToggled);
+    tool.setCommand(() -> {
+      BooleanValueModel soakLinkModel = armourModel.getSoakLinkModel();
+      soakLinkModel.setValue(!soakLinkModel.getValue());
+    });
+    armourModel.getSoakLinkModel().addChangeListener(isLinkToggled -> {
+      if (isLinkToggled) {
+        aggravatedSoakModel.setValue(lethalSoakModel.getValue());
       }
+      aggravatedSoakSpinner.setEnabled(!isLinkToggled);
+      setSelectionBasedOnLinkState(tool);
     });
     boolean linked = lethalSoakModel.getValue() == aggravatedSoakModel.getValue();
-    linkToggleButton.setSelected(linked);
+    setSelectionBasedOnLinkState(tool);
     aggravatedSoakSpinner.setEnabled(!linked);
-    lethalSoakModel.addIntValueChangeListener(new IntValueChangedListener() {
-      @Override
-      public void valueChanged(int newValue) {
-        if (linkToggleButton.isSelected()) {
-          aggravatedSoakModel.setValue(lethalSoakModel.getValue());
-        }
+    lethalSoakModel.addIntValueChangeListener(newValue -> {
+      if (armourModel.getSoakLinkModel().getValue()) {
+        aggravatedSoakModel.setValue(newValue);
       }
     });
+  }
+
+  private void setSelectionBasedOnLinkState(ToggleTool tool) {
+    if (armourModel.getSoakLinkModel().getValue()) {
+      tool.select();
+    } else {
+      tool.deselect();
+    }
   }
 
   private IIntegerSpinner addSpinner(String label, IIntValueModel model) {

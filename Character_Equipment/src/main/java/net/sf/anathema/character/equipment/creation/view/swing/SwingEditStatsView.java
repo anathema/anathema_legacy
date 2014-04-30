@@ -3,11 +3,13 @@ package net.sf.anathema.character.equipment.creation.view.swing;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.character.equipment.creation.presenter.EquipmentStatsView;
 import net.sf.anathema.framework.view.SwingApplicationFrame;
+import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.gui.dialog.userdialog.OperationResultHandler;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.AbstractDialogPage;
 import net.sf.anathema.lib.gui.layout.AdditiveView;
+import net.sf.anathema.lib.gui.layout.SwingLayoutUtils;
 import net.sf.anathema.lib.gui.widgets.HorizontalLine;
 import net.sf.anathema.lib.gui.widgets.IIntegerSpinner;
 import net.sf.anathema.lib.gui.widgets.SwingIntegerSpinner;
@@ -18,6 +20,7 @@ import org.jmock.example.announcer.Announcer;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 public class SwingEditStatsView extends AbstractDialogPage implements EquipmentStatsView {
@@ -108,6 +111,20 @@ public class SwingEditStatsView extends AbstractDialogPage implements EquipmentS
   @Override
   public void addHorizontalSeparator() {
     view.addView(panel -> panel.add(new HorizontalLine(), new CC().newline().pushX().growX().spanX()));
+  }
+
+  @Override
+  public ToggleTool addToggleTool(String label) {
+    SwingToggleTool tool = new SwingToggleTool();
+    view.addView(new AdditiveView() {
+      @Override
+      public void addTo(JPanel panel) {
+        JComponent button = tool.getComponent();
+        panel.add(button, SwingLayoutUtils.constraintsForImageButton(button).split(2).spanX());
+        panel.add(new JLabel(label));
+      }
+    });
+    return tool;
   }
 
   @Override
