@@ -5,11 +5,12 @@ import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.equipment.creation.presenter.EquipmentStatsView;
 import net.sf.anathema.character.equipment.creation.presenter.IIntegerSpinner;
+import net.sf.anathema.character.equipment.creation.view.swing.combobox.AdditiveObjectSelectionView;
 import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.gui.widgets.HorizontalLine;
-import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;
+import net.sf.anathema.lib.workflow.booleanvalue.BooleanValueView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
@@ -50,7 +51,7 @@ public class ExtensibleEquipmentStatsView implements EquipmentStatsView {
     return selectionView;
   }
 
-  public IBooleanValueView addBooleanSelector(String label) {
+  public BooleanValueView addBooleanSelector(String label) {
     SwingBooleanView booleanView = new SwingBooleanView();
     panel.add(new JLabel(label));
     panel.add(booleanView.getComponent(), new CC().growX().pushX());

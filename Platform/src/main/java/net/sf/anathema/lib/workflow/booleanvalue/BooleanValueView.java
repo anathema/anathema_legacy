@@ -2,7 +2,7 @@ package net.sf.anathema.lib.workflow.booleanvalue;
 
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 
-public interface IBooleanValueView {
+public interface BooleanValueView {
 
   void setSelected(boolean selected);
 

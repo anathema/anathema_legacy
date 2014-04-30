@@ -1,8 +1,5 @@
-package net.sf.anathema.character.equipment.creation.view.swing;
+package net.sf.anathema.character.equipment.creation.view.swing.combobox;
 
-import net.sf.anathema.character.equipment.creation.view.swing.combobox.ChangeableJComboBox;
-import net.sf.anathema.character.equipment.creation.view.swing.combobox.ConfigurableListCellRenderer;
-import net.sf.anathema.character.equipment.creation.view.swing.combobox.IChangeableJComboBox;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;

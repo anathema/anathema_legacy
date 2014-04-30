@@ -1,13 +1,13 @@
 package net.sf.anathema.character.equipment.creation.view.swing;
 
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
-import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;
+import net.sf.anathema.lib.workflow.booleanvalue.BooleanValueView;
 
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 
 
-public class SwingBooleanView implements IBooleanValueView {
+public class SwingBooleanView implements BooleanValueView {
   private JCheckBox checkBox = new JCheckBox();
   
   @Override

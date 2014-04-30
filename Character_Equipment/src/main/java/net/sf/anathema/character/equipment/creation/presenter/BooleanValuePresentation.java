@@ -3,7 +3,7 @@ package net.sf.anathema.character.equipment.creation.presenter;
 import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.workflow.booleanvalue.BooleanValueModel;
-import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;
+import net.sf.anathema.lib.workflow.booleanvalue.BooleanValueView;
 
 public class BooleanValuePresentation {
 
@@ -21,7 +21,7 @@ public class BooleanValuePresentation {
     }
   }
 
-  public void initPresentation(final IBooleanValueView view, final BooleanValueModel model) {
+  public void initPresentation(final BooleanValueView view, final BooleanValueModel model) {
     view.addChangeListener(new IBooleanValueChangedListener() {
       @Override
       public void valueChanged(boolean newValue) {

@@ -1,20 +1,20 @@
 package net.sf.anathema.hero.charms.display.special;
 
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
-import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;
+import net.sf.anathema.lib.workflow.booleanvalue.BooleanValueView;
 import org.jmock.example.announcer.Announcer;
 
-public class ProxyBooleanValueView implements IBooleanValueView {
+public class ProxyBooleanValueView implements BooleanValueView {
   private final String label;
   private final Announcer<IBooleanValueChangedListener> listeners = new Announcer<>(IBooleanValueChangedListener.class);
-  private IBooleanValueView actualView;
+  private BooleanValueView actualView;
   private boolean selected = false;
 
   public ProxyBooleanValueView(String label) {
     this.label = label;
   }
 
-  public void setActualView(IBooleanValueView actualView) {
+  public void setActualView(BooleanValueView actualView) {
     this.actualView = actualView;
     actualView.addChangeListener(new IBooleanValueChangedListener() {
       @Override

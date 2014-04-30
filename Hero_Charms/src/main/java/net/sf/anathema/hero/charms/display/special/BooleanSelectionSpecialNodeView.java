@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.charms.display.special;
 
-import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;
+import net.sf.anathema.lib.workflow.booleanvalue.BooleanValueView;
 import net.sf.anathema.platform.tree.display.SpecialCharmContainer;
 
 import java.util.ArrayList;
@@ -23,13 +23,13 @@ public class BooleanSelectionSpecialNodeView implements ToggleButtonSpecialNodeV
   @Override
   public void showIn(SpecialCharmContainer container) {
     for (ProxyBooleanValueView view : views) {
-      IBooleanValueView actualView = container.add(IBooleanValueView.class, view.getLabel());
+      BooleanValueView actualView = container.add(BooleanValueView.class, view.getLabel());
       view.setActualView(actualView);
     }
   }
 
   @Override
-  public IBooleanValueView addSubeffect(String label) {
+  public BooleanValueView addSubeffect(String label) {
     ProxyBooleanValueView proxyBooleanValueView = new ProxyBooleanValueView(label);
     views.add(proxyBooleanValueView);
     return proxyBooleanValueView;

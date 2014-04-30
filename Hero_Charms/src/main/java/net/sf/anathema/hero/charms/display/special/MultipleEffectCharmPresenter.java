@@ -5,7 +5,7 @@ import net.sf.anathema.hero.charms.model.special.subeffects.MultipleEffectCharmS
 import net.sf.anathema.hero.charms.model.special.subeffects.SubEffect;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
-import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;
+import net.sf.anathema.lib.workflow.booleanvalue.BooleanValueView;
 
 public class MultipleEffectCharmPresenter {
 
@@ -23,7 +23,7 @@ public class MultipleEffectCharmPresenter {
     for (final SubEffect subeffect : model.getEffects()) {
       String key = model.getCharm().getId() + ".Subeffects." + subeffect.getId();
       String label = resources.getString(key);
-      final IBooleanValueView display = view.addSubeffect(label);
+      final BooleanValueView display = view.addSubeffect(label);
       subeffect.addChangeListener(new ChangeListener() {
         @Override
         public void changeOccurred() {
