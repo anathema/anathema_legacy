@@ -1,10 +1,11 @@
 package net.sf.anathema.character.equipment.character.model;
 
-import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
+import com.google.common.base.Strings;
 import net.sf.anathema.equipment.core.IEquipmentTemplate;
 import net.sf.anathema.equipment.core.ItemCost;
 import net.sf.anathema.equipment.core.MagicalMaterial;
 import net.sf.anathema.equipment.core.MaterialComposition;
+import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +53,7 @@ public class EquipmentTemplate implements IEquipmentTemplate {
 
   @Override
   public MagicalMaterial getMaterial() {
-    if (material == null) {
+    if (Strings.isNullOrEmpty(material)) {
       return null;
     }
     return MagicalMaterial.valueOf(material);

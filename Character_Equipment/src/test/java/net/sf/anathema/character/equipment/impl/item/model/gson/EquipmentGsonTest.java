@@ -7,13 +7,14 @@ import net.sf.anathema.character.equipment.character.model.stats.MeleeWeaponStat
 import net.sf.anathema.character.equipment.character.model.stats.RangedWeaponStats;
 import net.sf.anathema.character.equipment.character.model.stats.TraitModifyingStats;
 import net.sf.anathema.character.equipment.item.model.gson.EquipmentGson;
-import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 import net.sf.anathema.equipment.core.IEquipmentTemplate;
+import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 import org.junit.Test;
 
 import static net.sf.anathema.equipment.core.MagicalMaterial.Orichalcum;
 import static net.sf.anathema.equipment.core.MaterialComposition.Fixed;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
 
 public class EquipmentGsonTest {
@@ -26,6 +27,22 @@ public class EquipmentGsonTest {
     MeleeWeaponStats meleeWeapon = GsonStatMother.createMeleeWeapon();
     String json = serializeWithStats(meleeWeapon);
     assertThat(json.contains("Melee Weapon"), is(true));
+  }
+
+  @Test
+  public void deserializesEmptyDescriptionToNull() throws Exception {
+    EquipmentTemplate template = new EquipmentTemplate("Test", null, Fixed, Orichalcum, null);
+    String json = gson.toJson(template);
+    IEquipmentTemplate readTemplate = deserialize(json);
+    assertThat(readTemplate.getDescription().isEmpty(), is(true));
+  }
+
+  @Test
+  public void deserializesTemplateWithoutMaterial() throws Exception {
+    EquipmentTemplate template = new EquipmentTemplate("Test", null, Fixed, null, null);
+    String json = gson.toJson(template);
+    IEquipmentTemplate readTemplate = deserialize(json);
+    assertThat(readTemplate.getMaterial(), is(nullValue()));
   }
 
   @Test
