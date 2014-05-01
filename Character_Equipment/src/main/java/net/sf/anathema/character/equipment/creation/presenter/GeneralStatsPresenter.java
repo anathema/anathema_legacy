@@ -32,7 +32,6 @@ public class GeneralStatsPresenter {
   private void initBasicPresentation() {
     dialog.setMessage(getDefaultMessage());
     dialog.setTitle(getPageDescription());
-    dialog.setDescription(getPageDescription());
   }
 
   private void initCompletionPresentation() {

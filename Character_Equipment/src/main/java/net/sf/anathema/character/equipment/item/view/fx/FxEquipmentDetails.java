@@ -53,6 +53,6 @@ public class FxEquipmentDetails implements EquipmentDetails {
 
   @Override
   public EquipmentStatsDialog createEquipmentStatsDialog() {
-    return new FxEditStatsDialog();
+    return new FxEditStatsDialog(descriptionPanel.getNode().getScene().getWindow());
   }
 }

@@ -1,6 +1,7 @@
 package net.sf.anathema.character.equipment.creation.view.fx;
 
 import javafx.event.ActionEvent;
+import javafx.stage.Window;
 import net.sf.anathema.character.equipment.creation.presenter.EquipmentStatsDialog;
 import net.sf.anathema.character.equipment.creation.presenter.EquipmentStatsView;
 import net.sf.anathema.lib.gui.dialog.core.StaticOperationResult;
@@ -10,7 +11,6 @@ import org.controlsfx.control.action.AbstractAction;
 import org.controlsfx.dialog.Dialog;
 
 public class FxEditStatsDialog implements EquipmentStatsDialog {
-  Dialog dialog;
   private final AbstractAction okayAction = new AbstractAction(Dialog.Actions.OK.textProperty().get()){
     @Override
     public void execute(ActionEvent ae) {
@@ -25,11 +25,16 @@ public class FxEditStatsDialog implements EquipmentStatsDialog {
       handler.handleOperationResult(StaticOperationResult.Canceled());
     }
   };
-  private FxEquipmentStatsView view = new FxEquipmentStatsView();
+  private final FxEquipmentStatsView view = new FxEquipmentStatsView();
+  private Dialog dialog;
   private String title;
-  private String description;
   private OperationResultHandler handler;
   private String messageText;
+  private final Window window;
+
+  public FxEditStatsDialog(Window window) {
+    this.window = window;
+  }
 
   public void setCanFinish() {
     okayAction.disabledProperty().setValue(false);
@@ -50,14 +55,9 @@ public class FxEditStatsDialog implements EquipmentStatsDialog {
   }
 
   @Override
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  @Override
   public void show(OperationResultHandler handler) {
     this.handler = handler;
-    this.dialog = new Dialog(null, title, false, true);
+    this.dialog = new Dialog(window, title, false, true);
     dialog.setMasthead(messageText);
     dialog.setContent(view.getNode());
     dialog.getActions().setAll(okayAction, cancelAction);

@@ -13,8 +13,6 @@ public interface EquipmentStatsDialog {
 
   void setTitle(String title);
 
-  void setDescription(String description);
-
   void show(OperationResultHandler handler);
 
   EquipmentStatsView getEquipmentStatsView();
