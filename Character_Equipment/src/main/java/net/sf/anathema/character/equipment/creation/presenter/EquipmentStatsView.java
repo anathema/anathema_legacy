@@ -11,7 +11,7 @@ public interface EquipmentStatsView {
 
   ITextView addLineTextView(String nameLabel);
 
-  IIntegerSpinner addIntegerSpinner(String label, int initialValue);
+  IIntegerSpinner addIntegerSpinner(String label);
 
   BooleanValueView addBooleanSelector(String label);
 

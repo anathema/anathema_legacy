@@ -54,9 +54,8 @@ public class FxEquipmentStatsView implements EquipmentStatsView {
     return booleanView;
   }
 
-  public IIntegerSpinner addIntegerSpinner(String label, int initialValue) {
+  public IIntegerSpinner addIntegerSpinner(String label) {
     IntegerSpinner spinner = new IntegerSpinner(1);
-    spinner.setValue(initialValue);
     panel.add(new Label(label));
     panel.add(spinner.getNode(), new CC().growX().pushX());
     return spinner;

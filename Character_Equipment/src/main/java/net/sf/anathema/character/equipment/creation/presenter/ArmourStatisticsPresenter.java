@@ -66,7 +66,7 @@ public class ArmourStatisticsPresenter {
   }
 
   private IIntegerSpinner addSpinner(String label, IIntValueModel model) {
-    IIntegerSpinner spinner = view.addIntegerSpinner(label, model.getValue());
+    IIntegerSpinner spinner = view.addIntegerSpinner(label);
     new IntValuePresentation().initPresentation(spinner, model);
     return spinner;
   }

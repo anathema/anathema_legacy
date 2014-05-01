@@ -12,8 +12,7 @@ public class RangedWeaponStatisticsModel extends OffensiveStatisticsModel implem
   private final IIntValueModel rangeModel = new RangedIntValueModel(new Range(1, Integer.MAX_VALUE), 1);
   private final IWeaponTagsModel weaponTagsModel;
 
-  public RangedWeaponStatisticsModel(IIntValueModel speedModel, IWeaponTagsModel weaponTagsModel) {
-    super(speedModel);
+  public RangedWeaponStatisticsModel(IWeaponTagsModel weaponTagsModel) {
     this.weaponTagsModel = weaponTagsModel;
     for (IWeaponTag tag : weaponTagsModel.getAllTags()) {
       weaponTagsModel.getSelectedModel(tag).addChangeListener(selected -> announceValidationChange());

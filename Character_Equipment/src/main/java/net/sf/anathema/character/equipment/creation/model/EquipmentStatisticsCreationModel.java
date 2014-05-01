@@ -4,34 +4,25 @@ import net.sf.anathema.character.equipment.creation.presenter.IArmourStatisticsM
 import net.sf.anathema.character.equipment.creation.presenter.IArtifactStatisticsModel;
 import net.sf.anathema.character.equipment.creation.presenter.ICloseCombatStatsticsModel;
 import net.sf.anathema.character.equipment.creation.presenter.IEquipmentStatisticsCreationModel;
-import net.sf.anathema.character.equipment.creation.presenter.IIntValueModel;
 import net.sf.anathema.character.equipment.creation.presenter.IRangedCombatStatisticsModel;
 import net.sf.anathema.character.equipment.creation.presenter.ITraitModifyingStatisticsModel;
 import net.sf.anathema.character.equipment.creation.presenter.IWeaponTagsModel;
-import net.sf.anathema.character.equipment.creation.presenter.RangedIntValueModel;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
 import net.sf.anathema.lib.control.ChangeListener;
-import net.sf.anathema.lib.data.Range;
 import org.apache.commons.lang3.ArrayUtils;
 import org.jmock.example.announcer.Announcer;
 
 public class EquipmentStatisticsCreationModel implements IEquipmentStatisticsCreationModel {
 
   private final IWeaponTagsModel weaponTagsModel = new WeaponTagsModel();
-  private final ICloseCombatStatsticsModel closeCombatStatisticsModel = new CloseCombatStatsticsModel(
-          createOffensiveSpeedModel());
-  private final IRangedCombatStatisticsModel rangedWeaponStatisticsModel = new RangedWeaponStatisticsModel(
-          createOffensiveSpeedModel(), weaponTagsModel);
+  private final ICloseCombatStatsticsModel closeCombatStatisticsModel = new CloseCombatStatsticsModel();
+  private final IRangedCombatStatisticsModel rangedWeaponStatisticsModel = new RangedWeaponStatisticsModel(weaponTagsModel);
   private final IArmourStatisticsModel armourStatisticsModel = new ArmourStatsticsModel();
   private final IArtifactStatisticsModel artifactStatisticsModel = new ArtifactStatisticsModel();
   private final ITraitModifyingStatisticsModel traitModifyingStatisticsModel = new TraitModifyingStatisticsModel();
   private final Announcer<ChangeListener> equipmentTypeChangeControl = Announcer.to(ChangeListener.class);
   private EquipmentStatisticsType statisticsType;
   private String[] existingNames;
-
-  private static IIntValueModel createOffensiveSpeedModel() {
-    return new RangedIntValueModel(new Range(1, Integer.MAX_VALUE), 1);
-  }
 
   @Override
   public void setEquipmentType(EquipmentStatisticsType statisticsType) {

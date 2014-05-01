@@ -27,13 +27,13 @@ public class RangedStatisticsPresenter {
 
   public void initPresentation() {
     addSpinner(properties.getSpeedLabel(), rangedModel.getSpeedModel());
-    addSpinner(properties.getRangeLabel(), rangedModel.getSpeedModel());
+    addSpinner(properties.getRangeLabel(), rangedModel.getRangeModel());
     new BasicWeaponPresenter(rangedModel, weaponTagsModel, view, properties, damageProperties,
             tagProperties).initPresentation();
   }
 
   private void addSpinner(String label, IIntValueModel model) {
-    IIntegerSpinner spinner = view.addIntegerSpinner(label, model.getValue());
+    IIntegerSpinner spinner = view.addIntegerSpinner(label);
     new IntValuePresentation().initPresentation(spinner, model);
   }
 }

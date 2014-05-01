@@ -72,6 +72,7 @@ public class IntegerSpinner implements IIntegerView, IIntegerSpinner {
   private void refreshValues(int currentValue) {
     ListSpinnerIntegerList newList = new ListSpinnerIntegerList(minimum, maximum, stepSize);
     spinner.setItems(FXCollections.observableList(newList));
+    spinner.setValue(minimum);
     spinner.setValue(currentValue);
   }
 

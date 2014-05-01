@@ -6,10 +6,6 @@ import net.sf.anathema.character.equipment.creation.presenter.RangedIntValueMode
 
 public class CloseCombatStatsticsModel extends OffensiveStatisticsModel implements ICloseCombatStatsticsModel {
 
-  public CloseCombatStatsticsModel(IIntValueModel speedModel) {
-    super(speedModel);
-  }
-
   private final IIntValueModel defenseModel = new RangedIntValueModel(0);
 
   @Override

@@ -38,7 +38,7 @@ public class ModifierStatisticsPresenter {
   }
 
   private void addSpinner(String label, IIntValueModel model) {
-    IIntegerSpinner spinner = view.addIntegerSpinner(label, model.getValue());
+    IIntegerSpinner spinner = view.addIntegerSpinner(label);
     new IntValuePresentation().initPresentation(spinner, model);
   }
 }

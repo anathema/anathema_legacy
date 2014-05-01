@@ -42,12 +42,10 @@ public class BasicWeaponPresenter {
   }
 
   private void initWeaponDamageRow(IWeaponDamageModel damageModel) {
-    IIntegerSpinner damageSpinner = addSpinner(damageProperties.getDamageLabel(), damageModel.getDamageModel());
-    damageSpinner.setMinimum(0);
+    addSpinner(damageProperties.getDamageLabel(), damageModel.getDamageModel());
     ObjectSelectionView<HealthType> selectionView = view.addObjectSelection(damageProperties.getHealthTypeUi());
     initDamageTypePresentation(selectionView, damageModel);
-    IIntegerSpinner minDamageSpinner = addSpinner(damageProperties.getMinDamageLabel(), damageModel.getMinDamageModel());
-    minDamageSpinner.setMinimum(0);
+    addSpinner(damageProperties.getMinDamageLabel(), damageModel.getMinDamageModel());
   }
 
   private void initDamageTypePresentation(ObjectSelectionView<HealthType> damageView, IWeaponDamageModel damageModel) {
@@ -83,7 +81,7 @@ public class BasicWeaponPresenter {
   }
 
   private IIntegerSpinner addSpinner(String label, IIntValueModel model) {
-    IIntegerSpinner spinner = view.addIntegerSpinner(label, model.getValue());
+    IIntegerSpinner spinner = view.addIntegerSpinner(label);
     new IntValuePresentation().initPresentation(spinner, model);
     return spinner;
   }
