@@ -4,6 +4,7 @@ import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.reporting.Report;
 import net.sf.anathema.hero.description.HeroDescriptionFetcher;
 import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.lib.gui.file.Extension;
 import net.sf.anathema.lib.gui.file.FileChooserConfiguration;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
@@ -22,7 +23,7 @@ public class ControlledPrintWithSelectedReport {
 
   public void execute() {
     String name = getFileNameSuggestion()+PDF_EXTENSION;
-    FileChooserConfiguration configuration = new FileChooserConfiguration("PDF Files", "*" + PDF_EXTENSION, name);
+    FileChooserConfiguration configuration = new FileChooserConfiguration(new Extension("PDF Files", "*" + PDF_EXTENSION), name);
     ControlledFileChooser fileChooser = new ControlledFileChooser(environment, configuration);
     new PrintCommand(environment, report, fileChooser, hero).execute();
   }

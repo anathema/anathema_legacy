@@ -15,7 +15,7 @@ public class FxFileChooser implements SingleFileChooser {
   public static final Path NO_FILE_SELECTED = null;
   private static Path workingDirectory = Paths.get(".");
   private final Window parent;
-  
+
   @SuppressWarnings("UnusedDeclaration")
   public FxFileChooser() {
     this(null);
@@ -29,7 +29,7 @@ public class FxFileChooser implements SingleFileChooser {
     FileChooser fileChooser = new FileChooser();
     fileChooser.setInitialDirectory(workingDirectory.toFile());
     fileChooser.setInitialFileName(configuration.nameSuggestion);
-    fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter(configuration.description, configuration.filter));
+    fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter(configuration.extension.description, configuration.extension.pattern));
     File file = fileChooser.showSaveDialog(parent);
     if (file == null) {
       return NO_FILE_SELECTED;

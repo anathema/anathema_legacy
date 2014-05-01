@@ -1,13 +1,11 @@
 package net.sf.anathema.lib.gui.file;
 
 public class FileChooserConfiguration {
-  public final String description;
-  public final String filter;
+  public final Extension extension;
   public final String nameSuggestion;
 
-  public FileChooserConfiguration(String description, String filter, String nameSuggestion) {
-    this.description = description;
-    this.filter = filter;
+  public FileChooserConfiguration(Extension extension, String nameSuggestion) {
+    this.extension = extension;
     this.nameSuggestion = nameSuggestion;
   }
 }
