@@ -63,7 +63,7 @@ public class WrappingStatsEditModel implements StatsEditModel {
       return;
     }
     editModel().removeStatistics(selectedStats);
-    selectStats(NO_SELECTION);
+    clearStatsSelection();
   }
 
   @Override
