@@ -23,19 +23,26 @@ public class CopyEquipmentTemplateAction {
     copyTool.setTooltip(resources.getString("Equipment.Creation.Item.CopyActionTooltip"));
     copyTool.enable();
     copyTool.setCommand(new CopyEquipmentItem(copyTool, view));
-    model.getTemplateEditModel().getDescription().getName().addTextChangedListener(new EnableToolOnChange(copyTool));
+    model.getTemplateEditModel().getDescription().getName().addTextChangedListener(new EnableToolOnChange(copyTool, model));
   }
 
   private static class EnableToolOnChange implements ObjectValueListener<String> {
     private final Tool copyTool;
+    private IEquipmentDatabaseManagement model;
 
-    public EnableToolOnChange(Tool copyTool) {
+    public EnableToolOnChange(Tool copyTool, IEquipmentDatabaseManagement model) {
       this.copyTool = copyTool;
+      this.model = model;
     }
 
     @Override
     public void valueChanged(String newValue) {
-      copyTool.enable();
+      if (!model.getTemplateEditModel().getDescription().getName().isEmpty()
+              && !model.getTemplateEditModel().isDirty()) {
+        copyTool.enable();
+      } else {
+        copyTool.disable();
+      }
     }
   }
 
