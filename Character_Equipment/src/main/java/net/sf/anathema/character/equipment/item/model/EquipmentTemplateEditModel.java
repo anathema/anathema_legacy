@@ -3,13 +3,13 @@ package net.sf.anathema.character.equipment.item.model;
 import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.equipment.character.model.EquipmentTemplate;
-import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 import net.sf.anathema.equipment.core.IEquipmentTemplate;
 import net.sf.anathema.equipment.core.ItemCost;
 import net.sf.anathema.equipment.core.MagicalMaterial;
 import net.sf.anathema.equipment.core.MaterialComposition;
 import net.sf.anathema.equipment.editor.model.IItemDescription;
 import net.sf.anathema.equipment.editor.model.ItemDescription;
+import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 import net.sf.anathema.lib.control.ChangeListener;
 import org.jmock.example.announcer.Announcer;
 
@@ -237,5 +237,6 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
     statses.remove(oldStats);
     statses.add(oldIndex, newStats);
     fireStatsChangedEvent();
+    
   }
 }

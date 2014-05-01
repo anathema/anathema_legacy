@@ -10,11 +10,13 @@ import net.sf.anathema.lib.file.RelativePath;
 
 public class CopyEquipmentTemplateAction {
   private final IEquipmentDatabaseManagement model;
+  private StatsEditModel editModel;
   private final Resources resources;
 
-  public CopyEquipmentTemplateAction(Resources resources, IEquipmentDatabaseManagement model) {
+  public CopyEquipmentTemplateAction(Resources resources, IEquipmentDatabaseManagement model, StatsEditModel editModel) {
     this.resources = resources;
     this.model = model;
+    this.editModel = editModel;
   }
 
   public void addToolTo(EquipmentNavigation view) {
@@ -22,7 +24,7 @@ public class CopyEquipmentTemplateAction {
     copyTool.setIcon(new RelativePath("icons/ButtonDuplicate24.png"));
     copyTool.setTooltip(resources.getString("Equipment.Creation.Item.CopyActionTooltip"));
     copyTool.enable();
-    copyTool.setCommand(new CopyEquipmentItem(copyTool, view));
+    copyTool.setCommand(new CopyEquipmentItem(copyTool, view, editModel));
     model.getTemplateEditModel().getDescription().getName().addTextChangedListener(new EnableToolOnChange(copyTool, model));
   }
 
@@ -49,10 +51,12 @@ public class CopyEquipmentTemplateAction {
   private class CopyEquipmentItem implements Command {
     private final Tool copyTool;
     private EquipmentNavigation view;
+    private StatsEditModel editModel;
 
-    public CopyEquipmentItem(Tool copyTool, EquipmentNavigation view) {
+    public CopyEquipmentItem(Tool copyTool, EquipmentNavigation view, StatsEditModel editModel) {
       this.copyTool = copyTool;
       this.view = view;
+      this.editModel = editModel;
     }
 
     @SuppressWarnings({"RedundantStringConstructorCall", "StatementWithEmptyBody"})
@@ -67,6 +71,7 @@ public class CopyEquipmentTemplateAction {
             ;
           model.getTemplateEditModel().copyNewTemplate(salt);
           model.getDatabase().saveTemplate(model.getTemplateEditModel().createTemplate());
+          editModel.clearStatsSelection();
           copyTool.disable();
         }
       });

@@ -2,18 +2,20 @@ package net.sf.anathema.character.equipment.item;
 
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.view.EquipmentNavigation;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.file.RelativePath;
-import net.sf.anathema.framework.environment.Resources;
 
 public class RemoveEquipmentTemplateAction {
   private final IEquipmentDatabaseManagement model;
+  private StatsEditModel editModel;
   private final Resources resources;
 
-  public RemoveEquipmentTemplateAction(Resources resources, IEquipmentDatabaseManagement model) {
+  public RemoveEquipmentTemplateAction(Resources resources, IEquipmentDatabaseManagement model, StatsEditModel editModel) {
     this.resources = resources;
     this.model = model;
+    this.editModel = editModel;
   }
 
   public void addToolTo(EquipmentNavigation view) {
@@ -22,7 +24,7 @@ public class RemoveEquipmentTemplateAction {
     removeTool.setTooltip(resources.getString("Equipment.Creation.Item.RemoveActionTooltip"));
     view.getTemplateListView().addObjectSelectionChangedListener(new EnableWhenItemSelected(removeTool));
     updateEnabled(removeTool, view.getTemplateListView().getSelectedObject());
-    removeTool.setCommand(new RemoveEquipmentItem(view, model, resources));
+    removeTool.setCommand(new RemoveEquipmentItem(view, model, resources,editModel));
   }
 
   private void updateEnabled(Tool removeTool, String selectedObject) {

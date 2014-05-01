@@ -19,20 +19,23 @@ public class EquipmentTemplateListPresenter {
       }
       IEquipmentTemplateEditModel editModel = model.getTemplateEditModel();
       editModel.setEditTemplate(newValue);
+      EquipmentTemplateListPresenter.this.editModel.clearStatsSelection();
     }
   }
 
   private final Resources resources;
   private final EquipmentNavigation view;
+  private final StatsEditModel editModel;
   private final IEquipmentDatabaseManagement model;
 
   public EquipmentTemplateListPresenter(
           Resources resources,
           IEquipmentDatabaseManagement model,
-          EquipmentNavigation view) {
+          EquipmentNavigation view, StatsEditModel editModel) {
     this.resources = resources;
     this.model = model;
     this.view = view;
+    this.editModel = editModel;
   }
 
   public void initPresentation() {

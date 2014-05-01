@@ -31,4 +31,6 @@ public interface StatsEditModel {
   void whenSelectedStatsChanges(ChangeListener changeListener);
 
   boolean hasSelectedStats();
+
+  void clearStatsSelection();
 }

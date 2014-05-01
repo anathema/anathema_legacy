@@ -9,11 +9,13 @@ public class NewEquipmentItem implements Command {
   private final IEquipmentDatabaseManagement model;
   private final EquipmentNavigation view;
   private final Resources resources;
+  private StatsEditModel editModel;
 
-  public NewEquipmentItem(IEquipmentDatabaseManagement model, EquipmentNavigation view, Resources resources) {
+  public NewEquipmentItem(IEquipmentDatabaseManagement model, EquipmentNavigation view, Resources resources, StatsEditModel editModel) {
     this.model = model;
     this.view = view;
     this.resources = resources;
+    this.editModel = editModel;
   }
 
   @Override
@@ -23,6 +25,7 @@ public class NewEquipmentItem implements Command {
       @Override
       public void execute() {
         model.getTemplateEditModel().setNewTemplate();
+        editModel.clearStatsSelection();
       }
     });
   }

@@ -12,11 +12,13 @@ public class RemoveEquipmentItem implements Command {
   private final EquipmentNavigation view;
   private final IEquipmentDatabaseManagement model;
   private final Resources resources;
+  private final StatsEditModel editModel;
 
-  public RemoveEquipmentItem(EquipmentNavigation view, IEquipmentDatabaseManagement model, Resources resources) {
+  public RemoveEquipmentItem(EquipmentNavigation view, IEquipmentDatabaseManagement model, Resources resources, StatsEditModel editModel) {
     this.view = view;
     this.model = model;
     this.resources = resources;
+    this.editModel = editModel;
   }
 
   @Override
@@ -31,6 +33,7 @@ public class RemoveEquipmentItem implements Command {
       public void execute() {
         model.getDatabase().deleteTemplate(view.getTemplateListView().getSelectedObject());
         model.getTemplateEditModel().setNewTemplate();
+        editModel.clearStatsSelection();
       }
     });
   }

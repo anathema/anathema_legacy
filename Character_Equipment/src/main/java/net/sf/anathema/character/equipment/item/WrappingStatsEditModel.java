@@ -54,6 +54,7 @@ public class WrappingStatsEditModel implements StatsEditModel {
   @Override
   public void replaceSelectedStatistics(IEquipmentStats newStats) {
     editModel().replaceStatistics(this.selectedStats, newStats);
+    selectStats(newStats);
   }
 
   @Override
@@ -67,7 +68,7 @@ public class WrappingStatsEditModel implements StatsEditModel {
 
   @Override
   public void selectStats(IEquipmentStats selected) {
-    if (this.selectedStats == selected) {
+    if (this.selectedStats == selected || selected == NO_SELECTION) {
       return;
     }
     this.selectedStats = selected;
@@ -87,6 +88,12 @@ public class WrappingStatsEditModel implements StatsEditModel {
   @Override
   public boolean hasSelectedStats() {
     return selectedStats != NO_SELECTION;
+  }
+
+  @Override
+  public void clearStatsSelection() {
+    this.selectedStats = NO_SELECTION;
+    announcer.announce().changeOccurred();
   }
 
   private IEquipmentTemplateEditModel editModel() {

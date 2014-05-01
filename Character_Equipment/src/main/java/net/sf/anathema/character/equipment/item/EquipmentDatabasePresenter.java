@@ -23,19 +23,21 @@ public class EquipmentDatabasePresenter {
   private final EquipmentDatabaseView view;
   private final IEquipmentDatabaseManagement model;
   private final String[] defaultCostBackgrounds = {"Artifact", "Manse", "Resources"};
+  private final StatsEditModel editModel;
 
   public EquipmentDatabasePresenter(Resources resources, IEquipmentDatabaseManagement model,
                                     EquipmentDatabaseView view) {
     this.resources = resources;
     this.model = model;
     this.view = view;
+    this.editModel = new WrappingStatsEditModel(model);
   }
 
   public void initPresentation() {
-    new EquipmentTemplateListPresenter(resources, model, view).initPresentation();
+    new EquipmentTemplateListPresenter(resources, model, view,editModel).initPresentation();
     addEditTemplateActions();
     initBasicDetailsView();
-    new EquipmentEditStatsPresenter(resources, new WrappingStatsEditModel(model), view).initPresentation();
+    new EquipmentEditStatsPresenter(resources, editModel, view).initPresentation();
     model.getTemplateEditModel().setNewTemplate();
   }
 
@@ -44,10 +46,10 @@ public class EquipmentDatabasePresenter {
   }
 
   private void addEditTemplateActions() {
-    new NewEquipmentTemplateAction(resources, model).addToolTo(view);
+    new NewEquipmentTemplateAction(resources, model, editModel).addToolTo(view);
     new SaveEquipmentTemplateAction(resources, model).addToolTo(view);
-    new CopyEquipmentTemplateAction(resources, model).addToolTo(view);
-    new RemoveEquipmentTemplateAction(resources, model).addToolTo(view);
+    new CopyEquipmentTemplateAction(resources, model, editModel).addToolTo(view);
+    new RemoveEquipmentTemplateAction(resources, model, editModel).addToolTo(view);
   }
 
   private void initBasicDetailsView() {
