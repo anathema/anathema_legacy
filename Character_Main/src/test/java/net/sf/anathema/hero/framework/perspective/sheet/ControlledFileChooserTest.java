@@ -1,6 +1,8 @@
 package net.sf.anathema.hero.framework.perspective.sheet;
 
 import net.sf.anathema.framework.environment.ConfigurableDummyObjectFactory;
+import net.sf.anathema.lib.gui.file.FileChooserConfiguration;
+import net.sf.anathema.lib.gui.file.SingleFileChooser;
 import org.junit.Test;
 
 import java.nio.file.Path;
@@ -13,7 +15,7 @@ import static org.mockito.Mockito.when;
 
 public class ControlledFileChooserTest {
 
-  private final FileChooserConfiguration configuration = new FileChooserConfiguration("description", "filter");
+  private final FileChooserConfiguration configuration = new FileChooserConfiguration("description", "filter", "name");
   private final ConfigurableDummyObjectFactory factory = new ConfigurableDummyObjectFactory();
 
   @Test

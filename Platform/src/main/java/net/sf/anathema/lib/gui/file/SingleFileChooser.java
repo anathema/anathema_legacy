@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.framework.perspective.sheet;
+package net.sf.anathema.lib.gui.file;
 
 import java.nio.file.Path;
 
