@@ -3,7 +3,7 @@ package net.sf.anathema.hero.framework.perspective.model;
 import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.reporting.Report;
 import net.sf.anathema.lib.control.ChangeListener;
-import net.sf.anathema.lib.workflow.wizard.selection.CharacterTemplateCreator;
+import net.sf.anathema.hero.creation.CharacterTemplateCreator;
 
 import java.io.IOException;
 

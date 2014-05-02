@@ -5,8 +5,8 @@ import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.hero.creation.CharacterCreationPageProperties;
 import net.sf.anathema.hero.creation.CharacterCreationPresenter;
 import net.sf.anathema.hero.creation.ICharacterItemCreationModel;
-import net.sf.anathema.lib.workflow.wizard.selection.CharacterTemplateCreator;
-import net.sf.anathema.lib.workflow.wizard.selection.IItemOperator;
+import net.sf.anathema.hero.creation.CharacterTemplateCreator;
+import net.sf.anathema.hero.creation.IItemOperator;
 
 public class FxCharacterTemplateCreator implements CharacterTemplateCreator {
   private final Window parent;

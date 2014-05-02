@@ -25,7 +25,7 @@ import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.platform.JsonCharacterReferenceScanner;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.exception.PersistenceException;
-import net.sf.anathema.lib.workflow.wizard.selection.CharacterTemplateCreator;
+import net.sf.anathema.hero.creation.CharacterTemplateCreator;
 import org.jmock.example.announcer.Announcer;
 
 import java.io.IOException;

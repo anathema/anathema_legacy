@@ -8,7 +8,7 @@ import net.sf.anathema.hero.framework.perspective.model.ItemSelectionModel;
 import net.sf.anathema.hero.framework.perspective.model.NewCharacterListener;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
-import net.sf.anathema.lib.workflow.wizard.selection.CharacterTemplateCreator;
+import net.sf.anathema.hero.creation.CharacterTemplateCreator;
 
 public class NewInteractionPresenter {
 

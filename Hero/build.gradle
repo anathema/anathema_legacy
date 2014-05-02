@@ -1,0 +1,7 @@
+dependencies {
+//  Insert your dependencies here like this:
+//  compile project(':Character_Equipment')
+//  compile project(':Character_Main')
+  testCompile testDependencies //includes JUnit etc.
+//  testCompile project(path: ':Platform', templateHolder: 'tests')
+}

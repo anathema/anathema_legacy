@@ -11,7 +11,7 @@ import net.sf.anathema.hero.framework.perspective.CharacterButtonDto;
 import net.sf.anathema.hero.framework.perspective.CharacterGridView;
 import net.sf.anathema.hero.framework.perspective.Selector;
 import net.sf.anathema.hero.framework.perspective.model.CharacterIdentifier;
-import net.sf.anathema.lib.workflow.wizard.selection.CharacterTemplateCreator;
+import net.sf.anathema.hero.creation.CharacterTemplateCreator;
 import net.sf.anathema.platform.fx.Stylesheet;
 import org.tbee.javafx.scene.layout.MigPane;
 

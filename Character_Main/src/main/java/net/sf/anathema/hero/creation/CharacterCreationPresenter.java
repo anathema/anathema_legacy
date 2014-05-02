@@ -8,7 +8,6 @@ import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.selection.VetoableObjectSelectionView;
-import net.sf.anathema.lib.workflow.wizard.selection.IItemOperator;
 
 import java.util.Arrays;
 import java.util.Comparator;

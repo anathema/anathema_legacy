@@ -1,4 +1,4 @@
-package net.sf.anathema.lib.workflow.wizard.selection;
+package net.sf.anathema.hero.creation;
 
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.lib.exception.PersistenceException;
