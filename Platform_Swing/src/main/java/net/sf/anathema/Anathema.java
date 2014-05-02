@@ -3,9 +3,9 @@ package net.sf.anathema;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import net.sf.anathema.framework.environment.Environment;
-import net.sf.anathema.framework.environment.ExceptionHandler;
 import net.sf.anathema.framework.environment.exception.ExceptionHandling;
 import net.sf.anathema.framework.environment.exception.ExtensibleExceptionHandler;
+import net.sf.anathema.framework.repository.tree.FxFileChooser;
 import net.sf.anathema.framework.view.ApplicationFrame;
 import net.sf.anathema.initialization.EnvironmentFactory;
 import net.sf.anathema.initialization.GuiInitializer;
@@ -16,6 +16,7 @@ public class Anathema extends Application {
 
   private Environment environment;
   private ExtensibleExceptionHandler exceptionHandler;
+  private ProxyFileChooser fileChooser;
 
   /*Called by the boot loader using reflection.*/
   @SuppressWarnings("UnusedDeclaration")
@@ -27,13 +28,15 @@ public class Anathema extends Application {
   public void init() throws Exception {
     Logger.getLogger(Anathema.class).info("Launching Anathema");
     this.exceptionHandler = new ExceptionHandling().create();
-    this.environment = new EnvironmentFactory(exceptionHandler).create();
+    this.fileChooser = new ProxyFileChooser();
+    this.environment = new EnvironmentFactory(exceptionHandler, fileChooser).create();
   }
 
   @Override
   public void start(Stage stage) throws Exception {
     try {
       displayStatus("Initializing Environment...");
+      fileChooser.setDelegate(new FxFileChooser(stage));
       displayStatus("Starting Platform...");
       ApplicationFrame applicationFrame = new GuiInitializer(stage, environment, exceptionHandler).initialize().getWindow();
       displayStatus("Done.");

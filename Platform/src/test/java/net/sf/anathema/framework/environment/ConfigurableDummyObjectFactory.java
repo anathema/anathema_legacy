@@ -1,7 +1,6 @@
 package net.sf.anathema.framework.environment;
 
 import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Iterables;
 import net.sf.anathema.initialization.InitializationException;
 
 import java.lang.annotation.Annotation;
@@ -30,12 +29,6 @@ public class ConfigurableDummyObjectFactory implements ObjectFactory {
   public <T> Collection<T> instantiateAllImplementers(Class<T> interfaceClass, Object... parameter) {
     Set<T> objects = (Set<T>) objectsForInterfaces.get(interfaceClass);
     return new ArrayList<>(objects);
-  }
-
-  @Override
-  public <T> T instantiateOnlyImplementer(Class<T> interfaceClass, Object... parameter) {
-    Collection<T> collection = instantiateAllImplementers(interfaceClass, parameter);
-    return Iterables.getOnlyElement(collection);
   }
 
   public void add(Class<?> interfaceClass, Object instance) {

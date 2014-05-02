@@ -39,7 +39,8 @@ public class FxFileChooser implements SingleFileChooser {
     return selectedFile;
   }
 
-  public Path chooseLoadFile(Extension extension) {
+  @Override
+  public Path selectLoadFile(Extension extension) {
     FileChooser chooser = new FileChooser();
     chooser.setSelectedExtensionFilter(new FileChooser.ExtensionFilter(extension.description, extension.pattern));
     chooser.setInitialDirectory(workingDirectory.toFile());

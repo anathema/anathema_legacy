@@ -1,6 +1,5 @@
 package net.sf.anathema.hero.framework.perspective.sheet;
 
-import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.lib.gui.file.FileChooserConfiguration;
 import net.sf.anathema.lib.gui.file.SingleFileChooser;
 
@@ -8,17 +7,16 @@ import java.nio.file.Path;
 
 public class ControlledFileChooser implements FileChooser {
 
-  private final ObjectFactory factory;
+  private final SingleFileChooser chooser;
   private final FileChooserConfiguration configuration;
 
-  public ControlledFileChooser(ObjectFactory factory, FileChooserConfiguration configuration) {
-    this.factory = factory;
+  public ControlledFileChooser(SingleFileChooser chooser, FileChooserConfiguration configuration) {
+    this.chooser = chooser;
     this.configuration = configuration;
   }
 
   @Override
   public Path getPrintFile() {
-    SingleFileChooser chooser = factory.instantiateOnlyImplementer(SingleFileChooser.class);
     Path selectedFile = chooser.selectSaveFile(configuration);
     if (selectedFile == null) {
       return null;

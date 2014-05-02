@@ -6,6 +6,7 @@ import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.gui.file.Extension;
+import net.sf.anathema.lib.gui.file.FileChooserConfiguration;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -40,7 +41,7 @@ public class RepositoryItemExportPresenter {
       public void execute() {
         try {
           String description = environment.getString("Filetype.all");
-          Path saveFile = view.showSaveFile("Export.zip", new Extension(description, "*.*"));
+          Path saveFile = environment.selectSaveFile(new FileChooserConfiguration(new Extension(description, "*.*"), "Export.zip"));
           if (saveFile == null) {
             return;
           }

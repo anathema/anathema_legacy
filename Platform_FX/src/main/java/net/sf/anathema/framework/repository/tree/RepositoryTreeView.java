@@ -5,13 +5,10 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TreeView;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.interaction.Tool;
-import net.sf.anathema.lib.gui.file.Extension;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.lib.gui.list.veto.Vetor;
 import net.sf.anathema.platform.tool.FxButtonTool;
 import org.tbee.javafx.scene.layout.MigPane;
-
-import java.nio.file.Path;
 
 public class RepositoryTreeView implements IRepositoryTreeView {
   private final MigPane panel = new MigPane(LayoutUtils.fillWithoutInsets().wrapAfter(1));
@@ -31,16 +28,6 @@ public class RepositoryTreeView implements IRepositoryTreeView {
     FxButtonTool tool = FxButtonTool.ForAnyPurpose();
     buttonPanel.add(tool.getNode(), new CC().grow());
     return tool;
-  }
-
-  @Override
-  public Path showSaveFile(String recommendedFileName, Extension defaultExtension) {
-    return FileChoosingUtilities.selectSaveFile(panel.getScene().getWindow(), recommendedFileName, defaultExtension);
-  }
-
-  @Override
-  public Path showLoadFile(Extension extension) {
-    return FileChoosingUtilities.chooseFile(panel.getScene().getWindow(), extension);
   }
 
   @Override

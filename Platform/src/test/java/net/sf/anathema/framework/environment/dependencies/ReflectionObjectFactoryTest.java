@@ -1,6 +1,7 @@
 package net.sf.anathema.framework.environment.dependencies;
 
 import com.google.common.collect.Iterables;
+import org.hamcrest.Matcher;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -67,25 +68,6 @@ public class ReflectionObjectFactoryTest {
   }
 
   @Test
-  public void returnsTheFirstClassWhenOnlyOneIsRequested() {
-    Set<Class<? extends DummyInterface>> implementingClasses = new LinkedHashSet<>();
-    implementingClasses.add(AnnotatedDummy.class);
-    when(interfaceFinder.findAll(DummyInterface.class)).thenReturn(implementingClasses);
-    DummyInterface result = factory.instantiateOnlyImplementer(DummyInterface.class);
-    assertThat(result, is(instanceOf(AnnotatedDummy.class)));
-  }
-
-  @Test (expected = IllegalArgumentException.class)
-  public void reportsErrorWhenMultipleClassesAreRegisteredButOnlyOneIsExpected() {
-    Set<Class<? extends DummyInterface>> implementingClasses = new LinkedHashSet<>();
-    implementingClasses.add(AnnotatedDummy.class);
-    implementingClasses.add(AnotherAnnotatedDummy.class);
-    when(interfaceFinder.findAll(DummyInterface.class)).thenReturn(implementingClasses);
-    DummyInterface result = factory.instantiateOnlyImplementer(DummyInterface.class);
-    assertThat(result, is(instanceOf(AnnotatedDummy.class)));
-  }
-
-  @Test
   public void ignoresBlackListedImplementors() {
     Set<Class<? extends DummyInterface>> implementingClasses = new LinkedHashSet<>();
     implementingClasses.add(IgnoredDummy.class);
@@ -108,7 +90,7 @@ public class ReflectionObjectFactoryTest {
     annotatedClasses.add(AnnotatedDummy.class);
     annotatedClasses.add(AnotherAnnotatedDummy.class);
     Collection<AnnotatedDummy> result = factory.instantiateOrdered(DummyAnnotation.class);
-    assertThat(Iterables.get(result, 0), is(instanceOf(AnotherAnnotatedDummy.class)));
-    assertThat(Iterables.get(result, 1), is(instanceOf(AnnotatedDummy.class)));
+    assertThat(Iterables.get(result, 0), is((Matcher) instanceOf(AnotherAnnotatedDummy.class)));
+    assertThat(Iterables.get(result, 1), is((Matcher) instanceOf(AnnotatedDummy.class)));
   }
 }

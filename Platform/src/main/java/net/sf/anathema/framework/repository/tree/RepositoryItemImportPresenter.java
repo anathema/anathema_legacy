@@ -46,7 +46,7 @@ public class RepositoryItemImportPresenter {
       public void execute() {
         try {
           String description = environment.getString("Filetype.zip");
-          Path loadFile = view.showLoadFile(new Extension(description, "*.zip"));
+          Path loadFile = environment.selectLoadFile(new Extension(description, "*.zip"));
           if (loadFile == null) {
             return;
           }

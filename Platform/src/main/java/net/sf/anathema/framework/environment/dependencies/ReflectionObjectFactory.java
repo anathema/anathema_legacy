@@ -3,9 +3,8 @@ package net.sf.anathema.framework.environment.dependencies;
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
-import com.google.common.collect.Iterables;
-import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.framework.environment.ObjectFactory;
+import net.sf.anathema.initialization.InitializationException;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
@@ -45,16 +44,11 @@ public class ReflectionObjectFactory implements ObjectFactory {
     Set<Class<?>> pluginClasses = finder.getTypesAnnotatedWith(annotation);
     return Collections2.transform(pluginClasses, new Instantiate<T>(parameter));
   }
-
+  
+  @Override
   public <T> Collection<T> instantiateAllImplementers(Class<T> interfaceClass, Object... parameter) {
     Collection<Class<? extends T>> filteredClasses = findLegalImplementers(interfaceClass);
     return Collections2.transform(filteredClasses, new Instantiate<T>(parameter));
-  }
-
-  @Override
-  public <T> T instantiateOnlyImplementer(Class<T> interfaceClass, Object... parameter) {
-    Collection<Class<? extends T>> implementers = findLegalImplementers(interfaceClass);
-    return new Instantiate<T>(parameter).apply(Iterables.getOnlyElement(implementers));
   }
 
   private <T> Collection<Class<? extends T>> findLegalImplementers(Class<T> interfaceClass) {
