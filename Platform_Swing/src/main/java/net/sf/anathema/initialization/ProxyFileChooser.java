@@ -1,4 +1,4 @@
-package net.sf.anathema;
+package net.sf.anathema.initialization;
 
 import net.sf.anathema.lib.gui.file.Extension;
 import net.sf.anathema.lib.gui.file.FileChooserConfiguration;
