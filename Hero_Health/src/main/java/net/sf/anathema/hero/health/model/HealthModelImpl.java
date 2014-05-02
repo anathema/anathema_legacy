@@ -1,8 +1,8 @@
-package net.sf.anathema.hero.health;
+package net.sf.anathema.hero.health.model;
 
 import net.sf.anathema.character.main.traits.types.AttributeType;
-import net.sf.anathema.health.HealthLevelType;
-import net.sf.anathema.health.IHealthLevelTypeVisitor;
+import net.sf.anathema.hero.health.HealthLevelType;
+import net.sf.anathema.hero.health.IHealthLevelTypeVisitor;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.change.ChangeAnnouncer;
@@ -13,7 +13,7 @@ import net.sf.anathema.lib.util.Identifier;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HealthModelImpl implements HealthModel  {
+public class HealthModelImpl implements HealthModel {
 
   private final List<IHealthLevelProvider> healthLevelProviders = new ArrayList<>();
   private final List<IPainToleranceProvider> painResistanceProviders = new ArrayList<>();

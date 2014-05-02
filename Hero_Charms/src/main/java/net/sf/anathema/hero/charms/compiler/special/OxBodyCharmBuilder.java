@@ -7,7 +7,7 @@ import net.sf.anathema.character.main.magic.parser.dto.special.OxBodyPickDto;
 import net.sf.anathema.character.main.magic.parser.dto.special.OxBodyTechniqueDto;
 import net.sf.anathema.character.main.magic.parser.dto.special.SpecialCharmDto;
 import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.health.HealthLevelType;
+import net.sf.anathema.hero.health.HealthLevelType;
 
 import java.util.ArrayList;
 import java.util.HashMap;

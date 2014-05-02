@@ -14,7 +14,7 @@ import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.TraitValueStrategy;
 import net.sf.anathema.character.main.traits.context.CreationTraitValueStrategy;
 import net.sf.anathema.character.main.traits.types.AbilityType;
-import net.sf.anathema.health.HealthLevelType;
+import net.sf.anathema.hero.health.HealthLevelType;
 import net.sf.anathema.hero.BasicCharacterTestCase;
 import net.sf.anathema.hero.charms.model.special.oxbody.OxBodyTechniqueSpecialsImpl;
 import net.sf.anathema.hero.concept.CasteType;

@@ -6,7 +6,7 @@ import net.sf.anathema.hero.charms.template.model.CharmsTemplate;
 import net.sf.anathema.hero.charms.template.model.CharmsTemplateLoader;
 import net.sf.anathema.hero.concept.HeroConcept;
 import net.sf.anathema.hero.experience.ExperienceModel;
-import net.sf.anathema.hero.health.HealthModel;
+import net.sf.anathema.hero.health.model.HealthModel;
 import net.sf.anathema.hero.initialization.SimpleModelTreeEntry;
 import net.sf.anathema.hero.model.HeroModelFactory;
 import net.sf.anathema.hero.points.PointsModel;

@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.health;
+package net.sf.anathema.hero.health.model;
 
 public interface IPainToleranceProvider {
 

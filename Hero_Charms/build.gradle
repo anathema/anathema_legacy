@@ -4,9 +4,10 @@ dependencies {
     compile project(':Hero_Abilities')
     compile project(':Hero_Attributes')
     compile project(':Hero_Concept')
+    compile project(':Hero_Health')
+    compile project(':Hero_Sheet')
     compile project(':Hero_Spiritual')
     compile project(':Hero_Traits')
-    compile project(':Hero_Sheet')
     compile project(':Magic_Description')
     testCompile testDependencies
     testCompile project(path: ':Platform', configuration: 'tests')

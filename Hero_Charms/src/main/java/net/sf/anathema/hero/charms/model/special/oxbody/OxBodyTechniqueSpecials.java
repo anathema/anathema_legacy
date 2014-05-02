@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.charms.model.special.oxbody;
 
 import net.sf.anathema.hero.charms.model.special.CharmSpecialsModel;
-import net.sf.anathema.hero.health.IHealthLevelProvider;
+import net.sf.anathema.hero.health.model.IHealthLevelProvider;
 
 public interface OxBodyTechniqueSpecials extends CharmSpecialsModel {
   OxBodyCategory[] getCategories();

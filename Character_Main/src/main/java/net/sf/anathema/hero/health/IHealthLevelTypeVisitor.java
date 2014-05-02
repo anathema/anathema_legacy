@@ -1,4 +1,4 @@
-package net.sf.anathema.health;
+package net.sf.anathema.hero.health;
 
 public interface IHealthLevelTypeVisitor {
 
