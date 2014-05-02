@@ -24,6 +24,7 @@ public class RepositoryPreferencePresenter implements PreferencePresenter {
     initRepoDisplay();
     initBrowseForFolder();
     initResetToDefault();
+    initShowInExplorer();
   }
 
   private void initResetToDefault() {
@@ -40,18 +41,33 @@ public class RepositoryPreferencePresenter implements PreferencePresenter {
 
   private void initBrowseForFolder() {
     Tool tool = view.addTool();
-    tool.setText(environment.getString("Preferences.Repository.Browse.Button"));
-    tool.setTooltip(environment.getString("Preferences.Repository.Browse.Tooltip"));
+    tool.setText(environment.getString("Preferences.Repository.Choose.Button"));
+    tool.setTooltip(environment.getString("Preferences.Repository.Choose.Tooltip"));
     tool.setCommand(new Command() {
       @Override
       public void execute() {
-        view.selectNewRepository("Preferences.Repository.Browse.Prompt");
+        view.selectNewRepository("Preferences.Repository.Choose.Prompt");
       }
     });
     view.whenRepositoryChangeIsRequested(new ObjectValueListener<Path>() {
       @Override
       public void valueChanged(Path path) {
         model.requestChangeOfRepositoryPath(path);
+      }
+    });
+  }
+
+  private void initShowInExplorer() {
+    if (!view.canOpenInExplorer()) {
+      return;
+    }
+    Tool tool = view.addTool();
+    tool.setText(environment.getString("Preferences.Repository.Browse.Button"));
+    tool.setTooltip(environment.getString("Preferences.Repository.Browse.Tooltip"));
+    tool.setCommand(new Command() {
+      @Override
+      public void execute() {
+        view.showInExplorer(model.getRepositoryPath());
       }
     });
   }

@@ -12,6 +12,10 @@ public class DesktopEnvironment {
     return isDesktopSupported();
   }
 
+  public static boolean isOpenSupported() {
+    return isDesktopSupported();
+  }
+
   public static void openOnDesktop(Path path) throws IOException {
     Desktop.getDesktop().open(path.toFile());
   }

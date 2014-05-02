@@ -3,6 +3,7 @@ package net.sf.anathema.framework.repository.preferences;
 import javafx.scene.Node;
 import javafx.stage.DirectoryChooser;
 import net.miginfocom.layout.CC;
+import net.sf.anathema.framework.desktop.DesktopEnvironment;
 import net.sf.anathema.framework.preferences.elements.PreferenceView;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ObjectValueListener;
@@ -15,6 +16,7 @@ import org.jmock.example.announcer.Announcer;
 import org.tbee.javafx.scene.layout.MigPane;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Path;
 
 @SuppressWarnings("UnusedDeclaration")
@@ -26,7 +28,7 @@ public class FxRepositoryPreferenceView implements PreferenceView, NodeHolder, R
   @Override
   public ITextView addRepositoryDisplay(String label) {
     FxTextView view = FxTextView.SingleLine(label);
-    pane.add(view.getNode());
+    pane.add(view.getNode(), new CC().alignX("right").alignY("top"));
     return view;
   }
 
@@ -38,7 +40,7 @@ public class FxRepositoryPreferenceView implements PreferenceView, NodeHolder, R
   @Override
   public Tool addTool() {
     FxButtonTool tool = FxButtonTool.ForAnyPurpose();
-    pane.add(tool.getNode(), new CC().alignX("right"));
+    pane.add(tool.getNode(), new CC().alignX("right").alignY("top"));
     return tool;
   }
 
@@ -56,5 +58,19 @@ public class FxRepositoryPreferenceView implements PreferenceView, NodeHolder, R
   @Override
   public void whenRepositoryChangeIsRequested(ObjectValueListener<Path> objectValueListener) {
     announcer.addListener(objectValueListener);
+  }
+
+  @Override
+  public void showInExplorer(Path repositoryPath) {
+    try {
+      DesktopEnvironment.openOnDesktop(repositoryPath);
+    } catch (IOException e) {
+      throw new RuntimeException("Please check via 'canOpenInExplorer()' before calling this method.", e);
+    }
+  }
+
+  @Override
+  public boolean canOpenInExplorer() {
+    return DesktopEnvironment.isOpenSupported();
   }
 }

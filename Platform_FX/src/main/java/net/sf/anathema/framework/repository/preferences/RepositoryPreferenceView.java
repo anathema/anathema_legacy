@@ -14,4 +14,8 @@ public interface RepositoryPreferenceView {
   void selectNewRepository(String prompt);
 
   void whenRepositoryChangeIsRequested(ObjectValueListener<Path> objectValueListener);
+
+  void showInExplorer(Path repositoryPath);
+
+  boolean canOpenInExplorer();
 }

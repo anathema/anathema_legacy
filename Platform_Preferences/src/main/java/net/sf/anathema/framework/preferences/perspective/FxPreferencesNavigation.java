@@ -28,7 +28,7 @@ public class FxPreferencesNavigation extends Navigation implements PreferencesNa
         trigger.setOnAction(new EventHandler<ActionEvent>() {
           @Override
           public void handle(ActionEvent actionEvent) {
-            preferencesView.show((NodeHolder)view);
+            preferencesView.show(title, (NodeHolder)view);
           }
         });
         return view;
