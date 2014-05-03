@@ -5,6 +5,7 @@ import net.sf.anathema.framework.preferences.elements.RegisteredPreferenceModel;
 import net.sf.anathema.framework.preferences.persistence.PreferenceKey;
 import net.sf.anathema.framework.preferences.persistence.PreferencePto;
 import net.sf.anathema.framework.preferences.persistence.PreferenceValue;
+import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.control.ChangeListener;
 import org.jmock.example.announcer.Announcer;
 
@@ -52,5 +53,15 @@ public class RepositoryPreferenceModel implements PreferenceModel {
 
   public void resetToDefault() {
     requestChangeOfRepositoryPath(defaultPath);
+  }
+
+  @Override
+  public void whenDirtied(Command command) {
+    whenLocationChanges(new ChangeListener() {
+      @Override
+      public void changeOccurred() {
+        command.execute();
+      }
+    });
   }
 }

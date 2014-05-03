@@ -1,12 +1,12 @@
 package net.sf.anathema.framework.preferences.perspective;
 
 import net.sf.anathema.framework.environment.Environment;
+import net.sf.anathema.framework.environment.ObjectFactory;
+import net.sf.anathema.framework.preferences.elements.PreferenceModel;
 import net.sf.anathema.framework.preferences.elements.PreferencePresenter;
 import net.sf.anathema.framework.preferences.elements.PreferenceView;
 import net.sf.anathema.framework.preferences.elements.RegisteredPreferencePresenter;
 import net.sf.anathema.framework.preferences.persistence.PreferencePto;
-import net.sf.anathema.framework.environment.ObjectFactory;
-import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.file.RelativePath;
 
@@ -19,6 +19,7 @@ public class PreferencesPresenter {
   private final PreferencesModel model;
   private final PreferencesPersister persister;
   private ObjectFactory objectFactory;
+  private final DirtyProxy dirtyProxy = new DirtyProxy();
 
   public PreferencesPresenter(Environment environment, PreferencesNavigation preferencesNavigation,
                               PreferencesModel model, PreferencesPersister persister, ObjectFactory objectFactory) {
@@ -31,15 +32,17 @@ public class PreferencesPresenter {
 
   public void initialize() {
     loadPreferences();
-    addSaveButtonToNavigation();
     initIndividualPresentations();
+    addSaveButtonToNavigation();
   }
 
   private void initIndividualPresentations() {
     Collection<PreferencePresenter> presenters = objectFactory.instantiateOrdered(RegisteredPreferencePresenter.class);
     for (PreferencePresenter presenter : presenters) {
       presenter.useEnvironment(environment);
-      presenter.useModel(model.find(presenter.getModelClass()));
+      PreferenceModel preferenceModel = model.find(presenter.getModelClass());
+      dirtyProxy.register(preferenceModel);
+      presenter.useModel(preferenceModel);
       PreferenceView view = preferencesNavigation.addSection(presenter.getTitle(), presenter.getViewClass());
       presenter.useView(view);
       presenter.initialize();
@@ -49,12 +52,12 @@ public class PreferencesPresenter {
   private void addSaveButtonToNavigation() {
     Tool tool = preferencesNavigation.addTool();
     tool.setIcon(new RelativePath("icons/TaskBarSave24.png"));
-    tool.setCommand(new Command() {
-      @Override
-      public void execute() {
-        savePreferences();
-      }
+    tool.setCommand(() -> {
+      savePreferences();
+      tool.disable();
     });
+    dirtyProxy.whenDirtied(() -> tool.enable());
+    tool.disable();
   }
 
   private void loadPreferences() {
