@@ -1,27 +1,15 @@
 package net.sf.anathema.platform.tree.view.draw;
 
 import net.sf.anathema.framework.ui.Coordinate;
+import net.sf.anathema.framework.ui.Vector;
 import net.sf.anathema.platform.tree.display.shape.AgnosticShape;
 import net.sf.anathema.platform.tree.display.shape.Polygon;
 import net.sf.anathema.platform.tree.display.shape.TransformedShape;
 import net.sf.anathema.platform.tree.display.transform.AgnosticTransform;
-import net.sf.anathema.platform.tree.display.transform.Rotation;
-import net.sf.anathema.platform.tree.display.transform.Translation;
-
-import static java.lang.Math.atan2;
 
 public class ArrowHead {
 
-  public static final AgnosticShape ArrowShape = createShape();
-
-  private static AgnosticShape createShape() {
-    Polygon arrowHead = new Polygon();
-    arrowHead.addPoint(0, 7);
-    arrowHead.addPoint(-14, -7);
-    arrowHead.addPoint(0, 0);
-    arrowHead.addPoint(14, -7);
-    return arrowHead;
-  }
+  private static final double ARROW_SIZE = 10;
 
   private final Coordinate penultimatePoint;
   private final Coordinate ultimatePoint;
@@ -32,16 +20,38 @@ public class ArrowHead {
   }
 
   public void paint(Canvas graphics) {
-    AgnosticTransform transform = createTransformation();
-    TransformedShape transformedShape = new TransformedShape(ArrowShape, transform);
+    AgnosticShape shape = createArrowShape();
+    TransformedShape transformedShape = new TransformedShape(shape, new AgnosticTransform());
     graphics.fill(transformedShape);
   }
 
-  private AgnosticTransform createTransformation() {
-    AgnosticTransform transform = new AgnosticTransform();
-    double angle = atan2(ultimatePoint.y - penultimatePoint.y, ultimatePoint.x - penultimatePoint.x);
-    transform.add(new Translation(ultimatePoint.x, ultimatePoint.y));
-    transform.add(new Rotation(angle - Math.PI / 2d));
-    return transform;
+  private AgnosticShape createArrowShape() {
+    Vector direction = calculateDirectionVector();
+    Vector normalizedDirection = normalizeVector(direction);
+
+    double xTranslation = normalizedDirection.dx * ARROW_SIZE;
+    double yTranslation = normalizedDirection.dy * ARROW_SIZE;
+    Coordinate arrowTarget = new Coordinate(ultimatePoint.x + xTranslation, ultimatePoint.y + yTranslation);
+    Coordinate arrowPoint1 = new Coordinate(ultimatePoint.x - xTranslation - yTranslation, ultimatePoint.y - yTranslation + xTranslation);
+    Coordinate arrowPoint2 = new Coordinate(ultimatePoint.x - xTranslation + yTranslation, ultimatePoint.y - yTranslation - xTranslation);
+
+    Polygon arrowHead = new Polygon();
+    arrowHead.addPoint(arrowTarget.x, arrowTarget.y);
+    arrowHead.addPoint(arrowPoint1.x, arrowPoint1.y);
+    arrowHead.addPoint(arrowPoint2.x, arrowPoint2.y);
+    return arrowHead;
+  }
+
+  private Vector normalizeVector(Vector direction) {
+    double length = Math.sqrt(direction.dx * direction.dx + direction.dy * direction.dy);
+    double unitDx = direction.dx / length;
+    double unitDy = direction.dy / length;
+    return new Vector(unitDx, unitDy);
+  }
+
+  private Vector calculateDirectionVector() {
+    double dx = ultimatePoint.x - penultimatePoint.x;
+    double dy = ultimatePoint.y - penultimatePoint.y;
+    return new Vector(dx, dy);
   }
 }
