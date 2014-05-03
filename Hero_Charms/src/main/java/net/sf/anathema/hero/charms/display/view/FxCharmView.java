@@ -25,7 +25,7 @@ import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
 public class FxCharmView implements CharmView, NodeHolder {
-  private final MigPane selectionPanel = new MigPane(withoutInsets().wrapAfter(4).fillX());
+  private final MigPane selectionPanel = new MigPane(withoutInsets().wrapAfter(4));
   private final MigPane content = new MigPane(fillWithoutInsets().wrapAfter(1));
   private final FxPolygonPanel viewComponent = new FxPolygonPanel();
   private final AgnosticTreeView treeView = new AgnosticTreeView(new AgnosticPolygonPanel(viewComponent));
