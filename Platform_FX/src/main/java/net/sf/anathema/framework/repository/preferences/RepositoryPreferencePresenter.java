@@ -5,8 +5,13 @@ import net.sf.anathema.framework.preferences.elements.PreferenceModel;
 import net.sf.anathema.framework.preferences.elements.PreferencePresenter;
 import net.sf.anathema.framework.preferences.elements.PreferenceView;
 import net.sf.anathema.framework.preferences.elements.RegisteredPreferencePresenter;
+import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
+import net.sf.anathema.lib.control.ChangeListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
+
+import java.nio.file.Path;
 
 @RegisteredPreferencePresenter
 public class RepositoryPreferencePresenter implements PreferencePresenter {
@@ -26,15 +31,30 @@ public class RepositoryPreferencePresenter implements PreferencePresenter {
     Tool tool = view.addTool();
     tool.setText(environment.getString("Preferences.Repository.Default.Button"));
     tool.setTooltip(environment.getString("Preferences.Repository.Default.Tooltip"));
-    tool.setCommand(() -> model.resetToDefault());
+    tool.setCommand(new Command() {
+      @Override
+      public void execute() {
+        model.resetToDefault();
+      }
+    });
   }
 
   private void initBrowseForFolder() {
     Tool tool = view.addTool();
     tool.setText(environment.getString("Preferences.Repository.Choose.Button"));
     tool.setTooltip(environment.getString("Preferences.Repository.Choose.Tooltip"));
-    tool.setCommand(() -> view.selectNewRepository("Preferences.Repository.Choose.Prompt"));
-    view.whenRepositoryChangeIsRequested(path -> model.requestChangeOfRepositoryPath(path));
+    tool.setCommand(new Command() {
+      @Override
+      public void execute() {
+        view.selectNewRepository("Preferences.Repository.Choose.Prompt");
+      }
+    });
+    view.whenRepositoryChangeIsRequested(new ObjectValueListener<Path>() {
+      @Override
+      public void valueChanged(Path path) {
+        model.requestChangeOfRepositoryPath(path);
+      }
+    });
   }
 
   private void initShowInExplorer() {
@@ -44,13 +64,23 @@ public class RepositoryPreferencePresenter implements PreferencePresenter {
     Tool tool = view.addTool();
     tool.setText(environment.getString("Preferences.Repository.Browse.Button"));
     tool.setTooltip(environment.getString("Preferences.Repository.Browse.Tooltip"));
-    tool.setCommand(() -> view.showInExplorer(model.getRepositoryPath()));
+    tool.setCommand(new Command() {
+      @Override
+      public void execute() {
+        view.showInExplorer(model.getRepositoryPath());
+      }
+    });
   }
 
   private void initRepoDisplay() {
     final ITextView textView = view.addRepositoryDisplay(environment.getString("Preferences.Repository.Label"));
     textView.setEnabled(false);
-    model.whenLocationChanges(() -> showRepoInView(textView));
+    model.whenLocationChanges(new ChangeListener() {
+      @Override
+      public void changeOccurred() {
+        showRepoInView(textView);
+      }
+    });
     showRepoInView(textView);
   }
 
