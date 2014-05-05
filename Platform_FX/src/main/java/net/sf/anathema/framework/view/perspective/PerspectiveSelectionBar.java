@@ -3,8 +3,8 @@ package net.sf.anathema.framework.view.perspective;
 import javafx.scene.Node;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.ToolBar;
-import net.sf.anathema.interaction.Command;
 import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.interaction.Command;
 import net.sf.anathema.platform.tool.FxToggleTool;
 
 public class PerspectiveSelectionBar {
@@ -17,8 +17,8 @@ public class PerspectiveSelectionBar {
   }
 
   public void addPerspective(final Perspective perspective, Resources resources) {
-    Command command = createCommand(perspective);
     FxToggleTool tool = FxToggleTool.create();
+    Command command = createCommand(perspective, tool);
     tool.setCommand(command);
     PerspectiveToggle toggle = new ToolPerspectiveToggle(tool, resources);
     perspective.configureToggle(toggle);
@@ -26,11 +26,12 @@ public class PerspectiveSelectionBar {
     tool.registerWithGroup(buttonGroup);
   }
 
-  private Command createCommand(final Perspective perspective) {
+  private Command createCommand(final Perspective perspective, FxToggleTool tool) {
       return new Command() {
       @Override
       public void execute() {
         perspectiveStack.show(perspective);
+        tool.select();
       }
     };
   }
