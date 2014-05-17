@@ -4,6 +4,10 @@ Exalted © 2001-2013 by White Wolf Publishing, Inc.
 
 Website: [anathema.github.com](http://anathema.github.com)
 
+## Release 5.1.4
+### Features
+* Shows Scrollbar if the screen area available doesn't suffice.
+
 ## Release 5.1.3
 
 ### Features

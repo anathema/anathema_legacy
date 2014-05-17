@@ -5,6 +5,7 @@ import net.sf.anathema.framework.swing.IView;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import java.awt.CardLayout;
 
 public class StackView implements IView {
@@ -17,7 +18,9 @@ public class StackView implements IView {
   }
 
   public void addView(CharacterIdentifier identifier, IView view) {
-    viewPanel.add(view.getComponent(), identifier.getId());
+    JComponent component = view.getComponent();
+    JScrollPane pane = new JScrollPane(component);
+    viewPanel.add(pane, identifier.getId());
     viewPanel.revalidate();
     viewPanel.repaint();
   }

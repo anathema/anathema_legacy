@@ -3,7 +3,10 @@ package net.sf.anathema.character.perspective;
 import net.sf.anathema.character.perspective.model.CharacterIdentifier;
 import net.sf.anathema.character.perspective.model.CharacterModel;
 import net.sf.anathema.character.perspective.model.ItemSystemModel;
+import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.Resources;
+
+import java.text.MessageFormat;
 
 public class CharacterGridPresenter {
 
@@ -26,6 +29,11 @@ public class CharacterGridPresenter {
   }
 
   private void initPresentation(final CharacterModel character) {
-    new CharacterButtonPresenter(resources, selector, character, view).initPresentation();
+    try {
+      new CharacterButtonPresenter(resources, selector, character, view).initPresentation();
+    } catch (Exception e) {
+      String printName = character.getDescriptiveFeatures().getPrintName();
+      Logger.getLogger(CharacterGridPresenter.class).error(MessageFormat.format("Could not initialize character ''{0}''", printName), e);
+    }
   }
 }
