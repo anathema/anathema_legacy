@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.trait;
+package net.sf.anathema.hero.abilities;
 
 import net.sf.anathema.character.main.template.abilities.GroupedTraitType;
 import net.sf.anathema.hero.dummy.models.NullCasteCollection;

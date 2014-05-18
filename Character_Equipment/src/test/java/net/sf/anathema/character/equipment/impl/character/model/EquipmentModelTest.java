@@ -1,6 +1,7 @@
 package net.sf.anathema.character.equipment.impl.character.model;
 
 import net.sf.anathema.character.equipment.dummy.DummyEquipmentObject;
+import net.sf.anathema.hero.abilities.template.AbilitiesTemplate;
 import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 import net.sf.anathema.character.main.traits.context.CreationTraitValueStrategy;
 import net.sf.anathema.hero.BasicCharacterTestCase;
@@ -30,7 +31,7 @@ public class EquipmentModelTest {
     hero.addModel(new SpecialtiesModelImpl());
     hero.addModel(new StatsModelImpl());
     hero.addModel(new TraitModelImpl());
-    hero.addModel(new AbilitiesModelImpl());
+    hero.addModel(new AbilitiesModelImpl(new AbilitiesTemplate()));
     AttributeModel attributeModel = new AttributeModelImpl();
     DummyHeroEnvironment context = new DummyHeroEnvironment();
     attributeModel.initialize(context, hero);

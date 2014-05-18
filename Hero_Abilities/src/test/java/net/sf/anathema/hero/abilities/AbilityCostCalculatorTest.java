@@ -1,5 +1,6 @@
 package net.sf.anathema.hero.abilities;
 
+import net.sf.anathema.hero.abilities.template.AbilitiesTemplate;
 import net.sf.anathema.hero.advance.AbstractBonusPointTestCase;
 import net.sf.anathema.character.main.library.trait.FavorableTraitCost;
 import net.sf.anathema.character.main.library.trait.Trait;
@@ -64,7 +65,7 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
   }
 
   private AbilityPointCosts costs;
-  private AbilitiesModelImpl abilityModel = new AbilitiesModelImpl();
+  private AbilitiesModelImpl abilityModel = new AbilitiesModelImpl(new AbilitiesTemplate());
   private DummyHero dummyHero = new DummyHero();
 
   private Trait setFavoredAbilityTo(AbilityType abilityType, int value) {
@@ -85,7 +86,7 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
 
   @Before
   public void setUp() throws Exception {
-    this.abilityModel = new AbilitiesModelImpl();
+    this.abilityModel = new AbilitiesModelImpl(new AbilitiesTemplate());
     dummyHero.addModel(abilityModel);
     dummyHero.addModel(new DummyTraitModel());
     dummyHero.addModel(new DummyHeroConcept());

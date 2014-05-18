@@ -9,6 +9,7 @@ import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.creation.FavorableTraitFactory;
 import net.sf.anathema.character.main.traits.creation.TypedTraitTemplateFactory;
 import net.sf.anathema.character.main.traits.groups.IIdentifiedCasteTraitTypeGroup;
+import net.sf.anathema.hero.abilities.template.AbilitiesTemplate;
 import net.sf.anathema.hero.concept.CasteCollection;
 import net.sf.anathema.hero.concept.HeroConcept;
 import net.sf.anathema.hero.concept.HeroConceptFetcher;
@@ -32,6 +33,10 @@ public class AbilitiesModelImpl extends DefaultTraitMap implements AbilitiesMode
   private IIdentifiedCasteTraitTypeGroup[] abilityTraitGroups;
   private Hero hero;
 
+  public AbilitiesModelImpl(AbilitiesTemplate template) {
+
+  }
+
   @Override
   public Identifier getId() {
     return ID;
@@ -43,8 +48,9 @@ public class AbilitiesModelImpl extends DefaultTraitMap implements AbilitiesMode
     HeroConcept concept = HeroConceptFetcher.fetch(hero);
     HeroTemplate template = hero.getTemplate();
     CasteCollection casteCollection = concept.getCasteCollection();
-    this.abilityTraitGroups = new AbilityTypeGroupFactory().createTraitGroups(casteCollection, template.getAbilityGroups());
-    IncrementChecker incrementChecker = createFavoredAbilityIncrementChecker(template, this);
+    GroupedTraitType[] abilityGroups = template.getAbilityGroups();
+    this.abilityTraitGroups = new AbilityTypeGroupFactory().createTraitGroups(casteCollection, abilityGroups);
+    IncrementChecker incrementChecker = createFavoredAbilityIncrementChecker(template, this, abilityGroups);
     addFavorableTraits(incrementChecker, new AbilityTemplateFactory(template.getTraitTemplateCollection().getTraitTemplateFactory()));
     TraitModel traitModel = TraitModelFetcher.fetch(hero);
     traitModel.addTraits(getAll());
@@ -58,10 +64,10 @@ public class AbilitiesModelImpl extends DefaultTraitMap implements AbilitiesMode
     }
   }
 
-  private IncrementChecker createFavoredAbilityIncrementChecker(HeroTemplate template, TraitMap traitMap) {
+  private IncrementChecker createFavoredAbilityIncrementChecker(HeroTemplate template, TraitMap traitMap, GroupedTraitType[] abilityGroups) {
     int maxFavoredAbilityCount = template.getCreationPoints().getAbilityCreationPoints().getFavorableTraitCount();
     List<TraitType> abilityTypes = new ArrayList<>();
-    for (GroupedTraitType traitType : template.getAbilityGroups()) {
+    for (GroupedTraitType traitType : abilityGroups) {
       abilityTypes.add(traitType.getTraitType());
     }
     return new FavoredIncrementChecker(maxFavoredAbilityCount, abilityTypes.toArray(new TraitType[abilityTypes.size()]), traitMap);

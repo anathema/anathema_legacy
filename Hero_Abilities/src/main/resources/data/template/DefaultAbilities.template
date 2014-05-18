@@ -1,0 +1,16 @@
+{
+  groups: [
+    {
+      id: "War",
+      traits: ["Archery", "Athletics", "Awareness", "Dodge", "Integrity", "MartialArts", "Melee", "Resistance", "Thrown", "War"]
+    },
+    {
+      id: "Life",
+      traits: ["Craft", "Larceny", "Linguistics", "Performance", "Presence", "Ride", "Sail", "Socialize", "Stealth", "Survival"]
+    },
+     {
+      id: "Wisdom",
+      traits: ["Bureaucracy", "Investigation", "Lore", "Medicine", "Occult"]
+    }
+  ]
+}
