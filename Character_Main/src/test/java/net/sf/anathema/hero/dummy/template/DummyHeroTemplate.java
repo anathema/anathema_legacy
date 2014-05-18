@@ -109,10 +109,6 @@ public class DummyHeroTemplate implements HeroTemplate {
   }
 
   private static class DummyMagicTemplate implements IMagicTemplate {
-    @Override
-    public boolean canBuyFromFreePicks(Magic magic) {
-      return true;
-    }
 
     @Override
     public ISpellMagicTemplate getSpellMagic() {

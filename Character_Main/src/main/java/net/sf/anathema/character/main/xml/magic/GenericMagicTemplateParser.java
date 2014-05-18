@@ -16,15 +16,10 @@ import java.lang.reflect.InvocationTargetException;
 
 public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<GenericMagicTemplate> {
 
-  private static final String TAG_FREE_PICKS_PREDICATE = "freePicksPredicate";
   private static final Object VALUE_NONE = "None";
   private static final String TAG_SPELL_TEMPLATE = "spellTemplate";
   private static final String ATTRIB_MAXIMUM_SORCERY_CIRCLE = "maximumSorceryCircle";
   private static final String ATTRIB_MAXIMUM_NECROMANCY_CIRCLE = "maximumNecromancyCircle";
-  private static final String ATTRIB_DEFAULT_RESPONSE = "defaultResponse";
-  private static final String TAG_ID_EXCEPTION = "idException";
-  private static final String ATTRIB_ID = "id";
-  private static final String TAG_GROUP_EXCEPTION = "groupException";
   private static final String ATTRIB_SUB_TEMPLATE = "subTemplate";
   private final HeroTemplate hostTemplate;
 
@@ -41,7 +36,6 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
   @Override
   public GenericMagicTemplate parseTemplate(Element element) throws PersistenceException {
     GenericMagicTemplate basicTemplate = getBasicTemplate(element);
-    setFreePicksPredicate(basicTemplate, element);
     setSpellTemplate(basicTemplate, element);
     return basicTemplate;
   }
@@ -82,21 +76,5 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
       e.printStackTrace();
     }
     basicTemplate.setSpellTemplate(template);
-  }
-
-  private void setFreePicksPredicate(GenericMagicTemplate basicTemplate, Element element) {
-    Element freePicksElement = element.element(TAG_FREE_PICKS_PREDICATE);
-    if (freePicksElement == null) {
-      return;
-    }
-    boolean response = ElementUtilities.getBooleanAttribute(freePicksElement, ATTRIB_DEFAULT_RESPONSE, true);
-    CustomizableFreePicksPredicate predicate = new CustomizableFreePicksPredicate(response);
-    for (Element idException : ElementUtilities.elements(freePicksElement, TAG_ID_EXCEPTION)) {
-      predicate.addIdException(idException.attributeValue(ATTRIB_ID));
-    }
-    for (Element idException : ElementUtilities.elements(freePicksElement, TAG_GROUP_EXCEPTION)) {
-      predicate.addCharmGroupException(idException.attributeValue(ATTRIB_ID));
-    }
-    basicTemplate.setFreePicksPredicate(predicate);
   }
 }

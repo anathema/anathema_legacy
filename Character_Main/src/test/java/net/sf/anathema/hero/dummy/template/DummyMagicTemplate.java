@@ -8,20 +8,13 @@ import net.sf.anathema.character.main.template.magic.ISpellMagicTemplate;
 public class DummyMagicTemplate implements IMagicTemplate {
 
   private final ISpellMagicTemplate spellTemplate;
-  private final Predicate<Magic> freePicksPredicate;
 
-  public DummyMagicTemplate(Predicate<Magic> freePicksPredicate, ISpellMagicTemplate spellTemplate) {
-    this.freePicksPredicate = freePicksPredicate;
+  public DummyMagicTemplate(ISpellMagicTemplate spellTemplate) {
     this.spellTemplate = spellTemplate;
   }
 
   @Override
   public ISpellMagicTemplate getSpellMagic() {
     return spellTemplate;
-  }
-
-  @Override
-  public boolean canBuyFromFreePicks(Magic magic) {
-    return freePicksPredicate.apply(magic);
   }
 }

@@ -85,7 +85,7 @@ public class SimpleDummyCharacterTemplate implements HeroTemplate {
 
   @Override
   public IMagicTemplate getMagicTemplate() {
-    return new DummyMagicTemplate(null, null);
+    return new DummyMagicTemplate(null);
   }
 
   @Override
