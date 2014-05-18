@@ -3,7 +3,7 @@ package net.sf.anathema.hero.traits.sheet.encoder;
 import com.itextpdf.text.pdf.PdfContentByte;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
-import net.sf.anathema.character.main.traits.groups.IdentifiedTraitTypeList;
+import net.sf.anathema.character.main.traits.lists.IdentifiedTraitTypeList;
 import net.sf.anathema.hero.sheet.pdf.encoder.boxes.AbstractContentEncoder;
 import net.sf.anathema.hero.sheet.pdf.encoder.general.Bounds;
 import net.sf.anathema.hero.sheet.pdf.encoder.general.Position;

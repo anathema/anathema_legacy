@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.abilities;
 
 import net.sf.anathema.character.main.template.abilities.GroupedTraitType;
-import net.sf.anathema.character.main.traits.groups.IdentifiedTraitTypeList;
+import net.sf.anathema.character.main.traits.lists.IdentifiedTraitTypeList;
 import net.sf.anathema.hero.abilities.model.AbilityTypeGroupFactory;
 import net.sf.anathema.hero.concept.CasteCollection;
 import net.sf.anathema.hero.concept.model.concept.ConfigurableCasteCollection;

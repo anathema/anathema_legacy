@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.template.parser;
 
 import junit.framework.TestCase;
-import net.sf.anathema.character.main.traits.groups.AllAbilityTraitTypeList;
+import net.sf.anathema.character.main.traits.lists.AllAbilityTraitTypeList;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.xml.trait.GenericRestrictedTraitTemplate;
 import net.sf.anathema.character.main.xml.trait.alternate.AlternateMinimumTraitTemplateParser;

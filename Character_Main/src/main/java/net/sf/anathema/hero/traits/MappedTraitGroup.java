@@ -3,7 +3,7 @@ package net.sf.anathema.hero.traits;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.TraitGroup;
 import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.traits.groups.IdentifiedTraitTypeList;
+import net.sf.anathema.character.main.traits.lists.IdentifiedTraitTypeList;
 import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;

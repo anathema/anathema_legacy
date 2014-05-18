@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.xml.abilitygroup;
 
 import net.sf.anathema.character.main.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.traits.groups.TraitTypeList;
+import net.sf.anathema.character.main.traits.lists.TraitTypeList;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 import net.sf.anathema.lib.lang.clone.ICloneable;
 

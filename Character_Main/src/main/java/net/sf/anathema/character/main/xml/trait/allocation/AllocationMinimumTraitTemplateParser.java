@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.xml.trait.allocation;
 
 import net.sf.anathema.character.main.traits.LowerableState;
 import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.traits.groups.TraitTypeList;
+import net.sf.anathema.character.main.traits.lists.TraitTypeList;
 import net.sf.anathema.character.main.traits.limitation.EssenceBasedLimitation;
 import net.sf.anathema.character.main.xml.trait.GenericRestrictedTraitTemplate;
 import net.sf.anathema.character.main.xml.trait.GenericTraitTemplate;

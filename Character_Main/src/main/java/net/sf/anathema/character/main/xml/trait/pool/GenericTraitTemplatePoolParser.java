@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.xml.trait.pool;
 
 import net.sf.anathema.character.main.traits.ITraitTemplate;
 import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.traits.groups.TraitTypeList;
+import net.sf.anathema.character.main.traits.lists.TraitTypeList;
 import net.sf.anathema.character.main.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.main.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.main.xml.trait.GenericRestrictedTraitTemplate;

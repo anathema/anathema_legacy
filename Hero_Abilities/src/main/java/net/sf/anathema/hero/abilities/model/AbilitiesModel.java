@@ -2,7 +2,7 @@ package net.sf.anathema.hero.abilities.model;
 
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.traits.groups.IdentifiedTraitTypeList;
+import net.sf.anathema.character.main.traits.lists.IdentifiedTraitTypeList;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.hero.traits.TraitMap;
 import net.sf.anathema.lib.util.Identifier;

@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.attributes.dummy;
 
 import net.sf.anathema.character.main.library.trait.TraitGroup;
-import net.sf.anathema.character.main.traits.groups.IdentifiedTraitTypeList;
+import net.sf.anathema.character.main.traits.lists.IdentifiedTraitTypeList;
 import net.sf.anathema.hero.attributes.model.AttributeModel;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.model.Hero;

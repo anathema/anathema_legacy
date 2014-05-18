@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.traits.groups;
+package net.sf.anathema.character.main.traits.lists;
 
 import net.sf.anathema.character.main.traits.types.VirtueType;
 

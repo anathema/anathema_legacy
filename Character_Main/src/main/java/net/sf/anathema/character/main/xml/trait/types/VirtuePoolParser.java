@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.xml.trait.types;
 
-import net.sf.anathema.character.main.traits.groups.AllVirtueTraitTypeList;
-import net.sf.anathema.character.main.traits.groups.DefaultTraitTypeList;
+import net.sf.anathema.character.main.traits.lists.AllVirtueTraitTypeList;
+import net.sf.anathema.character.main.traits.lists.DefaultTraitTypeList;
 import net.sf.anathema.character.main.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.main.xml.trait.GenericTraitTemplateFactory;
 import net.sf.anathema.character.main.xml.trait.pool.GenericTraitTemplatePool;

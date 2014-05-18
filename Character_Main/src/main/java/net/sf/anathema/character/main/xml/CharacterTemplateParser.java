@@ -2,8 +2,8 @@ package net.sf.anathema.character.main.xml;
 
 import net.sf.anathema.character.main.framework.ICharacterTemplateRegistryCollection;
 import net.sf.anathema.character.main.template.ITemplateType;
-import net.sf.anathema.character.main.traits.groups.AllAbilityTraitTypeList;
-import net.sf.anathema.character.main.traits.groups.AllAttributeTraitTypeList;
+import net.sf.anathema.character.main.traits.lists.AllAbilityTraitTypeList;
+import net.sf.anathema.character.main.traits.lists.AllAttributeTraitTypeList;
 import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.character.main.xml.abilitygroup.GenericGroupedTraitTypeProvider;
 import net.sf.anathema.character.main.xml.abilitygroup.TraitTypeGroupTemplateParser;

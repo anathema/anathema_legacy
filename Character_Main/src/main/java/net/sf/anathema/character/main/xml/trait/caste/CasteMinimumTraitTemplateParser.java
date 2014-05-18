@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.xml.trait.caste;
 
-import net.sf.anathema.character.main.traits.groups.TraitTypeList;
+import net.sf.anathema.character.main.traits.lists.TraitTypeList;
 import net.sf.anathema.character.main.xml.trait.GenericRestrictedTraitTemplate;
 import net.sf.anathema.character.main.xml.trait.GenericTraitTemplate;
 import net.sf.anathema.character.main.xml.trait.GenericTraitTemplateParser;

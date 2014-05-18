@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.xml.abilitygroup;
 
-import net.sf.anathema.character.main.traits.groups.TraitTypeList;
+import net.sf.anathema.character.main.traits.lists.TraitTypeList;
 import net.sf.anathema.character.main.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.main.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.lib.exception.PersistenceException;
