@@ -1,7 +1,6 @@
 <exaltedCharacterTemplate characterType="Solar" subtemplate="default">
     <general>
         <edition edition="SecondEdition"/>
-        <abilityGroups uses="template/SolarAbilityGroup2nd.template"/>
         <attributeGroups uses="trait/DefaultAttributeGroup.template"/>
         <essence uses="DefaultEssence.template"/>
         <traitCollection uses="trait/DefaultTraitCollection.template"/>
