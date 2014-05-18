@@ -1,4 +1,4 @@
-<templateHolder>
+<configuration>
 
   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
     <encoder>
@@ -17,4 +17,4 @@
     <appender-ref ref="STDOUT" />
     <appender-ref ref="FILE" />
   </root>
-</templateHolder>
+</configuration>
