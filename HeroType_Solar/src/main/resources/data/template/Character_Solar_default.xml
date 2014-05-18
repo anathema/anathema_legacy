@@ -9,7 +9,6 @@
         <presentation uses="template/SolarPresentation2nd.template"/>
         <additionalRules uses="template/SolarAdditionalRules2nd.template">
             <revisedIntimacies value="true"/>
-            <willpowerVirtueBased value="false"/>
         </additionalRules>
          <healthTemplate>
             <toughnessControllingTrait type="Resistance"/>

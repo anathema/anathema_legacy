@@ -31,11 +31,6 @@ public class SimpleDummyCharacterTemplate implements HeroTemplate {
   }
 
   @Override
-  public GroupedTraitType[] getAbilityGroups() {
-    return new GroupedTraitType[0];
-  }
-
-  @Override
   public GroupedTraitType[] getAttributeGroups() {
     return new GroupedTraitType[0];
   }

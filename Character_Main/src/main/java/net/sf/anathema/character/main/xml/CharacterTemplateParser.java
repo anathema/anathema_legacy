@@ -2,6 +2,7 @@ package net.sf.anathema.character.main.xml;
 
 import net.sf.anathema.character.main.framework.ICharacterTemplateRegistryCollection;
 import net.sf.anathema.character.main.template.ITemplateType;
+import net.sf.anathema.character.main.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.main.traits.lists.AllAbilityTraitTypeList;
 import net.sf.anathema.character.main.traits.lists.AllAttributeTraitTypeList;
 import net.sf.anathema.character.main.type.CharacterTypes;
@@ -30,7 +31,6 @@ import org.dom4j.Element;
 
 public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCharacterTemplate> {
 
-  private static final String TAG_ABILITY_GROUPS = "abilityGroups";
   private static final String TAG_ATTRIBUTE_GROUPS = "attributeGroups";
   private static final String TAG_CREATION = "creation";
   private static final String TAG_CREATION_POINTS = "creationPoints";
@@ -89,17 +89,6 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
   private void updateTemplateType(Element element, GenericCharacterTemplate characterTemplate) throws PersistenceException {
     ITemplateType templateType = new TemplateTypeParser(characterTypes).parse(element);
     characterTemplate.setTemplateType(templateType);
-  }
-
-  private void setAbilityGroups(Element generalElement, GenericCharacterTemplate characterTemplate) throws PersistenceException {
-    Element abilityGroupElement = generalElement.element(TAG_ABILITY_GROUPS);
-    if (abilityGroupElement == null) {
-      return;
-    }
-    IXmlTemplateRegistry<GenericGroupedTraitTypeProvider> registry = registryCollection.getTraitGroupTemplateRegistry();
-    TraitTypeGroupTemplateParser parser = new TraitTypeGroupTemplateParser(registry, AllAbilityTraitTypeList.getInstance());
-    GenericGroupedTraitTypeProvider abilityGroups = parser.parseTemplate(abilityGroupElement);
-    characterTemplate.setAbilityGroups(abilityGroups.getTraitTypeGroups());
   }
 
   private void setAttributeGroups(Element generalElement, GenericCharacterTemplate characterTemplate) throws PersistenceException {
@@ -162,7 +151,6 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     if (generalElement == null) {
       return;
     }
-    setAbilityGroups(generalElement, characterTemplate);
     setAttributeGroups(generalElement, characterTemplate);
     setEssenceTemplate(generalElement, characterTemplate);
     setTraitCollection(generalElement, characterTemplate);

@@ -17,8 +17,6 @@ public interface HeroTemplate {
 
   IPresentationProperties getPresentationProperties();
 
-  GroupedTraitType[] getAbilityGroups();
-
   GroupedTraitType[] getAttributeGroups();
 
   BonusPointCosts getBonusPointCosts();

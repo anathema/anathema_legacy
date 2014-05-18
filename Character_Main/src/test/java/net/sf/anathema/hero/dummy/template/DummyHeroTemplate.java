@@ -42,16 +42,6 @@ public class DummyHeroTemplate implements HeroTemplate {
   }
 
   @Override
-  public GroupedTraitType[] getAbilityGroups() {
-    AbilityType[] all = AbilityType.values();
-    GroupedTraitType[] abilityTypes = new GroupedTraitType[all.length];
-    for (int index = 0; index < all.length; index++) {
-      abilityTypes[index] = new GroupedTraitType(all[index], AbilityGroupType.Life.getId(), new ArrayList<String>());
-    }
-    return abilityTypes;
-  }
-
-  @Override
   public ITemplateType getTemplateType() {
     return type;
   }

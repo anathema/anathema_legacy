@@ -37,16 +37,10 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
   private GenericBonusPointCosts bonusPointCosts = new GenericBonusPointCosts();
   private GenericCreationPoints creationPoints = new GenericCreationPoints();
   private GenericEssenceTemplate essenceTemplate;
-  private GroupedTraitType[] abilityGroups;
   private GroupedTraitType[] attributeGroups;
   private GenericPresentationTemplate presentationTemplate;
   private IHealthTemplate healthTemplate = new GenericHealthTemplate();
   private final List<ConfiguredModel> models = new ArrayList<>();
-
-  @Override
-  public GroupedTraitType[] getAbilityGroups() {
-    return abilityGroups;
-  }
 
   @Override
   public BonusPointCosts getBonusPointCosts() {
@@ -101,10 +95,6 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
   @Override
   public IMagicTemplate getMagicTemplate() {
     return magicTemplate;
-  }
-
-  public void setAbilityGroups(GroupedTraitType[] abilityGroups) {
-    this.abilityGroups = abilityGroups;
   }
 
   public void setEssenceTemplate(GenericEssenceTemplate essenceTemplate) {
