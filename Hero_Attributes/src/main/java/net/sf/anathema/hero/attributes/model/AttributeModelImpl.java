@@ -7,6 +7,7 @@ import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITraitTemplateFactory;
 import net.sf.anathema.character.main.traits.AttributeTemplateFactory;
+import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.creation.FavorableTraitFactory;
 import net.sf.anathema.character.main.traits.creation.TypedTraitTemplateFactory;
 import net.sf.anathema.character.main.traits.groups.IIdentifiedCasteTraitTypeGroup;
@@ -24,6 +25,8 @@ import net.sf.anathema.hero.traits.TraitModel;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.hero.traits.model.event.TraitValueChangedListener;
 import net.sf.anathema.lib.util.Identifier;
+
+import java.util.Collections;
 
 public class AttributeModelImpl extends DefaultTraitMap implements AttributeModel, HeroModel {
 
@@ -90,7 +93,7 @@ public class AttributeModelImpl extends DefaultTraitMap implements AttributeMode
   public Trait[] getAll(AttributeGroupType groupType) {
     for (IIdentifiedTraitTypeGroup group : getAttributeTypeGroups()) {
       if (group.getGroupId().equals(groupType)) {
-        return getTraits(group.getAllGroupTypes());
+        return getTraits(group.getAll().toArray(new TraitType[0]));
       }
     }
     return new Trait[0];

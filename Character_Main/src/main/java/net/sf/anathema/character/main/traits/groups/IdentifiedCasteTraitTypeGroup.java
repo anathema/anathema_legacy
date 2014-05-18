@@ -19,8 +19,7 @@ public class IdentifiedCasteTraitTypeGroup extends IdentifiedTraitTypeGroup impl
 
   @Override
   public CasteType[] getTraitCasteTypes(TraitType traitType) {
-    TraitType[] types = getAllGroupTypes();
-    for (TraitType type : types) {
+    for (TraitType type : getAll()) {
       if (type == traitType) {
         List<CasteType> casteTypes = castesByTrait.get(traitType);
         return casteTypes.toArray(new CasteType[casteTypes.size()]);

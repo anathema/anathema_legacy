@@ -21,7 +21,7 @@ public class MappedTraitGroup implements TraitGroup {
   @Override
   public Trait[] getGroupTraits() {
     List<Trait> traits = new ArrayList<>();
-    for (TraitType type : typeGroup.getAllGroupTypes()) {
+    for (TraitType type : typeGroup.getAll()) {
       traits.add(traitMap.getTrait(type));
     }
     return traits.toArray(new Trait[traits.size()]);

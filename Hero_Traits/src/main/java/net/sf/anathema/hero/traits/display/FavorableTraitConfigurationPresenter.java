@@ -7,8 +7,10 @@ import net.sf.anathema.character.main.library.trait.favorable.IFavorableStateCha
 import net.sf.anathema.character.main.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.main.library.trait.view.GroupedFavorableTraitConfigurationView;
 import net.sf.anathema.character.main.template.presentation.IPresentationProperties;
+import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.main.traits.groups.TraitTypeGroup;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.display.ExtensibleTraitView;
 import net.sf.anathema.hero.experience.ExperienceChange;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
@@ -20,11 +22,8 @@ import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.lib.collection.IdentityMapping;
-import net.sf.anathema.framework.environment.Resources;
 
-import static net.sf.anathema.character.main.library.trait.favorable.FavorableState.Caste;
-import static net.sf.anathema.character.main.library.trait.favorable.FavorableState.Default;
-import static net.sf.anathema.character.main.library.trait.favorable.FavorableState.Favored;
+import static net.sf.anathema.character.main.library.trait.favorable.FavorableState.*;
 
 public class FavorableTraitConfigurationPresenter {
 
@@ -49,7 +48,7 @@ public class FavorableTraitConfigurationPresenter {
   public void init(String typePrefix) {
     for (IIdentifiedTraitTypeGroup traitTypeGroup : traitTypeGroups) {
       view.startNewTraitGroup(resources.getString(typePrefix + "." + traitTypeGroup.getGroupId().getId()));
-      addTraitViews(traitConfiguration.getTraits(traitTypeGroup.getAllGroupTypes()));
+      addTraitViews(traitConfiguration.getTraits(traitTypeGroup.getAll().toArray(new TraitType[0])));
     }
     hero.getChangeAnnouncer().addListener(new FlavoredChangeListener() {
       @Override

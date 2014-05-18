@@ -32,7 +32,7 @@ public class SpecialtiesEncoder extends AbstractNamedTraitEncoder implements INa
     String title = getResources().getString("Sheet.AbilitySubHeader.Specialties");
     List<ValuedTraitReference> references = new ArrayList<>();
     for (IIdentifiedTraitTypeGroup group : AbilityModelFetcher.fetch(session.getHero()).getAbilityTypeGroups()) {
-      for (TraitType traitType : group.getAllGroupTypes()) {
+      for (TraitType traitType : group.getAll()) {
         Collections.addAll(references, getTraitReferences(content.getSpecialties(traitType), traitType));
       }
     }

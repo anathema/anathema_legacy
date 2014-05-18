@@ -25,7 +25,7 @@ public class FavorableTraitFactory {
 
   public Trait[] createTraits(IIdentifiedCasteTraitTypeGroup group, IncrementChecker favoredIncrementChecker, TypedTraitTemplateFactory factory) {
     List<Trait> newTraits = new ArrayList<>();
-    for (TraitType type : group.getAllGroupTypes()) {
+    for (TraitType type : group.getAll()) {
       CasteType[] casteTypes = group.getTraitCasteTypes(type);
       Trait trait = createTrait(type, casteTypes, favoredIncrementChecker, factory);
       newTraits.add(trait);

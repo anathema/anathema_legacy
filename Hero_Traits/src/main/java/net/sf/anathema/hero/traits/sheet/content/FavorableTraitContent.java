@@ -29,7 +29,7 @@ public abstract class FavorableTraitContent extends AbstractSubBoxContent {
 
   public int getTraitMax() {
     IIdentifiedTraitTypeGroup group = getIdentifiedTraitTypeGroups()[0];
-    TraitType traitType = group.getAllGroupTypes()[0];
+    TraitType traitType = group.getAll().get(0);
     ITraitTemplate template = hero.getTemplate().getTraitTemplateCollection().getTraitTemplate(traitType);
     return template.getLimitation().getAbsoluteLimit(hero);
   }

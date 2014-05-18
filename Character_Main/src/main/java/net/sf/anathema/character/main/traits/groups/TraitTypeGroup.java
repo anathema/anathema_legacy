@@ -4,6 +4,7 @@ import net.sf.anathema.character.main.traits.TraitType;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -12,7 +13,7 @@ public class TraitTypeGroup implements ITraitTypeGroup {
   public static TraitType[] getAllTraitTypes(ITraitTypeGroup... traitTypeGroups) {
     List<TraitType> traitTypes = new ArrayList<>();
     for (ITraitTypeGroup group : traitTypeGroups) {
-      Collections.addAll(traitTypes, group.getAllGroupTypes());
+      traitTypes.addAll(group.getAll());
     }
     return traitTypes.toArray(new TraitType[traitTypes.size()]);
   }
@@ -34,8 +35,13 @@ public class TraitTypeGroup implements ITraitTypeGroup {
   }
 
   @Override
-  public final TraitType[] getAllGroupTypes() {
-    return traitTypes;
+  public List<TraitType> getAll() {
+    return Arrays.asList(traitTypes);
+  }
+
+  @Override
+  public int size() {
+    return traitTypes.length;
   }
 
   @Override

@@ -37,7 +37,7 @@ public class GenericCharmContentHelper {
     List<TraitType> traits = new ArrayList<>();
     FavoringTraitType type = hero.getTemplate().getTemplateType().getCharacterType().getFavoringTraitType();
     for (ITraitTypeGroup group : getCharmTraitGroups()) {
-      Collections.addAll(traits, group.getAllGroupTypes());
+      traits.addAll(group.getAll());
     }
     if (traits.isEmpty()) {
       Collections.addAll(traits, type.getTraitTypesForGenericCharms());

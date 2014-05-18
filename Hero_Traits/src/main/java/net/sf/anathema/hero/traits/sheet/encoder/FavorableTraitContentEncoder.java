@@ -68,11 +68,11 @@ public class FavorableTraitContentEncoder<C extends FavorableTraitContent> exten
     float height = 0;
     float groupLabelWidth = IVoidStateFormatConstants.LINE_HEIGHT + IVoidStateFormatConstants.TEXT_PADDING;
     float traitX = position.x + groupLabelWidth;
-    TraitType[] traitTypes = group.getAllGroupTypes();
+    List<TraitType> traitTypes = group.getAll();
     float groupLabelX = position.x + 4;
     float markerX = groupLabelX + IVoidStateFormatConstants.TEXT_PADDING;
-    for (int index = 0; index < traitTypes.length; index++) {
-      TraitType traitType = traitTypes[index];
+    for (int index = 0; index < group.size(); index++) {
+      TraitType traitType = traitTypes.get(index);
       float yPosition = position.y - (index + 1) * traitEncoder.getTraitHeight();
       if (content.getMarkedTraitTypes().contains(traitType)) {
         encodeMarker(graphics, new Position(markerX, yPosition + 1));

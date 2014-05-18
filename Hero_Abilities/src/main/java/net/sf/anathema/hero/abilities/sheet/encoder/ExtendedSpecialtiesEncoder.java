@@ -34,7 +34,7 @@ public class ExtendedSpecialtiesEncoder extends AbstractNamedTraitEncoder implem
     SpecialtiesContentCandidate content = new SpecialtiesContentCandidate(reportSession.getHero());
     List<ValuedTraitReference> references = new ArrayList<>();
     for (IIdentifiedTraitTypeGroup group :  AbilityModelFetcher.fetch(reportSession.getHero()).getAbilityTypeGroups()) {
-      for (TraitType traitType : group.getAllGroupTypes()) {
+      for (TraitType traitType : group.getAll()) {
         Collections.addAll(references, getTraitReferences(content.getSpecialties(traitType), traitType));
       }
     }
