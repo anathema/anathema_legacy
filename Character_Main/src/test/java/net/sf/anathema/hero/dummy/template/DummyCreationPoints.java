@@ -22,11 +22,6 @@ public class DummyCreationPoints implements ICreationPoints {
   }
 
   @Override
-  public int getSpecialtyCreationPoints() {
-    throw new NotYetImplementedException();
-  }
-
-  @Override
   public IAbilityCreationPoints getAbilityCreationPoints() {
     return abilityCreationPoints;
   }

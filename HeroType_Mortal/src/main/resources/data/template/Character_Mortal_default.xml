@@ -1,6 +1,5 @@
 <exaltedCharacterTemplate characterType="Mortal" subtemplate="default">
     <general>
-        <edition edition="SecondEdition"/>
         <attributeGroups uses="trait/DefaultAttributeGroup.template"/>
         <essence uses="template/MortalEssence.template"/>
         <traitCollection uses="trait/MortalTraitCollection.template"/>
@@ -23,7 +22,7 @@
         <model id="EssencePool"/>
         <model id="Health"/>
         <model id="Specialties"/>
-        <model id="SpecialtiesPoints"/>
+        <model id="SpecialtiesPoints" template="MortalSpecialtyPoints"/>
         <model id="Languages"/>
         <model id="Intimacies"/>
         <model id="Equipment"/>

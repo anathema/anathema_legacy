@@ -8,6 +8,7 @@ import net.sf.anathema.character.main.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.main.template.creation.IGenericSpecialty;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.points.HeroBonusPointCalculator;
+import net.sf.anathema.hero.specialties.template.SpecialtyPointsTemplate;
 import net.sf.anathema.hero.traits.TraitMap;
 
 import java.util.ArrayList;
@@ -21,10 +22,10 @@ public class SpecialtiesBonusPointCalculator implements HeroBonusPointCalculator
   private int specialtyBonusPointCosts;
   private int specialtyDotSum;
 
-  public SpecialtiesBonusPointCalculator(Hero hero, TraitMap traitMap, int specialtyPoints) {
+  public SpecialtiesBonusPointCalculator(Hero hero, TraitMap traitMap, SpecialtyPointsTemplate costTemplate) {
     this.hero = hero;
     this.traitMap = traitMap;
-    this.specialtyCalculator = new SpecialtyCalculator(traitMap, specialtyPoints);
+    this.specialtyCalculator = new SpecialtyCalculator(traitMap, costTemplate.creationPoints);
   }
 
   @Override

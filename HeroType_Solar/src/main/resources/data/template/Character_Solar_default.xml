@@ -1,6 +1,5 @@
 <exaltedCharacterTemplate characterType="Solar" subtemplate="default">
     <general>
-        <edition edition="SecondEdition"/>
         <attributeGroups uses="trait/DefaultAttributeGroup.template"/>
         <essence uses="DefaultEssence.template"/>
         <traitCollection uses="trait/DefaultTraitCollection.template"/>
@@ -32,7 +31,7 @@
         <model id="Languages"/>
         <model id="Intimacies"/>
         <model id="Specialties"/>
-        <model id="SpecialtiesPoints"/>
+        <model id="SpecialtiesPoints" template="SolarSpecialtyPoints"/>
         <model id="SolarVirtueFlaw"/>
         <model id="Equipment"/>
     </models>
@@ -43,7 +42,6 @@
             <abilityDots general="18" favored="10" favoredPicks="5"/>
             <backgroundDots count="7"/>
             <virtueDots count="5"/>
-            <specialtyDots count="4"/>
             <bonusPoints count="18"/>
             <charmPicks favored="0" general="10"/>
         </creationPoints>

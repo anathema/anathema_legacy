@@ -19,11 +19,6 @@ public class TestCreationPoints extends AbstractCreationPoints {
   }
 
   @Override
-  public int getSpecialtyCreationPoints() {
-    return 0;
-  }
-
-  @Override
   public IAbilityCreationPoints getAbilityCreationPoints() {
     return new AbilityCreationPoints(5, 10, 15);
   }

@@ -1,5 +1,5 @@
 {
-  "willpower": {
-    "isVirtueBased": false
+  willpower: {
+    isVirtueBased: false
   }
 }

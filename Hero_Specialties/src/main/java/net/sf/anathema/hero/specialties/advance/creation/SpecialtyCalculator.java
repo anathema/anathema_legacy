@@ -1,7 +1,6 @@
 package net.sf.anathema.hero.specialties.advance.creation;
 
 import net.sf.anathema.character.main.template.creation.IGenericSpecialty;
-import net.sf.anathema.character.main.template.experience.AbilityPointCosts;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.hero.traits.TraitMap;
 
@@ -29,7 +28,6 @@ public class SpecialtyCalculator {
     unfavoredSpecialties.removeAll(favoredSpecialties);
     int favoredCount = favoredSpecialties.size();
     int unfavoredCount = unfavoredSpecialties.size();
-
     unfavoredCount -= specialtyPoints;
     if (unfavoredCount < 0) {
       favoredCount = Math.max(favoredCount + unfavoredCount, 0);
@@ -47,47 +45,5 @@ public class SpecialtyCalculator {
       }
     }
     return favoredSpecialties;
-  }
-
-  public void filterAffordableSpecialties(List<IGenericSpecialty> specialties, int availablePoints, AbilityPointCosts costs) {
-    int overhead = getSpecialtyCosts(specialties) - availablePoints;
-    if (overhead <= 0 || availablePoints == 0) {
-      return;
-    }
-    List<IGenericSpecialty> favoredSpecialties = getFavoredSpecialties(specialties);
-    List<IGenericSpecialty> unfavoredSpecialties = new ArrayList<>(specialties);
-    unfavoredSpecialties.removeAll(favoredSpecialties);
-    int favoredRest = favoredSpecialties.size() % costs.getFavoredSpecialtyDotsPerPoint();
-    if (overhead > 0 && favoredRest > 0) {
-      overhead--;
-      removeSpecifiedNumber(favoredSpecialties, favoredRest);
-    }
-    while (overhead > 0 && favoredSpecialties.size() > 0) {
-      removeSpecifiedNumber(favoredSpecialties, costs.getFavoredSpecialtyDotsPerPoint());
-      overhead--;
-    }
-    int unfavoredRest = unfavoredSpecialties.size() % costs.getDefaultSpecialtyDotsPerPoint();
-    if (overhead > 0 && unfavoredRest > 0) {
-      overhead--;
-      removeSpecifiedNumber(unfavoredSpecialties, unfavoredRest);
-    }
-    while (overhead > 0 && unfavoredSpecialties.size() > 0) {
-      removeSpecifiedNumber(unfavoredSpecialties, costs.getDefaultSpecialtyDotsPerPoint());
-      overhead--;
-    }
-    List<IGenericSpecialty> affordableSpecialties = new ArrayList<>();
-    affordableSpecialties.addAll(favoredSpecialties);
-    affordableSpecialties.addAll(unfavoredSpecialties);
-    specialties.retainAll(affordableSpecialties);
-  }
-
-  private void removeSpecifiedNumber(List<IGenericSpecialty> specialties, int count) {
-    for (int i = 0; i < count; i++) {
-      specialties.remove(0);
-    }
-  }
-
-  private int getSpecialtyCosts(List<IGenericSpecialty> specialties) {
-    return getSpecialtyCosts(specialties.toArray(new IGenericSpecialty[specialties.size()]));
   }
 }
