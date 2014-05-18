@@ -16,13 +16,5 @@ public interface ISpellMagicTemplate {
   
   boolean canLearnSpellMagic();
 
-  boolean knowsSorcery(Charm[] knownCharms);
-
-  boolean knowsNecromancy(Charm[] knownCharms);
-  
-  boolean knowsSpellMagic(Charm[] knownCharms);
-  
-  boolean knowsSpellMagic(Charm[] knownCharms, CircleType circle);
-  
   boolean canLearnSpell(Spell spell, Charm[] knownCharms);
 }

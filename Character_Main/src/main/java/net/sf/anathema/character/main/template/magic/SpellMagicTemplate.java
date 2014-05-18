@@ -53,36 +53,6 @@ public class SpellMagicTemplate implements ISpellMagicTemplate {
   }
 
   @Override
-  public boolean knowsSorcery(Charm[] knownCharms) {
-    for (CircleType circle : sorceryCircles) {
-      if (knowsSpellMagic(knownCharms, circle)) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  @Override
-  public boolean knowsNecromancy(Charm[] knownCharms) {
-    for (CircleType circle : necromancyCircles) {
-      if (knowsSpellMagic(knownCharms, circle)) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  @Override
-  public boolean knowsSpellMagic(Charm[] knownCharms) {
-    return knowsSorcery(knownCharms) || knowsNecromancy(knownCharms);
-  }
-
-  @Override
-  public boolean knowsSpellMagic(Charm[] knownCharms, CircleType circle) {
-    return knowsCharm(getInitiation(circle), knownCharms);
-  }
-
-  @Override
   public boolean canLearnSpell(Spell spell, Charm[] knownCharms) {
     return knowsCharm(getInitiation(spell.getCircleType()), knownCharms);
   }
