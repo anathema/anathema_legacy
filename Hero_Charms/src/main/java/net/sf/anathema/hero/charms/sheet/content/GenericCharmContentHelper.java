@@ -4,8 +4,8 @@ import net.sf.anathema.character.main.template.magic.AbilityFavoringType;
 import net.sf.anathema.character.main.template.magic.AttributeFavoringType;
 import net.sf.anathema.character.main.template.magic.FavoringTraitType;
 import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.traits.groups.IIdentifiedTraitTypeGroup;
-import net.sf.anathema.character.main.traits.groups.ITraitTypeGroup;
+import net.sf.anathema.character.main.traits.groups.IdentifiedTraitTypeList;
+import net.sf.anathema.character.main.traits.groups.TraitTypeList;
 import net.sf.anathema.hero.abilities.model.AbilityModelFetcher;
 import net.sf.anathema.hero.attributes.model.AttributesModelFetcher;
 import net.sf.anathema.hero.model.Hero;
@@ -22,7 +22,7 @@ public class GenericCharmContentHelper {
     this.hero = hero;
   }
 
-  private IIdentifiedTraitTypeGroup[] getCharmTraitGroups() {
+  private IdentifiedTraitTypeList[] getCharmTraitGroups() {
     FavoringTraitType type = hero.getTemplate().getTemplateType().getCharacterType().getFavoringTraitType();
     if (type.equals(new AbilityFavoringType())) {
       return AbilityModelFetcher.fetch(hero).getAbilityTypeGroups();
@@ -30,13 +30,13 @@ public class GenericCharmContentHelper {
     if (type.equals(new AttributeFavoringType())) {
       return AttributesModelFetcher.fetch(hero).getAttributeTypeGroups();
     }
-    return new IIdentifiedTraitTypeGroup[0];
+    return new IdentifiedTraitTypeList[0];
   }
 
   public List<TraitType> getGenericCharmTraits() {
     List<TraitType> traits = new ArrayList<>();
     FavoringTraitType type = hero.getTemplate().getTemplateType().getCharacterType().getFavoringTraitType();
-    for (ITraitTypeGroup group : getCharmTraitGroups()) {
+    for (TraitTypeList group : getCharmTraitGroups()) {
       traits.addAll(group.getAll());
     }
     if (traits.isEmpty()) {

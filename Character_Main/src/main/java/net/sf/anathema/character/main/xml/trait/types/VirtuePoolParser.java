@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.xml.trait.types;
 
-import net.sf.anathema.character.main.traits.groups.AllVirtueTraitTypeGroup;
-import net.sf.anathema.character.main.traits.groups.TraitTypeGroup;
+import net.sf.anathema.character.main.traits.groups.AllVirtueTraitTypeList;
+import net.sf.anathema.character.main.traits.groups.DefaultTraitTypeList;
 import net.sf.anathema.character.main.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.main.xml.trait.GenericTraitTemplateFactory;
 import net.sf.anathema.character.main.xml.trait.pool.GenericTraitTemplatePool;
@@ -25,7 +25,7 @@ public class VirtuePoolParser extends AbstractPoolTemplateParser {
   }
 
   @Override
-  protected TraitTypeGroup getTraitTypeGroup() {
-    return AllVirtueTraitTypeGroup.getInstance();
+  protected DefaultTraitTypeList getTraitTypeGroup() {
+    return AllVirtueTraitTypeList.getInstance();
   }
 }

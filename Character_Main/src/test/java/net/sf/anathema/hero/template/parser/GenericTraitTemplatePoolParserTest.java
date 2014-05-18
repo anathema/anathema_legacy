@@ -2,7 +2,7 @@ package net.sf.anathema.hero.template.parser;
 
 import junit.framework.TestCase;
 import net.sf.anathema.character.main.traits.ITraitTemplate;
-import net.sf.anathema.character.main.traits.groups.AllAbilityTraitTypeGroup;
+import net.sf.anathema.character.main.traits.groups.AllAbilityTraitTypeList;
 import net.sf.anathema.character.main.traits.limitation.StaticTraitLimitation;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.xml.trait.pool.GenericTraitTemplatePool;
@@ -18,7 +18,7 @@ public class GenericTraitTemplatePoolParserTest extends TestCase {
   @Override
   protected void setUp() throws Exception {
     templateRegistry = new DummyXmlTemplateRegistry<>();
-    abilityParser = new GenericTraitTemplatePoolParser(templateRegistry, AllAbilityTraitTypeGroup.getInstance());
+    abilityParser = new GenericTraitTemplatePoolParser(templateRegistry, AllAbilityTraitTypeList.getInstance());
   }
 
   public void testParseDefault() throws Exception {

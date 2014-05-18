@@ -3,7 +3,7 @@ package net.sf.anathema.hero.traits;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.TraitGroup;
 import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.traits.groups.IIdentifiedTraitTypeGroup;
+import net.sf.anathema.character.main.traits.groups.IdentifiedTraitTypeList;
 import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;
@@ -11,9 +11,9 @@ import java.util.List;
 
 public class MappedTraitGroup implements TraitGroup {
   private final TraitMap traitMap;
-  private final IIdentifiedTraitTypeGroup typeGroup;
+  private final IdentifiedTraitTypeList typeGroup;
 
-  public MappedTraitGroup(TraitMap traitMap, IIdentifiedTraitTypeGroup typeGroup) {
+  public MappedTraitGroup(TraitMap traitMap, IdentifiedTraitTypeList typeGroup) {
     this.traitMap = traitMap;
     this.typeGroup = typeGroup;
   }
@@ -29,6 +29,6 @@ public class MappedTraitGroup implements TraitGroup {
 
   @Override
   public Identifier getGroupId() {
-    return typeGroup.getGroupId();
+    return typeGroup.getListId();
   }
 }

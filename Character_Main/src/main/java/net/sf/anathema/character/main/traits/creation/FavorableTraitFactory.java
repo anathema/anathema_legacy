@@ -8,7 +8,7 @@ import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.main.library.trait.rules.FavorableTraitRules;
 import net.sf.anathema.character.main.traits.ITraitTemplate;
 import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.traits.groups.IIdentifiedCasteTraitTypeGroup;
+import net.sf.anathema.character.main.traits.groups.IIdentifiedCasteTraitTypeList;
 import net.sf.anathema.hero.concept.CasteType;
 import net.sf.anathema.hero.model.Hero;
 
@@ -23,7 +23,7 @@ public class FavorableTraitFactory {
     this.hero = hero;
   }
 
-  public Trait[] createTraits(IIdentifiedCasteTraitTypeGroup group, IncrementChecker favoredIncrementChecker, TypedTraitTemplateFactory factory) {
+  public Trait[] createTraits(IIdentifiedCasteTraitTypeList group, IncrementChecker favoredIncrementChecker, TypedTraitTemplateFactory factory) {
     List<Trait> newTraits = new ArrayList<>();
     for (TraitType type : group.getAll()) {
       CasteType[] casteTypes = group.getTraitCasteTypes(type);

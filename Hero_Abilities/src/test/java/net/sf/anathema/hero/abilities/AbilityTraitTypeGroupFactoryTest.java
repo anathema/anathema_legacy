@@ -1,9 +1,7 @@
 package net.sf.anathema.hero.abilities;
 
 import net.sf.anathema.character.main.template.abilities.GroupedTraitType;
-import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.traits.groups.IIdentifiedTraitTypeGroup;
-import net.sf.anathema.character.main.traits.types.AbilityType;
+import net.sf.anathema.character.main.traits.groups.IdentifiedTraitTypeList;
 import net.sf.anathema.hero.abilities.model.AbilityTypeGroupFactory;
 import net.sf.anathema.hero.concept.CasteCollection;
 import net.sf.anathema.hero.concept.model.concept.ConfigurableCasteCollection;
@@ -11,11 +9,8 @@ import net.sf.anathema.hero.concept.template.caste.CasteTemplate;
 import net.sf.anathema.hero.dummy.models.NullCasteCollection;
 import org.junit.Test;
 
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 
-import static java.util.Arrays.asList;
 import static net.sf.anathema.character.main.template.abilities.AbilityGroupType.Life;
 import static net.sf.anathema.character.main.template.abilities.AbilityGroupType.War;
 import static net.sf.anathema.character.main.traits.types.AbilityType.*;
@@ -34,10 +29,10 @@ public class AbilityTraitTypeGroupFactoryTest {
             new GroupedTraitType(Archery, "War", Collections.<String>emptyList()),
             new GroupedTraitType(Melee, "War", Collections.<String>emptyList())
     };
-    IIdentifiedTraitTypeGroup[] typeGroups = factory.createTraitGroups(casteCollection, abilityTypes);
+    IdentifiedTraitTypeList[] typeGroups = factory.createTraitGroups(casteCollection, abilityTypes);
     assertEquals(1, typeGroups.length);
     assertThat(typeGroups[0].getAll(), contains(Archery, Melee));
-    assertEquals(War, typeGroups[0].getGroupId());
+    assertEquals(War, typeGroups[0].getListId());
   }
 
   @Test
@@ -47,12 +42,12 @@ public class AbilityTraitTypeGroupFactoryTest {
             new GroupedTraitType(Archery, "War", Collections.<String>emptyList()),
             new GroupedTraitType(Medicine, "Life", Collections.<String>emptyList())
     };
-    IIdentifiedTraitTypeGroup[] typeGroups = factory.createTraitGroups(casteCollection, abilityTypes);
+    IdentifiedTraitTypeList[] typeGroups = factory.createTraitGroups(casteCollection, abilityTypes);
     assertEquals(2, typeGroups.length);
     assertThat(typeGroups[0].getAll(), contains(Archery));
-    assertEquals(War, typeGroups[0].getGroupId());
+    assertEquals(War, typeGroups[0].getListId());
     assertThat(typeGroups[1].getAll(), contains(Medicine));
-    assertEquals(Life, typeGroups[1].getGroupId());
+    assertEquals(Life, typeGroups[1].getListId());
   }
 
   @Test
@@ -63,9 +58,9 @@ public class AbilityTraitTypeGroupFactoryTest {
     GroupedTraitType[] abilityTypes = new GroupedTraitType[]{
             new GroupedTraitType(Archery, TEST_CASTE_ID, Collections.singletonList(TEST_CASTE_ID)),
             new GroupedTraitType(Melee, TEST_CASTE_ID, Collections.singletonList(TEST_CASTE_ID))};
-    IIdentifiedTraitTypeGroup[] typeGroups = factory.createTraitGroups(casteCollection, abilityTypes);
+    IdentifiedTraitTypeList[] typeGroups = factory.createTraitGroups(casteCollection, abilityTypes);
     assertEquals(1, typeGroups.length);
     assertThat(typeGroups[0].getAll(), contains(Archery, Melee));
-    assertSame(casteCollection.getById(TEST_CASTE_ID), typeGroups[0].getGroupId());
+    assertSame(casteCollection.getById(TEST_CASTE_ID), typeGroups[0].getListId());
   }
 }

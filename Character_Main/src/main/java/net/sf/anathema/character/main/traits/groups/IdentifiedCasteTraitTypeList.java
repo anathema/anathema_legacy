@@ -7,12 +7,12 @@ import net.sf.anathema.lib.util.Identifier;
 
 import java.util.List;
 
-public class IdentifiedCasteTraitTypeGroup extends IdentifiedTraitTypeGroup implements IIdentifiedCasteTraitTypeGroup {
+public class IdentifiedCasteTraitTypeList extends DefaultIdentifiedTraitTypeList implements IIdentifiedCasteTraitTypeList {
 
   private final MultiEntryMap<TraitType, CasteType> castesByTrait;
 
-  public IdentifiedCasteTraitTypeGroup(TraitType[] traitTypes, Identifier groupId,
-                                       MultiEntryMap<TraitType, CasteType> castesByTrait) {
+  public IdentifiedCasteTraitTypeList(TraitType[] traitTypes, Identifier groupId,
+                                      MultiEntryMap<TraitType, CasteType> castesByTrait) {
     super(traitTypes, groupId);
     this.castesByTrait = castesByTrait;
   }

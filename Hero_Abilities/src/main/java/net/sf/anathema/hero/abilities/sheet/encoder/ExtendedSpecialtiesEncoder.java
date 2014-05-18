@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.abilities.sheet.encoder;
 
 import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.traits.groups.IIdentifiedTraitTypeGroup;
+import net.sf.anathema.character.main.traits.groups.IdentifiedTraitTypeList;
 import net.sf.anathema.hero.abilities.model.AbilityModelFetcher;
 import net.sf.anathema.hero.abilities.sheet.content.SpecialtiesContentCandidate;
 import net.sf.anathema.hero.sheet.pdf.encoder.boxes.ContentEncoder;
@@ -33,7 +33,7 @@ public class ExtendedSpecialtiesEncoder extends AbstractNamedTraitEncoder implem
   public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) {
     SpecialtiesContentCandidate content = new SpecialtiesContentCandidate(reportSession.getHero());
     List<ValuedTraitReference> references = new ArrayList<>();
-    for (IIdentifiedTraitTypeGroup group :  AbilityModelFetcher.fetch(reportSession.getHero()).getAbilityTypeGroups()) {
+    for (IdentifiedTraitTypeList group :  AbilityModelFetcher.fetch(reportSession.getHero()).getAbilityTypeGroups()) {
       for (TraitType traitType : group.getAll()) {
         Collections.addAll(references, getTraitReferences(content.getSpecialties(traitType), traitType));
       }

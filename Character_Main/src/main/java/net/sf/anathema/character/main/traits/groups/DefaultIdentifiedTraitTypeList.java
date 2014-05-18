@@ -3,17 +3,17 @@ package net.sf.anathema.character.main.traits.groups;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.lib.util.Identifier;
 
-public class IdentifiedTraitTypeGroup extends TraitTypeGroup implements IIdentifiedTraitTypeGroup {
+public class DefaultIdentifiedTraitTypeList extends DefaultTraitTypeList implements IdentifiedTraitTypeList {
 
   private final Identifier groupId;
 
-  public IdentifiedTraitTypeGroup(TraitType[] traitTypes, Identifier groupId) {
+  public DefaultIdentifiedTraitTypeList(TraitType[] traitTypes, Identifier groupId) {
     super(traitTypes);
     this.groupId = groupId;
   }
 
   @Override
-  public Identifier getGroupId() {
+  public Identifier getListId() {
     return groupId;
   }
 }

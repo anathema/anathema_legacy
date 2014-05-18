@@ -9,8 +9,8 @@ import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.creation.DefaultTraitFactory;
 import net.sf.anathema.character.main.traits.creation.FavorableTraitFactory;
 import net.sf.anathema.character.main.traits.creation.TypedTraitTemplateFactory;
-import net.sf.anathema.character.main.traits.groups.IIdentifiedCasteTraitTypeGroup;
-import net.sf.anathema.character.main.traits.groups.IdentifiedCasteTraitTypeGroup;
+import net.sf.anathema.character.main.traits.groups.IIdentifiedCasteTraitTypeList;
+import net.sf.anathema.character.main.traits.groups.IdentifiedCasteTraitTypeList;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.traits.types.OtherTraitType;
 import net.sf.anathema.hero.concept.CasteType;
@@ -28,8 +28,8 @@ public abstract class AbstractBonusPointTestCase {
     FavorableTraitFactory favorableTraitFactory = new FavorableTraitFactory(hero);
     IncrementChecker friendlyIncrementChecker = new FriendlyIncrementChecker();
     for (final AbilityType traitType : AbilityType.values()) {
-      IIdentifiedCasteTraitTypeGroup typeGroup =
-              new IdentifiedCasteTraitTypeGroup(new TraitType[]{traitType}, new SimpleIdentifier("Test"), new MultiEntryMap<TraitType, CasteType>());
+      IIdentifiedCasteTraitTypeList typeGroup =
+              new IdentifiedCasteTraitTypeList(new TraitType[]{traitType}, new SimpleIdentifier("Test"), new MultiEntryMap<TraitType, CasteType>());
       Trait trait = favorableTraitFactory.createTraits(typeGroup, friendlyIncrementChecker, new DummyTypedTraitTemplateFactory(traitType))[0];
       traitModel.addTraits(trait);
     }

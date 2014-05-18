@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.xml.abilitygroup;
 
-import net.sf.anathema.character.main.traits.groups.ITraitTypeGroup;
+import net.sf.anathema.character.main.traits.groups.TraitTypeList;
 import net.sf.anathema.character.main.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.main.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -18,9 +18,9 @@ public class TraitTypeGroupTemplateParser extends AbstractXmlTemplateParser<Gene
   private static final String ATTRIB_TYPE = "type";
   private static final String TAG_GROUP = "group";
   private static final String TAG_TRAIT = "trait";
-  private final ITraitTypeGroup traitTypeGroup;
+  private final TraitTypeList traitTypeGroup;
 
-  public TraitTypeGroupTemplateParser(IXmlTemplateRegistry<GenericGroupedTraitTypeProvider> templateRegistry, ITraitTypeGroup traitTypeGroup) {
+  public TraitTypeGroupTemplateParser(IXmlTemplateRegistry<GenericGroupedTraitTypeProvider> templateRegistry, TraitTypeList traitTypeGroup) {
     super(templateRegistry);
     this.traitTypeGroup = traitTypeGroup;
   }

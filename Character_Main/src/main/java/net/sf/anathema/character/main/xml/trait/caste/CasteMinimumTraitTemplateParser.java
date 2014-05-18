@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.xml.trait.caste;
 
-import net.sf.anathema.character.main.traits.groups.ITraitTypeGroup;
+import net.sf.anathema.character.main.traits.groups.TraitTypeList;
 import net.sf.anathema.character.main.xml.trait.GenericRestrictedTraitTemplate;
 import net.sf.anathema.character.main.xml.trait.GenericTraitTemplate;
 import net.sf.anathema.character.main.xml.trait.GenericTraitTemplateParser;
@@ -20,11 +20,11 @@ public class CasteMinimumTraitTemplateParser {
   private static final String TAG_ALLOCATION_MINIMUM_TRAITS = "allocationMinimumTraits";
   private static final String TAG_ALTERNATE_MINMUM_TRAITS = "alternateMinimumTraits";
   private static final String TAG_FREEBIE = "isFreebie";
-  private final ITraitTypeGroup type;
+  private final TraitTypeList type;
   private boolean isFreebie;
   private String caste;
 
-  public CasteMinimumTraitTemplateParser(ITraitTypeGroup type) {
+  public CasteMinimumTraitTemplateParser(TraitTypeList type) {
     this.type = type;
   }
 

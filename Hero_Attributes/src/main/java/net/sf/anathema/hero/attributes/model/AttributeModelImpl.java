@@ -10,8 +10,8 @@ import net.sf.anathema.character.main.traits.AttributeTemplateFactory;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.creation.FavorableTraitFactory;
 import net.sf.anathema.character.main.traits.creation.TypedTraitTemplateFactory;
-import net.sf.anathema.character.main.traits.groups.IIdentifiedCasteTraitTypeGroup;
-import net.sf.anathema.character.main.traits.groups.IIdentifiedTraitTypeGroup;
+import net.sf.anathema.character.main.traits.groups.IIdentifiedCasteTraitTypeList;
+import net.sf.anathema.character.main.traits.groups.IdentifiedTraitTypeList;
 import net.sf.anathema.character.main.traits.types.AttributeGroupType;
 import net.sf.anathema.hero.concept.CasteCollection;
 import net.sf.anathema.hero.concept.HeroConceptFetcher;
@@ -26,12 +26,10 @@ import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.hero.traits.model.event.TraitValueChangedListener;
 import net.sf.anathema.lib.util.Identifier;
 
-import java.util.Collections;
-
 public class AttributeModelImpl extends DefaultTraitMap implements AttributeModel, HeroModel {
 
   private HeroTemplate template;
-  private IIdentifiedCasteTraitTypeGroup[] attributeTraitGroups;
+  private IIdentifiedCasteTraitTypeList[] attributeTraitGroups;
   private Hero hero;
 
   @Override
@@ -69,7 +67,7 @@ public class AttributeModelImpl extends DefaultTraitMap implements AttributeMode
 
   public void addFavorableTraits(IncrementChecker incrementChecker, TypedTraitTemplateFactory factory) {
     FavorableTraitFactory favorableTraitFactory = createFactory();
-    for (IIdentifiedCasteTraitTypeGroup traitGroup : attributeTraitGroups) {
+    for (IIdentifiedCasteTraitTypeList traitGroup : attributeTraitGroups) {
       Trait[] traits = favorableTraitFactory.createTraits(traitGroup, incrementChecker, factory);
       addTraits(traits);
     }
@@ -79,20 +77,20 @@ public class AttributeModelImpl extends DefaultTraitMap implements AttributeMode
   public TraitGroup[] getTraitGroups() {
     TraitGroup[] groups = new TraitGroup[attributeTraitGroups.length];
     for (int index = 0; index < groups.length; index++) {
-      final IIdentifiedCasteTraitTypeGroup typeGroup = attributeTraitGroups[index];
+      final IIdentifiedCasteTraitTypeList typeGroup = attributeTraitGroups[index];
       groups[index] = new MappedTraitGroup(this, typeGroup);
     }
     return groups;
   }
 
   @Override
-  public IIdentifiedTraitTypeGroup[] getAttributeTypeGroups() {
+  public IdentifiedTraitTypeList[] getAttributeTypeGroups() {
     return attributeTraitGroups;
   }
 
   public Trait[] getAll(AttributeGroupType groupType) {
-    for (IIdentifiedTraitTypeGroup group : getAttributeTypeGroups()) {
-      if (group.getGroupId().equals(groupType)) {
+    for (IdentifiedTraitTypeList group : getAttributeTypeGroups()) {
+      if (group.getListId().equals(groupType)) {
         return getTraits(group.getAll().toArray(new TraitType[0]));
       }
     }

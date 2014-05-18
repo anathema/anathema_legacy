@@ -3,7 +3,7 @@ package net.sf.anathema.hero.traits.sheet.encoder;
 import com.itextpdf.text.pdf.PdfContentByte;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
-import net.sf.anathema.character.main.traits.groups.IIdentifiedTraitTypeGroup;
+import net.sf.anathema.character.main.traits.groups.IdentifiedTraitTypeList;
 import net.sf.anathema.hero.sheet.pdf.encoder.boxes.AbstractContentEncoder;
 import net.sf.anathema.hero.sheet.pdf.encoder.general.Bounds;
 import net.sf.anathema.hero.sheet.pdf.encoder.general.Position;
@@ -53,9 +53,9 @@ public class FavorableTraitContentEncoder<C extends FavorableTraitContent> exten
   }
 
   private float encodeTraitGroups(SheetGraphics graphics, FavorableTraitContent content, Position position, float width) {
-    IIdentifiedTraitTypeGroup[] groups = content.getIdentifiedTraitTypeGroups();
+    IdentifiedTraitTypeList[] groups = content.getIdentifiedTraitTypeGroups();
     float yPosition = position.y;
-    for (IIdentifiedTraitTypeGroup group : groups) {
+    for (IdentifiedTraitTypeList group : groups) {
       Position groupPosition = new Position(position.x, yPosition);
       yPosition -= encodeTraitGroup(graphics, content, group, groupPosition, width);
       yPosition -= IVoidStateFormatConstants.TEXT_PADDING;
@@ -63,7 +63,7 @@ public class FavorableTraitContentEncoder<C extends FavorableTraitContent> exten
     return yPosition;
   }
 
-  private float encodeTraitGroup(SheetGraphics graphics, FavorableTraitContent content, IIdentifiedTraitTypeGroup group, Position position,
+  private float encodeTraitGroup(SheetGraphics graphics, FavorableTraitContent content, IdentifiedTraitTypeList group, Position position,
                                  float width) {
     float height = 0;
     float groupLabelWidth = IVoidStateFormatConstants.LINE_HEIGHT + IVoidStateFormatConstants.TEXT_PADDING;
@@ -87,11 +87,11 @@ public class FavorableTraitContentEncoder<C extends FavorableTraitContent> exten
     return height;
   }
 
-  private void addGroupLabel(SheetGraphics graphics, FavorableTraitContent content, IIdentifiedTraitTypeGroup group, Position position) {
+  private void addGroupLabel(SheetGraphics graphics, FavorableTraitContent content, IdentifiedTraitTypeList group, Position position) {
     if (content.hasGroupLabel()) {
       return;
     }
-    String groupLabel = content.getGroupLabel(group.getGroupId());
+    String groupLabel = content.getGroupLabel(group.getListId());
     graphics.drawVerticalText(groupLabel, position, PdfContentByte.ALIGN_CENTER);
   }
 

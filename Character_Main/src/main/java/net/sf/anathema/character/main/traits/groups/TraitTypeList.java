@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.traits.TraitType;
 
 import java.util.List;
 
-public interface ITraitTypeGroup {
+public interface TraitTypeList {
 
   TraitType getById(String typeId);
 

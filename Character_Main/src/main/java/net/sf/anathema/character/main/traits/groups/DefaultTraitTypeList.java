@@ -5,14 +5,13 @@ import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
-public class TraitTypeGroup implements ITraitTypeGroup {
+public class DefaultTraitTypeList implements TraitTypeList {
 
-  public static TraitType[] getAllTraitTypes(ITraitTypeGroup... traitTypeGroups) {
+  public static TraitType[] getAllTraitTypes(TraitTypeList... traitTypeGroups) {
     List<TraitType> traitTypes = new ArrayList<>();
-    for (ITraitTypeGroup group : traitTypeGroups) {
+    for (TraitTypeList group : traitTypeGroups) {
       traitTypes.addAll(group.getAll());
     }
     return traitTypes.toArray(new TraitType[traitTypes.size()]);
@@ -20,7 +19,7 @@ public class TraitTypeGroup implements ITraitTypeGroup {
 
   private final TraitType[] traitTypes;
 
-  public TraitTypeGroup(TraitType[] traitTypes) {
+  public DefaultTraitTypeList(TraitType[] traitTypes) {
     this.traitTypes = traitTypes;
   }
 

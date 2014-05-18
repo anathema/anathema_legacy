@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.xml.trait.alternate;
 
 import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.traits.groups.ITraitTypeGroup;
+import net.sf.anathema.character.main.traits.groups.TraitTypeList;
 import net.sf.anathema.character.main.xml.trait.GenericRestrictedTraitTemplate;
 import net.sf.anathema.character.main.xml.trait.GenericTraitTemplate;
 import net.sf.anathema.character.main.xml.trait.GenericTraitTemplateParser;
@@ -20,9 +20,9 @@ public class AlternateMinimumTraitTemplateParser {
   private static final String TAG_TRAIT = "trait";
   private static final String ATTRIB_ID = "id";
   private static final String TAG_FREEBIE = "isFreebie";
-  private final ITraitTypeGroup traitTypeGroup;
+  private final TraitTypeList traitTypeGroup;
 
-  public AlternateMinimumTraitTemplateParser(ITraitTypeGroup traitTypeGroup) {
+  public AlternateMinimumTraitTemplateParser(TraitTypeList traitTypeGroup) {
     this.traitTypeGroup = traitTypeGroup;
   }
 

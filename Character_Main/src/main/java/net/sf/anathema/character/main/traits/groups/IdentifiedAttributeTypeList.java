@@ -5,17 +5,17 @@ import net.sf.anathema.character.main.traits.types.AttributeGroupType;
 import net.sf.anathema.character.main.traits.types.AttributeType;
 import net.sf.anathema.hero.concept.CasteType;
 
-public class IdentifiedAttributeTypeGroup extends TraitTypeGroup implements IIdentifiedCasteTraitTypeGroup {
+public class IdentifiedAttributeTypeList extends DefaultTraitTypeList implements IIdentifiedCasteTraitTypeList {
 
   private final AttributeGroupType groupType;
 
-  public IdentifiedAttributeTypeGroup(AttributeGroupType groupType) {
+  public IdentifiedAttributeTypeList(AttributeGroupType groupType) {
     super(AttributeType.getAllFor(groupType));
     this.groupType = groupType;
   }
 
   @Override
-  public AttributeGroupType getGroupId() {
+  public AttributeGroupType getListId() {
     return groupType;
   }
 

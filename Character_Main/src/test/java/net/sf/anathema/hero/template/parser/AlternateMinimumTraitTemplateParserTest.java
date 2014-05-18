@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.template.parser;
 
 import junit.framework.TestCase;
-import net.sf.anathema.character.main.traits.groups.AllAbilityTraitTypeGroup;
+import net.sf.anathema.character.main.traits.groups.AllAbilityTraitTypeList;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.xml.trait.GenericRestrictedTraitTemplate;
 import net.sf.anathema.character.main.xml.trait.alternate.AlternateMinimumTraitTemplateParser;
@@ -16,7 +16,7 @@ public class AlternateMinimumTraitTemplateParserTest extends TestCase {
                  "           <trait id=\"MartialArts\" startValue=\"1\" lowerableState=\"Default\" zeroLevel=\"0\">" +
                  "               <limitation type=\"Essence\"/>" + "               <minimum value=\"0\"/>" + "           </trait>" +
                  "       </alternateMinimumTraits>";
-    AlternateMinimumTraitTemplateParser parser = new AlternateMinimumTraitTemplateParser(AllAbilityTraitTypeGroup.getInstance());
+    AlternateMinimumTraitTemplateParser parser = new AlternateMinimumTraitTemplateParser(AllAbilityTraitTypeList.getInstance());
     GenericRestrictedTraitTemplate[] templates = parser.parseAlternateMinimumTraits(DocumentUtilities.read(xml).getRootElement());
     assertEquals(2, templates.length);
     assertEquals(AbilityType.Archery, templates[0].getTraitType());

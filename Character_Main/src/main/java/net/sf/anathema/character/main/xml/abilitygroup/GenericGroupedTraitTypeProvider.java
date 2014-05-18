@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.xml.abilitygroup;
 
 import net.sf.anathema.character.main.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.traits.groups.ITraitTypeGroup;
+import net.sf.anathema.character.main.traits.groups.TraitTypeList;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 import net.sf.anathema.lib.lang.clone.ICloneable;
 
@@ -13,9 +13,9 @@ public class GenericGroupedTraitTypeProvider implements ICloneable<GenericGroupe
 
   // This is volatile instead of final to allow clone to be implemented
   private volatile List<GroupedTraitType> groupedTraitTypes = new ArrayList<>();
-  private final ITraitTypeGroup traitTypeGroup;
+  private final TraitTypeList traitTypeGroup;
 
-  public GenericGroupedTraitTypeProvider(ITraitTypeGroup traitTypeGroup) {
+  public GenericGroupedTraitTypeProvider(TraitTypeList traitTypeGroup) {
     this.traitTypeGroup = traitTypeGroup;
   }
 

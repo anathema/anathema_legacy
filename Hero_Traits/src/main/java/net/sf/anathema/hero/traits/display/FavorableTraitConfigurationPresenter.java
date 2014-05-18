@@ -8,8 +8,8 @@ import net.sf.anathema.character.main.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.main.library.trait.view.GroupedFavorableTraitConfigurationView;
 import net.sf.anathema.character.main.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.traits.groups.IIdentifiedTraitTypeGroup;
-import net.sf.anathema.character.main.traits.groups.TraitTypeGroup;
+import net.sf.anathema.character.main.traits.groups.DefaultTraitTypeList;
+import net.sf.anathema.character.main.traits.groups.IdentifiedTraitTypeList;
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.display.ExtensibleTraitView;
 import net.sf.anathema.hero.experience.ExperienceChange;
@@ -30,12 +30,12 @@ public class FavorableTraitConfigurationPresenter {
   private final GroupedFavorableTraitConfigurationView view;
   private final IdentityMapping<Trait, ToggleTool> traitViewsByTrait = new IdentityMapping<>();
   private final Resources resources;
-  private final IIdentifiedTraitTypeGroup[] traitTypeGroups;
+  private final IdentifiedTraitTypeList[] traitTypeGroups;
   private final TraitMap traitConfiguration;
   private final IPresentationProperties presentationProperties;
   private Hero hero;
 
-  public FavorableTraitConfigurationPresenter(IIdentifiedTraitTypeGroup[] traitTypeGroups, Hero hero, GroupedFavorableTraitConfigurationView view,
+  public FavorableTraitConfigurationPresenter(IdentifiedTraitTypeList[] traitTypeGroups, Hero hero, GroupedFavorableTraitConfigurationView view,
                                               Resources resources) {
     this.hero = hero;
     this.traitTypeGroups = traitTypeGroups;
@@ -46,8 +46,8 @@ public class FavorableTraitConfigurationPresenter {
   }
 
   public void init(String typePrefix) {
-    for (IIdentifiedTraitTypeGroup traitTypeGroup : traitTypeGroups) {
-      view.startNewTraitGroup(resources.getString(typePrefix + "." + traitTypeGroup.getGroupId().getId()));
+    for (IdentifiedTraitTypeList traitTypeGroup : traitTypeGroups) {
+      view.startNewTraitGroup(resources.getString(typePrefix + "." + traitTypeGroup.getListId().getId()));
       addTraitViews(traitConfiguration.getTraits(traitTypeGroup.getAll().toArray(new TraitType[0])));
     }
     hero.getChangeAnnouncer().addListener(new FlavoredChangeListener() {
@@ -71,7 +71,7 @@ public class FavorableTraitConfigurationPresenter {
   }
 
   private Trait[] getAllTraits() {
-    return traitConfiguration.getTraits(TraitTypeGroup.getAllTraitTypes(traitTypeGroups));
+    return traitConfiguration.getTraits(DefaultTraitTypeList.getAllTraitTypes(traitTypeGroups));
   }
 
   private void addTraitViews(Trait[] traits) {

@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.xml.trait.pool;
 
 import net.sf.anathema.character.main.traits.ITraitTemplate;
 import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.traits.groups.ITraitTypeGroup;
+import net.sf.anathema.character.main.traits.groups.TraitTypeList;
 import net.sf.anathema.character.main.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.main.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.main.xml.trait.GenericRestrictedTraitTemplate;
@@ -28,10 +28,10 @@ public class GenericTraitTemplatePoolParser extends AbstractXmlTemplateParser<Ge
   private static final String TAG_ALLOCATION_MINIMUM_TRAITS = "allocationMinimumTraits";
   private static final String TAG_ALTERNATE_MINMUM_TRAITS = "alternateMinimumTraits";
   private static final String TAG_CASTE_MINIMUM_TRAITS = "casteMinimumTraits";
-  private final ITraitTypeGroup traitTypeGroup;
+  private final TraitTypeList traitTypeGroup;
   private final List<AllocationMinimumRestriction> family = new ArrayList<>();
 
-  public GenericTraitTemplatePoolParser(IXmlTemplateRegistry<GenericTraitTemplatePool> templateRegistry, ITraitTypeGroup traitTypeGroup) {
+  public GenericTraitTemplatePoolParser(IXmlTemplateRegistry<GenericTraitTemplatePool> templateRegistry, TraitTypeList traitTypeGroup) {
     super(templateRegistry);
     this.traitTypeGroup = traitTypeGroup;
   }

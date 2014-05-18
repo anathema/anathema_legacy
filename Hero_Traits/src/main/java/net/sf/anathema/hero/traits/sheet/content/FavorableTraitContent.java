@@ -2,7 +2,7 @@ package net.sf.anathema.hero.traits.sheet.content;
 
 import net.sf.anathema.character.main.traits.ITraitTemplate;
 import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.traits.groups.IIdentifiedTraitTypeGroup;
+import net.sf.anathema.character.main.traits.groups.IdentifiedTraitTypeList;
 import net.sf.anathema.hero.concept.CasteType;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.sheet.pdf.content.AbstractSubBoxContent;
@@ -23,12 +23,12 @@ public abstract class FavorableTraitContent extends AbstractSubBoxContent {
 
   public abstract List<? extends TraitType> getMarkedTraitTypes();
 
-  public abstract IIdentifiedTraitTypeGroup[] getIdentifiedTraitTypeGroups();
+  public abstract IdentifiedTraitTypeList[] getIdentifiedTraitTypeGroups();
 
   public abstract TraitMap getTraitMap();
 
   public int getTraitMax() {
-    IIdentifiedTraitTypeGroup group = getIdentifiedTraitTypeGroups()[0];
+    IdentifiedTraitTypeList group = getIdentifiedTraitTypeGroups()[0];
     TraitType traitType = group.getAll().get(0);
     ITraitTemplate template = hero.getTemplate().getTraitTemplateCollection().getTraitTemplate(traitType);
     return template.getLimitation().getAbsoluteLimit(hero);

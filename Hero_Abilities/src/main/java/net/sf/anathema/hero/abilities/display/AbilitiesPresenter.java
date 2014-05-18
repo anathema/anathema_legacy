@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.abilities.display;
 
 import net.sf.anathema.character.main.library.trait.view.GroupedFavorableTraitConfigurationView;
-import net.sf.anathema.character.main.traits.groups.IIdentifiedTraitTypeGroup;
+import net.sf.anathema.character.main.traits.groups.IdentifiedTraitTypeList;
 import net.sf.anathema.character.main.view.ColumnCount;
 import net.sf.anathema.hero.abilities.model.AbilityModelFetcher;
 import net.sf.anathema.hero.model.Hero;
@@ -13,7 +13,7 @@ public class AbilitiesPresenter {
   private final FavorableTraitConfigurationPresenter presenter;
 
   public AbilitiesPresenter(Hero hero, Resources resources, GroupedFavorableTraitConfigurationView view) {
-    IIdentifiedTraitTypeGroup[] traitTypeGroups = AbilityModelFetcher.fetch(hero).getAbilityTypeGroups();
+    IdentifiedTraitTypeList[] traitTypeGroups = AbilityModelFetcher.fetch(hero).getAbilityTypeGroups();
     view.initGui(new ColumnCount(2));
     this.presenter = new FavorableTraitConfigurationPresenter(traitTypeGroups, hero, view, resources);
   }

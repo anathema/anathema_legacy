@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.abilities.sheet.content;
 
 import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.traits.groups.IIdentifiedTraitTypeGroup;
+import net.sf.anathema.character.main.traits.groups.IdentifiedTraitTypeList;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.hero.abilities.model.AbilityModelFetcher;
 import net.sf.anathema.hero.model.Hero;
@@ -28,7 +28,7 @@ public class AbilitiesContent extends FavorableTraitContent {
   }
 
   @Override
-  public IIdentifiedTraitTypeGroup[] getIdentifiedTraitTypeGroups() {
+  public IdentifiedTraitTypeList[] getIdentifiedTraitTypeGroups() {
     return AbilityModelFetcher.fetch(hero).getAbilityTypeGroups();
   }
 

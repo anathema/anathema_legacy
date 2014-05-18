@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.xml.trait.types;
 
-import net.sf.anathema.character.main.traits.groups.TraitTypeGroup;
+import net.sf.anathema.character.main.traits.groups.DefaultTraitTypeList;
 import net.sf.anathema.character.main.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.main.xml.trait.GenericTraitTemplateFactory;
 import net.sf.anathema.character.main.xml.trait.pool.GenericTraitTemplatePool;
@@ -37,5 +37,5 @@ public abstract class AbstractPoolTemplateParser {
 
   protected abstract String getTagName();
 
-  protected abstract TraitTypeGroup getTraitTypeGroup();
+  protected abstract DefaultTraitTypeList getTraitTypeGroup();
 }

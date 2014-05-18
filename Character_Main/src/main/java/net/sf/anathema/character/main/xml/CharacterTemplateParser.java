@@ -2,8 +2,8 @@ package net.sf.anathema.character.main.xml;
 
 import net.sf.anathema.character.main.framework.ICharacterTemplateRegistryCollection;
 import net.sf.anathema.character.main.template.ITemplateType;
-import net.sf.anathema.character.main.traits.groups.AllAbilityTraitTypeGroup;
-import net.sf.anathema.character.main.traits.groups.AllAttributeTraitTypeGroup;
+import net.sf.anathema.character.main.traits.groups.AllAbilityTraitTypeList;
+import net.sf.anathema.character.main.traits.groups.AllAttributeTraitTypeList;
 import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.character.main.xml.abilitygroup.GenericGroupedTraitTypeProvider;
 import net.sf.anathema.character.main.xml.abilitygroup.TraitTypeGroupTemplateParser;
@@ -97,7 +97,7 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
       return;
     }
     IXmlTemplateRegistry<GenericGroupedTraitTypeProvider> registry = registryCollection.getTraitGroupTemplateRegistry();
-    TraitTypeGroupTemplateParser parser = new TraitTypeGroupTemplateParser(registry, AllAbilityTraitTypeGroup.getInstance());
+    TraitTypeGroupTemplateParser parser = new TraitTypeGroupTemplateParser(registry, AllAbilityTraitTypeList.getInstance());
     GenericGroupedTraitTypeProvider abilityGroups = parser.parseTemplate(abilityGroupElement);
     characterTemplate.setAbilityGroups(abilityGroups.getTraitTypeGroups());
   }
@@ -108,7 +108,7 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
       return;
     }
     IXmlTemplateRegistry<GenericGroupedTraitTypeProvider> registry = registryCollection.getTraitGroupTemplateRegistry();
-    TraitTypeGroupTemplateParser parser = new TraitTypeGroupTemplateParser(registry, AllAttributeTraitTypeGroup.getInstance());
+    TraitTypeGroupTemplateParser parser = new TraitTypeGroupTemplateParser(registry, AllAttributeTraitTypeList.getInstance());
     GenericGroupedTraitTypeProvider attributeGroups = parser.parseTemplate(attributeGroupElement);
     characterTemplate.setAttributeGroups(attributeGroups.getTraitTypeGroups());
   }

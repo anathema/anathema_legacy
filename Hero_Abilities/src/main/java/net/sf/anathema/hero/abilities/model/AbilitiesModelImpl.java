@@ -8,7 +8,7 @@ import net.sf.anathema.character.main.traits.AbilityTemplateFactory;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.creation.FavorableTraitFactory;
 import net.sf.anathema.character.main.traits.creation.TypedTraitTemplateFactory;
-import net.sf.anathema.character.main.traits.groups.IIdentifiedCasteTraitTypeGroup;
+import net.sf.anathema.character.main.traits.groups.IIdentifiedCasteTraitTypeList;
 import net.sf.anathema.hero.abilities.template.AbilitiesTemplate;
 import net.sf.anathema.hero.concept.CasteCollection;
 import net.sf.anathema.hero.concept.HeroConcept;
@@ -30,7 +30,7 @@ import java.util.List;
 
 public class AbilitiesModelImpl extends DefaultTraitMap implements AbilitiesModel, HeroModel {
 
-  private IIdentifiedCasteTraitTypeGroup[] abilityTraitGroups;
+  private IIdentifiedCasteTraitTypeList[] abilityTraitGroups;
   private Hero hero;
 
   public AbilitiesModelImpl(AbilitiesTemplate template) {
@@ -75,7 +75,7 @@ public class AbilitiesModelImpl extends DefaultTraitMap implements AbilitiesMode
 
   public void addFavorableTraits(IncrementChecker incrementChecker, TypedTraitTemplateFactory factory) {
     FavorableTraitFactory favorableTraitFactory = createFactory();
-    for (IIdentifiedCasteTraitTypeGroup traitGroup : abilityTraitGroups) {
+    for (IIdentifiedCasteTraitTypeList traitGroup : abilityTraitGroups) {
       Trait[] traits = favorableTraitFactory.createTraits(traitGroup, incrementChecker, factory);
       addTraits(traits);
     }
@@ -86,7 +86,7 @@ public class AbilitiesModelImpl extends DefaultTraitMap implements AbilitiesMode
   }
 
   @Override
-  public IIdentifiedCasteTraitTypeGroup[] getAbilityTypeGroups() {
+  public IIdentifiedCasteTraitTypeList[] getAbilityTypeGroups() {
     return abilityTraitGroups;
   }
 }
