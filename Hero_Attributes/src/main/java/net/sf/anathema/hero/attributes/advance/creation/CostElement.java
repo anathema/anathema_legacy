@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.attributes.advance.creation;
 
-public interface ICostElement {
+public interface CostElement {
 
   int getCalculationValue();
 
-  int getZeroCalculationValue();
+  int getCalculationBase();
 }

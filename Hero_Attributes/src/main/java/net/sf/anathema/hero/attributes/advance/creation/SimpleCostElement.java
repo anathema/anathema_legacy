@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.attributes.advance.creation;
 
-public class SimpleCostElement implements ICostElement {
+public class SimpleCostElement implements CostElement {
 
   private final int zeroCalculationValue;
   private final int calculationValue;
@@ -16,7 +16,7 @@ public class SimpleCostElement implements ICostElement {
   }
 
   @Override
-  public int getZeroCalculationValue() {
+  public int getCalculationBase() {
     return zeroCalculationValue;
   }
 }

@@ -2,7 +2,7 @@ package net.sf.anathema.hero.attributes.advance.creation;
 
 import net.sf.anathema.character.main.library.trait.Trait;
 
-public class TraitCostElement implements ICostElement {
+public class TraitCostElement implements CostElement {
 
   private final Trait trait;
 
@@ -16,7 +16,7 @@ public class TraitCostElement implements ICostElement {
   }
 
   @Override
-  public int getZeroCalculationValue() {
+  public int getCalculationBase() {
     return trait.getZeroCalculationValue();
   }
 }
