@@ -5,7 +5,7 @@ import net.sf.anathema.character.main.library.trait.FriendlyValueChangeChecker;
 import net.sf.anathema.character.main.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.main.library.trait.favorable.IFavorableStateChangedListener;
 import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
-import net.sf.anathema.character.main.library.trait.rules.FavorableTraitRules;
+import net.sf.anathema.character.main.library.trait.rules.TraitRulesImpl;
 import net.sf.anathema.character.main.library.trait.specialties.SpecialtiesContainer;
 import net.sf.anathema.character.main.library.trait.specialties.Specialty;
 import net.sf.anathema.character.main.library.trait.subtrait.ISubTraitContainer;
@@ -110,7 +110,7 @@ public class FavorableTraitTest {
 
   private DefaultTrait createObjectUnderTest(Hero hero) {
     ITraitTemplate archeryTemplate = SimpleTraitTemplate.createEssenceLimitedTemplate(0);
-    FavorableTraitRules rules = new FavorableTraitRules(AbilityType.Archery, archeryTemplate, hero);
+    TraitRulesImpl rules = new TraitRulesImpl(AbilityType.Archery, archeryTemplate, hero);
     return new DefaultTrait(hero, rules, new CasteType[]{new DummyCasteType()}, new FriendlyValueChangeChecker(), incrementChecker);
   }
 

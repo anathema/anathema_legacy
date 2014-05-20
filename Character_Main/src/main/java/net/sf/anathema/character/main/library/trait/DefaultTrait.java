@@ -5,8 +5,7 @@ import net.sf.anathema.character.main.library.ITraitFavorization;
 import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.main.library.trait.favorable.NullTraitFavorization;
 import net.sf.anathema.character.main.library.trait.favorable.TraitFavorization;
-import net.sf.anathema.character.main.library.trait.rules.IFavorableTraitRules;
-import net.sf.anathema.character.main.library.trait.rules.ITraitRules;
+import net.sf.anathema.character.main.library.trait.rules.TraitRules;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.TraitValueStrategy;
 import net.sf.anathema.hero.concept.CasteType;
@@ -24,15 +23,15 @@ public class DefaultTrait implements Trait {
 
   private int capModifier = 0;
   private int creationValue;
-  private int experiencedValue = ITraitRules.UNEXPERIENCED;
+  private int experiencedValue = TraitRules.UNEXPERIENCED;
   private final ValueChangeChecker checker;
   private ITraitFavorization traitFavorization;
-  private final ITraitRules traitRules;
+  private final TraitRules traitRules;
   private final Announcer<IntValueChangedListener> creationPointControl = Announcer.to(IntValueChangedListener.class);
   private final Announcer<IntValueChangedListener> currentValueControl = Announcer.to(IntValueChangedListener.class);
   private final TraitValueStrategy valueStrategy;
 
-  public DefaultTrait(Hero hero, IFavorableTraitRules traitRules, CasteType[] castes, ValueChangeChecker valueChangeChecker,
+  public DefaultTrait(Hero hero, TraitRules traitRules, CasteType[] castes, ValueChangeChecker valueChangeChecker,
                       IncrementChecker favoredIncrementChecker) {
     this(hero, traitRules, valueChangeChecker);
     this.traitFavorization = new TraitFavorization(hero, castes, favoredIncrementChecker, this, traitRules.isRequiredFavored());
@@ -41,7 +40,7 @@ public class DefaultTrait implements Trait {
     traitFavorization.updateFavorableStateToCaste();
   }
 
-  public DefaultTrait(Hero hero, ITraitRules traitRules, ValueChangeChecker checker) {
+  public DefaultTrait(Hero hero, TraitRules traitRules, ValueChangeChecker checker) {
     Preconditions.checkNotNull(traitRules);
     this.traitRules = traitRules;
     TraitModel traits = TraitModelFetcher.fetch(hero);
@@ -92,7 +91,7 @@ public class DefaultTrait implements Trait {
 
   @Override
   public final void resetExperiencedValue() {
-    if (getExperiencedValue() != ITraitRules.UNEXPERIENCED) {
+    if (getExperiencedValue() != TraitRules.UNEXPERIENCED) {
       setExperiencedValue(Math.max(getCreationValue(), getExperiencedValue()));
     }
   }

@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.traits;
 
-import net.sf.anathema.character.main.library.trait.rules.TraitRules;
+import net.sf.anathema.character.main.library.trait.rules.TraitRulesImpl;
 import net.sf.anathema.character.main.template.ITraitLimitation;
 import net.sf.anathema.character.main.traits.ITraitTemplate;
 import net.sf.anathema.character.main.traits.types.AbilityType;
@@ -15,7 +15,7 @@ public class TraitRulesTest {
 
   private DummyHero dummyHero = new DummyHero();
   private ITraitTemplate template = mock(ITraitTemplate.class);
-  private TraitRules traitRules = new TraitRules(AbilityType.Archery, template, dummyHero);
+  private TraitRulesImpl traitRules = new TraitRulesImpl(AbilityType.Archery, template, dummyHero);
 
   @Test
   public void testAbsoluteMaximumValue() throws Exception {

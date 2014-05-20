@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.library.trait.DefaultTrait;
 import net.sf.anathema.character.main.library.trait.FriendlyValueChangeChecker;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.ValueChangeChecker;
-import net.sf.anathema.character.main.library.trait.rules.TraitRules;
+import net.sf.anathema.character.main.library.trait.rules.TraitRulesImpl;
 import net.sf.anathema.character.main.traits.ITraitTemplate;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.hero.model.Hero;
@@ -33,7 +33,7 @@ public class DefaultTraitFactory {
   public Trait createTrait(TraitType traitType) {
     ITraitTemplate traitTemplate = factory.create(traitType);
     ValueChangeChecker checker = new FriendlyValueChangeChecker();
-    TraitRules rules = new TraitRules(traitType, traitTemplate, hero);
+    TraitRulesImpl rules = new TraitRulesImpl(traitType, traitTemplate, hero);
     return new DefaultTrait(hero, rules, checker);
   }
 }

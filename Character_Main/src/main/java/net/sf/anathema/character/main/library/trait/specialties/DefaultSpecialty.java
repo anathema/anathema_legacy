@@ -3,7 +3,7 @@ package net.sf.anathema.character.main.library.trait.specialties;
 import net.sf.anathema.character.main.library.trait.DefaultTrait;
 import net.sf.anathema.character.main.library.trait.DefaultTraitType;
 import net.sf.anathema.character.main.library.trait.FriendlyValueChangeChecker;
-import net.sf.anathema.character.main.library.trait.rules.TraitRules;
+import net.sf.anathema.character.main.library.trait.rules.TraitRulesImpl;
 import net.sf.anathema.character.main.library.trait.subtrait.AbstractSubTraitContainer;
 import net.sf.anathema.character.main.traits.SimpleTraitTemplate;
 import net.sf.anathema.character.main.traits.TraitType;
@@ -15,8 +15,8 @@ public class DefaultSpecialty extends DefaultTrait implements Specialty {
   private final AbstractSubTraitContainer container;
   private final TraitType type;
 
-  private static TraitRules createSpecialtyRules(Hero hero) {
-    return new TraitRules(new DefaultTraitType("Specialty"), SimpleTraitTemplate.createStaticLimitedTemplate(0, 3), hero);
+  private static TraitRulesImpl createSpecialtyRules(Hero hero) {
+    return new TraitRulesImpl(new DefaultTraitType("Specialty"), SimpleTraitTemplate.createStaticLimitedTemplate(0, 3), hero);
   }
 
   public DefaultSpecialty(Hero hero, AbstractSubTraitContainer container, TraitType type, String specialtyName) {

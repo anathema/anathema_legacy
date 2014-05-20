@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.library.trait;
 
 import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
-import net.sf.anathema.character.main.library.trait.rules.TraitRules;
+import net.sf.anathema.character.main.library.trait.rules.TraitRulesImpl;
 import net.sf.anathema.character.main.traits.ITraitTemplate;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.hero.model.Hero;
@@ -11,7 +11,7 @@ public class LimitedTrait extends DefaultTrait {
   private final IncrementChecker incrementChecker;
 
   public LimitedTrait(Hero hero, TraitType type, ITraitTemplate template, IncrementChecker incrementChecker) {
-    super(hero, new TraitRules(type, template, hero), new FriendlyValueChangeChecker());
+    super(hero, new TraitRulesImpl(type, template, hero), new FriendlyValueChangeChecker());
     this.incrementChecker = incrementChecker;
   }
 

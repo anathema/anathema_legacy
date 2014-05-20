@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.library.trait.DefaultTrait;
 import net.sf.anathema.character.main.library.trait.FriendlyValueChangeChecker;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.favorable.FriendlyIncrementChecker;
-import net.sf.anathema.character.main.library.trait.rules.FavorableTraitRules;
+import net.sf.anathema.character.main.library.trait.rules.TraitRulesImpl;
 import net.sf.anathema.hero.charms.model.special.oxbody.OxBodyCategory;
 import net.sf.anathema.hero.charms.model.special.oxbody.OxBodyTechniqueCharm;
 import net.sf.anathema.hero.charms.model.special.oxbody.OxBodyTechniqueSpecials;
@@ -52,7 +52,7 @@ public class OxBodyTechniqueSpecialsTest {
 
   private DefaultTrait createResistance(DummyHero hero) {
     ITraitTemplate resistanceTemplate = SimpleTraitTemplate.createEssenceLimitedTemplate(0);
-    FavorableTraitRules resistanceRules = new FavorableTraitRules(AbilityType.Resistance, resistanceTemplate, hero);
+    TraitRulesImpl resistanceRules = new TraitRulesImpl(AbilityType.Resistance, resistanceTemplate, hero);
     CasteType[] castes = {new DummyCasteType()};
     return new DefaultTrait(hero, resistanceRules, castes, new FriendlyValueChangeChecker(), new FriendlyIncrementChecker());
   }

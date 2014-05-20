@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.traits.context;
 
 import net.sf.anathema.character.main.library.trait.Trait;
-import net.sf.anathema.character.main.library.trait.rules.ITraitRules;
+import net.sf.anathema.character.main.library.trait.rules.TraitRules;
 import net.sf.anathema.character.main.traits.TraitValueStrategy;
 import net.sf.anathema.lib.control.IntValueChangedListener;
 import org.jmock.example.announcer.Announcer;
@@ -15,7 +15,7 @@ public class ExperiencedTraitValueStrategy implements TraitValueStrategy {
 
   @Override
   public int getCurrentValue(Trait trait) {
-    if (trait.getExperiencedValue() == ITraitRules.UNEXPERIENCED) {
+    if (trait.getExperiencedValue() == TraitRules.UNEXPERIENCED) {
       return trait.getCreationValue();
     }
     return trait.getExperiencedValue();

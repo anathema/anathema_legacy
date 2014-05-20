@@ -3,7 +3,7 @@ package net.sf.anthema.hero.traits;
 import net.sf.anathema.character.main.library.trait.DefaultTrait;
 import net.sf.anathema.character.main.library.trait.FriendlyValueChangeChecker;
 import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
-import net.sf.anathema.character.main.library.trait.rules.FavorableTraitRules;
+import net.sf.anathema.character.main.library.trait.rules.TraitRulesImpl;
 import net.sf.anathema.hero.dummy.DummyCasteType;
 import net.sf.anathema.hero.dummy.DummyHero;
 import net.sf.anathema.hero.dummy.models.DummyHeroConcept;
@@ -53,7 +53,7 @@ public class FavorableTrait_HighEssenceTest {
 
   private DefaultTrait createObjectUnderTest(Hero hero) {
     ITraitTemplate template = SimpleTraitTemplate.createEssenceLimitedTemplate(0);
-    FavorableTraitRules rules = new FavorableTraitRules(AbilityType.Archery, template, hero);
+    TraitRulesImpl rules = new TraitRulesImpl(AbilityType.Archery, template, hero);
     return new DefaultTrait(hero, rules, new CasteType[]{new DummyCasteType()}, new FriendlyValueChangeChecker(), incrementChecker);
   }
 }
