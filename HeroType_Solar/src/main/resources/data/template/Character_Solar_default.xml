@@ -2,9 +2,6 @@
     <general>
         <traitCollection uses="trait/DefaultTraitCollection.template"/>
         <presentation uses="template/SolarPresentation2nd.template"/>
-        <additionalRules uses="template/SolarAdditionalRules2nd.template">
-            <revisedIntimacies value="true"/>
-        </additionalRules>
     </general>
     <models>
         <model id="Description"/>

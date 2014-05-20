@@ -1,7 +1,6 @@
 <exaltedCharacterTemplate characterType="Mortal" subtemplate="HeroicMortal">
     <general>
         <traitCollection uses="trait/MortalTraitCollection.template"/>
-        <magicTemplate uses="magic/MortalMagic.template"/>
         <presentation uses="presentation/HeroicMortalPresentation.template"/>
     </general>
     <models>
