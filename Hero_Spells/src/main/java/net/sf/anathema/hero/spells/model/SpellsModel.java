@@ -1,5 +1,6 @@
 package net.sf.anathema.hero.spells.model;
 
+import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.spells.CircleType;
 import net.sf.anathema.character.main.magic.spells.Spell;
 import net.sf.anathema.hero.model.HeroModel;
@@ -44,4 +45,12 @@ public interface SpellsModel extends HeroModel {
   List<Spell> getAvailableSpellsInCircle(CircleType circle);
 
   List<Spell> getLearnedSpellsInCircles(CircleType[] eligibleCircles);
+
+  boolean canLearnSorcery();
+
+  boolean canLearnNecromancy();
+
+  boolean canLearnSpellMagic();
+
+  boolean canLearnSpell(Spell spell, Charm[] knownCharms);
 }

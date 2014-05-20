@@ -9,6 +9,7 @@ import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.spells.model.CircleModel;
 import net.sf.anathema.hero.spells.model.SorceryModel;
 import net.sf.anathema.framework.environment.dependencies.Weight;
+import net.sf.anathema.hero.spells.model.SpellsModelFetcher;
 
 import static net.sf.anathema.hero.display.HeroModelGroup.Magic;
 
@@ -23,7 +24,7 @@ public class SorceryInitializer implements HeroModelInitializer {
 
   @Override
   public void initialize(SectionView sectionView, Hero hero, Environment environment) {
-    boolean canLeanSorcery = hero.getTemplate().getMagicTemplate().getSpellMagic().canLearnSorcery();
+    boolean canLeanSorcery = SpellsModelFetcher.fetch(hero).canLearnSorcery();
     if (canLeanSorcery) {
       String titleKey = "CardView.CharmConfiguration.Spells.Title";
       CircleModel circleModel = new SorceryModel(hero);

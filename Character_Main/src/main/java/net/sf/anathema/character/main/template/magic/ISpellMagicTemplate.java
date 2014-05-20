@@ -10,11 +10,7 @@ public interface ISpellMagicTemplate {
 
   CircleType[] getNecromancyCircles();
 
-  boolean canLearnSorcery();
-
   boolean canLearnNecromancy();
-  
-  boolean canLearnSpellMagic();
 
   boolean canLearnSpell(Spell spell, Charm[] knownCharms);
 }

@@ -29,18 +29,8 @@ public class SpellMagicTemplate implements ISpellMagicTemplate {
   }
 
   @Override
-  public boolean canLearnSorcery() {
-    return getSorceryCircles() != null && getSorceryCircles().length != 0;
-  }
-
-  @Override
   public boolean canLearnNecromancy() {
     return getNecromancyCircles() != null && getNecromancyCircles().length != 0;
-  }
-
-  @Override
-  public boolean canLearnSpellMagic() {
-    return canLearnSorcery() || canLearnNecromancy();
   }
 
   protected boolean knowsCharm(String charm, Charm[] knownCharms) {

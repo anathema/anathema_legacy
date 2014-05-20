@@ -1,6 +1,7 @@
 package net.sf.anathema.hero.spells;
 
 import net.sf.anathema.character.main.magic.basic.Magic;
+import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.spells.CircleType;
 import net.sf.anathema.character.main.magic.spells.Spell;
 import net.sf.anathema.hero.charms.model.CharmsModel;
@@ -136,6 +137,26 @@ public class DummySpellsModel implements SpellsModel {
       }
     }
     return spellList;
+  }
+
+  @Override
+  public boolean canLearnSorcery() {
+    return false;
+  }
+
+  @Override
+  public boolean canLearnNecromancy() {
+    return false;
+  }
+
+  @Override
+  public boolean canLearnSpellMagic() {
+    return false;
+  }
+
+  @Override
+  public boolean canLearnSpell(Spell spell, Charm[] knownCharms) {
+    return false;
   }
 
   public void initializeMagicModel(CharmsModel charmsModel) {

@@ -17,6 +17,8 @@ public interface HeroTemplate {
 
   IPresentationProperties getPresentationProperties();
 
+  List<ConfiguredModel> getModels();
+
   GroupedTraitType[] getAttributeGroups();
 
   BonusPointCosts getBonusPointCosts();
@@ -32,8 +34,6 @@ public interface HeroTemplate {
   TraitType[] getToughnessControllingTraitTypes();
 
   String[] getBaseHealthProviders();
-
-  List<ConfiguredModel> getModels();
 
   IMagicTemplate getMagicTemplate();
 }

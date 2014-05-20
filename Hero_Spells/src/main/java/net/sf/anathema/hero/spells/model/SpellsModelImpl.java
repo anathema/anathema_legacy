@@ -1,10 +1,11 @@
 package net.sf.anathema.hero.spells.model;
 
+import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.character.main.magic.parser.spells.ISpellCache;
 import net.sf.anathema.character.main.magic.spells.CircleType;
 import net.sf.anathema.character.main.magic.spells.ISpellMapper;
 import net.sf.anathema.character.main.magic.spells.Spell;
 import net.sf.anathema.character.main.magic.spells.SpellMapper;
-import net.sf.anathema.character.main.magic.parser.spells.ISpellCache;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.hero.charms.advance.MagicPointsModelFetcher;
@@ -29,12 +30,7 @@ import net.sf.anathema.lib.util.Identifier;
 import org.apache.commons.lang3.ArrayUtils;
 import org.jmock.example.announcer.Announcer;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class SpellsModelImpl implements SpellsModel {
 
@@ -253,4 +249,24 @@ public class SpellsModelImpl implements SpellsModel {
     return spellList;
   }
 
+  @Override
+  public boolean canLearnSorcery() {
+    CircleType[] sorceryCircles = heroTemplate.getMagicTemplate().getSpellMagic().getSorceryCircles();
+    return sorceryCircles != null && sorceryCircles.length != 0;
+  }
+
+  @Override
+  public boolean canLearnNecromancy() {
+    return heroTemplate.getMagicTemplate().getSpellMagic().canLearnNecromancy();
+  }
+
+  @Override
+  public boolean canLearnSpellMagic() {
+    return canLearnSorcery() || canLearnNecromancy();
+  }
+
+  @Override
+  public boolean canLearnSpell(Spell spell, Charm[] knownCharms) {
+    return heroTemplate.getMagicTemplate().getSpellMagic().canLearnSpell(spell, knownCharms);
+  }
 }
