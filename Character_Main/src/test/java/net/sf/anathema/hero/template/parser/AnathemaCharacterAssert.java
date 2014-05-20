@@ -20,7 +20,6 @@ public class AnathemaCharacterAssert {
 
   private static void assertBasicValues(int startValue, int zeroLevelValue, int minimalValue, ITraitTemplate traitTemplate) {
     Assert.assertEquals(startValue, traitTemplate.getStartValue());
-    Assert.assertEquals(zeroLevelValue, traitTemplate.getZeroLevelValue());
     Assert.assertEquals(minimalValue, traitTemplate.getMinimumValue(null));
   }
 }

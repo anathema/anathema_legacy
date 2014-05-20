@@ -199,10 +199,6 @@ public class DefaultTrait implements Trait {
     return traitRules.getAbsoluteMaximumValue();
   }
 
-  public final int getZeroCalculationValue() {
-    return traitRules.getZeroCalculationCost();
-  }
-
   @Override
   public int getInitialValue() {
     return traitRules.getStartValue();

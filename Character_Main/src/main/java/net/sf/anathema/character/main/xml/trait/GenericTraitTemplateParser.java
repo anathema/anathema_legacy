@@ -13,7 +13,6 @@ import org.dom4j.Element;
 public class GenericTraitTemplateParser {
 
   private static final String ATTRIB_START_VALUE = "startValue";
-  private static final String ATTRIB_ZERO_LEVEL = "zeroLevel";
   private static final String ATTRIB_LOWERABLE_STATE = "lowerableState";
   private static final String ATTRIB_VALUE = "value";
   private static final String ATTRIB_TYPE = "type";
@@ -35,7 +34,6 @@ public class GenericTraitTemplateParser {
     GenericTraitTemplate defaultTraitTemplate = new GenericTraitTemplate();
     int startValue = ElementUtilities.getRequiredIntAttrib(traitElement, ATTRIB_START_VALUE);
     defaultTraitTemplate.setStartValue(startValue);
-    defaultTraitTemplate.setZeroLevelValue(ElementUtilities.getIntAttrib(traitElement, ATTRIB_ZERO_LEVEL, startValue));
     defaultTraitTemplate.setRequiredFavored(ElementUtilities.getBooleanAttribute(traitElement, ATTRIB_IS_REQUIRED_FAVORED, false));
     String lowerableStateId = ElementUtilities.getRequiredAttrib(traitElement, ATTRIB_LOWERABLE_STATE);
     defaultTraitTemplate.setModificationType(ModificationType.valueOf(lowerableStateId));
@@ -68,7 +66,6 @@ public class GenericTraitTemplateParser {
     GenericTraitTemplate defaultTraitTemplate = new GenericTraitTemplate();
     int startValue = ElementUtilities.getIntAttrib(traitElement, ATTRIB_START_VALUE, 0);
     defaultTraitTemplate.setStartValue(startValue);
-    defaultTraitTemplate.setZeroLevelValue(ElementUtilities.getIntAttrib(traitElement, ATTRIB_ZERO_LEVEL, startValue));
     defaultTraitTemplate.setRequiredFavored(ElementUtilities.getBooleanAttribute(traitElement, ATTRIB_IS_REQUIRED_FAVORED, false));
     String modificationType = traitElement.attributeValue(ATTRIB_LOWERABLE_STATE, ModificationType.RaiseOnly.toString());
     defaultTraitTemplate.setModificationType(ModificationType.valueOf(modificationType));

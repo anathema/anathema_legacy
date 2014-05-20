@@ -33,7 +33,7 @@ public class SimpleTraitTemplate extends AbstractTraitTemplate {
   private final ITraitLimitation limitation;
 
   private SimpleTraitTemplate(int minimumValue, int startValue, ITraitLimitation limitation, ModificationType lowerable) {
-    super(startValue, lowerable, startValue);
+    super(startValue, lowerable);
     this.minimumValue = minimumValue;
     this.limitation = limitation;
   }

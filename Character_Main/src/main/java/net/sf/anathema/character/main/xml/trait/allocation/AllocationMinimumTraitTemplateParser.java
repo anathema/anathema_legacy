@@ -45,7 +45,6 @@ public class AllocationMinimumTraitTemplateParser {
     template.setLimitation(new EssenceBasedLimitation());
     template.setModificationType(ModificationType.RaiseOnly);
     template.setRequiredFavored(false);
-    template.setZeroLevelValue(0);
     template.setStartValue(ElementUtilities.getIntAttrib(traitElement, ATTRIB_START_VALUE, 0));
     template.setMinimumValue(0);
     return template;

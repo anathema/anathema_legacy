@@ -14,8 +14,6 @@ public interface Trait extends ValuedTraitType {
 
   boolean isLowerable();
 
-  int getZeroCalculationValue();
-
   void resetCreationValue();
 
   void resetExperiencedValue();

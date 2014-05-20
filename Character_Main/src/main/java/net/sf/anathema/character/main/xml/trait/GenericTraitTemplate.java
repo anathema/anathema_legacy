@@ -8,7 +8,6 @@ import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 public class GenericTraitTemplate extends ReflectionCloneableObject<IClonableTraitTemplate> implements IClonableTraitTemplate {
 
   private Integer minimumValue;
-  private Integer zeroLevelValue;
   private Integer startValue = 0;
   private ModificationType modificationType;
   private ITraitLimitation limitation;
@@ -28,11 +27,6 @@ public class GenericTraitTemplate extends ReflectionCloneableObject<IClonableTra
   @Override
   public int getStartValue() {
     return startValue;
-  }
-
-  @Override
-  public int getZeroLevelValue() {
-    return zeroLevelValue;
   }
 
   @Override
@@ -56,10 +50,6 @@ public class GenericTraitTemplate extends ReflectionCloneableObject<IClonableTra
     if (startValue > this.startValue) {
       this.startValue = startValue;
     }
-  }
-
-  public final void setZeroLevelValue(int zeroLevelValue) {
-    this.zeroLevelValue = zeroLevelValue;
   }
 
   @Override

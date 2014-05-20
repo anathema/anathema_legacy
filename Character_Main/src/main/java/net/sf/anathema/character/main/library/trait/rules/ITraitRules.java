@@ -15,8 +15,6 @@ public interface ITraitRules {
 
   int getStartValue();
 
-  int getZeroCalculationCost();
-
   boolean isReducible();
 
   TraitType getType();

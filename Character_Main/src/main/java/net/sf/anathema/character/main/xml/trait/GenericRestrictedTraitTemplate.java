@@ -46,11 +46,6 @@ public class GenericRestrictedTraitTemplate extends ReflectionCloneableObject<IC
   }
 
   @Override
-  public int getZeroLevelValue() {
-    return traitTemplate.getZeroLevelValue();
-  }
-
-  @Override
   public boolean isRequiredFavored() {
     return traitTemplate.isRequiredFavored();
   }

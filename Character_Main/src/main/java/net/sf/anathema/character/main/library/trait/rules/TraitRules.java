@@ -62,11 +62,6 @@ public class TraitRules implements ITraitRules {
     return template.getModificationType() == ModificationType.Free;
   }
 
-  @Override
-  public int getZeroCalculationCost() {
-    return template.getZeroLevelValue();
-  }
-
   protected final ITraitTemplate getTemplate() {
     return template;
   }

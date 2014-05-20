@@ -35,7 +35,6 @@ public class GenericTraitTemplateParserTest extends TestCase {
     String xml = createMinimalXmlForBasicAttributes("startValue=\"1\" zeroLevel=\"0\" lowerableState=\"RaiseOnly\" isRequiredFavored=\"true\"");
     GenericTraitTemplate template = parseTemplate(xml);
     assertEquals(1, template.getStartValue());
-    assertEquals(0, template.getZeroLevelValue());
     assertEquals(ModificationType.RaiseOnly, template.getModificationType());
     assertTrue(template.isRequiredFavored());
   }
@@ -44,7 +43,6 @@ public class GenericTraitTemplateParserTest extends TestCase {
     String xml = createMinimalXmlForBasicAttributes(minimalBasicAttributes);
     GenericTraitTemplate template = parseTemplate(xml);
     assertEquals(1, template.getStartValue());
-    assertEquals(1, template.getZeroLevelValue());
   }
 
   public void testUngivenRequirementStatusDefaultsToFalse() throws Exception {

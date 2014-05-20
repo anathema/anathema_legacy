@@ -151,11 +151,6 @@ public class DummyTrait implements Trait {
   }
 
   @Override
-  public int getZeroCalculationValue() {
-    return 0;
-  }
-
-  @Override
   public boolean isLowerable() {
     return false;
   }

@@ -15,7 +15,7 @@ public class EssenceTemplate extends AbstractTraitTemplate {
   private final ITraitLimitation limitation;
 
   private EssenceTemplate(int startValue, int zeroValue, int maxValue) {
-    super(startValue, ModificationType.RaiseOnly, zeroValue);
+    super(startValue, ModificationType.RaiseOnly);
     this.limitation = new StaticTraitLimitation(maxValue);
   }
 

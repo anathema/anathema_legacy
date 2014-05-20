@@ -10,7 +10,5 @@ public interface ITraitTemplate extends ITraitMinimum {
 
   int getStartValue();
 
-  int getZeroLevelValue();
-
   boolean isRequiredFavored();
 }

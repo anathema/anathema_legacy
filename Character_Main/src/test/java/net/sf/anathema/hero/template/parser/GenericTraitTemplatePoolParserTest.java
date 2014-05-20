@@ -46,7 +46,6 @@ public class GenericTraitTemplatePoolParserTest extends TestCase {
 
   private void assertStaticTraitTemplate(int startValue, int zeroLevelValue, int minimalValue, int maximalValue, ITraitTemplate traitTemplate) {
     assertEquals(startValue, traitTemplate.getStartValue());
-    assertEquals(zeroLevelValue, traitTemplate.getZeroLevelValue());
     assertEquals(minimalValue, traitTemplate.getMinimumValue(null));
     assertEquals(maximalValue, ((StaticTraitLimitation) traitTemplate.getLimitation()).getStaticLimit());
   }
