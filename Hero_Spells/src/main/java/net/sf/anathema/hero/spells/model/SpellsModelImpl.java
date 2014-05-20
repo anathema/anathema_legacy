@@ -22,6 +22,7 @@ import net.sf.anathema.hero.points.PointModelFetcher;
 import net.sf.anathema.hero.spells.advance.SpellExperienceCostCalculator;
 import net.sf.anathema.hero.spells.advance.SpellExperienceModel;
 import net.sf.anathema.hero.spells.sheet.content.PrintSpellsProvider;
+import net.sf.anathema.hero.spells.template.SpellsTemplate;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 import org.apache.commons.lang3.ArrayUtils;
@@ -40,6 +41,11 @@ public class SpellsModelImpl implements SpellsModel {
   private CharmsModel charms;
   private HeroTemplate heroTemplate;
   private ExperienceModel experience;
+  private SpellsTemplate template;
+
+  public SpellsModelImpl(SpellsTemplate template) {
+    this.template = template;
+  }
 
   @Override
   public Identifier getId() {
@@ -247,14 +253,12 @@ public class SpellsModelImpl implements SpellsModel {
 
   @Override
   public boolean canLearnSorcery() {
-    CircleType[] circles = heroTemplate.getMagicTemplate().getSpellMagic().getSorceryCircles();
-    return circles != null && circles.length != 0;
+    return !template.sorcery.isEmpty();
   }
 
   @Override
   public boolean canLearnNecromancy() {
-    CircleType[] circles = heroTemplate.getMagicTemplate().getSpellMagic().getNecromancyCircles();
-    return circles != null && circles.length != 0;
+    return !template.necromancy.isEmpty();
   }
 
   @Override
@@ -274,6 +278,16 @@ public class SpellsModelImpl implements SpellsModel {
   @Override
   public boolean canLearnSpell(Spell spell, Charm[] knownCharms) {
     return knowsCharm(getInitiation(spell.getCircleType()), knownCharms);
+  }
+
+  @Override
+  public CircleType[] getNecromancyCircles() {
+    return template.necromancy.toArray(new CircleType[0]);
+  }
+
+  @Override
+  public CircleType[] getSorceryCircles() {
+    return template.sorcery.toArray(new CircleType[0]);
   }
 
   private String getInitiation(CircleType type) {

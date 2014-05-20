@@ -53,4 +53,8 @@ public interface SpellsModel extends HeroModel {
   boolean canLearnSpellMagic();
 
   boolean canLearnSpell(Spell spell, Charm[] knownCharms);
+
+  CircleType[] getNecromancyCircles();
+
+  CircleType[] getSorceryCircles();
 }

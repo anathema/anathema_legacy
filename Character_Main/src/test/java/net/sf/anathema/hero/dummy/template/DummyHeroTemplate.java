@@ -1,20 +1,12 @@
 package net.sf.anathema.hero.dummy.template;
 
-import net.sf.anathema.character.main.magic.basic.Magic;
-import net.sf.anathema.character.main.template.ConfiguredModel;
-import net.sf.anathema.character.main.template.HeroTemplate;
-import net.sf.anathema.character.main.template.ITemplateType;
-import net.sf.anathema.character.main.template.ITraitTemplateCollection;
-import net.sf.anathema.character.main.template.TemplateType;
-import net.sf.anathema.character.main.template.abilities.AbilityGroupType;
+import net.sf.anathema.character.main.template.*;
 import net.sf.anathema.character.main.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.creation.ICreationPoints;
 import net.sf.anathema.character.main.template.essence.IEssenceTemplate;
 import net.sf.anathema.character.main.template.essence.NullEssenceTemplate;
 import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
-import net.sf.anathema.character.main.template.magic.IMagicTemplate;
-import net.sf.anathema.character.main.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.character.main.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.main.traits.TraitTemplateCollection;
 import net.sf.anathema.character.main.traits.TraitType;
@@ -34,7 +26,6 @@ public class DummyHeroTemplate implements HeroTemplate {
   public ITemplateType type = new TemplateType(new DummyMundaneCharacterType());
   public IEssenceTemplate essenceTemplate = new NullEssenceTemplate();
   public DummyCreationPoints creationPoints = new DummyCreationPoints();
-  public DummyMagicTemplate magicTemplate = new DummyMagicTemplate();
 
   @Override
   public BonusPointCosts getBonusPointCosts() {
@@ -64,11 +55,6 @@ public class DummyHeroTemplate implements HeroTemplate {
   @Override
   public IEssenceTemplate getEssenceTemplate() {
     return essenceTemplate;
-  }
-
-  @Override
-  public IMagicTemplate getMagicTemplate() {
-    return magicTemplate;
   }
 
   @Override
@@ -106,13 +92,5 @@ public class DummyHeroTemplate implements HeroTemplate {
 
   public void setCharacterType(CharacterType characterType) {
     this.type = new TemplateType(characterType);
-  }
-
-  private static class DummyMagicTemplate implements IMagicTemplate {
-
-    @Override
-    public ISpellMagicTemplate getSpellMagic() {
-      throw new NotYetImplementedException();
-    }
   }
 }

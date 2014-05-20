@@ -11,7 +11,6 @@ import net.sf.anathema.character.main.template.creation.ICreationPoints;
 import net.sf.anathema.character.main.template.essence.IEssenceTemplate;
 import net.sf.anathema.character.main.template.essence.NullEssenceTemplate;
 import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
-import net.sf.anathema.character.main.template.magic.IMagicTemplate;
 import net.sf.anathema.character.main.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.type.CharacterType;
@@ -81,11 +80,6 @@ public class SimpleDummyCharacterTemplate implements HeroTemplate {
   @Override
   public List<ConfiguredModel> getModels() {
     return new ArrayList<>();
-  }
-
-  @Override
-  public IMagicTemplate getMagicTemplate() {
-    return new DummyMagicTemplate(null);
   }
 
   @Override

@@ -1,26 +1,22 @@
 package net.sf.anathema.hero.spells.model;
 
 import net.sf.anathema.character.main.magic.spells.CircleType;
-import net.sf.anathema.character.main.template.magic.ISpellMagicTemplate;
-import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import org.jmock.example.announcer.Announcer;
 
 public abstract class CircleModel {
 
-  private final Hero hero;
   private final Announcer<ObjectValueListener> announcer = Announcer.to(ObjectValueListener.class);
   private CircleType selectedCircle;
+  private CircleType[] circles;
 
-  protected CircleModel(Hero hero) {
-    this.hero = hero;
-    this.selectedCircle = getCircles()[0];
+  protected CircleModel(CircleType[] circles) {
+    this.circles = circles;
+    this.selectedCircle = circles[0];
   }
 
-  public abstract CircleType[] getCircles();
-
-  protected final ISpellMagicTemplate getSpellMagicTemplate() {
-    return hero.getTemplate().getMagicTemplate().getSpellMagic();
+  public final CircleType[] getCircles() {
+    return circles;
   }
 
   @SuppressWarnings("unchecked")

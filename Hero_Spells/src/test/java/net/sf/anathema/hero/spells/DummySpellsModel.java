@@ -159,6 +159,16 @@ public class DummySpellsModel implements SpellsModel {
     return false;
   }
 
+  @Override
+  public CircleType[] getNecromancyCircles() {
+    return new CircleType[0];
+  }
+
+  @Override
+  public CircleType[] getSorceryCircles() {
+    return new CircleType[0];
+  }
+
   public void initializeMagicModel(CharmsModel charmsModel) {
     charmsModel.addLearnProvider(new MagicLearner() {
       @Override

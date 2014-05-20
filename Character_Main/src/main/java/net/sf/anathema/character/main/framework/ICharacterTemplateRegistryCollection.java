@@ -7,7 +7,6 @@ import net.sf.anathema.character.main.xml.creation.GenericCreationPoints;
 import net.sf.anathema.character.main.xml.essence.GenericEssenceTemplate;
 import net.sf.anathema.character.main.xml.experience.GenericExperiencePointCosts;
 import net.sf.anathema.character.main.xml.health.GenericHealthTemplate;
-import net.sf.anathema.character.main.xml.magic.GenericMagicTemplate;
 import net.sf.anathema.character.main.xml.presentation.GenericPresentationTemplate;
 import net.sf.anathema.character.main.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.main.xml.trait.GenericTraitTemplateFactory;
@@ -30,8 +29,6 @@ public interface ICharacterTemplateRegistryCollection {
   IXmlTemplateRegistry<GenericTraitTemplateFactory> getTraitFactoryRegistry();
 
   IXmlTemplateRegistry<GenericTraitTemplatePool> getTraitTemplatePoolRegistry();
-
-  IXmlTemplateRegistry<GenericMagicTemplate> getMagicTemplateRegistry();
 
   IXmlTemplateRegistry<GenericPresentationTemplate> getPresentationTemplateRegistry();
 

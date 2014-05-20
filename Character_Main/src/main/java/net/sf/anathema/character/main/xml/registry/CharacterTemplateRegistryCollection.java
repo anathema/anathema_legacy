@@ -9,7 +9,6 @@ import net.sf.anathema.character.main.xml.creation.GenericCreationPoints;
 import net.sf.anathema.character.main.xml.essence.GenericEssenceTemplate;
 import net.sf.anathema.character.main.xml.experience.GenericExperiencePointCosts;
 import net.sf.anathema.character.main.xml.health.GenericHealthTemplate;
-import net.sf.anathema.character.main.xml.magic.GenericMagicTemplate;
 import net.sf.anathema.character.main.xml.presentation.GenericPresentationTemplate;
 import net.sf.anathema.character.main.xml.trait.GenericTraitTemplateFactory;
 import net.sf.anathema.character.main.xml.trait.pool.GenericTraitTemplatePool;
@@ -24,7 +23,6 @@ public class CharacterTemplateRegistryCollection implements ICharacterTemplateRe
   private final IXmlTemplateRegistry<GenericExperiencePointCosts> experienceTemplateRegistry;
   private final IXmlTemplateRegistry<GenericTraitTemplateFactory> traitFactoryRegistry;
   private final IXmlTemplateRegistry<GenericTraitTemplatePool> traitTemplatePoolRegistry;
-  private final IXmlTemplateRegistry<GenericMagicTemplate> magicTemplateRegistry;
   private final IXmlTemplateRegistry<GenericPresentationTemplate> presentationTemplateRegistry;
   private final IXmlTemplateRegistry<GenericHealthTemplate> healthTemplateRegistry;
 
@@ -37,7 +35,6 @@ public class CharacterTemplateRegistryCollection implements ICharacterTemplateRe
     experienceTemplateRegistry = new XmlTemplateRegistry<>(cache);
     traitFactoryRegistry = new XmlTemplateRegistry<>(cache);
     traitTemplatePoolRegistry = new XmlTemplateRegistry<>(cache);
-    magicTemplateRegistry = new XmlTemplateRegistry<>(cache);
     presentationTemplateRegistry = new XmlTemplateRegistry<>(cache);
     healthTemplateRegistry = new XmlTemplateRegistry<>(cache);
   }
@@ -80,11 +77,6 @@ public class CharacterTemplateRegistryCollection implements ICharacterTemplateRe
   @Override
   public IXmlTemplateRegistry<GenericTraitTemplatePool> getTraitTemplatePoolRegistry() {
     return traitTemplatePoolRegistry;
-  }
-
-  @Override
-  public IXmlTemplateRegistry<GenericMagicTemplate> getMagicTemplateRegistry() {
-    return magicTemplateRegistry;
   }
 
   @Override

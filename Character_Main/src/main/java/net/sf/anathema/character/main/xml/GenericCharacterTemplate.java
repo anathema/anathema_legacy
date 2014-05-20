@@ -9,7 +9,6 @@ import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.creation.ICreationPoints;
 import net.sf.anathema.character.main.template.essence.IEssenceTemplate;
 import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
-import net.sf.anathema.character.main.template.magic.IMagicTemplate;
 import net.sf.anathema.character.main.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.main.traits.TraitTemplateCollection;
 import net.sf.anathema.character.main.traits.TraitType;
@@ -19,7 +18,6 @@ import net.sf.anathema.character.main.xml.essence.GenericEssenceTemplate;
 import net.sf.anathema.character.main.xml.experience.GenericExperiencePointCosts;
 import net.sf.anathema.character.main.xml.health.GenericHealthTemplate;
 import net.sf.anathema.character.main.xml.health.IHealthTemplate;
-import net.sf.anathema.character.main.xml.magic.GenericMagicTemplate;
 import net.sf.anathema.character.main.xml.presentation.GenericPresentationTemplate;
 import net.sf.anathema.character.main.xml.trait.GenericTraitTemplateFactory;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
@@ -32,7 +30,6 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
 
   private ITemplateType templateType;
   private ITraitTemplateCollection traitTemplateCollection;
-  private GenericMagicTemplate magicTemplate;
   private GenericExperiencePointCosts experienceCosts = new GenericExperiencePointCosts();
   private GenericBonusPointCosts bonusPointCosts = new GenericBonusPointCosts();
   private GenericCreationPoints creationPoints = new GenericCreationPoints();
@@ -92,11 +89,6 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
     return new ArrayList<>(models);
   }
 
-  @Override
-  public IMagicTemplate getMagicTemplate() {
-    return magicTemplate;
-  }
-
   public void setEssenceTemplate(GenericEssenceTemplate essenceTemplate) {
     this.essenceTemplate = essenceTemplate;
   }
@@ -115,10 +107,6 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
 
   public void setTraitFactory(GenericTraitTemplateFactory factory) {
     traitTemplateCollection = new TraitTemplateCollection(factory);
-  }
-
-  public void setMagicTemplate(GenericMagicTemplate template) {
-    magicTemplate = template;
   }
 
   public void setPresentationTemplate(GenericPresentationTemplate template) {
@@ -153,9 +141,6 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
     }
     if (experienceCosts != null) {
       clone.experienceCosts = experienceCosts.clone();
-    }
-    if (magicTemplate != null) {
-      clone.magicTemplate = magicTemplate.clone();
     }
     if (presentationTemplate != null) {
       clone.presentationTemplate = presentationTemplate.clone();

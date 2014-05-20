@@ -5,7 +5,6 @@ import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.creation.ICreationPoints;
 import net.sf.anathema.character.main.template.essence.IEssenceTemplate;
 import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
-import net.sf.anathema.character.main.template.magic.IMagicTemplate;
 import net.sf.anathema.character.main.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.main.traits.TraitType;
 
@@ -34,6 +33,4 @@ public interface HeroTemplate {
   TraitType[] getToughnessControllingTraitTypes();
 
   String[] getBaseHealthProviders();
-
-  IMagicTemplate getMagicTemplate();
 }

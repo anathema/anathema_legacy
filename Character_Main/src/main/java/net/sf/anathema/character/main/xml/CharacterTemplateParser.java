@@ -2,8 +2,6 @@ package net.sf.anathema.character.main.xml;
 
 import net.sf.anathema.character.main.framework.ICharacterTemplateRegistryCollection;
 import net.sf.anathema.character.main.template.ITemplateType;
-import net.sf.anathema.character.main.template.abilities.GroupedTraitType;
-import net.sf.anathema.character.main.traits.lists.AllAbilityTraitTypeList;
 import net.sf.anathema.character.main.traits.lists.AllAttributeTraitTypeList;
 import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.character.main.xml.abilitygroup.GenericGroupedTraitTypeProvider;
@@ -19,8 +17,6 @@ import net.sf.anathema.character.main.xml.experience.ExperienceTemplateParser;
 import net.sf.anathema.character.main.xml.experience.GenericExperiencePointCosts;
 import net.sf.anathema.character.main.xml.health.GenericHealthTemplate;
 import net.sf.anathema.character.main.xml.health.HealthTemplateParser;
-import net.sf.anathema.character.main.xml.magic.GenericMagicTemplate;
-import net.sf.anathema.character.main.xml.magic.GenericMagicTemplateParser;
 import net.sf.anathema.character.main.xml.presentation.GenericPresentationTemplate;
 import net.sf.anathema.character.main.xml.presentation.PresentationPropertiesParser;
 import net.sf.anathema.character.main.xml.registry.IXmlTemplateRegistry;
@@ -39,7 +35,6 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
   private static final String TAG_GENERAL = "general";
   private static final String TAG_EXPERIENCE_POINT_COST = "experiencePointCost";
   private static final String TAG_TRAIT_COLLECTION = "traitCollection";
-  private static final String TAG_MAGIC_TEMPLATE = "magicTemplate";
   private static final String TAG_PRESENTATION_TEMPLATE = "presentation";
   public static final String ATTRIB_ID = "id";
   private static final String TAG_HEALTH_TEMPLATE = "healthTemplate";
@@ -154,7 +149,6 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     setAttributeGroups(generalElement, characterTemplate);
     setEssenceTemplate(generalElement, characterTemplate);
     setTraitCollection(generalElement, characterTemplate);
-    setMagicTemplate(generalElement, characterTemplate);
     setPresentationTemplate(generalElement, characterTemplate);
     setToughnessControllingTrait(generalElement, characterTemplate);
   }
@@ -189,16 +183,6 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     PresentationPropertiesParser parser = new PresentationPropertiesParser(registryCollection.getPresentationTemplateRegistry());
     GenericPresentationTemplate template = parser.parseTemplate(presentationTemplateElement);
     characterTemplate.setPresentationTemplate(template);
-  }
-
-  private void setMagicTemplate(Element generalElement, GenericCharacterTemplate characterTemplate) throws PersistenceException {
-    Element magicTemplateElement = generalElement.element(TAG_MAGIC_TEMPLATE);
-    if (magicTemplateElement == null) {
-      return;
-    }
-    GenericMagicTemplateParser parser = new GenericMagicTemplateParser(registryCollection.getMagicTemplateRegistry(), characterTemplate);
-    GenericMagicTemplate template = parser.parseTemplate(magicTemplateElement);
-    characterTemplate.setMagicTemplate(template);
   }
 
   private void setTraitCollection(Element generalElement, GenericCharacterTemplate characterTemplate) throws PersistenceException {
