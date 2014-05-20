@@ -21,15 +21,19 @@ public class VirtueBonusCostCalculator {
   public void calculateVirtuePoints() {
     clear();
     for (Trait virtue : virtues) {
-      int costFactor = creationData.getVirtueCost().getRatingCosts(virtue.getCalculationValue());
+      int costFactor = creationData.getVirtueCost().getRatingCosts(getCalculationBase(virtue));
       IVirtueCost cost = handleVirtue(virtue, costFactor);
       costsByVirtue.put(virtue.getType(), cost);
     }
   }
 
+  private int getCalculationBase(Trait virtue) {
+    return creationData.getCalculationBase(virtue.getType());
+  }
+
   private IVirtueCost handleVirtue(Trait virtue, int costFactor) {
     int maximumFreeVirtueRank = creationData.getMaximumFreeVirtueRank();
-    int dotsToAdd = Math.min(virtue.getCalculationValue(), maximumFreeVirtueRank) - virtue.getMinimalValue();
+    int dotsToAdd = Math.min(getCalculationBase(virtue), maximumFreeVirtueRank) - virtue.getMinimalValue();
     int dotsRemaining = creationData.getFreeVirtueCreationDots() - dotsSpent;
     int dotsAssigned = Math.min(dotsToAdd, dotsRemaining);
     dotsSpent += dotsAssigned;
