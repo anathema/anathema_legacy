@@ -10,7 +10,7 @@
         <model id="SpiritualTraits" template="SolarSpiritualTraits"/>
         <model id="SpiritualPoints" template="SolarSpiritualPoints"/>
         <model id="Abilities" template="SolarAbilities"/>
-        <model id="AbilitiesPoints"/>
+        <model id="AbilitiesPoints" template="SolarAbilityPoints"/>
         <model id="Attributes" template="DefaultAttributes"/>
         <model id="AttributePoints" template="SolarAttributePoints"/>
         <model id="EssencePool" template="SolarEssencePool"/>

@@ -10,7 +10,7 @@
         <model id="SpiritualTraits" template="MortalSpiritualTraits"/>
         <model id="SpiritualPoints" template="MortalSpiritualPoints"/>
         <model id="Abilities" template="DefaultAbilities"/>
-        <model id="AbilitiesPoints"/>
+        <model id="AbilitiesPoints" template="MortalAbilityPoints"/>
         <model id="Attributes" template="DefaultAttributes"/>
         <model id="AttributePoints" template="MortalAttributePoints"/>
         <model id="EssencePool" template="MortalEssencePool"/>

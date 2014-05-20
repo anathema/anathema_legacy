@@ -4,14 +4,12 @@ import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.creation.ICreationPoints;
 import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
 import net.sf.anathema.character.main.template.points.IAbilityCreationPoints;
-import net.sf.anathema.hero.abilities.advance.creation.AbilityCostCalculatorImpl;
-import net.sf.anathema.hero.abilities.advance.creation.DefaultAbilityBonusModel;
-import net.sf.anathema.hero.abilities.advance.creation.FavoredAbilityBonusModel;
-import net.sf.anathema.hero.abilities.advance.creation.FavoredAbilityPickModel;
+import net.sf.anathema.hero.abilities.advance.creation.*;
 import net.sf.anathema.hero.abilities.advance.experience.AbilityExperienceCalculator;
 import net.sf.anathema.hero.abilities.advance.experience.AbilityExperienceModel;
 import net.sf.anathema.hero.abilities.model.AbilitiesModel;
 import net.sf.anathema.hero.abilities.model.AbilityModelFetcher;
+import net.sf.anathema.hero.abilities.template.AbilityPointsTemplate;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
@@ -25,6 +23,11 @@ import net.sf.anathema.lib.util.SimpleIdentifier;
 public class AbilitiesPointModel implements HeroModel {
 
   public static final Identifier ID = new SimpleIdentifier("AbilitiesPoints");
+  private AbilityPointsTemplate template;
+
+  public AbilitiesPointModel(AbilityPointsTemplate template) {
+    this.template = template;
+  }
 
   @Override
   public Identifier getId() {
@@ -68,7 +71,8 @@ public class AbilitiesPointModel implements HeroModel {
   private AbilityCostCalculatorImpl createCalculator(Hero hero) {
     IAbilityCreationPoints abilityCreationPoints = hero.getTemplate().getCreationPoints().getAbilityCreationPoints();
     BonusPointCosts costs = hero.getTemplate().getBonusPointCosts();
-    return new AbilityCostCalculatorImpl(AbilityModelFetcher.fetch(hero), abilityCreationPoints, costs);
+    AbilityCreationData creationData = new AbilityCreationData(template, abilityCreationPoints, costs);
+    return new AbilityCostCalculatorImpl(AbilityModelFetcher.fetch(hero), abilityCreationPoints, costs, creationData);
   }
 
   @Override

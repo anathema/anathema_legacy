@@ -20,6 +20,7 @@ public class AbilityCostCalculatorImpl implements AbilityCostCalculator {
 
   private final AbilityPointCosts costs;
   protected final IFavorableTraitCreationPoints points;
+  private AbilityCreationData creationData;
   private final Map<Trait, FavorableTraitCost[]> costsByTrait = new HashMap<>();
   private final int freeTraitMax;
   private final Trait[] traits;
@@ -27,8 +28,9 @@ public class AbilityCostCalculatorImpl implements AbilityCostCalculator {
   private int favoredDotSum = 0;
   private int generalDotSum = 0;
 
-  public AbilityCostCalculatorImpl(AbilitiesModel abilitiesModel, IFavorableTraitCreationPoints points, AbilityPointCosts costs) {
+  public AbilityCostCalculatorImpl(AbilitiesModel abilitiesModel, IFavorableTraitCreationPoints points, AbilityPointCosts costs, AbilityCreationData creationData) {
     this.points = points;
+    this.creationData = creationData;
     this.freeTraitMax = costs.getMaximumFreeAbilityRank();
     this.traits = abilitiesModel.getAll();
     this.costs = costs;
@@ -170,7 +172,7 @@ public class AbilityCostCalculatorImpl implements AbilityCostCalculator {
   }
 
   private int getCalculationBase(Trait trait) {
-    return getCreationCalculationValue(trait);
+    return getCreationCalculationValue(trait, creationData);
   }
 
   private FavorableTraitCost[] handleGeneralTrait(Trait trait, final int bonusPointCostFactor) {

@@ -2,6 +2,7 @@ package net.sf.anathema.hero.abilities;
 
 import net.sf.anathema.character.main.template.abilities.AbilityGroupType;
 import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.hero.abilities.advance.creation.AbilityCreationData;
 import net.sf.anathema.hero.traits.template.GroupedTraitsTemplate;
 import net.sf.anathema.hero.traits.template.Group;
 import net.sf.anathema.hero.advance.AbstractBonusPointTestCase;
@@ -23,11 +24,13 @@ import net.sf.anathema.hero.abilities.model.AbilitiesModelImpl;
 import net.sf.anathema.hero.points.PointModelImpl;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
 
 public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
 
@@ -101,7 +104,8 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
   }
 
   private AbilityCostCalculatorImpl startCalculation(IFavorableTraitCreationPoints creationPoints) {
-    AbilityCostCalculatorImpl calculator = new AbilityCostCalculatorImpl(abilityModel, creationPoints, costs);
+    AbilityCreationData creationData = mock(AbilityCreationData.class);
+    AbilityCostCalculatorImpl calculator = new AbilityCostCalculatorImpl(abilityModel, creationPoints, costs, creationData);
     calculator.recalculate();
     return calculator;
   }
