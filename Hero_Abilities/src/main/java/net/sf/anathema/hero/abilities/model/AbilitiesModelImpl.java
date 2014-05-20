@@ -9,6 +9,7 @@ import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.creation.FavorableTraitFactory;
 import net.sf.anathema.character.main.traits.creation.TypedTraitTemplateFactory;
 import net.sf.anathema.character.main.traits.lists.IIdentifiedCasteTraitTypeList;
+import net.sf.anathema.hero.traits.model.GroupedTraitTypeBuilder;
 import net.sf.anathema.hero.traits.template.GroupedTraitsTemplate;
 import net.sf.anathema.hero.concept.CasteCollection;
 import net.sf.anathema.hero.concept.HeroConcept;
@@ -49,7 +50,7 @@ public class AbilitiesModelImpl extends DefaultTraitMap implements AbilitiesMode
     HeroConcept concept = HeroConceptFetcher.fetch(hero);
     HeroTemplate template = hero.getTemplate();
     CasteCollection casteCollection = concept.getCasteCollection();
-    GroupedTraitType[] abilityGroups = GroupedAbilityTypeBuilder.BuildFor(this.template);
+    GroupedTraitType[] abilityGroups = GroupedTraitTypeBuilder.BuildFor(this.template);
     this.abilityTraitGroups = new AbilityTypeGroupFactory().createTraitGroups(casteCollection, abilityGroups);
     IncrementChecker incrementChecker = createFavoredAbilityIncrementChecker(template, this, abilityGroups);
     addFavorableTraits(incrementChecker, new AbilityTemplateFactory(template.getTraitTemplateCollection().getTraitTemplateFactory()));

@@ -6,6 +6,7 @@ import net.sf.anathema.character.main.library.trait.favorable.GrumpyIncrementChe
 import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITraitTemplateFactory;
+import net.sf.anathema.character.main.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.main.traits.AttributeTemplateFactory;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.creation.FavorableTraitFactory;
@@ -42,10 +43,15 @@ public class AttributeModelImpl extends DefaultTraitMap implements AttributeMode
     this.hero = hero;
     this.template = hero.getTemplate();
     CasteCollection casteCollection = HeroConceptFetcher.fetch(hero).getCasteCollection();
-    this.attributeTraitGroups = new AttributeTypeGroupFactory().createTraitGroups(casteCollection, template.getAttributeGroups());
+    this.attributeTraitGroups = new AttributeTypeGroupFactory().createTraitGroups(casteCollection, getAttributeGroups());
     addAttributes();
     TraitModel traitModel = TraitModelFetcher.fetch(hero);
     traitModel.addTraits(getAll());
+  }
+
+  @Override
+  public GroupedTraitType[] getAttributeGroups() {
+    return template.getAttributeGroups();
   }
 
   @Override

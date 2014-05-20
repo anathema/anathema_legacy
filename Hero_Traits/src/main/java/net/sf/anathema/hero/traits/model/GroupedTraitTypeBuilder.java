@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.abilities.model;
+package net.sf.anathema.hero.traits.model;
 
 import net.sf.anathema.character.main.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.main.traits.TraitType;
@@ -11,13 +11,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class GroupedAbilityTypeBuilder {
+public class GroupedTraitTypeBuilder {
 
   public static GroupedTraitType[] BuildFor(GroupedTraitsTemplate template) {
-    GroupedAbilityTypeBuilder builder = new GroupedAbilityTypeBuilder();
+    GroupedTraitTypeBuilder builder = new GroupedTraitTypeBuilder();
     for (Group group : template.groups) {
       for (String traitId : group.traits) {
-        builder.addGroupedAbilityType(traitId, group.id, group.casteId);
+        builder.addGroupedTraitType(traitId, group.id, group.casteId);
       }
     }
     return builder.getTraitTypeGroups();
@@ -30,7 +30,7 @@ public class GroupedAbilityTypeBuilder {
     return groupedTraitTypes.toArray(new GroupedTraitType[groupedTraitTypes.size()]);
   }
 
-  public void addGroupedAbilityType(String traitId, String groupId, String traitCaste) {
+  public void addGroupedTraitType(String traitId, String groupId, String traitCaste) {
     TraitType traitType = traitTypeGroup.getById(traitId);
     List<String> traitCasteList = traitCaste == null ? new ArrayList<>() : Collections.singletonList(traitCaste);
     GroupedTraitType type = new GroupedTraitType(traitType, groupId, traitCasteList);

@@ -2,6 +2,7 @@ package net.sf.anathema.hero.attributes.model;
 
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.TraitGroup;
+import net.sf.anathema.character.main.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.main.traits.lists.IdentifiedTraitTypeList;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.hero.traits.TraitMap;
@@ -17,4 +18,6 @@ public interface AttributeModel extends TraitMap, HeroModel {
   TraitGroup[] getTraitGroups();
 
   IdentifiedTraitTypeList[] getAttributeTypeGroups();
+
+  GroupedTraitType[] getAttributeGroups();
 }
