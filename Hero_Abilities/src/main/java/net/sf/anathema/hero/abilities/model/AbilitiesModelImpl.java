@@ -9,7 +9,7 @@ import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.creation.FavorableTraitFactory;
 import net.sf.anathema.character.main.traits.creation.TypedTraitTemplateFactory;
 import net.sf.anathema.character.main.traits.lists.IIdentifiedCasteTraitTypeList;
-import net.sf.anathema.hero.abilities.template.AbilitiesTemplate;
+import net.sf.anathema.hero.traits.template.GroupedTraitsTemplate;
 import net.sf.anathema.hero.concept.CasteCollection;
 import net.sf.anathema.hero.concept.HeroConcept;
 import net.sf.anathema.hero.concept.HeroConceptFetcher;
@@ -32,9 +32,9 @@ public class AbilitiesModelImpl extends DefaultTraitMap implements AbilitiesMode
 
   private IIdentifiedCasteTraitTypeList[] abilityTraitGroups;
   private Hero hero;
-  private AbilitiesTemplate template;
+  private GroupedTraitsTemplate template;
 
-  public AbilitiesModelImpl(AbilitiesTemplate template) {
+  public AbilitiesModelImpl(GroupedTraitsTemplate template) {
     this.template = template;
   }
 

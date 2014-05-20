@@ -1,9 +1,9 @@
-package net.sf.anathema.hero.abilities.template;
+package net.sf.anathema.hero.traits.template;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AbilitiesTemplate {
+public class GroupedTraitsTemplate {
 
   public List<Group> groups = new ArrayList<>();
 }

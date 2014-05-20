@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.abilities.template;
+package net.sf.anathema.hero.traits.template;
 
 import java.util.ArrayList;
 import java.util.List;

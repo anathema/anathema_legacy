@@ -4,8 +4,8 @@ import net.sf.anathema.character.main.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.lists.AllAbilityTraitTypeList;
 import net.sf.anathema.character.main.traits.lists.TraitTypeList;
-import net.sf.anathema.hero.abilities.template.AbilitiesTemplate;
-import net.sf.anathema.hero.abilities.template.Group;
+import net.sf.anathema.hero.traits.template.GroupedTraitsTemplate;
+import net.sf.anathema.hero.traits.template.Group;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,7 +13,7 @@ import java.util.List;
 
 public class GroupedAbilityTypeBuilder {
 
-  public static GroupedTraitType[] BuildFor(AbilitiesTemplate template) {
+  public static GroupedTraitType[] BuildFor(GroupedTraitsTemplate template) {
     GroupedAbilityTypeBuilder builder = new GroupedAbilityTypeBuilder();
     for (Group group : template.groups) {
       for (String traitId : group.traits) {

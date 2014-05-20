@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.abilities.template;
+package net.sf.anathema.hero.traits.template;
 
 import net.sf.anathema.hero.template.ConfigurableTemplateLoader;
 import net.sf.anathema.hero.template.TemplateFactory;
@@ -6,11 +6,11 @@ import net.sf.anathema.hero.template.TemplateLoader;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
-public class AbilitiesTemplateLoader {
+public class GroupedTraitsTemplateLoader {
 
-  public static AbilitiesTemplate loadTemplate(TemplateFactory templateFactory, String templateName) {
+  public static GroupedTraitsTemplate loadTemplate(TemplateFactory templateFactory, String templateName) {
     Identifier templateId = new SimpleIdentifier(templateName);
-    TemplateLoader<AbilitiesTemplate> loader = new ConfigurableTemplateLoader<>(AbilitiesTemplate.class);
+    TemplateLoader<GroupedTraitsTemplate> loader = new ConfigurableTemplateLoader<>(GroupedTraitsTemplate.class);
     return templateFactory.loadModelTemplate(templateId, loader);
   }
 }

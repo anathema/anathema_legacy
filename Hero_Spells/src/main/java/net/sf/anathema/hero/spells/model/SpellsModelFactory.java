@@ -1,8 +1,6 @@
 package net.sf.anathema.hero.spells.model;
 
 import net.sf.anathema.hero.abilities.model.AbilitiesModel;
-import net.sf.anathema.hero.abilities.template.AbilitiesTemplate;
-import net.sf.anathema.hero.abilities.template.AbilitiesTemplateLoader;
 import net.sf.anathema.hero.attributes.model.AttributeModel;
 import net.sf.anathema.hero.charms.advance.MagicPointsModel;
 import net.sf.anathema.hero.charms.model.CharmsModel;

@@ -2,8 +2,8 @@ package net.sf.anathema.hero.abilities;
 
 import net.sf.anathema.character.main.template.abilities.AbilityGroupType;
 import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.hero.abilities.template.AbilitiesTemplate;
-import net.sf.anathema.hero.abilities.template.Group;
+import net.sf.anathema.hero.traits.template.GroupedTraitsTemplate;
+import net.sf.anathema.hero.traits.template.Group;
 import net.sf.anathema.hero.advance.AbstractBonusPointTestCase;
 import net.sf.anathema.character.main.library.trait.FavorableTraitCost;
 import net.sf.anathema.character.main.library.trait.Trait;
@@ -68,7 +68,7 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
   }
 
   private AbilityPointCosts costs;
-  private AbilitiesTemplate abilitiesTemplate = new AbilitiesTemplate();
+  private GroupedTraitsTemplate abilitiesTemplate = new GroupedTraitsTemplate();
   private AbilitiesModelImpl abilityModel = new AbilitiesModelImpl(abilitiesTemplate);
   private DummyHero dummyHero = new DummyHero();
 
@@ -90,7 +90,7 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
 
   @Before
   public void setUp() throws Exception {
-    this.abilitiesTemplate = new AbilitiesTemplate();
+    this.abilitiesTemplate = new GroupedTraitsTemplate();
     addGroupsToTemplate();
     this.abilityModel = new AbilitiesModelImpl(abilitiesTemplate);
     dummyHero.addModel(abilityModel);

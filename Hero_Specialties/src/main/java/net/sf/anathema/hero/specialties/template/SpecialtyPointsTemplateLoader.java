@@ -1,6 +1,5 @@
 package net.sf.anathema.hero.specialties.template;
 
-import net.sf.anathema.hero.abilities.template.AbilitiesTemplate;
 import net.sf.anathema.hero.template.ConfigurableTemplateLoader;
 import net.sf.anathema.hero.template.TemplateFactory;
 import net.sf.anathema.hero.template.TemplateLoader;
