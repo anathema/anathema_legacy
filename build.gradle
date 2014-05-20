@@ -17,6 +17,9 @@ allprojects {
         maven { //JRE
             url 'http://anathema.butatopanto.de:8081/maven/releases/'
         }
+        maven { //Reflections 0.9.10-SNAPSHOT (with patch for Java 8)
+            url 'http://anathema.butatopanto.de:8081/maven/snapshots/'
+        }
     }
 }
 

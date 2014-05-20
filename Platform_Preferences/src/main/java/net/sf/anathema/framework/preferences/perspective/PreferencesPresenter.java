@@ -7,7 +7,6 @@ import net.sf.anathema.framework.preferences.elements.PreferencePresenter;
 import net.sf.anathema.framework.preferences.elements.PreferenceView;
 import net.sf.anathema.framework.preferences.elements.RegisteredPreferencePresenter;
 import net.sf.anathema.framework.preferences.persistence.PreferencePto;
-import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.file.RelativePath;
 
@@ -53,19 +52,11 @@ public class PreferencesPresenter {
   private void addSaveButtonToNavigation() {
     Tool tool = preferencesNavigation.addTool();
     tool.setIcon(new RelativePath("icons/TaskBarSave24.png"));
-    tool.setCommand(new Command() {
-      @Override
-      public void execute() {
-        PreferencesPresenter.this.savePreferences();
-        tool.disable();
-      }
+    tool.setCommand(() -> {
+      savePreferences();
+      tool.disable();
     });
-    dirtyProxy.whenDirtied(new Command() {
-      @Override
-      public void execute() {
-        tool.enable();
-      }
-    });
+    dirtyProxy.whenDirtied(() -> tool.enable());
     tool.disable();
   }
 

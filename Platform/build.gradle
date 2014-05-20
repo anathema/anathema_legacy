@@ -1,6 +1,6 @@
 dependencies {
     compile 'com.github.rjeschke:txtmark:0.10'
-    compile 'org.reflections:reflections:0.9.8'
+    compile 'org.reflections:reflections:0.9.10-SNAPSHOT'
     compile 'com.itextpdf:itextpdf:5.3.2' //5.3.3 and later remove MultiColumnText, need adjustment
     compile 'com.google.code.gson:gson:2.2.4'
     compile 'de.idos.updates:updates-core:1.2.0'
