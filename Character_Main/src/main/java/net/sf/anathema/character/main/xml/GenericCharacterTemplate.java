@@ -7,13 +7,11 @@ import net.sf.anathema.character.main.template.ITraitTemplateCollection;
 import net.sf.anathema.character.main.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.creation.ICreationPoints;
-import net.sf.anathema.character.main.template.essence.IEssenceTemplate;
 import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
 import net.sf.anathema.character.main.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.main.traits.TraitTemplateCollection;
 import net.sf.anathema.character.main.xml.creation.GenericBonusPointCosts;
 import net.sf.anathema.character.main.xml.creation.GenericCreationPoints;
-import net.sf.anathema.character.main.xml.essence.GenericEssenceTemplate;
 import net.sf.anathema.character.main.xml.experience.GenericExperiencePointCosts;
 import net.sf.anathema.character.main.xml.presentation.GenericPresentationTemplate;
 import net.sf.anathema.character.main.xml.trait.GenericTraitTemplateFactory;
@@ -30,7 +28,6 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
   private GenericExperiencePointCosts experienceCosts = new GenericExperiencePointCosts();
   private GenericBonusPointCosts bonusPointCosts = new GenericBonusPointCosts();
   private GenericCreationPoints creationPoints = new GenericCreationPoints();
-  private GenericEssenceTemplate essenceTemplate;
   private GroupedTraitType[] attributeGroups;
   private GenericPresentationTemplate presentationTemplate;
   private final List<ConfiguredModel> models = new ArrayList<>();
@@ -43,11 +40,6 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
   @Override
   public ICreationPoints getCreationPoints() {
     return creationPoints;
-  }
-
-  @Override
-  public IEssenceTemplate getEssenceTemplate() {
-    return essenceTemplate;
   }
 
   @Override
@@ -73,10 +65,6 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
   @Override
   public List<ConfiguredModel> getModels() {
     return new ArrayList<>(models);
-  }
-
-  public void setEssenceTemplate(GenericEssenceTemplate essenceTemplate) {
-    this.essenceTemplate = essenceTemplate;
   }
 
   public void setCreationPoints(GenericCreationPoints creationPoints) {
@@ -120,9 +108,6 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
     }
     if (creationPoints != null) {
       clone.creationPoints = creationPoints.clone();
-    }
-    if (essenceTemplate != null) {
-      clone.essenceTemplate = essenceTemplate.clone();
     }
     if (experienceCosts != null) {
       clone.experienceCosts = experienceCosts.clone();

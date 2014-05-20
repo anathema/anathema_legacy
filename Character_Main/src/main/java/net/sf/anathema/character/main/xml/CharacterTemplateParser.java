@@ -11,8 +11,6 @@ import net.sf.anathema.character.main.xml.creation.BonusPointCostTemplateParser;
 import net.sf.anathema.character.main.xml.creation.CreationPointTemplateParser;
 import net.sf.anathema.character.main.xml.creation.GenericBonusPointCosts;
 import net.sf.anathema.character.main.xml.creation.GenericCreationPoints;
-import net.sf.anathema.character.main.xml.essence.EssenceTemplateParser;
-import net.sf.anathema.character.main.xml.essence.GenericEssenceTemplate;
 import net.sf.anathema.character.main.xml.experience.ExperienceTemplateParser;
 import net.sf.anathema.character.main.xml.experience.GenericExperiencePointCosts;
 import net.sf.anathema.character.main.xml.presentation.GenericPresentationTemplate;
@@ -28,7 +26,6 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
   private static final String TAG_ATTRIBUTE_GROUPS = "attributeGroups";
   private static final String TAG_CREATION = "creation";
   private static final String TAG_CREATION_POINTS = "creationPoints";
-  private static final String TAG_ESSENCE = "essence";
   private static final String TAG_EXPERIENCE = "experience";
   private static final String TAG_GENERAL = "general";
   private static final String TAG_EXPERIENCE_POINT_COST = "experiencePointCost";
@@ -118,16 +115,6 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     return new CreationPointTemplateParser(registryCollection.getCreationPointTemplateRegistry());
   }
 
-  private void setEssenceTemplate(Element generalElement, GenericCharacterTemplate characterTemplate) throws PersistenceException {
-    Element essenceElement = generalElement.element(TAG_ESSENCE);
-    if (essenceElement == null) {
-      return;
-    }
-    EssenceTemplateParser parser = new EssenceTemplateParser(registryCollection.getEssenceTemplateRegistry());
-    GenericEssenceTemplate essenceTemplate = parser.parseTemplate(essenceElement);
-    characterTemplate.setEssenceTemplate(essenceTemplate);
-  }
-
   private void setExperiencePoints(GenericCharacterTemplate characterTemplate, Element experienceElement) throws PersistenceException {
     Element experiencePointsElement = experienceElement.element(TAG_EXPERIENCE_POINT_COST);
     if (experiencePointsElement == null) {
@@ -144,7 +131,6 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
       return;
     }
     setAttributeGroups(generalElement, characterTemplate);
-    setEssenceTemplate(generalElement, characterTemplate);
     setTraitCollection(generalElement, characterTemplate);
     setPresentationTemplate(generalElement, characterTemplate);
   }

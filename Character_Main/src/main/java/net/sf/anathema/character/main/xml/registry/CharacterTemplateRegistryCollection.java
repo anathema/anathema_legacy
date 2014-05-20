@@ -6,7 +6,6 @@ import net.sf.anathema.character.main.xml.GenericCharacterTemplate;
 import net.sf.anathema.character.main.xml.abilitygroup.GenericGroupedTraitTypeProvider;
 import net.sf.anathema.character.main.xml.creation.GenericBonusPointCosts;
 import net.sf.anathema.character.main.xml.creation.GenericCreationPoints;
-import net.sf.anathema.character.main.xml.essence.GenericEssenceTemplate;
 import net.sf.anathema.character.main.xml.experience.GenericExperiencePointCosts;
 import net.sf.anathema.character.main.xml.presentation.GenericPresentationTemplate;
 import net.sf.anathema.character.main.xml.trait.GenericTraitTemplateFactory;
@@ -16,7 +15,6 @@ public class CharacterTemplateRegistryCollection implements ICharacterTemplateRe
 
   private final IXmlTemplateRegistry<GenericCharacterTemplate> characterTemplateRegistry;
   private final IXmlTemplateRegistry<GenericGroupedTraitTypeProvider> groupedTraitTypeRegistry;
-  private final IXmlTemplateRegistry<GenericEssenceTemplate> essenceRegistry;
   private final IXmlTemplateRegistry<GenericCreationPoints> creationPointsRegistry;
   private final IXmlTemplateRegistry<GenericBonusPointCosts> bonusPointsRegistry;
   private final IXmlTemplateRegistry<GenericExperiencePointCosts> experienceTemplateRegistry;
@@ -27,7 +25,6 @@ public class CharacterTemplateRegistryCollection implements ICharacterTemplateRe
   public CharacterTemplateRegistryCollection(ICharacterTemplateExtensionResourceCache cache) {
     characterTemplateRegistry = new XmlTemplateRegistry<>(cache);
     groupedTraitTypeRegistry = new XmlTemplateRegistry<>(cache);
-    essenceRegistry = new XmlTemplateRegistry<>(cache);
     creationPointsRegistry = new XmlTemplateRegistry<>(cache);
     bonusPointsRegistry = new XmlTemplateRegistry<>(cache);
     experienceTemplateRegistry = new XmlTemplateRegistry<>(cache);
@@ -44,11 +41,6 @@ public class CharacterTemplateRegistryCollection implements ICharacterTemplateRe
   @Override
   public IXmlTemplateRegistry<GenericGroupedTraitTypeProvider> getTraitGroupTemplateRegistry() {
     return groupedTraitTypeRegistry;
-  }
-
-  @Override
-  public IXmlTemplateRegistry<GenericEssenceTemplate> getEssenceTemplateRegistry() {
-    return essenceRegistry;
   }
 
   @Override

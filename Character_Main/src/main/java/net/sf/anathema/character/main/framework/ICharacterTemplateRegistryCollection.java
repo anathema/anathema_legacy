@@ -4,7 +4,6 @@ import net.sf.anathema.character.main.xml.GenericCharacterTemplate;
 import net.sf.anathema.character.main.xml.abilitygroup.GenericGroupedTraitTypeProvider;
 import net.sf.anathema.character.main.xml.creation.GenericBonusPointCosts;
 import net.sf.anathema.character.main.xml.creation.GenericCreationPoints;
-import net.sf.anathema.character.main.xml.essence.GenericEssenceTemplate;
 import net.sf.anathema.character.main.xml.experience.GenericExperiencePointCosts;
 import net.sf.anathema.character.main.xml.presentation.GenericPresentationTemplate;
 import net.sf.anathema.character.main.xml.registry.IXmlTemplateRegistry;
@@ -16,8 +15,6 @@ public interface ICharacterTemplateRegistryCollection {
   IXmlTemplateRegistry<GenericCharacterTemplate> getCharacterTemplateRegistry();
 
   IXmlTemplateRegistry<GenericGroupedTraitTypeProvider> getTraitGroupTemplateRegistry();
-
-  IXmlTemplateRegistry<GenericEssenceTemplate> getEssenceTemplateRegistry();
 
   IXmlTemplateRegistry<GenericCreationPoints> getCreationPointTemplateRegistry();
 

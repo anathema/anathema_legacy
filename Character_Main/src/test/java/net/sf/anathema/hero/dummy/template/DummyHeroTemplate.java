@@ -4,8 +4,6 @@ import net.sf.anathema.character.main.template.*;
 import net.sf.anathema.character.main.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.creation.ICreationPoints;
-import net.sf.anathema.character.main.template.essence.IEssenceTemplate;
-import net.sf.anathema.character.main.template.essence.NullEssenceTemplate;
 import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
 import net.sf.anathema.character.main.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.main.traits.TraitTemplateCollection;
@@ -22,7 +20,6 @@ public class DummyHeroTemplate implements HeroTemplate {
 
   public ITraitTemplateCollection traitTemplateCollection = new TraitTemplateCollection(new DummyTraitTemplateFactory());
   public ITemplateType type = new TemplateType(new DummyMundaneCharacterType());
-  public IEssenceTemplate essenceTemplate = new NullEssenceTemplate();
   public DummyCreationPoints creationPoints = new DummyCreationPoints();
 
   @Override
@@ -51,11 +48,6 @@ public class DummyHeroTemplate implements HeroTemplate {
   }
 
   @Override
-  public IEssenceTemplate getEssenceTemplate() {
-    return essenceTemplate;
-  }
-
-  @Override
   public ITraitTemplateCollection getTraitTemplateCollection() {
     return traitTemplateCollection;
   }
@@ -68,14 +60,14 @@ public class DummyHeroTemplate implements HeroTemplate {
   @Override
   public GroupedTraitType[] getAttributeGroups() {
     return new GroupedTraitType[]{new GroupedTraitType(AttributeType.Strength, AttributeGroupType.Physical.getId(), new ArrayList<>()),
-            new GroupedTraitType(AttributeType.Dexterity, AttributeGroupType.Physical.getId(), new ArrayList<String>()),
-            new GroupedTraitType(AttributeType.Stamina, AttributeGroupType.Physical.getId(), new ArrayList<String>()),
-            new GroupedTraitType(AttributeType.Charisma, AttributeGroupType.Social.getId(), new ArrayList<String>()),
-            new GroupedTraitType(AttributeType.Manipulation, AttributeGroupType.Social.getId(), new ArrayList<String>()),
-            new GroupedTraitType(AttributeType.Appearance, AttributeGroupType.Social.getId(), new ArrayList<String>()),
-            new GroupedTraitType(AttributeType.Perception, AttributeGroupType.Mental.getId(), new ArrayList<String>()),
-            new GroupedTraitType(AttributeType.Intelligence, AttributeGroupType.Mental.getId(), new ArrayList<String>()),
-            new GroupedTraitType(AttributeType.Wits, AttributeGroupType.Mental.getId(), new ArrayList<String>())};
+            new GroupedTraitType(AttributeType.Dexterity, AttributeGroupType.Physical.getId(), new ArrayList<>()),
+            new GroupedTraitType(AttributeType.Stamina, AttributeGroupType.Physical.getId(), new ArrayList<>()),
+            new GroupedTraitType(AttributeType.Charisma, AttributeGroupType.Social.getId(), new ArrayList<>()),
+            new GroupedTraitType(AttributeType.Manipulation, AttributeGroupType.Social.getId(), new ArrayList<>()),
+            new GroupedTraitType(AttributeType.Appearance, AttributeGroupType.Social.getId(), new ArrayList<>()),
+            new GroupedTraitType(AttributeType.Perception, AttributeGroupType.Mental.getId(), new ArrayList<>()),
+            new GroupedTraitType(AttributeType.Intelligence, AttributeGroupType.Mental.getId(), new ArrayList<>()),
+            new GroupedTraitType(AttributeType.Wits, AttributeGroupType.Mental.getId(), new ArrayList<>())};
   }
 
   public void setCharacterType(CharacterType characterType) {
