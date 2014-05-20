@@ -5,6 +5,7 @@ import net.sf.anathema.character.main.library.trait.favorable.FriendlyIncrementC
 import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.main.traits.EssenceTemplateFactory;
 import net.sf.anathema.character.main.traits.ITraitTemplate;
+import net.sf.anathema.character.main.traits.SimpleTraitTemplate;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.creation.DefaultTraitFactory;
 import net.sf.anathema.character.main.traits.creation.TraitFactory;
@@ -30,21 +31,20 @@ public abstract class AbstractBonusPointTestCase {
     for (final AbilityType traitType : AbilityType.values()) {
       IIdentifiedCasteTraitTypeList typeGroup =
               new IdentifiedCasteTraitTypeList(new TraitType[]{traitType}, new SimpleIdentifier("Test"), new MultiEntryMap<TraitType, CasteType>());
-      Trait trait = favorableTraitFactory.createTraits(typeGroup, friendlyIncrementChecker, new DummyTypedTraitTemplateFactory(traitType))[0];
+      Trait trait = favorableTraitFactory.createTraits(typeGroup, friendlyIncrementChecker, new DummyTypedTraitTemplateFactory())[0];
       traitModel.addTraits(trait);
     }
   }
 
   private static class DummyTypedTraitTemplateFactory implements TypedTraitTemplateFactory {
-    private final AbilityType traitType;
 
-    public DummyTypedTraitTemplateFactory(AbilityType traitType) {
-      this.traitType = traitType;
+    public DummyTypedTraitTemplateFactory() {
+      super();
     }
 
     @Override
     public ITraitTemplate create(TraitType type) {
-      return new DummyTraitTemplateFactory().createAbilityTemplate(traitType);
+      return SimpleTraitTemplate.createEssenceLimitedTemplate(0);
     }
   }
 }

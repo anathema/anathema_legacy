@@ -29,10 +29,4 @@ public class DummyTraitTemplateFactory implements ITraitTemplateFactory {
   public ITraitTemplate createAttributeTemplate(AttributeType type) {
     return SimpleTraitTemplate.createEssenceLimitedTemplate(1);
   }
-
-  @Override
-  public ITraitTemplate createAbilityTemplate(AbilityType type) {
-    return SimpleTraitTemplate.createEssenceLimitedTemplate(0);
-  }
-
 }

@@ -11,7 +11,6 @@ import net.sf.anathema.lib.lang.clone.ICloneable;
 
 public class GenericTraitTemplateFactory implements ITraitTemplateFactory, ICloneable<GenericTraitTemplateFactory> {
 
-  private GenericTraitTemplatePool abilitiesPool;
   private GenericTraitTemplatePool attributesPool;
   private GenericTraitTemplatePool virtuesPool;
   private GenericTraitTemplate essenceTemplate;
@@ -35,15 +34,6 @@ public class GenericTraitTemplateFactory implements ITraitTemplateFactory, IClon
   @Override
   public ITraitTemplate createAttributeTemplate(AttributeType type) {
     return attributesPool.getTemplate(type);
-  }
-
-  @Override
-  public ITraitTemplate createAbilityTemplate(AbilityType type) {
-    return abilitiesPool.getTemplate(type);
-  }
-
-  public void setAbilitiesPool(GenericTraitTemplatePool abilitiesPool) {
-    this.abilitiesPool = abilitiesPool;
   }
 
   public void setAttributesPool(GenericTraitTemplatePool attributesPool) {
@@ -70,7 +60,6 @@ public class GenericTraitTemplateFactory implements ITraitTemplateFactory, IClon
     } catch (CloneNotSupportedException e) {
       throw new UnreachableCodeReachedException(e);
     }
-    clone.abilitiesPool = abilitiesPool == null ? null : abilitiesPool.clone();
     clone.attributesPool = attributesPool == null ? null : attributesPool.clone();
     clone.virtuesPool = virtuesPool == null ? null : virtuesPool.clone();
     clone.essenceTemplate = essenceTemplate == null ? null : essenceTemplate.clone();

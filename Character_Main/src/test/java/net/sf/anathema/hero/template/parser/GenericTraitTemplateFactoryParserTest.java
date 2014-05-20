@@ -2,7 +2,6 @@ package net.sf.anathema.hero.template.parser;
 
 import junit.framework.TestCase;
 import net.sf.anathema.character.main.traits.ITraitTemplate;
-import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.traits.types.AttributeType;
 import net.sf.anathema.character.main.traits.types.VirtueType;
 import net.sf.anathema.character.main.xml.trait.GenericTraitTemplateFactory;
@@ -31,13 +30,6 @@ public class GenericTraitTemplateFactoryParserTest extends TestCase {
     templateFactoryRegistry = new DummyXmlTemplateRegistry<>();
     templatePoolRegistry = new DummyXmlTemplateRegistry<>();
     parser = new GenericTraitTemplateFactoryParser(templateFactoryRegistry, templatePoolRegistry);
-  }
-
-  public void testParseAbility() throws Exception {
-    Element traitCollectionElement = DocumentUtilities.read(xml).getRootElement();
-    GenericTraitTemplateFactory templateFactory = parser.parseTemplate(traitCollectionElement);
-    ITraitTemplate abilityTemplate = templateFactory.createAbilityTemplate(AbilityType.Archery);
-    AnathemaCharacterAssert.assertEssenceLimitedTraitTemplate(0, 0, 0, abilityTemplate);
   }
 
   public void testParseAttributes() throws Exception {

@@ -12,5 +12,13 @@
       id: "Mental",
       traits: ["Perception", "Intelligence", "Wits"]
     }
-  ]
+  ];
+  standard: {
+    startValue: 1;
+    minimumValue = 1;
+    modificationType: "RaiseOnly";
+    limitation: {
+      type: "Essence"
+    }
+  }
 }

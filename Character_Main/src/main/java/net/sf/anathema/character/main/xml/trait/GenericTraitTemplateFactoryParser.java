@@ -3,7 +3,6 @@ package net.sf.anathema.character.main.xml.trait;
 import net.sf.anathema.character.main.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.main.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.main.xml.trait.pool.GenericTraitTemplatePool;
-import net.sf.anathema.character.main.xml.trait.types.AbilityPoolParser;
 import net.sf.anathema.character.main.xml.trait.types.AttributePoolParser;
 import net.sf.anathema.character.main.xml.trait.types.VirtuePoolParser;
 import net.sf.anathema.lib.exception.PersistenceException;

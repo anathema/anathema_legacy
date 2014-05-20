@@ -14,6 +14,4 @@ public interface ITraitTemplateFactory {
   ITraitTemplate createVirtueTemplate(VirtueType type);
 
   ITraitTemplate createAttributeTemplate(AttributeType type);
-
-  ITraitTemplate createAbilityTemplate(AbilityType type);
 }

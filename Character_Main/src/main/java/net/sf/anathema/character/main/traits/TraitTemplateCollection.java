@@ -43,7 +43,7 @@ public class TraitTemplateCollection implements ITraitTemplateCollection {
 
       @Override
       public void visitAbility(AbilityType type) {
-        traitTemplate[0] = templateFactory.createAbilityTemplate(type);
+        throw new UnsupportedOperationException("Use new template mechanism");
       }
 
       @Override
