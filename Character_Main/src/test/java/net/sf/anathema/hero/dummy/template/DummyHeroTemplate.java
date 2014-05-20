@@ -85,11 +85,6 @@ public class DummyHeroTemplate implements HeroTemplate {
             new GroupedTraitType(AttributeType.Wits, AttributeGroupType.Mental.getId(), new ArrayList<String>())};
   }
 
-  @Override
-  public String[] getBaseHealthProviders() {
-    return new String[0];
-  }
-
   public void setCharacterType(CharacterType characterType) {
     this.type = new TemplateType(characterType);
   }

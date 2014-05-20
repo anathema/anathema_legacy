@@ -31,6 +31,4 @@ public interface HeroTemplate {
   ITraitTemplateCollection getTraitTemplateCollection();
 
   TraitType[] getToughnessControllingTraitTypes();
-
-  String[] getBaseHealthProviders();
 }

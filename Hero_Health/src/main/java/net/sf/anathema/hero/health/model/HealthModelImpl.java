@@ -26,19 +26,6 @@ public class HealthModelImpl implements HealthModel {
   @Override
   public void initialize(HeroEnvironment environment, Hero hero) {
     addHealthLevelProvider(new DyingStaminaHealthLevelProvider(TraitModelFetcher.fetch(hero)));
-    if (hero.getTemplate().getBaseHealthProviders() == null) {
-      return;
-    }
-    for (String providerString : hero.getTemplate().getBaseHealthProviders()) {
-      Class<?> loadedClass;
-      try {
-        loadedClass = Class.forName(providerString);
-        IHealthLevelProvider provider = (IHealthLevelProvider) loadedClass.getConstructors()[0].newInstance(TraitModelFetcher.fetch(hero));
-        addHealthLevelProvider(provider);
-      } catch (Exception e) {
-        e.printStackTrace();
-      }
-    }
   }
 
   @Override

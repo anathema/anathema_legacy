@@ -81,10 +81,4 @@ public class SimpleDummyCharacterTemplate implements HeroTemplate {
   public List<ConfiguredModel> getModels() {
     return new ArrayList<>();
   }
-
-  @Override
-  public String[] getBaseHealthProviders() {
-    return new String[0];
-  }
-
 }

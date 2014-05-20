@@ -80,11 +80,6 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
   }
 
   @Override
-  public String[] getBaseHealthProviders() {
-    return healthTemplate.getBaseHealthProviders();
-  }
-
-  @Override
   public List<ConfiguredModel> getModels() {
     return new ArrayList<>(models);
   }
