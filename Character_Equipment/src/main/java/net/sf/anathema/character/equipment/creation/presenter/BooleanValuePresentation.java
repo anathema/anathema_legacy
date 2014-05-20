@@ -1,5 +1,6 @@
 package net.sf.anathema.character.equipment.creation.presenter;
 
+import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.workflow.booleanvalue.BooleanValueModel;
@@ -8,8 +9,18 @@ import net.sf.anathema.lib.workflow.booleanvalue.BooleanValueView;
 public class BooleanValuePresentation {
 
   public void initPresentation(final ToggleTool tool, final BooleanValueModel model) {
-    tool.setCommand(() -> model.setValue(!model.getValue()));
-    model.addChangeListener(newValue -> selectBasedOnModelState(newValue, tool));
+    tool.setCommand(new Command() {
+      @Override
+      public void execute() {
+        model.setValue(!model.getValue());
+      }
+    });
+    model.addChangeListener(new IBooleanValueChangedListener() {
+      @Override
+      public void valueChanged(boolean newValue) {
+        BooleanValuePresentation.this.selectBasedOnModelState(newValue, tool);
+      }
+    });
     selectBasedOnModelState(model.getValue(), tool);
   }
 

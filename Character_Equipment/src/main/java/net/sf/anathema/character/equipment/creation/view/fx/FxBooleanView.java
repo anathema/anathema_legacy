@@ -1,5 +1,7 @@
 package net.sf.anathema.character.equipment.creation.view.fx;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
@@ -12,7 +14,12 @@ public class FxBooleanView implements BooleanValueView {
   private final Announcer<IBooleanValueChangedListener> announcer = Announcer.to(IBooleanValueChangedListener.class);
 
   public FxBooleanView() {
-    checkBox.setOnAction(event -> announcer.announce().valueChanged(checkBox.isSelected()));
+    checkBox.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        announcer.announce().valueChanged(checkBox.isSelected());
+      }
+    });
   }
 
   @Override

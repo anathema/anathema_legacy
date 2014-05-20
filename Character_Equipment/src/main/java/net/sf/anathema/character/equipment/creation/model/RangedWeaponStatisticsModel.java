@@ -5,6 +5,7 @@ import net.sf.anathema.character.equipment.creation.presenter.IRangedCombatStati
 import net.sf.anathema.character.equipment.creation.presenter.IWeaponTag;
 import net.sf.anathema.character.equipment.creation.presenter.IWeaponTagsModel;
 import net.sf.anathema.character.equipment.creation.presenter.RangedIntValueModel;
+import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.data.Range;
 
 public class RangedWeaponStatisticsModel extends OffensiveStatisticsModel implements IRangedCombatStatisticsModel {
@@ -15,7 +16,12 @@ public class RangedWeaponStatisticsModel extends OffensiveStatisticsModel implem
   public RangedWeaponStatisticsModel(IWeaponTagsModel weaponTagsModel) {
     this.weaponTagsModel = weaponTagsModel;
     for (IWeaponTag tag : weaponTagsModel.getAllTags()) {
-      weaponTagsModel.getSelectedModel(tag).addChangeListener(selected -> announceValidationChange());
+      weaponTagsModel.getSelectedModel(tag).addChangeListener(new IBooleanValueChangedListener() {
+        @Override
+        public void valueChanged(boolean selected) {
+          RangedWeaponStatisticsModel.this.announceValidationChange();
+        }
+      });
     }
   }
 

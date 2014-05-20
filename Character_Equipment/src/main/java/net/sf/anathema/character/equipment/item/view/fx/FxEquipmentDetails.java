@@ -34,19 +34,25 @@ public class FxEquipmentDetails implements EquipmentDetails {
   public ToolListView<IEquipmentStats> initStatsListView(final String title,
                                                          AgnosticUIConfiguration<IEquipmentStats> configuration) {
     listView.setUiConfiguration(configuration);
-    Platform.runLater(() -> {
-      Node node = listView.getNode();
-      Node titledPane = StyledTitledPane.Create(title, node);
-      outerPane.add(titledPane, new CC().push().grow());
+    Platform.runLater(new Runnable() {
+      @Override
+      public void run() {
+        Node node = listView.getNode();
+        Node titledPane = StyledTitledPane.Create(title, node);
+        outerPane.add(titledPane, new CC().push().grow());
+      }
     });
     return listView;
   }
 
   @Override
   public EquipmentDescriptionPanel addDescriptionPanel(final String title) {
-    Platform.runLater(() -> {
-      Node titledPane = StyledTitledPane.Create(title, descriptionPanel.getNode());
-      outerPane.add(titledPane, new CC().grow().push());
+    Platform.runLater(new Runnable() {
+      @Override
+      public void run() {
+        Node titledPane = StyledTitledPane.Create(title, descriptionPanel.getNode());
+        outerPane.add(titledPane, new CC().grow().push());
+      }
     });
     return descriptionPanel;
   }

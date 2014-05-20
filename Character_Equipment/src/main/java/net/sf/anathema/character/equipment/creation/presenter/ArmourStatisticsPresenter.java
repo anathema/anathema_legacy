@@ -4,7 +4,10 @@ import net.sf.anathema.character.equipment.creation.presenter.stats.properties.A
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.fx.hero.configurableview.IIntegerSpinner;
 import net.sf.anathema.hero.health.HealthType;
+import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.ToggleTool;
+import net.sf.anathema.lib.control.IBooleanValueChangedListener;
+import net.sf.anathema.lib.control.IntValueChangedListener;
 import net.sf.anathema.lib.workflow.booleanvalue.BooleanValueModel;
 
 public class ArmourStatisticsPresenter {
@@ -35,22 +38,31 @@ public class ArmourStatisticsPresenter {
     addSpinner(properties.getMobilityPenaltyLabel(), armourModel.getMobilityPenaltyModel());
     addSpinner(properties.getFatigueLabel(), armourModel.getFatigueModel());
 
-    tool.setCommand(() -> {
-      BooleanValueModel soakLinkModel = armourModel.getSoakLinkModel();
-      soakLinkModel.setValue(!soakLinkModel.getValue());
-    });
-    armourModel.getSoakLinkModel().addChangeListener(isLinkToggled -> {
-      if (isLinkToggled) {
-        aggravatedSoakModel.setValue(lethalSoakModel.getValue());
+    tool.setCommand(new Command() {
+      @Override
+      public void execute() {
+        BooleanValueModel soakLinkModel = armourModel.getSoakLinkModel();
+        soakLinkModel.setValue(!soakLinkModel.getValue());
       }
-      setToolBasedOnLinkState(tool, aggravatedSoakSpinner);
+    });
+    armourModel.getSoakLinkModel().addChangeListener(new IBooleanValueChangedListener() {
+      @Override
+      public void valueChanged(boolean isLinkToggled) {
+        if (isLinkToggled) {
+          aggravatedSoakModel.setValue(lethalSoakModel.getValue());
+        }
+        ArmourStatisticsPresenter.this.setToolBasedOnLinkState(tool, aggravatedSoakSpinner);
+      }
     });
     boolean linked = lethalSoakModel.getValue() == aggravatedSoakModel.getValue();
     armourModel.getSoakLinkModel().setValue(linked);
     setToolBasedOnLinkState(tool, aggravatedSoakSpinner);
-    lethalSoakModel.addIntValueChangeListener(newValue -> {
-      if (armourModel.getSoakLinkModel().getValue()) {
-        aggravatedSoakModel.setValue(newValue);
+    lethalSoakModel.addIntValueChangeListener(new IntValueChangedListener() {
+      @Override
+      public void valueChanged(int newValue) {
+        if (armourModel.getSoakLinkModel().getValue()) {
+          aggravatedSoakModel.setValue(newValue);
+        }
       }
     });
   }

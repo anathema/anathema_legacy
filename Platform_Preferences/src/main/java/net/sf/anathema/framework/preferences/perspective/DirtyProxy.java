@@ -13,6 +13,11 @@ public class DirtyProxy implements DirtyModel {
   }
 
   public void register(DirtyModel model) {
-    model.whenDirtied(() -> announcer.announce().execute());
+    model.whenDirtied(new Command() {
+      @Override
+      public void execute() {
+        announcer.announce().execute();
+      }
+    });
   }
 }

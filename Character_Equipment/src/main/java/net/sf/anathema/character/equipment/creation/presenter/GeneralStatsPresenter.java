@@ -1,6 +1,7 @@
 package net.sf.anathema.character.equipment.creation.presenter;
 
 import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
@@ -35,8 +36,11 @@ public class GeneralStatsPresenter {
   }
 
   private void initCompletionPresentation() {
-    model.addValidListener(() -> {
-      updateValidity();
+    model.addValidListener(new ChangeListener() {
+      @Override
+      public void changeOccurred() {
+        GeneralStatsPresenter.this.updateValidity();
+      }
     });
     updateValidity();
   }

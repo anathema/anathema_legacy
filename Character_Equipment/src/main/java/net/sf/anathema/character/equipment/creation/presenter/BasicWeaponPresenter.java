@@ -6,6 +6,9 @@ import net.sf.anathema.character.equipment.creation.presenter.stats.properties.W
 import net.sf.anathema.fx.hero.configurableview.IIntegerSpinner;
 import net.sf.anathema.hero.health.HealthType;
 import net.sf.anathema.interaction.ToggleTool;
+import net.sf.anathema.lib.control.ChangeListener;
+import net.sf.anathema.lib.control.IBooleanValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.workflow.booleanvalue.BooleanValueModel;
 
@@ -50,8 +53,18 @@ public class BasicWeaponPresenter {
 
   private void initDamageTypePresentation(ObjectSelectionView<HealthType> damageView, IWeaponDamageModel damageModel) {
     damageView.setObjects(HealthType.values());
-    damageModel.addHealthTypeChangeListener(() -> damageView.setSelectedObject(damageModel.getHealthType()));
-    damageView.addObjectSelectionChangedListener(newValue -> damageModel.setHealthType(newValue));
+    damageModel.addHealthTypeChangeListener(new ChangeListener() {
+      @Override
+      public void changeOccurred() {
+        damageView.setSelectedObject(damageModel.getHealthType());
+      }
+    });
+    damageView.addObjectSelectionChangedListener(new ObjectValueListener<HealthType>() {
+      @Override
+      public void valueChanged(HealthType newValue) {
+        damageModel.setHealthType(newValue);
+      }
+    });
     damageView.setSelectedObject(damageModel.getHealthType());
   }
 
@@ -67,7 +80,12 @@ public class BasicWeaponPresenter {
       tool.setTooltip(tagProperties.getToolTip(tag));
       booleanValuePresentation.initPresentation(tool, weaponTagsModel.getSelectedModel(tag));
       final BooleanValueModel enabledModel = weaponTagsModel.getEnabledModel(tag);
-      enabledModel.addChangeListener(newValue -> enableBasedOnModelState(enabledModel, tool));
+      enabledModel.addChangeListener(new IBooleanValueChangedListener() {
+        @Override
+        public void valueChanged(boolean newValue) {
+          BasicWeaponPresenter.this.enableBasedOnModelState(enabledModel, tool);
+        }
+      });
       enableBasedOnModelState(enabledModel, tool);
     }
   }
