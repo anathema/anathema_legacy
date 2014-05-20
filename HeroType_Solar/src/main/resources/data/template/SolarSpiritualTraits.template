@@ -1,18 +1,5 @@
 {
   willpower: {
     isVirtueBased: false
-  };
-  essenceUser: {
-    isEssenceUser: false;
-    peripheralPool: [
-      {
-        traitType: "Essence",
-        multiplier: 1
-      },
-      {
-        traitType: "Willpower",
-        multiplier: 1
-      }
-    ]
   }
 }

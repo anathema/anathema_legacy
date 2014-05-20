@@ -16,7 +16,7 @@
         <model id="AbilitiesPoints"/>
         <model id="Attributes"/>
         <model id="AttributePoints"/>
-        <model id="EssencePool"/>
+        <model id="EssencePool" template="MortalEssencePool"/>
         <model id="Health"/>
         <model id="Specialties"/>
         <model id="SpecialtiesPoints" template="MortalSpecialtyPoints"/>

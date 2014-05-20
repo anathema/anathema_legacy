@@ -14,6 +14,7 @@ import net.sf.anathema.hero.equipment.EquipmentModelImpl;
 import net.sf.anathema.hero.sheet.pdf.content.stats.StatsModelImpl;
 import net.sf.anathema.hero.specialties.model.SpecialtiesModelImpl;
 import net.sf.anathema.hero.spiritual.model.pool.EssencePoolModelImpl;
+import net.sf.anathema.hero.spiritual.template.EssencePoolTemplate;
 import net.sf.anathema.hero.traits.model.TraitModelImpl;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,7 +28,7 @@ public class EquipmentModelTest {
   @Before
   public void setUp() throws Exception {
     DummyHero hero = new BasicCharacterTestCase().createModelContextWithEssence2(new CreationTraitValueStrategy());
-    hero.addModel(new EssencePoolModelImpl());
+    hero.addModel(new EssencePoolModelImpl(new EssencePoolTemplate()));
     hero.addModel(new SpecialtiesModelImpl());
     hero.addModel(new StatsModelImpl());
     hero.addModel(new TraitModelImpl());

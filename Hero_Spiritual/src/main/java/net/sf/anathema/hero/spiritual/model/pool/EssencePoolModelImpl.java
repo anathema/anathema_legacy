@@ -7,6 +7,7 @@ import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.hero.model.change.ChangeAnnouncer;
+import net.sf.anathema.hero.spiritual.template.EssencePoolTemplate;
 import net.sf.anathema.hero.traits.TraitMap;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.lib.control.ChangeListener;
@@ -22,6 +23,11 @@ public class EssencePoolModelImpl implements EssencePoolModel, HeroModel {
   private EssencePoolStrategy poolStrategy = null;
   private IEssenceTemplate essenceTemplate;
   private List<IEssencePoolModifier> essencePoolModifiers = new ArrayList<>();
+  private EssencePoolTemplate template;
+
+  public EssencePoolModelImpl(EssencePoolTemplate template) {
+    this.template = template;
+  }
 
   @Override
   public Identifier getId() {

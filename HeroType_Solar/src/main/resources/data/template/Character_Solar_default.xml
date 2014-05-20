@@ -18,7 +18,7 @@
         <model id="AbilitiesPoints"/>
         <model id="Attributes"/>
         <model id="AttributePoints"/>
-        <model id="EssencePool"/>
+        <model id="EssencePool" template="SolarEssencePool"/>
         <model id="Health"/>
         <model id="Charms" template="SolarCharms"/>
         <model id="Combos"/>
