@@ -4,7 +4,6 @@ import net.sf.anathema.character.main.template.essence.FactorizedTrait;
 import net.sf.anathema.character.main.template.essence.FactorizedTraitSumCalculator;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.traits.types.OtherTraitType;
-import net.sf.anathema.character.main.traits.types.VirtueType;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.change.ChangeFlavor;
 import net.sf.anathema.hero.model.change.FlavoredChangeListener;
@@ -57,7 +56,7 @@ public class EssencePoolStrategyImpl implements EssencePoolStrategy {
 
   @Override
   public int getUnmodifiedPersonalPool() {
-    return getPool(configuration.getPersonalTraits(getWillpower(), getVirtues(), getEssence()));
+    return getPool(configuration.getPersonalTraits(traitMap));
   }
 
   @Override
@@ -78,7 +77,7 @@ public class EssencePoolStrategyImpl implements EssencePoolStrategy {
 
   @Override
   public int getUnmodifiedPeripheralPool() {
-    return getPool(configuration.getPeripheralTraits(getWillpower(), getVirtues(), getEssence()));
+    return getPool(configuration.getPeripheralTraits(traitMap));
   }
 
   @Override
@@ -98,19 +97,6 @@ public class EssencePoolStrategyImpl implements EssencePoolStrategy {
       expenditure += modifier.getMotesExpended();
     }
     return expenditure;
-  }
-
-  private ValuedTraitType[] getVirtues() {
-    return new ValuedTraitType[]{traitMap.getTrait(VirtueType.Compassion), traitMap.getTrait(VirtueType.Conviction),
-            traitMap.getTrait(VirtueType.Temperance), traitMap.getTrait(VirtueType.Valor)};
-  }
-
-  private ValuedTraitType getWillpower() {
-    return traitMap.getTrait(OtherTraitType.Willpower);
-  }
-
-  private ValuedTraitType getEssence() {
-    return traitMap.getTrait(OtherTraitType.Essence);
   }
 
   private int getPool(FactorizedTrait[] factorizedTraits) {
