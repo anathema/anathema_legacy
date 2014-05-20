@@ -3,16 +3,15 @@ package net.sf.anathema.hero.attributes;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.template.points.AttributeCreationPoints;
 import net.sf.anathema.character.main.template.points.IAttributeCreationPoints;
+import net.sf.anathema.character.main.traits.types.AttributeGroupType;
+import net.sf.anathema.hero.attributes.advance.creation.AttributeBonusPointCalculator;
 import net.sf.anathema.hero.attributes.advance.creation.AttributeCreationData;
-import net.sf.anathema.hero.dummy.DummyBonusPointCosts;
+import net.sf.anathema.hero.attributes.advance.creation.TraitGroupCost;
+import net.sf.anathema.hero.attributes.model.AttributeModelImpl;
 import net.sf.anathema.hero.dummy.DummyHero;
 import net.sf.anathema.hero.dummy.models.DummyHeroConcept;
 import net.sf.anathema.hero.dummy.models.DummySpiritualTraitModel;
 import net.sf.anathema.hero.dummy.models.DummyTraitModel;
-import net.sf.anathema.character.main.traits.types.AttributeGroupType;
-import net.sf.anathema.hero.attributes.advance.creation.AttributeBonusPointCalculator;
-import net.sf.anathema.hero.attributes.advance.creation.TraitGroupCost;
-import net.sf.anathema.hero.attributes.model.AttributeModelImpl;
 import net.sf.anathema.hero.traits.template.Group;
 import net.sf.anathema.hero.traits.template.GroupedTraitsTemplate;
 import org.junit.Before;
@@ -22,9 +21,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static net.sf.anathema.character.main.traits.types.AttributeGroupType.Mental;
-import static net.sf.anathema.character.main.traits.types.AttributeGroupType.Physical;
-import static net.sf.anathema.character.main.traits.types.AttributeGroupType.Social;
+import static net.sf.anathema.character.main.traits.types.AttributeGroupType.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Matchers.any;
@@ -96,6 +93,7 @@ public class AttributeCostCalculatorTest {
     AttributeCreationData creationData = mock(AttributeCreationData.class);
     when(creationData.getCounts()).thenReturn(new int[] {6, 4, 2});
     when(creationData.getAttributeCosts(any())).thenReturn(ATTRIBUTE_BONUS_POINT_COST);
+    when(creationData.getCalculationBase(any())).thenReturn(1);
     this.calculator = new AttributeBonusPointCalculator(attributeModel, creationData);
   }
 

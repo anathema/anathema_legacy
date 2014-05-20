@@ -101,7 +101,7 @@ public class AttributeBonusPointCalculator implements HeroBonusPointCalculator {
 
   private ElementCreationCost handleAttribute(Trait attribute, int freeDots, int extraFavoredDots, int extraGenericDots,
                                               int bonusPointCostFactor) {
-    CostElement element = new TraitCostElement(attribute);
+    CostElement element = new TraitCostElement(attribute, creationData);
     return new ElementCreationCostCalculator()
             .calculateElementCreationCost(element, freeDots, extraFavoredDots, extraGenericDots, bonusPointCostFactor);
   }

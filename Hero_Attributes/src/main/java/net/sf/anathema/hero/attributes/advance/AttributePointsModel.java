@@ -13,6 +13,7 @@ import net.sf.anathema.hero.attributes.advance.experience.AttributesExperienceCa
 import net.sf.anathema.hero.attributes.advance.experience.AttributesExperienceModel;
 import net.sf.anathema.hero.attributes.model.AttributeModel;
 import net.sf.anathema.hero.attributes.model.AttributesModelFetcher;
+import net.sf.anathema.hero.attributes.template.AttributePointsTemplate;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
@@ -27,6 +28,11 @@ import net.sf.anathema.lib.util.SimpleIdentifier;
 public class AttributePointsModel implements HeroModel {
 
   public static final SimpleIdentifier ID = new SimpleIdentifier("AttributePoints");
+  private AttributePointsTemplate template;
+
+  public AttributePointsModel(AttributePointsTemplate template) {
+    this.template = template;
+  }
 
   @Override
   public Identifier getId() {
@@ -64,7 +70,7 @@ public class AttributePointsModel implements HeroModel {
     IAttributeCreationPoints creationPoints = hero.getTemplate().getCreationPoints().getAttributeCreationPoints();
     AttributeModel attributes = AttributesModelFetcher.fetch(hero);
     BonusPointCosts costs = hero.getTemplate().getBonusPointCosts();
-    AttributeCreationData creationData = new AttributeCreationDataImpl(creationPoints, costs);
+    AttributeCreationData creationData = new AttributeCreationDataImpl(creationPoints, costs, template);
     return new AttributeBonusPointCalculator(attributes, creationData);
   }
 

@@ -4,15 +4,18 @@ import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.points.IAttributeCreationPoints;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
+import net.sf.anathema.hero.attributes.template.AttributePointsTemplate;
 
 public class AttributeCreationDataImpl implements AttributeCreationData {
 
   private IAttributeCreationPoints points;
   private BonusPointCosts costs;
+  private AttributePointsTemplate template;
 
-  public AttributeCreationDataImpl(IAttributeCreationPoints points, BonusPointCosts costs) {
+  public AttributeCreationDataImpl(IAttributeCreationPoints points, BonusPointCosts costs, AttributePointsTemplate template) {
     this.points = points;
     this.costs = costs;
+    this.template = template;
   }
 
   @Override
@@ -33,5 +36,10 @@ public class AttributeCreationDataImpl implements AttributeCreationData {
   @Override
   public int getExtraGenericDotCount() {
     return points.getExtraGenericDotCount();
+  }
+
+  @Override
+  public int getCalculationBase(TraitType type) {
+    return template.standard.calculationBase;
   }
 }
