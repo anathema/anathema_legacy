@@ -1,3 +1,6 @@
 {
-  creationPoints: 4
+  creationPoints: 4;
+  standard: {
+    calculationBase: 0
+  }
 }

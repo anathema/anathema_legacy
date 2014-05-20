@@ -9,6 +9,7 @@ import net.sf.anathema.hero.points.PointModelFetcher;
 import net.sf.anathema.hero.points.PointsModel;
 import net.sf.anathema.hero.specialties.advance.creation.SpecialtiesBonusPointCalculator;
 import net.sf.anathema.hero.specialties.advance.creation.SpecialtyBonusModel;
+import net.sf.anathema.hero.specialties.advance.creation.SpecialtyCreationData;
 import net.sf.anathema.hero.specialties.template.SpecialtyPointsTemplate;
 import net.sf.anathema.hero.traits.TraitMap;
 import net.sf.anathema.lib.util.Identifier;
@@ -32,7 +33,8 @@ public class SpecialtiesPointsModel implements HeroModel {
   public void initialize(HeroEnvironment environment, Hero hero) {
     PointsModel pointsModel = PointModelFetcher.fetch(hero);
     TraitMap traitMap = AbilityModelFetcher.fetch(hero);
-    SpecialtiesBonusPointCalculator specialtiesBonusPointCalculator = new SpecialtiesBonusPointCalculator(hero, traitMap, template);
+    SpecialtyCreationData creationData = new SpecialtyCreationData(template);
+    SpecialtiesBonusPointCalculator specialtiesBonusPointCalculator = new SpecialtiesBonusPointCalculator(hero, traitMap, creationData);
     pointsModel.addBonusPointCalculator(specialtiesBonusPointCalculator);
     pointsModel.addToBonusOverview(new SpecialtyBonusModel(specialtiesBonusPointCalculator, template));
   }

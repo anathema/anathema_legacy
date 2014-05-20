@@ -20,13 +20,15 @@ public class SpecialtiesBonusPointCalculator implements HeroBonusPointCalculator
   private SpecialtyCalculator specialtyCalculator;
   private Hero hero;
   private TraitMap traitMap;
+  private SpecialtyCreationData creationData;
   private int specialtyBonusPointCosts;
   private int specialtyDotSum;
 
-  public SpecialtiesBonusPointCalculator(Hero hero, TraitMap traitMap, SpecialtyPointsTemplate costTemplate) {
+  public SpecialtiesBonusPointCalculator(Hero hero, TraitMap traitMap, SpecialtyCreationData creationData) {
     this.hero = hero;
     this.traitMap = traitMap;
-    this.specialtyCalculator = new SpecialtyCalculator(traitMap, costTemplate.creationPoints);
+    this.creationData = creationData;
+    this.specialtyCalculator = new SpecialtyCalculator(traitMap, creationData.getCreationDots());
   }
 
   @Override
@@ -48,7 +50,8 @@ public class SpecialtiesBonusPointCalculator implements HeroBonusPointCalculator
       SpecialtiesModel specialtiesModel = SpecialtiesModelFetcher.fetch(hero);
       ISubTraitContainer specialtiesContainer = specialtiesModel.getSpecialtiesContainer(ability.getType());
       for (Specialty specialty : specialtiesContainer.getSubTraits()) {
-        for (int index = 0; index < TraitCalculationUtilities.getCreationCalculationValue(specialty); index++) {
+        int calculationValue = TraitCalculationUtilities.getCreationCalculationValue(specialty, creationData);
+        for (int index = 0; index < calculationValue; index++) {
           specialties.add(new GenericSpecialty(ability));
         }
       }
