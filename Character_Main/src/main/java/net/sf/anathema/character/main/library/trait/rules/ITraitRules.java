@@ -25,8 +25,6 @@ public interface ITraitRules {
 
   int getCreationValue(int demandedValue);
 
-  int getExperienceCalculationValue(int creationValue, int experiencedValue, int currentValue);
-
   void setCapModifier(int modifier);
 
   void setModifiedCreationRange(Range range);

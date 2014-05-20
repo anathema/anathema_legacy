@@ -113,9 +113,4 @@ public class TraitRules implements ITraitRules {
     }
     return allowedRange.getUpperBound();
   }
-
-  @Override
-  public int getExperienceCalculationValue(int creationValue, int experiencedValue, int currentValue) {
-    return Math.max(currentValue, creationValue);
-  }
 }

@@ -108,11 +108,6 @@ public class DefaultTrait implements Trait {
   }
 
   @Override
-  public final int getCalculationValue() {
-    return valueStrategy.getCalculationValue(this);
-  }
-
-  @Override
   public int getCreationCalculationValue() {
     return Math.max(getCurrentValue(), getZeroCalculationValue());
   }
@@ -187,11 +182,6 @@ public class DefaultTrait implements Trait {
   @Override
   public boolean isCasteOrFavored() {
     return getFavorization().isCasteOrFavored();
-  }
-
-  @Override
-  public int getExperiencedCalculationValue() {
-    return traitRules.getExperienceCalculationValue(creationValue, experiencedValue, getCurrentValue());
   }
 
   @Override

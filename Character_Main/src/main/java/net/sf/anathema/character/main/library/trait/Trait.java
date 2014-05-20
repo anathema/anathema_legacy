@@ -14,11 +14,7 @@ public interface Trait extends ValuedTraitType {
 
   int getCreationCalculationValue();
 
-  int getExperiencedCalculationValue();
-
   boolean isLowerable();
-
-  int getCalculationValue();
 
   int getZeroCalculationValue();
 

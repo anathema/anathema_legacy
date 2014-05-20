@@ -36,9 +36,4 @@ public class CreationTraitValueStrategy implements TraitValueStrategy {
   public void resetCurrentValue(Trait trait) {
     trait.resetCreationValue();
   }
-
-  @Override
-  public int getCalculationValue(Trait trait) {
-    return trait.getCreationCalculationValue();
-  }
 }

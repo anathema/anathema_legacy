@@ -17,6 +17,4 @@ public interface TraitValueStrategy {
   void notifyOnLearnedValueChange(int value, Announcer<IntValueChangedListener> currentValueControl);
 
   void resetCurrentValue(Trait trait);
-
-  int getCalculationValue(Trait trait);
 }

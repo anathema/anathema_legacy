@@ -47,7 +47,7 @@ public class SpecialtiesBonusPointCalculator implements HeroBonusPointCalculator
       SpecialtiesModel specialtiesModel = SpecialtiesModelFetcher.fetch(hero);
       ISubTraitContainer specialtiesContainer = specialtiesModel.getSpecialtiesContainer(ability.getType());
       for (Specialty specialty : specialtiesContainer.getSubTraits()) {
-        for (int index = 0; index < specialty.getCalculationValue(); index++) {
+        for (int index = 0; index < specialty.getCreationCalculationValue(); index++) {
           specialties.add(new GenericSpecialty(ability));
         }
       }

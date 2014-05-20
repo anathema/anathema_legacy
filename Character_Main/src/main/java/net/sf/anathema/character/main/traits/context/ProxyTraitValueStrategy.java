@@ -46,9 +46,4 @@ public class ProxyTraitValueStrategy implements TraitValueStrategy {
   public void resetCurrentValue(Trait trait) {
     strategy.resetCurrentValue(trait);
   }
-
-  @Override
-  public int getCalculationValue(Trait trait) {
-    return strategy.getCalculationValue(trait);
-  }
 }

@@ -40,9 +40,4 @@ public class ExperiencedTraitValueStrategy implements TraitValueStrategy {
   public void resetCurrentValue(Trait trait) {
     trait.resetExperiencedValue();
   }
-
-  @Override
-  public int getCalculationValue(Trait trait) {
-    return trait.getExperiencedCalculationValue();
-  }
 }

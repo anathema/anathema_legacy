@@ -12,7 +12,7 @@ public class TraitCostElement implements CostElement {
 
   @Override
   public int getCalculationValue() {
-    return trait.getCalculationValue();
+    return trait.getCreationCalculationValue();
   }
 
   @Override

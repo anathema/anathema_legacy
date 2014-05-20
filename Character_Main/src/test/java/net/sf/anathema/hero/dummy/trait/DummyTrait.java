@@ -141,11 +141,6 @@ public class DummyTrait implements Trait {
   }
 
   @Override
-  public int getCalculationValue() {
-    return creationValue;
-  }
-
-  @Override
   public int getCreationCalculationValue() {
     return creationValue;
   }
@@ -153,11 +148,6 @@ public class DummyTrait implements Trait {
   @Override
   public int getCreationValue() {
     return creationValue;
-  }
-
-  @Override
-  public int getExperiencedCalculationValue() {
-    return experiencedValue;
   }
 
   @Override
