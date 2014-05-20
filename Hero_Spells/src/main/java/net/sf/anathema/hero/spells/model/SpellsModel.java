@@ -1,6 +1,5 @@
 package net.sf.anathema.hero.spells.model;
 
-import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.spells.CircleType;
 import net.sf.anathema.character.main.magic.spells.Spell;
 import net.sf.anathema.hero.model.HeroModel;
@@ -24,8 +23,6 @@ public interface SpellsModel extends HeroModel {
 
   boolean isSpellAllowed(Spell spell);
 
-  Spell[] getSpellsByCircle(CircleType circle);
-
   Spell getSpellById(String string);
 
   boolean isLearnedOnCreation(Spell spell);
@@ -38,8 +35,6 @@ public interface SpellsModel extends HeroModel {
 
   boolean isSpellAllowed(Spell spell, boolean experienced);
 
-  boolean isLearned(Spell spell);
-
   boolean isLearnedOnCreationOrExperience(Spell spell);
 
   List<Spell> getAvailableSpellsInCircle(CircleType circle);
@@ -49,10 +44,6 @@ public interface SpellsModel extends HeroModel {
   boolean canLearnSorcery();
 
   boolean canLearnNecromancy();
-
-  boolean canLearnSpellMagic();
-
-  boolean canLearnSpell(Spell spell, Charm[] knownCharms);
 
   CircleType[] getNecromancyCircles();
 

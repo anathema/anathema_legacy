@@ -4,7 +4,6 @@ import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.parser.spells.ISpellCache;
 import net.sf.anathema.character.main.magic.spells.*;
 import net.sf.anathema.character.main.template.HeroTemplate;
-import net.sf.anathema.character.main.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.hero.charms.advance.MagicPointsModelFetcher;
 import net.sf.anathema.hero.charms.advance.experience.MagicExperienceCosts;
 import net.sf.anathema.hero.charms.model.CharmsModel;
@@ -166,7 +165,7 @@ public class SpellsModelImpl implements SpellsModel {
     if (creationLearnedList.contains(spell) || (experienced && experiencedLearnedList.contains(spell))) {
       return false;
     }
-    return canLearnSpell(spell, charms.getLearnedCharms(true));
+    return knowsCharm(getInitiation(spell.getCircleType()), charms.getLearnedCharms(true));
   }
 
   @Override
@@ -189,8 +188,7 @@ public class SpellsModelImpl implements SpellsModel {
     changeControl.addListener(listener);
   }
 
-  @Override
-  public Spell[] getSpellsByCircle(CircleType circle) {
+  private Spell[] getSpellsByCircle(CircleType circle) {
     List<Spell> spells = spellsByCircle.get(circle);
     if (spells != null) {
       return spells.toArray(new Spell[spells.size()]);
@@ -228,11 +226,6 @@ public class SpellsModelImpl implements SpellsModel {
   }
 
   @Override
-  public boolean isLearned(Spell spell) {
-    return strategy.isLearned(this, spell);
-  }
-
-  @Override
   public List<Spell> getAvailableSpellsInCircle(CircleType circle) {
     List<Spell> showSpells = new ArrayList<>();
     Collections.addAll(showSpells, getSpellsByCircle(circle));
@@ -261,11 +254,6 @@ public class SpellsModelImpl implements SpellsModel {
     return !template.necromancy.isEmpty();
   }
 
-  @Override
-  public boolean canLearnSpellMagic() {
-    return canLearnSorcery() || canLearnNecromancy();
-  }
-
   protected boolean knowsCharm(String charm, Charm[] knownCharms) {
     for (Charm knownCharm : knownCharms) {
       if (charm.equals(knownCharm.getId())) {
@@ -273,11 +261,6 @@ public class SpellsModelImpl implements SpellsModel {
       }
     }
     return false;
-  }
-
-  @Override
-  public boolean canLearnSpell(Spell spell, Charm[] knownCharms) {
-    return knowsCharm(getInitiation(spell.getCircleType()), knownCharms);
   }
 
   @Override
