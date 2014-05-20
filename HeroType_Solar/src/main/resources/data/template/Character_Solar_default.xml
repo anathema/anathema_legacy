@@ -7,9 +7,6 @@
         <additionalRules uses="template/SolarAdditionalRules2nd.template">
             <revisedIntimacies value="true"/>
         </additionalRules>
-         <healthTemplate>
-            <toughnessControllingTrait type="Resistance"/>
-        </healthTemplate>
     </general>
     <models>
         <model id="Description"/>

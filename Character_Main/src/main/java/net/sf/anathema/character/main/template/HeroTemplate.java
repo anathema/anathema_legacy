@@ -29,6 +29,4 @@ public interface HeroTemplate {
   IExperiencePointCosts getExperienceCost();
 
   ITraitTemplateCollection getTraitTemplateCollection();
-
-  TraitType[] getToughnessControllingTraitTypes();
 }

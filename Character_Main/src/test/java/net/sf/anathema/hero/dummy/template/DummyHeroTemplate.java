@@ -9,8 +9,6 @@ import net.sf.anathema.character.main.template.essence.NullEssenceTemplate;
 import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
 import net.sf.anathema.character.main.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.main.traits.TraitTemplateCollection;
-import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.traits.types.AttributeGroupType;
 import net.sf.anathema.character.main.traits.types.AttributeType;
 import net.sf.anathema.character.main.type.CharacterType;
@@ -60,11 +58,6 @@ public class DummyHeroTemplate implements HeroTemplate {
   @Override
   public ITraitTemplateCollection getTraitTemplateCollection() {
     return traitTemplateCollection;
-  }
-
-  @Override
-  public TraitType[] getToughnessControllingTraitTypes() {
-    return new TraitType[]{AbilityType.Resistance};
   }
 
   @Override

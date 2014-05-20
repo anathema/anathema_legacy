@@ -1,5 +1,7 @@
 package net.sf.anathema.hero.health.model;
 
+import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.traits.types.AttributeType;
 import net.sf.anathema.hero.health.HealthLevelType;
 import net.sf.anathema.hero.health.IHealthLevelTypeVisitor;
@@ -95,6 +97,11 @@ public class HealthModelImpl implements HealthModel {
       painToleranceLevel = Math.max(painToleranceLevel, provider.getPainToleranceLevel());
     }
     return painToleranceLevel;
+  }
+
+  @Override
+  public TraitType[] getToughnessControllingTraitTypes() {
+    return new TraitType[] {AbilityType.Resistance};
   }
 
   private static class DyingStaminaHealthLevelProvider implements IHealthLevelProvider {

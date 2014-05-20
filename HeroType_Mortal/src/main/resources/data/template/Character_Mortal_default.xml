@@ -5,9 +5,6 @@
         <traitCollection uses="trait/MortalTraitCollection.template"/>
         <magicTemplate uses="magic/MortalMagic.template"/>
         <presentation uses="presentation/MortalPresentation.template"/>
-        <healthTemplate>
-            <toughnessControllingTrait type="Resistance"/>
-        </healthTemplate>
     </general>
     <models>
         <model id="Description"/>

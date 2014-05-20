@@ -11,13 +11,10 @@ import net.sf.anathema.character.main.template.essence.IEssenceTemplate;
 import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
 import net.sf.anathema.character.main.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.main.traits.TraitTemplateCollection;
-import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.xml.creation.GenericBonusPointCosts;
 import net.sf.anathema.character.main.xml.creation.GenericCreationPoints;
 import net.sf.anathema.character.main.xml.essence.GenericEssenceTemplate;
 import net.sf.anathema.character.main.xml.experience.GenericExperiencePointCosts;
-import net.sf.anathema.character.main.xml.health.GenericHealthTemplate;
-import net.sf.anathema.character.main.xml.health.IHealthTemplate;
 import net.sf.anathema.character.main.xml.presentation.GenericPresentationTemplate;
 import net.sf.anathema.character.main.xml.trait.GenericTraitTemplateFactory;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
@@ -36,7 +33,6 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
   private GenericEssenceTemplate essenceTemplate;
   private GroupedTraitType[] attributeGroups;
   private GenericPresentationTemplate presentationTemplate;
-  private IHealthTemplate healthTemplate = new GenericHealthTemplate();
   private final List<ConfiguredModel> models = new ArrayList<>();
 
   @Override
@@ -72,11 +68,6 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
   @Override
   public ITraitTemplateCollection getTraitTemplateCollection() {
     return traitTemplateCollection;
-  }
-
-  @Override
-  public TraitType[] getToughnessControllingTraitTypes() {
-    return healthTemplate.getToughnessControllingTraits();
   }
 
   @Override
@@ -124,7 +115,6 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
     } catch (CloneNotSupportedException e) {
       throw new UnreachableCodeReachedException(e);
     }
-    clone.healthTemplate = new GenericHealthTemplate();
     if (bonusPointCosts != null) {
       clone.bonusPointCosts = bonusPointCosts.clone();
     }
@@ -150,10 +140,6 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
 
   public void setAttributeGroups(GroupedTraitType[] traitTypeGroups) {
     this.attributeGroups = traitTypeGroups;
-  }
-
-  public void setHealthTemplate(IHealthTemplate template) {
-    this.healthTemplate = template;
   }
 
   public void addModel(String modelId, String templateId) {

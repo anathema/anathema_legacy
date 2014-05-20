@@ -15,8 +15,6 @@ import net.sf.anathema.character.main.xml.essence.EssenceTemplateParser;
 import net.sf.anathema.character.main.xml.essence.GenericEssenceTemplate;
 import net.sf.anathema.character.main.xml.experience.ExperienceTemplateParser;
 import net.sf.anathema.character.main.xml.experience.GenericExperiencePointCosts;
-import net.sf.anathema.character.main.xml.health.GenericHealthTemplate;
-import net.sf.anathema.character.main.xml.health.HealthTemplateParser;
 import net.sf.anathema.character.main.xml.presentation.GenericPresentationTemplate;
 import net.sf.anathema.character.main.xml.presentation.PresentationPropertiesParser;
 import net.sf.anathema.character.main.xml.registry.IXmlTemplateRegistry;
@@ -37,7 +35,6 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
   private static final String TAG_TRAIT_COLLECTION = "traitCollection";
   private static final String TAG_PRESENTATION_TEMPLATE = "presentation";
   public static final String ATTRIB_ID = "id";
-  private static final String TAG_HEALTH_TEMPLATE = "healthTemplate";
 
   private CharacterTypes characterTypes;
   private final ICharacterTemplateRegistryCollection registryCollection;
@@ -150,7 +147,6 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     setEssenceTemplate(generalElement, characterTemplate);
     setTraitCollection(generalElement, characterTemplate);
     setPresentationTemplate(generalElement, characterTemplate);
-    setToughnessControllingTrait(generalElement, characterTemplate);
   }
 
   private void parseModels(Element element, GenericCharacterTemplate characterTemplate) throws PersistenceException {
@@ -163,16 +159,6 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
       String modelTemplateId = ((Element) modelElement).attributeValue("template");
       characterTemplate.addModel(modelId, modelTemplateId);
     }
-  }
-
-  private void setToughnessControllingTrait(Element generalElement, GenericCharacterTemplate characterTemplate) throws PersistenceException {
-    Element healthElement = generalElement.element(TAG_HEALTH_TEMPLATE);
-    if (healthElement == null) {
-      return;
-    }
-    HealthTemplateParser parser = new HealthTemplateParser(registryCollection.getHealthTemplateRegistry());
-    GenericHealthTemplate template = parser.parseTemplate(healthElement);
-    characterTemplate.setHealthTemplate(template);
   }
 
   private void setPresentationTemplate(Element generalElement, GenericCharacterTemplate characterTemplate) throws PersistenceException {

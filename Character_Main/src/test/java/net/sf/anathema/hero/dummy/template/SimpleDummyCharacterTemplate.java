@@ -12,7 +12,6 @@ import net.sf.anathema.character.main.template.essence.IEssenceTemplate;
 import net.sf.anathema.character.main.template.essence.NullEssenceTemplate;
 import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
 import net.sf.anathema.character.main.template.presentation.IPresentationProperties;
-import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
@@ -70,11 +69,6 @@ public class SimpleDummyCharacterTemplate implements HeroTemplate {
   @Override
   public ITraitTemplateCollection getTraitTemplateCollection() {
     return new DummyTraitTemplateCollection();
-  }
-
-  @Override
-  public TraitType[] getToughnessControllingTraitTypes() {
-    return new TraitType[0];
   }
 
   @Override

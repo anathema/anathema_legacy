@@ -8,7 +8,6 @@ import net.sf.anathema.character.main.xml.creation.GenericBonusPointCosts;
 import net.sf.anathema.character.main.xml.creation.GenericCreationPoints;
 import net.sf.anathema.character.main.xml.essence.GenericEssenceTemplate;
 import net.sf.anathema.character.main.xml.experience.GenericExperiencePointCosts;
-import net.sf.anathema.character.main.xml.health.GenericHealthTemplate;
 import net.sf.anathema.character.main.xml.presentation.GenericPresentationTemplate;
 import net.sf.anathema.character.main.xml.trait.GenericTraitTemplateFactory;
 import net.sf.anathema.character.main.xml.trait.pool.GenericTraitTemplatePool;
@@ -24,7 +23,6 @@ public class CharacterTemplateRegistryCollection implements ICharacterTemplateRe
   private final IXmlTemplateRegistry<GenericTraitTemplateFactory> traitFactoryRegistry;
   private final IXmlTemplateRegistry<GenericTraitTemplatePool> traitTemplatePoolRegistry;
   private final IXmlTemplateRegistry<GenericPresentationTemplate> presentationTemplateRegistry;
-  private final IXmlTemplateRegistry<GenericHealthTemplate> healthTemplateRegistry;
 
   public CharacterTemplateRegistryCollection(ICharacterTemplateExtensionResourceCache cache) {
     characterTemplateRegistry = new XmlTemplateRegistry<>(cache);
@@ -36,7 +34,6 @@ public class CharacterTemplateRegistryCollection implements ICharacterTemplateRe
     traitFactoryRegistry = new XmlTemplateRegistry<>(cache);
     traitTemplatePoolRegistry = new XmlTemplateRegistry<>(cache);
     presentationTemplateRegistry = new XmlTemplateRegistry<>(cache);
-    healthTemplateRegistry = new XmlTemplateRegistry<>(cache);
   }
 
   @Override
@@ -82,10 +79,5 @@ public class CharacterTemplateRegistryCollection implements ICharacterTemplateRe
   @Override
   public IXmlTemplateRegistry<GenericPresentationTemplate> getPresentationTemplateRegistry() {
     return presentationTemplateRegistry;
-  }
-
-  @Override
-  public IXmlTemplateRegistry<GenericHealthTemplate> getHealthTemplateRegistry() {
-    return healthTemplateRegistry;
   }
 }
