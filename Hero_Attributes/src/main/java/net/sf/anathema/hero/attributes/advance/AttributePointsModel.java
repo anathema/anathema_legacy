@@ -7,6 +7,8 @@ import net.sf.anathema.character.main.template.points.AttributeGroupPriority;
 import net.sf.anathema.character.main.template.points.IAttributeCreationPoints;
 import net.sf.anathema.hero.attributes.advance.creation.AttributeBonusModel;
 import net.sf.anathema.hero.attributes.advance.creation.AttributeBonusPointCalculator;
+import net.sf.anathema.hero.attributes.advance.creation.AttributeCreationData;
+import net.sf.anathema.hero.attributes.advance.creation.AttributeCreationDataImpl;
 import net.sf.anathema.hero.attributes.advance.experience.AttributesExperienceCalculator;
 import net.sf.anathema.hero.attributes.advance.experience.AttributesExperienceModel;
 import net.sf.anathema.hero.attributes.model.AttributeModel;
@@ -62,7 +64,8 @@ public class AttributePointsModel implements HeroModel {
     IAttributeCreationPoints creationPoints = hero.getTemplate().getCreationPoints().getAttributeCreationPoints();
     AttributeModel attributes = AttributesModelFetcher.fetch(hero);
     BonusPointCosts costs = hero.getTemplate().getBonusPointCosts();
-    return new AttributeBonusPointCalculator(attributes, creationPoints, costs);
+    AttributeCreationData creationData = new AttributeCreationDataImpl(creationPoints, costs);
+    return new AttributeBonusPointCalculator(attributes, creationData);
   }
 
   public SpendingModel createOverviewModel(AttributeBonusPointCalculator calculator, AttributeGroupPriority priority, HeroTemplate template) {

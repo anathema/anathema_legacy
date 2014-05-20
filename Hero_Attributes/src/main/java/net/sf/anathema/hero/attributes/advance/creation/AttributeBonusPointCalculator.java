@@ -3,11 +3,8 @@ package net.sf.anathema.hero.attributes.advance.creation;
 import net.sf.anathema.character.main.library.trait.FavorableTraitCost;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.TraitGroup;
-import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.points.AttributeGroupPriority;
-import net.sf.anathema.character.main.template.points.IAttributeCreationPoints;
 import net.sf.anathema.character.main.template.points.IAttributeGroupPriorityVisitor;
-import net.sf.anathema.character.main.template.points.IFavorableTraitCreationPoints;
 import net.sf.anathema.character.main.traits.types.AttributeGroupType;
 import net.sf.anathema.hero.attributes.model.AttributeModel;
 import net.sf.anathema.hero.points.HeroBonusPointCalculator;
@@ -23,16 +20,14 @@ public class AttributeBonusPointCalculator implements HeroBonusPointCalculator {
   private final Map<Trait, ElementCreationCost> costsByAttribute = new HashMap<>();
   private List<TraitGroupCost> orderedGroups;
   private final TraitGroup[] traitGroups;
-  private final BonusPointCosts costs;
   private final List<List<TraitGroup>> priorityPermutations = new ArrayList<>();
-  protected final IFavorableTraitCreationPoints points;
+  private AttributeCreationData creationData;
   private final Map<Trait, FavorableTraitCost[]> costsByTrait = new HashMap<>();
 
-  public AttributeBonusPointCalculator(AttributeModel attributes, IAttributeCreationPoints points, BonusPointCosts costs) {
-    this.points = points;
+  public AttributeBonusPointCalculator(AttributeModel attributes, AttributeCreationData creationData) {
+    this.creationData = creationData;
     this.traitGroups = attributes.getTraitGroups();
-    this.costs = costs;
-    createPermutations(new ArrayList<TraitGroup>());
+    createPermutations(new ArrayList<>());
   }
 
   private void createPermutations(List<TraitGroup> parent) {
@@ -55,40 +50,39 @@ public class AttributeBonusPointCalculator implements HeroBonusPointCalculator {
   public void recalculate() {
     clear();
     costsByAttribute.clear();
-    IAttributeCreationPoints attributeCreation = (IAttributeCreationPoints) points;
     int bestCost = Integer.MAX_VALUE;
     int bestPermutation = 0;
     for (int i = 0; i != priorityPermutations.size(); i++) {
       List<TraitGroup> permutation = priorityPermutations.get(i);
-      int cost = calculateCost(attributeCreation, permutation, false);
+      int cost = calculateCost(permutation, false);
       if (cost < bestCost) {
         bestCost = cost;
         bestPermutation = i;
       }
     }
     List<TraitGroup> bestOrder = priorityPermutations.get(bestPermutation);
-    orderedGroups = createGroupCost(attributeCreation, bestOrder);
-    calculateCost(attributeCreation, bestOrder, true);
+    orderedGroups = createGroupCost(bestOrder);
+    calculateCost(bestOrder, true);
   }
 
-  private int calculateCost(IAttributeCreationPoints points, List<TraitGroup> permutation, boolean record) {
+  private int calculateCost(List<TraitGroup> permutation, boolean record) {
     int bonusCost = 0;
     int wastedFreeDots = 0;
     int extraFavoredDotsLeft = this.getExtraFavoredDotCount();
     int extraGenericDotsLeft = this.getExtraGenericDotCount();
     for (int i = 0; i != permutation.size(); i++) {
       TraitGroup group = permutation.get(i);
-      int freePointsLeft = points.getCounts()[i];
+      int freePointsLeft = creationData.getCounts()[i];
       boolean favoredInGroup = false;
       Trait[] unsortedTraits = group.getGroupTraits();
       int[] sums = new int[unsortedTraits.length];
       for (int j = 0; j != unsortedTraits.length; j++) {
-        sums[j] = costs.getAttributeCosts(unsortedTraits[j]);
+        sums[j] = creationData.getAttributeCosts(unsortedTraits[j]);
       }
       List<Trait> orderedTraits = getSortedTraits(unsortedTraits, sums);
       for (Trait attribute : orderedTraits) {
         favoredInGroup = favoredInGroup || (attribute.isCasteOrFavored() && attribute.getCurrentValue() > attribute.getInitialValue());
-        int costFactor = costs.getAttributeCosts(attribute);
+        int costFactor = creationData.getAttributeCosts(attribute);
         ElementCreationCost cost =
                 handleAttribute(attribute, freePointsLeft, favoredInGroup ? extraFavoredDotsLeft : 0, extraGenericDotsLeft, costFactor);
         freePointsLeft -= cost.getDotsSpent();
@@ -112,10 +106,10 @@ public class AttributeBonusPointCalculator implements HeroBonusPointCalculator {
             .calculateElementCreationCost(element, freeDots, extraFavoredDots, extraGenericDots, bonusPointCostFactor);
   }
 
-  private List<TraitGroupCost> createGroupCost(IAttributeCreationPoints points, List<TraitGroup> groups) {
+  private List<TraitGroupCost> createGroupCost(List<TraitGroup> groups) {
     List<TraitGroupCost> priorizedGroups = new ArrayList<>(traitGroups.length);
     for (int groupIndex = 0; groupIndex < groups.size(); groupIndex++) {
-      priorizedGroups.add(new TraitGroupCost(groups.get(groupIndex), points.getCounts()[groupIndex]));
+      priorizedGroups.add(new TraitGroupCost(groups.get(groupIndex), creationData.getCounts()[groupIndex]));
     }
     return priorizedGroups;
   }
@@ -173,10 +167,10 @@ public class AttributeBonusPointCalculator implements HeroBonusPointCalculator {
   }
 
   private int getExtraFavoredDotCount() {
-    return points.getExtraFavoredDotCount();
+    return creationData.getExtraFavoredDotCount();
   }
 
   private int getExtraGenericDotCount() {
-    return points.getExtraGenericDotCount();
+    return creationData.getExtraGenericDotCount();
   }
 }

@@ -2,6 +2,7 @@ package net.sf.anathema.hero.spiritual.advance;
 
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
+import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.hero.BasicCharacterTestCase;
 import net.sf.anathema.hero.dummy.DummyBonusPointCosts;
 import net.sf.anathema.hero.dummy.DummyHero;
@@ -17,6 +18,7 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.when;
 
 public class VirtueBonusCostCalculatorTest {
@@ -33,6 +35,7 @@ public class VirtueBonusCostCalculatorTest {
     when(creationData.getMaximumFreeVirtueRank()).thenReturn(3);
     when(creationData.getVirtueCost()).thenReturn(cost.getVirtueCosts());
     when(creationData.getFreeVirtueCreationDots()).thenReturn(5);
+    when(creationData.getCalculationBase(any())).thenReturn(1);
     this.calculator = new VirtueBonusCostCalculator(virtues, creationData);
   }
 

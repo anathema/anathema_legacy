@@ -33,7 +33,7 @@ public class VirtueBonusCostCalculator {
 
   private IVirtueCost handleVirtue(Trait virtue, int costFactor) {
     int maximumFreeVirtueRank = creationData.getMaximumFreeVirtueRank();
-    int dotsToAdd = Math.min(getCalculationBase(virtue), maximumFreeVirtueRank) - virtue.getMinimalValue();
+    int dotsToAdd = Math.min(virtue.getCurrentValue(), maximumFreeVirtueRank) - getCalculationBase(virtue);
     int dotsRemaining = creationData.getFreeVirtueCreationDots() - dotsSpent;
     int dotsAssigned = Math.min(dotsToAdd, dotsRemaining);
     dotsSpent += dotsAssigned;

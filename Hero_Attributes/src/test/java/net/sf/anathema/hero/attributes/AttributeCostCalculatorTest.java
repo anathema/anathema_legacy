@@ -3,6 +3,7 @@ package net.sf.anathema.hero.attributes;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.template.points.AttributeCreationPoints;
 import net.sf.anathema.character.main.template.points.IAttributeCreationPoints;
+import net.sf.anathema.hero.attributes.advance.creation.AttributeCreationData;
 import net.sf.anathema.hero.dummy.DummyBonusPointCosts;
 import net.sf.anathema.hero.dummy.DummyHero;
 import net.sf.anathema.hero.dummy.models.DummyHeroConcept;
@@ -26,6 +27,9 @@ import static net.sf.anathema.character.main.traits.types.AttributeGroupType.Phy
 import static net.sf.anathema.character.main.traits.types.AttributeGroupType.Social;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class AttributeCostCalculatorTest {
 
@@ -89,8 +93,10 @@ public class AttributeCostCalculatorTest {
     dummyHero.addModel(new DummySpiritualTraitModel());
     attributeModel.initialize(null, dummyHero);
     this.creationPoint = new AttributeCreationPoints(6, 4, 2);
-    DummyBonusPointCosts cost = new DummyBonusPointCosts();
-    this.calculator = new AttributeBonusPointCalculator(attributeModel, creationPoint, cost);
+    AttributeCreationData creationData = mock(AttributeCreationData.class);
+    when(creationData.getCounts()).thenReturn(new int[] {6, 4, 2});
+    when(creationData.getAttributeCosts(any())).thenReturn(ATTRIBUTE_BONUS_POINT_COST);
+    this.calculator = new AttributeBonusPointCalculator(attributeModel, creationData);
   }
 
 
