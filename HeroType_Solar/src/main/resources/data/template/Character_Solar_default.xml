@@ -12,7 +12,7 @@
         <model id="Abilities" template="SolarAbilities"/>
         <model id="AbilitiesPoints"/>
         <model id="Attributes" template="DefaultAttributes"/>
-        <model id="AttributePoints"/>
+        <model id="AttributePoints" template="SolarAttributePoints"/>
         <model id="EssencePool" template="SolarEssencePool"/>
         <model id="Health"/>
         <model id="Charms" template="SolarCharms"/>

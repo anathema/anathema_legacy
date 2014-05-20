@@ -7,4 +7,8 @@ public class TraitCalculationUtilities {
   public static int getCreationCalculationValue(Trait trait) {
     return Math.max(trait.getCurrentValue(), trait.getZeroCalculationValue());
   }
+
+  public static int getCreationCalculationValue(Trait trait, TraitListCreationData map) {
+    return Math.max(trait.getCurrentValue(), map.getCalculationBase(trait.getType()));
+  }
 }

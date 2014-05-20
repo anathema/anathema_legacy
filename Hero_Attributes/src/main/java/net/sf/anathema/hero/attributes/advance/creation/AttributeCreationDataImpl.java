@@ -2,6 +2,7 @@ package net.sf.anathema.hero.attributes.advance.creation;
 
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.points.IAttributeCreationPoints;
+import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 
 public class AttributeCreationDataImpl implements AttributeCreationData {

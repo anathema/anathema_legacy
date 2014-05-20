@@ -1,6 +1,8 @@
 package net.sf.anathema.hero.attributes.advance;
 
 import net.sf.anathema.hero.attributes.model.AttributeModel;
+import net.sf.anathema.hero.attributes.template.AttributePointsTemplate;
+import net.sf.anathema.hero.attributes.template.AttributePointsTemplateLoader;
 import net.sf.anathema.hero.initialization.SimpleModelTreeEntry;
 import net.sf.anathema.hero.model.HeroModelFactory;
 import net.sf.anathema.hero.points.PointsModel;
@@ -16,6 +18,7 @@ public class AttributePointsModelFactory extends SimpleModelTreeEntry implements
   @SuppressWarnings("unchecked")
   @Override
   public AttributePointsModel create(TemplateFactory templateFactory, String templateId) {
+    AttributePointsTemplate template = AttributePointsTemplateLoader.loadTemplate(templateFactory, templateId);
     return new AttributePointsModel();
   }
 }
