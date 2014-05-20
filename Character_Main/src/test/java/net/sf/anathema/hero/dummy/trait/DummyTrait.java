@@ -91,11 +91,6 @@ public class DummyTrait implements Trait {
   }
 
   @Override
-  public int getCalculationMinValue() {
-    return 0;
-  }
-
-  @Override
   public ITraitFavorization getFavorization() {
     return new NullTraitFavorization();
   }

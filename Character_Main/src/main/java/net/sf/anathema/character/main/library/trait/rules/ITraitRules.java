@@ -13,8 +13,6 @@ public interface ITraitRules {
 
   int getCurrentMaximumValue(boolean modified);
 
-  int getCalculationMinValue();
-
   int getStartValue();
 
   int getZeroCalculationCost();

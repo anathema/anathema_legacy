@@ -56,8 +56,6 @@ public interface Trait extends ValuedTraitType {
 
   int getMinimalValue();
 
-  int getCalculationMinValue();
-
   void resetCurrentValue();
 
   void setModifiedCreationRange(int newInitialValue, int newUpperValue);

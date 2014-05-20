@@ -1,7 +1,5 @@
 package net.sf.anathema.character.main.traits;
 
-import net.sf.anathema.hero.model.Hero;
-
 public abstract class AbstractTraitTemplate implements ITraitTemplate {
   protected final LowerableState lowerable;
   protected final int startValue;
@@ -32,10 +30,4 @@ public abstract class AbstractTraitTemplate implements ITraitTemplate {
   public boolean isRequiredFavored() {
     return false;
   }
-
-  @Override
-  public int getCalculationMinValue(Hero hero, TraitType type) {
-    return getMinimumValue(hero);
-  }
-
 }

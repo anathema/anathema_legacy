@@ -109,7 +109,7 @@ public class AbilityCostCalculatorImpl implements AbilityCostCalculator {
 
   private FavorableTraitCost handleFavoredSingleTrait(Trait trait, int bonusPointCostFactor) {
     int freeTraitMax = Math.max(this.freeTraitMax, trait.getAbsoluteMinValue());
-    int freePointsToAdd = Math.min(trait.getCalculationValue(), freeTraitMax) - trait.getCalculationMinValue();
+    int freePointsToAdd = Math.min(trait.getCalculationValue(), freeTraitMax);
     int favoredDotsSpent = 0;
     int generalDotsSpent = 0;
     int bonusPointsSpent = 0;
@@ -150,7 +150,7 @@ public class AbilityCostCalculatorImpl implements AbilityCostCalculator {
 
   private FavorableTraitCost handleGeneralSingleTrait(Trait trait, int bonusPointCostFactor) {
     int freeTraitMax = Math.max(this.freeTraitMax, trait.getAbsoluteMinValue());
-    int freePointsToAdd = Math.min(trait.getCalculationValue(), freeTraitMax) - trait.getCalculationMinValue();
+    int freePointsToAdd = Math.min(trait.getCalculationValue(), freeTraitMax);
     int generalDotsSpent = 0;
     int bonusPointsSpent = 0;
     if (getFreePointsSpent(false) < getDefaultDotCount()) {

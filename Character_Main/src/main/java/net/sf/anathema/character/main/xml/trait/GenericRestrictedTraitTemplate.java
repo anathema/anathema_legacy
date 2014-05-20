@@ -75,19 +75,6 @@ public class GenericRestrictedTraitTemplate extends ReflectionCloneableObject<IC
     return traitTemplate.getMinimumValue(hero);
   }
 
-  @Override
-  public int getCalculationMinValue(Hero hero, TraitType type) {
-    int minimum = 0;
-    for (IMinimumRestriction restriction : restrictions) {
-      restriction.clear();
-    }
-    for (IMinimumRestriction restriction : restrictions) {
-      int newMin = restriction.getCalculationMinValue(hero, type);
-      minimum = newMin > minimum ? newMin : minimum;
-    }
-    return Math.max(minimum, traitTemplate.getCalculationMinValue(hero, type));
-  }
-
   public TraitType getTraitType() {
     return traitType;
   }

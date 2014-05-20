@@ -80,9 +80,4 @@ public class GenericTraitTemplate extends ReflectionCloneableObject<IClonableTra
   public void setIsFreebie(boolean value) {
     isFreebie = value;
   }
-
-  @Override
-  public int getCalculationMinValue(Hero hero, TraitType type) {
-    return isFreebie ? getMinimumValue(hero) : 0;
-  }
 }

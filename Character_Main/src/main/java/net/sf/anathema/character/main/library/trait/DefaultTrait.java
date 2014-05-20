@@ -196,11 +196,6 @@ public class DefaultTrait implements Trait {
   }
 
   @Override
-  public final int getCalculationMinValue() {
-    return traitRules.getCalculationMinValue();
-  }
-
-  @Override
   public final boolean isLowerable() {
     return traitRules.isLowerable();
   }

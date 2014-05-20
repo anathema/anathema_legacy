@@ -48,11 +48,6 @@ public class TraitRules implements ITraitRules {
   }
 
   @Override
-  public int getCalculationMinValue() {
-    return template.getCalculationMinValue(hero, traitType);
-  }
-
-  @Override
   public int getStartValue() {
     return template.getStartValue();
   }
