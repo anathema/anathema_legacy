@@ -25,5 +25,13 @@
       casteId: "Eclipse",
       traits: ["Bureaucracy", "Linguistics", "Ride", "Sail", "Socialize"]
     }
-  ]
+  ];
+  standard: {
+    startValue: 0;
+    minimumValue = 0;
+    modificationType: "RaiseOnly";
+    limitation: {
+      type: "Essence"
+    }
+  }
 }
