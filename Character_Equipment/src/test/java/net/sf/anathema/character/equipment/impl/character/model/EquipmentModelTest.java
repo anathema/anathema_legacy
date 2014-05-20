@@ -1,6 +1,7 @@
 package net.sf.anathema.character.equipment.impl.character.model;
 
 import net.sf.anathema.character.equipment.dummy.DummyEquipmentObject;
+import net.sf.anathema.hero.traits.template.Group;
 import net.sf.anathema.hero.traits.template.GroupedTraitsTemplate;
 import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 import net.sf.anathema.character.main.traits.context.CreationTraitValueStrategy;
@@ -33,11 +34,20 @@ public class EquipmentModelTest {
     hero.addModel(new StatsModelImpl());
     hero.addModel(new TraitModelImpl());
     hero.addModel(new AbilitiesModelImpl(new GroupedTraitsTemplate()));
-    AttributeModel attributeModel = new AttributeModelImpl();
+    AttributeModel attributeModel = createAttributeModelWithStamina();
     DummyHeroEnvironment context = new DummyHeroEnvironment();
     attributeModel.initialize(context, hero);
     model = new EquipmentModelImpl();
     model.initialize(context, hero);
+  }
+
+  private AttributeModelImpl createAttributeModelWithStamina() {
+    GroupedTraitsTemplate template = new GroupedTraitsTemplate();
+    Group physicalAttributes = new Group();
+    physicalAttributes.id = "Physical";
+    physicalAttributes.traits.add("Stamina");
+    template.groups.add(physicalAttributes);
+    return new AttributeModelImpl(template);
   }
 
   @Test

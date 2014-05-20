@@ -7,6 +7,8 @@ import net.sf.anathema.hero.model.HeroModelFactory;
 import net.sf.anathema.hero.spiritual.SpiritualTraitModel;
 import net.sf.anathema.hero.template.TemplateFactory;
 import net.sf.anathema.hero.traits.TraitModel;
+import net.sf.anathema.hero.traits.template.GroupedTraitsTemplate;
+import net.sf.anathema.hero.traits.template.GroupedTraitsTemplateLoader;
 
 @SuppressWarnings("UnusedDeclaration")
 public class AttributeModelFactory extends SimpleModelTreeEntry implements HeroModelFactory {
@@ -18,6 +20,7 @@ public class AttributeModelFactory extends SimpleModelTreeEntry implements HeroM
   @SuppressWarnings("unchecked")
   @Override
   public AttributeModelImpl create(TemplateFactory templateFactory, String templateId) {
-    return new AttributeModelImpl();
+    GroupedTraitsTemplate template = GroupedTraitsTemplateLoader.loadTemplate(templateFactory, templateId);
+    return new AttributeModelImpl(template);
   }
 }

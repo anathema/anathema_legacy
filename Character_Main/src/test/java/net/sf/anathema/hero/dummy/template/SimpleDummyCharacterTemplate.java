@@ -5,7 +5,6 @@ import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITemplateType;
 import net.sf.anathema.character.main.template.ITraitTemplateCollection;
 import net.sf.anathema.character.main.template.TemplateType;
-import net.sf.anathema.character.main.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.creation.ICreationPoints;
 import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
@@ -24,11 +23,6 @@ public class SimpleDummyCharacterTemplate implements HeroTemplate {
   public SimpleDummyCharacterTemplate(CharacterType type, String subtype) {
     this.type = type;
     this.subtype = subtype;
-  }
-
-  @Override
-  public GroupedTraitType[] getAttributeGroups() {
-    return new GroupedTraitType[0];
   }
 
   @Override

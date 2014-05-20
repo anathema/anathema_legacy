@@ -12,10 +12,13 @@ import net.sf.anathema.character.main.traits.types.AttributeGroupType;
 import net.sf.anathema.hero.attributes.advance.creation.AttributeBonusPointCalculator;
 import net.sf.anathema.hero.attributes.advance.creation.TraitGroupCost;
 import net.sf.anathema.hero.attributes.model.AttributeModelImpl;
+import net.sf.anathema.hero.traits.template.Group;
+import net.sf.anathema.hero.traits.template.GroupedTraitsTemplate;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static net.sf.anathema.character.main.traits.types.AttributeGroupType.Mental;
@@ -75,7 +78,7 @@ public class AttributeCostCalculatorTest {
 
   private IAttributeCreationPoints creationPoint;
   private AttributeBonusPointCalculator calculator;
-  private AttributeModelImpl attributeModel = new AttributeModelImpl();
+  private AttributeModelImpl attributeModel = createAttributeModel();
   private DummyHero dummyHero = new DummyHero();
 
   @Before
@@ -89,6 +92,23 @@ public class AttributeCostCalculatorTest {
     DummyBonusPointCosts cost = new DummyBonusPointCosts();
     this.calculator = new AttributeBonusPointCalculator(attributeModel, creationPoint, cost);
   }
+
+
+  private AttributeModelImpl createAttributeModel() {
+    GroupedTraitsTemplate template = new GroupedTraitsTemplate();
+    template.groups.add(createGroup("Physical", "Strength", "Dexterity", "Stamina"));
+    template.groups.add(createGroup("Social", "Charisma", "Manipulation", "Appearance"));
+    template.groups.add(createGroup("Mental", "Perception", "Intelligence", "Wits"));
+    return new AttributeModelImpl(template);
+  }
+
+  private Group createGroup(String id, String... traitIds) {
+    Group physicalAttributes = new Group();
+    physicalAttributes.id = id;
+    physicalAttributes.traits.addAll(Arrays.asList(traitIds));
+    return physicalAttributes;
+  }
+
 
   @Test
   public void testNoAttributesLearned() throws Exception {

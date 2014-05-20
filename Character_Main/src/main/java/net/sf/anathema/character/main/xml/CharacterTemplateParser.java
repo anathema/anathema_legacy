@@ -2,10 +2,7 @@ package net.sf.anathema.character.main.xml;
 
 import net.sf.anathema.character.main.framework.ICharacterTemplateRegistryCollection;
 import net.sf.anathema.character.main.template.ITemplateType;
-import net.sf.anathema.character.main.traits.lists.AllAttributeTraitTypeList;
 import net.sf.anathema.character.main.type.CharacterTypes;
-import net.sf.anathema.character.main.xml.abilitygroup.GenericGroupedTraitTypeProvider;
-import net.sf.anathema.character.main.xml.abilitygroup.TraitTypeGroupTemplateParser;
 import net.sf.anathema.character.main.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.main.xml.creation.BonusPointCostTemplateParser;
 import net.sf.anathema.character.main.xml.creation.CreationPointTemplateParser;
@@ -15,7 +12,6 @@ import net.sf.anathema.character.main.xml.experience.ExperienceTemplateParser;
 import net.sf.anathema.character.main.xml.experience.GenericExperiencePointCosts;
 import net.sf.anathema.character.main.xml.presentation.GenericPresentationTemplate;
 import net.sf.anathema.character.main.xml.presentation.PresentationPropertiesParser;
-import net.sf.anathema.character.main.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.main.xml.trait.GenericTraitTemplateFactory;
 import net.sf.anathema.character.main.xml.trait.GenericTraitTemplateFactoryParser;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -23,7 +19,6 @@ import org.dom4j.Element;
 
 public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCharacterTemplate> {
 
-  private static final String TAG_ATTRIBUTE_GROUPS = "attributeGroups";
   private static final String TAG_CREATION = "creation";
   private static final String TAG_CREATION_POINTS = "creationPoints";
   private static final String TAG_EXPERIENCE = "experience";
@@ -80,17 +75,6 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     characterTemplate.setTemplateType(templateType);
   }
 
-  private void setAttributeGroups(Element generalElement, GenericCharacterTemplate characterTemplate) throws PersistenceException {
-    Element attributeGroupElement = generalElement.element(TAG_ATTRIBUTE_GROUPS);
-    if (attributeGroupElement == null) {
-      return;
-    }
-    IXmlTemplateRegistry<GenericGroupedTraitTypeProvider> registry = registryCollection.getTraitGroupTemplateRegistry();
-    TraitTypeGroupTemplateParser parser = new TraitTypeGroupTemplateParser(registry, AllAttributeTraitTypeList.getInstance());
-    GenericGroupedTraitTypeProvider attributeGroups = parser.parseTemplate(attributeGroupElement);
-    characterTemplate.setAttributeGroups(attributeGroups.getTraitTypeGroups());
-  }
-
   private void setBonusPoints(GenericCharacterTemplate characterTemplate, Element creationElement) throws PersistenceException {
     Element bonusPointsElement = creationElement.element("bonusPointCosts");
     if (bonusPointsElement == null) {
@@ -130,7 +114,6 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     if (generalElement == null) {
       return;
     }
-    setAttributeGroups(generalElement, characterTemplate);
     setTraitCollection(generalElement, characterTemplate);
     setPresentationTemplate(generalElement, characterTemplate);
   }

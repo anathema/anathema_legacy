@@ -28,7 +28,6 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
   private GenericExperiencePointCosts experienceCosts = new GenericExperiencePointCosts();
   private GenericBonusPointCosts bonusPointCosts = new GenericBonusPointCosts();
   private GenericCreationPoints creationPoints = new GenericCreationPoints();
-  private GroupedTraitType[] attributeGroups;
   private GenericPresentationTemplate presentationTemplate;
   private final List<ConfiguredModel> models = new ArrayList<>();
 
@@ -116,15 +115,6 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
       clone.presentationTemplate = presentationTemplate.clone();
     }
     return clone;
-  }
-
-  @Override
-  public GroupedTraitType[] getAttributeGroups() {
-    return attributeGroups;
-  }
-
-  public void setAttributeGroups(GroupedTraitType[] traitTypeGroups) {
-    this.attributeGroups = traitTypeGroups;
   }
 
   public void addModel(String modelId, String templateId) {

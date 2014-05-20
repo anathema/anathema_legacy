@@ -8,6 +8,7 @@ import net.sf.anathema.character.main.traits.AbilityTemplateFactory;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.creation.FavorableTraitFactory;
 import net.sf.anathema.character.main.traits.creation.TypedTraitTemplateFactory;
+import net.sf.anathema.character.main.traits.lists.AllAbilityTraitTypeList;
 import net.sf.anathema.character.main.traits.lists.IIdentifiedCasteTraitTypeList;
 import net.sf.anathema.hero.traits.model.GroupedTraitTypeBuilder;
 import net.sf.anathema.hero.traits.template.GroupedTraitsTemplate;
@@ -48,12 +49,12 @@ public class AbilitiesModelImpl extends DefaultTraitMap implements AbilitiesMode
   public void initialize(HeroEnvironment environment, Hero hero) {
     this.hero = hero;
     HeroConcept concept = HeroConceptFetcher.fetch(hero);
-    HeroTemplate template = hero.getTemplate();
+    HeroTemplate heroTemplate = hero.getTemplate();
     CasteCollection casteCollection = concept.getCasteCollection();
-    GroupedTraitType[] abilityGroups = GroupedTraitTypeBuilder.BuildFor(this.template);
+    GroupedTraitType[] abilityGroups = GroupedTraitTypeBuilder.BuildFor(template, AllAbilityTraitTypeList.getInstance());
     this.abilityTraitGroups = new AbilityTypeGroupFactory().createTraitGroups(casteCollection, abilityGroups);
-    IncrementChecker incrementChecker = createFavoredAbilityIncrementChecker(template, this, abilityGroups);
-    addFavorableTraits(incrementChecker, new AbilityTemplateFactory(template.getTraitTemplateCollection().getTraitTemplateFactory()));
+    IncrementChecker incrementChecker = createFavoredAbilityIncrementChecker(heroTemplate, this, abilityGroups);
+    addFavorableTraits(incrementChecker, new AbilityTemplateFactory(heroTemplate.getTraitTemplateCollection().getTraitTemplateFactory()));
     TraitModel traitModel = TraitModelFetcher.fetch(hero);
     traitModel.addTraits(getAll());
   }

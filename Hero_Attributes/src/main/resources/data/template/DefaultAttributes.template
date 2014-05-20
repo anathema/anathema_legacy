@@ -1,0 +1,16 @@
+{
+  groups: [
+    {
+      id: "Physical",
+      traits: ["Strength", "Dexterity", "Stamina"]
+    },
+    {
+      id: "Social",
+      traits: ["Charisma", "Manipulation", "Appearance"]
+    },
+     {
+      id: "Mental",
+      traits: ["Perception", "Intelligence", "Wits"]
+    }
+  ]
+}

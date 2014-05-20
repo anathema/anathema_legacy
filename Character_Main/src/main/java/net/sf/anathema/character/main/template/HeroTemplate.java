@@ -16,8 +16,6 @@ public interface HeroTemplate {
 
   List<ConfiguredModel> getModels();
 
-  GroupedTraitType[] getAttributeGroups();
-
   BonusPointCosts getBonusPointCosts();
 
   ICreationPoints getCreationPoints();

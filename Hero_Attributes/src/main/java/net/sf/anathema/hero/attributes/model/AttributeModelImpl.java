@@ -8,9 +8,12 @@ import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITraitTemplateFactory;
 import net.sf.anathema.character.main.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.main.traits.AttributeTemplateFactory;
+import net.sf.anathema.character.main.traits.ITraitTemplate;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.creation.FavorableTraitFactory;
 import net.sf.anathema.character.main.traits.creation.TypedTraitTemplateFactory;
+import net.sf.anathema.character.main.traits.lists.AllAbilityTraitTypeList;
+import net.sf.anathema.character.main.traits.lists.AllAttributeTraitTypeList;
 import net.sf.anathema.character.main.traits.lists.IIdentifiedCasteTraitTypeList;
 import net.sf.anathema.character.main.traits.lists.IdentifiedTraitTypeList;
 import net.sf.anathema.character.main.traits.types.AttributeGroupType;
@@ -24,14 +27,21 @@ import net.sf.anathema.hero.traits.DefaultTraitMap;
 import net.sf.anathema.hero.traits.MappedTraitGroup;
 import net.sf.anathema.hero.traits.TraitModel;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
+import net.sf.anathema.hero.traits.model.GroupedTraitTypeBuilder;
 import net.sf.anathema.hero.traits.model.event.TraitValueChangedListener;
+import net.sf.anathema.hero.traits.template.GroupedTraitsTemplate;
 import net.sf.anathema.lib.util.Identifier;
 
 public class AttributeModelImpl extends DefaultTraitMap implements AttributeModel, HeroModel {
 
-  private HeroTemplate template;
   private IIdentifiedCasteTraitTypeList[] attributeTraitGroups;
   private Hero hero;
+  private GroupedTraitType[] abilityGroups;
+  private GroupedTraitsTemplate template;
+
+  public AttributeModelImpl(GroupedTraitsTemplate template) {
+    this.template = template;
+  }
 
   @Override
   public Identifier getId() {
@@ -41,17 +51,17 @@ public class AttributeModelImpl extends DefaultTraitMap implements AttributeMode
   @Override
   public void initialize(HeroEnvironment environment, Hero hero) {
     this.hero = hero;
-    this.template = hero.getTemplate();
     CasteCollection casteCollection = HeroConceptFetcher.fetch(hero).getCasteCollection();
+    this.abilityGroups = GroupedTraitTypeBuilder.BuildFor(template, AllAttributeTraitTypeList.getInstance());
     this.attributeTraitGroups = new AttributeTypeGroupFactory().createTraitGroups(casteCollection, getAttributeGroups());
-    addAttributes();
+    addAttributes(hero.getTemplate().getTraitTemplateCollection().getTraitTemplateFactory());
     TraitModel traitModel = TraitModelFetcher.fetch(hero);
     traitModel.addTraits(getAll());
   }
 
   @Override
   public GroupedTraitType[] getAttributeGroups() {
-    return template.getAttributeGroups();
+    return abilityGroups;
   }
 
   @Override
@@ -65,9 +75,8 @@ public class AttributeModelImpl extends DefaultTraitMap implements AttributeMode
     return new FavorableTraitFactory(hero);
   }
 
-  private void addAttributes() {
+  private void addAttributes(ITraitTemplateFactory templateFactory) {
     IncrementChecker incrementChecker = new GrumpyIncrementChecker();
-    ITraitTemplateFactory templateFactory = template.getTraitTemplateCollection().getTraitTemplateFactory();
     addFavorableTraits(incrementChecker, new AttributeTemplateFactory(templateFactory));
   }
 
