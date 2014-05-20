@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.template.parser;
 
 import junit.framework.TestCase;
-import net.sf.anathema.character.main.traits.LowerableState;
+import net.sf.anathema.character.main.traits.ModificationType;
 import net.sf.anathema.character.main.traits.limitation.EssenceBasedLimitation;
 import net.sf.anathema.character.main.traits.limitation.StaticTraitLimitation;
 import net.sf.anathema.character.main.xml.trait.GenericTraitTemplate;
@@ -36,7 +36,7 @@ public class GenericTraitTemplateParserTest extends TestCase {
     GenericTraitTemplate template = parseTemplate(xml);
     assertEquals(1, template.getStartValue());
     assertEquals(0, template.getZeroLevelValue());
-    assertEquals(LowerableState.Default, template.getLowerableState());
+    assertEquals(ModificationType.RaiseOnly, template.getModificationType());
     assertTrue(template.isRequiredFavored());
   }
 

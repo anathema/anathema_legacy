@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.xml.trait.allocation;
 
-import net.sf.anathema.character.main.traits.LowerableState;
+import net.sf.anathema.character.main.traits.ModificationType;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.lists.TraitTypeList;
 import net.sf.anathema.character.main.traits.limitation.EssenceBasedLimitation;
@@ -43,7 +43,7 @@ public class AllocationMinimumTraitTemplateParser {
   public GenericTraitTemplate parseTraitTemplate(Element traitElement) throws PersistenceException {
     GenericTraitTemplate template = new GenericTraitTemplate();
     template.setLimitation(new EssenceBasedLimitation());
-    template.setLowerableState(LowerableState.Default);
+    template.setModificationType(ModificationType.RaiseOnly);
     template.setRequiredFavored(false);
     template.setZeroLevelValue(0);
     template.setStartValue(ElementUtilities.getIntAttrib(traitElement, ATTRIB_START_VALUE, 0));

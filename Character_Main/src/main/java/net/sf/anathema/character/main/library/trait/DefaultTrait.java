@@ -197,7 +197,7 @@ public class DefaultTrait implements Trait {
 
   @Override
   public final boolean isLowerable() {
-    return traitRules.isLowerable();
+    return traitRules.isReducible();
   }
 
   @Override

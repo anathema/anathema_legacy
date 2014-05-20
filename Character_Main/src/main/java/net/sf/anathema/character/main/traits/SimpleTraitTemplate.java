@@ -10,29 +10,29 @@ import net.sf.anathema.hero.model.Hero;
 public class SimpleTraitTemplate extends AbstractTraitTemplate {
 
   public static ITraitTemplate createEssenceLimitedTemplate(int minimumValue) {
-    return createEssenceLimitedTemplate(minimumValue, minimumValue, LowerableState.Default);
+    return createEssenceLimitedTemplate(minimumValue, minimumValue, ModificationType.RaiseOnly);
   }
 
-  public static ITraitTemplate createEssenceLimitedTemplate(int minimumValue, int startValue, LowerableState state) {
+  public static ITraitTemplate createEssenceLimitedTemplate(int minimumValue, int startValue, ModificationType state) {
     return new SimpleTraitTemplate(minimumValue, startValue, new EssenceBasedLimitation(), state);
   }
 
-  public static ITraitTemplate createVirtueLimitedTemplate(int minimumValue, int startValue, LowerableState state, VirtueType type) {
+  public static ITraitTemplate createVirtueLimitedTemplate(int minimumValue, int startValue, ModificationType state, VirtueType type) {
     return new SimpleTraitTemplate(minimumValue, startValue, new VirtueBasedLimitation(type), state);
   }
 
   public static ITraitTemplate createStaticLimitedTemplate(int minimumValue, int staticLimit) {
-    return createStaticLimitedTemplate(minimumValue, staticLimit, LowerableState.Default);
+    return createStaticLimitedTemplate(minimumValue, staticLimit, ModificationType.RaiseOnly);
   }
 
-  public static ITraitTemplate createStaticLimitedTemplate(int minimumValue, int staticLimit, LowerableState state) {
+  public static ITraitTemplate createStaticLimitedTemplate(int minimumValue, int staticLimit, ModificationType state) {
     return new SimpleTraitTemplate(minimumValue, minimumValue, new StaticTraitLimitation(staticLimit), state);
   }
 
   private final int minimumValue;
   private final ITraitLimitation limitation;
 
-  private SimpleTraitTemplate(int minimumValue, int startValue, ITraitLimitation limitation, LowerableState lowerable) {
+  private SimpleTraitTemplate(int minimumValue, int startValue, ITraitLimitation limitation, ModificationType lowerable) {
     super(startValue, lowerable, startValue);
     this.minimumValue = minimumValue;
     this.limitation = limitation;

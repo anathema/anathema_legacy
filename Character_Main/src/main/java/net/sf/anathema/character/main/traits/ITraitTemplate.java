@@ -6,7 +6,7 @@ public interface ITraitTemplate extends ITraitMinimum {
 
   ITraitLimitation getLimitation();
 
-  LowerableState getLowerableState();
+  ModificationType getModificationType();
 
   int getStartValue();
 

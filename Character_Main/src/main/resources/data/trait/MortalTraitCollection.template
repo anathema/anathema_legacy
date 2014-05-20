@@ -1,5 +1,5 @@
 <traitTemplates uses="trait/DefaultTraitCollection.template">
-  <essence startValue="1" lowerableState="Default">
+  <essence startValue="1" lowerableState="RaiseOnly">
     <limitation type="Static" value="1"/>
     <minimum value="1"/>
   </essence>

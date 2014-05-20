@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.library.trait.rules;
 
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.main.traits.ITraitTemplate;
-import net.sf.anathema.character.main.traits.LowerableState;
+import net.sf.anathema.character.main.traits.ModificationType;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.data.Range;
@@ -58,9 +58,8 @@ public class TraitRules implements ITraitRules {
   }
 
   @Override
-  public boolean isLowerable() {
-    LowerableState lowerableState = template.getLowerableState();
-    return lowerableState != LowerableState.Default && lowerableState != LowerableState.Immutable;
+  public boolean isReducible() {
+    return template.getModificationType() == ModificationType.Free;
   }
 
   @Override
@@ -86,20 +85,18 @@ public class TraitRules implements ITraitRules {
   public int getExperiencedValue(int creationValue, int demandedValue) {
     Range range;
     int maximumValue = getCurrentMaximumValue(true);
-    if (isLowerable()) {
+    if (isReducible()) {
       range = new Range(getAbsoluteMinimumValue(), maximumValue);
     } else {
-      boolean isImmutable = template.getLowerableState() == LowerableState.Immutable;
+      boolean isImmutable = template.getModificationType() == ModificationType.Immutable;
       range = new Range(Math.max(Math.min(creationValue, maximumValue), getAbsoluteMinimumValue()), isImmutable ? creationValue : maximumValue);
     }
     int correctedValue = getCorrectedValue(demandedValue, range);
-    if (isLowerable()) {
+    if (isReducible()) {
       return correctedValue;
     }
     return correctedValue;
-    //the purpose for the below is unclear... hopefully it is safe to remove
-    //return correctedValue <= creationValue ? ITraitRules.UNEXPERIENCED : correctedValue;
-  }
+   }
 
   @Override
   public int getCreationValue(int demandedValue) {
@@ -119,12 +116,6 @@ public class TraitRules implements ITraitRules {
 
   @Override
   public int getExperienceCalculationValue(int creationValue, int experiencedValue, int currentValue) {
-    if (template.getLowerableState() == LowerableState.LowerableRegain) {
-      if (experiencedValue == UNEXPERIENCED) {
-        return creationValue;
-      }
-      return currentValue;
-    }
     return Math.max(currentValue, creationValue);
   }
 }

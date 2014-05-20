@@ -1,8 +1,7 @@
 package net.sf.anathema.character.main.xml.trait;
 
 import net.sf.anathema.character.main.template.ITraitLimitation;
-import net.sf.anathema.character.main.traits.LowerableState;
-import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.character.main.traits.ModificationType;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 
@@ -11,7 +10,7 @@ public class GenericTraitTemplate extends ReflectionCloneableObject<IClonableTra
   private Integer minimumValue;
   private Integer zeroLevelValue;
   private Integer startValue = 0;
-  private LowerableState lowerableState;
+  private ModificationType modificationType;
   private ITraitLimitation limitation;
   private boolean isRequiredFavored;
   private boolean isFreebie;
@@ -22,8 +21,8 @@ public class GenericTraitTemplate extends ReflectionCloneableObject<IClonableTra
   }
 
   @Override
-  public LowerableState getLowerableState() {
-    return lowerableState;
+  public ModificationType getModificationType() {
+    return modificationType;
   }
 
   @Override
@@ -45,8 +44,8 @@ public class GenericTraitTemplate extends ReflectionCloneableObject<IClonableTra
     this.limitation = limitation;
   }
 
-  public final void setLowerableState(LowerableState lowerableState) {
-    this.lowerableState = lowerableState;
+  public final void setModificationType(ModificationType modificationType) {
+    this.modificationType = modificationType;
   }
 
   public final void setMinimumValue(int minimumValue) {

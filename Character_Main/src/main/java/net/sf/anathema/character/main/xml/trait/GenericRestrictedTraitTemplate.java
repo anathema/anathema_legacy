@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.xml.trait;
 
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.main.template.ITraitLimitation;
-import net.sf.anathema.character.main.traits.LowerableState;
+import net.sf.anathema.character.main.traits.ModificationType;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
@@ -36,8 +36,8 @@ public class GenericRestrictedTraitTemplate extends ReflectionCloneableObject<IC
   }
 
   @Override
-  public LowerableState getLowerableState() {
-    return traitTemplate.getLowerableState();
+  public ModificationType getModificationType() {
+    return traitTemplate.getModificationType();
   }
 
   @Override

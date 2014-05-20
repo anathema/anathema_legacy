@@ -5,7 +5,7 @@ import net.sf.anathema.character.main.library.trait.LimitedTrait;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.favorable.FriendlyIncrementChecker;
 import net.sf.anathema.character.main.traits.ITraitTemplate;
-import net.sf.anathema.character.main.traits.LowerableState;
+import net.sf.anathema.character.main.traits.ModificationType;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.control.ChangeListener;
@@ -42,7 +42,7 @@ public class VirtueFlawImpl implements VirtueFlaw {
   public Trait getLimitTrait() {
     if (limitTrait == null) {
       DefaultTraitType traitType = new DefaultTraitType(getLimitString());
-      ITraitTemplate limitedTemplate = createStaticLimitedTemplate(0, 10, LowerableState.LowerableLoss);
+      ITraitTemplate limitedTemplate = createStaticLimitedTemplate(0, 10, ModificationType.Free);
       limitTrait = new LimitedTrait(hero, traitType, limitedTemplate, new FriendlyIncrementChecker());
     }
     return limitTrait;

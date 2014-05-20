@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.xml.trait;
 
 import net.sf.anathema.character.main.template.ITraitLimitation;
-import net.sf.anathema.character.main.traits.LowerableState;
+import net.sf.anathema.character.main.traits.ModificationType;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.limitation.AgeBasedLimitation;
 import net.sf.anathema.character.main.traits.limitation.EssenceBasedLimitation;
@@ -38,7 +38,7 @@ public class GenericTraitTemplateParser {
     defaultTraitTemplate.setZeroLevelValue(ElementUtilities.getIntAttrib(traitElement, ATTRIB_ZERO_LEVEL, startValue));
     defaultTraitTemplate.setRequiredFavored(ElementUtilities.getBooleanAttribute(traitElement, ATTRIB_IS_REQUIRED_FAVORED, false));
     String lowerableStateId = ElementUtilities.getRequiredAttrib(traitElement, ATTRIB_LOWERABLE_STATE);
-    defaultTraitTemplate.setLowerableState(LowerableState.valueOf(lowerableStateId));
+    defaultTraitTemplate.setModificationType(ModificationType.valueOf(lowerableStateId));
     defaultTraitTemplate.setLimitation(parseLimitation(traitElement));
     defaultTraitTemplate.setIsFreebie(ElementUtilities.getBooleanAttribute(traitElement, ATTRIB_FREEBIE, false));
     Element minimumValueElement = ElementUtilities.getRequiredElement(traitElement, TAG_MINIMUM);
@@ -70,8 +70,8 @@ public class GenericTraitTemplateParser {
     defaultTraitTemplate.setStartValue(startValue);
     defaultTraitTemplate.setZeroLevelValue(ElementUtilities.getIntAttrib(traitElement, ATTRIB_ZERO_LEVEL, startValue));
     defaultTraitTemplate.setRequiredFavored(ElementUtilities.getBooleanAttribute(traitElement, ATTRIB_IS_REQUIRED_FAVORED, false));
-    String lowerableStateId = traitElement.attributeValue(ATTRIB_LOWERABLE_STATE, LowerableState.Default.toString());
-    defaultTraitTemplate.setLowerableState(LowerableState.valueOf(lowerableStateId));
+    String modificationType = traitElement.attributeValue(ATTRIB_LOWERABLE_STATE, ModificationType.RaiseOnly.toString());
+    defaultTraitTemplate.setModificationType(ModificationType.valueOf(modificationType));
     Element minimumValueElement = traitElement.element(TAG_MINIMUM);
     defaultTraitTemplate.setMinimumValue(minimumValueElement != null ? ElementUtilities.getRequiredIntAttrib(minimumValueElement, ATTRIB_VALUE) :
                                          ElementUtilities.getIntAttrib(traitElement, ATTRIB_MINIMUM, 0));

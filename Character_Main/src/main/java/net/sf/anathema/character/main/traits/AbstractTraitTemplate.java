@@ -1,11 +1,11 @@
 package net.sf.anathema.character.main.traits;
 
 public abstract class AbstractTraitTemplate implements ITraitTemplate {
-  protected final LowerableState lowerable;
+  protected final ModificationType lowerable;
   protected final int startValue;
   private final int zeroValue;
 
-  public AbstractTraitTemplate(int startValue, LowerableState lowerable, int zeroValue) {
+  public AbstractTraitTemplate(int startValue, ModificationType lowerable, int zeroValue) {
     this.startValue = startValue;
     this.lowerable = lowerable;
     this.zeroValue = zeroValue;
@@ -17,7 +17,7 @@ public abstract class AbstractTraitTemplate implements ITraitTemplate {
   }
 
   @Override
-  public final LowerableState getLowerableState() {
+  public final ModificationType getModificationType() {
     return lowerable;
   }
 

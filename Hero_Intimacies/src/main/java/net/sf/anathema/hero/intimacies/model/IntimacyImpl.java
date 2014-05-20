@@ -5,7 +5,7 @@ import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.ValueChangeChecker;
 import net.sf.anathema.character.main.library.trait.rules.TraitRules;
 import net.sf.anathema.character.main.traits.ITraitTemplate;
-import net.sf.anathema.character.main.traits.LowerableState;
+import net.sf.anathema.character.main.traits.ModificationType;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.traits.types.VirtueType;
 import net.sf.anathema.hero.model.Hero;
@@ -27,7 +27,7 @@ public class IntimacyImpl implements Intimacy {
   public IntimacyImpl(Hero hero, String name, Integer initialValue, final ValuedTraitType maxValueTrait) {
     this.name = name;
     this.maxValueTrait = maxValueTrait;
-    ITraitTemplate template = createVirtueLimitedTemplate(0, initialValue, LowerableState.LowerableLoss, VirtueType.Conviction);
+    ITraitTemplate template = createVirtueLimitedTemplate(0, initialValue, ModificationType.Free, VirtueType.Conviction);
     TraitRules traitRules = new TraitRules(new IntimacyType(name), template, hero);
     ValueChangeChecker incrementChecker = new IntimacyValueChangeChecker(maxValueTrait);
     this.trait = new DefaultTrait(hero, traitRules, incrementChecker);
