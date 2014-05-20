@@ -17,13 +17,14 @@ import org.jmock.example.announcer.Announcer;
 public class EssencePoolStrategyImpl implements EssencePoolStrategy {
 
   private final Announcer<ChangeListener> control = Announcer.to(ChangeListener.class);
-  private final IEssenceTemplate essenceTemplate;
   private OverdrivePool overdrivePool;
   private Hero hero;
+  private EssencePoolConfiguration configuration;
   private final TraitMap traitMap;
 
-  public EssencePoolStrategyImpl(Hero hero, IEssenceTemplate essenceTemplate, TraitMap traitMap, OverdrivePool overdrivePool) {
+  public EssencePoolStrategyImpl(Hero hero, EssencePoolConfiguration configuration, TraitMap traitMap, OverdrivePool overdrivePool) {
     this.hero = hero;
+    this.configuration = configuration;
     this.traitMap = traitMap;
     this.overdrivePool = overdrivePool;
     hero.getChangeAnnouncer().addListener(new FlavoredChangeListener() {
@@ -32,7 +33,6 @@ public class EssencePoolStrategyImpl implements EssencePoolStrategy {
         control.announce().changeOccurred();
       }
     });
-    this.essenceTemplate = essenceTemplate;
   }
 
   @Override
@@ -58,7 +58,7 @@ public class EssencePoolStrategyImpl implements EssencePoolStrategy {
 
   @Override
   public int getUnmodifiedPersonalPool() {
-    return getPool(essenceTemplate.getPersonalTraits(getWillpower(), getVirtues(), getEssence()));
+    return getPool(configuration.getPersonalTraits(getWillpower(), getVirtues(), getEssence()));
   }
 
   @Override
@@ -79,7 +79,7 @@ public class EssencePoolStrategyImpl implements EssencePoolStrategy {
 
   @Override
   public int getUnmodifiedPeripheralPool() {
-    return getPool(essenceTemplate.getPeripheralTraits(getWillpower(), getVirtues(), getEssence()));
+    return getPool(configuration.getPeripheralTraits(getWillpower(), getVirtues(), getEssence()));
   }
 
   @Override
