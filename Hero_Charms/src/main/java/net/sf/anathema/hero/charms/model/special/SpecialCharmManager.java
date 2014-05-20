@@ -22,6 +22,7 @@ import net.sf.anathema.hero.charms.model.special.subeffects.SubEffectCharmSpecia
 import net.sf.anathema.hero.charms.model.special.traitcap.TraitCapModifyingCharmConfiguration;
 import net.sf.anathema.hero.charms.model.special.upgradable.UpgradableCharmConfiguration;
 import net.sf.anathema.hero.health.model.HealthModel;
+import net.sf.anathema.hero.health.model.HealthModelFetcher;
 import net.sf.anathema.hero.health.model.IPainToleranceProvider;
 import net.sf.anathema.hero.charms.model.special.oxbody.OxBodyTechniqueArbitratorImpl;
 import net.sf.anathema.hero.model.Hero;
@@ -125,7 +126,9 @@ public class SpecialCharmManager implements ISpecialCharmManager {
   }
 
   private OxBodyTechniqueArbitratorImpl createArbitrator() {
-    return new OxBodyTechniqueArbitratorImpl(TraitModelFetcher.fetch(hero).getTraits(hero.getTemplate().getToughnessControllingTraitTypes()));
+    HealthModel healthModel = HealthModelFetcher.fetch(hero);
+    TraitType[] toughnessControllingTraitTypes = healthModel.getToughnessControllingTraitTypes();
+    return new OxBodyTechniqueArbitratorImpl(TraitModelFetcher.fetch(hero).getTraits(toughnessControllingTraitTypes));
   }
 
   private void registerPainToleranceCharm(final IPainToleranceCharm visitedCharm, Charm charm) {

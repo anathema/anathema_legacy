@@ -7,19 +7,12 @@ import net.sf.anathema.character.main.template.ITraitTemplateCollection;
 import net.sf.anathema.character.main.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.creation.ICreationPoints;
-import net.sf.anathema.character.main.template.essence.IEssenceTemplate;
 import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
-import net.sf.anathema.character.main.template.magic.IMagicTemplate;
 import net.sf.anathema.character.main.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.main.traits.TraitTemplateCollection;
-import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.xml.creation.GenericBonusPointCosts;
 import net.sf.anathema.character.main.xml.creation.GenericCreationPoints;
-import net.sf.anathema.character.main.xml.essence.GenericEssenceTemplate;
 import net.sf.anathema.character.main.xml.experience.GenericExperiencePointCosts;
-import net.sf.anathema.character.main.xml.health.GenericHealthTemplate;
-import net.sf.anathema.character.main.xml.health.IHealthTemplate;
-import net.sf.anathema.character.main.xml.magic.GenericMagicTemplate;
 import net.sf.anathema.character.main.xml.presentation.GenericPresentationTemplate;
 import net.sf.anathema.character.main.xml.trait.GenericTraitTemplateFactory;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
@@ -32,21 +25,12 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
 
   private ITemplateType templateType;
   private ITraitTemplateCollection traitTemplateCollection;
-  private GenericMagicTemplate magicTemplate;
   private GenericExperiencePointCosts experienceCosts = new GenericExperiencePointCosts();
   private GenericBonusPointCosts bonusPointCosts = new GenericBonusPointCosts();
   private GenericCreationPoints creationPoints = new GenericCreationPoints();
-  private GenericEssenceTemplate essenceTemplate;
-  private GroupedTraitType[] abilityGroups;
   private GroupedTraitType[] attributeGroups;
   private GenericPresentationTemplate presentationTemplate;
-  private IHealthTemplate healthTemplate = new GenericHealthTemplate();
   private final List<ConfiguredModel> models = new ArrayList<>();
-
-  @Override
-  public GroupedTraitType[] getAbilityGroups() {
-    return abilityGroups;
-  }
 
   @Override
   public BonusPointCosts getBonusPointCosts() {
@@ -56,11 +40,6 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
   @Override
   public ICreationPoints getCreationPoints() {
     return creationPoints;
-  }
-
-  @Override
-  public IEssenceTemplate getEssenceTemplate() {
-    return essenceTemplate;
   }
 
   @Override
@@ -84,31 +63,8 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
   }
 
   @Override
-  public TraitType[] getToughnessControllingTraitTypes() {
-    return healthTemplate.getToughnessControllingTraits();
-  }
-
-  @Override
-  public String[] getBaseHealthProviders() {
-    return healthTemplate.getBaseHealthProviders();
-  }
-
-  @Override
   public List<ConfiguredModel> getModels() {
     return new ArrayList<>(models);
-  }
-
-  @Override
-  public IMagicTemplate getMagicTemplate() {
-    return magicTemplate;
-  }
-
-  public void setAbilityGroups(GroupedTraitType[] abilityGroups) {
-    this.abilityGroups = abilityGroups;
-  }
-
-  public void setEssenceTemplate(GenericEssenceTemplate essenceTemplate) {
-    this.essenceTemplate = essenceTemplate;
   }
 
   public void setCreationPoints(GenericCreationPoints creationPoints) {
@@ -125,10 +81,6 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
 
   public void setTraitFactory(GenericTraitTemplateFactory factory) {
     traitTemplateCollection = new TraitTemplateCollection(factory);
-  }
-
-  public void setMagicTemplate(GenericMagicTemplate template) {
-    magicTemplate = template;
   }
 
   public void setPresentationTemplate(GenericPresentationTemplate template) {
@@ -151,21 +103,14 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
     } catch (CloneNotSupportedException e) {
       throw new UnreachableCodeReachedException(e);
     }
-    clone.healthTemplate = new GenericHealthTemplate();
     if (bonusPointCosts != null) {
       clone.bonusPointCosts = bonusPointCosts.clone();
     }
     if (creationPoints != null) {
       clone.creationPoints = creationPoints.clone();
     }
-    if (essenceTemplate != null) {
-      clone.essenceTemplate = essenceTemplate.clone();
-    }
     if (experienceCosts != null) {
       clone.experienceCosts = experienceCosts.clone();
-    }
-    if (magicTemplate != null) {
-      clone.magicTemplate = magicTemplate.clone();
     }
     if (presentationTemplate != null) {
       clone.presentationTemplate = presentationTemplate.clone();
@@ -180,10 +125,6 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
 
   public void setAttributeGroups(GroupedTraitType[] traitTypeGroups) {
     this.attributeGroups = traitTypeGroups;
-  }
-
-  public void setHealthTemplate(IHealthTemplate template) {
-    this.healthTemplate = template;
   }
 
   public void addModel(String modelId, String templateId) {

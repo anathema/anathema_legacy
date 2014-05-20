@@ -14,12 +14,7 @@ import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.util.Identifier;
 import org.apache.commons.lang3.ArrayUtils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class DummySpellsModel implements SpellsModel {
 
@@ -65,10 +60,6 @@ public class DummySpellsModel implements SpellsModel {
     throw new NotYetImplementedException();
   }
 
-  @Override
-  public Spell[] getSpellsByCircle(CircleType circle) {
-    throw new NotYetImplementedException();
-  }
 
   @Override
   public Spell getSpellById(String string) {
@@ -110,21 +101,13 @@ public class DummySpellsModel implements SpellsModel {
   }
 
   @Override
-  public boolean isLearned(Spell spell) {
-    return false;
-  }
-
-  @Override
   public boolean isLearnedOnCreationOrExperience(Spell spell) {
     return false;
   }
 
   @Override
   public List<Spell> getAvailableSpellsInCircle(CircleType circle) {
-    List<Spell> showSpells = new ArrayList<>();
-    Collections.addAll(showSpells, getSpellsByCircle(circle));
-    showSpells.removeAll(Arrays.asList(getLearnedSpells()));
-    return showSpells;
+    throw new NotYetImplementedException();
   }
 
   @Override
@@ -136,6 +119,26 @@ public class DummySpellsModel implements SpellsModel {
       }
     }
     return spellList;
+  }
+
+  @Override
+  public boolean canLearnSorcery() {
+    return false;
+  }
+
+  @Override
+  public boolean canLearnNecromancy() {
+    return false;
+  }
+
+  @Override
+  public CircleType[] getNecromancyCircles() {
+    return new CircleType[0];
+  }
+
+  @Override
+  public CircleType[] getSorceryCircles() {
+    return new CircleType[0];
   }
 
   public void initializeMagicModel(CharmsModel charmsModel) {

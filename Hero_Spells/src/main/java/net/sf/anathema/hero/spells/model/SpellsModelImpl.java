@@ -1,12 +1,9 @@
 package net.sf.anathema.hero.spells.model;
 
-import net.sf.anathema.character.main.magic.spells.CircleType;
-import net.sf.anathema.character.main.magic.spells.ISpellMapper;
-import net.sf.anathema.character.main.magic.spells.Spell;
-import net.sf.anathema.character.main.magic.spells.SpellMapper;
+import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.parser.spells.ISpellCache;
+import net.sf.anathema.character.main.magic.spells.*;
 import net.sf.anathema.character.main.template.HeroTemplate;
-import net.sf.anathema.character.main.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.hero.charms.advance.MagicPointsModelFetcher;
 import net.sf.anathema.hero.charms.advance.experience.MagicExperienceCosts;
 import net.sf.anathema.hero.charms.model.CharmsModel;
@@ -24,17 +21,13 @@ import net.sf.anathema.hero.points.PointModelFetcher;
 import net.sf.anathema.hero.spells.advance.SpellExperienceCostCalculator;
 import net.sf.anathema.hero.spells.advance.SpellExperienceModel;
 import net.sf.anathema.hero.spells.sheet.content.PrintSpellsProvider;
+import net.sf.anathema.hero.spells.template.SpellsTemplate;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 import org.apache.commons.lang3.ArrayUtils;
 import org.jmock.example.announcer.Announcer;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class SpellsModelImpl implements SpellsModel {
 
@@ -47,6 +40,11 @@ public class SpellsModelImpl implements SpellsModel {
   private CharmsModel charms;
   private HeroTemplate heroTemplate;
   private ExperienceModel experience;
+  private SpellsTemplate template;
+
+  public SpellsModelImpl(SpellsTemplate template) {
+    this.template = template;
+  }
 
   @Override
   public Identifier getId() {
@@ -167,8 +165,7 @@ public class SpellsModelImpl implements SpellsModel {
     if (creationLearnedList.contains(spell) || (experienced && experiencedLearnedList.contains(spell))) {
       return false;
     }
-    ISpellMagicTemplate template = heroTemplate.getMagicTemplate().getSpellMagic();
-    return template.canLearnSpell(spell, charms.getLearnedCharms(true));
+    return knowsCharm(getInitiation(spell.getCircleType()), charms.getLearnedCharms(true));
   }
 
   @Override
@@ -191,8 +188,7 @@ public class SpellsModelImpl implements SpellsModel {
     changeControl.addListener(listener);
   }
 
-  @Override
-  public Spell[] getSpellsByCircle(CircleType circle) {
+  private Spell[] getSpellsByCircle(CircleType circle) {
     List<Spell> spells = spellsByCircle.get(circle);
     if (spells != null) {
       return spells.toArray(new Spell[spells.size()]);
@@ -230,11 +226,6 @@ public class SpellsModelImpl implements SpellsModel {
   }
 
   @Override
-  public boolean isLearned(Spell spell) {
-    return strategy.isLearned(this, spell);
-  }
-
-  @Override
   public List<Spell> getAvailableSpellsInCircle(CircleType circle) {
     List<Spell> showSpells = new ArrayList<>();
     Collections.addAll(showSpells, getSpellsByCircle(circle));
@@ -253,4 +244,68 @@ public class SpellsModelImpl implements SpellsModel {
     return spellList;
   }
 
+  @Override
+  public boolean canLearnSorcery() {
+    return !template.sorcery.isEmpty();
+  }
+
+  @Override
+  public boolean canLearnNecromancy() {
+    return !template.necromancy.isEmpty();
+  }
+
+  protected boolean knowsCharm(String charm, Charm[] knownCharms) {
+    for (Charm knownCharm : knownCharms) {
+      if (charm.equals(knownCharm.getId())) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  @Override
+  public CircleType[] getNecromancyCircles() {
+    return template.necromancy.toArray(new CircleType[0]);
+  }
+
+  @Override
+  public CircleType[] getSorceryCircles() {
+    return template.sorcery.toArray(new CircleType[0]);
+  }
+
+  private String getInitiation(CircleType type) {
+    final String[] initiation = new String[1];
+    type.accept(new ICircleTypeVisitor() {
+      @Override
+      public void visitTerrestrial(CircleType type) {
+        initiation[0] = heroTemplate.getTemplateType().getCharacterType().getId() + ".TerrestrialCircleSorcery";
+      }
+
+      @Override
+      public void visitCelestial(CircleType type) {
+        initiation[0] = heroTemplate.getTemplateType().getCharacterType().getId() + ".CelestialCircleSorcery";
+      }
+
+      @Override
+      public void visitSolar(CircleType type) {
+        initiation[0] = heroTemplate.getTemplateType().getCharacterType().getId() + ".SolarCircleSorcery";
+      }
+
+      @Override
+      public void visitShadowland(CircleType type) {
+        initiation[0] = heroTemplate.getTemplateType().getCharacterType().getId() + ".ShadowlandsCircleNecromancy";
+      }
+
+      @Override
+      public void visitLabyrinth(CircleType type) {
+        initiation[0] = heroTemplate.getTemplateType().getCharacterType().getId() + ".LabyrinthCircleNecromancy";
+      }
+
+      @Override
+      public void visitVoid(CircleType type) {
+        initiation[0] = heroTemplate.getTemplateType().getCharacterType().getId() + ".VoidCircleNecromancy";
+      }
+    });
+    return initiation[0];
+  }
 }

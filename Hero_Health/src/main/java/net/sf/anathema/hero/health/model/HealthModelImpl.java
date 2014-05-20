@@ -1,5 +1,7 @@
 package net.sf.anathema.hero.health.model;
 
+import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.traits.types.AttributeType;
 import net.sf.anathema.hero.health.HealthLevelType;
 import net.sf.anathema.hero.health.IHealthLevelTypeVisitor;
@@ -26,19 +28,6 @@ public class HealthModelImpl implements HealthModel {
   @Override
   public void initialize(HeroEnvironment environment, Hero hero) {
     addHealthLevelProvider(new DyingStaminaHealthLevelProvider(TraitModelFetcher.fetch(hero)));
-    if (hero.getTemplate().getBaseHealthProviders() == null) {
-      return;
-    }
-    for (String providerString : hero.getTemplate().getBaseHealthProviders()) {
-      Class<?> loadedClass;
-      try {
-        loadedClass = Class.forName(providerString);
-        IHealthLevelProvider provider = (IHealthLevelProvider) loadedClass.getConstructors()[0].newInstance(TraitModelFetcher.fetch(hero));
-        addHealthLevelProvider(provider);
-      } catch (Exception e) {
-        e.printStackTrace();
-      }
-    }
   }
 
   @Override
@@ -108,6 +97,11 @@ public class HealthModelImpl implements HealthModel {
       painToleranceLevel = Math.max(painToleranceLevel, provider.getPainToleranceLevel());
     }
     return painToleranceLevel;
+  }
+
+  @Override
+  public TraitType[] getToughnessControllingTraitTypes() {
+    return new TraitType[] {AbilityType.Resistance};
   }
 
   private static class DyingStaminaHealthLevelProvider implements IHealthLevelProvider {

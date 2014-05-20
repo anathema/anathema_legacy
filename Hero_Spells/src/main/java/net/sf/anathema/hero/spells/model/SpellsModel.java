@@ -23,8 +23,6 @@ public interface SpellsModel extends HeroModel {
 
   boolean isSpellAllowed(Spell spell);
 
-  Spell[] getSpellsByCircle(CircleType circle);
-
   Spell getSpellById(String string);
 
   boolean isLearnedOnCreation(Spell spell);
@@ -37,11 +35,17 @@ public interface SpellsModel extends HeroModel {
 
   boolean isSpellAllowed(Spell spell, boolean experienced);
 
-  boolean isLearned(Spell spell);
-
   boolean isLearnedOnCreationOrExperience(Spell spell);
 
   List<Spell> getAvailableSpellsInCircle(CircleType circle);
 
   List<Spell> getLearnedSpellsInCircles(CircleType[] eligibleCircles);
+
+  boolean canLearnSorcery();
+
+  boolean canLearnNecromancy();
+
+  CircleType[] getNecromancyCircles();
+
+  CircleType[] getSorceryCircles();
 }

@@ -16,7 +16,6 @@ public class GenericCreationPoints extends ReflectionCloneableObject<GenericCrea
   private int defaultCreationCharmCount = 0;
   private int favoredCreationCharmCount = 0;
   private int virtueCreationPoints = 0;
-  private int specialityCreationPoints = 0;
 
   @Override
   public IAbilityCreationPoints getAbilityCreationPoints() {
@@ -48,11 +47,6 @@ public class GenericCreationPoints extends ReflectionCloneableObject<GenericCrea
     return virtueCreationPoints;
   }
 
-  @Override
-  public int getSpecialtyCreationPoints() {
-    return specialityCreationPoints;
-  }
-
   public void setAbilityCreationPoints(IAbilityCreationPoints abiltyCreationPoints) {
     Preconditions.checkNotNull(abiltyCreationPoints);
     this.abilityCreationPoints = abiltyCreationPoints;
@@ -81,11 +75,6 @@ public class GenericCreationPoints extends ReflectionCloneableObject<GenericCrea
   public void setVirtueCreationPoints(int virtueCreationPoints) {
     Preconditions.checkArgument(virtueCreationPoints >= 0, "Virtue creation points must be positive.");
     this.virtueCreationPoints = virtueCreationPoints;
-  }
-
-  public void setSpecialityPoints(int specialityCreationPoints) {
-    Preconditions.checkArgument(specialityCreationPoints >= 0, "Speciality creation points must be positive.");
-    this.specialityCreationPoints = specialityCreationPoints;
   }
 
   @Override

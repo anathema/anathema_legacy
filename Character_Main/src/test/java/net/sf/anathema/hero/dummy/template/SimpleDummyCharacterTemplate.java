@@ -8,12 +8,8 @@ import net.sf.anathema.character.main.template.TemplateType;
 import net.sf.anathema.character.main.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.creation.ICreationPoints;
-import net.sf.anathema.character.main.template.essence.IEssenceTemplate;
-import net.sf.anathema.character.main.template.essence.NullEssenceTemplate;
 import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
-import net.sf.anathema.character.main.template.magic.IMagicTemplate;
 import net.sf.anathema.character.main.template.presentation.IPresentationProperties;
-import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
@@ -31,11 +27,6 @@ public class SimpleDummyCharacterTemplate implements HeroTemplate {
   }
 
   @Override
-  public GroupedTraitType[] getAbilityGroups() {
-    return new GroupedTraitType[0];
-  }
-
-  @Override
   public GroupedTraitType[] getAttributeGroups() {
     return new GroupedTraitType[0];
   }
@@ -48,11 +39,6 @@ public class SimpleDummyCharacterTemplate implements HeroTemplate {
   @Override
   public ICreationPoints getCreationPoints() {
     return new TestCreationPoints();
-  }
-
-  @Override
-  public IEssenceTemplate getEssenceTemplate() {
-    return new NullEssenceTemplate();
   }
 
   @Override
@@ -79,23 +65,7 @@ public class SimpleDummyCharacterTemplate implements HeroTemplate {
   }
 
   @Override
-  public TraitType[] getToughnessControllingTraitTypes() {
-    return new TraitType[0];
-  }
-
-  @Override
   public List<ConfiguredModel> getModels() {
     return new ArrayList<>();
   }
-
-  @Override
-  public IMagicTemplate getMagicTemplate() {
-    return new DummyMagicTemplate(null, null);
-  }
-
-  @Override
-  public String[] getBaseHealthProviders() {
-    return new String[0];
-  }
-
 }

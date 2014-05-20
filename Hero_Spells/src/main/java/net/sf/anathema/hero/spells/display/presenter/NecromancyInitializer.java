@@ -9,6 +9,8 @@ import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.spells.model.CircleModel;
 import net.sf.anathema.hero.spells.model.NecromancyModel;
 import net.sf.anathema.framework.environment.dependencies.Weight;
+import net.sf.anathema.hero.spells.model.SpellsModel;
+import net.sf.anathema.hero.spells.model.SpellsModelFetcher;
 
 import static net.sf.anathema.hero.display.HeroModelGroup.Magic;
 
@@ -24,7 +26,11 @@ public class NecromancyInitializer implements HeroModelInitializer {
 
   @Override
   public void initialize(SectionView sectionView, Hero hero, Environment environment) {
-    boolean canLeanNecromancy = hero.getTemplate().getMagicTemplate().getSpellMagic().canLearnNecromancy();
+    SpellsModel spellsModel = SpellsModelFetcher.fetch(hero);
+    if (spellsModel == null) {
+      return;
+    }
+    boolean canLeanNecromancy = spellsModel.canLearnNecromancy();
     if (canLeanNecromancy) {
       String titleKey = "CardView.CharmConfiguration.Necromancy.Title";
       CircleModel circleModel = new NecromancyModel(hero);

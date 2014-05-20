@@ -1,12 +1,10 @@
 package net.sf.anathema.hero.spiritual.model.pool;
 
-import com.google.common.base.Preconditions;
-import net.sf.anathema.character.main.template.HeroTemplate;
-import net.sf.anathema.character.main.template.essence.IEssenceTemplate;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.hero.model.change.ChangeAnnouncer;
+import net.sf.anathema.hero.spiritual.template.EssencePoolTemplate;
 import net.sf.anathema.hero.traits.TraitMap;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.lib.control.ChangeListener;
@@ -20,8 +18,12 @@ public class EssencePoolModelImpl implements EssencePoolModel, HeroModel {
 
   private final AggregatedOverdrivePool overdrivePool = new AggregatedOverdrivePool();
   private EssencePoolStrategy poolStrategy = null;
-  private IEssenceTemplate essenceTemplate;
   private List<IEssencePoolModifier> essencePoolModifiers = new ArrayList<>();
+  private EssencePoolTemplate template;
+
+  public EssencePoolModelImpl(EssencePoolTemplate template) {
+    this.template = template;
+  }
 
   @Override
   public Identifier getId() {
@@ -30,13 +32,12 @@ public class EssencePoolModelImpl implements EssencePoolModel, HeroModel {
 
   @Override
   public void initialize(HeroEnvironment environment, Hero hero) {
-    HeroTemplate template = hero.getTemplate();
-    this.essenceTemplate = template.getEssenceTemplate();
     if (!isEssenceUser()) {
       return;
     }
     TraitMap traitMap = TraitModelFetcher.fetch(hero);
-    poolStrategy = new EssencePoolStrategyImpl(hero, essenceTemplate, traitMap, overdrivePool);
+    EssencePoolConfiguration essencePoolConfiguration = new EssencePoolConfiguration(template);
+    poolStrategy = new EssencePoolStrategyImpl(hero, essencePoolConfiguration, traitMap, overdrivePool);
   }
 
   @Override
@@ -51,7 +52,9 @@ public class EssencePoolModelImpl implements EssencePoolModel, HeroModel {
 
   @Override
   public String getPersonalPool() {
-    Preconditions.checkArgument(isEssenceUser());
+    if (!isEssenceUser()) {
+      return null;
+    }
     if (!hasAdditionalPools()) {
       return String.valueOf(poolStrategy.getStandardPersonalPool());
     }
@@ -65,7 +68,9 @@ public class EssencePoolModelImpl implements EssencePoolModel, HeroModel {
 
   @Override
   public String getPeripheralPool() {
-    Preconditions.checkArgument(hasPeripheralPool());
+    if (!isEssenceUser()) {
+      return null;
+    }
     if (!hasAdditionalPools()) {
       return String.valueOf(poolStrategy.getStandardPeripheralPool());
     }
@@ -103,7 +108,7 @@ public class EssencePoolModelImpl implements EssencePoolModel, HeroModel {
 
   @Override
   public boolean isEssenceUser() {
-    return essenceTemplate.isEssenceUser();
+    return template.isEssenceUser;
   }
 
   @Override

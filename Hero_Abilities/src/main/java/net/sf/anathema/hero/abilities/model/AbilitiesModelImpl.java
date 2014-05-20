@@ -32,9 +32,10 @@ public class AbilitiesModelImpl extends DefaultTraitMap implements AbilitiesMode
 
   private IIdentifiedCasteTraitTypeList[] abilityTraitGroups;
   private Hero hero;
+  private AbilitiesTemplate template;
 
   public AbilitiesModelImpl(AbilitiesTemplate template) {
-
+    this.template = template;
   }
 
   @Override
@@ -48,7 +49,7 @@ public class AbilitiesModelImpl extends DefaultTraitMap implements AbilitiesMode
     HeroConcept concept = HeroConceptFetcher.fetch(hero);
     HeroTemplate template = hero.getTemplate();
     CasteCollection casteCollection = concept.getCasteCollection();
-    GroupedTraitType[] abilityGroups = template.getAbilityGroups();
+    GroupedTraitType[] abilityGroups = GroupedAbilityTypeBuilder.BuildFor(this.template);
     this.abilityTraitGroups = new AbilityTypeGroupFactory().createTraitGroups(casteCollection, abilityGroups);
     IncrementChecker incrementChecker = createFavoredAbilityIncrementChecker(template, this, abilityGroups);
     addFavorableTraits(incrementChecker, new AbilityTemplateFactory(template.getTraitTemplateCollection().getTraitTemplateFactory()));

@@ -49,7 +49,7 @@ public class SimpleEssenceContent extends AbstractSubBoxContent {
 
   public String getPeripheralPool() {
     try {
-      return hero.getTemplate().getEssenceTemplate().isEssenceUser() ? EssencePoolModelFetcher.fetch(hero).getPeripheralPool() : null;
+      return EssencePoolModelFetcher.fetch(hero).getPeripheralPool();
     } catch (IllegalArgumentException e) {
       return null;
     }
@@ -57,7 +57,7 @@ public class SimpleEssenceContent extends AbstractSubBoxContent {
 
   public String getPersonalPool() {
     try {
-      return hero.getTemplate().getEssenceTemplate().isEssenceUser() ? EssencePoolModelFetcher.fetch(hero).getPersonalPool() : null;
+      return EssencePoolModelFetcher.fetch(hero).getPersonalPool();
     } catch (ContractFailedException e) {
       return null;
     }

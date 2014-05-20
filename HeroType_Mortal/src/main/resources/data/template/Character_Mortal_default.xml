@@ -1,15 +1,9 @@
 <exaltedCharacterTemplate characterType="Mortal" subtemplate="default">
     <general>
-        <edition edition="SecondEdition"/>
-        <abilityGroups uses="trait/DefaultSecondEditionAbilityGroup.template"/>
         <attributeGroups uses="trait/DefaultAttributeGroup.template"/>
-        <essence uses="template/MortalEssence.template"/>
         <traitCollection uses="trait/MortalTraitCollection.template"/>
         <magicTemplate uses="magic/MortalMagic.template"/>
         <presentation uses="presentation/MortalPresentation.template"/>
-        <healthTemplate>
-            <toughnessControllingTrait type="Resistance"/>
-        </healthTemplate>
     </general>
     <models>
         <model id="Description"/>
@@ -21,10 +15,10 @@
         <model id="AbilitiesPoints"/>
         <model id="Attributes"/>
         <model id="AttributePoints"/>
-        <model id="EssencePool"/>
+        <model id="EssencePool" template="MortalEssencePool"/>
         <model id="Health"/>
         <model id="Specialties"/>
-        <model id="SpecialtiesPoints"/>
+        <model id="SpecialtiesPoints" template="MortalSpecialtyPoints"/>
         <model id="Languages"/>
         <model id="Intimacies"/>
         <model id="Equipment"/>

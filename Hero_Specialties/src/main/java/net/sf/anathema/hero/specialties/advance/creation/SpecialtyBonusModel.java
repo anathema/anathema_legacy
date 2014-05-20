@@ -1,16 +1,16 @@
 package net.sf.anathema.hero.specialties.advance.creation;
 
-import net.sf.anathema.character.main.template.creation.ICreationPoints;
 import net.sf.anathema.hero.advance.overview.model.AbstractSpendingModel;
+import net.sf.anathema.hero.specialties.template.SpecialtyPointsTemplate;
 
 public class SpecialtyBonusModel extends AbstractSpendingModel {
   private final SpecialtiesBonusPointCalculator calculator;
-  private final ICreationPoints creationPoints;
+  private SpecialtyPointsTemplate costTemplate;
 
-  public SpecialtyBonusModel(SpecialtiesBonusPointCalculator calculator, ICreationPoints creationPoints) {
+  public SpecialtyBonusModel(SpecialtiesBonusPointCalculator calculator, SpecialtyPointsTemplate costTemplate) {
     super("Abilities", "Specialties");
     this.calculator = calculator;
-    this.creationPoints = creationPoints;
+    this.costTemplate = costTemplate;
   }
 
   @Override
@@ -25,6 +25,6 @@ public class SpecialtyBonusModel extends AbstractSpendingModel {
 
   @Override
   public int getAllotment() {
-    return creationPoints.getSpecialtyCreationPoints();
+    return costTemplate.creationPoints;
   }
 }

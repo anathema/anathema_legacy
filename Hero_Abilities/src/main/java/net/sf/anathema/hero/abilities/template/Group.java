@@ -7,5 +7,5 @@ public class Group {
 
   public String id;
   public String casteId;
-  public List<String> traitIds = new ArrayList<>();
+  public List<String> traits = new ArrayList<>();
 }

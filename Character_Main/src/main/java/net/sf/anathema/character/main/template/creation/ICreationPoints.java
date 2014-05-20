@@ -9,8 +9,6 @@ public interface ICreationPoints {
 
   int getVirtueCreationPoints();
 
-  int getSpecialtyCreationPoints();
-
   IAbilityCreationPoints getAbilityCreationPoints();
 
   IAttributeCreationPoints getAttributeCreationPoints();

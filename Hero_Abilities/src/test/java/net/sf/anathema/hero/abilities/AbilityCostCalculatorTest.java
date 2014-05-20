@@ -1,6 +1,9 @@
 package net.sf.anathema.hero.abilities;
 
+import net.sf.anathema.character.main.template.abilities.AbilityGroupType;
+import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.hero.abilities.template.AbilitiesTemplate;
+import net.sf.anathema.hero.abilities.template.Group;
 import net.sf.anathema.hero.advance.AbstractBonusPointTestCase;
 import net.sf.anathema.character.main.library.trait.FavorableTraitCost;
 import net.sf.anathema.character.main.library.trait.Trait;
@@ -65,7 +68,8 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
   }
 
   private AbilityPointCosts costs;
-  private AbilitiesModelImpl abilityModel = new AbilitiesModelImpl(new AbilitiesTemplate());
+  private AbilitiesTemplate abilitiesTemplate = new AbilitiesTemplate();
+  private AbilitiesModelImpl abilityModel = new AbilitiesModelImpl(abilitiesTemplate);
   private DummyHero dummyHero = new DummyHero();
 
   private Trait setFavoredAbilityTo(AbilityType abilityType, int value) {
@@ -86,7 +90,9 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
 
   @Before
   public void setUp() throws Exception {
-    this.abilityModel = new AbilitiesModelImpl(new AbilitiesTemplate());
+    this.abilitiesTemplate = new AbilitiesTemplate();
+    addGroupsToTemplate();
+    this.abilityModel = new AbilitiesModelImpl(abilitiesTemplate);
     dummyHero.addModel(abilityModel);
     dummyHero.addModel(new DummyTraitModel());
     dummyHero.addModel(new DummyHeroConcept());
@@ -169,7 +175,7 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
     allEmptyAbilities.remove(firstFavored);
     allEmptyAbilities.remove(secondFavored);
     for (Trait ability : allEmptyAbilities) {
-        assertEmptyCosts(calculator, ability);
+      assertEmptyCosts(calculator, ability);
     }
   }
 
@@ -285,6 +291,26 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
       sum += cost.getGeneralPointCost();
     }
     assertEquals("General point cost sum " + sum, value, sum);
+  }
+
+  private void addGroupsToTemplate() {
+    addGroupToTemplate(AbilityGroupType.War.getId(), AbilityType.Archery, AbilityType.Melee, AbilityType.War,
+            AbilityType.Thrown, AbilityType.MartialArts, AbilityType.Integrity, AbilityType.Performance,
+            AbilityType.Presence, AbilityType.Survival, AbilityType.Resistance);
+    addGroupToTemplate(AbilityGroupType.Life.getId(), AbilityType.Occult, AbilityType.Craft, AbilityType.Lore,
+            AbilityType.Investigation, AbilityType.Medicine, AbilityType.Awareness, AbilityType.Athletics,
+            AbilityType.Dodge, AbilityType.Larceny, AbilityType.Stealth);
+    addGroupToTemplate(AbilityGroupType.Wisdom.getId(), AbilityType.Ride, AbilityType.Sail, AbilityType.Bureaucracy,
+            AbilityType.Linguistics, AbilityType.Socialize);
+  }
+
+  private void addGroupToTemplate(String groupId, TraitType... traitTypes) {
+    Group group = new Group();
+    group.id = groupId;
+    for (TraitType type : traitTypes) {
+      group.traits.add(type.getId());
+    }
+    abilitiesTemplate.groups.add(group);
   }
 }
 

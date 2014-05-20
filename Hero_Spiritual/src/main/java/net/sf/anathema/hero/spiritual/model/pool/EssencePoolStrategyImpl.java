@@ -2,10 +2,8 @@ package net.sf.anathema.hero.spiritual.model.pool;
 
 import net.sf.anathema.character.main.template.essence.FactorizedTrait;
 import net.sf.anathema.character.main.template.essence.FactorizedTraitSumCalculator;
-import net.sf.anathema.character.main.template.essence.IEssenceTemplate;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.traits.types.OtherTraitType;
-import net.sf.anathema.character.main.traits.types.VirtueType;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.change.ChangeFlavor;
 import net.sf.anathema.hero.model.change.FlavoredChangeListener;
@@ -17,13 +15,14 @@ import org.jmock.example.announcer.Announcer;
 public class EssencePoolStrategyImpl implements EssencePoolStrategy {
 
   private final Announcer<ChangeListener> control = Announcer.to(ChangeListener.class);
-  private final IEssenceTemplate essenceTemplate;
   private OverdrivePool overdrivePool;
   private Hero hero;
+  private EssencePoolConfiguration configuration;
   private final TraitMap traitMap;
 
-  public EssencePoolStrategyImpl(Hero hero, IEssenceTemplate essenceTemplate, TraitMap traitMap, OverdrivePool overdrivePool) {
+  public EssencePoolStrategyImpl(Hero hero, EssencePoolConfiguration configuration, TraitMap traitMap, OverdrivePool overdrivePool) {
     this.hero = hero;
+    this.configuration = configuration;
     this.traitMap = traitMap;
     this.overdrivePool = overdrivePool;
     hero.getChangeAnnouncer().addListener(new FlavoredChangeListener() {
@@ -32,7 +31,6 @@ public class EssencePoolStrategyImpl implements EssencePoolStrategy {
         control.announce().changeOccurred();
       }
     });
-    this.essenceTemplate = essenceTemplate;
   }
 
   @Override
@@ -58,7 +56,7 @@ public class EssencePoolStrategyImpl implements EssencePoolStrategy {
 
   @Override
   public int getUnmodifiedPersonalPool() {
-    return getPool(essenceTemplate.getPersonalTraits(getWillpower(), getVirtues(), getEssence()));
+    return getPool(configuration.getPersonalTraits(traitMap));
   }
 
   @Override
@@ -79,7 +77,7 @@ public class EssencePoolStrategyImpl implements EssencePoolStrategy {
 
   @Override
   public int getUnmodifiedPeripheralPool() {
-    return getPool(essenceTemplate.getPeripheralTraits(getWillpower(), getVirtues(), getEssence()));
+    return getPool(configuration.getPeripheralTraits(traitMap));
   }
 
   @Override
@@ -99,19 +97,6 @@ public class EssencePoolStrategyImpl implements EssencePoolStrategy {
       expenditure += modifier.getMotesExpended();
     }
     return expenditure;
-  }
-
-  private ValuedTraitType[] getVirtues() {
-    return new ValuedTraitType[]{traitMap.getTrait(VirtueType.Compassion), traitMap.getTrait(VirtueType.Conviction),
-            traitMap.getTrait(VirtueType.Temperance), traitMap.getTrait(VirtueType.Valor)};
-  }
-
-  private ValuedTraitType getWillpower() {
-    return traitMap.getTrait(OtherTraitType.Willpower);
-  }
-
-  private ValuedTraitType getEssence() {
-    return traitMap.getTrait(OtherTraitType.Essence);
   }
 
   private int getPool(FactorizedTrait[] factorizedTraits) {
