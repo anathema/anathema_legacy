@@ -12,7 +12,6 @@ public class GenericTraitTemplate extends ReflectionCloneableObject<IClonableTra
   private ModificationType modificationType;
   private ITraitLimitation limitation;
   private boolean isRequiredFavored;
-  private boolean isFreebie;
 
   @Override
   public ITraitLimitation getLimitation() {
@@ -64,9 +63,5 @@ public class GenericTraitTemplate extends ReflectionCloneableObject<IClonableTra
   @Override
   public boolean isRequiredFavored() {
     return isRequiredFavored;
-  }
-
-  public void setIsFreebie(boolean value) {
-    isFreebie = value;
   }
 }

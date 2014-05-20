@@ -38,7 +38,6 @@ public class GenericTraitTemplateParser {
     String lowerableStateId = ElementUtilities.getRequiredAttrib(traitElement, ATTRIB_LOWERABLE_STATE);
     defaultTraitTemplate.setModificationType(ModificationType.valueOf(lowerableStateId));
     defaultTraitTemplate.setLimitation(parseLimitation(traitElement));
-    defaultTraitTemplate.setIsFreebie(ElementUtilities.getBooleanAttribute(traitElement, ATTRIB_FREEBIE, false));
     Element minimumValueElement = ElementUtilities.getRequiredElement(traitElement, TAG_MINIMUM);
     String usesId = minimumValueElement.attributeValue(ATTRIB_USES);
 
