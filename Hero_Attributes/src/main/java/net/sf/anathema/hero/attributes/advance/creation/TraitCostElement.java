@@ -1,6 +1,7 @@
 package net.sf.anathema.hero.attributes.advance.creation;
 
 import net.sf.anathema.character.main.library.trait.Trait;
+import net.sf.anathema.hero.traits.advance.TraitCalculationUtilities;
 
 public class TraitCostElement implements CostElement {
 
@@ -12,7 +13,7 @@ public class TraitCostElement implements CostElement {
 
   @Override
   public int getCalculationValue() {
-    return trait.getCreationCalculationValue();
+    return TraitCalculationUtilities.getCreationCalculationValue(trait);
   }
 
   @Override

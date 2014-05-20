@@ -141,11 +141,6 @@ public class DummyTrait implements Trait {
   }
 
   @Override
-  public int getCreationCalculationValue() {
-    return creationValue;
-  }
-
-  @Override
   public int getCreationValue() {
     return creationValue;
   }

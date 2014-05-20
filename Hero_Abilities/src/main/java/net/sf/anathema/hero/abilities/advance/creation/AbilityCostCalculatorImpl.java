@@ -14,6 +14,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import static net.sf.anathema.hero.traits.advance.TraitCalculationUtilities.getCreationCalculationValue;
+
 public class AbilityCostCalculatorImpl implements AbilityCostCalculator {
 
   private final AbilityPointCosts costs;
@@ -165,10 +167,6 @@ public class AbilityCostCalculatorImpl implements AbilityCostCalculator {
     }
     bonusPointsSpent += Math.max(getCreationCalculationValue(trait) - freeTraitMax, 0) * bonusPointCostFactor;
     return new FavorableTraitCost(bonusPointsSpent, generalDotsSpent, 0);
-  }
-
-  private int getCreationCalculationValue(Trait trait) {
-    return Math.max(trait.getCurrentValue(), trait.getZeroCalculationValue());
   }
 
   private FavorableTraitCost[] handleGeneralTrait(Trait trait, final int bonusPointCostFactor) {

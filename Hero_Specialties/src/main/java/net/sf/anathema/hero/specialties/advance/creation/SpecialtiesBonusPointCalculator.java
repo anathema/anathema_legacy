@@ -10,6 +10,7 @@ import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.points.HeroBonusPointCalculator;
 import net.sf.anathema.hero.specialties.template.SpecialtyPointsTemplate;
 import net.sf.anathema.hero.traits.TraitMap;
+import net.sf.anathema.hero.traits.advance.TraitCalculationUtilities;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +48,7 @@ public class SpecialtiesBonusPointCalculator implements HeroBonusPointCalculator
       SpecialtiesModel specialtiesModel = SpecialtiesModelFetcher.fetch(hero);
       ISubTraitContainer specialtiesContainer = specialtiesModel.getSpecialtiesContainer(ability.getType());
       for (Specialty specialty : specialtiesContainer.getSubTraits()) {
-        for (int index = 0; index < specialty.getCreationCalculationValue(); index++) {
+        for (int index = 0; index < TraitCalculationUtilities.getCreationCalculationValue(specialty); index++) {
           specialties.add(new GenericSpecialty(ability));
         }
       }

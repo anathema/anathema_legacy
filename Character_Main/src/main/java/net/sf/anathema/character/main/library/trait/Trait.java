@@ -12,8 +12,6 @@ public interface Trait extends ValuedTraitType {
 
   int getAbsoluteMinValue();
 
-  int getCreationCalculationValue();
-
   boolean isLowerable();
 
   int getZeroCalculationValue();

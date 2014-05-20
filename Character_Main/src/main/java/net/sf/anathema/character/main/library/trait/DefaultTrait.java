@@ -108,11 +108,6 @@ public class DefaultTrait implements Trait {
   }
 
   @Override
-  public int getCreationCalculationValue() {
-    return Math.max(getCurrentValue(), getZeroCalculationValue());
-  }
-
-  @Override
   public void setCurrentValue(int value) {
     if (!checker.isValidNewValue(value)) {
       resetCurrentValue();
