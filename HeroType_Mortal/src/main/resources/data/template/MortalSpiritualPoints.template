@@ -1,0 +1,8 @@
+{
+  essence: {
+    calculationBase: 1
+  };
+  willpower: {
+    calculationBase: 2
+  }
+}

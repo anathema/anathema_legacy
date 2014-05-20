@@ -8,7 +8,7 @@
         <model id="Points"/>
         <model id="Concept" template="NoCastes"/>
         <model id="SpiritualTraits" template="MortalSpiritualTraits"/>
-        <model id="SpiritualPoints"/>
+        <model id="SpiritualPoints" template="MortalSpiritualPoints"/>
         <model id="Abilities" template="DefaultAbilities"/>
         <model id="AbilitiesPoints"/>
         <model id="Attributes" template="DefaultAttributes"/>

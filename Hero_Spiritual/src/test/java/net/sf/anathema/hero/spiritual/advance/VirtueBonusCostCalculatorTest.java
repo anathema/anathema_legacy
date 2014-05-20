@@ -10,11 +10,14 @@ import net.sf.anathema.character.main.traits.VirtueTemplateFactory;
 import net.sf.anathema.character.main.traits.context.CreationTraitValueStrategy;
 import net.sf.anathema.character.main.traits.creation.DefaultTraitFactory;
 import net.sf.anathema.character.main.traits.types.VirtueType;
+import net.sf.anathema.hero.spiritual.advance.creation.SpiritualCreationData;
 import net.sf.anathema.hero.spiritual.advance.creation.VirtueBonusCostCalculator;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.when;
 
 public class VirtueBonusCostCalculatorTest {
 
@@ -26,7 +29,11 @@ public class VirtueBonusCostCalculatorTest {
     BonusPointCosts cost = new DummyBonusPointCosts();
     DummyHero hero = new BasicCharacterTestCase().createModelContextWithEssence2(new CreationTraitValueStrategy());
     this.virtues = new DefaultTraitFactory(hero, new VirtueTemplateFactory(new DummyTraitTemplateFactory())).createTraits(VirtueType.values());
-    this.calculator = new VirtueBonusCostCalculator(virtues, 5, cost);
+    SpiritualCreationData creationData = Mockito.mock(SpiritualCreationData.class);
+    when(creationData.getMaximumFreeVirtueRank()).thenReturn(3);
+    when(creationData.getVirtueCost()).thenReturn(cost.getVirtueCosts());
+    when(creationData.getFreeVirtueCreationDots()).thenReturn(5);
+    this.calculator = new VirtueBonusCostCalculator(virtues, creationData);
   }
 
   @Test

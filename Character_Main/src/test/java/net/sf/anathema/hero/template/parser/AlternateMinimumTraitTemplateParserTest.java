@@ -11,9 +11,9 @@ public class AlternateMinimumTraitTemplateParserTest extends TestCase {
 
   public void test() throws Exception {
     String xml = "<alternateMinimumTraits count=\"1\" value=\"1\">" +
-                 "           <trait id=\"Archery\" startValue=\"0\" lowerableState=\"Default\" zeroLevel=\"0\">" +
+                 "           <trait id=\"Archery\" startValue=\"0\" lowerableState=\"RaiseOnly\" zeroLevel=\"0\">" +
                  "               <limitation type=\"Essence\"/>" + "               <minimum value=\"0\"/>" + "           </trait>" +
-                 "           <trait id=\"MartialArts\" startValue=\"1\" lowerableState=\"Default\" zeroLevel=\"0\">" +
+                 "           <trait id=\"MartialArts\" startValue=\"1\" lowerableState=\"RaiseOnly\" zeroLevel=\"0\">" +
                  "               <limitation type=\"Essence\"/>" + "               <minimum value=\"0\"/>" + "           </trait>" +
                  "       </alternateMinimumTraits>";
     AlternateMinimumTraitTemplateParser parser = new AlternateMinimumTraitTemplateParser(AllAbilityTraitTypeList.getInstance());

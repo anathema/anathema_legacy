@@ -6,23 +6,26 @@ import net.sf.anathema.character.main.library.trait.experience.TraitRatingCostCa
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.creation.ICreationPoints;
 import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
+import net.sf.anathema.character.main.traits.types.OtherTraitType;
 import net.sf.anathema.hero.points.HeroBonusPointCalculator;
 import net.sf.anathema.hero.spiritual.SpiritualTraitModel;
+import net.sf.anathema.hero.spiritual.template.SpiritualPointsTemplate;
 
 import static net.sf.anathema.character.main.library.trait.TraitCollectionUtilities.getVirtues;
+import static net.sf.anathema.character.main.traits.types.OtherTraitType.Essence;
 
-public class SpiritualBonusPointsCalculator implements HeroBonusPointCalculator{
+public class SpiritualBonusPointsCalculator implements HeroBonusPointCalculator {
 
   private final VirtueBonusCostCalculator virtueCalculator;
   private final Trait willpower;
   private final Trait essence;
   private int essenceBonusPoints;
   private int willpowerBonusPoints;
-  private BonusPointCosts costs;
+  private SpiritualCreationData creationData;
 
-  public SpiritualBonusPointsCalculator(SpiritualTraitModel spiritualTraits, ICreationPoints creationPoints, BonusPointCosts costs) {
-    this.costs = costs;
-    this.virtueCalculator = new VirtueBonusCostCalculator(getVirtues(spiritualTraits), creationPoints.getVirtueCreationPoints(), costs);
+  public SpiritualBonusPointsCalculator(SpiritualTraitModel spiritualTraits, SpiritualCreationData creationData) {
+    this.creationData = creationData;
+    this.virtueCalculator = new VirtueBonusCostCalculator(getVirtues(spiritualTraits), creationData);
     this.willpower = TraitCollectionUtilities.getWillpower(spiritualTraits);
     this.essence = TraitCollectionUtilities.getEssence(spiritualTraits);
   }
@@ -45,12 +48,14 @@ public class SpiritualBonusPointsCalculator implements HeroBonusPointCalculator{
   }
 
   private int calculateEssencePoints() {
-    CurrentRatingCosts essenceCost = costs.getEssenceCost();
-    return TraitRatingCostCalculator.getTraitRatingCosts(essence.getZeroCalculationValue(), essence.getCreationValue(), essenceCost);
+    CurrentRatingCosts essenceCost = creationData.getEssenceCost();
+    int calculationBase = creationData.getCalculationBase(Essence);
+    return TraitRatingCostCalculator.getTraitRatingCosts(calculationBase, essence.getCreationValue(), essenceCost);
   }
 
   private int calculateWillpowerPoints() {
-    return (willpower.getCreationValue() - willpower.getMinimalValue()) * costs.getWillpowerCosts();
+    int calculationBase = creationData.getCalculationBase(OtherTraitType.Willpower);
+    return (willpower.getCreationValue() - calculationBase) * creationData.getWillpowerCost();
   }
 
   public VirtueBonusCostCalculator getVirtueBonusPointCalculator() {

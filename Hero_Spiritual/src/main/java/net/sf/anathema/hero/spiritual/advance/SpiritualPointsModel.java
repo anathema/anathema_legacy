@@ -14,18 +14,25 @@ import net.sf.anathema.hero.points.overview.SpendingModel;
 import net.sf.anathema.hero.points.overview.WeightedCategory;
 import net.sf.anathema.hero.spiritual.SpiritualTraitModel;
 import net.sf.anathema.hero.spiritual.SpiritualTraitModelFetcher;
+import net.sf.anathema.hero.spiritual.advance.creation.DefaultSpiritualCreationData;
 import net.sf.anathema.hero.spiritual.advance.creation.SpiritualBonusPointsCalculator;
 import net.sf.anathema.hero.spiritual.advance.creation.VirtueBonusModel;
 import net.sf.anathema.hero.spiritual.advance.experience.EssenceExperienceModel;
 import net.sf.anathema.hero.spiritual.advance.experience.SpiritualExperienceCalculator;
 import net.sf.anathema.hero.spiritual.advance.experience.VirtueExperienceModel;
 import net.sf.anathema.hero.spiritual.advance.experience.WillpowerExperienceModel;
+import net.sf.anathema.hero.spiritual.template.SpiritualPointsTemplate;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
 public class SpiritualPointsModel implements HeroModel {
 
   public static final SimpleIdentifier ID = new SimpleIdentifier("SpiritualPoints");
+  private SpiritualPointsTemplate template;
+
+  public SpiritualPointsModel(SpiritualPointsTemplate template) {
+    this.template = template;
+  }
 
   @Override
   public Identifier getId() {
@@ -50,10 +57,10 @@ public class SpiritualPointsModel implements HeroModel {
   }
 
   private SpiritualBonusPointsCalculator createBonusCalculator(Hero hero) {
-    ICreationPoints creationPoints = hero.getTemplate().getCreationPoints();
     SpiritualTraitModel model = SpiritualTraitModelFetcher.fetch(hero);
     BonusPointCosts costs = hero.getTemplate().getBonusPointCosts();
-    return new SpiritualBonusPointsCalculator(model, creationPoints, costs);
+    DefaultSpiritualCreationData creationData = new DefaultSpiritualCreationData(template, costs);
+    return new SpiritualBonusPointsCalculator(model, creationData);
   }
 
   private void initBonusCalculation(Hero hero, HeroBonusPointCalculator calculator) {

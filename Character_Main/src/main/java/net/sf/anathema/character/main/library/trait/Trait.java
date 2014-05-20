@@ -42,8 +42,6 @@ public interface Trait extends ValuedTraitType {
 
   void addCurrentValueListener(IntValueChangedListener listener);
 
-  void applyCapModifier(int modifier);
-
   int getModifiedMaximalValue();
 
   int getUnmodifiedMaximalValue();

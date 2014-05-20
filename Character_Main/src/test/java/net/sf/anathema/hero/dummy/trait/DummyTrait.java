@@ -56,11 +56,6 @@ public class DummyTrait implements Trait {
   }
 
   @Override
-  public void applyCapModifier(int modifier) {
-    // not yet implemented
-  }
-
-  @Override
   public int getUnmodifiedMaximalValue() {
     return 10;
   }

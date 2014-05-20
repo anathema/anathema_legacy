@@ -12,7 +12,7 @@ import org.dom4j.Element;
 
 public class GenericTraitTemplateParserTest extends TestCase {
 
-  private static final String minimalBasicAttributes = "startValue=\"1\" lowerableState=\"Default\"";
+  private static final String minimalBasicAttributes = "startValue=\"1\" lowerableState=\"RaiseOnly\"";
   private static final String minimalMinimumElement = "<minimum value=\"0\" />";
   private static final String minimalLimitationElement = "<limitation type=\"Static\" value=\"5\" />";
   private static final String minimalOpeningTag = createOpeningTag(minimalBasicAttributes);
@@ -32,7 +32,7 @@ public class GenericTraitTemplateParserTest extends TestCase {
   }
 
   public void testBasicTraitTemplateProperties() throws Exception {
-    String xml = createMinimalXmlForBasicAttributes("startValue=\"1\" zeroLevel=\"0\" lowerableState=\"Default\" isRequiredFavored=\"true\"");
+    String xml = createMinimalXmlForBasicAttributes("startValue=\"1\" zeroLevel=\"0\" lowerableState=\"RaiseOnly\" isRequiredFavored=\"true\"");
     GenericTraitTemplate template = parseTemplate(xml);
     assertEquals(1, template.getStartValue());
     assertEquals(0, template.getZeroLevelValue());

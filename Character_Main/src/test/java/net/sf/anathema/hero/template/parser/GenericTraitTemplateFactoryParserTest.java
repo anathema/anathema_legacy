@@ -14,13 +14,13 @@ import org.dom4j.Element;
 
 public class GenericTraitTemplateFactoryParserTest extends TestCase {
   String xml = "<traitTemplates >"  + "<abilities>" +
-               "<defaultTrait startValue=\"0\" lowerableState=\"Default\">" + "<limitation type=\"Essence\"/>" + "<minimum value=\"0\"/>" +
-               "</defaultTrait>" + "</abilities>" + "<attributes>" + "<defaultTrait startValue=\"1\" lowerableState=\"Default\">" +
+               "<defaultTrait startValue=\"0\" lowerableState=\"RaiseOnly\">" + "<limitation type=\"Essence\"/>" + "<minimum value=\"0\"/>" +
+               "</defaultTrait>" + "</abilities>" + "<attributes>" + "<defaultTrait startValue=\"1\" lowerableState=\"RaiseOnly\">" +
                "<limitation type=\"Essence\"/>" + "<minimum value=\"1\"/>" + "</defaultTrait>" + "</attributes>" + "<virtues>" +
-               "<defaultTrait startValue=\"1\" lowerableState=\"Default\">" + "<limitation type=\"Static\" value=\"5\"/>" + "<minimum value=\"1\"/>" +
-               "</defaultTrait>" + "</virtues>" + "<essence startValue=\"1\" lowerableState=\"Default\">" +
+               "<defaultTrait startValue=\"1\" lowerableState=\"RaiseOnly\">" + "<limitation type=\"Static\" value=\"5\"/>" + "<minimum value=\"1\"/>" +
+               "</defaultTrait>" + "</virtues>" + "<essence startValue=\"1\" lowerableState=\"RaiseOnly\">" +
                "<limitation type=\"Static\" value=\"1\"/>" + "<minimum value=\"1\"/>" + "</essence>" +
-               "<willpower startValue=\"2\" lowerableState=\"Default\">" + "<limitation type=\"Static\" value=\"10\"/>" + "<minimum value=\"2\"/>" +
+               "<willpower startValue=\"2\" lowerableState=\"RaiseOnly\">" + "<limitation type=\"Static\" value=\"10\"/>" + "<minimum value=\"2\"/>" +
                "</willpower>" + "</traitTemplates>";
   private DummyXmlTemplateRegistry<GenericTraitTemplateFactory> templateFactoryRegistry;
   private GenericTraitTemplateFactoryParser parser;

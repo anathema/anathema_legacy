@@ -158,7 +158,6 @@ public class DefaultTrait implements Trait {
     valueStrategy.resetCurrentValue(this);
   }
 
-  @Override
   public void applyCapModifier(int modifier) {
     capModifier += modifier;
     traitRules.setCapModifier(capModifier);
