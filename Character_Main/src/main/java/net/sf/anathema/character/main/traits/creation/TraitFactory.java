@@ -15,11 +15,11 @@ import net.sf.anathema.hero.model.Hero;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FavorableTraitFactory {
+public class TraitFactory {
 
   private Hero hero;
 
-  public FavorableTraitFactory(Hero hero) {
+  public TraitFactory(Hero hero) {
     this.hero = hero;
   }
 

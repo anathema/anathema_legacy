@@ -4,13 +4,11 @@ import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.abilities.GroupedTraitType;
-import net.sf.anathema.character.main.traits.AbilityTemplateFactory;
 import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.traits.creation.FavorableTraitFactory;
-import net.sf.anathema.character.main.traits.creation.TypedTraitTemplateFactory;
 import net.sf.anathema.character.main.traits.lists.AllAbilityTraitTypeList;
 import net.sf.anathema.character.main.traits.lists.IIdentifiedCasteTraitTypeList;
 import net.sf.anathema.hero.traits.model.GroupedTraitTypeBuilder;
+import net.sf.anathema.hero.traits.model.TraitFactory;
 import net.sf.anathema.hero.traits.template.GroupedTraitsTemplate;
 import net.sf.anathema.hero.concept.CasteCollection;
 import net.sf.anathema.hero.concept.HeroConcept;
@@ -54,7 +52,11 @@ public class AbilitiesModelImpl extends DefaultTraitMap implements AbilitiesMode
     GroupedTraitType[] abilityGroups = GroupedTraitTypeBuilder.BuildFor(template, AllAbilityTraitTypeList.getInstance());
     this.abilityTraitGroups = new AbilityTypeGroupFactory().createTraitGroups(casteCollection, abilityGroups);
     IncrementChecker incrementChecker = createFavoredAbilityIncrementChecker(heroTemplate, this, abilityGroups);
-    addFavorableTraits(incrementChecker, new AbilityTemplateFactory(heroTemplate.getTraitTemplateCollection().getTraitTemplateFactory()));
+    TraitFactory traitFactory = new TraitFactory(this.hero);
+    for (IIdentifiedCasteTraitTypeList traitGroup : abilityTraitGroups) {
+      Trait[] traits = traitFactory.createTraits(traitGroup, incrementChecker, new SimpleTraitTemplateMap(template));
+      addTraits(traits);
+    }
     TraitModel traitModel = TraitModelFetcher.fetch(hero);
     traitModel.addTraits(getAll());
   }
@@ -74,18 +76,6 @@ public class AbilitiesModelImpl extends DefaultTraitMap implements AbilitiesMode
       abilityTypes.add(traitType.getTraitType());
     }
     return new FavoredIncrementChecker(maxFavoredAbilityCount, abilityTypes.toArray(new TraitType[abilityTypes.size()]), traitMap);
-  }
-
-  public void addFavorableTraits(IncrementChecker incrementChecker, TypedTraitTemplateFactory factory) {
-    FavorableTraitFactory favorableTraitFactory = createFactory();
-    for (IIdentifiedCasteTraitTypeList traitGroup : abilityTraitGroups) {
-      Trait[] traits = favorableTraitFactory.createTraits(traitGroup, incrementChecker, factory);
-      addTraits(traits);
-    }
-  }
-
-  private FavorableTraitFactory createFactory() {
-    return new FavorableTraitFactory(hero);
   }
 
   @Override

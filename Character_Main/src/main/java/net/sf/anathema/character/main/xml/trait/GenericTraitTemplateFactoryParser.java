@@ -29,7 +29,6 @@ public class GenericTraitTemplateFactoryParser extends AbstractXmlTemplateParser
   @Override
   public GenericTraitTemplateFactory parseTemplate(Element element) throws PersistenceException {
     GenericTraitTemplateFactory templateFactory = getBasicTemplate(element);
-    new AbilityPoolParser(poolTemplateRegistry, templateFactory).parseTraits(element);
     new AttributePoolParser(poolTemplateRegistry, templateFactory).parseTraits(element);
     new VirtuePoolParser(poolTemplateRegistry, templateFactory).parseTraits(element);
     parseEssence(element, templateFactory);

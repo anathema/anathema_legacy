@@ -4,15 +4,12 @@ import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.TraitGroup;
 import net.sf.anathema.character.main.library.trait.favorable.GrumpyIncrementChecker;
 import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
-import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITraitTemplateFactory;
 import net.sf.anathema.character.main.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.main.traits.AttributeTemplateFactory;
-import net.sf.anathema.character.main.traits.ITraitTemplate;
 import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.traits.creation.FavorableTraitFactory;
+import net.sf.anathema.character.main.traits.creation.TraitFactory;
 import net.sf.anathema.character.main.traits.creation.TypedTraitTemplateFactory;
-import net.sf.anathema.character.main.traits.lists.AllAbilityTraitTypeList;
 import net.sf.anathema.character.main.traits.lists.AllAttributeTraitTypeList;
 import net.sf.anathema.character.main.traits.lists.IIdentifiedCasteTraitTypeList;
 import net.sf.anathema.character.main.traits.lists.IdentifiedTraitTypeList;
@@ -71,8 +68,8 @@ public class AttributeModelImpl extends DefaultTraitMap implements AttributeMode
     }
   }
 
-  private FavorableTraitFactory createFactory() {
-    return new FavorableTraitFactory(hero);
+  private TraitFactory createFactory() {
+    return new TraitFactory(hero);
   }
 
   private void addAttributes(ITraitTemplateFactory templateFactory) {
@@ -81,9 +78,9 @@ public class AttributeModelImpl extends DefaultTraitMap implements AttributeMode
   }
 
   public void addFavorableTraits(IncrementChecker incrementChecker, TypedTraitTemplateFactory factory) {
-    FavorableTraitFactory favorableTraitFactory = createFactory();
+    TraitFactory traitFactory = createFactory();
     for (IIdentifiedCasteTraitTypeList traitGroup : attributeTraitGroups) {
-      Trait[] traits = favorableTraitFactory.createTraits(traitGroup, incrementChecker, factory);
+      Trait[] traits = traitFactory.createTraits(traitGroup, incrementChecker, factory);
       addTraits(traits);
     }
   }
