@@ -1,7 +1,0 @@
-<bonusPointCost uses="RevisedDefaultBonusPointCost2nd.template">
-  <advantages>
-    <essence>
-      <fixedCost cost="10" />
-    </essence>
-  </advantages>
-</bonusPointCost>
