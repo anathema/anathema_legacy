@@ -20,11 +20,11 @@ public interface HeroTemplate {
 
   GroupedTraitType[] getAttributeGroups();
 
+  IEssenceTemplate getEssenceTemplate();
+
   BonusPointCosts getBonusPointCosts();
 
   ICreationPoints getCreationPoints();
-
-  IEssenceTemplate getEssenceTemplate();
 
   IExperiencePointCosts getExperienceCost();
 
