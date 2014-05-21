@@ -19,6 +19,8 @@ import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.lib.collection.IdentityMapping;
 
+import java.util.List;
+
 import static net.sf.anathema.character.main.library.trait.favorable.FavorableState.Caste;
 import static net.sf.anathema.character.main.library.trait.favorable.FavorableState.Default;
 import static net.sf.anathema.character.main.library.trait.favorable.FavorableState.Favored;
@@ -44,7 +46,8 @@ public class FavorableTraitConfigurationPresenter {
   public void init(String typePrefix) {
     for (IdentifiedTraitTypeList traitTypeGroup : traitTypeGroups) {
       view.startNewTraitGroup(resources.getString(typePrefix + "." + traitTypeGroup.getListId().getId()));
-      addTraitViews(traitConfiguration.getTraits(traitTypeGroup.getAll().toArray(new TraitType[0])));
+      List<TraitType> allTraitTypes = traitTypeGroup.getAll();
+      addTraitViews(traitConfiguration.getTraits(allTraitTypes.toArray(new TraitType[allTraitTypes.size()])));
     }
     hero.getChangeAnnouncer().addListener(flavor -> {
       if (flavor == ExperienceChange.FLAVOR_EXPERIENCE_STATE) {
