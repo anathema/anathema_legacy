@@ -1,5 +1,5 @@
 @Integration
-Feature: Anathema calculates Bonus Point costs for Abilities
+Feature: Anathema calculates creation point costs for Abilities
   The scenarios for the various cases of overspending work with a fresh Mortal so we can use their allotment.
   The overlap with cost calculation scenarios is incidental, these are not intended as such.
   

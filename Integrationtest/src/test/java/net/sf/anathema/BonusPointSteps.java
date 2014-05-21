@@ -60,6 +60,27 @@ public class BonusPointSteps {
     she_has_ability_dots_spent(bonusModel.getAllotment());
   }
 
+  @Then("^she has spent (\\d+) points on Primary Attributes$")
+  public void she_has_spent_points_on_Primary_Attributes(int dots) throws Throwable {
+    calculateBonusPoints();
+    Integer dotsSpent = findBonusModel("Attributes", "Primary").getValue();
+    assertThat(dotsSpent, is(dots));
+  }
+
+  @Then("^she has spent (\\d+) points on Secondary Attributes$")
+  public void she_has_spent_points_on_Secondary_Attributes(int dots) throws Throwable {
+    calculateBonusPoints();
+    Integer dotsSpent = findBonusModel("Attributes", "Secondary").getValue();
+    assertThat(dotsSpent, is(dots));
+  }
+
+  @Then("^she has spent (\\d+) points on Tertiary Attributes$")
+  public void she_has_spent_points_on_Tertiary_Attributes(int dots) throws Throwable {
+    calculateBonusPoints();
+    Integer dotsSpent = findBonusModel("Attributes", "Tertiary").getValue();
+    assertThat(dotsSpent, is(dots));
+  }
+  
   private SpendingModel findBonusModel(String category, String id) {
     return (SpendingModel) bonusModel.findBonusModel(category, id);
   }
