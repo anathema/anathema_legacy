@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.spiritual.advance.creation;
 
-import net.sf.anathema.character.main.library.trait.Trait;
-import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.hero.traits.model.Trait;
+import net.sf.anathema.hero.traits.model.TraitType;
 
 import java.util.HashMap;
 import java.util.Map;

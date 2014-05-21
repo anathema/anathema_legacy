@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.charms.display.tooltip.type;
 
-import net.sf.anathema.character.main.magic.charm.type.ISimpleSpecialsModel;
-import net.sf.anathema.character.main.magic.charm.type.TurnType;
+import net.sf.anathema.character.magic.charm.type.ISimpleSpecialsModel;
+import net.sf.anathema.character.magic.charm.type.TurnType;
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.gui.ConfigurableTooltip;
 

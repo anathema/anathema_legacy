@@ -7,8 +7,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.character.main.magic.charm.CharmAttributeList;
+import net.sf.anathema.character.magic.charm.Charm;
+import net.sf.anathema.character.magic.charm.CharmAttributeList;
 import net.sf.anathema.hero.charms.model.CharmGroup;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.charms.model.ICharmGroup;

@@ -1,11 +1,11 @@
 package net.sf.anathema.hero.framework.perspective;
 
 import com.google.common.base.Objects;
-import net.sf.anathema.character.main.HeroTemplateHolder;
-import net.sf.anathema.character.main.template.HeroTemplate;
-import net.sf.anathema.character.main.template.ITemplateRegistry;
-import net.sf.anathema.character.main.type.CharacterType;
-import net.sf.anathema.character.main.type.CharacterTypes;
+import net.sf.anathema.character.framework.HeroTemplateHolder;
+import net.sf.anathema.hero.template.HeroTemplate;
+import net.sf.anathema.hero.template.ITemplateRegistry;
+import net.sf.anathema.character.framework.type.CharacterType;
+import net.sf.anathema.character.framework.type.CharacterTypes;
 import net.sf.anathema.hero.creation.ICharacterItemCreationModel;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.lib.collection.MultiEntryMap;

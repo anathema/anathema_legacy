@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.platform;
 
-import net.sf.anathema.character.main.type.CharacterTypes;
+import net.sf.anathema.character.framework.type.CharacterTypes;
 import net.sf.anathema.framework.item.RepositoryConfiguration;
 import net.sf.anathema.framework.repository.IRepositoryFileResolver;
 import net.sf.anathema.framework.repository.access.printname.SimpleRepositoryId;

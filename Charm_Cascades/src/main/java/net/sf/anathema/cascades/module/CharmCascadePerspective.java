@@ -5,7 +5,7 @@ import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.sf.anathema.cascades.presenter.CharmCascadesPresenterImpl;
 import net.sf.anathema.cascades.presenter.CharmTreeIdentifierMap;
-import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
+import net.sf.anathema.character.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.environment.dependencies.Weight;

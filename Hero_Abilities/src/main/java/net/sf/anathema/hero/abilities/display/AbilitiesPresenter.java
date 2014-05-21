@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.abilities.display;
 
-import net.sf.anathema.character.main.library.trait.view.GroupedFavorableTraitConfigurationView;
-import net.sf.anathema.character.main.traits.lists.IdentifiedTraitTypeList;
-import net.sf.anathema.character.main.view.ColumnCount;
+import net.sf.anathema.hero.traits.display.GroupedFavorableTraitConfigurationView;
+import net.sf.anathema.hero.traits.model.lists.IdentifiedTraitTypeList;
+import net.sf.anathema.character.framework.display.ColumnCount;
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.abilities.model.AbilityModelFetcher;
 import net.sf.anathema.hero.model.Hero;

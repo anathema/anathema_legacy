@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.charms.display.tooltip;
 
 import com.google.common.base.Joiner;
-import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.character.main.magic.basic.Magic;
-import net.sf.anathema.character.main.magic.basic.attribute.MagicAttribute;
+import net.sf.anathema.character.magic.charm.Charm;
+import net.sf.anathema.character.magic.basic.Magic;
+import net.sf.anathema.character.magic.basic.attribute.MagicAttribute;
 import net.sf.anathema.lib.gui.ConfigurableTooltip;
 import net.sf.anathema.framework.environment.Resources;
 

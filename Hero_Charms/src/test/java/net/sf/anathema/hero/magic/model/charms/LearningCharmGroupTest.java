@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.magic.model.charms;
 
 import net.sf.anathema.hero.dummy.DummyCharm;
-import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.character.magic.charm.Charm;
 import net.sf.anathema.hero.charms.model.CharmGroup;
 import net.sf.anathema.hero.charms.model.learn.ICharmLearnStrategy;
 import net.sf.anathema.hero.charms.model.learn.IExtendedCharmLearnableArbitrator;
@@ -12,8 +12,8 @@ import net.sf.anathema.hero.charms.model.options.CharmTreeImpl;
 import net.sf.anathema.hero.dummy.DummyExaltCharacterType;
 import net.sf.anathema.hero.magic.dummy.DummyLearnableArbitrator;
 import net.sf.anathema.hero.magic.dummy.DummyLearningCharmGroupContainer;
-import net.sf.anathema.character.main.traits.ValuedTraitType;
-import net.sf.anathema.character.main.traits.types.AbilityType;
+import net.sf.anathema.hero.traits.model.ValuedTraitType;
+import net.sf.anathema.hero.traits.model.types.AbilityType;
 import net.sf.anathema.hero.charms.model.context.CreationCharmLearnStrategy;
 import org.junit.Test;
 
@@ -71,11 +71,11 @@ public class LearningCharmGroupTest {
     String externalPrerequisiteId = "externalPrerquisite";
     String learCharmID = "learnCharm";
     DummyCharm internalPrerequisite =
-            new DummyCharm(internalPrerequisiteId, new Charm[0], new ValuedTraitType[]{new net.sf.anathema.character.main.traits.types.ValuedTraitType(AbilityType.Melee, 1)});
+            new DummyCharm(internalPrerequisiteId, new Charm[0], new ValuedTraitType[]{new net.sf.anathema.hero.traits.model.types.ValuedTraitType(AbilityType.Melee, 1)});
     DummyCharm externalPrerequisite =
-            new DummyCharm(externalPrerequisiteId, new Charm[0], new ValuedTraitType[]{new net.sf.anathema.character.main.traits.types.ValuedTraitType(AbilityType.Archery, 1)});
+            new DummyCharm(externalPrerequisiteId, new Charm[0], new ValuedTraitType[]{new net.sf.anathema.hero.traits.model.types.ValuedTraitType(AbilityType.Archery, 1)});
     DummyCharm learnCharm = new DummyCharm(learCharmID, new Charm[]{internalPrerequisite, externalPrerequisite},
-            new ValuedTraitType[]{new net.sf.anathema.character.main.traits.types.ValuedTraitType(AbilityType.Melee, 1)});
+            new ValuedTraitType[]{new net.sf.anathema.hero.traits.model.types.ValuedTraitType(AbilityType.Melee, 1)});
     CharmTree charmTree = new CharmTreeImpl(new Charm[]{internalPrerequisite, externalPrerequisite, learnCharm});
     externalPrerequisite.addLearnFollowUpCharm(learnCharm);
     IExtendedCharmLearnableArbitrator learnableArbitrator =

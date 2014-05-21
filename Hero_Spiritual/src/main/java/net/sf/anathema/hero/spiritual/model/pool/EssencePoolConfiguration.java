@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.spiritual.model.pool;
 
-import net.sf.anathema.character.main.traits.ValuedTraitType;
+import net.sf.anathema.hero.traits.model.ValuedTraitType;
 import net.sf.anathema.hero.spiritual.template.EssencePoolTemplate;
 import net.sf.anathema.hero.spiritual.template.PoolPartTemplate;
-import net.sf.anathema.hero.traits.TraitMap;
+import net.sf.anathema.hero.traits.model.TraitMap;
 
 import java.util.ArrayList;
 import java.util.List;

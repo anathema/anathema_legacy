@@ -2,9 +2,9 @@ package net.sf.anathema.fx.hero.overview;
 
 import javafx.scene.Node;
 import net.miginfocom.layout.CC;
-import net.sf.anathema.character.main.library.overview.OverviewCategory;
-import net.sf.anathema.character.main.view.labelledvalue.IValueView;
-import net.sf.anathema.character.main.view.labelledvalue.LabelledAllotmentView;
+import net.sf.anathema.character.framework.library.overview.OverviewCategory;
+import net.sf.anathema.character.framework.display.labelledvalue.IValueView;
+import net.sf.anathema.character.framework.display.labelledvalue.LabelledAllotmentView;
 import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.platform.fx.StyledTitledPane;
 import org.tbee.javafx.scene.layout.MigPane;

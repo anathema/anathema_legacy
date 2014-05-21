@@ -3,8 +3,8 @@ package net.sf.anathema.framework.reporting.pdf;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.PdfWriter;
-import net.sf.anathema.character.main.framework.item.HeroNameFetcher;
-import net.sf.anathema.framework.reporting.ReportException;
+import net.sf.anathema.character.framework.item.HeroNameFetcher;
+import net.sf.anathema.character.framework.reporting.ReportException;
 import net.sf.anathema.hero.model.Hero;
 
 import java.io.OutputStream;

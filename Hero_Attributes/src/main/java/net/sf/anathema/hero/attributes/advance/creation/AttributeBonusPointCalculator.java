@@ -1,11 +1,11 @@
 package net.sf.anathema.hero.attributes.advance.creation;
 
-import net.sf.anathema.character.main.library.trait.FavorableTraitCost;
-import net.sf.anathema.character.main.library.trait.Trait;
-import net.sf.anathema.character.main.library.trait.TraitGroup;
-import net.sf.anathema.character.main.template.points.AttributeGroupPriority;
-import net.sf.anathema.character.main.template.points.IAttributeGroupPriorityVisitor;
-import net.sf.anathema.character.main.traits.types.AttributeGroupType;
+import net.sf.anathema.hero.traits.model.FavorableTraitCost;
+import net.sf.anathema.hero.traits.model.Trait;
+import net.sf.anathema.hero.traits.model.TraitGroup;
+import net.sf.anathema.hero.template.points.AttributeGroupPriority;
+import net.sf.anathema.hero.template.points.IAttributeGroupPriorityVisitor;
+import net.sf.anathema.hero.traits.model.types.AttributeGroupType;
 import net.sf.anathema.hero.attributes.model.AttributeModel;
 import net.sf.anathema.hero.points.HeroBonusPointCalculator;
 

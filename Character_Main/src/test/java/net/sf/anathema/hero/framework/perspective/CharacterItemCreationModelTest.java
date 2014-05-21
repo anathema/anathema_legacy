@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.framework.perspective;
 
-import net.sf.anathema.character.main.template.HeroTemplate;
-import net.sf.anathema.character.main.template.ITemplateRegistry;
-import net.sf.anathema.character.main.type.CharacterType;
+import net.sf.anathema.hero.template.HeroTemplate;
+import net.sf.anathema.hero.template.ITemplateRegistry;
+import net.sf.anathema.character.framework.type.CharacterType;
 import net.sf.anathema.hero.dummy.DummyCharacterTypes;
 import net.sf.anathema.hero.dummy.DummyMundaneCharacterType;
 import net.sf.anathema.hero.dummy.template.SimpleDummyCharacterTemplate;

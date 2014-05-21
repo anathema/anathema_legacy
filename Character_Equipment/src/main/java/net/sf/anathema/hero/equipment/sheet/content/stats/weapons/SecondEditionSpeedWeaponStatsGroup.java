@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.equipment.sheet.content.stats.weapons;
 
-import net.sf.anathema.character.main.util.HeroStatsModifiers;
+import net.sf.anathema.character.framework.library.HeroStatsModifiers;
 import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IWeaponStats;
 import net.sf.anathema.framework.environment.Resources;
 

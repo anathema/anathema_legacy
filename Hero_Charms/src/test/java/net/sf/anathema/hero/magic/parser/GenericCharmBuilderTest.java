@@ -1,15 +1,15 @@
 package net.sf.anathema.hero.magic.parser;
 
-import net.sf.anathema.character.main.magic.charm.CharmImpl;
-import net.sf.anathema.character.main.magic.parser.charms.GenericCharmBuilder;
-import net.sf.anathema.character.main.magic.parser.charms.GenericCharmPrerequisiteBuilder;
-import net.sf.anathema.character.main.magic.parser.charms.GenericIdStringBuilder;
-import net.sf.anathema.character.main.magic.parser.charms.prerequisite.GenericAttributePrerequisiteBuilder;
-import net.sf.anathema.character.main.magic.parser.charms.prerequisite.GenericTraitPrerequisitesBuilder;
-import net.sf.anathema.character.main.magic.parser.charms.special.ReflectionSpecialCharmParser;
-import net.sf.anathema.character.main.magic.parser.combos.GenericComboRulesBuilder;
-import net.sf.anathema.character.main.magic.parser.dto.special.SpecialCharmDto;
-import net.sf.anathema.character.main.traits.types.AbilityType;
+import net.sf.anathema.character.magic.charm.CharmImpl;
+import net.sf.anathema.character.magic.parser.charms.GenericCharmBuilder;
+import net.sf.anathema.character.magic.parser.charms.GenericCharmPrerequisiteBuilder;
+import net.sf.anathema.character.magic.parser.charms.GenericIdStringBuilder;
+import net.sf.anathema.character.magic.parser.charms.prerequisite.GenericAttributePrerequisiteBuilder;
+import net.sf.anathema.character.magic.parser.charms.prerequisite.GenericTraitPrerequisitesBuilder;
+import net.sf.anathema.character.magic.parser.charms.special.ReflectionSpecialCharmParser;
+import net.sf.anathema.character.magic.parser.combos.GenericComboRulesBuilder;
+import net.sf.anathema.character.magic.parser.dto.special.SpecialCharmDto;
+import net.sf.anathema.hero.traits.model.types.AbilityType;
 import net.sf.anathema.hero.dummy.DummyCharacterTypes;
 import net.sf.anathema.hero.dummy.DummyExaltCharacterType;
 import org.dom4j.Element;

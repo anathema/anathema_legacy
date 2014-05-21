@@ -1,10 +1,10 @@
 package net.sf.anathema.hero.attributes.advance;
 
-import net.sf.anathema.character.main.template.HeroTemplate;
-import net.sf.anathema.character.main.template.creation.BonusPointCosts;
-import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
-import net.sf.anathema.character.main.template.points.AttributeGroupPriority;
-import net.sf.anathema.character.main.template.points.IAttributeCreationPoints;
+import net.sf.anathema.hero.template.HeroTemplate;
+import net.sf.anathema.hero.template.creation.BonusPointCosts;
+import net.sf.anathema.hero.template.experience.IExperiencePointCosts;
+import net.sf.anathema.hero.template.points.AttributeGroupPriority;
+import net.sf.anathema.hero.template.points.IAttributeCreationPoints;
 import net.sf.anathema.hero.attributes.advance.creation.AttributeBonusModel;
 import net.sf.anathema.hero.attributes.advance.creation.AttributeBonusPointCalculator;
 import net.sf.anathema.hero.attributes.advance.creation.AttributeCreationData;

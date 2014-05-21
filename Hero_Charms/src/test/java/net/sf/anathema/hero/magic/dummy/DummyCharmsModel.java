@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.magic.dummy;
 
-import net.sf.anathema.character.main.magic.basic.attribute.MagicAttribute;
-import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.character.magic.basic.attribute.MagicAttribute;
+import net.sf.anathema.character.magic.charm.Charm;
 import net.sf.anathema.hero.charms.model.CharmIdMap;
 import net.sf.anathema.hero.charms.model.ICharmGroup;
 import net.sf.anathema.hero.charms.model.learn.ICharmLearnListener;
@@ -9,13 +9,13 @@ import net.sf.anathema.hero.charms.model.special.CharmSpecialsModel;
 import net.sf.anathema.hero.charms.model.special.ISpecialCharm;
 import net.sf.anathema.hero.charms.model.learn.ILearningCharmGroup;
 import net.sf.anathema.hero.charms.sheet.content.IMagicStats;
-import net.sf.anathema.character.main.type.CharacterType;
+import net.sf.anathema.character.framework.type.CharacterType;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.charms.advance.creation.MagicCreationCostEvaluator;
 import net.sf.anathema.hero.charms.model.learn.MagicLearner;
 import net.sf.anathema.hero.charms.model.PrintMagicProvider;
 import net.sf.anathema.hero.framework.HeroEnvironment;
-import net.sf.anathema.character.main.magic.charm.martial.MartialArtsLevel;
+import net.sf.anathema.character.magic.charm.martial.MartialArtsLevel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.lib.control.ChangeListener;

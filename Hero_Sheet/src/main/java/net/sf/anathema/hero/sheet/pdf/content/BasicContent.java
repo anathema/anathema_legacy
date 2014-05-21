@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.sheet.pdf.content;
 
-import net.sf.anathema.character.main.type.CharacterType;
+import net.sf.anathema.character.framework.type.CharacterType;
 import net.sf.anathema.hero.model.Hero;
 
 public class BasicContent implements SubContent {

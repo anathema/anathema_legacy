@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.spiritual.model.traits;
 
-import net.sf.anathema.character.main.library.trait.Trait;
-import net.sf.anathema.character.main.traits.TraitIterable;
+import net.sf.anathema.hero.traits.model.Trait;
+import net.sf.anathema.hero.traits.model.TraitIterable;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.control.IntValueChangedListener;
 

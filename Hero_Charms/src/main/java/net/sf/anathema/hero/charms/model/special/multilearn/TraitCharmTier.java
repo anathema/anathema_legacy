@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.charms.model.special.multilearn;
 
 import com.google.common.collect.Lists;
-import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.traits.ValuedTraitType;
+import net.sf.anathema.hero.traits.model.TraitType;
+import net.sf.anathema.hero.traits.model.ValuedTraitType;
 
 import java.util.List;
 

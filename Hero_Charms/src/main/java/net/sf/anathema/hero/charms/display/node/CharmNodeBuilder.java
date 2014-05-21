@@ -3,8 +3,8 @@ package net.sf.anathema.hero.charms.display.node;
 import java.util.Collection;
 import java.util.Map;
 
-import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.character.main.magic.charm.prerequisite.IndirectCharmLearnPrerequisite;
+import net.sf.anathema.character.magic.charm.Charm;
+import net.sf.anathema.character.magic.charm.prerequisite.IndirectCharmLearnPrerequisite;
 import net.sf.anathema.graph.nodes.IIdentifiedRegularNode;
 import net.sf.anathema.graph.nodes.NodeFactory;
 

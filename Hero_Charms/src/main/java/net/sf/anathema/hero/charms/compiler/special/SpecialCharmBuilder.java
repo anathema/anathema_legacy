@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.charms.compiler.special;
 
 import net.sf.anathema.hero.charms.model.special.ISpecialCharm;
-import net.sf.anathema.character.main.magic.parser.dto.special.SpecialCharmDto;
+import net.sf.anathema.character.magic.parser.dto.special.SpecialCharmDto;
 
 public interface SpecialCharmBuilder {
 

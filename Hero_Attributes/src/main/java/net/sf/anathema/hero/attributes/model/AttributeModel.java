@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.attributes.model;
 
-import net.sf.anathema.character.main.library.trait.TraitGroup;
+import net.sf.anathema.hero.traits.model.TraitGroup;
 import net.sf.anathema.hero.traits.model.GroupedTraitType;
 import net.sf.anathema.hero.traits.model.TraitListModel;
 import net.sf.anathema.lib.util.Identifier;

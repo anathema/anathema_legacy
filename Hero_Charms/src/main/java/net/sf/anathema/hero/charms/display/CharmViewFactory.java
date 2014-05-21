@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.charms.display;
 
-import net.sf.anathema.character.main.view.SubViewFactory;
+import net.sf.anathema.character.framework.display.SubViewFactory;
 import net.sf.anathema.framework.util.Produces;
 import net.sf.anathema.framework.value.IntValueView;
 import net.sf.anathema.hero.charms.display.view.CharmView;

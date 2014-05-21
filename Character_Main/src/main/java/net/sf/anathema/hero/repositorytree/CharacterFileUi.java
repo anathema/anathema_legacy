@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.repositorytree;
 
-import net.sf.anathema.character.main.CharacterUI;
-import net.sf.anathema.character.main.framework.item.CharacterReferenceScanner;
-import net.sf.anathema.character.main.type.CharacterType;
+import net.sf.anathema.character.framework.CharacterUI;
+import net.sf.anathema.character.framework.item.CharacterReferenceScanner;
+import net.sf.anathema.character.framework.type.CharacterType;
 import net.sf.anathema.framework.repository.access.printname.SimpleRepositoryId;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.hero.concept.CasteType;

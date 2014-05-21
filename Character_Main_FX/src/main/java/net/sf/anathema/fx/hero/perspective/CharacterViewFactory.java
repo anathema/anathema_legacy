@@ -1,9 +1,9 @@
 package net.sf.anathema.fx.hero.perspective;
 
-import net.sf.anathema.character.main.library.util.CssSkinner;
-import net.sf.anathema.character.main.view.SubViewMap;
-import net.sf.anathema.character.main.view.SubViewRegistry;
-import net.sf.anathema.framework.IApplicationModel;
+import net.sf.anathema.framework.*;
+import net.sf.anathema.character.framework.library.util.CssSkinner;
+import net.sf.anathema.character.framework.display.SubViewMap;
+import net.sf.anathema.character.framework.display.SubViewRegistry;
 import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.advance.creation.BonusPointManagement;
@@ -29,7 +29,7 @@ public class CharacterViewFactory {
     this.applicationModel = applicationModel;
   }
 
-  public NodeHolder createView(net.sf.anathema.character.main.Character hero) {
+  public NodeHolder createView(net.sf.anathema.character.framework.Character hero) {
     SubViewRegistry viewFactory = new SubViewMap(environment);
     Stylesheet[] stylesheets = createStylesheets(hero);
     TaskedCharacterView characterView = new TaskedCharacterView(viewFactory, stylesheets);

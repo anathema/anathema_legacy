@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.traits;
 
-import net.sf.anathema.character.main.IntegerDescription;
-import net.sf.anathema.character.main.traits.limitation.AgeBasedLimitation;
+import net.sf.anathema.character.framework.IntegerDescription;
+import net.sf.anathema.hero.traits.model.limitation.AgeBasedLimitation;
 import net.sf.anathema.hero.concept.HeroConcept;
 import net.sf.anathema.hero.dummy.DummyHero;
 import org.junit.Test;

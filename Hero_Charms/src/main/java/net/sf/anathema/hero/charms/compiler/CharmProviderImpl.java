@@ -1,10 +1,10 @@
 package net.sf.anathema.hero.charms.compiler;
 
-import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.character.main.magic.charm.ICharmLearnableArbitrator;
+import net.sf.anathema.character.magic.charm.Charm;
+import net.sf.anathema.character.magic.charm.ICharmLearnableArbitrator;
 import net.sf.anathema.hero.charms.model.CharmIdMap;
 import net.sf.anathema.hero.charms.model.special.ISpecialCharm;
-import net.sf.anathema.character.main.type.CharacterType;
+import net.sf.anathema.character.framework.type.CharacterType;
 import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static net.sf.anathema.character.main.magic.charm.martial.MartialArtsUtilities.MARTIAL_ARTS;
+import static net.sf.anathema.character.magic.charm.martial.MartialArtsUtilities.MARTIAL_ARTS;
 
 public class CharmProviderImpl implements CharmProvider {
 

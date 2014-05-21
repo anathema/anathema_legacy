@@ -2,10 +2,10 @@ package net.sf.anathema.cards.layout;
 
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Image;
-import net.sf.anathema.character.main.magic.spells.CircleType;
-import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.type.CharacterType;
-import net.sf.anathema.character.main.magic.charm.martial.MartialArtsLevel;
+import net.sf.anathema.character.magic.spells.CircleType;
+import net.sf.anathema.hero.traits.model.TraitType;
+import net.sf.anathema.character.framework.type.CharacterType;
+import net.sf.anathema.character.magic.charm.martial.MartialArtsLevel;
 
 public interface ICardReportResourceProvider {
 	

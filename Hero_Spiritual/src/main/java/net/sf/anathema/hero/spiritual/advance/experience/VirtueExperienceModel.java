@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.spiritual.advance.experience;
 
-import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.traits.types.VirtueType;
+import net.sf.anathema.hero.traits.model.TraitType;
+import net.sf.anathema.hero.traits.model.types.VirtueType;
 import net.sf.anathema.hero.advance.overview.model.AbstractIntegerValueModel;
 import net.sf.anathema.hero.spiritual.SpiritualTraitModel;
 

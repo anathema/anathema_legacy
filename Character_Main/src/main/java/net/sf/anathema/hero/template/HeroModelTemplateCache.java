@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.template;
 
-import net.sf.anathema.character.main.framework.data.ExtensibleDataSet;
+import net.sf.anathema.character.framework.data.ExtensibleDataSet;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.framework.environment.resources.ResourceFile;
 import net.sf.anathema.lib.util.Identifier;

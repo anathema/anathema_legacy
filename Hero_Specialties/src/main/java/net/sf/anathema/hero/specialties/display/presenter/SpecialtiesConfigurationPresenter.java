@@ -1,12 +1,12 @@
 package net.sf.anathema.hero.specialties.display.presenter;
 
-import net.sf.anathema.character.main.TraitTypeInternationalizer;
-import net.sf.anathema.character.main.library.trait.presenter.TraitPresenter;
-import net.sf.anathema.character.main.library.trait.specialties.SpecialtiesModel;
-import net.sf.anathema.character.main.library.trait.specialties.Specialty;
-import net.sf.anathema.character.main.library.trait.subtrait.ISpecialtyListener;
-import net.sf.anathema.character.main.library.trait.subtrait.ISubTraitContainer;
-import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.hero.traits.display.TraitTypeInternationalizer;
+import net.sf.anathema.hero.traits.display.TraitPresenter;
+import net.sf.anathema.hero.specialties.SpecialtiesModel;
+import net.sf.anathema.hero.specialties.Specialty;
+import net.sf.anathema.hero.specialties.ISpecialtyListener;
+import net.sf.anathema.hero.specialties.ISubTraitContainer;
+import net.sf.anathema.hero.traits.model.TraitType;
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.hero.display.ExtensibleTraitView;

@@ -3,8 +3,8 @@ package net.sf.anathema.character.equipment.character.model.stats;
 import com.google.common.base.Function;
 import net.sf.anathema.character.equipment.creation.model.WeaponTag;
 import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IWeaponStats;
-import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.traits.types.AttributeType;
+import net.sf.anathema.hero.traits.model.TraitType;
+import net.sf.anathema.hero.traits.model.types.AttributeType;
 import net.sf.anathema.hero.health.HealthType;
 import net.sf.anathema.lib.util.Identifier;
 

@@ -6,8 +6,8 @@ import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import net.sf.anathema.cards.layout.ICardReportResourceProvider;
-import net.sf.anathema.character.main.magic.description.MagicDescription;
-import net.sf.anathema.character.main.magic.spells.Spell;
+import net.sf.anathema.character.magic.description.MagicDescription;
+import net.sf.anathema.character.magic.spells.Spell;
 import net.sf.anathema.hero.spells.sheet.content.SpellStats;
 import net.sf.anathema.framework.environment.Resources;
 

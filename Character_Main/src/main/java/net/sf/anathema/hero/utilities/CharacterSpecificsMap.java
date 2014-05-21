@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.utilities;
 
 import com.google.common.base.Functions;
-import net.sf.anathema.character.main.type.CharacterType;
+import net.sf.anathema.character.framework.type.CharacterType;
 import net.sf.anathema.framework.environment.ObjectFactory;
 
 import java.util.Collection;

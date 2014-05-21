@@ -13,7 +13,7 @@ import net.sf.anathema.hero.spells.template.SpellsTemplate;
 import net.sf.anathema.hero.spells.template.SpellsTemplateLoader;
 import net.sf.anathema.hero.spiritual.SpiritualTraitModel;
 import net.sf.anathema.hero.template.TemplateFactory;
-import net.sf.anathema.hero.traits.TraitModel;
+import net.sf.anathema.hero.traits.model.TraitModel;
 
 @SuppressWarnings("UnusedDeclaration")
 public class SpellsModelFactory extends SimpleModelTreeEntry implements HeroModelFactory {

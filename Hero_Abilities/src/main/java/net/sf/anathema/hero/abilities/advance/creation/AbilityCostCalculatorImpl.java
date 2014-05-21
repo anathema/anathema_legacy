@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.abilities.advance.creation;
 
-import net.sf.anathema.character.main.library.ITraitFavorization;
-import net.sf.anathema.character.main.library.trait.FavorableTraitCost;
-import net.sf.anathema.character.main.library.trait.Trait;
-import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
+import net.sf.anathema.hero.traits.model.ITraitFavorization;
+import net.sf.anathema.hero.traits.model.FavorableTraitCost;
+import net.sf.anathema.hero.traits.model.Trait;
+import net.sf.anathema.hero.template.experience.CurrentRatingCosts;
 import net.sf.anathema.hero.abilities.model.AbilitiesModel;
 
 import java.util.*;

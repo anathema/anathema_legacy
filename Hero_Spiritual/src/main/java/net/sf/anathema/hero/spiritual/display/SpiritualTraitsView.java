@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.spiritual.display;
 
-import net.sf.anathema.character.main.view.labelledvalue.IValueView;
+import net.sf.anathema.character.framework.display.labelledvalue.IValueView;
 import net.sf.anathema.framework.value.IntValueView;
 
 public interface SpiritualTraitsView {

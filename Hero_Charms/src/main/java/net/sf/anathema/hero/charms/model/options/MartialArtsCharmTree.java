@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.charms.model.options;
 
 import net.sf.anathema.hero.charms.compiler.CharmProvider;
-import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.character.main.magic.charm.martial.MartialArtsLevel;
-import net.sf.anathema.character.main.magic.charm.martial.MartialArtsUtilities;
+import net.sf.anathema.character.magic.charm.Charm;
+import net.sf.anathema.character.magic.charm.martial.MartialArtsLevel;
+import net.sf.anathema.character.magic.charm.martial.MartialArtsUtilities;
 
 import java.text.MessageFormat;
 

@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.charms.model.special;
 
-import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.character.magic.charm.Charm;
 import net.sf.anathema.hero.charms.model.learn.CharmLearnAdapter;
 import net.sf.anathema.hero.charms.model.learn.IExtendedCharmLearnableArbitrator;
 import net.sf.anathema.hero.charms.model.learn.ILearningCharmGroup;
@@ -12,7 +12,7 @@ import net.sf.anathema.hero.charms.model.special.prerequisite.IPrerequisiteModif
 import net.sf.anathema.hero.charms.model.special.subeffects.ISubEffectCharm;
 import net.sf.anathema.hero.charms.model.special.traitcap.ITraitCapModifyingCharm;
 import net.sf.anathema.hero.charms.model.special.upgradable.IUpgradableCharm;
-import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.hero.traits.model.TraitType;
 import net.sf.anathema.hero.charms.display.special.CharmSpecialistImpl;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.charms.model.special.multilearn.MultiLearnableCharmSpecialsImpl;
@@ -26,7 +26,7 @@ import net.sf.anathema.hero.health.model.HealthModelFetcher;
 import net.sf.anathema.hero.health.model.IPainToleranceProvider;
 import net.sf.anathema.hero.charms.model.special.oxbody.OxBodyTechniqueArbitratorImpl;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.traits.TraitModelFetcher;
+import net.sf.anathema.hero.traits.model.TraitModelFetcher;
 
 import java.util.HashMap;
 import java.util.Map;

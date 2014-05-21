@@ -1,9 +1,5 @@
 package net.sf.anathema.hero.template;
 
-import net.sf.anathema.character.main.template.HeroTemplate;
-import net.sf.anathema.character.main.template.ITemplateRegistry;
-import net.sf.anathema.character.main.template.TemplateRegistry;
-import net.sf.anathema.character.main.template.TemplateTypeImpl;
 import net.sf.anathema.hero.dummy.DummyMundaneCharacterType;
 import net.sf.anathema.hero.dummy.template.SimpleDummyCharacterTemplate;
 import net.sf.anathema.lib.util.SimpleIdentifier;

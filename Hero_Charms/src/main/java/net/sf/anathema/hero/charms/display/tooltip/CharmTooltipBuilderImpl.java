@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.charms.display.tooltip;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
-import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.character.magic.description.MagicDescriptionProvider;
+import net.sf.anathema.character.magic.charm.Charm;
 import net.sf.anathema.hero.charms.model.special.ISpecialCharm;
 import net.sf.anathema.hero.charms.display.tooltip.source.MagicSourceContributor;
 import net.sf.anathema.hero.charms.display.tooltip.type.VerboseCharmTypeContributor;

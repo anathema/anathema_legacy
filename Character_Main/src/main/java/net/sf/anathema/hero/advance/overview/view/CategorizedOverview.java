@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.advance.overview.view;
 
-import net.sf.anathema.character.main.library.overview.OverviewCategory;
+import net.sf.anathema.character.framework.library.overview.OverviewCategory;
 
 public interface CategorizedOverview {
 

@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.concept.display.description;
 
-import net.sf.anathema.character.main.IIntegerDescription;
+import net.sf.anathema.character.framework.IIntegerDescription;
 import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.concept.HeroConcept;

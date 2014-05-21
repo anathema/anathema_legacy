@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.template;
 
-import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
-import net.sf.anathema.character.main.template.points.FixedValueRatingCosts;
+import net.sf.anathema.hero.template.experience.CurrentRatingCosts;
+import net.sf.anathema.hero.template.points.FixedValueRatingCosts;
 import net.sf.anathema.hero.dummy.DummyBonusPointCosts;
 import org.junit.Test;
 

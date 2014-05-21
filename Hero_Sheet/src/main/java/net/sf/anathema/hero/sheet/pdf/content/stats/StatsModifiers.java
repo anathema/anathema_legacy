@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.sheet.pdf.content.stats;
 
-import net.sf.anathema.character.main.util.HeroStatsModifiers;
+import net.sf.anathema.character.framework.library.HeroStatsModifiers;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.sheet.pdf.encoder.boxes.StatsModifierFactory;
 

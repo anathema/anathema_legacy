@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.spells.advance;
 
-import net.sf.anathema.character.main.magic.spells.Spell;
+import net.sf.anathema.character.magic.spells.Spell;
 import net.sf.anathema.hero.advance.overview.model.AbstractIntegerValueModel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.spells.model.SpellsModel;

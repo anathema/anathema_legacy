@@ -11,7 +11,7 @@ import net.sf.anathema.hero.initialization.SimpleModelTreeEntry;
 import net.sf.anathema.hero.model.HeroModelFactory;
 import net.sf.anathema.hero.spiritual.SpiritualTraitModel;
 import net.sf.anathema.hero.template.TemplateFactory;
-import net.sf.anathema.hero.traits.TraitModel;
+import net.sf.anathema.hero.traits.model.TraitModel;
 
 @SuppressWarnings("UnusedDeclaration")
 public class CombosModelFactory extends SimpleModelTreeEntry implements HeroModelFactory {

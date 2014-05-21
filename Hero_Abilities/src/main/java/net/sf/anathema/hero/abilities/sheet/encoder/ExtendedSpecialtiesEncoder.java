@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.abilities.sheet.encoder;
 
-import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.traits.lists.IdentifiedTraitTypeList;
+import net.sf.anathema.hero.traits.model.TraitType;
+import net.sf.anathema.hero.traits.model.lists.IdentifiedTraitTypeList;
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.abilities.model.AbilityModelFetcher;
 import net.sf.anathema.hero.abilities.sheet.content.SpecialtiesContentCandidate;

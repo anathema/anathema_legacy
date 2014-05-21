@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.intimacies.model;
 
-import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.traits.types.ITraitTypeVisitor;
+import net.sf.anathema.hero.traits.model.TraitType;
+import net.sf.anathema.hero.traits.model.types.ITraitTypeVisitor;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 

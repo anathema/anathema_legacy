@@ -1,7 +1,7 @@
 package net.sf.anathema.character.equipment.impl.character.model;
 
 import net.sf.anathema.character.equipment.dummy.DummyEquipmentObject;
-import net.sf.anathema.character.main.traits.types.OtherTraitType;
+import net.sf.anathema.hero.traits.model.types.OtherTraitType;
 import net.sf.anathema.hero.dummy.models.DummyHeroConcept;
 import net.sf.anathema.hero.dummy.models.DummySpiritualTraitModel;
 import net.sf.anathema.hero.dummy.models.DummyTraitModel;

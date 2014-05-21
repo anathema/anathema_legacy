@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.traits.model.group;
 
 import net.sf.anathema.hero.traits.model.GroupedTraitType;
-import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.traits.lists.TraitTypeList;
+import net.sf.anathema.hero.traits.model.TraitType;
+import net.sf.anathema.hero.traits.model.lists.TraitTypeList;
 import net.sf.anathema.hero.traits.template.GroupedTraitsTemplate;
 import net.sf.anathema.hero.traits.template.Group;
 

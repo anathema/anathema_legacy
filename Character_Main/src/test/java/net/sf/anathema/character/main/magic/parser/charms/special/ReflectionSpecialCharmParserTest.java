@@ -1,6 +1,8 @@
 package net.sf.anathema.character.main.magic.parser.charms.special;
 
-import net.sf.anathema.character.main.magic.parser.dto.special.SpecialCharmDto;
+import net.sf.anathema.character.magic.parser.charms.special.ReflectionSpecialCharmParser;
+import net.sf.anathema.character.magic.parser.charms.special.SpecialCharmParser;
+import net.sf.anathema.character.magic.parser.dto.special.SpecialCharmDto;
 import net.sf.anathema.framework.environment.ConfigurableDummyObjectFactory;
 import org.dom4j.Element;
 import org.junit.Test;

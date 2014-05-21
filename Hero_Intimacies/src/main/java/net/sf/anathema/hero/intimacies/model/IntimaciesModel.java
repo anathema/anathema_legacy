@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.intimacies.model;
 
-import net.sf.anathema.character.main.library.removableentry.RemovableEntryModel;
+import net.sf.anathema.character.framework.library.removableentry.RemovableEntryModel;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.hero.model.change.FlavoredChangeListener;
 import net.sf.anathema.lib.control.ChangeListener;

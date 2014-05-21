@@ -1,11 +1,11 @@
 package net.sf.anathema.hero.magic.presenter;
 
 import net.sf.anathema.hero.charms.display.presenter.CharmGroupInformer;
-import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.character.magic.charm.Charm;
 import net.sf.anathema.hero.charms.model.CharmIdMap;
 import net.sf.anathema.hero.charms.model.ICharmGroup;
 import net.sf.anathema.hero.dummy.DummyExaltCharacterType;
-import net.sf.anathema.character.main.type.CharacterType;
+import net.sf.anathema.character.framework.type.CharacterType;
 import net.sf.anathema.hero.charms.display.special.VisibilityPredicate;
 import org.junit.Test;
 

@@ -2,8 +2,8 @@ package net.sf.anathema.hero.framework.perspective.sheet;
 
 import net.sf.anathema.framework.desktop.DesktopEnvironment;
 import net.sf.anathema.framework.environment.Environment;
-import net.sf.anathema.framework.reporting.Report;
-import net.sf.anathema.framework.reporting.ReportException;
+import net.sf.anathema.character.framework.reporting.Report;
+import net.sf.anathema.character.framework.reporting.ReportException;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.interaction.Command;
 import org.apache.commons.io.IOUtils;

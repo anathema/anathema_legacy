@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.abilities.sheet.text;
 
-import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.traits.types.AbilityType;
+import net.sf.anathema.hero.traits.model.TraitType;
+import net.sf.anathema.hero.traits.model.types.AbilityType;
 import net.sf.anathema.framework.reporting.pdf.PdfReportUtils;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.sheet.text.AbstractTraitTextEncoder;

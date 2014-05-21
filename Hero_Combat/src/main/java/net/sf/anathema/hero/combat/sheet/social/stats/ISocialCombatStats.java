@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.combat.sheet.social.stats;
 
-import net.sf.anathema.character.main.util.IStats;
+import net.sf.anathema.character.framework.library.IStats;
 
 public interface ISocialCombatStats extends IStats {
 

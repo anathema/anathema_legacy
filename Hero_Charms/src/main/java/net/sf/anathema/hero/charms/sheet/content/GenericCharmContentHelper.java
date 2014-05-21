@@ -1,11 +1,11 @@
 package net.sf.anathema.hero.charms.sheet.content;
 
-import net.sf.anathema.character.main.template.magic.AbilityFavoringType;
-import net.sf.anathema.character.main.template.magic.AttributeFavoringType;
-import net.sf.anathema.character.main.template.magic.FavoringTraitType;
-import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.traits.lists.IdentifiedTraitTypeList;
-import net.sf.anathema.character.main.traits.lists.TraitTypeList;
+import net.sf.anathema.hero.template.magic.AbilityFavoringType;
+import net.sf.anathema.hero.template.magic.AttributeFavoringType;
+import net.sf.anathema.hero.template.magic.FavoringTraitType;
+import net.sf.anathema.hero.traits.model.TraitType;
+import net.sf.anathema.hero.traits.model.lists.IdentifiedTraitTypeList;
+import net.sf.anathema.hero.traits.model.lists.TraitTypeList;
 import net.sf.anathema.hero.abilities.model.AbilityModelFetcher;
 import net.sf.anathema.hero.attributes.model.AttributesModelFetcher;
 import net.sf.anathema.hero.model.Hero;

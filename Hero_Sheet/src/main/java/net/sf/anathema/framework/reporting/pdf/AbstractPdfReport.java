@@ -1,7 +1,7 @@
 package net.sf.anathema.framework.reporting.pdf;
 
-import net.sf.anathema.framework.reporting.Report;
-import net.sf.anathema.framework.reporting.ReportException;
+import net.sf.anathema.character.framework.reporting.Report;
+import net.sf.anathema.character.framework.reporting.ReportException;
 import net.sf.anathema.hero.model.Hero;
 
 import java.io.OutputStream;

@@ -1,16 +1,16 @@
 package net.sf.anathema.hero.charms.model.learn;
 
-import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.character.magic.charm.Charm;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.experience.ExperienceModel;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import static net.sf.anathema.character.main.magic.charm.CharmAttributeList.NO_STYLE_ATTRIBUTE;
-import static net.sf.anathema.character.main.magic.charm.martial.MartialArtsLevel.Celestial;
-import static net.sf.anathema.character.main.magic.charm.martial.MartialArtsUtilities.MARTIAL_ARTS;
-import static net.sf.anathema.character.main.magic.charm.martial.MartialArtsUtilities.hasLevel;
+import static net.sf.anathema.character.magic.charm.CharmAttributeList.NO_STYLE_ATTRIBUTE;
+import static net.sf.anathema.character.magic.charm.martial.MartialArtsLevel.Celestial;
+import static net.sf.anathema.character.magic.charm.martial.MartialArtsUtilities.MARTIAL_ARTS;
+import static net.sf.anathema.character.magic.charm.martial.MartialArtsUtilities.hasLevel;
 
 public class MartialArtsLearnModelImpl implements MartialArtsLearnModel {
   private final CharmsModel charmModel;

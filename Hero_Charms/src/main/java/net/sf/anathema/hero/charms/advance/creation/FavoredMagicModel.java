@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.charms.advance.creation;
 
-import net.sf.anathema.character.main.template.creation.ICreationPoints;
+import net.sf.anathema.hero.template.creation.ICreationPoints;
 import net.sf.anathema.hero.advance.overview.model.AbstractSpendingModel;
 
 public class FavoredMagicModel extends AbstractSpendingModel {

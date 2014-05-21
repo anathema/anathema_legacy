@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.equipment.model.natural;
 
 import net.sf.anathema.character.equipment.creation.model.WeaponTag;
-import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.traits.types.AbilityType;
-import net.sf.anathema.character.main.traits.types.AttributeType;
+import net.sf.anathema.hero.traits.model.TraitType;
+import net.sf.anathema.hero.traits.model.types.AbilityType;
+import net.sf.anathema.hero.traits.model.types.AttributeType;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 

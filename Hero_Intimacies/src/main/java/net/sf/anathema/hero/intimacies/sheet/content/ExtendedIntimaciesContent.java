@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.intimacies.sheet.content;
 
-import net.sf.anathema.character.main.framework.configuration.AnathemaCharacterPreferences;
-import net.sf.anathema.character.main.traits.types.VirtueType;
+import net.sf.anathema.character.framework.configuration.AnathemaCharacterPreferences;
+import net.sf.anathema.hero.traits.model.types.VirtueType;
 import net.sf.anathema.hero.intimacies.model.IntimaciesModel;
 import net.sf.anathema.hero.intimacies.model.IntimaciesModelFetcher;
 import net.sf.anathema.hero.intimacies.model.Intimacy;

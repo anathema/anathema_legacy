@@ -5,19 +5,19 @@ import static org.junit.Assert.fail;
 
 import java.util.HashMap;
 
-import net.sf.anathema.character.main.magic.basic.cost.CostList;
-import net.sf.anathema.character.main.magic.basic.source.SourceBook;
-import net.sf.anathema.character.main.magic.charm.CharmImpl;
-import net.sf.anathema.character.main.magic.charm.combos.ComboRestrictions;
-import net.sf.anathema.character.main.magic.charm.duration.SimpleDuration;
-import net.sf.anathema.character.main.magic.charm.prerequisite.CharmLearnPrerequisite;
-import net.sf.anathema.character.main.magic.charm.prerequisite.impl.SimpleCharmLearnPrerequisite;
-import net.sf.anathema.character.main.magic.charm.type.CharmType;
-import net.sf.anathema.character.main.magic.charm.type.CharmTypeModel;
-import net.sf.anathema.character.main.magic.parser.charms.CharmPrerequisiteList;
-import net.sf.anathema.character.main.traits.ValuedTraitType;
-import net.sf.anathema.character.main.traits.types.AbilityType;
-import net.sf.anathema.character.main.traits.types.OtherTraitType;
+import net.sf.anathema.character.magic.basic.cost.CostList;
+import net.sf.anathema.character.magic.basic.source.SourceBook;
+import net.sf.anathema.character.magic.charm.CharmImpl;
+import net.sf.anathema.character.magic.charm.combos.ComboRestrictions;
+import net.sf.anathema.character.magic.charm.duration.SimpleDuration;
+import net.sf.anathema.character.magic.charm.prerequisite.CharmLearnPrerequisite;
+import net.sf.anathema.character.magic.charm.prerequisite.SimpleCharmLearnPrerequisite;
+import net.sf.anathema.character.magic.charm.type.CharmType;
+import net.sf.anathema.character.magic.charm.type.CharmTypeModel;
+import net.sf.anathema.character.magic.parser.charms.CharmPrerequisiteList;
+import net.sf.anathema.hero.traits.model.ValuedTraitType;
+import net.sf.anathema.hero.traits.model.types.AbilityType;
+import net.sf.anathema.hero.traits.model.types.OtherTraitType;
 import net.sf.anathema.hero.dummy.DummyCharm;
 import net.sf.anathema.hero.dummy.DummyExaltCharacterType;
 
@@ -36,8 +36,8 @@ public class CharmTest {
 
   @Test
   public void testCharmNoSource() throws Exception {
-    ValuedTraitType[] prerequisites = new ValuedTraitType[]{new net.sf.anathema.character.main.traits.types.ValuedTraitType(AbilityType.Archery, 5)};
-    ValuedTraitType essence = new net.sf.anathema.character.main.traits.types.ValuedTraitType(OtherTraitType.Essence, 3);
+    ValuedTraitType[] prerequisites = new ValuedTraitType[]{new net.sf.anathema.hero.traits.model.types.ValuedTraitType(AbilityType.Archery, 5)};
+    ValuedTraitType essence = new net.sf.anathema.hero.traits.model.types.ValuedTraitType(OtherTraitType.Essence, 3);
     CharmPrerequisiteList prerequisiteList =
             new CharmPrerequisiteList(prerequisites, essence, new CharmLearnPrerequisite[0]);
     CharmTypeModel model = new CharmTypeModel();
@@ -53,8 +53,8 @@ public class CharmTest {
   }
 
   private CharmImpl createCharm(DummyCharm parent) {
-    ValuedTraitType[] prerequisites = new ValuedTraitType[]{new net.sf.anathema.character.main.traits.types.ValuedTraitType(AbilityType.Archery, 5)};
-    ValuedTraitType essence = new net.sf.anathema.character.main.traits.types.ValuedTraitType(OtherTraitType.Essence, 3);
+    ValuedTraitType[] prerequisites = new ValuedTraitType[]{new net.sf.anathema.hero.traits.model.types.ValuedTraitType(AbilityType.Archery, 5)};
+    ValuedTraitType essence = new net.sf.anathema.hero.traits.model.types.ValuedTraitType(OtherTraitType.Essence, 3);
     CharmPrerequisiteList prerequisiteList =
             new CharmPrerequisiteList(prerequisites, essence, new CharmLearnPrerequisite[0]);
     CharmTypeModel model = new CharmTypeModel();

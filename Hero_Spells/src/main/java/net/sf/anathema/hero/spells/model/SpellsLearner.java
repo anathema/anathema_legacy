@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.spells.model;
 
-import net.sf.anathema.character.main.magic.basic.Magic;
-import net.sf.anathema.character.main.magic.spells.SpellImpl;
+import net.sf.anathema.character.magic.basic.Magic;
+import net.sf.anathema.character.magic.spells.SpellImpl;
 import net.sf.anathema.hero.charms.model.learn.MagicLearner;
 
 import java.util.Arrays;

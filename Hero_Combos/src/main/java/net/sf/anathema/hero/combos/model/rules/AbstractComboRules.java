@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.combos.model.rules;
 
-import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.character.main.traits.types.AbilityType;
-import net.sf.anathema.character.main.traits.types.AttributeType;
+import net.sf.anathema.character.magic.charm.Charm;
+import net.sf.anathema.hero.traits.model.types.AbilityType;
+import net.sf.anathema.hero.traits.model.types.AttributeType;
 import net.sf.anathema.hero.combos.model.ComboRules;
 
 public abstract class AbstractComboRules implements ComboRules {

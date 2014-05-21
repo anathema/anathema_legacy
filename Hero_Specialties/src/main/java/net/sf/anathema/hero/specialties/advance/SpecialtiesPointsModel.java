@@ -11,7 +11,7 @@ import net.sf.anathema.hero.specialties.advance.creation.SpecialtiesBonusPointCa
 import net.sf.anathema.hero.specialties.advance.creation.SpecialtyBonusModel;
 import net.sf.anathema.hero.specialties.advance.creation.SpecialtyCreationData;
 import net.sf.anathema.hero.specialties.template.SpecialtyPointsTemplate;
-import net.sf.anathema.hero.traits.TraitMap;
+import net.sf.anathema.hero.traits.model.TraitMap;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 

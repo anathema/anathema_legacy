@@ -1,13 +1,13 @@
 package net.sf.anathema.hero.abilities.sheet.content;
 
-import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.traits.lists.IdentifiedTraitTypeList;
-import net.sf.anathema.character.main.traits.types.AbilityType;
+import net.sf.anathema.hero.traits.model.TraitType;
+import net.sf.anathema.hero.traits.model.lists.IdentifiedTraitTypeList;
+import net.sf.anathema.hero.traits.model.types.AbilityType;
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.abilities.model.AbilityModelFetcher;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.traits.TraitMap;
-import net.sf.anathema.hero.traits.TraitModelFetcher;
+import net.sf.anathema.hero.traits.model.TraitMap;
+import net.sf.anathema.hero.traits.model.TraitModelFetcher;
 import net.sf.anathema.hero.traits.sheet.content.FavorableTraitContent;
 
 import java.util.Arrays;

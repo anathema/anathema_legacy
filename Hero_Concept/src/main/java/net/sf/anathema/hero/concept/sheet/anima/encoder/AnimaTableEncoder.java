@@ -6,7 +6,7 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
-import net.sf.anathema.character.main.type.CharacterType;
+import net.sf.anathema.character.framework.type.CharacterType;
 import net.sf.anathema.hero.concept.sheet.anima.content.AnimaTableRangeProvider;
 import net.sf.anathema.hero.concept.sheet.anima.content.AnimaTableStealthProvider;
 import net.sf.anathema.hero.concept.sheet.anima.content.AnimaUtils;

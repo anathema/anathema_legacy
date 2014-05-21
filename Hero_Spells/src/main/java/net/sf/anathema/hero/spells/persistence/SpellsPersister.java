@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.spells.persistence;
 
 import com.google.common.base.Predicate;
-import net.sf.anathema.character.main.magic.spells.Spell;
+import net.sf.anathema.character.magic.spells.Spell;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.persistence.AbstractModelJsonPersister;
 import net.sf.anathema.hero.spells.model.SpellsModel;

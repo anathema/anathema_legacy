@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.dummy.models;
 
-import net.sf.anathema.character.main.traits.limitation.TraitLimitation;
-import net.sf.anathema.character.main.traits.limitation.StaticTraitLimitation;
-import net.sf.anathema.character.main.traits.types.OtherTraitType;
-import net.sf.anathema.character.main.traits.types.VirtueType;
+import net.sf.anathema.hero.traits.model.limitation.TraitLimitation;
+import net.sf.anathema.hero.traits.model.limitation.StaticTraitLimitation;
+import net.sf.anathema.hero.traits.model.types.OtherTraitType;
+import net.sf.anathema.hero.traits.model.types.VirtueType;
 import net.sf.anathema.hero.dummy.trait.DummyTrait;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.model.Hero;

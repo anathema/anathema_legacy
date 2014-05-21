@@ -5,7 +5,7 @@ import com.itextpdf.text.Element;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.ColumnText;
 import com.itextpdf.text.pdf.PdfContentByte;
-import net.sf.anathema.framework.reporting.ReportException;
+import net.sf.anathema.character.framework.reporting.ReportException;
 import net.sf.anathema.hero.sheet.pdf.encoder.general.Bounds;
 
 public class SimpleColumn {

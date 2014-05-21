@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.combos.display.presenter;
 
-import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
-import net.sf.anathema.character.main.view.SectionView;
+import net.sf.anathema.character.magic.description.MagicDescriptionProvider;
+import net.sf.anathema.character.framework.display.SectionView;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.hero.charms.display.presenter.CharmDescriptionProviderExtractor;

@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.specialties.advance.creation;
 
-import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.hero.traits.model.TraitType;
 import net.sf.anathema.hero.specialties.template.SpecialtyPointsTemplate;
 import net.sf.anathema.hero.traits.advance.TraitListCreationData;
 

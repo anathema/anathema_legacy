@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.spiritual.sheet.essence.encoder;
 
-import net.sf.anathema.character.main.traits.SystemConstants;
-import net.sf.anathema.character.main.traits.types.OtherTraitType;
+import net.sf.anathema.hero.traits.model.SystemConstants;
+import net.sf.anathema.hero.traits.model.types.OtherTraitType;
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.sheet.pdf.content.BasicContent;
 import net.sf.anathema.hero.sheet.pdf.encoder.EncoderIds;

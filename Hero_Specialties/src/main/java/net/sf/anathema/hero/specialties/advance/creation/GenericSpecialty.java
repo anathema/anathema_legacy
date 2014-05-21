@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.specialties.advance.creation;
 
-import net.sf.anathema.character.main.template.creation.IGenericSpecialty;
-import net.sf.anathema.character.main.traits.ValuedTraitType;
+import net.sf.anathema.hero.template.creation.IGenericSpecialty;
+import net.sf.anathema.hero.traits.model.ValuedTraitType;
 
 public class GenericSpecialty implements IGenericSpecialty {
 

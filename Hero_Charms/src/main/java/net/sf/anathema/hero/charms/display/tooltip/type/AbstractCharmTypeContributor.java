@@ -1,13 +1,13 @@
 package net.sf.anathema.hero.charms.display.tooltip.type;
 
-import net.sf.anathema.character.main.magic.basic.Magic;
-import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.character.main.magic.charm.type.CharmType;
-import net.sf.anathema.character.main.magic.charm.type.ICharmTypeModel;
-import net.sf.anathema.character.main.magic.charm.type.ICharmTypeVisitor;
-import net.sf.anathema.character.main.magic.charm.type.IReflexiveSpecialsModel;
-import net.sf.anathema.character.main.magic.charm.type.ISimpleSpecialsModel;
-import net.sf.anathema.character.main.magic.charm.type.TurnType;
+import net.sf.anathema.character.magic.basic.Magic;
+import net.sf.anathema.character.magic.charm.Charm;
+import net.sf.anathema.character.magic.charm.type.CharmType;
+import net.sf.anathema.character.magic.charm.type.ICharmTypeModel;
+import net.sf.anathema.character.magic.charm.type.ICharmTypeVisitor;
+import net.sf.anathema.character.magic.charm.type.IReflexiveSpecialsModel;
+import net.sf.anathema.character.magic.charm.type.ISimpleSpecialsModel;
+import net.sf.anathema.character.magic.charm.type.TurnType;
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.charms.display.tooltip.ICharmTypeStringBuilder;
 import net.sf.anathema.hero.charms.display.tooltip.MagicTooltipContributor;

@@ -1,8 +1,7 @@
 package net.sf.anathema.hero.traits.model;
 
-import net.sf.anathema.character.main.traits.lists.IdentifiedTraitTypeList;
+import net.sf.anathema.hero.traits.model.lists.IdentifiedTraitTypeList;
 import net.sf.anathema.hero.model.HeroModel;
-import net.sf.anathema.hero.traits.TraitMap;
 
 public interface TraitListModel extends TraitMap, HeroModel {
 

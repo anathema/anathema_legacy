@@ -3,14 +3,14 @@ package net.sf.anathema.hero.health.sheet;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPTable;
-import net.sf.anathema.character.main.traits.types.AbilityType;
-import net.sf.anathema.character.main.traits.types.AttributeType;
+import net.sf.anathema.hero.traits.model.types.AbilityType;
+import net.sf.anathema.hero.traits.model.types.AttributeType;
 import net.sf.anathema.hero.health.HealthLevelType;
 import net.sf.anathema.hero.sheet.pdf.content.stats.StatsModifiers;
 import net.sf.anathema.hero.sheet.pdf.encoder.general.Bounds;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
-import net.sf.anathema.hero.traits.TraitMap;
+import net.sf.anathema.hero.traits.model.TraitMap;
 import net.sf.anathema.framework.environment.Resources;
 
 public class HealthAndMovementTableEncoder extends AbstractHealthAndMovementTableEncoder {

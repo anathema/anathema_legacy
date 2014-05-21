@@ -1,9 +1,9 @@
 package net.sf.anathema.cascades.presenter;
 
-import net.sf.anathema.character.main.magic.charm.martial.MartialArtsLevel;
-import net.sf.anathema.character.main.magic.charm.martial.MartialArtsUtilities;
-import net.sf.anathema.character.main.type.CharacterType;
-import net.sf.anathema.character.main.type.CharacterTypes;
+import net.sf.anathema.character.magic.charm.martial.MartialArtsLevel;
+import net.sf.anathema.character.magic.charm.martial.MartialArtsUtilities;
+import net.sf.anathema.character.framework.type.CharacterType;
+import net.sf.anathema.character.framework.type.CharacterTypes;
 import net.sf.anathema.hero.charms.compiler.CharmProvider;
 import net.sf.anathema.hero.charms.model.CharmGroupCollection;
 import net.sf.anathema.hero.charms.model.ICharmGroup;

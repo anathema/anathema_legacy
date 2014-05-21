@@ -4,7 +4,7 @@ import net.sf.anathema.hero.dummy.DummyCharm;
 import net.sf.anathema.hero.charms.model.CharmHasSameTypeAsCharacter;
 import net.sf.anathema.hero.dummy.DummyMundaneCharacterType;
 import net.sf.anathema.hero.dummy.template.DummyHeroTemplate;
-import net.sf.anathema.character.main.type.CharacterType;
+import net.sf.anathema.character.framework.type.CharacterType;
 import net.sf.anathema.hero.model.Hero;
 import org.junit.Test;
 

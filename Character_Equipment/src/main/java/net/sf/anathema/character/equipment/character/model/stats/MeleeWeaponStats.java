@@ -2,7 +2,7 @@ package net.sf.anathema.character.equipment.character.model.stats;
 
 import net.sf.anathema.character.equipment.creation.model.WeaponTag;
 import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
-import net.sf.anathema.character.main.traits.types.AbilityType;
+import net.sf.anathema.hero.traits.model.types.AbilityType;
 
 public class MeleeWeaponStats extends AbstractWeaponStats {
 

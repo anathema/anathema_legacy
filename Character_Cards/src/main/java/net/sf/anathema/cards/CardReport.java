@@ -6,7 +6,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import net.sf.anathema.cards.data.ICardData;
 import net.sf.anathema.cards.data.providers.ICardDataProvider;
 import net.sf.anathema.cards.layout.ICardLayout;
-import net.sf.anathema.framework.reporting.ReportException;
+import net.sf.anathema.character.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.framework.environment.Resources;

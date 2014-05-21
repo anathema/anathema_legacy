@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.traits.persistence;
 
-import net.sf.anathema.character.main.library.trait.Trait;
+import net.sf.anathema.hero.traits.model.Trait;
 
 public class TraitPersister {
 

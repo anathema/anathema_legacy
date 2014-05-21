@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.charms.advance.experience;
 
-import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.character.magic.charm.Charm;
 import net.sf.anathema.hero.charms.advance.costs.CostAnalyzerImpl;
 import net.sf.anathema.hero.model.Hero;
 

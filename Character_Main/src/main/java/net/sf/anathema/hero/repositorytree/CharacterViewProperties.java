@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.repositorytree;
 
-import net.sf.anathema.character.main.CharacterUI;
-import net.sf.anathema.character.main.framework.item.CharacterReferenceScanner;
+import net.sf.anathema.character.framework.CharacterUI;
+import net.sf.anathema.character.framework.item.CharacterReferenceScanner;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.view.IItemTypeViewProperties;
 import net.sf.anathema.framework.view.PrintNameFile;

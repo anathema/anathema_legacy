@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.framework.perspective;
 
 import com.google.common.base.Function;
-import net.sf.anathema.character.main.CharacterUI;
-import net.sf.anathema.character.main.template.TemplateType;
-import net.sf.anathema.character.main.xml.presentation.GenericPresentationTemplate;
+import net.sf.anathema.character.framework.CharacterUI;
+import net.sf.anathema.hero.template.TemplateType;
+import net.sf.anathema.character.framework.xml.presentation.GenericPresentationTemplate;
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.framework.perspective.model.CharacterIdentifier;
 import net.sf.anathema.lib.file.RelativePath;

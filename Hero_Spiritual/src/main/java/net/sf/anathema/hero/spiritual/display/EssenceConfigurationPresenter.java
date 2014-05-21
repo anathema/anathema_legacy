@@ -1,13 +1,13 @@
 package net.sf.anathema.hero.spiritual.display;
 
-import net.sf.anathema.character.main.library.trait.Trait;
-import net.sf.anathema.character.main.library.trait.presenter.TraitPresenter;
-import net.sf.anathema.character.main.traits.types.OtherTraitType;
-import net.sf.anathema.character.main.view.labelledvalue.IValueView;
-import net.sf.anathema.character.main.view.labelledvalue.NullValueView;
+import net.sf.anathema.hero.traits.model.Trait;
+import net.sf.anathema.hero.traits.display.TraitPresenter;
+import net.sf.anathema.hero.traits.model.types.OtherTraitType;
+import net.sf.anathema.character.framework.display.labelledvalue.IValueView;
+import net.sf.anathema.character.framework.display.labelledvalue.NullValueView;
 import net.sf.anathema.framework.value.IntValueView;
 import net.sf.anathema.hero.spiritual.model.pool.EssencePoolModel;
-import net.sf.anathema.hero.traits.TraitMap;
+import net.sf.anathema.hero.traits.model.TraitMap;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.framework.environment.Resources;

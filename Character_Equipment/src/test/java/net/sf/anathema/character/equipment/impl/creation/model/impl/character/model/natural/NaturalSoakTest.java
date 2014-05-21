@@ -1,7 +1,7 @@
 package net.sf.anathema.character.equipment.impl.creation.model.impl.character.model.natural;
 
-import net.sf.anathema.character.main.traits.types.AttributeType;
-import net.sf.anathema.character.main.traits.types.ValuedTraitType;
+import net.sf.anathema.hero.traits.model.types.AttributeType;
+import net.sf.anathema.hero.traits.model.types.ValuedTraitType;
 import net.sf.anathema.hero.dummy.DummyEssenceCharacterType;
 import net.sf.anathema.hero.dummy.DummyExaltCharacterType;
 import net.sf.anathema.hero.dummy.DummyMundaneCharacterType;

@@ -1,6 +1,6 @@
 package net.sf.anathema.fx.hero.overview;
 
-import net.sf.anathema.character.main.library.overview.OverviewCategory;
+import net.sf.anathema.character.framework.library.overview.OverviewCategory;
 import net.sf.anathema.hero.advance.overview.view.CategorizedOverview;
 import net.sf.anathema.hero.advance.overview.view.OverviewDisplay;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;

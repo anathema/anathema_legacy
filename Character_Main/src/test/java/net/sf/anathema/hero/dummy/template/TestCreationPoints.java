@@ -1,10 +1,10 @@
 package net.sf.anathema.hero.dummy.template;
 
-import net.sf.anathema.character.main.template.points.AbilityCreationPoints;
-import net.sf.anathema.character.main.template.points.AbstractCreationPoints;
-import net.sf.anathema.character.main.template.points.AttributeCreationPoints;
-import net.sf.anathema.character.main.template.points.IAbilityCreationPoints;
-import net.sf.anathema.character.main.template.points.IAttributeCreationPoints;
+import net.sf.anathema.hero.template.points.AbilityCreationPoints;
+import net.sf.anathema.hero.template.points.AbstractCreationPoints;
+import net.sf.anathema.hero.template.points.AttributeCreationPoints;
+import net.sf.anathema.hero.template.points.IAbilityCreationPoints;
+import net.sf.anathema.hero.template.points.IAttributeCreationPoints;
 
 public class TestCreationPoints extends AbstractCreationPoints {
 

@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.dummy;
 
-import net.sf.anathema.character.main.template.creation.BonusPointCosts;
-import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
-import net.sf.anathema.character.main.template.points.FixedValueRatingCosts;
-import net.sf.anathema.character.main.traits.ValuedTraitType;
+import net.sf.anathema.hero.template.creation.BonusPointCosts;
+import net.sf.anathema.hero.template.experience.CurrentRatingCosts;
+import net.sf.anathema.hero.template.points.FixedValueRatingCosts;
+import net.sf.anathema.hero.traits.model.ValuedTraitType;
 
 public class DummyBonusPointCosts implements BonusPointCosts {
 

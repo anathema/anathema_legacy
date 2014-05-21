@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.languages.display.presenter;
 
-import net.sf.anathema.character.main.library.overview.OverviewCategory;
-import net.sf.anathema.character.main.library.removableentry.RemovableEntryListener;
-import net.sf.anathema.character.main.view.labelledvalue.IValueView;
-import net.sf.anathema.character.main.view.labelledvalue.LabelledAllotmentView;
+import net.sf.anathema.character.framework.library.overview.OverviewCategory;
+import net.sf.anathema.character.framework.library.removableentry.RemovableEntryListener;
+import net.sf.anathema.character.framework.display.labelledvalue.IValueView;
+import net.sf.anathema.character.framework.display.labelledvalue.LabelledAllotmentView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.hero.languages.model.LanguagesModel;
 import net.sf.anathema.interaction.Command;

@@ -1,14 +1,14 @@
 package net.sf.anathema.hero.combat.model;
 
-import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.traits.types.AbilityType;
-import net.sf.anathema.character.main.traits.types.AttributeType;
-import net.sf.anathema.character.main.traits.types.OtherTraitType;
-import net.sf.anathema.character.main.type.CharacterType;
-import net.sf.anathema.character.main.util.HeroStatsModifiers;
+import net.sf.anathema.hero.traits.model.TraitType;
+import net.sf.anathema.hero.traits.model.types.AbilityType;
+import net.sf.anathema.hero.traits.model.types.AttributeType;
+import net.sf.anathema.hero.traits.model.types.OtherTraitType;
+import net.sf.anathema.character.framework.type.CharacterType;
+import net.sf.anathema.character.framework.library.HeroStatsModifiers;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.traits.TraitMap;
-import net.sf.anathema.hero.traits.TraitModelFetcher;
+import net.sf.anathema.hero.traits.model.TraitMap;
+import net.sf.anathema.hero.traits.model.TraitModelFetcher;
 
 public class CharacterUtilities {
 

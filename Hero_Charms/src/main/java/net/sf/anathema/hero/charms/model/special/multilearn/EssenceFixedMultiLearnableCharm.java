@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.charms.model.special.multilearn;
 
-import net.sf.anathema.character.main.traits.SystemConstants;
-import net.sf.anathema.character.main.traits.types.OtherTraitType;
+import net.sf.anathema.hero.traits.model.SystemConstants;
+import net.sf.anathema.hero.traits.model.types.OtherTraitType;
 
 public class EssenceFixedMultiLearnableCharm extends TraitDependentMultiLearnableCharm {
 

@@ -1,10 +1,10 @@
 package net.sf.anathema.herotype.solar.model.curse;
 
-import net.sf.anathema.character.main.library.trait.DefaultTraitType;
-import net.sf.anathema.character.main.library.trait.Trait;
-import net.sf.anathema.character.main.library.trait.favorable.FriendlyIncrementChecker;
+import net.sf.anathema.hero.traits.model.DefaultTraitType;
+import net.sf.anathema.hero.traits.model.Trait;
+import net.sf.anathema.hero.traits.model.FriendlyIncrementChecker;
 import net.sf.anathema.hero.traits.model.trait.ModificationType;
-import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.hero.traits.model.TraitType;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.traits.model.trait.LimitedTrait;
 import net.sf.anathema.hero.traits.template.TraitTemplate;

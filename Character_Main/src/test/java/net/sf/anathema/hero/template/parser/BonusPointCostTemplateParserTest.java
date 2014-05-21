@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.template.parser;
 
-import net.sf.anathema.character.main.traits.types.AttributeType;
-import net.sf.anathema.character.main.xml.creation.BonusPointCostTemplateParser;
-import net.sf.anathema.character.main.xml.creation.GenericBonusPointCosts;
+import net.sf.anathema.hero.traits.model.types.AttributeType;
+import net.sf.anathema.character.framework.xml.creation.BonusPointCostTemplateParser;
+import net.sf.anathema.character.framework.xml.creation.GenericBonusPointCosts;
 import net.sf.anathema.hero.dummy.DummyGenericTrait;
 import net.sf.anathema.hero.dummy.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.lib.exception.AnathemaException;

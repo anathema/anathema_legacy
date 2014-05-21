@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.attributes.advance.experience;
 
-import net.sf.anathema.character.main.library.trait.Trait;
+import net.sf.anathema.hero.traits.model.Trait;
 import net.sf.anathema.hero.advance.overview.model.AbstractIntegerValueModel;
 import net.sf.anathema.hero.attributes.model.AttributeModel;
 

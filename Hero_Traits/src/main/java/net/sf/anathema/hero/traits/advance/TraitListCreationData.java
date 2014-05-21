@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.traits.advance;
 
-import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.hero.traits.model.TraitType;
 
 public interface TraitListCreationData {
 

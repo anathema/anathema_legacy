@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.framework.perspective.model;
 
 import com.google.gson.Gson;
-import net.sf.anathema.character.main.persistence.HeroMainFileDto;
+import net.sf.anathema.character.framework.persistence.HeroMainFileDto;
 import net.sf.anathema.framework.repository.access.printname.ReferenceBuilder;
 import net.sf.anathema.framework.repository.access.printname.SimpleRepositoryId;
 

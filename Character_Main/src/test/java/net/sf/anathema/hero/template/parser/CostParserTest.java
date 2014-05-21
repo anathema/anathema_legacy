@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.template.parser;
 
-import net.sf.anathema.character.main.xml.util.CostParser;
+import net.sf.anathema.character.framework.xml.util.CostParser;
 import net.sf.anathema.lib.exception.PersistenceException;
 import org.dom4j.Element;
 import org.junit.Before;

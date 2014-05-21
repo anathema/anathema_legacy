@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.concept.model.concept;
 
-import net.sf.anathema.character.main.IIntegerDescription;
-import net.sf.anathema.character.main.IntegerDescription;
+import net.sf.anathema.character.framework.IIntegerDescription;
+import net.sf.anathema.character.framework.IntegerDescription;
 import net.sf.anathema.hero.concept.CasteCollection;
 import net.sf.anathema.hero.concept.CasteSelection;
 import net.sf.anathema.hero.concept.ConceptChange;

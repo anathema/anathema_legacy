@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.attributes.sheet.content;
 
 import net.sf.anathema.hero.traits.model.GroupedTraitType;
-import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.traits.types.AttributeType;
+import net.sf.anathema.hero.traits.model.TraitType;
+import net.sf.anathema.hero.traits.model.types.AttributeType;
 import net.sf.anathema.hero.attributes.model.AttributeModel;
 import net.sf.anathema.hero.attributes.model.AttributesModelFetcher;
 import net.sf.anathema.hero.model.Hero;

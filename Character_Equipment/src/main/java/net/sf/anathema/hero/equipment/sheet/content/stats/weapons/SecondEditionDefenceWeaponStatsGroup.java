@@ -4,10 +4,10 @@ import net.sf.anathema.character.equipment.character.EquipmentHeroEvaluator;
 import net.sf.anathema.character.equipment.character.EquipmentOptionsProvider;
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
 import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IWeaponStats;
-import net.sf.anathema.character.main.traits.types.AttributeType;
+import net.sf.anathema.hero.traits.model.types.AttributeType;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.traits.TraitMap;
-import net.sf.anathema.hero.traits.TraitModelFetcher;
+import net.sf.anathema.hero.traits.model.TraitMap;
+import net.sf.anathema.hero.traits.model.TraitModelFetcher;
 import net.sf.anathema.framework.environment.Resources;
 
 public class SecondEditionDefenceWeaponStatsGroup extends AbstractDefenceWeaponStatsGroup {

@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.charms;
 
-import net.sf.anathema.character.main.traits.TraitValueStrategy;
-import net.sf.anathema.character.main.traits.types.OtherTraitType;
+import net.sf.anathema.hero.traits.model.TraitValueStrategy;
+import net.sf.anathema.hero.traits.model.types.OtherTraitType;
 import net.sf.anathema.hero.dummy.DummyHero;
 import net.sf.anathema.hero.dummy.models.DummyHeroConcept;
 import net.sf.anathema.hero.dummy.models.DummySpiritualTraitModel;

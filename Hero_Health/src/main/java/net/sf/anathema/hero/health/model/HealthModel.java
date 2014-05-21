@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.health.model;
 
-import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.hero.traits.model.TraitType;
 import net.sf.anathema.hero.health.HealthLevelType;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.lib.util.Identifier;

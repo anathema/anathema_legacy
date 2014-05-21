@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.specialties.display.presenter;
 
-import net.sf.anathema.character.main.library.trait.specialties.SpecialtiesModel;
-import net.sf.anathema.character.main.library.trait.specialties.SpecialtiesModelFetcher;
-import net.sf.anathema.character.main.view.SectionView;
+import net.sf.anathema.hero.specialties.SpecialtiesModel;
+import net.sf.anathema.hero.specialties.SpecialtiesModelFetcher;
+import net.sf.anathema.character.framework.display.SectionView;
 import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.model.ApplicationModel;
 import net.sf.anathema.hero.display.HeroModelGroup;

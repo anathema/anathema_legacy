@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.attributes.advance.creation;
 
-import net.sf.anathema.character.main.library.trait.Trait;
-import net.sf.anathema.character.main.library.trait.TraitGroup;
+import net.sf.anathema.hero.traits.model.Trait;
+import net.sf.anathema.hero.traits.model.TraitGroup;
 
 import java.util.ArrayList;
 import java.util.Arrays;

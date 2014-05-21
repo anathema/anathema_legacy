@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.dummy;
 
-import net.sf.anathema.character.main.framework.ICharacterTemplateRegistryCollection;
-import net.sf.anathema.character.main.framework.data.ExtensibleDataSet;
-import net.sf.anathema.character.main.template.ITemplateRegistry;
-import net.sf.anathema.character.main.type.CharacterTypes;
+import net.sf.anathema.character.framework.ICharacterTemplateRegistryCollection;
+import net.sf.anathema.character.framework.data.ExtensibleDataSet;
+import net.sf.anathema.hero.template.ITemplateRegistry;
+import net.sf.anathema.character.framework.type.CharacterTypes;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.initialization.repository.DataFileProvider;

@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.repositorytree;
 
-import net.sf.anathema.character.main.framework.item.CharacterReferenceScanner;
+import net.sf.anathema.character.framework.item.CharacterReferenceScanner;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.module.ItemTypePresentationFactory;
 import net.sf.anathema.framework.presenter.view.IItemTypeViewProperties;
@@ -11,8 +11,8 @@ import net.sf.anathema.hero.platform.JsonCharacterReferenceScanner;
 import net.sf.anathema.initialization.ForItemType;
 import net.sf.anathema.framework.environment.Resources;
 
-import static net.sf.anathema.character.main.itemtype.CharacterItemTypeRetrieval.retrieveCharacterItemType;
-import static net.sf.anathema.character.main.itemtype.CharacterItemType.CHARACTER_ITEM_TYPE_ID;
+import static net.sf.anathema.character.framework.itemtype.CharacterItemTypeRetrieval.retrieveCharacterItemType;
+import static net.sf.anathema.character.framework.itemtype.CharacterItemType.CHARACTER_ITEM_TYPE_ID;
 
 @ForItemType(CHARACTER_ITEM_TYPE_ID)
 public class CharacterItemTypePresentationFactory implements ItemTypePresentationFactory {

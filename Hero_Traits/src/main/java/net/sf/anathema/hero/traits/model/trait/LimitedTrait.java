@@ -1,10 +1,10 @@
 package net.sf.anathema.hero.traits.model.trait;
 
-import net.sf.anathema.character.main.library.trait.DefaultTrait;
-import net.sf.anathema.character.main.library.trait.FriendlyValueChangeChecker;
-import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
-import net.sf.anathema.character.main.library.trait.rules.TraitRules;
-import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.hero.traits.model.DefaultTrait;
+import net.sf.anathema.hero.traits.model.FriendlyValueChangeChecker;
+import net.sf.anathema.hero.traits.model.IncrementChecker;
+import net.sf.anathema.hero.traits.model.TraitRules;
+import net.sf.anathema.hero.traits.model.TraitType;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.traits.template.TraitTemplate;
 

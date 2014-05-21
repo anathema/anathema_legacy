@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.traits.sheet.content;
 
-import net.sf.anathema.character.main.library.trait.specialties.Specialty;
-import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.hero.specialties.Specialty;
+import net.sf.anathema.hero.traits.model.TraitType;
 
 public class NamedGenericTraitReference implements ValuedTraitReference {
 

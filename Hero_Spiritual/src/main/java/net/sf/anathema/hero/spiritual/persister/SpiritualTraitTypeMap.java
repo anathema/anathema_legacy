@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.spiritual.persister;
 
-import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.traits.types.OtherTraitType;
-import net.sf.anathema.character.main.traits.types.VirtueType;
+import net.sf.anathema.hero.traits.model.TraitType;
+import net.sf.anathema.hero.traits.model.types.OtherTraitType;
+import net.sf.anathema.hero.traits.model.types.VirtueType;
 import net.sf.anathema.hero.traits.persistence.TraitTypeMap;
 
 import java.util.HashMap;

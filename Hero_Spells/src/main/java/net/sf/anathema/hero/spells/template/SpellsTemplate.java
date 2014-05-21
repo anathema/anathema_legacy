@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.spells.template;
 
-import net.sf.anathema.character.main.magic.spells.CircleType;
+import net.sf.anathema.character.magic.spells.CircleType;
 
 import java.util.ArrayList;
 import java.util.List;

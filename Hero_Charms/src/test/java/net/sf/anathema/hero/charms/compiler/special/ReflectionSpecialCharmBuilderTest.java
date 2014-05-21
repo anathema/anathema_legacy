@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.charms.compiler.special;
 
-import net.sf.anathema.character.main.magic.parser.dto.special.SpecialCharmDto;
+import net.sf.anathema.character.magic.parser.dto.special.SpecialCharmDto;
 import net.sf.anathema.framework.environment.ConfigurableDummyObjectFactory;
 import net.sf.anathema.hero.charms.model.special.ISpecialCharm;
 import org.junit.Test;

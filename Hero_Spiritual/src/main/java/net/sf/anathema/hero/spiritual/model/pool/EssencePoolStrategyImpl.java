@@ -3,7 +3,7 @@ package net.sf.anathema.hero.spiritual.model.pool;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.change.ChangeFlavor;
 import net.sf.anathema.hero.model.change.FlavoredChangeListener;
-import net.sf.anathema.hero.traits.TraitMap;
+import net.sf.anathema.hero.traits.model.TraitMap;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.IdentifiedInteger;
 import org.jmock.example.announcer.Announcer;

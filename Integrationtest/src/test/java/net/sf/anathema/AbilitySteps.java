@@ -4,8 +4,8 @@ import com.google.inject.Inject;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import net.sf.anathema.character.main.library.trait.Trait;
-import net.sf.anathema.character.main.traits.types.AbilityType;
+import net.sf.anathema.hero.traits.model.Trait;
+import net.sf.anathema.hero.traits.model.types.AbilityType;
 import net.sf.anathema.hero.points.overview.SpendingModel;
 
 import static org.hamcrest.CoreMatchers.is;

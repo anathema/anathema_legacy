@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.specialties.display.presenter;
 
-import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.hero.traits.model.TraitType;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.control.ObjectValueListener;
 

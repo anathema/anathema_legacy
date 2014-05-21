@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.charms.display.presenter;
 
-import net.sf.anathema.character.main.magic.description.AggregatedCharmDescriptionProvider;
-import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
-import net.sf.anathema.character.main.magic.description.MagicDescriptionProviderFactory;
-import net.sf.anathema.character.main.magic.description.RegisteredMagicDescriptionProviderFactory;
+import net.sf.anathema.character.magic.description.AggregatedCharmDescriptionProvider;
+import net.sf.anathema.character.magic.description.MagicDescriptionProvider;
+import net.sf.anathema.character.magic.description.MagicDescriptionProviderFactory;
+import net.sf.anathema.character.magic.description.RegisteredMagicDescriptionProviderFactory;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.environment.Environment;
 

@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.concept;
 
-import net.sf.anathema.character.main.template.TemplateType;
+import net.sf.anathema.hero.template.TemplateType;
 
 public interface CasteCollection {
 

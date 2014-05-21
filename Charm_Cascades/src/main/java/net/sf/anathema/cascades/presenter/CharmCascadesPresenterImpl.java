@@ -1,7 +1,7 @@
 package net.sf.anathema.cascades.presenter;
 
-import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
-import net.sf.anathema.character.main.type.CharacterTypes;
+import net.sf.anathema.character.magic.description.MagicDescriptionProvider;
+import net.sf.anathema.character.framework.type.CharacterTypes;
 import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.hero.charms.compiler.CharmCache;

@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.abilities.advance;
 
-import net.sf.anathema.character.main.template.creation.BonusPointCosts;
-import net.sf.anathema.character.main.template.creation.ICreationPoints;
-import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
-import net.sf.anathema.character.main.template.points.IAbilityCreationPoints;
+import net.sf.anathema.hero.template.creation.BonusPointCosts;
+import net.sf.anathema.hero.template.creation.ICreationPoints;
+import net.sf.anathema.hero.template.experience.IExperiencePointCosts;
+import net.sf.anathema.hero.template.points.IAbilityCreationPoints;
 import net.sf.anathema.hero.abilities.advance.creation.*;
 import net.sf.anathema.hero.abilities.advance.experience.AbilityExperienceCalculator;
 import net.sf.anathema.hero.abilities.advance.experience.AbilityExperienceModel;

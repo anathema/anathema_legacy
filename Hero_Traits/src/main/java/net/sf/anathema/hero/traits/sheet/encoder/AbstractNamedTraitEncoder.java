@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.traits.sheet.encoder;
 
 import com.itextpdf.text.pdf.PdfContentByte;
-import net.sf.anathema.character.main.library.trait.specialties.Specialty;
-import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.hero.specialties.Specialty;
+import net.sf.anathema.hero.traits.model.TraitType;
 import net.sf.anathema.hero.sheet.pdf.encoder.general.Position;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
 import net.sf.anathema.hero.traits.sheet.content.NamedGenericTraitReference;

@@ -1,10 +1,10 @@
 package net.sf.anathema.hero.spiritual.advance;
 
-import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
-import net.sf.anathema.character.main.template.points.MultiplyRatingCosts;
+import net.sf.anathema.hero.template.experience.IExperiencePointCosts;
+import net.sf.anathema.hero.template.points.MultiplyRatingCosts;
 import net.sf.anathema.hero.dummy.trait.DummyTrait;
-import net.sf.anathema.character.main.traits.types.OtherTraitType;
-import net.sf.anathema.character.main.traits.types.VirtueType;
+import net.sf.anathema.hero.traits.model.types.OtherTraitType;
+import net.sf.anathema.hero.traits.model.types.VirtueType;
 import net.sf.anathema.hero.spiritual.advance.experience.SpiritualExperienceCalculator;
 import org.junit.Test;
 

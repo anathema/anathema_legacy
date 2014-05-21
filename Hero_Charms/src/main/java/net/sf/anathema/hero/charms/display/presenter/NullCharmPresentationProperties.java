@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.charms.display.presenter;
 
-import net.sf.anathema.character.main.type.CharacterType;
+import net.sf.anathema.character.framework.type.CharacterType;
 import net.sf.anathema.framework.environment.dependencies.DoNotInstantiateAutomatically;
 
 @DoNotInstantiateAutomatically

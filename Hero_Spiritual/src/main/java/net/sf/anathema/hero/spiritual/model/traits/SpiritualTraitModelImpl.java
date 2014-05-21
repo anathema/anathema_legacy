@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.spiritual.model.traits;
 
-import net.sf.anathema.character.main.library.trait.Trait;
-import net.sf.anathema.character.main.traits.limitation.TraitLimitation;
-import net.sf.anathema.character.main.traits.types.OtherTraitType;
-import net.sf.anathema.character.main.traits.types.VirtueType;
+import net.sf.anathema.hero.traits.model.Trait;
+import net.sf.anathema.hero.traits.model.limitation.TraitLimitation;
+import net.sf.anathema.hero.traits.model.types.OtherTraitType;
+import net.sf.anathema.hero.traits.model.types.VirtueType;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
@@ -11,8 +11,8 @@ import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.hero.spiritual.SpiritualTraitModel;
 import net.sf.anathema.hero.spiritual.template.SpiritualTraitsTemplate;
 import net.sf.anathema.hero.traits.model.DefaultTraitMap;
-import net.sf.anathema.hero.traits.TraitModel;
-import net.sf.anathema.hero.traits.TraitModelFetcher;
+import net.sf.anathema.hero.traits.model.TraitModel;
+import net.sf.anathema.hero.traits.model.TraitModelFetcher;
 import net.sf.anathema.hero.traits.model.trait.template.TraitLimitationFactory;
 import net.sf.anathema.hero.traits.model.trait.template.TraitTemplateMap;
 import net.sf.anathema.hero.traits.model.event.TraitValueChangedListener;

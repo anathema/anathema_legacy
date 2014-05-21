@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.charms.model.special.prerequisite;
 
-import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.character.magic.charm.Charm;
+import net.sf.anathema.hero.traits.model.TraitType;
 import net.sf.anathema.hero.charms.model.special.ISpecialCharm;
 
 public interface IPrerequisiteModifyingCharm extends ISpecialCharm {

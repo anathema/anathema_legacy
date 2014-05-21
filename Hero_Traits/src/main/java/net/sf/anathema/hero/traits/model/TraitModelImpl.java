@@ -1,10 +1,8 @@
 package net.sf.anathema.hero.traits.model;
 
-import net.sf.anathema.character.main.library.trait.Trait;
-import net.sf.anathema.character.main.traits.TraitValueStrategy;
-import net.sf.anathema.character.main.traits.context.CreationTraitValueStrategy;
-import net.sf.anathema.character.main.traits.context.ExperiencedTraitValueStrategy;
-import net.sf.anathema.character.main.traits.context.ProxyTraitValueStrategy;
+import net.sf.anathema.hero.traits.model.context.CreationTraitValueStrategy;
+import net.sf.anathema.hero.traits.model.context.ExperiencedTraitValueStrategy;
+import net.sf.anathema.hero.traits.model.context.ProxyTraitValueStrategy;
 import net.sf.anathema.hero.experience.ExperienceChange;
 import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
@@ -14,8 +12,6 @@ import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.change.ChangeFlavor;
 import net.sf.anathema.hero.model.change.FlavoredChangeListener;
-import net.sf.anathema.hero.traits.TraitMap;
-import net.sf.anathema.hero.traits.TraitModel;
 import net.sf.anathema.lib.util.Identifier;
 
 import java.util.Iterator;

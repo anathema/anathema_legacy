@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.intimacies.model;
 
-import net.sf.anathema.character.main.library.trait.Trait;
+import net.sf.anathema.hero.traits.model.Trait;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 
 public interface Intimacy {

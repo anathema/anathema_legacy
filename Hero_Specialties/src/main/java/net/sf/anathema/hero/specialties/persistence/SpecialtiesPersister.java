@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.specialties.persistence;
 
-import net.sf.anathema.character.main.library.trait.specialties.SpecialtiesModel;
-import net.sf.anathema.character.main.library.trait.specialties.Specialty;
-import net.sf.anathema.character.main.library.trait.subtrait.ISubTraitContainer;
-import net.sf.anathema.character.main.traits.types.AbilityType;
+import net.sf.anathema.hero.specialties.SpecialtiesModel;
+import net.sf.anathema.hero.specialties.Specialty;
+import net.sf.anathema.hero.specialties.ISubTraitContainer;
+import net.sf.anathema.hero.traits.model.types.AbilityType;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.persistence.AbstractModelJsonPersister;
 import net.sf.anathema.hero.traits.persistence.TraitPersister;

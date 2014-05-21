@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.traits.model.group;
 
 import net.sf.anathema.hero.traits.model.GroupedTraitType;
-import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.traits.lists.IIdentifiedCasteTraitTypeList;
-import net.sf.anathema.character.main.traits.lists.IdentifiedCasteTraitTypeList;
+import net.sf.anathema.hero.traits.model.TraitType;
+import net.sf.anathema.hero.traits.model.lists.IIdentifiedCasteTraitTypeList;
+import net.sf.anathema.hero.traits.model.lists.IdentifiedCasteTraitTypeList;
 import net.sf.anathema.hero.concept.CasteCollection;
 import net.sf.anathema.hero.concept.CasteType;
 import net.sf.anathema.lib.collection.MultiEntryMap;

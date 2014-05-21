@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.spiritual.display;
 
 import javafx.scene.Node;
-import net.sf.anathema.character.main.view.labelledvalue.IValueView;
+import net.sf.anathema.character.framework.display.labelledvalue.IValueView;
 import net.sf.anathema.framework.value.IntValueView;
 import net.sf.anathema.fx.hero.overview.FxStringOverview;
 import net.sf.anathema.fx.hero.traitview.FxTraitView;

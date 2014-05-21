@@ -2,7 +2,7 @@ package net.sf.anathema.fx.hero.configurableview;
 
 import javafx.scene.Node;
 import javafx.scene.control.Label;
-import net.sf.anathema.character.main.IIntegerDescription;
+import net.sf.anathema.character.framework.IIntegerDescription;
 import net.sf.anathema.hero.display.configurableview.MultiComponentLine;
 import net.sf.anathema.lib.gui.widgets.IIntegerView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;

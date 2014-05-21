@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.spiritual.model.pool;
 
-import net.sf.anathema.character.main.traits.ValuedTraitType;
+import net.sf.anathema.hero.traits.model.ValuedTraitType;
 
 public class FactorizedTrait {
 

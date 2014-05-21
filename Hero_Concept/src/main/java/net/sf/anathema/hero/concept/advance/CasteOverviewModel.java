@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.concept.advance;
 
-import net.sf.anathema.character.main.xml.presentation.GenericPresentationTemplate;
+import net.sf.anathema.character.framework.xml.presentation.GenericPresentationTemplate;
 import net.sf.anathema.hero.concept.CasteType;
 import net.sf.anathema.hero.concept.HeroConceptFetcher;
 import net.sf.anathema.hero.model.Hero;

@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.specialties.advance.creation;
 
-import net.sf.anathema.character.main.template.creation.IGenericSpecialty;
-import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.hero.traits.TraitMap;
+import net.sf.anathema.hero.template.creation.IGenericSpecialty;
+import net.sf.anathema.hero.traits.model.TraitType;
+import net.sf.anathema.hero.traits.model.TraitMap;
 
 import java.util.ArrayList;
 import java.util.Arrays;

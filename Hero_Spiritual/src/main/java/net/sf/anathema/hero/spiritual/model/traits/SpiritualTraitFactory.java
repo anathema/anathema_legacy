@@ -1,11 +1,11 @@
 package net.sf.anathema.hero.spiritual.model.traits;
 
-import net.sf.anathema.character.main.library.trait.DefaultTrait;
-import net.sf.anathema.character.main.library.trait.FriendlyValueChangeChecker;
-import net.sf.anathema.character.main.library.trait.Trait;
-import net.sf.anathema.character.main.library.trait.ValueChangeChecker;
-import net.sf.anathema.character.main.library.trait.rules.TraitRules;
-import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.hero.traits.model.DefaultTrait;
+import net.sf.anathema.hero.traits.model.FriendlyValueChangeChecker;
+import net.sf.anathema.hero.traits.model.Trait;
+import net.sf.anathema.hero.traits.model.ValueChangeChecker;
+import net.sf.anathema.hero.traits.model.TraitRules;
+import net.sf.anathema.hero.traits.model.TraitType;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.traits.model.trait.TraitRulesImpl;
 import net.sf.anathema.hero.traits.model.trait.template.TraitTemplateMap;

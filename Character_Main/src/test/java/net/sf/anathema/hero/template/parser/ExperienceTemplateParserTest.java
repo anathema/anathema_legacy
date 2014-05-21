@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.template.parser;
 
-import net.sf.anathema.character.main.template.points.MultiplyRatingCosts;
-import net.sf.anathema.character.main.xml.experience.ExperienceTemplateParser;
-import net.sf.anathema.character.main.xml.experience.GenericExperiencePointCosts;
+import net.sf.anathema.hero.template.points.MultiplyRatingCosts;
+import net.sf.anathema.character.framework.xml.experience.ExperienceTemplateParser;
+import net.sf.anathema.character.framework.xml.experience.GenericExperiencePointCosts;
 import net.sf.anathema.hero.dummy.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.xml.DocumentUtilities;

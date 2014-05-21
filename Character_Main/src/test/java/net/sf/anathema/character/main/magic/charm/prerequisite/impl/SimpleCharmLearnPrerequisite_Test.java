@@ -1,6 +1,7 @@
 package net.sf.anathema.character.main.magic.charm.prerequisite.impl;
 
-import net.sf.anathema.character.main.magic.charm.ICharmLearnArbitrator;
+import net.sf.anathema.character.magic.charm.ICharmLearnArbitrator;
+import net.sf.anathema.character.magic.charm.prerequisite.SimpleCharmLearnPrerequisite;
 import org.junit.Test;
 import org.mockito.Mockito;
 

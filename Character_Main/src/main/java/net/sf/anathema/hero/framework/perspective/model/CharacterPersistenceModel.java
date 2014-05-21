@@ -1,13 +1,13 @@
 package net.sf.anathema.hero.framework.perspective.model;
 
-import net.sf.anathema.character.main.framework.item.HeroRepositoryData;
-import net.sf.anathema.character.main.framework.item.Item;
-import net.sf.anathema.character.main.framework.item.ItemRepositoryLocation;
-import net.sf.anathema.character.main.itemtype.CharacterItemTypeRetrieval;
-import net.sf.anathema.character.main.persistence.HeroItemPersister;
+import net.sf.anathema.character.framework.item.HeroRepositoryData;
+import net.sf.anathema.character.framework.item.Item;
+import net.sf.anathema.character.framework.item.ItemRepositoryLocation;
+import net.sf.anathema.character.framework.itemtype.CharacterItemTypeRetrieval;
+import net.sf.anathema.character.framework.persistence.HeroItemPersister;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.persistence.RepositoryItemPersister;
+import net.sf.anathema.character.framework.persistence.RepositoryItemPersister;
 import net.sf.anathema.framework.repository.Repository;
 import net.sf.anathema.framework.repository.RepositoryIdData;
 import net.sf.anathema.framework.repository.access.RepositoryReadAccess;
@@ -20,7 +20,7 @@ import net.sf.anathema.hero.model.Hero;
 import java.io.IOException;
 import java.util.Collection;
 
-import static net.sf.anathema.character.main.itemtype.CharacterItemTypeRetrieval.retrieveCharacterItemType;
+import static net.sf.anathema.character.framework.itemtype.CharacterItemTypeRetrieval.retrieveCharacterItemType;
 
 public class CharacterPersistenceModel {
 

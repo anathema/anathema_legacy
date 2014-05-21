@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.framework.perspective;
 
-import net.sf.anathema.character.main.framework.item.Item;
+import net.sf.anathema.character.framework.item.Item;
 import net.sf.anathema.hero.framework.perspective.model.CharacterIdentifier;
 import net.sf.anathema.hero.framework.perspective.model.ItemSystemModel;
 
@@ -28,6 +28,6 @@ public class CharacterStackPresenter {
 
   public void addViewForCharacter(CharacterIdentifier identifier) {
     Item item = model.loadItem(identifier);
-    bridge.addViewForCharacter(identifier, (net.sf.anathema.character.main.Character) item.getItemData());
+    bridge.addViewForCharacter(identifier, (net.sf.anathema.character.framework.Character) item.getItemData());
   }
 }

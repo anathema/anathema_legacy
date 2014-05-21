@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.charms.display.tree;
 
-import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
+import net.sf.anathema.character.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.hero.charms.display.coloring.CharacterColoringStrategy;
 import net.sf.anathema.hero.charms.display.coloring.ConfigurableCharmDye;
 import net.sf.anathema.hero.charms.display.model.CharacterCharmTypes;

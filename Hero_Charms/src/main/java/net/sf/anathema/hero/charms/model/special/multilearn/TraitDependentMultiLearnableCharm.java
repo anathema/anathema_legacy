@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.charms.model.special.multilearn;
 
-import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.traits.ValuedTraitType;
+import net.sf.anathema.hero.traits.model.TraitType;
+import net.sf.anathema.hero.traits.model.ValuedTraitType;
 
 public class TraitDependentMultiLearnableCharm extends AbstractMultiLearnableCharm {
 

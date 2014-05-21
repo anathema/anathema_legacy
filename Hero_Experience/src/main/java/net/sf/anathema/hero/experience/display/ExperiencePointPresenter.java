@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.experience.display;
 
-import net.sf.anathema.character.main.view.SectionView;
+import net.sf.anathema.character.framework.display.SectionView;
 import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.model.Hero;

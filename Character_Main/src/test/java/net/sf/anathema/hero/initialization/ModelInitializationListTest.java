@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.initialization;
 
-import net.sf.anathema.character.main.template.ConfiguredModel;
+import net.sf.anathema.hero.template.ConfiguredModel;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 import org.junit.Test;

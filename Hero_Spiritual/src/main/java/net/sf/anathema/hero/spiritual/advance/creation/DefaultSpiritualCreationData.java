@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.spiritual.advance.creation;
 
-import net.sf.anathema.character.main.template.creation.BonusPointCosts;
-import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
-import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.traits.types.OtherTraitType;
+import net.sf.anathema.hero.template.creation.BonusPointCosts;
+import net.sf.anathema.hero.template.experience.CurrentRatingCosts;
+import net.sf.anathema.hero.traits.model.TraitType;
+import net.sf.anathema.hero.traits.model.types.OtherTraitType;
 import net.sf.anathema.hero.spiritual.template.SpiritualPointsTemplate;
 
 public class DefaultSpiritualCreationData implements SpiritualCreationData {

@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.charms.display.coloring;
 
 import net.sf.anathema.hero.charms.display.presenter.CharmGroupInformer;
-import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.character.magic.charm.Charm;
 import net.sf.anathema.platform.tree.display.TreeView;
 
 import java.util.ArrayList;

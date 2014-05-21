@@ -2,6 +2,7 @@ package net.sf.anathema.character.main.view;
 
 import net.sf.anathema.framework.environment.dependencies.DoNotInstantiateAutomatically;
 import net.sf.anathema.framework.util.Produces;
+import net.sf.anathema.character.framework.display.SubViewFactory;
 
 @DoNotInstantiateAutomatically
 @Produces(DummyView.class)

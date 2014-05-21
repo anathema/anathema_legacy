@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.spells.model;
 
-import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.character.main.magic.parser.spells.ISpellCache;
-import net.sf.anathema.character.main.magic.spells.*;
-import net.sf.anathema.character.main.template.HeroTemplate;
+import net.sf.anathema.character.magic.charm.Charm;
+import net.sf.anathema.character.magic.parser.spells.ISpellCache;
+import net.sf.anathema.character.magic.spells.*;
+import net.sf.anathema.hero.template.HeroTemplate;
 import net.sf.anathema.hero.charms.advance.MagicPointsModelFetcher;
 import net.sf.anathema.hero.charms.advance.experience.MagicExperienceCosts;
 import net.sf.anathema.hero.charms.model.CharmsModel;

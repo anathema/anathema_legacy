@@ -6,8 +6,8 @@ import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.health.model.HealthModel;
 import net.sf.anathema.hero.health.model.HealthModelFetcher;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.traits.TraitModel;
-import net.sf.anathema.hero.traits.TraitModelFetcher;
+import net.sf.anathema.hero.traits.model.TraitModel;
+import net.sf.anathema.hero.traits.model.TraitModelFetcher;
 
 public class CharmSpecialistImpl implements CharmSpecialist {
 

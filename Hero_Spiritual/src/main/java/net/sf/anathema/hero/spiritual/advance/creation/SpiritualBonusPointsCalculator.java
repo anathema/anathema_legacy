@@ -1,15 +1,15 @@
 package net.sf.anathema.hero.spiritual.advance.creation;
 
-import net.sf.anathema.character.main.library.trait.Trait;
+import net.sf.anathema.hero.traits.model.Trait;
 import net.sf.anathema.hero.spiritual.model.traits.TraitCollectionUtilities;
-import net.sf.anathema.character.main.library.trait.experience.TraitRatingCostCalculator;
-import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
-import net.sf.anathema.character.main.traits.types.OtherTraitType;
+import net.sf.anathema.hero.traits.advance.TraitRatingCostCalculator;
+import net.sf.anathema.hero.template.experience.CurrentRatingCosts;
+import net.sf.anathema.hero.traits.model.types.OtherTraitType;
 import net.sf.anathema.hero.points.HeroBonusPointCalculator;
 import net.sf.anathema.hero.spiritual.SpiritualTraitModel;
 
 import static net.sf.anathema.hero.spiritual.model.traits.TraitCollectionUtilities.getVirtues;
-import static net.sf.anathema.character.main.traits.types.OtherTraitType.Essence;
+import static net.sf.anathema.hero.traits.model.types.OtherTraitType.Essence;
 
 public class SpiritualBonusPointsCalculator implements HeroBonusPointCalculator {
 

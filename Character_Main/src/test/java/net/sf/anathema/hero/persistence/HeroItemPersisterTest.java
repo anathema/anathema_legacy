@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.persistence;
 
-import net.sf.anathema.character.main.Character;
-import net.sf.anathema.character.main.framework.data.IExtensibleDataSetProvider;
-import net.sf.anathema.character.main.framework.item.Item;
-import net.sf.anathema.character.main.persistence.HeroItemPersister;
+import net.sf.anathema.character.framework.Character;
+import net.sf.anathema.character.framework.data.IExtensibleDataSetProvider;
+import net.sf.anathema.character.framework.item.Item;
+import net.sf.anathema.character.framework.persistence.HeroItemPersister;
 import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.hero.dummy.DummyExaltCharacterType;
 import net.sf.anathema.hero.dummy.DummyObjectFactory;

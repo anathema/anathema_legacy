@@ -1,13 +1,13 @@
 package net.sf.anathema.hero.framework.perspective;
 
-import net.sf.anathema.character.main.framework.item.CharacterReferenceScanner;
-import net.sf.anathema.character.main.framework.item.Item;
-import net.sf.anathema.character.main.persistence.HeroItemPersister;
+import net.sf.anathema.character.framework.item.CharacterReferenceScanner;
+import net.sf.anathema.character.framework.item.Item;
+import net.sf.anathema.character.framework.persistence.HeroItemPersister;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.environment.Environment;
-import net.sf.anathema.framework.persistence.RepositoryItemPersister;
-import net.sf.anathema.framework.presenter.ItemReceiver;
-import net.sf.anathema.framework.reporting.Report;
+import net.sf.anathema.character.framework.persistence.RepositoryItemPersister;
+import net.sf.anathema.character.framework.display.ItemReceiver;
+import net.sf.anathema.character.framework.reporting.Report;
 import net.sf.anathema.framework.repository.IRepositoryFileResolver;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.framework.HeroEnvironment;

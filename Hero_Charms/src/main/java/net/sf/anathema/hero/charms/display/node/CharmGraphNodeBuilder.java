@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.charms.display.node;
 
-import net.sf.anathema.character.main.magic.charm.Charm;
+import net.sf.anathema.character.magic.charm.Charm;
 import net.sf.anathema.graph.nodes.IIdentifiedRegularNode;
 
 import java.util.Collection;

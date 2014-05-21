@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.charms.advance;
 
-import net.sf.anathema.character.main.template.creation.ICreationPoints;
+import net.sf.anathema.hero.template.creation.ICreationPoints;
 import net.sf.anathema.hero.charms.advance.costs.CostAnalyzerImpl;
 import net.sf.anathema.hero.charms.advance.creation.DefaultMagicModel;
 import net.sf.anathema.hero.charms.advance.creation.FavoredMagicModel;
@@ -12,7 +12,7 @@ import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.charms.model.CharmsModelFetcher;
 import net.sf.anathema.hero.charms.template.advance.MagicPointsTemplate;
 import net.sf.anathema.hero.framework.HeroEnvironment;
-import net.sf.anathema.character.main.magic.charm.martial.MartialArtsLevel;
+import net.sf.anathema.character.magic.charm.martial.MartialArtsLevel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.hero.model.change.ChangeAnnouncer;

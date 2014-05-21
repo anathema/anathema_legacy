@@ -1,10 +1,10 @@
 package net.sf.anathema.hero.magic.parser;
 
-import net.sf.anathema.character.main.magic.basic.attribute.MagicAttribute;
-import net.sf.anathema.character.main.magic.basic.attribute.MagicAttributeImpl;
-import net.sf.anathema.character.main.magic.parser.charms.CharmAttributeBuilder;
-import net.sf.anathema.character.main.traits.types.AbilityType;
-import net.sf.anathema.character.main.traits.types.ValuedTraitType;
+import net.sf.anathema.character.magic.basic.attribute.MagicAttribute;
+import net.sf.anathema.character.magic.basic.attribute.MagicAttributeImpl;
+import net.sf.anathema.character.magic.parser.charms.CharmAttributeBuilder;
+import net.sf.anathema.hero.traits.model.types.AbilityType;
+import net.sf.anathema.hero.traits.model.types.ValuedTraitType;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.apache.commons.lang3.ArrayUtils;
 import org.dom4j.Element;

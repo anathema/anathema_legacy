@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.equipment.model;
 
-import net.sf.anathema.character.main.type.CharacterType;
+import net.sf.anathema.character.framework.type.CharacterType;
 import net.sf.anathema.equipment.core.MagicalMaterial;
 import net.sf.anathema.framework.environment.ConfigurableDummyObjectFactory;
 import org.junit.Test;

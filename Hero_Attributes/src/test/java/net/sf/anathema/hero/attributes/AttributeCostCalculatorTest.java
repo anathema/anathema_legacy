@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.attributes;
 
-import net.sf.anathema.character.main.library.trait.Trait;
-import net.sf.anathema.character.main.template.points.AttributeCreationPoints;
-import net.sf.anathema.character.main.template.points.IAttributeCreationPoints;
-import net.sf.anathema.character.main.traits.types.AttributeGroupType;
+import net.sf.anathema.hero.traits.model.Trait;
+import net.sf.anathema.hero.template.points.AttributeCreationPoints;
+import net.sf.anathema.hero.template.points.IAttributeCreationPoints;
+import net.sf.anathema.hero.traits.model.types.AttributeGroupType;
 import net.sf.anathema.hero.attributes.advance.creation.AttributeBonusPointCalculator;
 import net.sf.anathema.hero.attributes.advance.creation.AttributeCreationData;
 import net.sf.anathema.hero.attributes.advance.creation.TraitGroupCost;
@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static net.sf.anathema.character.main.traits.types.AttributeGroupType.*;
+import static net.sf.anathema.hero.traits.model.types.AttributeGroupType.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Matchers.any;

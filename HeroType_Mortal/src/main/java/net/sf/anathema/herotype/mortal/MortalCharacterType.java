@@ -1,9 +1,9 @@
 package net.sf.anathema.herotype.mortal;
 
-import net.sf.anathema.character.main.template.magic.AbilityFavoringType;
-import net.sf.anathema.character.main.template.magic.FavoringTraitType;
-import net.sf.anathema.character.main.type.CharacterType;
-import net.sf.anathema.character.main.type.RegisteredCharacterType;
+import net.sf.anathema.hero.template.magic.AbilityFavoringType;
+import net.sf.anathema.hero.template.magic.FavoringTraitType;
+import net.sf.anathema.character.framework.type.CharacterType;
+import net.sf.anathema.character.framework.type.RegisteredCharacterType;
 import net.sf.anathema.framework.environment.dependencies.Weight;
 
 @RegisteredCharacterType

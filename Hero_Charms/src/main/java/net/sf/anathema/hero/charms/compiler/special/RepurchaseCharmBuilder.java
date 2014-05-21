@@ -7,15 +7,15 @@ import net.sf.anathema.hero.charms.model.special.multilearn.StaticMultiLearnable
 import net.sf.anathema.hero.charms.model.special.multilearn.TieredMultiLearnableCharm;
 import net.sf.anathema.hero.charms.model.special.multilearn.TraitCharmTier;
 import net.sf.anathema.hero.charms.model.special.multilearn.TraitDependentMultiLearnableCharm;
-import net.sf.anathema.character.main.magic.parser.charms.TraitTypeFinder;
-import net.sf.anathema.character.main.magic.parser.dto.special.RepurchaseDto;
-import net.sf.anathema.character.main.magic.parser.dto.special.RequirementDto;
-import net.sf.anathema.character.main.magic.parser.dto.special.SpecialCharmDto;
-import net.sf.anathema.character.main.magic.parser.dto.special.TierDto;
-import net.sf.anathema.character.main.magic.parser.dto.special.TierRepurchaseDto;
-import net.sf.anathema.character.main.magic.parser.dto.special.TraitRepurchaseDto;
-import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.traits.types.ValuedTraitType;
+import net.sf.anathema.character.magic.parser.charms.TraitTypeFinder;
+import net.sf.anathema.character.magic.parser.dto.special.RepurchaseDto;
+import net.sf.anathema.character.magic.parser.dto.special.RequirementDto;
+import net.sf.anathema.character.magic.parser.dto.special.SpecialCharmDto;
+import net.sf.anathema.character.magic.parser.dto.special.TierDto;
+import net.sf.anathema.character.magic.parser.dto.special.TierRepurchaseDto;
+import net.sf.anathema.character.magic.parser.dto.special.TraitRepurchaseDto;
+import net.sf.anathema.hero.traits.model.TraitType;
+import net.sf.anathema.hero.traits.model.types.ValuedTraitType;
 
 import java.util.ArrayList;
 import java.util.List;

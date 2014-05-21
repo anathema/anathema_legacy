@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.dummy.template;
 
-import net.sf.anathema.character.main.template.creation.ICreationPoints;
-import net.sf.anathema.character.main.template.points.IAbilityCreationPoints;
-import net.sf.anathema.character.main.template.points.IAttributeCreationPoints;
+import net.sf.anathema.hero.template.creation.ICreationPoints;
+import net.sf.anathema.hero.template.points.IAbilityCreationPoints;
+import net.sf.anathema.hero.template.points.IAttributeCreationPoints;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 
 public class DummyCreationPoints implements ICreationPoints {

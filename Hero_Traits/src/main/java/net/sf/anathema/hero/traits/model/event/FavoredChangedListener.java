@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.traits.model.event;
 
-import net.sf.anathema.character.main.library.trait.favorable.FavorableState;
-import net.sf.anathema.character.main.library.trait.favorable.IFavorableStateChangedListener;
+import net.sf.anathema.hero.traits.model.FavorableState;
+import net.sf.anathema.hero.traits.model.IFavorableStateChangedListener;
 import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.change.ChangeFlavor;
 

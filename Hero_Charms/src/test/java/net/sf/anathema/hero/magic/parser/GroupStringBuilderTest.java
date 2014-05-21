@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.magic.parser;
 
-import net.sf.anathema.character.main.magic.charm.CharmException;
-import net.sf.anathema.character.main.magic.parser.charms.GroupStringBuilder;
-import net.sf.anathema.character.main.traits.types.AttributeType;
-import net.sf.anathema.character.main.traits.types.ValuedTraitType;
+import net.sf.anathema.character.magic.charm.CharmException;
+import net.sf.anathema.character.magic.parser.charms.GroupStringBuilder;
+import net.sf.anathema.hero.traits.model.types.AttributeType;
+import net.sf.anathema.hero.traits.model.types.ValuedTraitType;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.dom4j.Element;
 import org.junit.Test;

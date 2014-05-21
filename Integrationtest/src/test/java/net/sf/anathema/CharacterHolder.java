@@ -1,13 +1,13 @@
 package net.sf.anathema;
 
 import com.google.inject.Singleton;
-import net.sf.anathema.character.main.Character;
+import net.sf.anathema.character.framework.Character;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.charms.model.CharmsModelFetcher;
 import net.sf.anathema.hero.concept.HeroConcept;
 import net.sf.anathema.hero.concept.HeroConceptFetcher;
-import net.sf.anathema.hero.traits.TraitMap;
-import net.sf.anathema.hero.traits.TraitModelFetcher;
+import net.sf.anathema.hero.traits.model.TraitMap;
+import net.sf.anathema.hero.traits.model.TraitModelFetcher;
 
 @Singleton
 public class CharacterHolder {

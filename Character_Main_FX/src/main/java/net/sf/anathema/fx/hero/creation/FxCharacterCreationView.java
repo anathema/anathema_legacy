@@ -4,7 +4,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.stage.Window;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
-import net.sf.anathema.character.main.template.HeroTemplate;
+import net.sf.anathema.hero.template.HeroTemplate;
 import net.sf.anathema.hero.creation.CharacterCreationView;
 import net.sf.anathema.hero.creation.ToggleButtonPanel;
 import net.sf.anathema.interaction.Tool;

@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.magic.model.charms;
 
-import net.sf.anathema.character.main.magic.charm.duration.Duration;
-import net.sf.anathema.character.main.magic.charm.duration.SimpleDuration;
+import net.sf.anathema.character.magic.charm.duration.Duration;
+import net.sf.anathema.character.magic.charm.duration.SimpleDuration;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

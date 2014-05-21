@@ -1,11 +1,11 @@
 package net.sf.anathema.hero.magic.parser;
 
 import static org.junit.Assert.assertTrue;
-import net.sf.anathema.character.main.magic.basic.attribute.MagicAttributeImpl;
-import net.sf.anathema.character.main.magic.charm.prerequisite.CharmLearnPrerequisite;
-import net.sf.anathema.character.main.magic.charm.prerequisite.impl.AttributeKnownCharmLearnPrerequisite;
-import net.sf.anathema.character.main.magic.parser.charms.prerequisite.GenericAttributePrerequisiteBuilder;
-import net.sf.anathema.character.main.traits.types.AbilityType;
+import net.sf.anathema.character.magic.basic.attribute.MagicAttributeImpl;
+import net.sf.anathema.character.magic.charm.prerequisite.CharmLearnPrerequisite;
+import net.sf.anathema.character.magic.charm.prerequisite.AttributeKnownCharmLearnPrerequisite;
+import net.sf.anathema.character.magic.parser.charms.prerequisite.GenericAttributePrerequisiteBuilder;
+import net.sf.anathema.hero.traits.model.types.AbilityType;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 
 import org.apache.commons.lang3.ArrayUtils;

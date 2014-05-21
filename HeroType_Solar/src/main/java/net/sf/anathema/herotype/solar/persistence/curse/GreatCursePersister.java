@@ -1,7 +1,7 @@
 package net.sf.anathema.herotype.solar.persistence.curse;
 
-import net.sf.anathema.character.main.library.trait.Trait;
-import net.sf.anathema.character.main.traits.types.VirtueType;
+import net.sf.anathema.hero.traits.model.Trait;
+import net.sf.anathema.hero.traits.model.types.VirtueType;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.persistence.AbstractModelJsonPersister;
 import net.sf.anathema.herotype.solar.model.curse.DescriptiveVirtueFlaw;

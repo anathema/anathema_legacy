@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.framework;
 
-import net.sf.anathema.character.main.framework.CharacterTemplateInitializer;
-import net.sf.anathema.character.main.framework.data.IExtensibleDataSetProvider;
+import net.sf.anathema.character.framework.CharacterTemplateInitializer;
+import net.sf.anathema.character.framework.data.IExtensibleDataSetProvider;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.framework.environment.ResourceLoader;

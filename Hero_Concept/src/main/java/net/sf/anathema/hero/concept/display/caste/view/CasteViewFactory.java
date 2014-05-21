@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.concept.display.caste.view;
 
-import net.sf.anathema.character.main.view.SubViewFactory;
+import net.sf.anathema.character.framework.display.SubViewFactory;
 import net.sf.anathema.framework.util.Produces;
 import net.sf.anathema.hero.concept.display.caste.presenter.CasteView;
 import net.sf.anathema.platform.fx.Stylesheet;

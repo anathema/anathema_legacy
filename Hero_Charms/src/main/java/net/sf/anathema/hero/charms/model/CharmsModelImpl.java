@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.charms.model;
 
-import static net.sf.anathema.character.main.magic.charm.martial.MartialArtsLevel.Sidereal;
-import static net.sf.anathema.character.main.magic.charm.martial.MartialArtsUtilities.hasLevel;
-import static net.sf.anathema.character.main.magic.charm.martial.MartialArtsUtilities.isFormMagic;
-import static net.sf.anathema.character.main.magic.charm.martial.MartialArtsUtilities.isMartialArts;
+import static net.sf.anathema.character.magic.charm.martial.MartialArtsLevel.Sidereal;
+import static net.sf.anathema.character.magic.charm.martial.MartialArtsUtilities.hasLevel;
+import static net.sf.anathema.character.magic.charm.martial.MartialArtsUtilities.isFormMagic;
+import static net.sf.anathema.character.magic.charm.martial.MartialArtsUtilities.isMartialArts;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,14 +12,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import net.sf.anathema.character.main.magic.basic.attribute.MagicAttribute;
-import net.sf.anathema.character.main.magic.charm.Charm;
-import net.sf.anathema.character.main.magic.charm.CharmAttributeList;
-import net.sf.anathema.character.main.magic.charm.martial.MartialArtsLevel;
-import net.sf.anathema.character.main.magic.charm.martial.MartialArtsUtilities;
-import net.sf.anathema.character.main.magic.charm.prerequisite.CharmLearnPrerequisite;
-import net.sf.anathema.character.main.template.HeroTemplate;
-import net.sf.anathema.character.main.type.CharacterType;
+import net.sf.anathema.character.magic.basic.attribute.MagicAttribute;
+import net.sf.anathema.character.magic.charm.Charm;
+import net.sf.anathema.character.magic.charm.CharmAttributeList;
+import net.sf.anathema.character.magic.charm.martial.MartialArtsLevel;
+import net.sf.anathema.character.magic.charm.martial.MartialArtsUtilities;
+import net.sf.anathema.character.magic.charm.prerequisite.CharmLearnPrerequisite;
+import net.sf.anathema.hero.template.HeroTemplate;
+import net.sf.anathema.character.framework.type.CharacterType;
 import net.sf.anathema.hero.charms.advance.creation.MagicCreationCostEvaluator;
 import net.sf.anathema.hero.charms.compiler.CharmCache;
 import net.sf.anathema.hero.charms.compiler.CharmProvider;
@@ -59,8 +59,8 @@ import net.sf.anathema.hero.model.change.ChangeFlavor;
 import net.sf.anathema.hero.model.change.FlavoredChangeListener;
 import net.sf.anathema.hero.spiritual.model.pool.EssencePoolModel;
 import net.sf.anathema.hero.spiritual.model.pool.EssencePoolModelFetcher;
-import net.sf.anathema.hero.traits.TraitModel;
-import net.sf.anathema.hero.traits.TraitModelFetcher;
+import net.sf.anathema.hero.traits.model.TraitModel;
+import net.sf.anathema.hero.traits.model.TraitModelFetcher;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 
