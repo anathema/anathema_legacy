@@ -21,7 +21,7 @@ import net.sf.anathema.hero.dummy.models.DummySpiritualTraitModel;
 import net.sf.anathema.hero.dummy.models.DummyTraitModel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.specialties.model.SpecialtiesContainer;
-import net.sf.anathema.hero.traits.model.TraitRulesImpl;
+import net.sf.anathema.hero.traits.model.trait.TraitRulesImpl;
 import net.sf.anathema.hero.traits.template.TraitTemplate;
 import net.sf.anathema.hero.traits.template.TraitTemplateFactory;
 import net.sf.anathema.lib.control.IntValueChangedListener;

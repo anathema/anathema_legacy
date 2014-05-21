@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.TraitGroup;
 import net.sf.anathema.character.main.library.trait.favorable.GrumpyIncrementChecker;
 import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
-import net.sf.anathema.character.main.template.ITraitLimitation;
+import net.sf.anathema.character.main.traits.limitation.TraitLimitation;
 import net.sf.anathema.character.main.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.lists.AllAttributeTraitTypeList;
@@ -21,11 +21,11 @@ import net.sf.anathema.hero.traits.DefaultTraitMap;
 import net.sf.anathema.hero.traits.MappedTraitGroup;
 import net.sf.anathema.hero.traits.TraitModel;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
-import net.sf.anathema.hero.traits.model.GroupedTraitTypeBuilder;
+import net.sf.anathema.hero.traits.model.group.GroupedTraitTypeBuilder;
 import net.sf.anathema.hero.traits.model.TraitFactory;
-import net.sf.anathema.hero.traits.model.TraitLimitationFactory;
-import net.sf.anathema.hero.traits.model.TraitTemplateMap;
-import net.sf.anathema.hero.traits.model.TraitTemplateMapImpl;
+import net.sf.anathema.hero.traits.model.trait.template.TraitLimitationFactory;
+import net.sf.anathema.hero.traits.model.trait.template.TraitTemplateMap;
+import net.sf.anathema.hero.traits.model.trait.template.TraitTemplateMapImpl;
 import net.sf.anathema.hero.traits.model.event.TraitValueChangedListener;
 import net.sf.anathema.hero.traits.template.GroupedTraitsTemplate;
 import net.sf.anathema.lib.util.Identifier;
@@ -76,7 +76,7 @@ public class AttributeModelImpl extends DefaultTraitMap implements AttributeMode
 
   @Override
   public int getTraitMaximum() {
-    ITraitLimitation limitation = TraitLimitationFactory.createLimitation(template.standard.limitation);
+    TraitLimitation limitation = TraitLimitationFactory.createLimitation(template.standard.limitation);
     return limitation.getAbsoluteLimit(hero);
   }
 

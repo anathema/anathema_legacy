@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import net.sf.anathema.character.main.framework.item.HeroNameFetcher;
 import net.sf.anathema.character.main.framework.item.Item;
-import net.sf.anathema.character.main.template.ITemplateType;
+import net.sf.anathema.character.main.template.TemplateType;
 import net.sf.anathema.framework.repository.access.RepositoryReadAccess;
 import net.sf.anathema.framework.repository.access.RepositoryWriteAccess;
 import net.sf.anathema.hero.model.Hero;
@@ -47,11 +47,11 @@ public class HeroMainFilePersister {
 
   private HeroMainFileDto convertHeroToDto(Item item) {
     Hero hero = (Hero) item.getItemData();
-    ITemplateType templateType = hero.getTemplate().getTemplateType();
+    TemplateType templateType = hero.getTemplate().getTemplateType();
     return createDtoToSave(item, hero, templateType);
   }
 
-  private HeroMainFileDto createDtoToSave(Item item, Hero hero, ITemplateType templateType) {
+  private HeroMainFileDto createDtoToSave(Item item, Hero hero, TemplateType templateType) {
     HeroMainFileDto mainFileDto = new HeroMainFileDto();
     mainFileDto.printName = new HeroNameFetcher().getName(hero);
     mainFileDto.repositoryId = item.getRepositoryLocation().getId();

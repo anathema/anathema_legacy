@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.dummy.models;
 
-import net.sf.anathema.character.main.template.ITemplateType;
+import net.sf.anathema.character.main.template.TemplateType;
 import net.sf.anathema.hero.concept.CasteCollection;
 import net.sf.anathema.hero.concept.CasteType;
 
@@ -11,7 +11,7 @@ public class NullCasteCollection implements CasteCollection {
   }
 
   @Override
-  public CasteType[] getAllCasteTypes(ITemplateType template) {
+  public CasteType[] getAllCasteTypes(TemplateType template) {
     return new CasteType[0];
   }
 

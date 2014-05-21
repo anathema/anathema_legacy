@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.types.OtherTraitType;
 import net.sf.anathema.character.main.traits.types.VirtueType;
 import net.sf.anathema.hero.spiritual.template.SpiritualTraitsTemplate;
-import net.sf.anathema.hero.traits.model.TraitTemplateMap;
+import net.sf.anathema.hero.traits.model.trait.template.TraitTemplateMap;
 import net.sf.anathema.hero.traits.template.TraitTemplate;
 
 import java.util.HashMap;

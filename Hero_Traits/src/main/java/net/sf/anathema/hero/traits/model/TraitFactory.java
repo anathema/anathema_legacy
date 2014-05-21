@@ -10,6 +10,8 @@ import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.lists.IIdentifiedCasteTraitTypeList;
 import net.sf.anathema.hero.concept.CasteType;
 import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.traits.model.trait.TraitRulesImpl;
+import net.sf.anathema.hero.traits.model.trait.template.TraitTemplateMap;
 import net.sf.anathema.hero.traits.template.TraitTemplate;
 
 import java.util.ArrayList;

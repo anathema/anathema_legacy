@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.concept.model.concept;
 
-import net.sf.anathema.character.main.template.ITemplateType;
+import net.sf.anathema.character.main.template.TemplateType;
 import net.sf.anathema.hero.concept.CasteCollection;
 import net.sf.anathema.hero.concept.CasteType;
 import net.sf.anathema.hero.concept.template.caste.CasteTemplate;
@@ -43,7 +43,7 @@ public class ConfigurableCasteCollection implements CasteCollection {
   }
 
   @Override
-  public CasteType[] getAllCasteTypes(ITemplateType template) {
+  public CasteType[] getAllCasteTypes(TemplateType template) {
     return allTypes.toArray(new CasteType[allTypes.size()]);
   }
 }

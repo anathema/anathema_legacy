@@ -7,8 +7,8 @@ import net.sf.anathema.character.main.library.trait.ValueChangeChecker;
 import net.sf.anathema.character.main.library.trait.rules.TraitRules;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.traits.model.TraitRulesImpl;
-import net.sf.anathema.hero.traits.model.TraitTemplateMap;
+import net.sf.anathema.hero.traits.model.trait.TraitRulesImpl;
+import net.sf.anathema.hero.traits.model.trait.template.TraitTemplateMap;
 import net.sf.anathema.hero.traits.template.TraitTemplate;
 
 import java.util.ArrayList;

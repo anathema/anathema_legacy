@@ -29,7 +29,7 @@ import net.sf.anathema.hero.magic.dummy.DummyCharmsModel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.traits.TraitModel;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
-import net.sf.anathema.hero.traits.model.TraitRulesImpl;
+import net.sf.anathema.hero.traits.model.trait.TraitRulesImpl;
 import net.sf.anathema.hero.traits.template.TraitTemplate;
 import org.junit.Before;
 import org.junit.Test;

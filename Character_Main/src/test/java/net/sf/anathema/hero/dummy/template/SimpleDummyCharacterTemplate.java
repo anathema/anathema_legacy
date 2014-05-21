@@ -2,8 +2,8 @@ package net.sf.anathema.hero.dummy.template;
 
 import net.sf.anathema.character.main.template.ConfiguredModel;
 import net.sf.anathema.character.main.template.HeroTemplate;
-import net.sf.anathema.character.main.template.ITemplateType;
 import net.sf.anathema.character.main.template.TemplateType;
+import net.sf.anathema.character.main.template.TemplateTypeImpl;
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.creation.ICreationPoints;
 import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
@@ -39,11 +39,11 @@ public class SimpleDummyCharacterTemplate implements HeroTemplate {
   }
 
   @Override
-  public ITemplateType getTemplateType() {
+  public TemplateType getTemplateType() {
     if (subtype == null) {
-      return new TemplateType(type);
+      return new TemplateTypeImpl(type);
     }
-    return new TemplateType(type, new SimpleIdentifier(subtype));
+    return new TemplateTypeImpl(type, new SimpleIdentifier(subtype));
   }
 
   @Override

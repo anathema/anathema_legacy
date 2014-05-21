@@ -8,12 +8,12 @@ import java.util.List;
 
 public class TemplateRegistry implements ITemplateRegistry {
 
-  private final HashMap<ITemplateType, HeroTemplate> templatesByType = new HashMap<>();
+  private final HashMap<TemplateType, HeroTemplate> templatesByType = new HashMap<>();
 
   @Override
   public HeroTemplate[] getAllSupportedTemplates(CharacterType type) {
     List<HeroTemplate> typeTemplates = new ArrayList<>();
-    for (ITemplateType templateType : templatesByType.keySet()) {
+    for (TemplateType templateType : templatesByType.keySet()) {
       if (templateType.getCharacterType().equals(type)) {
         HeroTemplate template = getTemplate(templateType);
         if (template != null) {
@@ -26,12 +26,12 @@ public class TemplateRegistry implements ITemplateRegistry {
 
   @Override
   public HeroTemplate getDefaultTemplate(CharacterType type) {
-    ITemplateType templateType = new TemplateType(type);
+    TemplateType templateType = new TemplateTypeImpl(type);
     return getTemplate(templateType);
   }
 
   @Override
-  public HeroTemplate getTemplate(ITemplateType type) {
+  public HeroTemplate getTemplate(TemplateType type) {
     return templatesByType.get(type);
   }
 

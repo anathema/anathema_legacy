@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface HeroTemplate {
 
-  ITemplateType getTemplateType();
+  TemplateType getTemplateType();
 
   List<ConfiguredModel> getModels();
 

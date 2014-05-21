@@ -1,12 +1,12 @@
 package net.sf.anathema.hero.concept;
 
-import net.sf.anathema.character.main.template.ITemplateType;
+import net.sf.anathema.character.main.template.TemplateType;
 
 public interface CasteCollection {
 
   boolean containsCasteType(String casteTypeId);
 
-  CasteType[] getAllCasteTypes(ITemplateType template);
+  CasteType[] getAllCasteTypes(TemplateType template);
 
   CasteType getById(String casteTypeId);
 

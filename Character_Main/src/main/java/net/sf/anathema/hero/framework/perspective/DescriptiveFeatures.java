@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.framework.perspective;
 
-import net.sf.anathema.character.main.template.ITemplateType;
+import net.sf.anathema.character.main.template.TemplateType;
 import net.sf.anathema.hero.framework.perspective.model.CharacterIdentifier;
 import net.sf.anathema.lib.util.Identifier;
 
@@ -10,7 +10,7 @@ public interface DescriptiveFeatures {
 
   CharacterIdentifier getIdentifier();
 
-  ITemplateType getTemplateType();
+  TemplateType getTemplateType();
 
   Identifier getCasteType();
 

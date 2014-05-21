@@ -1,12 +1,11 @@
 package net.sf.anathema.character.main.traits.limitation;
 
-import net.sf.anathema.character.main.template.ITraitLimitation;
 import net.sf.anathema.hero.concept.HeroConcept;
 import net.sf.anathema.hero.concept.HeroConceptFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 
-public class AgeBasedLimitation implements ITraitLimitation {
+public class AgeBasedLimitation implements TraitLimitation {
   private final int absoluteLimit;
   private final int[] ageArray = {100, 250, 500, 1000};
 

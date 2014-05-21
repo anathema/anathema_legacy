@@ -3,8 +3,8 @@ package net.sf.anathema.hero.platform;
 import net.sf.anathema.character.main.framework.item.CharacterReferenceScanner;
 import net.sf.anathema.character.main.persistence.HeroMainFileDto;
 import net.sf.anathema.character.main.persistence.HeroMainFilePersister;
-import net.sf.anathema.character.main.template.ITemplateType;
 import net.sf.anathema.character.main.template.TemplateType;
+import net.sf.anathema.character.main.template.TemplateTypeImpl;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.framework.repository.IRepositoryFileResolver;
@@ -23,7 +23,7 @@ import static net.sf.anathema.hero.concept.CasteType.NULL_CASTE_TYPE;
 
 public class JsonCharacterReferenceScanner implements CharacterReferenceScanner {
 
-  private final Map<CharacterReference, ITemplateType> typesByFile = new HashMap<>();
+  private final Map<CharacterReference, TemplateType> typesByFile = new HashMap<>();
   private final Map<CharacterReference, Identifier> castesByFile = new HashMap<>();
   private final IRepositoryFileResolver resolver;
   private final CharacterTypes characterTypes;
@@ -39,14 +39,14 @@ public class JsonCharacterReferenceScanner implements CharacterReferenceScanner 
       HeroMainFileDto mainFileDto = new HeroMainFilePersister().load(stream);
       CharacterType characterType = characterTypes.findById(mainFileDto.characterType.characterType);
       SimpleIdentifier subType = new SimpleIdentifier(mainFileDto.characterType.subType);
-      typesByFile.put(reference, new TemplateType(characterType, subType));
+      typesByFile.put(reference, new TemplateTypeImpl(characterType, subType));
       castesByFile.put(reference, NULL_CASTE_TYPE);
     }
   }
 
   @Override
   public CharacterType getCharacterType(CharacterReference reference) {
-    ITemplateType templateType = getTemplateType(reference);
+    TemplateType templateType = getTemplateType(reference);
     if (templateType == null) {
       return null;
     }
@@ -54,7 +54,7 @@ public class JsonCharacterReferenceScanner implements CharacterReferenceScanner 
   }
 
   @Override
-  public ITemplateType getTemplateType(CharacterReference reference) {
+  public TemplateType getTemplateType(CharacterReference reference) {
     if (typesByFile.containsKey(reference)) {
       return typesByFile.get(reference);
     }

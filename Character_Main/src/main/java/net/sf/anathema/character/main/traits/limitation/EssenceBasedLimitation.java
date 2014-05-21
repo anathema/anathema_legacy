@@ -1,6 +1,5 @@
 package net.sf.anathema.character.main.traits.limitation;
 
-import net.sf.anathema.character.main.template.ITraitLimitation;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.traits.types.OtherTraitType;
 import net.sf.anathema.hero.model.Hero;
@@ -8,12 +7,12 @@ import net.sf.anathema.hero.spiritual.SpiritualTraitModel;
 import net.sf.anathema.hero.spiritual.SpiritualTraitModelFetcher;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 
-public class EssenceBasedLimitation implements ITraitLimitation {
+public class EssenceBasedLimitation implements TraitLimitation {
 
   @Override
   public int getAbsoluteLimit(Hero hero) {
     SpiritualTraitModel spiritualTraitModel = getOtherTraitModel(hero);
-    ITraitLimitation essenceLimitation = spiritualTraitModel.getEssenceLimitation();
+    TraitLimitation essenceLimitation = spiritualTraitModel.getEssenceLimitation();
     int essenceMaximum = essenceLimitation.getAbsoluteLimit(hero);
     return Math.max(essenceMaximum, 5);
   }

@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.template.parser;
 
-import net.sf.anathema.character.main.template.ITemplateType;
 import net.sf.anathema.character.main.template.TemplateType;
+import net.sf.anathema.character.main.template.TemplateTypeImpl;
 import net.sf.anathema.character.main.xml.TemplateTypeParser;
 import net.sf.anathema.hero.dummy.DummyCharacterTypes;
 import net.sf.anathema.hero.dummy.DummyMundaneCharacterType;
@@ -26,7 +26,7 @@ public class TemplateTypeParserTest {
   public void discoversType() throws Exception {
     String xml = "<template characterType=\"Dummy\" />";
     Element element = DocumentUtilities.read(xml).getRootElement();
-    ITemplateType templateType = new TemplateTypeParser(types).parse(element);
+    TemplateType templateType = new TemplateTypeParser(types).parse(element);
     assertEquals(type, templateType.getCharacterType());
   }
 
@@ -34,15 +34,15 @@ public class TemplateTypeParserTest {
   public void testParseWithoutSubtemplateSpecification() throws Exception {
     String xml = "<template characterType=\"Dummy\" />";
     Element element = DocumentUtilities.read(xml).getRootElement();
-    ITemplateType templateType = new TemplateTypeParser(types).parse(element);
-    assertEquals(TemplateType.DEFAULT_SUB_TYPE, templateType.getSubType());
+    TemplateType templateType = new TemplateTypeParser(types).parse(element);
+    assertEquals(TemplateTypeImpl.DEFAULT_SUB_TYPE, templateType.getSubType());
   }
 
   @Test
   public void testParseWithSpecifiedSubtemplate() throws Exception {
     String xml = "<template characterType=\"Dummy\" subtemplate=\"special\"/>";
     Element element = DocumentUtilities.read(xml).getRootElement();
-    ITemplateType templateType = new TemplateTypeParser(types).parse(element);
+    TemplateType templateType = new TemplateTypeParser(types).parse(element);
     assertEquals("special", templateType.getSubType().getId());
   }
 
@@ -50,7 +50,7 @@ public class TemplateTypeParserTest {
   public void testParseWithSpecifiedDefaultSubtemplate() throws Exception {
     String xml = "<template characterType=\"Dummy\" subtemplate=\"default\"/>";
     Element element = DocumentUtilities.read(xml).getRootElement();
-    ITemplateType templateType = new TemplateTypeParser(types).parse(element);
-    assertEquals(TemplateType.DEFAULT_SUB_TYPE, templateType.getSubType());
+    TemplateType templateType = new TemplateTypeParser(types).parse(element);
+    assertEquals(TemplateTypeImpl.DEFAULT_SUB_TYPE, templateType.getSubType());
   }
 }

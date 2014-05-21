@@ -10,5 +10,5 @@ public interface ITemplateRegistry {
 
   HeroTemplate getDefaultTemplate(CharacterType type);
 
-  HeroTemplate getTemplate(ITemplateType type);
+  HeroTemplate getTemplate(TemplateType type);
 }

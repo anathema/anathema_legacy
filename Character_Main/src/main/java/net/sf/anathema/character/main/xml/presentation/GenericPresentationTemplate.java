@@ -1,20 +1,20 @@
 package net.sf.anathema.character.main.xml.presentation;
 
 import net.sf.anathema.character.main.template.HeroTemplate;
-import net.sf.anathema.character.main.template.ITemplateType;
+import net.sf.anathema.character.main.template.TemplateType;
 import net.sf.anathema.character.main.template.presentation.IPresentationProperties;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 
 public class GenericPresentationTemplate extends ReflectionCloneableObject<GenericPresentationTemplate> implements IPresentationProperties {
 
-  private final ITemplateType templateType;
+  private final TemplateType templateType;
 
   public GenericPresentationTemplate(HeroTemplate heroTemplate) {
     this(heroTemplate.getTemplateType());
   }
  
-  public GenericPresentationTemplate(ITemplateType templateType) {
+  public GenericPresentationTemplate(TemplateType templateType) {
     this.templateType = templateType;
   }
 

@@ -2,8 +2,8 @@ package net.sf.anathema.hero.dummy.template;
 
 import net.sf.anathema.character.main.template.ConfiguredModel;
 import net.sf.anathema.character.main.template.HeroTemplate;
-import net.sf.anathema.character.main.template.ITemplateType;
 import net.sf.anathema.character.main.template.TemplateType;
+import net.sf.anathema.character.main.template.TemplateTypeImpl;
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.creation.ICreationPoints;
 import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
@@ -16,7 +16,7 @@ import java.util.List;
 
 public class DummyHeroTemplate implements HeroTemplate {
 
-  public ITemplateType type = new TemplateType(new DummyMundaneCharacterType());
+  public TemplateType type = new TemplateTypeImpl(new DummyMundaneCharacterType());
   public DummyCreationPoints creationPoints = new DummyCreationPoints();
 
   @Override
@@ -25,7 +25,7 @@ public class DummyHeroTemplate implements HeroTemplate {
   }
 
   @Override
-  public ITemplateType getTemplateType() {
+  public TemplateType getTemplateType() {
     return type;
   }
 
@@ -45,6 +45,6 @@ public class DummyHeroTemplate implements HeroTemplate {
   }
 
   public void setCharacterType(CharacterType characterType) {
-    this.type = new TemplateType(characterType);
+    this.type = new TemplateTypeImpl(characterType);
   }
 }

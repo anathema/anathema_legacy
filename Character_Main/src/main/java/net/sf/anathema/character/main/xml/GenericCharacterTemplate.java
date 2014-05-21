@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.xml;
 
 import net.sf.anathema.character.main.template.ConfiguredModel;
 import net.sf.anathema.character.main.template.HeroTemplate;
-import net.sf.anathema.character.main.template.ITemplateType;
+import net.sf.anathema.character.main.template.TemplateType;
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.creation.ICreationPoints;
 import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
@@ -17,7 +17,7 @@ import java.util.List;
 
 public class GenericCharacterTemplate implements HeroTemplate, ICloneable<GenericCharacterTemplate> {
 
-  private ITemplateType templateType;
+  private TemplateType templateType;
   private GenericExperiencePointCosts experienceCosts = new GenericExperiencePointCosts();
   private GenericBonusPointCosts bonusPointCosts = new GenericBonusPointCosts();
   private GenericCreationPoints creationPoints = new GenericCreationPoints();
@@ -39,7 +39,7 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
   }
 
   @Override
-  public ITemplateType getTemplateType() {
+  public TemplateType getTemplateType() {
     return templateType;
   }
 
@@ -60,7 +60,7 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
     this.experienceCosts = experienceCosts;
   }
 
-  public void setTemplateType(ITemplateType templateType) {
+  public void setTemplateType(TemplateType templateType) {
     this.templateType = templateType;
   }
 

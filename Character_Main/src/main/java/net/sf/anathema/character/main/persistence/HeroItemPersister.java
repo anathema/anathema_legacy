@@ -5,7 +5,7 @@ import net.sf.anathema.character.main.framework.item.CharacterItem;
 import net.sf.anathema.character.main.framework.item.HeroNameFetcher;
 import net.sf.anathema.character.main.framework.item.Item;
 import net.sf.anathema.character.main.template.HeroTemplate;
-import net.sf.anathema.character.main.template.TemplateType;
+import net.sf.anathema.character.main.template.TemplateTypeImpl;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.framework.persistence.RepositoryItemPersister;
@@ -60,8 +60,8 @@ public class HeroItemPersister implements RepositoryItemPersister {
   private HeroTemplate loadHeroTemplate(HeroMainFileDto mainFileDto) {
     CharacterType characterType = generics.getCharacterTypes().findById(mainFileDto.characterType.characterType);
     String subTypeValue = mainFileDto.characterType.subType;
-    Identifier subtype = subTypeValue == null ? TemplateType.DEFAULT_SUB_TYPE : new SimpleIdentifier(subTypeValue);
-    TemplateType templateType = new TemplateType(characterType, subtype);
+    Identifier subtype = subTypeValue == null ? TemplateTypeImpl.DEFAULT_SUB_TYPE : new SimpleIdentifier(subTypeValue);
+    TemplateTypeImpl templateType = new TemplateTypeImpl(characterType, subtype);
     return generics.getTemplateRegistry().getTemplate(templateType);
   }
 

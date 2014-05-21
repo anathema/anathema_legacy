@@ -3,7 +3,7 @@ package net.sf.anathema.hero.abilities.model;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.main.template.HeroTemplate;
-import net.sf.anathema.character.main.template.ITraitLimitation;
+import net.sf.anathema.character.main.traits.limitation.TraitLimitation;
 import net.sf.anathema.character.main.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.lists.AllAbilityTraitTypeList;
@@ -19,10 +19,10 @@ import net.sf.anathema.hero.traits.DefaultTraitMap;
 import net.sf.anathema.hero.traits.TraitMap;
 import net.sf.anathema.hero.traits.TraitModel;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
-import net.sf.anathema.hero.traits.model.GroupedTraitTypeBuilder;
+import net.sf.anathema.hero.traits.model.group.GroupedTraitTypeBuilder;
 import net.sf.anathema.hero.traits.model.TraitFactory;
-import net.sf.anathema.hero.traits.model.TraitLimitationFactory;
-import net.sf.anathema.hero.traits.model.TraitTemplateMapImpl;
+import net.sf.anathema.hero.traits.model.trait.template.TraitLimitationFactory;
+import net.sf.anathema.hero.traits.model.trait.template.TraitTemplateMapImpl;
 import net.sf.anathema.hero.traits.model.event.FavoredChangedListener;
 import net.sf.anathema.hero.traits.model.event.TraitValueChangedListener;
 import net.sf.anathema.hero.traits.template.GroupedTraitsTemplate;
@@ -88,7 +88,7 @@ public class AbilitiesModelImpl extends DefaultTraitMap implements AbilitiesMode
 
   @Override
   public int getTraitMaximum() {
-    ITraitLimitation limitation = TraitLimitationFactory.createLimitation(template.standard.limitation);
+    TraitLimitation limitation = TraitLimitationFactory.createLimitation(template.standard.limitation);
     return limitation.getAbsoluteLimit(hero);
   }
 }

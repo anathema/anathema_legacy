@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.xml;
 
 import net.sf.anathema.character.main.framework.ICharacterTemplateRegistryCollection;
-import net.sf.anathema.character.main.template.ITemplateType;
+import net.sf.anathema.character.main.template.TemplateType;
 import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.character.main.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.main.xml.creation.BonusPointCostTemplateParser;
@@ -63,7 +63,7 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
   }
 
   private void updateTemplateType(Element element, GenericCharacterTemplate characterTemplate) throws PersistenceException {
-    ITemplateType templateType = new TemplateTypeParser(characterTypes).parse(element);
+    TemplateType templateType = new TemplateTypeParser(characterTypes).parse(element);
     characterTemplate.setTemplateType(templateType);
   }
 

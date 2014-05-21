@@ -2,7 +2,7 @@ package net.sf.anathema.hero.framework.perspective;
 
 import net.sf.anathema.character.main.framework.item.HeroNameFetcher;
 import net.sf.anathema.character.main.framework.item.Item;
-import net.sf.anathema.character.main.template.ITemplateType;
+import net.sf.anathema.character.main.template.TemplateType;
 import net.sf.anathema.hero.concept.HeroConceptFetcher;
 import net.sf.anathema.hero.framework.perspective.model.CharacterIdentifier;
 import net.sf.anathema.hero.model.Hero;
@@ -29,7 +29,7 @@ public class LoadedDescriptiveFeatures implements DescriptiveFeatures {
   }
 
   @Override
-  public ITemplateType getTemplateType() {
+  public TemplateType getTemplateType() {
     Hero hero = getHero();
     return hero.getTemplate().getTemplateType();
   }

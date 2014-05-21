@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.spiritual.model.traits;
 
 import net.sf.anathema.character.main.library.trait.Trait;
-import net.sf.anathema.character.main.template.ITraitLimitation;
+import net.sf.anathema.character.main.traits.limitation.TraitLimitation;
 import net.sf.anathema.character.main.traits.EssenceLimitationListener;
 import net.sf.anathema.character.main.traits.types.OtherTraitType;
 import net.sf.anathema.character.main.traits.types.VirtueType;
@@ -14,8 +14,8 @@ import net.sf.anathema.hero.spiritual.template.SpiritualTraitsTemplate;
 import net.sf.anathema.hero.traits.DefaultTraitMap;
 import net.sf.anathema.hero.traits.TraitModel;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
-import net.sf.anathema.hero.traits.model.TraitLimitationFactory;
-import net.sf.anathema.hero.traits.model.TraitTemplateMap;
+import net.sf.anathema.hero.traits.model.trait.template.TraitLimitationFactory;
+import net.sf.anathema.hero.traits.model.trait.template.TraitTemplateMap;
 import net.sf.anathema.hero.traits.model.event.TraitValueChangedListener;
 import net.sf.anathema.lib.util.Identifier;
 
@@ -87,7 +87,7 @@ public class SpiritualTraitModelImpl extends DefaultTraitMap implements Spiritua
   }
 
   @Override
-  public ITraitLimitation getEssenceLimitation() {
+  public TraitLimitation getEssenceLimitation() {
     return TraitLimitationFactory.createLimitation(template.essence.limitation);
   }
 }

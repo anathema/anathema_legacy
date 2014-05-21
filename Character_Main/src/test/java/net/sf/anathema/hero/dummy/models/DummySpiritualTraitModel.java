@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.dummy.models;
 
-import net.sf.anathema.character.main.template.ITraitLimitation;
+import net.sf.anathema.character.main.traits.limitation.TraitLimitation;
 import net.sf.anathema.character.main.traits.limitation.StaticTraitLimitation;
 import net.sf.anathema.character.main.traits.types.OtherTraitType;
 import net.sf.anathema.character.main.traits.types.VirtueType;
@@ -29,7 +29,7 @@ public class DummySpiritualTraitModel extends DefaultTraitMap implements Spiritu
   }
 
   @Override
-  public ITraitLimitation getEssenceLimitation() {
+  public TraitLimitation getEssenceLimitation() {
     return new StaticTraitLimitation(10);
   }
 

@@ -6,7 +6,6 @@ import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.main.library.trait.rules.TraitRules;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.traits.model.TraitRulesImpl;
 import net.sf.anathema.hero.traits.template.TraitTemplate;
 
 public class LimitedTrait extends DefaultTrait {

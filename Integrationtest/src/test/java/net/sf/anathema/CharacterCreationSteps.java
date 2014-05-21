@@ -8,7 +8,7 @@ import net.sf.anathema.character.main.Character;
 import net.sf.anathema.character.main.framework.item.Item;
 import net.sf.anathema.character.main.persistence.HeroItemPersister;
 import net.sf.anathema.character.main.template.HeroTemplate;
-import net.sf.anathema.character.main.template.TemplateType;
+import net.sf.anathema.character.main.template.TemplateTypeImpl;
 import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.persistence.RepositoryItemPersister;
@@ -88,7 +88,7 @@ public class CharacterCreationSteps {
 
   private HeroTemplate loadTemplateForType(String type, String subtype) {
     HeroEnvironment generics = getCharacterGenerics();
-    return generics.getTemplateRegistry().getTemplate(new TemplateType(characterTypes.findById(type), new SimpleIdentifier(subtype)));
+    return generics.getTemplateRegistry().getTemplate(new TemplateTypeImpl(characterTypes.findById(type), new SimpleIdentifier(subtype)));
   }
 
   private Character createCharacter(HeroTemplate template) {

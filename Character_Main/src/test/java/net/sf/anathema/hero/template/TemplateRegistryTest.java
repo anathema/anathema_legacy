@@ -3,7 +3,7 @@ package net.sf.anathema.hero.template;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITemplateRegistry;
 import net.sf.anathema.character.main.template.TemplateRegistry;
-import net.sf.anathema.character.main.template.TemplateType;
+import net.sf.anathema.character.main.template.TemplateTypeImpl;
 import net.sf.anathema.hero.dummy.DummyMundaneCharacterType;
 import net.sf.anathema.hero.dummy.template.SimpleDummyCharacterTemplate;
 import org.apache.commons.lang3.ArrayUtils;
@@ -28,7 +28,7 @@ public class TemplateRegistryTest {
   public void testRegisterAndRetrieveTemplate() throws Exception {
     SimpleDummyCharacterTemplate template = new SimpleDummyCharacterTemplate(characterType, null);
     registry.register(template);
-    assertEquals(template, registry.getTemplate(new TemplateType(characterType)));
+    assertEquals(template, registry.getTemplate(new TemplateTypeImpl(characterType)));
   }
 
   @Test

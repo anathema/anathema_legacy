@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.framework.perspective;
 
 import net.sf.anathema.character.main.framework.item.CharacterReferenceScanner;
-import net.sf.anathema.character.main.template.ITemplateType;
+import net.sf.anathema.character.main.template.TemplateType;
 import net.sf.anathema.hero.framework.perspective.model.CharacterIdentifier;
 import net.sf.anathema.hero.framework.perspective.model.CharacterReference;
 import net.sf.anathema.lib.util.Identifier;
@@ -28,7 +28,7 @@ public class PreloadedDescriptiveFeatures implements DescriptiveFeatures {
   }
 
   @Override
-  public ITemplateType getTemplateType() {
+  public TemplateType getTemplateType() {
     return fileScanner.getTemplateType(reference);
   }
 
