@@ -9,6 +9,15 @@ import net.sf.anathema.hero.traits.model.types.AttributeType;
 import net.sf.anathema.hero.traits.model.TraitMap;
 import net.sf.anathema.hero.traits.model.TraitModelFetcher;
 
+import static net.sf.anathema.character.main.traits.types.AttributeType.Appearance;
+import static net.sf.anathema.character.main.traits.types.AttributeType.Charisma;
+import static net.sf.anathema.character.main.traits.types.AttributeType.Dexterity;
+import static net.sf.anathema.character.main.traits.types.AttributeType.Intelligence;
+import static net.sf.anathema.character.main.traits.types.AttributeType.Manipulation;
+import static net.sf.anathema.character.main.traits.types.AttributeType.Perception;
+import static net.sf.anathema.character.main.traits.types.AttributeType.Stamina;
+import static net.sf.anathema.character.main.traits.types.AttributeType.Strength;
+import static net.sf.anathema.character.main.traits.types.AttributeType.Wits;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -50,13 +59,39 @@ public class AttributeSteps {
     }
   }
 
+  @When("^she spends (\\d+) points on Mental Attributes$")
+  public void she_spends_points_on_Mental_Attributes(int amount) throws Throwable {
+    spendDotsOnAttributes(amount, Intelligence, Wits, Perception);
+  }
+
+  @When("^she spends (\\d+) points on Social Attributes$")
+  public void she_spends_points_on_Social_Attributes(int amount) throws Throwable {
+    spendDotsOnAttributes(amount, Appearance, Charisma, Manipulation);
+  }
+
+  @When("^she spends (\\d+) points on Physical Attributes$")
+  public void she_spends_points_on_Physical_Attributes(int amount) throws Throwable {
+    spendDotsOnAttributes(amount, Strength, Dexterity, Stamina);
+  }
+
   private void assertThatAttributeHasValueOf(AttributeType type, int value) {
     assertThat("Attribute type " + type, getAttribute(type).getCurrentValue(), is(value));
   }
 
   private Trait getAttribute(AttributeType type) {
-
     TraitMap traitConfiguration = TraitModelFetcher.fetch(character.getCharacter());
     return traitConfiguration.getTrait(type);
+  }
+
+  private void spendDotsOnAttributes(int amount, AttributeType... attributeTypes) {
+    for (; amount > 0; amount--) {
+      for (AttributeType attributeType : attributeTypes) {
+        Trait attribute = getAttribute(attributeType);
+        if (attribute.getCreationValue() < 5) {
+          attribute.setCreationValue(attribute.getCreationValue() + 1);
+          break;
+        }
+      }
+    }
   }
 }

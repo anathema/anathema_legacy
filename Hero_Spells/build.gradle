@@ -3,4 +3,5 @@ dependencies {
   testCompile testDependencies //includes JUnit etc.
   testCompile project(path: ':Character_Main', configuration: 'tests')
   testCompile project(path: ':Hero_Charms', configuration: 'tests')
+  testCompile project(path: ':Hero_Spiritual', configuration: 'tests')
 }
