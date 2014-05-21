@@ -3,42 +3,31 @@ package net.sf.anathema.hero.abilities.advance.creation;
 import net.sf.anathema.character.main.library.ITraitFavorization;
 import net.sf.anathema.character.main.library.trait.FavorableTraitCost;
 import net.sf.anathema.character.main.library.trait.Trait;
-import net.sf.anathema.character.main.template.experience.AbilityPointCosts;
-import net.sf.anathema.character.main.template.points.IFavorableTraitCreationPoints;
+import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.hero.abilities.model.AbilitiesModel;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import static net.sf.anathema.hero.traits.advance.TraitCalculationUtilities.getCreationCalculationValue;
 
 public class AbilityCostCalculatorImpl implements AbilityCostCalculator {
 
-  private final AbilityPointCosts costs;
-  protected final IFavorableTraitCreationPoints points;
   private AbilityCreationData creationData;
   private final Map<Trait, FavorableTraitCost[]> costsByTrait = new HashMap<>();
-  private final int freeTraitMax;
   private final Trait[] traits;
   private int favoredPicksSpent = 0;
   private int favoredDotSum = 0;
   private int generalDotSum = 0;
 
-  public AbilityCostCalculatorImpl(AbilitiesModel abilitiesModel, IFavorableTraitCreationPoints points, AbilityPointCosts costs, AbilityCreationData creationData) {
-    this.points = points;
+  public AbilityCostCalculatorImpl(AbilitiesModel abilitiesModel, AbilityCreationData creationData) {
     this.creationData = creationData;
-    this.freeTraitMax = costs.getMaximumFreeAbilityRank();
     this.traits = abilitiesModel.getAll();
-    this.costs = costs;
   }
 
   protected int getCostFactor(Trait trait) {
     ITraitFavorization favorization = trait.getFavorization();
-    return costs.getAbilityCosts(favorization.isCasteOrFavored()).getRatingCosts(getCalculationBase(trait));
+    CurrentRatingCosts abilityCosts = creationData.getAbilityCosts(favorization.isCasteOrFavored());
+    return abilityCosts.getRatingCosts(getCalculationBase(trait));
   }
 
   public void recalculate() {
@@ -87,16 +76,12 @@ public class AbilityCostCalculatorImpl implements AbilityCostCalculator {
     return 0;
   }
 
-  public FavorableTraitCost[] getCosts(Trait trait) {
-    return costsByTrait.get(trait);
-  }
-
   private int getDefaultDotCount() {
-    return points.getDefaultDotCount();
+    return creationData.getDefaultDotCount();
   }
 
   private int getFavoredDotCount() {
-    return points.getFavoredDotCount();
+    return creationData.getFavoredDotCount();
   }
 
   public int getFavoredPicksSpent() {
@@ -112,7 +97,7 @@ public class AbilityCostCalculatorImpl implements AbilityCostCalculator {
   }
 
   private FavorableTraitCost handleFavoredSingleTrait(Trait trait, int bonusPointCostFactor) {
-    int freeTraitMax = Math.max(this.freeTraitMax, trait.getAbsoluteMinValue());
+    int freeTraitMax = Math.max(creationData.getMaximumFreeAbilityRank(), trait.getAbsoluteMinValue());
     int freePointsToAdd = Math.min(getCalculationBase(trait), freeTraitMax);
     int favoredDotsSpent = 0;
     int generalDotsSpent = 0;
@@ -153,7 +138,7 @@ public class AbilityCostCalculatorImpl implements AbilityCostCalculator {
   }
 
   private FavorableTraitCost handleGeneralSingleTrait(Trait trait, int bonusPointCostFactor) {
-    int freeTraitMax = Math.max(this.freeTraitMax, trait.getAbsoluteMinValue());
+    int freeTraitMax = Math.max(creationData.getMaximumFreeAbilityRank(), trait.getAbsoluteMinValue());
     int freePointsToAdd = Math.min(getCalculationBase(trait), freeTraitMax);
     int generalDotsSpent = 0;
     int bonusPointsSpent = 0;

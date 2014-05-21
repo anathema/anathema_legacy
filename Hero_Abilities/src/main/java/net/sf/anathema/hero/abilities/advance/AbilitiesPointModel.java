@@ -72,7 +72,7 @@ public class AbilitiesPointModel implements HeroModel {
     IAbilityCreationPoints abilityCreationPoints = hero.getTemplate().getCreationPoints().getAbilityCreationPoints();
     BonusPointCosts costs = hero.getTemplate().getBonusPointCosts();
     AbilityCreationData creationData = new AbilityCreationData(template, abilityCreationPoints, costs);
-    return new AbilityCostCalculatorImpl(AbilityModelFetcher.fetch(hero), abilityCreationPoints, costs, creationData);
+    return new AbilityCostCalculatorImpl(AbilityModelFetcher.fetch(hero), creationData);
   }
 
   @Override

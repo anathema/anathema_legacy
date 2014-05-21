@@ -8,7 +8,7 @@ import net.sf.anathema.hero.combat.model.CharacterUtilities;
 import net.sf.anathema.hero.dummy.DummyExaltCharacterType;
 import net.sf.anathema.hero.dummy.DummyMundaneCharacterType;
 import net.sf.anathema.hero.dummy.trait.DummyTrait;
-import net.sf.anathema.hero.traits.DefaultTraitMap;
+import net.sf.anathema.hero.traits.model.DefaultTraitMap;
 import org.junit.Assert;
 import org.junit.Test;
 

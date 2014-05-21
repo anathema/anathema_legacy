@@ -1,8 +1,6 @@
 package net.sf.anathema.hero.dummy;
 
-import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.template.HeroTemplate;
-import net.sf.anathema.hero.dummy.models.DummyTraitModel;
 import net.sf.anathema.hero.dummy.template.DummyHeroTemplate;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
@@ -17,14 +15,6 @@ import java.util.Map;
 public class DummyHero implements Hero {
 
   private final ChangeAnnouncer changeAnnouncer = new ChangeAnnouncerImpl();
-
-  public static DummyHero createWithTraits(Trait... traits) {
-    DummyHero hero = new DummyHero();
-    DummyTraitModel traitModel = new DummyTraitModel();
-    hero.addModel(traitModel);
-    traitModel.addTraits(traits);
-    return hero;
-  }
 
   public final DummyHeroTemplate template = new DummyHeroTemplate();
   public final Map<Identifier, HeroModel> modelsById = new HashMap<>();

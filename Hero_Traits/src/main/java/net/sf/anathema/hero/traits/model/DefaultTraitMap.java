@@ -1,8 +1,9 @@
-package net.sf.anathema.hero.traits;
+package net.sf.anathema.hero.traits.model;
 
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.hero.traits.TraitMap;
 
 import java.util.ArrayList;
 import java.util.Collection;

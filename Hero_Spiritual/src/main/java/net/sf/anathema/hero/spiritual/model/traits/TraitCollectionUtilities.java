@@ -1,6 +1,7 @@
-package net.sf.anathema.character.main.library.trait;
+package net.sf.anathema.hero.spiritual.model.traits;
 
 import com.google.common.base.Function;
+import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.traits.types.OtherTraitType;
 import net.sf.anathema.character.main.traits.types.VirtueType;
 import net.sf.anathema.hero.traits.TraitMap;

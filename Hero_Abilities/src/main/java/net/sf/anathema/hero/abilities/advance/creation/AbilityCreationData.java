@@ -1,6 +1,7 @@
 package net.sf.anathema.hero.abilities.advance.creation;
 
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
+import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.main.template.points.IAbilityCreationPoints;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.hero.abilities.template.AbilityPointsTemplate;
@@ -10,7 +11,7 @@ public class AbilityCreationData implements TraitListCreationData {
 
   private AbilityPointsTemplate template;
   private IAbilityCreationPoints abilityCreationPoints;
-  private BonusPointCosts costs;
+  private BonusPointCosts costs;mmo
 
 
   public AbilityCreationData(AbilityPointsTemplate template, IAbilityCreationPoints abilityCreationPoints, BonusPointCosts costs) {
@@ -22,5 +23,21 @@ public class AbilityCreationData implements TraitListCreationData {
   @Override
   public int getCalculationBase(TraitType type) {
     return template.standard.calculationBase;
+  }
+
+  public CurrentRatingCosts getAbilityCosts(boolean casteOrFavored) {
+    return costs.getAbilityCosts(casteOrFavored);
+  }
+
+  public int getMaximumFreeAbilityRank() {
+    return costs.getMaximumFreeAbilityRank();
+  }
+
+  public int getDefaultDotCount() {
+    return abilityCreationPoints.getDefaultDotCount();
+  }
+
+  public int getFavoredDotCount() {
+    return abilityCreationPoints.getFavoredDotCount();
   }
 }

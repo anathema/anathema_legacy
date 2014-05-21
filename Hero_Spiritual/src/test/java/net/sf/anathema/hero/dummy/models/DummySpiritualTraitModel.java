@@ -9,7 +9,7 @@ import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.hero.spiritual.SpiritualTraitModel;
-import net.sf.anathema.hero.traits.DefaultTraitMap;
+import net.sf.anathema.hero.traits.model.DefaultTraitMap;
 import net.sf.anathema.lib.util.Identifier;
 
 public class DummySpiritualTraitModel extends DefaultTraitMap implements SpiritualTraitModel {
