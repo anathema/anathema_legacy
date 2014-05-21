@@ -1,6 +1,7 @@
 package net.sf.anathema;
 
 import com.google.inject.Inject;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import net.sf.anathema.character.main.library.trait.Trait;
@@ -33,7 +34,12 @@ public class AbilitySteps {
     Trait ability = character.getTraitConfiguration().getTrait(AbilityType.valueOf(abilityName));
     assertThat(ability.getCurrentValue(), is(amount));
   }
-  
+
+  @And("^she spends all her general Ability dots$")
+  public void she_spends_all_her_Ability_dots() throws Throwable {
+    she_exceeds_her_Ability_allotment_by_dot(0);
+  }
+
   @When("^she exceeds her Ability allotment by (\\d+) dot$")
   public void she_exceeds_her_Ability_allotment_by_dot(int overspending) throws Throwable {
     int pointsToSpend = determinePointsToSpend(overspending, "Abilities", "General");

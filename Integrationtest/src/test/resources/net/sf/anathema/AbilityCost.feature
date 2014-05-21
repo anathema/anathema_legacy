@@ -9,10 +9,6 @@ Feature: Anathema calculates Bonus Point costs for Abilities
     And she has 0 favored dots spent
     And she has spent 0 bonus points
 
-  Scenario: A fresh character has no Ability favored
-    Given a new Character of any kind
-    Then she has 0 favored picks spent
-
   Scenario: A character pays general dots for general Abilities
     Given a new Character of any kind
     When I set her Archery to 1  
@@ -21,7 +17,7 @@ Feature: Anathema calculates Bonus Point costs for Abilities
     And she has spent 0 bonus points
 
   Scenario: A character pays favored dots for favored Abilities
-    Given a new Character of any kind
+    Given a new Solar using rules for Default
     When I favor her Archery
     And I set her Archery to 1
     Then she has 0 ability dots spent
@@ -45,7 +41,7 @@ Feature: Anathema calculates Bonus Point costs for Abilities
   Scenario: A character pays general dots points when she overspends on favored Abilities
     Given a new Mortal using rules for HeroicMortal
     When I favor her Archery
-    When I set her Archery to 1
+    And I set her Archery to 1
     Then she has 1 ability dots spent
     And she has 0 favored dots spent
     And she has spent 0 bonus points
@@ -53,8 +49,8 @@ Feature: Anathema calculates Bonus Point costs for Abilities
   Scenario: A character prefers to pay favored Abilities with bonus points
     Given a new Mortal using rules for HeroicMortal
     When I favor her Archery
-    When I set her Archery to 1
-    When she exceeds her Ability allotment by 0 dot
+    And I set her Archery to 1
+    And she spends all her general Ability dots
     Then she has all her ability dots spent
     And she has 0 favored dots spent
     And she has spent 1 bonus points
