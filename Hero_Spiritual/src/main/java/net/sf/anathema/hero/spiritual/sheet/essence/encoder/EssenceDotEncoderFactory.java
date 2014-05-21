@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.spiritual.sheet.essence.encoder;
 
-import net.sf.anathema.character.main.traits.EssenceTemplate;
+import net.sf.anathema.character.main.traits.SystemConstants;
 import net.sf.anathema.character.main.traits.types.OtherTraitType;
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.sheet.pdf.content.BasicContent;
@@ -18,7 +18,7 @@ public class EssenceDotEncoderFactory extends AbstractEncoderFactory {
 
   @Override
   public ContentEncoder create(Resources resources, BasicContent content) {
-    return new DotBoxContentEncoder(OtherTraitType.Essence, EssenceTemplate.SYSTEM_ESSENCE_MAX, resources, "Essence");
+    return new DotBoxContentEncoder(OtherTraitType.Essence, SystemConstants.SYSTEM_ESSENCE_MAX, resources, "Essence");
   }
 
   @Override

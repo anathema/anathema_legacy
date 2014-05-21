@@ -8,7 +8,7 @@ import net.sf.anathema.character.main.magic.parser.dto.special.StaticRepurchaseD
 import net.sf.anathema.character.main.magic.parser.dto.special.TierDto;
 import net.sf.anathema.character.main.magic.parser.dto.special.TierRepurchaseDto;
 import net.sf.anathema.character.main.magic.parser.dto.special.TraitRepurchaseDto;
-import net.sf.anathema.character.main.traits.EssenceTemplate;
+import net.sf.anathema.character.main.traits.SystemConstants;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
@@ -90,7 +90,7 @@ public class RepurchaseParser implements SpecialCharmParser {
   }
 
   private int parseAbsoluteMaximum(Element repurchaseElement, int modifier) {
-    int absoluteMax = EssenceTemplate.SYSTEM_ESSENCE_MAX + modifier;
+    int absoluteMax = SystemConstants.SYSTEM_ESSENCE_MAX + modifier;
     String maxString = repurchaseElement.attributeValue(ATTRIB_ABSOLUTE_MAX);
     try {
       absoluteMax = Integer.parseInt(maxString);
