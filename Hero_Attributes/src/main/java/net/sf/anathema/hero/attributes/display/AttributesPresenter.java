@@ -13,7 +13,7 @@ public class AttributesPresenter {
   private final FavorableTraitConfigurationPresenter presenter;
 
   public AttributesPresenter(Hero hero, Resources resources, GroupedFavorableTraitConfigurationView view) {
-    IdentifiedTraitTypeList[] traitTypeGroups = AttributesModelFetcher.fetch(hero).getAttributeTypeGroups();
+    IdentifiedTraitTypeList[] traitTypeGroups = AttributesModelFetcher.fetch(hero).getTraitTypeList();
     view.initGui(new ColumnCount(1));
     this.presenter = new FavorableTraitConfigurationPresenter(traitTypeGroups, hero, view, resources);
   }

@@ -18,7 +18,7 @@ public class AbilitiesContent extends FavorableTraitContent {
   private Hero hero;
 
   public AbilitiesContent(Hero hero, Resources resources) {
-    super(hero, resources);
+    super(AbilityModelFetcher.fetch(hero), resources);
     this.hero = hero;
   }
 
@@ -29,7 +29,7 @@ public class AbilitiesContent extends FavorableTraitContent {
 
   @Override
   public IdentifiedTraitTypeList[] getIdentifiedTraitTypeGroups() {
-    return AbilityModelFetcher.fetch(hero).getAbilityTypeGroups();
+    return AbilityModelFetcher.fetch(hero).getTraitTypeList();
   }
 
   @Override

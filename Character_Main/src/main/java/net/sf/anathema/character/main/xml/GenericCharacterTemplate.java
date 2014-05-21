@@ -3,18 +3,14 @@ package net.sf.anathema.character.main.xml;
 import net.sf.anathema.character.main.template.ConfiguredModel;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITemplateType;
-import net.sf.anathema.character.main.template.ITraitTemplateCollection;
-import net.sf.anathema.character.main.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.creation.ICreationPoints;
 import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
 import net.sf.anathema.character.main.template.presentation.IPresentationProperties;
-import net.sf.anathema.character.main.traits.TraitTemplateCollection;
 import net.sf.anathema.character.main.xml.creation.GenericBonusPointCosts;
 import net.sf.anathema.character.main.xml.creation.GenericCreationPoints;
 import net.sf.anathema.character.main.xml.experience.GenericExperiencePointCosts;
 import net.sf.anathema.character.main.xml.presentation.GenericPresentationTemplate;
-import net.sf.anathema.character.main.xml.trait.GenericTraitTemplateFactory;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 import net.sf.anathema.lib.lang.clone.ICloneable;
 
@@ -24,7 +20,6 @@ import java.util.List;
 public class GenericCharacterTemplate implements HeroTemplate, ICloneable<GenericCharacterTemplate> {
 
   private ITemplateType templateType;
-  private ITraitTemplateCollection traitTemplateCollection;
   private GenericExperiencePointCosts experienceCosts = new GenericExperiencePointCosts();
   private GenericBonusPointCosts bonusPointCosts = new GenericBonusPointCosts();
   private GenericCreationPoints creationPoints = new GenericCreationPoints();
@@ -57,11 +52,6 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
   }
 
   @Override
-  public ITraitTemplateCollection getTraitTemplateCollection() {
-    return traitTemplateCollection;
-  }
-
-  @Override
   public List<ConfiguredModel> getModels() {
     return new ArrayList<>(models);
   }
@@ -76,10 +66,6 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
 
   public void setExperiencePointCosts(GenericExperiencePointCosts experienceCosts) {
     this.experienceCosts = experienceCosts;
-  }
-
-  public void setTraitFactory(GenericTraitTemplateFactory factory) {
-    traitTemplateCollection = new TraitTemplateCollection(factory);
   }
 
   public void setPresentationTemplate(GenericPresentationTemplate template) {

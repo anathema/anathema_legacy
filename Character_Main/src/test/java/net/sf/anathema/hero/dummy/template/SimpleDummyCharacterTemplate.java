@@ -3,7 +3,6 @@ package net.sf.anathema.hero.dummy.template;
 import net.sf.anathema.character.main.template.ConfiguredModel;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITemplateType;
-import net.sf.anathema.character.main.template.ITraitTemplateCollection;
 import net.sf.anathema.character.main.template.TemplateType;
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.creation.ICreationPoints;
@@ -51,11 +50,6 @@ public class SimpleDummyCharacterTemplate implements HeroTemplate {
       return new TemplateType(type);
     }
     return new TemplateType(type, new SimpleIdentifier(subtype));
-  }
-
-  @Override
-  public ITraitTemplateCollection getTraitTemplateCollection() {
-    return new DummyTraitTemplateCollection();
   }
 
   @Override

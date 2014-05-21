@@ -12,8 +12,6 @@ import net.sf.anathema.character.main.xml.experience.ExperienceTemplateParser;
 import net.sf.anathema.character.main.xml.experience.GenericExperiencePointCosts;
 import net.sf.anathema.character.main.xml.presentation.GenericPresentationTemplate;
 import net.sf.anathema.character.main.xml.presentation.PresentationPropertiesParser;
-import net.sf.anathema.character.main.xml.trait.GenericTraitTemplateFactory;
-import net.sf.anathema.character.main.xml.trait.GenericTraitTemplateFactoryParser;
 import net.sf.anathema.lib.exception.PersistenceException;
 import org.dom4j.Element;
 
@@ -24,7 +22,6 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
   private static final String TAG_EXPERIENCE = "experience";
   private static final String TAG_GENERAL = "general";
   private static final String TAG_EXPERIENCE_POINT_COST = "experiencePointCost";
-  private static final String TAG_TRAIT_COLLECTION = "traitCollection";
   private static final String TAG_PRESENTATION_TEMPLATE = "presentation";
   public static final String ATTRIB_ID = "id";
 
@@ -114,7 +111,6 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     if (generalElement == null) {
       return;
     }
-    setTraitCollection(generalElement, characterTemplate);
     setPresentationTemplate(generalElement, characterTemplate);
   }
 
@@ -138,16 +134,5 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     PresentationPropertiesParser parser = new PresentationPropertiesParser(registryCollection.getPresentationTemplateRegistry());
     GenericPresentationTemplate template = parser.parseTemplate(presentationTemplateElement);
     characterTemplate.setPresentationTemplate(template);
-  }
-
-  private void setTraitCollection(Element generalElement, GenericCharacterTemplate characterTemplate) throws PersistenceException {
-    Element traitCollectionElement = generalElement.element(TAG_TRAIT_COLLECTION);
-    if (traitCollectionElement == null) {
-      return;
-    }
-    GenericTraitTemplateFactoryParser parser =
-            new GenericTraitTemplateFactoryParser(registryCollection.getTraitFactoryRegistry(), registryCollection.getTraitTemplatePoolRegistry());
-    GenericTraitTemplateFactory factory = parser.parseTemplate(traitCollectionElement);
-    characterTemplate.setTraitFactory(factory);
   }
 }

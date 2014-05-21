@@ -1,16 +1,11 @@
 package net.sf.anathema.hero.traits.model;
 
-import com.google.common.base.Preconditions;
 import net.sf.anathema.character.main.library.trait.rules.TraitRules;
 import net.sf.anathema.character.main.template.ITraitLimitation;
-import net.sf.anathema.character.main.traits.ITraitTemplate;
 import net.sf.anathema.character.main.traits.ModificationType;
 import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.traits.limitation.AgeBasedLimitation;
-import net.sf.anathema.character.main.traits.limitation.EssenceBasedLimitation;
-import net.sf.anathema.character.main.traits.limitation.StaticTraitLimitation;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.traits.template.LimitationType;
+import net.sf.anathema.hero.traits.template.LimitationTemplate;
 import net.sf.anathema.hero.traits.template.TraitTemplate;
 import net.sf.anathema.lib.data.Range;
 
@@ -32,14 +27,9 @@ public class SimpleTraitRules implements TraitRules {
     return getLimitation().getAbsoluteLimit(hero);
   }
 
-  private ITraitLimitation getLimitation() {
-    if (template.limitation.type == LimitationType.Static) {
-      return new StaticTraitLimitation(template.limitation.value);
-    }
-    if (template.limitation.type == LimitationType.Age) {
-      return new AgeBasedLimitation(template.limitation.value);
-    }
-    return new EssenceBasedLimitation();
+  public ITraitLimitation getLimitation() {
+    LimitationTemplate limitation = template.limitation;
+    return TraitLimitationFactory.createLimitation(limitation);
   }
 
   private int getCreationMaximumValue() {

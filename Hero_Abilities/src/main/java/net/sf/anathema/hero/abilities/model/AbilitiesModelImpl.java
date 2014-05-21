@@ -3,12 +3,14 @@ package net.sf.anathema.hero.abilities.model;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.main.template.HeroTemplate;
+import net.sf.anathema.character.main.template.ITraitLimitation;
 import net.sf.anathema.character.main.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.lists.AllAbilityTraitTypeList;
 import net.sf.anathema.character.main.traits.lists.IIdentifiedCasteTraitTypeList;
 import net.sf.anathema.hero.traits.model.GroupedTraitTypeBuilder;
 import net.sf.anathema.hero.traits.model.TraitFactory;
+import net.sf.anathema.hero.traits.model.TraitLimitationFactory;
 import net.sf.anathema.hero.traits.model.TraitTemplateMapImpl;
 import net.sf.anathema.hero.traits.template.GroupedTraitsTemplate;
 import net.sf.anathema.hero.concept.CasteCollection;
@@ -80,7 +82,13 @@ public class AbilitiesModelImpl extends DefaultTraitMap implements AbilitiesMode
   }
 
   @Override
-  public IIdentifiedCasteTraitTypeList[] getAbilityTypeGroups() {
+  public IIdentifiedCasteTraitTypeList[] getTraitTypeList() {
     return abilityTraitGroups;
+  }
+
+  @Override
+  public int getTraitMaximum() {
+    ITraitLimitation limitation = TraitLimitationFactory.createLimitation(template.standard.limitation);
+    return limitation.getAbsoluteLimit(hero);
   }
 }
