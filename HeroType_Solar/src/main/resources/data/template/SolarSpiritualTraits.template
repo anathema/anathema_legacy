@@ -1,5 +1,30 @@
 {
   willpower: {
-    isVirtueBased: false
+    isVirtueBased: false;
+    startValue: 2;
+    minimumValue = 2;
+    modificationType: "RaiseOnly";
+    limitation: {
+      type: "Static";
+      value: 10
+    }
+  };
+  essence: {
+    startValue: 2;
+    minimumValue = 2;
+    modificationType: "RaiseOnly";
+    limitation: {
+      type: "Age";
+      value: 10
+    }
+  };
+  virtues: {
+    startValue: 1;
+    minimumValue = 1;
+    modificationType: "RaiseOnly";
+    limitation: {
+      type: "Static";
+      value: 5
+    }
   }
 }

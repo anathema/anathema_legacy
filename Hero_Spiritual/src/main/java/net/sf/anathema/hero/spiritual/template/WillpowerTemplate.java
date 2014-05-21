@@ -1,6 +1,8 @@
 package net.sf.anathema.hero.spiritual.template;
 
-public class WillpowerTemplate {
+import net.sf.anathema.hero.traits.template.TraitTemplate;
+
+public class WillpowerTemplate extends TraitTemplate {
 
   public boolean isVirtueBased = false;
 }

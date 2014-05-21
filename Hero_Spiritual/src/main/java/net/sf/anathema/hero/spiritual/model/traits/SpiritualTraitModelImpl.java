@@ -5,7 +5,6 @@ import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITraitLimitation;
 import net.sf.anathema.character.main.template.ITraitTemplateCollection;
 import net.sf.anathema.character.main.traits.EssenceLimitationListener;
-import net.sf.anathema.character.main.traits.EssenceTemplateFactory;
 import net.sf.anathema.character.main.traits.VirtueTemplateFactory;
 import net.sf.anathema.character.main.traits.WillpowerTemplateFactory;
 import net.sf.anathema.character.main.traits.creation.DefaultTraitFactory;
@@ -21,6 +20,8 @@ import net.sf.anathema.hero.spiritual.template.SpiritualTraitsTemplate;
 import net.sf.anathema.hero.traits.DefaultTraitMap;
 import net.sf.anathema.hero.traits.TraitModel;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
+import net.sf.anathema.hero.traits.model.TraitFactory;
+import net.sf.anathema.hero.traits.model.TraitTemplateMap;
 import net.sf.anathema.hero.traits.model.event.TraitValueChangedListener;
 import net.sf.anathema.lib.util.Identifier;
 
@@ -68,25 +69,23 @@ public class SpiritualTraitModelImpl extends DefaultTraitMap implements Spiritua
   }
 
   private void addEssence(Hero hero) {
-    TypedTraitTemplateFactory templateFactory = new EssenceTemplateFactory(getTemplateCollection().getTraitTemplateFactory());
-    DefaultTraitFactory traitFactory = new DefaultTraitFactory(hero, templateFactory);
+    SpiritualTraitFactory traitFactory = createTraitFactory(hero);
     addTraits(traitFactory.createTrait(OtherTraitType.Essence));
   }
 
   private void addVirtues(Hero hero) {
-    TypedTraitTemplateFactory templateFactory = new VirtueTemplateFactory(getTemplateCollection().getTraitTemplateFactory());
-    DefaultTraitFactory traitFactory = new DefaultTraitFactory(hero, templateFactory);
+    SpiritualTraitFactory traitFactory = createTraitFactory(hero);
     addTraits(traitFactory.createTraits(VirtueType.values()));
   }
 
   private void addWillpower(Hero hero) {
-    TypedTraitTemplateFactory templateFactory = new WillpowerTemplateFactory(getTemplateCollection().getTraitTemplateFactory());
-    DefaultTraitFactory traitFactory = new DefaultTraitFactory(hero, templateFactory);
+    SpiritualTraitFactory traitFactory = createTraitFactory(hero);
     addTraits(traitFactory.createTrait(OtherTraitType.Willpower));
   }
 
-  private ITraitTemplateCollection getTemplateCollection() {
-    return heroTemplate.getTraitTemplateCollection();
+  private SpiritualTraitFactory createTraitFactory(Hero hero) {
+    TraitTemplateMap map = new SpiritualTraitTemplateMap(template);
+    return new SpiritualTraitFactory(hero, map);
   }
 
   @Override

@@ -1,18 +1,30 @@
 {
   willpower: {
-    isVirtueBased: true
-  };
-    essenceUser: {
-      isEssenceUser: false;
-      peripheralPool: [
-        {
-          traitType: "Essence",
-          multiplier: 1
-        },
-        {
-          traitType: "Willpower",
-          multiplier: 1
-        }
-      ]
+    isVirtueBased: true;
+    startValue: 2;
+    minimumValue = 2;
+    modificationType: "RaiseOnly";
+    limitation: {
+      type: "Static";
+      value: 10
     }
+  };
+  essence: {
+    startValue: 1;
+    minimumValue = 1;
+    modificationType: "RaiseOnly";
+    limitation: {
+      type: "Static";
+      value: 1
+    }
+  };
+  virtues: {
+    startValue: 1;
+    minimumValue = 1;
+    modificationType: "RaiseOnly";
+    limitation: {
+      type: "Static";
+      value: 5
+    }
+  }
 }
