@@ -1,9 +1,5 @@
 package net.sf.anathema.hero.spiritual.model.pool;
 
-import net.sf.anathema.character.main.template.essence.FactorizedTrait;
-import net.sf.anathema.character.main.template.essence.FactorizedTraitSumCalculator;
-import net.sf.anathema.character.main.traits.ValuedTraitType;
-import net.sf.anathema.character.main.traits.types.OtherTraitType;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.change.ChangeFlavor;
 import net.sf.anathema.hero.model.change.FlavoredChangeListener;

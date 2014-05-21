@@ -3,7 +3,7 @@ package net.sf.anathema.herotype.solar.model.curse;
 import net.sf.anathema.character.main.library.trait.DefaultTraitType;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.favorable.FriendlyIncrementChecker;
-import net.sf.anathema.character.main.traits.ModificationType;
+import net.sf.anathema.hero.traits.model.trait.ModificationType;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.traits.model.trait.LimitedTrait;

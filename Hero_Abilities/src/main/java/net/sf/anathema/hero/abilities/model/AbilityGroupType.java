@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.template.abilities;
+package net.sf.anathema.hero.abilities.model;
 
 import net.sf.anathema.lib.util.Identifier;
 

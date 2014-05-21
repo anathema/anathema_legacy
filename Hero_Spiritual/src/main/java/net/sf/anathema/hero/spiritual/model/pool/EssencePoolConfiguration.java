@@ -1,6 +1,5 @@
 package net.sf.anathema.hero.spiritual.model.pool;
 
-import net.sf.anathema.character.main.template.essence.FactorizedTrait;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.hero.spiritual.template.EssencePoolTemplate;
 import net.sf.anathema.hero.spiritual.template.PoolPartTemplate;

@@ -5,7 +5,7 @@ import net.sf.anathema.character.main.library.trait.TraitGroup;
 import net.sf.anathema.character.main.library.trait.favorable.GrumpyIncrementChecker;
 import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.main.traits.limitation.TraitLimitation;
-import net.sf.anathema.character.main.template.abilities.GroupedTraitType;
+import net.sf.anathema.hero.traits.model.GroupedTraitType;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.lists.AllAttributeTraitTypeList;
 import net.sf.anathema.character.main.traits.lists.IIdentifiedCasteTraitTypeList;

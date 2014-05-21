@@ -2,7 +2,6 @@ package net.sf.anathema.hero.spiritual.model.traits;
 
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.traits.limitation.TraitLimitation;
-import net.sf.anathema.character.main.traits.EssenceLimitationListener;
 import net.sf.anathema.character.main.traits.types.OtherTraitType;
 import net.sf.anathema.character.main.traits.types.VirtueType;
 import net.sf.anathema.hero.framework.HeroEnvironment;

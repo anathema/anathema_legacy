@@ -4,12 +4,11 @@ import net.sf.anathema.character.main.library.trait.specialties.SpecialtiesModel
 import net.sf.anathema.character.main.library.trait.specialties.SpecialtiesModelFetcher;
 import net.sf.anathema.character.main.library.trait.specialties.Specialty;
 import net.sf.anathema.character.main.library.trait.subtrait.ISpecialtyListener;
-import net.sf.anathema.character.main.traits.SpecialtiesCollection;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.control.ChangeListener;
 
-public class SpecialtiesCollectionImpl implements SpecialtiesCollection {
+public class SpecialtiesCollectionImpl {
 
   private final Hero hero;
 
@@ -17,13 +16,11 @@ public class SpecialtiesCollectionImpl implements SpecialtiesCollection {
     this.hero = hero;
   }
 
-  @Override
   public Specialty[] getSpecialties(TraitType traitType) {
     SpecialtiesModel specialtyConfiguration = SpecialtiesModelFetcher.fetch(hero);
     return specialtyConfiguration.getSpecialtiesContainer(traitType).getSubTraits();
   }
 
-  @Override
   public void addSpecialtyListChangeListener(final ChangeListener listener) {
     SpecialtiesModel config = SpecialtiesModelFetcher.fetch(hero);
     for (TraitType trait : config.getAllParentTraits()) {

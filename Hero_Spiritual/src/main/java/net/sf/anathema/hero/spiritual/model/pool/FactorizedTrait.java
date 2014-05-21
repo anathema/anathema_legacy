@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.template.essence;
+package net.sf.anathema.hero.spiritual.model.pool;
 
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 

@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.traits.template;
 
-import net.sf.anathema.character.main.traits.ModificationType;
+import net.sf.anathema.hero.traits.model.trait.ModificationType;
 
 public class TraitTemplateFactory {
 

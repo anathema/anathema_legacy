@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.library.trait.DefaultTrait;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.ValueChangeChecker;
 import net.sf.anathema.character.main.library.trait.rules.TraitRules;
-import net.sf.anathema.character.main.traits.ModificationType;
+import net.sf.anathema.hero.traits.model.trait.ModificationType;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.traits.types.VirtueType;
 import net.sf.anathema.hero.model.Hero;

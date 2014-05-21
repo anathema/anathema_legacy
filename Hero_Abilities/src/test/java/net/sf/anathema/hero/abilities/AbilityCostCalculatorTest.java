@@ -2,7 +2,7 @@ package net.sf.anathema.hero.abilities;
 
 import net.sf.anathema.character.main.library.trait.FavorableTraitCost;
 import net.sf.anathema.character.main.library.trait.Trait;
-import net.sf.anathema.character.main.template.abilities.AbilityGroupType;
+import net.sf.anathema.hero.abilities.model.AbilityGroupType;
 import net.sf.anathema.character.main.template.experience.AbilityPointCosts;
 import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.main.template.points.AbilityCreationPoints;

@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.traits;
+package net.sf.anathema.hero.traits.model.trait;
 
 public enum ModificationType {
 

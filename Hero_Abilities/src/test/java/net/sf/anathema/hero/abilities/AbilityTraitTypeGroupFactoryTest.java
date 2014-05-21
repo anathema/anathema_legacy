@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.abilities;
 
-import net.sf.anathema.character.main.template.abilities.GroupedTraitType;
+import net.sf.anathema.hero.traits.model.GroupedTraitType;
 import net.sf.anathema.character.main.traits.lists.IdentifiedTraitTypeList;
 import net.sf.anathema.hero.abilities.model.AbilityTypeGroupFactory;
 import net.sf.anathema.hero.concept.CasteCollection;
@@ -11,8 +11,8 @@ import org.junit.Test;
 
 import java.util.Collections;
 
-import static net.sf.anathema.character.main.template.abilities.AbilityGroupType.Life;
-import static net.sf.anathema.character.main.template.abilities.AbilityGroupType.War;
+import static net.sf.anathema.hero.abilities.model.AbilityGroupType.Life;
+import static net.sf.anathema.hero.abilities.model.AbilityGroupType.War;
 import static net.sf.anathema.character.main.traits.types.AbilityType.*;
 import static org.hamcrest.Matchers.contains;
 import static org.junit.Assert.*;

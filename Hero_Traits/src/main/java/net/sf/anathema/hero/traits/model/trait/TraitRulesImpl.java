@@ -2,7 +2,6 @@ package net.sf.anathema.hero.traits.model.trait;
 
 import net.sf.anathema.character.main.library.trait.rules.TraitRules;
 import net.sf.anathema.character.main.traits.limitation.TraitLimitation;
-import net.sf.anathema.character.main.traits.ModificationType;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.traits.model.trait.template.TraitLimitationFactory;
