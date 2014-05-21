@@ -3,12 +3,10 @@ package net.sf.anathema.hero.dummy.template;
 import net.sf.anathema.character.main.template.ConfiguredModel;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITemplateType;
-import net.sf.anathema.character.main.template.ITraitTemplateCollection;
 import net.sf.anathema.character.main.template.TemplateType;
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.creation.ICreationPoints;
 import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
-import net.sf.anathema.character.main.traits.TraitTemplateCollection;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.hero.dummy.DummyMundaneCharacterType;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
@@ -18,7 +16,6 @@ import java.util.List;
 
 public class DummyHeroTemplate implements HeroTemplate {
 
-  public ITraitTemplateCollection traitTemplateCollection = new TraitTemplateCollection(new DummyTraitTemplateFactory());
   public ITemplateType type = new TemplateType(new DummyMundaneCharacterType());
   public DummyCreationPoints creationPoints = new DummyCreationPoints();
 
@@ -40,11 +37,6 @@ public class DummyHeroTemplate implements HeroTemplate {
   @Override
   public ICreationPoints getCreationPoints() {
     return creationPoints;
-  }
-
-  @Override
-  public ITraitTemplateCollection getTraitTemplateCollection() {
-    return traitTemplateCollection;
   }
 
   @Override

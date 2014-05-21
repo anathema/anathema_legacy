@@ -2,6 +2,7 @@ package net.sf.anathema.hero.abilities.sheet.encoder;
 
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.lists.IdentifiedTraitTypeList;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.abilities.model.AbilityModelFetcher;
 import net.sf.anathema.hero.abilities.sheet.content.SpecialtiesContentCandidate;
 import net.sf.anathema.hero.sheet.pdf.encoder.boxes.ContentEncoder;
@@ -12,7 +13,6 @@ import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
 import net.sf.anathema.hero.traits.sheet.content.PdfTraitEncoder;
 import net.sf.anathema.hero.traits.sheet.content.ValuedTraitReference;
 import net.sf.anathema.hero.traits.sheet.encoder.AbstractNamedTraitEncoder;
-import net.sf.anathema.framework.environment.Resources;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,7 +33,7 @@ public class ExtendedSpecialtiesEncoder extends AbstractNamedTraitEncoder implem
   public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) {
     SpecialtiesContentCandidate content = new SpecialtiesContentCandidate(reportSession.getHero());
     List<ValuedTraitReference> references = new ArrayList<>();
-    for (IdentifiedTraitTypeList group :  AbilityModelFetcher.fetch(reportSession.getHero()).getAbilityTypeGroups()) {
+    for (IdentifiedTraitTypeList group :  AbilityModelFetcher.fetch(reportSession.getHero()).getTraitTypeList()) {
       for (TraitType traitType : group.getAll()) {
         Collections.addAll(references, getTraitReferences(content.getSpecialties(traitType), traitType));
       }

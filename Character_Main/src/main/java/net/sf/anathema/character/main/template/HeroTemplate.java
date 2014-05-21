@@ -17,6 +17,4 @@ public interface HeroTemplate {
   ICreationPoints getCreationPoints();
 
   IExperiencePointCosts getExperienceCost();
-
-  ITraitTemplateCollection getTraitTemplateCollection();
 }

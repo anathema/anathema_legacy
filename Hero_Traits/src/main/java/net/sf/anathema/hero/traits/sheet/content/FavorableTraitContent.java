@@ -1,24 +1,23 @@
 package net.sf.anathema.hero.traits.sheet.content;
 
-import net.sf.anathema.character.main.traits.ITraitTemplate;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.lists.IdentifiedTraitTypeList;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.concept.CasteType;
-import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.sheet.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.hero.traits.TraitMap;
-import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.hero.traits.model.TraitListModel;
 import net.sf.anathema.lib.util.Identifier;
 
 import java.util.List;
 
 public abstract class FavorableTraitContent extends AbstractSubBoxContent {
 
-  private Hero hero;
+  private TraitListModel model;
 
-  public FavorableTraitContent(Hero hero, Resources resources) {
+  public FavorableTraitContent(TraitListModel model, Resources resources) {
     super(resources);
-    this.hero = hero;
+    this.model = model;
   }
 
   public abstract List<? extends TraitType> getMarkedTraitTypes();
@@ -28,10 +27,7 @@ public abstract class FavorableTraitContent extends AbstractSubBoxContent {
   public abstract TraitMap getTraitMap();
 
   public int getTraitMax() {
-    IdentifiedTraitTypeList group = getIdentifiedTraitTypeGroups()[0];
-    TraitType traitType = group.getAll().get(0);
-    ITraitTemplate template = hero.getTemplate().getTraitTemplateCollection().getTraitTemplate(traitType);
-    return template.getLimitation().getAbsoluteLimit(hero);
+    return model.getTraitMaximum();
   }
 
   @Override

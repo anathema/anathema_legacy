@@ -25,10 +25,10 @@ public class GenericCharmContentHelper {
   private IdentifiedTraitTypeList[] getCharmTraitGroups() {
     FavoringTraitType type = hero.getTemplate().getTemplateType().getCharacterType().getFavoringTraitType();
     if (type.equals(new AbilityFavoringType())) {
-      return AbilityModelFetcher.fetch(hero).getAbilityTypeGroups();
+      return AbilityModelFetcher.fetch(hero).getTraitTypeList();
     }
     if (type.equals(new AttributeFavoringType())) {
-      return AttributesModelFetcher.fetch(hero).getAttributeTypeGroups();
+      return AttributesModelFetcher.fetch(hero).getTraitTypeList();
     }
     return new IdentifiedTraitTypeList[0];
   }

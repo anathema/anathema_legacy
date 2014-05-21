@@ -3,13 +3,11 @@ package net.sf.anathema.hero.abilities.model;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.main.template.HeroTemplate;
+import net.sf.anathema.character.main.template.ITraitLimitation;
 import net.sf.anathema.character.main.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.lists.AllAbilityTraitTypeList;
 import net.sf.anathema.character.main.traits.lists.IIdentifiedCasteTraitTypeList;
-import net.sf.anathema.hero.traits.model.GroupedTraitTypeBuilder;
-import net.sf.anathema.hero.traits.model.TraitFactory;
-import net.sf.anathema.hero.traits.template.GroupedTraitsTemplate;
 import net.sf.anathema.hero.concept.CasteCollection;
 import net.sf.anathema.hero.concept.HeroConcept;
 import net.sf.anathema.hero.concept.HeroConceptFetcher;
@@ -21,8 +19,13 @@ import net.sf.anathema.hero.traits.DefaultTraitMap;
 import net.sf.anathema.hero.traits.TraitMap;
 import net.sf.anathema.hero.traits.TraitModel;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
+import net.sf.anathema.hero.traits.model.GroupedTraitTypeBuilder;
+import net.sf.anathema.hero.traits.model.TraitFactory;
+import net.sf.anathema.hero.traits.model.TraitLimitationFactory;
+import net.sf.anathema.hero.traits.model.TraitTemplateMapImpl;
 import net.sf.anathema.hero.traits.model.event.FavoredChangedListener;
 import net.sf.anathema.hero.traits.model.event.TraitValueChangedListener;
+import net.sf.anathema.hero.traits.template.GroupedTraitsTemplate;
 import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;
@@ -54,7 +57,7 @@ public class AbilitiesModelImpl extends DefaultTraitMap implements AbilitiesMode
     IncrementChecker incrementChecker = createFavoredAbilityIncrementChecker(heroTemplate, this, abilityGroups);
     TraitFactory traitFactory = new TraitFactory(this.hero);
     for (IIdentifiedCasteTraitTypeList traitGroup : abilityTraitGroups) {
-      Trait[] traits = traitFactory.createTraits(traitGroup, incrementChecker, new SimpleTraitTemplateMap(template));
+      Trait[] traits = traitFactory.createTraits(traitGroup, incrementChecker, new TraitTemplateMapImpl(template));
       addTraits(traits);
     }
     TraitModel traitModel = TraitModelFetcher.fetch(hero);
@@ -79,7 +82,13 @@ public class AbilitiesModelImpl extends DefaultTraitMap implements AbilitiesMode
   }
 
   @Override
-  public IIdentifiedCasteTraitTypeList[] getAbilityTypeGroups() {
+  public IIdentifiedCasteTraitTypeList[] getTraitTypeList() {
     return abilityTraitGroups;
+  }
+
+  @Override
+  public int getTraitMaximum() {
+    ITraitLimitation limitation = TraitLimitationFactory.createLimitation(template.standard.limitation);
+    return limitation.getAbsoluteLimit(hero);
   }
 }
