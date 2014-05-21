@@ -5,25 +5,17 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import net.sf.anathema.hero.traits.model.Trait;
-import net.sf.anathema.hero.traits.model.types.AttributeType;
 import net.sf.anathema.hero.traits.model.TraitMap;
 import net.sf.anathema.hero.traits.model.TraitModelFetcher;
+import net.sf.anathema.hero.traits.model.types.AttributeType;
 
-import static net.sf.anathema.character.main.traits.types.AttributeType.Appearance;
-import static net.sf.anathema.character.main.traits.types.AttributeType.Charisma;
-import static net.sf.anathema.character.main.traits.types.AttributeType.Dexterity;
-import static net.sf.anathema.character.main.traits.types.AttributeType.Intelligence;
-import static net.sf.anathema.character.main.traits.types.AttributeType.Manipulation;
-import static net.sf.anathema.character.main.traits.types.AttributeType.Perception;
-import static net.sf.anathema.character.main.traits.types.AttributeType.Stamina;
-import static net.sf.anathema.character.main.traits.types.AttributeType.Strength;
-import static net.sf.anathema.character.main.traits.types.AttributeType.Wits;
+import static net.sf.anathema.hero.traits.model.types.AttributeType.*;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 public class AttributeSteps {
 
-  public static final AttributeType ANY_ATTRIBUTE_TYPE = AttributeType.Dexterity;
+  public static final AttributeType ANY_ATTRIBUTE_TYPE = Dexterity;
   private final CharacterHolder character;
 
   @Inject
@@ -43,7 +35,7 @@ public class AttributeSteps {
 
   @Then("^she has (\\d+) dots in attribute (.*)$")
   public void she_has_dots_in_attribute(int value, String traitId) throws Throwable {
-    AttributeType type = AttributeType.valueOf(traitId);
+    AttributeType type = valueOf(traitId);
     assertThatAttributeHasValueOf(type, value);
   }
 
@@ -54,7 +46,7 @@ public class AttributeSteps {
 
   @Then("^she has (\\d+) dots in all her attributes$")
   public void she_has_dots_in_all_her_attributes(int value) throws Throwable {
-    for (AttributeType type : AttributeType.values()) {
+    for (AttributeType type : values()) {
       assertThatAttributeHasValueOf(type, value);
     }
   }
