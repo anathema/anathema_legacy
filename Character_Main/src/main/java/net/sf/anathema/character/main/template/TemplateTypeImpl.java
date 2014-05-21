@@ -2,6 +2,7 @@ package net.sf.anathema.character.main.template;
 
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.lib.util.Identifier;
+import org.apache.commons.lang3.builder.EqualsBuilder;
 
 public final class TemplateTypeImpl implements TemplateType {
 
@@ -23,14 +24,10 @@ public final class TemplateTypeImpl implements TemplateType {
     return subType;
   }
 
+  @SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
   @Override
   public boolean equals(Object obj) {
-    if (!(obj instanceof TemplateTypeImpl)) {
-      return false;
-    }
-    TemplateType otherType = (TemplateType) obj;
-    return getCharacterType().getId().equals(otherType.getCharacterType().getId())
-        && getSubType().getId().equals(otherType.getSubType().getId());
+    return EqualsBuilder.reflectionEquals(this, obj);
   }
   
   @Override
