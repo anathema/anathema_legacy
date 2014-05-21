@@ -3,6 +3,6 @@
     calculationBase: 1
   };
   willpower: {
-    calculationBase: 2
+    calculationBase: 5
   }
 }
