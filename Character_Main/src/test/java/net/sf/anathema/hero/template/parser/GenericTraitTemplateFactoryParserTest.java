@@ -12,10 +12,7 @@ import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.dom4j.Element;
 
 public class GenericTraitTemplateFactoryParserTest extends TestCase {
-  String xml = "<traitTemplates >"  + "<abilities>" +
-               "<defaultTrait startValue=\"0\" lowerableState=\"RaiseOnly\">" + "<limitation type=\"Essence\"/>" + "<minimum value=\"0\"/>" +
-               "</defaultTrait>" + "</abilities>" + "<attributes>" + "<defaultTrait startValue=\"1\" lowerableState=\"RaiseOnly\">" +
-               "<limitation type=\"Essence\"/>" + "<minimum value=\"1\"/>" + "</defaultTrait>" + "</attributes>" + "<virtues>" +
+  String xml = "<traitTemplates >" + "<virtues>" +
                "<defaultTrait startValue=\"1\" lowerableState=\"RaiseOnly\">" + "<limitation type=\"Static\" value=\"5\"/>" + "<minimum value=\"1\"/>" +
                "</defaultTrait>" + "</virtues>" + "<essence startValue=\"1\" lowerableState=\"RaiseOnly\">" +
                "<limitation type=\"Static\" value=\"1\"/>" + "<minimum value=\"1\"/>" + "</essence>" +
@@ -30,13 +27,6 @@ public class GenericTraitTemplateFactoryParserTest extends TestCase {
     templateFactoryRegistry = new DummyXmlTemplateRegistry<>();
     templatePoolRegistry = new DummyXmlTemplateRegistry<>();
     parser = new GenericTraitTemplateFactoryParser(templateFactoryRegistry, templatePoolRegistry);
-  }
-
-  public void testParseAttributes() throws Exception {
-    Element traitCollectionElement = DocumentUtilities.read(xml).getRootElement();
-    GenericTraitTemplateFactory templateFactory = parser.parseTemplate(traitCollectionElement);
-    ITraitTemplate attributeTemplate = templateFactory.createAttributeTemplate(AttributeType.Appearance);
-    AnathemaCharacterAssert.assertEssenceLimitedTraitTemplate(1, 1, 1, attributeTemplate);
   }
 
   public void testParseEssence() throws Exception {

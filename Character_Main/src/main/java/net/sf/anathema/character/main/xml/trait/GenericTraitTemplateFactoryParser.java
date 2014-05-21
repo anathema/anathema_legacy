@@ -3,7 +3,6 @@ package net.sf.anathema.character.main.xml.trait;
 import net.sf.anathema.character.main.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.main.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.main.xml.trait.pool.GenericTraitTemplatePool;
-import net.sf.anathema.character.main.xml.trait.types.AttributePoolParser;
 import net.sf.anathema.character.main.xml.trait.types.VirtuePoolParser;
 import net.sf.anathema.lib.exception.PersistenceException;
 import org.dom4j.Element;
@@ -28,7 +27,6 @@ public class GenericTraitTemplateFactoryParser extends AbstractXmlTemplateParser
   @Override
   public GenericTraitTemplateFactory parseTemplate(Element element) throws PersistenceException {
     GenericTraitTemplateFactory templateFactory = getBasicTemplate(element);
-    new AttributePoolParser(poolTemplateRegistry, templateFactory).parseTraits(element);
     new VirtuePoolParser(poolTemplateRegistry, templateFactory).parseTraits(element);
     parseEssence(element, templateFactory);
     parseWillpower(element, templateFactory);

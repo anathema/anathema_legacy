@@ -1,11 +1,5 @@
 <traitTemplates>
-	<attributes>
-		<defaultTrait startValue="1" lowerableState="RaiseOnly">
-			<limitation type="Essence"/>
-			<minimum value="1"/>
-		</defaultTrait>
-	</attributes>
-	<virtues>	
+	<virtues>
 		<defaultTrait startValue="1" lowerableState="RaiseOnly">
 			<limitation type="Static" value="5"/>
 			<minimum value="1"/>
