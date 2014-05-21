@@ -35,7 +35,7 @@ public class AbilitySteps {
     assertThat(ability.getCurrentValue(), is(amount));
   }
 
-  @And("^she spends all her Ability dots$")
+  @And("^she spends all her general Ability dots$")
   public void she_spends_all_her_Ability_dots() throws Throwable {
     she_exceeds_her_Ability_allotment_by_dot(0);
   }
