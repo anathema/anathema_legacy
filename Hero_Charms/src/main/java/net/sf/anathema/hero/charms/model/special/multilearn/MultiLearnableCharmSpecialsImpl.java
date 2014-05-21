@@ -1,11 +1,12 @@
 package net.sf.anathema.hero.charms.model.special.multilearn;
 
 import net.sf.anathema.character.main.library.trait.DefaultTraitType;
-import net.sf.anathema.character.main.library.trait.LimitedTrait;
+import net.sf.anathema.hero.traits.model.trait.LimitedTrait;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.main.magic.charm.Charm;
 import net.sf.anathema.character.main.magic.charm.ICharmLearnableArbitrator;
+import net.sf.anathema.character.main.traits.ITraitTemplate;
 import net.sf.anathema.hero.charms.model.special.CharmSpecialist;
 import net.sf.anathema.hero.charms.display.special.CharmSpecialistImpl;
 import net.sf.anathema.hero.charms.model.special.prerequisite.PrerequisiteModifyingCharms;
@@ -17,11 +18,13 @@ import net.sf.anathema.hero.model.change.ChangeFlavor;
 import net.sf.anathema.hero.model.change.FlavoredChangeListener;
 import net.sf.anathema.hero.traits.TraitChangeFlavor;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
+import net.sf.anathema.hero.traits.template.TraitTemplate;
+import net.sf.anathema.hero.traits.template.TraitTemplateFactory;
 import net.sf.anathema.lib.control.IntValueChangedListener;
 import net.sf.anathema.lib.data.Range;
 import org.jmock.example.announcer.Announcer;
 
-import static net.sf.anathema.character.main.traits.SimpleTraitTemplate.createStaticLimitedTemplate;
+import static net.sf.anathema.character.main.traits.DeprecatedTraitTemplate.createStaticLimitedTemplate;
 
 public class MultiLearnableCharmSpecialsImpl implements MultiLearnCharmSpecials {
 
@@ -42,8 +45,8 @@ public class MultiLearnableCharmSpecialsImpl implements MultiLearnCharmSpecials 
     this.charm = charm;
     this.specialCharm = specialCharm;
     this.arbitrator = arbitrator;
-    this.trait = new LimitedTrait(hero, new DefaultTraitType(charm.getId()), createStaticLimitedTemplate(0, specialCharm.getAbsoluteLearnLimit()),
-            new MultiLearnableIncrementChecker());
+    TraitTemplate template = TraitTemplateFactory.createStaticLimitedTemplate(0, specialCharm.getAbsoluteLearnLimit());
+    this.trait = new LimitedTrait(hero, new DefaultTraitType(charm.getId()), template, new MultiLearnableIncrementChecker());
     this.trait.addCurrentValueListener(new IntValueChangedListener() {
       @Override
       public void valueChanged(int newValue) {

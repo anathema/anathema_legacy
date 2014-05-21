@@ -1,12 +1,13 @@
 package net.sf.anathema.hero.charms.model.special.oxbody;
 
 import net.sf.anathema.character.main.library.trait.DefaultTraitType;
-import net.sf.anathema.character.main.library.trait.LimitedTrait;
+import net.sf.anathema.hero.traits.model.trait.LimitedTrait;
 import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.hero.health.HealthLevelType;
 import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.traits.template.TraitTemplateFactory;
 
-import static net.sf.anathema.character.main.traits.SimpleTraitTemplate.createEssenceLimitedTemplate;
+import static net.sf.anathema.character.main.traits.DeprecatedTraitTemplate.createEssenceLimitedTemplate;
 
 public class OxBodyCategory extends LimitedTrait {
 
@@ -14,7 +15,7 @@ public class OxBodyCategory extends LimitedTrait {
   private final HealthLevelType[] healthLevelTypes;
 
   public OxBodyCategory(Hero hero, HealthLevelType[] healthLevelTypes, String id, IncrementChecker incrementChecker) {
-    super(hero, new DefaultTraitType("OxBodyTechnique"), createEssenceLimitedTemplate(0), incrementChecker);
+    super(hero, new DefaultTraitType("OxBodyTechnique"), TraitTemplateFactory.createEssenceLimitedTemplate(0), incrementChecker);
     this.healthLevelTypes = healthLevelTypes;
     this.id = id;
   }

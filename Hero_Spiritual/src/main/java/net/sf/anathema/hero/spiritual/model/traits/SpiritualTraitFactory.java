@@ -7,7 +7,7 @@ import net.sf.anathema.character.main.library.trait.ValueChangeChecker;
 import net.sf.anathema.character.main.library.trait.rules.TraitRules;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.traits.model.SimpleTraitRules;
+import net.sf.anathema.hero.traits.model.TraitRulesImpl;
 import net.sf.anathema.hero.traits.model.TraitTemplateMap;
 import net.sf.anathema.hero.traits.template.TraitTemplate;
 
@@ -35,7 +35,7 @@ public class SpiritualTraitFactory {
   public Trait createTrait(TraitType traitType) {
     TraitTemplate traitTemplate = traitTemplateMap.getTemplate(traitType);
     ValueChangeChecker checker = new FriendlyValueChangeChecker();
-    TraitRules rules = new SimpleTraitRules(traitType, traitTemplate, hero);
+    TraitRules rules = new TraitRulesImpl(traitType, traitTemplate, hero);
     return new DefaultTrait(hero, rules, checker);
   }
 }

@@ -4,25 +4,22 @@ import net.sf.anathema.character.main.library.trait.DefaultTrait;
 import net.sf.anathema.character.main.library.trait.FriendlyValueChangeChecker;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.favorable.FriendlyIncrementChecker;
-import net.sf.anathema.character.main.library.trait.rules.TraitRulesImpl;
-import net.sf.anathema.hero.charms.model.special.oxbody.OxBodyCategory;
-import net.sf.anathema.hero.charms.model.special.oxbody.OxBodyTechniqueCharm;
-import net.sf.anathema.hero.charms.model.special.oxbody.OxBodyTechniqueSpecials;
-import net.sf.anathema.character.main.traits.ITraitTemplate;
-import net.sf.anathema.character.main.traits.SimpleTraitTemplate;
+import net.sf.anathema.character.main.library.trait.rules.TraitRules;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.TraitValueStrategy;
 import net.sf.anathema.character.main.traits.context.CreationTraitValueStrategy;
 import net.sf.anathema.character.main.traits.types.AbilityType;
-import net.sf.anathema.hero.health.HealthLevelType;
 import net.sf.anathema.hero.BasicCharacterTestCase;
-import net.sf.anathema.hero.charms.model.special.oxbody.OxBodyTechniqueSpecialsImpl;
+import net.sf.anathema.hero.charms.model.special.oxbody.*;
 import net.sf.anathema.hero.concept.CasteType;
 import net.sf.anathema.hero.dummy.DummyCasteType;
 import net.sf.anathema.hero.dummy.DummyHero;
-import net.sf.anathema.hero.charms.model.special.oxbody.OxBodyTechniqueArbitratorImpl;
+import net.sf.anathema.hero.health.HealthLevelType;
 import net.sf.anathema.hero.traits.TraitModel;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
+import net.sf.anathema.hero.traits.model.TraitRulesImpl;
+import net.sf.anathema.hero.traits.template.TraitTemplate;
+import net.sf.anathema.hero.traits.template.TraitTemplateFactory;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -51,8 +48,8 @@ public class OxBodyTechniqueSpecialsTest {
   }
 
   private DefaultTrait createResistance(DummyHero hero) {
-    ITraitTemplate resistanceTemplate = SimpleTraitTemplate.createEssenceLimitedTemplate(0);
-    TraitRulesImpl resistanceRules = new TraitRulesImpl(AbilityType.Resistance, resistanceTemplate, hero);
+    TraitTemplate resistanceTemplate = TraitTemplateFactory.createEssenceLimitedTemplate(0);
+    TraitRules resistanceRules = new TraitRulesImpl(AbilityType.Resistance, resistanceTemplate, hero);
     CasteType[] castes = {new DummyCasteType()};
     return new DefaultTrait(hero, resistanceRules, castes, new FriendlyValueChangeChecker(), new FriendlyIncrementChecker());
   }

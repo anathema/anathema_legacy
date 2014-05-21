@@ -1,39 +1,36 @@
-package net.sf.anthema.hero.traits;
+package net.sf.anathema.hero.specialities;
 
 import net.sf.anathema.character.main.library.trait.DefaultTrait;
 import net.sf.anathema.character.main.library.trait.FriendlyValueChangeChecker;
 import net.sf.anathema.character.main.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.main.library.trait.favorable.IFavorableStateChangedListener;
 import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
-import net.sf.anathema.character.main.library.trait.rules.TraitRulesImpl;
-import net.sf.anathema.character.main.library.trait.specialties.SpecialtiesContainer;
+import net.sf.anathema.character.main.library.trait.rules.TraitRules;
 import net.sf.anathema.character.main.library.trait.specialties.Specialty;
 import net.sf.anathema.character.main.library.trait.subtrait.ISubTraitContainer;
-import net.sf.anathema.hero.dummy.DummyCasteType;
-import net.sf.anathema.hero.dummy.DummyHero;
-import net.sf.anathema.hero.dummy.models.DummyHeroConcept;
-import net.sf.anathema.hero.dummy.models.DummySpiritualTraitModel;
-import net.sf.anathema.hero.dummy.models.DummyTraitModel;
-import net.sf.anathema.character.main.traits.ITraitTemplate;
-import net.sf.anathema.character.main.traits.SimpleTraitTemplate;
 import net.sf.anathema.character.main.traits.context.CreationTraitValueStrategy;
 import net.sf.anathema.character.main.traits.context.ExperiencedTraitValueStrategy;
 import net.sf.anathema.character.main.traits.context.ProxyTraitValueStrategy;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.traits.types.OtherTraitType;
 import net.sf.anathema.hero.concept.CasteType;
+import net.sf.anathema.hero.dummy.DummyCasteType;
+import net.sf.anathema.hero.dummy.DummyHero;
+import net.sf.anathema.hero.dummy.models.DummyHeroConcept;
+import net.sf.anathema.hero.dummy.models.DummySpiritualTraitModel;
+import net.sf.anathema.hero.dummy.models.DummyTraitModel;
 import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.specialties.model.SpecialtiesContainer;
+import net.sf.anathema.hero.traits.model.TraitRulesImpl;
+import net.sf.anathema.hero.traits.template.TraitTemplate;
+import net.sf.anathema.hero.traits.template.TraitTemplateFactory;
 import net.sf.anathema.lib.control.IntValueChangedListener;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyZeroInteractions;
-import static org.mockito.Mockito.when;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 public class FavorableTraitTest {
 
@@ -109,8 +106,8 @@ public class FavorableTraitTest {
   }
 
   private DefaultTrait createObjectUnderTest(Hero hero) {
-    ITraitTemplate archeryTemplate = SimpleTraitTemplate.createEssenceLimitedTemplate(0);
-    TraitRulesImpl rules = new TraitRulesImpl(AbilityType.Archery, archeryTemplate, hero);
+    TraitTemplate archeryTemplate = TraitTemplateFactory.createEssenceLimitedTemplate(0);
+    TraitRules rules = new TraitRulesImpl(AbilityType.Archery, archeryTemplate, hero);
     return new DefaultTrait(hero, rules, new CasteType[]{new DummyCasteType()}, new FriendlyValueChangeChecker(), incrementChecker);
   }
 

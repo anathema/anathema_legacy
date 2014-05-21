@@ -6,12 +6,8 @@ import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.ValueChangeChecker;
 import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.main.library.trait.rules.TraitRules;
-import net.sf.anathema.character.main.library.trait.rules.TraitRulesImpl;
-import net.sf.anathema.character.main.traits.ITraitTemplate;
 import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.traits.creation.TypedTraitTemplateFactory;
 import net.sf.anathema.character.main.traits.lists.IIdentifiedCasteTraitTypeList;
-import net.sf.anathema.character.main.traits.lists.TraitTypeList;
 import net.sf.anathema.hero.concept.CasteType;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.traits.template.TraitTemplate;
@@ -39,7 +35,7 @@ public class TraitFactory {
 
   private Trait createTrait(TraitType traitType, CasteType[] casteTypes, IncrementChecker checker, TraitTemplateMap templateMap) {
     TraitTemplate traitTemplate = templateMap.getTemplate(traitType);
-    TraitRules favorableTraitRules = new SimpleTraitRules(traitType, traitTemplate, hero);
+    TraitRules favorableTraitRules = new TraitRulesImpl(traitType, traitTemplate, hero);
     ValueChangeChecker valueChecker = new FriendlyValueChangeChecker();
     return new DefaultTrait(hero, favorableTraitRules, casteTypes, valueChecker, checker);
   }

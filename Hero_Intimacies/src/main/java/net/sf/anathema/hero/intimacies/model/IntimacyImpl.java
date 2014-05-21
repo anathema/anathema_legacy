@@ -3,18 +3,19 @@ package net.sf.anathema.hero.intimacies.model;
 import net.sf.anathema.character.main.library.trait.DefaultTrait;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.ValueChangeChecker;
-import net.sf.anathema.character.main.library.trait.rules.TraitRulesImpl;
-import net.sf.anathema.character.main.traits.ITraitTemplate;
+import net.sf.anathema.character.main.library.trait.rules.TraitRules;
 import net.sf.anathema.character.main.traits.ModificationType;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.traits.types.VirtueType;
 import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.traits.model.TraitRulesImpl;
+import net.sf.anathema.hero.traits.template.LimitationTemplate;
+import net.sf.anathema.hero.traits.template.LimitationType;
+import net.sf.anathema.hero.traits.template.TraitTemplate;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.GlobalChangeAdapter;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import org.jmock.example.announcer.Announcer;
-
-import static net.sf.anathema.character.main.traits.SimpleTraitTemplate.createVirtueLimitedTemplate;
 
 public class IntimacyImpl implements Intimacy {
 
@@ -27,11 +28,24 @@ public class IntimacyImpl implements Intimacy {
   public IntimacyImpl(Hero hero, String name, Integer initialValue, final ValuedTraitType maxValueTrait) {
     this.name = name;
     this.maxValueTrait = maxValueTrait;
-    ITraitTemplate template = createVirtueLimitedTemplate(0, initialValue, ModificationType.Free, VirtueType.Conviction);
-    TraitRulesImpl traitRules = new TraitRulesImpl(new IntimacyType(name), template, hero);
+    TraitTemplate template = createIntimacyTemplate(0, initialValue, ModificationType.Free, VirtueType.Conviction);
+    TraitRules traitRules = new TraitRulesImpl(new IntimacyType(name), template, hero);
     ValueChangeChecker incrementChecker = new IntimacyValueChangeChecker(maxValueTrait);
     this.trait = new DefaultTrait(hero, traitRules, incrementChecker);
   }
+
+  private static TraitTemplate createIntimacyTemplate(int minimumValue, int startValue, ModificationType state, VirtueType type) {
+    TraitTemplate template = new TraitTemplate();
+    template.minimumValue = minimumValue;
+    template.startValue = startValue;
+    template.modificationType = state;
+    LimitationTemplate limitation = new LimitationTemplate();
+    limitation.type = LimitationType.Static;
+    limitation.value = 4;
+    template.limitation = limitation;
+    return template;
+  }
+
   @Override
   public String getName() {
     return name;

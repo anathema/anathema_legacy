@@ -9,14 +9,14 @@ import net.sf.anathema.hero.traits.template.LimitationTemplate;
 import net.sf.anathema.hero.traits.template.TraitTemplate;
 import net.sf.anathema.lib.data.Range;
 
-public class SimpleTraitRules implements TraitRules {
+public class TraitRulesImpl implements TraitRules {
   private int capModifier = 0;
   private final TraitTemplate template;
   private final TraitType traitType;
   private Range modifiedCreationRange;
   private Hero hero;
 
-  public SimpleTraitRules(TraitType traitType, TraitTemplate template, Hero hero) {
+  public TraitRulesImpl(TraitType traitType, TraitTemplate template, Hero hero) {
     this.traitType = traitType;
     this.hero = hero;
     this.template = template;

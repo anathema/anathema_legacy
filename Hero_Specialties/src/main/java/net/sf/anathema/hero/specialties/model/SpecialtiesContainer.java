@@ -1,5 +1,6 @@
-package net.sf.anathema.character.main.library.trait.specialties;
+package net.sf.anathema.hero.specialties.model;
 
+import net.sf.anathema.character.main.library.trait.specialties.Specialty;
 import net.sf.anathema.character.main.library.trait.subtrait.AbstractSubTraitContainer;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.hero.model.Hero;

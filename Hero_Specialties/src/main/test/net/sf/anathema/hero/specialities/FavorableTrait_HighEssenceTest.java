@@ -1,23 +1,24 @@
-package net.sf.anthema.hero.traits;
+package net.sf.anathema.hero.specialities;
 
 import net.sf.anathema.character.main.library.trait.DefaultTrait;
 import net.sf.anathema.character.main.library.trait.FriendlyValueChangeChecker;
 import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
-import net.sf.anathema.character.main.library.trait.rules.TraitRulesImpl;
-import net.sf.anathema.hero.dummy.DummyCasteType;
-import net.sf.anathema.hero.dummy.DummyHero;
-import net.sf.anathema.hero.dummy.models.DummyHeroConcept;
-import net.sf.anathema.hero.dummy.models.DummySpiritualTraitModel;
-import net.sf.anathema.hero.dummy.models.DummyTraitModel;
-import net.sf.anathema.character.main.traits.ITraitTemplate;
-import net.sf.anathema.character.main.traits.SimpleTraitTemplate;
+import net.sf.anathema.character.main.library.trait.rules.TraitRules;
 import net.sf.anathema.character.main.traits.context.CreationTraitValueStrategy;
 import net.sf.anathema.character.main.traits.context.ExperiencedTraitValueStrategy;
 import net.sf.anathema.character.main.traits.context.ProxyTraitValueStrategy;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.traits.types.OtherTraitType;
 import net.sf.anathema.hero.concept.CasteType;
+import net.sf.anathema.hero.dummy.DummyCasteType;
+import net.sf.anathema.hero.dummy.DummyHero;
+import net.sf.anathema.hero.dummy.models.DummyHeroConcept;
+import net.sf.anathema.hero.dummy.models.DummySpiritualTraitModel;
+import net.sf.anathema.hero.dummy.models.DummyTraitModel;
 import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.traits.model.TraitRulesImpl;
+import net.sf.anathema.hero.traits.template.TraitTemplate;
+import net.sf.anathema.hero.traits.template.TraitTemplateFactory;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -52,8 +53,8 @@ public class FavorableTrait_HighEssenceTest {
   }
 
   private DefaultTrait createObjectUnderTest(Hero hero) {
-    ITraitTemplate template = SimpleTraitTemplate.createEssenceLimitedTemplate(0);
-    TraitRulesImpl rules = new TraitRulesImpl(AbilityType.Archery, template, hero);
+    TraitTemplate template = TraitTemplateFactory.createEssenceLimitedTemplate(0);
+    TraitRules rules = new TraitRulesImpl(AbilityType.Archery, template, hero);
     return new DefaultTrait(hero, rules, new CasteType[]{new DummyCasteType()}, new FriendlyValueChangeChecker(), incrementChecker);
   }
 }

@@ -1,19 +1,21 @@
 package net.sf.anathema.herotype.solar.model.curse;
 
 import net.sf.anathema.character.main.library.trait.DefaultTraitType;
-import net.sf.anathema.character.main.library.trait.LimitedTrait;
+import net.sf.anathema.hero.traits.model.trait.LimitedTrait;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.favorable.FriendlyIncrementChecker;
 import net.sf.anathema.character.main.traits.ITraitTemplate;
 import net.sf.anathema.character.main.traits.ModificationType;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.traits.template.TraitTemplate;
+import net.sf.anathema.hero.traits.template.TraitTemplateFactory;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.SimpleTextualDescription;
 import org.jmock.example.announcer.Announcer;
 
-import static net.sf.anathema.character.main.traits.SimpleTraitTemplate.createStaticLimitedTemplate;
+import static net.sf.anathema.character.main.traits.DeprecatedTraitTemplate.createStaticLimitedTemplate;
 
 public class VirtueFlawImpl implements VirtueFlaw {
 
@@ -42,7 +44,7 @@ public class VirtueFlawImpl implements VirtueFlaw {
   public Trait getLimitTrait() {
     if (limitTrait == null) {
       DefaultTraitType traitType = new DefaultTraitType(getLimitString());
-      ITraitTemplate limitedTemplate = createStaticLimitedTemplate(0, 10, ModificationType.Free);
+      TraitTemplate limitedTemplate = TraitTemplateFactory.createStaticLimitedTemplate(0, 10, ModificationType.Free);
       limitTrait = new LimitedTrait(hero, traitType, limitedTemplate, new FriendlyIncrementChecker());
     }
     return limitTrait;
