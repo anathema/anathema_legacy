@@ -54,8 +54,6 @@ public class SpiritualTraitModelImpl extends DefaultTraitMap implements Spiritua
     Trait[] virtues = getTraits(VirtueType.values());
     if (template.willpower.isVirtueBased) {
       new WillpowerListening().initListening(willpower, virtues);
-    } else {
-      willpower.setModifiedCreationRange(5, 10);
     }
   }
 
