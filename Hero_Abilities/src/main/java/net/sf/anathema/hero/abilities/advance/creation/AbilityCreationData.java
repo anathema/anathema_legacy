@@ -11,7 +11,7 @@ public class AbilityCreationData implements TraitListCreationData {
 
   private AbilityPointsTemplate template;
   private IAbilityCreationPoints abilityCreationPoints;
-  private BonusPointCosts costs;mmo
+  private BonusPointCosts costs;
 
 
   public AbilityCreationData(AbilityPointsTemplate template, IAbilityCreationPoints abilityCreationPoints, BonusPointCosts costs) {
