@@ -7,7 +7,6 @@ import net.sf.anathema.character.main.template.TemplateType;
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.creation.ICreationPoints;
 import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
-import net.sf.anathema.character.main.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.hero.dummy.DummyMundaneCharacterType;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
@@ -33,11 +32,6 @@ public class DummyHeroTemplate implements HeroTemplate {
   @Override
   public IExperiencePointCosts getExperienceCost() {
     return null;
-  }
-
-  @Override
-  public IPresentationProperties getPresentationProperties() {
-    throw new NotYetImplementedException();
   }
 
   @Override

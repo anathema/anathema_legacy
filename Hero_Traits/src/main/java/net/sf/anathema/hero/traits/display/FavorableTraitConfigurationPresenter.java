@@ -3,27 +3,27 @@ package net.sf.anathema.hero.traits.display;
 import net.sf.anathema.character.main.library.ITraitFavorization;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.favorable.FavorableState;
-import net.sf.anathema.character.main.library.trait.favorable.IFavorableStateChangedListener;
 import net.sf.anathema.character.main.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.main.library.trait.view.GroupedFavorableTraitConfigurationView;
-import net.sf.anathema.character.main.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.lists.DefaultTraitTypeList;
 import net.sf.anathema.character.main.traits.lists.IdentifiedTraitTypeList;
+import net.sf.anathema.character.main.xml.presentation.GenericPresentationTemplate;
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.display.ExtensibleTraitView;
 import net.sf.anathema.hero.experience.ExperienceChange;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.model.change.ChangeFlavor;
-import net.sf.anathema.hero.model.change.FlavoredChangeListener;
 import net.sf.anathema.hero.traits.TraitMap;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
-import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.lib.collection.IdentityMapping;
 
-import static net.sf.anathema.character.main.library.trait.favorable.FavorableState.*;
+import java.util.List;
+
+import static net.sf.anathema.character.main.library.trait.favorable.FavorableState.Caste;
+import static net.sf.anathema.character.main.library.trait.favorable.FavorableState.Default;
+import static net.sf.anathema.character.main.library.trait.favorable.FavorableState.Favored;
 
 public class FavorableTraitConfigurationPresenter {
 
@@ -32,7 +32,6 @@ public class FavorableTraitConfigurationPresenter {
   private final Resources resources;
   private final IdentifiedTraitTypeList[] traitTypeGroups;
   private final TraitMap traitConfiguration;
-  private final IPresentationProperties presentationProperties;
   private Hero hero;
 
   public FavorableTraitConfigurationPresenter(IdentifiedTraitTypeList[] traitTypeGroups, Hero hero, GroupedFavorableTraitConfigurationView view,
@@ -40,7 +39,6 @@ public class FavorableTraitConfigurationPresenter {
     this.hero = hero;
     this.traitTypeGroups = traitTypeGroups;
     this.traitConfiguration = TraitModelFetcher.fetch(hero);
-    this.presentationProperties = hero.getTemplate().getPresentationProperties();
     this.resources = resources;
     this.view = view;
   }
@@ -48,14 +46,12 @@ public class FavorableTraitConfigurationPresenter {
   public void init(String typePrefix) {
     for (IdentifiedTraitTypeList traitTypeGroup : traitTypeGroups) {
       view.startNewTraitGroup(resources.getString(typePrefix + "." + traitTypeGroup.getListId().getId()));
-      addTraitViews(traitConfiguration.getTraits(traitTypeGroup.getAll().toArray(new TraitType[0])));
+      List<TraitType> allTraitTypes = traitTypeGroup.getAll();
+      addTraitViews(traitConfiguration.getTraits(allTraitTypes.toArray(new TraitType[allTraitTypes.size()])));
     }
-    hero.getChangeAnnouncer().addListener(new FlavoredChangeListener() {
-      @Override
-      public void changeOccurred(ChangeFlavor flavor) {
-        if (flavor == ExperienceChange.FLAVOR_EXPERIENCE_STATE) {
-          updateButtons();
-        }
+    hero.getChangeAnnouncer().addListener(flavor -> {
+      if (flavor == ExperienceChange.FLAVOR_EXPERIENCE_STATE) {
+        updateButtons();
       }
     });
     updateButtons();
@@ -94,19 +90,11 @@ public class FavorableTraitConfigurationPresenter {
 
   private void addCasteAndFavoredToggle(final Trait favorableTrait, ExtensibleTraitView traitView) {
     final ToggleTool casteTool = traitView.addToggleInFront();
-    casteTool.setCommand(new Command() {
-      @Override
-      public void execute() {
-        ITraitFavorization favorization = favorableTrait.getFavorization();
-        favorization.setFavored(!favorization.isFavored());
-      }
+    casteTool.setCommand(() -> {
+      ITraitFavorization favorization = favorableTrait.getFavorization();
+      favorization.setFavored(!favorization.isFavored());
     });
-    favorableTrait.getFavorization().addFavorableStateChangedListener(new IFavorableStateChangedListener() {
-      @Override
-      public void favorableStateChanged(FavorableState state) {
-        updateView(casteTool, state);
-      }
-    });
+    favorableTrait.getFavorization().addFavorableStateChangedListener(state -> updateView(casteTool, state));
     updateView(casteTool, favorableTrait.getFavorization().getFavorableState());
     traitViewsByTrait.put(favorableTrait, casteTool);
   }
@@ -115,7 +103,8 @@ public class FavorableTraitConfigurationPresenter {
     boolean select = state == Favored || state == Caste;
     boolean enable = state == Favored || state == Default;
     setButtonState(view, select, enable);
-    new FavoredIconSelector(view, presentationProperties).setIconFor(hero, state);
+    GenericPresentationTemplate properties = new GenericPresentationTemplate(hero.getTemplate());
+    new FavoredIconSelector(view, properties).setIconFor(hero, state);
   }
 
   private void setButtonState(ToggleTool view, boolean select, boolean enable) {

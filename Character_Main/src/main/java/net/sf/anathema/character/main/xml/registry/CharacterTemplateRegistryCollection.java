@@ -6,7 +6,6 @@ import net.sf.anathema.character.main.xml.GenericCharacterTemplate;
 import net.sf.anathema.character.main.xml.creation.GenericBonusPointCosts;
 import net.sf.anathema.character.main.xml.creation.GenericCreationPoints;
 import net.sf.anathema.character.main.xml.experience.GenericExperiencePointCosts;
-import net.sf.anathema.character.main.xml.presentation.GenericPresentationTemplate;
 
 public class CharacterTemplateRegistryCollection implements ICharacterTemplateRegistryCollection {
 
@@ -14,14 +13,12 @@ public class CharacterTemplateRegistryCollection implements ICharacterTemplateRe
   private final IXmlTemplateRegistry<GenericCreationPoints> creationPointsRegistry;
   private final IXmlTemplateRegistry<GenericBonusPointCosts> bonusPointsRegistry;
   private final IXmlTemplateRegistry<GenericExperiencePointCosts> experienceTemplateRegistry;
-  private final IXmlTemplateRegistry<GenericPresentationTemplate> presentationTemplateRegistry;
 
   public CharacterTemplateRegistryCollection(ICharacterTemplateExtensionResourceCache cache) {
     characterTemplateRegistry = new XmlTemplateRegistry<>(cache);
     creationPointsRegistry = new XmlTemplateRegistry<>(cache);
     bonusPointsRegistry = new XmlTemplateRegistry<>(cache);
     experienceTemplateRegistry = new XmlTemplateRegistry<>(cache);
-    presentationTemplateRegistry = new XmlTemplateRegistry<>(cache);
   }
 
   @Override
@@ -42,10 +39,5 @@ public class CharacterTemplateRegistryCollection implements ICharacterTemplateRe
   @Override
   public IXmlTemplateRegistry<GenericExperiencePointCosts> getExperienceTemplateRegistry() {
     return experienceTemplateRegistry;
-  }
-
-  @Override
-  public IXmlTemplateRegistry<GenericPresentationTemplate> getPresentationTemplateRegistry() {
-    return presentationTemplateRegistry;
   }
 }

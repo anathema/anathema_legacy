@@ -1,7 +1,6 @@
 package net.sf.anathema.hero.spiritual.model.traits;
 
 import net.sf.anathema.character.main.library.trait.Trait;
-import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITraitLimitation;
 import net.sf.anathema.character.main.traits.EssenceLimitationListener;
 import net.sf.anathema.character.main.traits.types.OtherTraitType;
@@ -22,7 +21,6 @@ import net.sf.anathema.lib.util.Identifier;
 
 public class SpiritualTraitModelImpl extends DefaultTraitMap implements SpiritualTraitModel, HeroModel {
 
-  private HeroTemplate heroTemplate;
   private SpiritualTraitsTemplate template;
 
   public SpiritualTraitModelImpl(SpiritualTraitsTemplate template) {
@@ -36,7 +34,6 @@ public class SpiritualTraitModelImpl extends DefaultTraitMap implements Spiritua
 
   @Override
   public void initialize(HeroEnvironment environment, Hero hero) {
-    this.heroTemplate = hero.getTemplate();
     addEssence(hero);
     addVirtues(hero);
     addWillpower(hero);

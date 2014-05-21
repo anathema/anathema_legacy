@@ -1,8 +1,4 @@
 <exaltedCharacterTemplate characterType="Solar" subtemplate="default">
-    <general>
-        <traitCollection uses="trait/DefaultTraitCollection.template"/>
-        <presentation uses="template/SolarPresentation2nd.template"/>
-    </general>
     <models>
         <model id="Description"/>
         <model id="Points"/>

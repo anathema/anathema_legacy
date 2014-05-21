@@ -1,8 +1,4 @@
 <exaltedCharacterTemplate characterType="Mortal" subtemplate="HeroicMortal">
-    <general>
-        <traitCollection uses="trait/MortalTraitCollection.template"/>
-        <presentation uses="presentation/HeroicMortalPresentation.template"/>
-    </general>
     <models>
         <model id="Description"/>
         <model id="Points"/>
