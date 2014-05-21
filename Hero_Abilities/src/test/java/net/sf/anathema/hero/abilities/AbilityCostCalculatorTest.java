@@ -1,30 +1,28 @@
 package net.sf.anathema.hero.abilities;
 
-import net.sf.anathema.character.main.template.abilities.AbilityGroupType;
-import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.hero.abilities.advance.creation.AbilityCreationData;
-import net.sf.anathema.hero.traits.template.GroupedTraitsTemplate;
-import net.sf.anathema.hero.traits.template.Group;
-import net.sf.anathema.hero.advance.AbstractBonusPointTestCase;
 import net.sf.anathema.character.main.library.trait.FavorableTraitCost;
 import net.sf.anathema.character.main.library.trait.Trait;
+import net.sf.anathema.character.main.template.abilities.AbilityGroupType;
 import net.sf.anathema.character.main.template.experience.AbilityPointCosts;
 import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.main.template.points.AbilityCreationPoints;
 import net.sf.anathema.character.main.template.points.FixedValueRatingCosts;
 import net.sf.anathema.character.main.template.points.IFavorableTraitCreationPoints;
+import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.character.main.traits.types.AbilityType;
+import net.sf.anathema.hero.abilities.advance.creation.AbilityCostCalculatorImpl;
+import net.sf.anathema.hero.abilities.advance.creation.AbilityCreationData;
+import net.sf.anathema.hero.abilities.model.AbilitiesModelImpl;
 import net.sf.anathema.hero.dummy.DummyHero;
 import net.sf.anathema.hero.dummy.DummyHeroEnvironment;
 import net.sf.anathema.hero.dummy.models.DummyHeroConcept;
 import net.sf.anathema.hero.dummy.models.DummySpiritualTraitModel;
 import net.sf.anathema.hero.dummy.models.DummyTraitModel;
-import net.sf.anathema.character.main.traits.types.AbilityType;
-import net.sf.anathema.hero.abilities.advance.creation.AbilityCostCalculatorImpl;
-import net.sf.anathema.hero.abilities.model.AbilitiesModelImpl;
 import net.sf.anathema.hero.points.PointModelImpl;
+import net.sf.anathema.hero.traits.template.Group;
+import net.sf.anathema.hero.traits.template.GroupedTraitsTemplate;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +30,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 
-public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
+public class AbilityCostCalculatorTest {
 
   private static class DummyAbilityPointCosts implements AbilityPointCosts {
 
