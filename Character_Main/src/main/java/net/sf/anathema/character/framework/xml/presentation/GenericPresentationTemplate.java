@@ -4,9 +4,8 @@ import net.sf.anathema.hero.template.HeroTemplate;
 import net.sf.anathema.hero.template.TemplateType;
 import net.sf.anathema.hero.template.presentation.IPresentationProperties;
 import net.sf.anathema.lib.file.RelativePath;
-import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 
-public class GenericPresentationTemplate extends ReflectionCloneableObject<GenericPresentationTemplate> implements IPresentationProperties {
+public class GenericPresentationTemplate implements IPresentationProperties {
 
   private final TemplateType templateType;
 
