@@ -3,6 +3,9 @@ package net.sf.anathema.hero.dummy;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.type.CharacterTypes;
 
+import java.util.Collections;
+import java.util.Iterator;
+
 public class DummyCharacterTypes implements CharacterTypes {
   private CharacterType type;
 
@@ -14,12 +17,12 @@ public class DummyCharacterTypes implements CharacterTypes {
     throw new IllegalArgumentException("No type defined for id:" + id);
   }
 
-  @Override
-  public CharacterType[] findAll() {
-    return new CharacterType[]{type};
-  }
-
   public void add(CharacterType type) {
     this.type = type;
+  }
+
+  @Override
+  public Iterator<CharacterType> iterator() {
+    return Collections.singletonList(type).iterator();
   }
 }

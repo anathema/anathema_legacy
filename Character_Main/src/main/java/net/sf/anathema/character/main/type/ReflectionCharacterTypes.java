@@ -4,6 +4,7 @@ import net.sf.anathema.framework.environment.ObjectFactory;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 public class ReflectionCharacterTypes implements CharacterTypes {
@@ -26,7 +27,7 @@ public class ReflectionCharacterTypes implements CharacterTypes {
   }
 
   @Override
-  public CharacterType[] findAll() {
-    return types.toArray(new CharacterType[types.size()]);
+  public Iterator<CharacterType> iterator() {
+    return types.iterator();
   }
 }

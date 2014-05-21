@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.charms.model.options;
 
-import net.sf.anathema.hero.charms.compiler.CharmProvider;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.type.CharacterTypes;
+import net.sf.anathema.hero.charms.compiler.CharmProvider;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -17,7 +17,7 @@ public class CharacterTypeList implements Iterable<CharacterType> {
   }
 
   public void collectAvailableTypes(CharacterType nativeCharacterType, CharacterTypes characterTypes) {
-    for (CharacterType type : characterTypes.findAll()) {
+    for (CharacterType type : characterTypes) {
       if (charmProvider.getCharms(type).length > 0) {
         availableTypes.add(type);
       }

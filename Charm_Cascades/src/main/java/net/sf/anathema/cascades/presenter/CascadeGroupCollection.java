@@ -1,15 +1,15 @@
 package net.sf.anathema.cascades.presenter;
 
+import net.sf.anathema.character.main.magic.charm.martial.MartialArtsLevel;
+import net.sf.anathema.character.main.magic.charm.martial.MartialArtsUtilities;
+import net.sf.anathema.character.main.type.CharacterType;
+import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.hero.charms.compiler.CharmProvider;
+import net.sf.anathema.hero.charms.model.CharmGroupCollection;
 import net.sf.anathema.hero.charms.model.ICharmGroup;
 import net.sf.anathema.hero.charms.model.options.CharmTree;
 import net.sf.anathema.hero.charms.model.options.CharmTreeImpl;
 import net.sf.anathema.hero.charms.model.options.MartialArtsCharmTree;
-import net.sf.anathema.character.main.type.CharacterType;
-import net.sf.anathema.character.main.type.CharacterTypes;
-import net.sf.anathema.hero.charms.model.CharmGroupCollection;
-import net.sf.anathema.character.main.magic.charm.martial.MartialArtsLevel;
-import net.sf.anathema.character.main.magic.charm.martial.MartialArtsUtilities;
 import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;
@@ -36,7 +36,7 @@ public class CascadeGroupCollection implements CharmGroupCollection {
   }
 
   private void initCharacterTypeCharms(List<ICharmGroup> allCharmGroups) {
-    for (CharacterType type : characterTypes.findAll()) {
+    for (CharacterType type : characterTypes) {
        if (charmProvider.getCharms(type).length > 0) {
         registerTypeCharms(allCharmGroups, type);
       }

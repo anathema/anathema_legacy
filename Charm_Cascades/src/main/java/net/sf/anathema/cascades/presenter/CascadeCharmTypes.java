@@ -1,8 +1,8 @@
 package net.sf.anathema.cascades.presenter;
 
-import net.sf.anathema.hero.charms.compiler.CharmProvider;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.type.CharacterTypes;
+import net.sf.anathema.hero.charms.compiler.CharmProvider;
 import net.sf.anathema.hero.charms.display.model.AbstractCharmTypes;
 import net.sf.anathema.lib.util.Identifier;
 
@@ -23,7 +23,7 @@ public class CascadeCharmTypes extends AbstractCharmTypes {
   @Override
   protected List<Identifier> getCurrentCharacterTypes() {
     Set<Identifier> set = new LinkedHashSet<>();
-    for (CharacterType type : characterTypes.findAll()) {
+    for (CharacterType type : characterTypes) {
        if (charmProvider.getCharms(type).length > 0) {
         set.add(type);
       }
