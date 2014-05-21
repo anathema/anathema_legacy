@@ -10,7 +10,6 @@ import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.selection.VetoableObjectSelectionView;
 
 import java.util.Arrays;
-import java.util.Comparator;
 
 public class CharacterCreationPresenter {
 
@@ -98,12 +97,7 @@ public class CharacterCreationPresenter {
 
   protected void refreshList(VetoableObjectSelectionView<HeroTemplate> list) {
     HeroTemplate[] availableTemplates = model.getAvailableTemplates();
-    Arrays.sort(availableTemplates, new Comparator<HeroTemplate>() {
-      @Override
-      public int compare(HeroTemplate o1, HeroTemplate o2) {
-        return getTemplateResource(o1).compareTo(getTemplateResource(o2));
-      }
-    });
+    Arrays.sort(availableTemplates, (o1, o2) -> getTemplateResource(o1).compareTo(getTemplateResource(o2)));
     list.setObjects(availableTemplates);
     list.setSelectedObject(model.getSelectedTemplate());
   }

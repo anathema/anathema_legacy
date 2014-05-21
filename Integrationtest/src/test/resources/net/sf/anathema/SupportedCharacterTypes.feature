@@ -1,8 +1,12 @@
 @Integration
 Feature: Anathema supports a number of different character types
 
-  Scenario: Users can create characters of different types
+  Scenario Outline: Users can create characters of different types
     Given Anathema is running
-    Then I can create a new default Solar
-    And I can create a new default Mortal
-    And I can create a new Mortal using rules for HeroicMortal
+    Then I can create a new <Character Type> using rules for <Subtype>
+
+  Examples:
+    | Character Type | Subtype      |
+    | Solar          | Default      |
+    | Mortal         | Default      |
+    | Mortal         | HeroicMortal |

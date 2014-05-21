@@ -32,8 +32,12 @@ public class CharacterChangeSteps {
     I_set_her_trait_to("Essence", value);
   }
 
-  @Given("^she is experienced")
   @When("^she goes experienced")
+  public void whenSheGoesExperienced(){
+    setToExperienced();
+  }  
+  
+  @Given("^she is experienced")
   public void setToExperienced() {
     ExperienceModelFetcher.fetch(character.getCharacter()).setExperienced(true);
   }

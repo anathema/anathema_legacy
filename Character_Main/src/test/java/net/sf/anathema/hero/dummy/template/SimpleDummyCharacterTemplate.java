@@ -41,7 +41,7 @@ public class SimpleDummyCharacterTemplate implements HeroTemplate {
   @Override
   public TemplateType getTemplateType() {
     if (subtype == null) {
-      return new TemplateTypeImpl(type);
+      return new TemplateTypeImpl(type, new SimpleIdentifier("Test"));
     }
     return new TemplateTypeImpl(type, new SimpleIdentifier(subtype));
   }

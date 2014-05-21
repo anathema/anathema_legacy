@@ -38,12 +38,6 @@ public class CharacterCreationSteps {
     //for readable tests only
   }
 
-  @Given("^a new default (.*)$")
-  public void I_create_a_new_character(String type) throws Throwable {
-    Character character = createCharacter(type);
-    holder.setCharacter(character);
-  }
-
   @Given("^a new God-Blooded of any kind$")
   public void I_create_a_new_god_blooded() throws Throwable {
     I_create_a_new_character_with_subtype("Lunar", "HalfCasteLunar");
@@ -55,11 +49,6 @@ public class CharacterCreationSteps {
     holder.setCharacter(character);
   }
 
-  @Then("^I can create a new default (.*)$")
-  public void I_can_create_a_new_character(String type) throws Throwable {
-    createCharacter(type);
-  }
-
   @Then("^I can create a new (.*) using rules for (.*)$")
   public void I_can_create_a_new_character(String type, String subtype) throws Throwable {
     createCharacter(type, subtype);
@@ -68,22 +57,12 @@ public class CharacterCreationSteps {
 
   @Given("^a new Character of any kind$")
   public void a_new_Character_of_any_kind() throws Throwable {
-    I_create_a_new_character("Solar");
-  }
-
-  private Character createCharacter(String type) {
-    HeroTemplate characterTemplate = loadDefaultTemplateForType(type);
-    return createCharacter(characterTemplate);
+    I_create_a_new_character_with_subtype("Solar", "Default");
   }
 
   private Character createCharacter(String type, String subtype) {
     HeroTemplate characterTemplate = loadTemplateForType(type, subtype);
     return createCharacter(characterTemplate);
-  }
-
-  private HeroTemplate loadDefaultTemplateForType(String type) {
-    HeroEnvironment generics = getCharacterGenerics();
-    return generics.getTemplateRegistry().getDefaultTemplate(characterTypes.findById(type));
   }
 
   private HeroTemplate loadTemplateForType(String type, String subtype) {

@@ -56,7 +56,7 @@ public class EquipmentItemPresenterTest {
   public void testEquipmentWithCloseCombatStats() throws Exception {
     EquipmentObjectView view = mock(EquipmentObjectView.class);
     view.setItemTitle("Title");
-    StatsView isPrintSelectedModel = new CheckBoxStatsView("");
+    StatsView isPrintSelectedModel = mock(StatsView.class);
     when(view.addStats("Passt!")).thenReturn(isPrintSelectedModel);
     DummyEquipmentObject model = new DummyEquipmentObject("Title", null);
     model.addEquipment(new DemoMeleeWeapon(new SimpleIdentifier("Sword"), 5, 2, 7, 1, HealthType.Lethal, -1, 0, 2));
@@ -67,7 +67,7 @@ public class EquipmentItemPresenterTest {
   public void testPrintModelInitialization() throws Exception {
     EquipmentObjectView view = mock(EquipmentObjectView.class);
     view.setItemTitle("Title");
-    StatsView isPrintSelectedModel = new CheckBoxStatsView("");
+    StatsView isPrintSelectedModel =  mock(StatsView.class);
     when(view.addStats("Passt!")).thenReturn(isPrintSelectedModel);
     DummyEquipmentObject model = new DummyEquipmentObject("Title", null);
     model.addEquipment(new DemoMeleeWeapon(new SimpleIdentifier("Sword"), 5, 2, 7, 1, HealthType.Lethal, -1, 0, 2));

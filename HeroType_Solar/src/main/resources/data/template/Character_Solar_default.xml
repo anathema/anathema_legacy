@@ -1,4 +1,4 @@
-<exaltedCharacterTemplate characterType="Solar" subtemplate="default">
+<exaltedCharacterTemplate characterType="Solar" subtemplate="Default">
     <models>
         <model id="Description"/>
         <model id="Points"/>

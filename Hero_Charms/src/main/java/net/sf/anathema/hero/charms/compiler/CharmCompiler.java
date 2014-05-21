@@ -18,11 +18,11 @@ import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.character.main.type.ReflectionCharacterTypes;
+import net.sf.anathema.framework.environment.ObjectFactory;
+import net.sf.anathema.framework.environment.resources.ResourceFile;
 import net.sf.anathema.hero.charms.compiler.special.ReflectionSpecialCharmBuilder;
 import net.sf.anathema.initialization.ExtensibleDataSetCompiler;
-import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.lib.exception.PersistenceException;
-import net.sf.anathema.framework.environment.resources.ResourceFile;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 import org.dom4j.Document;
@@ -101,7 +101,6 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
       buildCharmMerges(type);
     }
     extractParents(charmCache.getCharms());
-
     return charmCache;
   }
 

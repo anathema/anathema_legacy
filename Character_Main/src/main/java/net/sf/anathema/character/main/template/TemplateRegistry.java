@@ -25,12 +25,6 @@ public class TemplateRegistry implements ITemplateRegistry {
   }
 
   @Override
-  public HeroTemplate getDefaultTemplate(CharacterType type) {
-    TemplateType templateType = new TemplateTypeImpl(type);
-    return getTemplate(templateType);
-  }
-
-  @Override
   public HeroTemplate getTemplate(TemplateType type) {
     return templatesByType.get(type);
   }
