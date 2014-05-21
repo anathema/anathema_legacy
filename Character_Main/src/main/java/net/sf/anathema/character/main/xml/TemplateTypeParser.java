@@ -21,15 +21,8 @@ public class TemplateTypeParser {
   public TemplateType parse(Element element) throws PersistenceException {
     String characterTypeId = ElementUtilities.getRequiredAttrib(element, "characterType");
     CharacterType characterType = characterTypes.findById(characterTypeId);
-    String subtemplate = element.attributeValue("subtemplate");
-    Identifier subtemplateIdentificate = createSubtemplateIdentificate(subtemplate);
-    return new TemplateTypeImpl(characterType, subtemplateIdentificate);
-  }
-
-  private Identifier createSubtemplateIdentificate(String subtemplate) {
-    if (subtemplate == null || subtemplate.equals("default")) {
-      return TemplateTypeImpl.DEFAULT_SUB_TYPE;
-    }
-    return new SimpleIdentifier(subtemplate);
+    String subtemplateValue = element.attributeValue("subtemplate");
+    Identifier subtemplate = new SimpleIdentifier(subtemplateValue);
+    return new TemplateTypeImpl(characterType, subtemplate);
   }
 }

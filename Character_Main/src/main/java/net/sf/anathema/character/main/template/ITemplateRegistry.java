@@ -8,7 +8,5 @@ public interface ITemplateRegistry {
 
   void register(HeroTemplate template);
 
-  HeroTemplate getDefaultTemplate(CharacterType type);
-
   HeroTemplate getTemplate(TemplateType type);
 }

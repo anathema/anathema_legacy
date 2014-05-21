@@ -1,4 +1,4 @@
-<exaltedCharacterTemplate characterType="Mortal" subtemplate="default">
+<exaltedCharacterTemplate characterType="Mortal" subtemplate="Default">
     <models>
         <model id="Description"/>
         <model id="Points"/>

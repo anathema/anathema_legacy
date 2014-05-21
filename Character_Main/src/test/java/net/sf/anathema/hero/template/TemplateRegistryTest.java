@@ -6,12 +6,12 @@ import net.sf.anathema.character.main.template.TemplateRegistry;
 import net.sf.anathema.character.main.template.TemplateTypeImpl;
 import net.sf.anathema.hero.dummy.DummyMundaneCharacterType;
 import net.sf.anathema.hero.dummy.template.SimpleDummyCharacterTemplate;
+import net.sf.anathema.lib.util.SimpleIdentifier;
 import org.apache.commons.lang3.ArrayUtils;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertTrue;
 
 public class TemplateRegistryTest {
@@ -26,19 +26,9 @@ public class TemplateRegistryTest {
 
   @Test
   public void testRegisterAndRetrieveTemplate() throws Exception {
-    SimpleDummyCharacterTemplate template = new SimpleDummyCharacterTemplate(characterType, null);
+    SimpleDummyCharacterTemplate template = new SimpleDummyCharacterTemplate(characterType, "Test");
     registry.register(template);
-    assertEquals(template, registry.getTemplate(new TemplateTypeImpl(characterType)));
-  }
-
-  @Test
-  public void testRegisterAndRetrieveDefaultTemplate() throws Exception {
-    SimpleDummyCharacterTemplate defaultTemplate = new SimpleDummyCharacterTemplate(characterType, null);
-    SimpleDummyCharacterTemplate otherTemplate = new SimpleDummyCharacterTemplate(characterType, "Second");
-    registry.register(defaultTemplate);
-    registry.register(otherTemplate);
-    assertEquals(defaultTemplate, registry.getDefaultTemplate(characterType));
-    assertNotSame(otherTemplate, registry.getDefaultTemplate(characterType));
+    assertEquals(template, registry.getTemplate(new TemplateTypeImpl(characterType, new SimpleIdentifier("Test"))));
   }
 
   @Test

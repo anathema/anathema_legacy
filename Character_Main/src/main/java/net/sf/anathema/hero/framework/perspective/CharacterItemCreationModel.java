@@ -58,7 +58,7 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
   }
 
   private void setTemplateToDefault() {
-    HeroTemplate defaultTemplate = generics.getTemplateRegistry().getDefaultTemplate(selectedType);
+    HeroTemplate defaultTemplate = generics.getTemplateRegistry().getAllSupportedTemplates(selectedType)[0];
     templateHolder.setTemplate(defaultTemplate);
   }
 

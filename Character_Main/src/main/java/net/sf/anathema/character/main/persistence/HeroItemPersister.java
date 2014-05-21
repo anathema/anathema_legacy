@@ -59,8 +59,7 @@ public class HeroItemPersister implements RepositoryItemPersister {
 
   private HeroTemplate loadHeroTemplate(HeroMainFileDto mainFileDto) {
     CharacterType characterType = generics.getCharacterTypes().findById(mainFileDto.characterType.characterType);
-    String subTypeValue = mainFileDto.characterType.subType;
-    Identifier subtype = subTypeValue == null ? TemplateTypeImpl.DEFAULT_SUB_TYPE : new SimpleIdentifier(subTypeValue);
+    Identifier subtype = new SimpleIdentifier(mainFileDto.characterType.subType);
     TemplateTypeImpl templateType = new TemplateTypeImpl(characterType, subtype);
     return generics.getTemplateRegistry().getTemplate(templateType);
   }

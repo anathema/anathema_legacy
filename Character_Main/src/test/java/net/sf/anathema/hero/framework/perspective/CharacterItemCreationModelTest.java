@@ -30,7 +30,6 @@ public class CharacterItemCreationModelTest {
     Mockito.when(generics.getCharacterTypes()).thenReturn(characterTypes);
     ITemplateRegistry registry = Mockito.mock(ITemplateRegistry.class);
     SimpleDummyCharacterTemplate characterTemplate = new SimpleDummyCharacterTemplate(characterType, null);
-    Mockito.when(registry.getDefaultTemplate(characterType)).thenReturn(characterTemplate);
     Mockito.when(registry.getAllSupportedTemplates(characterType)).thenReturn(
             new HeroTemplate[]{characterTemplate});
     Mockito.when(generics.getTemplateRegistry()).thenReturn(registry);

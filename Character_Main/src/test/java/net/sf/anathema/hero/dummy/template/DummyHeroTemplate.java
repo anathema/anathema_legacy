@@ -10,13 +10,14 @@ import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.hero.dummy.DummyMundaneCharacterType;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
+import net.sf.anathema.lib.util.SimpleIdentifier;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class DummyHeroTemplate implements HeroTemplate {
 
-  public TemplateType type = new TemplateTypeImpl(new DummyMundaneCharacterType());
+  public TemplateType type = new TemplateTypeImpl(new DummyMundaneCharacterType(), new SimpleIdentifier("Test"));
   public DummyCreationPoints creationPoints = new DummyCreationPoints();
 
   @Override
@@ -45,6 +46,6 @@ public class DummyHeroTemplate implements HeroTemplate {
   }
 
   public void setCharacterType(CharacterType characterType) {
-    this.type = new TemplateTypeImpl(characterType);
+    this.type = new TemplateTypeImpl(characterType, new SimpleIdentifier("Test"));
   }
 }

@@ -2,18 +2,11 @@ package net.sf.anathema.character.main.template;
 
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.lib.util.Identifier;
-import net.sf.anathema.lib.util.SimpleIdentifier;
 
 public final class TemplateTypeImpl implements TemplateType {
 
-  public static final Identifier DEFAULT_SUB_TYPE = new SimpleIdentifier("TemplateType.Default");
-
   private final CharacterType characterType;
   private final Identifier subType;
-
-  public TemplateTypeImpl(CharacterType characterType) {
-    this(characterType, DEFAULT_SUB_TYPE);
-  }
 
   public TemplateTypeImpl(CharacterType characterType, Identifier subType) {
     this.characterType = characterType;
