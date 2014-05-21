@@ -9,7 +9,7 @@ import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.TraitValueStrategy;
 import net.sf.anathema.character.main.traits.context.CreationTraitValueStrategy;
 import net.sf.anathema.character.main.traits.types.AbilityType;
-import net.sf.anathema.hero.BasicCharacterTestCase;
+import net.sf.anathema.hero.charms.CharmHeroObjectMother;
 import net.sf.anathema.hero.charms.model.special.oxbody.*;
 import net.sf.anathema.hero.concept.CasteType;
 import net.sf.anathema.hero.dummy.DummyCasteType;
@@ -38,7 +38,7 @@ public class OxBodyTechniqueSpecialsTest {
   @Before
   public void setUp() throws Exception {
     TraitValueStrategy strategy = new CreationTraitValueStrategy();
-    hero = new BasicCharacterTestCase().createModelContextWithEssence2(strategy);
+    hero = new CharmHeroObjectMother().createModelContextWithEssence2(strategy);
     resistance = createResistance(hero);
     this.arbitrator = new OxBodyTechniqueArbitratorImpl(new Trait[]{resistance});
     TraitModel traitModel = TraitModelFetcher.fetch(hero);

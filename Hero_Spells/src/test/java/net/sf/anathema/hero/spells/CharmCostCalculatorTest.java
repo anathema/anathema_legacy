@@ -14,7 +14,7 @@ import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.context.CreationTraitValueStrategy;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.traits.types.OtherTraitType;
-import net.sf.anathema.hero.BasicCharacterTestCase;
+import net.sf.anathema.hero.charms.CharmHeroObjectMother;
 import net.sf.anathema.hero.charms.advance.costs.CostAnalyzerImpl;
 import net.sf.anathema.hero.charms.advance.creation.MagicCreationCostCalculator;
 import net.sf.anathema.hero.charms.advance.creation.MagicCreationCostEvaluator;
@@ -70,7 +70,7 @@ public class CharmCostCalculatorTest {
   public void setUp() throws Exception {
     CharmsModel charmModel = new CharmsModelImpl(new CharmsTemplate());
     spells.initializeMagicModel(charmModel);
-    DummyHero hero = new BasicCharacterTestCase().createModelContextWithEssence2(new CreationTraitValueStrategy());
+    DummyHero hero = new CharmHeroObjectMother().createModelContextWithEssence2(new CreationTraitValueStrategy());
     traitModel = TraitModelFetcher.fetch(hero);
     addAbilityAndEssence(traitModel, hero);
     hero.addModel(charmModel);

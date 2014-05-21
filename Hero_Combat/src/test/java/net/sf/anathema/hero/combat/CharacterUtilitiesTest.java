@@ -1,10 +1,10 @@
-package net.sf.anathema.hero.utilities;
+package net.sf.anathema.hero.combat;
 
-import net.sf.anathema.character.main.util.HeroStatsModifiers;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.traits.types.AttributeType;
 import net.sf.anathema.character.main.traits.types.OtherTraitType;
-import net.sf.anathema.character.main.util.CharacterUtilities;
+import net.sf.anathema.character.main.util.HeroStatsModifiers;
+import net.sf.anathema.hero.combat.model.CharacterUtilities;
 import net.sf.anathema.hero.dummy.DummyExaltCharacterType;
 import net.sf.anathema.hero.dummy.DummyMundaneCharacterType;
 import net.sf.anathema.hero.dummy.trait.DummyTrait;

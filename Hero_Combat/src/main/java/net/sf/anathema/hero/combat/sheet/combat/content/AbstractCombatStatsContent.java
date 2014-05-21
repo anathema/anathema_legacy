@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.combat.sheet.combat.content;
 
 import net.sf.anathema.character.main.type.CharacterType;
-import net.sf.anathema.character.main.util.CharacterUtilities;
+import net.sf.anathema.hero.combat.model.CharacterUtilities;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.sheet.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.hero.traits.TraitMap;
