@@ -3,10 +3,7 @@ package net.sf.anathema;
 import com.google.inject.Inject;
 import cucumber.api.java.en.Then;
 import net.sf.anathema.hero.advance.creation.BonusPointManagement;
-import net.sf.anathema.hero.points.PointModelFetcher;
-import net.sf.anathema.hero.points.PointsModel;
-import net.sf.anathema.hero.points.overview.IOverviewModel;
-import net.sf.anathema.hero.points.overview.IValueModel;
+import net.sf.anathema.hero.points.overview.SpendingModel;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -14,10 +11,12 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class BonusPointSteps {
 
   private final CharacterHolder character;
+  private final BonusModelFetcher bonusModel;
 
   @Inject
   public BonusPointSteps(CharacterHolder character) {
     this.character = character;
+    this.bonusModel = new BonusModelFetcher(character);
   }
 
   @Then("^she has spent (\\d+) bonus points$")
@@ -27,17 +26,24 @@ public class BonusPointSteps {
     assertThat(spentBonusPoints, is(amount));
   }
 
-  @Then("^she has (\\d+) favored dots spent.$")
+  @Then("^she has (\\d+) favored dots spent$")
   public void she_has_favored_dots_spent(int amount) throws Throwable {
     calculateBonusPoints();
     Integer dotsSpent = findBonusModel("Abilities", "FavoredDot").getValue();
     assertThat(dotsSpent, is(amount));
   }
 
-  @Then("^she has (\\d+) ability dots spent.$")
+  @Then("^she has (\\d+) ability dots spent$")
   public void she_has_ability_dots_spent(int amount) throws Throwable {
     calculateBonusPoints();
     Integer dotsSpent = findBonusModel("Abilities", "General").getValue();
+    assertThat(dotsSpent, is(amount));
+  }
+
+  @Then("^she has (\\d+) favored picks spent$")
+  public void she_has_favored_picks_spent(int amount) throws Throwable {
+    calculateBonusPoints();
+    Integer dotsSpent = findBonusModel("Abilities", "FavoredPick").getValue();
     assertThat(dotsSpent, is(amount));
   }
 
@@ -48,19 +54,19 @@ public class BonusPointSteps {
     assertThat(dotsSpent, is(picks));
   }
 
+  @Then("^she has all her ability dots spent$")
+  public void she_has_all_her_ability_dots_spent() throws Throwable {
+    SpendingModel bonusModel = findBonusModel("Abilities", "General");
+    she_has_ability_dots_spent(bonusModel.getAllotment());
+  }
+
+  private SpendingModel findBonusModel(String category, String id) {
+    return (SpendingModel) bonusModel.findBonusModel(category, id);
+  }
+
   private BonusPointManagement calculateBonusPoints() {
     BonusPointManagement bonusPointManagement = new BonusPointManagement(character.getCharacter());
     bonusPointManagement.recalculate();
     return bonusPointManagement;
-  }
-
-  private IValueModel<Integer> findBonusModel(String id, String category) {
-    PointsModel pointsModel = PointModelFetcher.fetch(character.getCharacter());
-    for (IOverviewModel model : pointsModel.getBonusOverviewModels()) {
-      if (model.getId().equals(id) && model.getCategoryId().equals(category)) {
-        return (IValueModel<Integer>) model;
-      }
-    }
-    throw new IllegalArgumentException();
   }
 }
