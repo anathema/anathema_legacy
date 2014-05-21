@@ -8,7 +8,6 @@ import net.sf.anathema.character.main.template.TemplateType;
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.creation.ICreationPoints;
 import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
-import net.sf.anathema.character.main.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
@@ -37,11 +36,6 @@ public class SimpleDummyCharacterTemplate implements HeroTemplate {
 
   @Override
   public IExperiencePointCosts getExperienceCost() {
-    return null;
-  }
-
-  @Override
-  public IPresentationProperties getPresentationProperties() {
     return null;
   }
 

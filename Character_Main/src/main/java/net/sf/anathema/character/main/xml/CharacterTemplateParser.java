@@ -10,8 +10,6 @@ import net.sf.anathema.character.main.xml.creation.GenericBonusPointCosts;
 import net.sf.anathema.character.main.xml.creation.GenericCreationPoints;
 import net.sf.anathema.character.main.xml.experience.ExperienceTemplateParser;
 import net.sf.anathema.character.main.xml.experience.GenericExperiencePointCosts;
-import net.sf.anathema.character.main.xml.presentation.GenericPresentationTemplate;
-import net.sf.anathema.character.main.xml.presentation.PresentationPropertiesParser;
 import net.sf.anathema.character.main.xml.trait.GenericTraitTemplateFactory;
 import net.sf.anathema.character.main.xml.trait.GenericTraitTemplateFactoryParser;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -25,7 +23,6 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
   private static final String TAG_GENERAL = "general";
   private static final String TAG_EXPERIENCE_POINT_COST = "experiencePointCost";
   private static final String TAG_TRAIT_COLLECTION = "traitCollection";
-  private static final String TAG_PRESENTATION_TEMPLATE = "presentation";
   public static final String ATTRIB_ID = "id";
 
   private CharacterTypes characterTypes;
@@ -115,7 +112,6 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
       return;
     }
     setTraitCollection(generalElement, characterTemplate);
-    setPresentationTemplate(generalElement, characterTemplate);
   }
 
   private void parseModels(Element element, GenericCharacterTemplate characterTemplate) throws PersistenceException {
@@ -128,16 +124,6 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
       String modelTemplateId = ((Element) modelElement).attributeValue("template");
       characterTemplate.addModel(modelId, modelTemplateId);
     }
-  }
-
-  private void setPresentationTemplate(Element generalElement, GenericCharacterTemplate characterTemplate) throws PersistenceException {
-    Element presentationTemplateElement = generalElement.element(TAG_PRESENTATION_TEMPLATE);
-    if (presentationTemplateElement == null) {
-      return;
-    }
-    PresentationPropertiesParser parser = new PresentationPropertiesParser(registryCollection.getPresentationTemplateRegistry());
-    GenericPresentationTemplate template = parser.parseTemplate(presentationTemplateElement);
-    characterTemplate.setPresentationTemplate(template);
   }
 
   private void setTraitCollection(Element generalElement, GenericCharacterTemplate characterTemplate) throws PersistenceException {

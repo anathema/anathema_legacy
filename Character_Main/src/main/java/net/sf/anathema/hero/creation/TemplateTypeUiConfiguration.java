@@ -1,6 +1,7 @@
 package net.sf.anathema.hero.creation;
 
 import net.sf.anathema.character.main.template.HeroTemplate;
+import net.sf.anathema.character.main.xml.presentation.GenericPresentationTemplate;
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.gui.AbstractUIConfiguration;
 
@@ -12,8 +13,9 @@ public class TemplateTypeUiConfiguration extends AbstractUIConfiguration<HeroTem
   }
 
   @Override
-  protected String labelForExistingValue(HeroTemplate value) {
-    String newActionResource = value.getPresentationProperties().getNewActionResource();
+  protected String labelForExistingValue(HeroTemplate heroTemplate) {
+    GenericPresentationTemplate template = new GenericPresentationTemplate(heroTemplate);
+    String newActionResource = template.getNewActionResource();
     return resources.getString(newActionResource);
   }
 }

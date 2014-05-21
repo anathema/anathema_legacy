@@ -8,7 +8,15 @@ import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 
 public class GenericPresentationTemplate extends ReflectionCloneableObject<GenericPresentationTemplate> implements IPresentationProperties {
 
-  private ITemplateType templateType;
+  private final ITemplateType templateType;
+
+  public GenericPresentationTemplate(HeroTemplate heroTemplate) {
+    this(heroTemplate.getTemplateType());
+  }
+ 
+  public GenericPresentationTemplate(ITemplateType templateType) {
+    this.templateType = templateType;
+  }
 
   @Override
   public RelativePath getSmallCasteIconResource(String casteId) {
@@ -28,14 +36,6 @@ public class GenericPresentationTemplate extends ReflectionCloneableObject<Gener
   @Override
   public String getCasteLabelResource() {
     return getCharacterTypeId() + ".Caste.Label";
-  }
-
-  public void setParentTemplate(ITemplateType templateType) {
-    this.templateType = templateType;
-  }
-
-  public void setParentTemplate(HeroTemplate template) {
-    this.templateType = template.getTemplateType();
   }
 
   private String getCharacterTypeId() {

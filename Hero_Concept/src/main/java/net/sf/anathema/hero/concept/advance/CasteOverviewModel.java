@@ -1,5 +1,6 @@
 package net.sf.anathema.hero.concept.advance;
 
+import net.sf.anathema.character.main.xml.presentation.GenericPresentationTemplate;
 import net.sf.anathema.hero.concept.CasteType;
 import net.sf.anathema.hero.concept.HeroConceptFetcher;
 import net.sf.anathema.hero.model.Hero;
@@ -21,7 +22,8 @@ public class CasteOverviewModel implements IValueModel<String> {
 
   @Override
   public String getId() {
-    return hero.getTemplate().getPresentationProperties().getCasteLabelResource();
+    GenericPresentationTemplate template = new GenericPresentationTemplate(hero.getTemplate());
+    return template.getCasteLabelResource();
   }
 
   @Override
