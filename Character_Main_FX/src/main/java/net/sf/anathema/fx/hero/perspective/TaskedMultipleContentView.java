@@ -13,7 +13,6 @@ import net.sf.anathema.hero.display.MultipleContentView;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
-import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.platform.fx.NodeHolder;
 import net.sf.anathema.platform.fx.StyledTitledPane;
 import net.sf.anathema.platform.fx.Stylesheet;
@@ -47,12 +46,7 @@ public class TaskedMultipleContentView implements MultipleContentView {
         new SwitchToView(containerId, stack).execute();
       }
     });
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        contentPane.add(trigger);
-      }
-    });
+    contentPane.add(trigger);
     isEmpty = false;
   }
 
@@ -61,13 +55,8 @@ public class TaskedMultipleContentView implements MultipleContentView {
     if (isEmpty) {
       return;
     }
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        Node styledPane = StyledTitledPane.Create(header, contentPane);
-        paneContainer.add(styledPane, new CC().push().grow());
-      }
-    });
+    Node styledPane = StyledTitledPane.Create(header, contentPane);
+    paneContainer.add(styledPane, new CC().push().grow());
   }
 
   private Node createContainer(final NodeHolder content, String name) {
@@ -78,12 +67,7 @@ public class TaskedMultipleContentView implements MultipleContentView {
     titlePane.add(title);
     titlePane.add(new Separator(), new CC().pushX().growX());
     viewComponent.add(titlePane, new CC().pushX().growX());
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        viewComponent.add(content.getNode(), new CC().push().grow());
-      }
-    });
+    viewComponent.add(content.getNode(), new CC().push().grow());
     return viewComponent;
   }
 }

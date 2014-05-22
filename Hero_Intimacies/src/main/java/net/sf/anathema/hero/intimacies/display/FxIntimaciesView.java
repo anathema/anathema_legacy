@@ -53,14 +53,9 @@ public class FxIntimaciesView implements IntimaciesView, NodeHolder {
 
   @Override
   public void setOverview(final OverviewCategory overviewView) {
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        overviewPanel.getChildren().clear();
-        FxOverviewCategory view = (FxOverviewCategory) overviewView;
-        overviewPanel.add(view.getNode());
-      }
-    });
+    overviewPanel.getChildren().clear();
+    FxOverviewCategory view = (FxOverviewCategory) overviewView;
+    overviewPanel.add(view.getNode());
   }
 
   @Override
