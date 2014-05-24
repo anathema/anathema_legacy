@@ -2,6 +2,8 @@ package net.sf.anathema.hero.charms.compiler;
 
 import net.sf.anathema.character.framework.data.ExtensibleDataSet;
 import net.sf.anathema.character.framework.data.IExtensibleDataSetCompiler;
+import net.sf.anathema.character.framework.type.CharacterType;
+import net.sf.anathema.character.framework.type.CharacterTypes;
 import net.sf.anathema.character.magic.charm.Charm;
 import net.sf.anathema.character.magic.charm.CharmException;
 import net.sf.anathema.character.magic.charm.CharmImpl;
@@ -14,13 +16,10 @@ import net.sf.anathema.character.magic.parser.charms.IIdentificateRegistry;
 import net.sf.anathema.character.magic.parser.charms.IdentificateRegistry;
 import net.sf.anathema.character.magic.parser.charms.special.ReflectionSpecialCharmParser;
 import net.sf.anathema.character.magic.parser.dto.special.SpecialCharmDto;
-import net.sf.anathema.hero.traits.model.TraitType;
-import net.sf.anathema.character.framework.type.CharacterType;
-import net.sf.anathema.character.framework.type.CharacterTypes;
-import net.sf.anathema.character.framework.type.ReflectionCharacterTypes;
 import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.framework.environment.resources.ResourceFile;
 import net.sf.anathema.hero.charms.compiler.special.ReflectionSpecialCharmBuilder;
+import net.sf.anathema.hero.traits.model.TraitType;
 import net.sf.anathema.initialization.ExtensibleDataSetCompiler;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.util.Identifier;
@@ -52,11 +51,11 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
   private final CharmSetBuilder setBuilder;
   private final GenericCharmSetBuilder genericBuilder;
 
-  public CharmCompiler(ObjectFactory objectFactory) {
+  public CharmCompiler(ObjectFactory objectFactory, CharacterTypes types) {
     ReflectionSpecialCharmBuilder specialCharmBuilder = new ReflectionSpecialCharmBuilder(objectFactory);
     ReflectionSpecialCharmParser specialCharmParser = new ReflectionSpecialCharmParser(objectFactory);
     this.charmCache =  new CharmCacheImpl(specialCharmBuilder);
-    this.characterTypes = new ReflectionCharacterTypes(objectFactory);
+    this.characterTypes = types;
     this.setBuilder = new CharmSetBuilder(characterTypes, specialCharmParser);
     this.genericBuilder = new GenericCharmSetBuilder(characterTypes, specialCharmParser);
   }
@@ -71,6 +70,7 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
     return Charm_File_Recognition_Pattern;
   }
 
+  @SuppressWarnings("ResultOfMethodCallIgnored")
   @Override
   public void registerFile(ResourceFile resource) throws Exception {
     Matcher matcher = Pattern.compile(Charm_Data_Extraction_Pattern).matcher(resource.getFileName());

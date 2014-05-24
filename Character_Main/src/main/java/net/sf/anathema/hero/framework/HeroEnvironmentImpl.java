@@ -3,7 +3,6 @@ package net.sf.anathema.hero.framework;
 import net.sf.anathema.character.framework.data.ExtensibleDataSet;
 import net.sf.anathema.character.framework.data.IExtensibleDataSetProvider;
 import net.sf.anathema.character.framework.type.CharacterTypes;
-import net.sf.anathema.character.framework.type.ReflectionCharacterTypes;
 import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.hero.template.ITemplateRegistry;
 import net.sf.anathema.hero.template.TemplateRegistry;
@@ -17,11 +16,12 @@ public class HeroEnvironmentImpl implements HeroEnvironment {
   private final ObjectFactory objectFactory;
   private final CharacterTypes characterTypes;
 
-  public HeroEnvironmentImpl(DataFileProvider dataFileProvider, ObjectFactory objectFactory, IExtensibleDataSetProvider dataSetProvider) {
+  public HeroEnvironmentImpl(DataFileProvider dataFileProvider, ObjectFactory objectFactory,
+                             IExtensibleDataSetProvider dataSetProvider, CharacterTypes types) {
     this.objectFactory = objectFactory;
     this.dataFileProvider = dataFileProvider;
     this.dataSetProvider = dataSetProvider;
-    this.characterTypes = new ReflectionCharacterTypes(objectFactory);
+    this.characterTypes = types;
   }
 
   @Override

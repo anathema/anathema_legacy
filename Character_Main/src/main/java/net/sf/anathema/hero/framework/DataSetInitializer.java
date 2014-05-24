@@ -3,12 +3,13 @@ package net.sf.anathema.hero.framework;
 import net.sf.anathema.ProxySplashscreen;
 import net.sf.anathema.character.framework.data.IExtensibleDataSetCompiler;
 import net.sf.anathema.character.framework.data.IExtensibleDataSetProvider;
-import net.sf.anathema.initialization.ExtensibleDataSetCompiler;
-import net.sf.anathema.initialization.InitializationException;
+import net.sf.anathema.character.framework.type.CharacterTypes;
 import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.framework.environment.ResourceLoader;
-import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.framework.environment.resources.ResourceFile;
+import net.sf.anathema.initialization.ExtensibleDataSetCompiler;
+import net.sf.anathema.initialization.InitializationException;
+import net.sf.anathema.lib.logging.Logger;
 
 import java.util.Collection;
 import java.util.Set;
@@ -18,15 +19,18 @@ public class DataSetInitializer {
   private static final Logger logger = Logger.getLogger(DataSetInitializer.class);
   private final ResourceLoader resourceLoader;
   private final ObjectFactory objectFactory;
+  private final CharacterTypes characterTypes;
 
-  public DataSetInitializer(ResourceLoader resourceLoader, ObjectFactory objectFactory) {
+  public DataSetInitializer(ResourceLoader resourceLoader, ObjectFactory objectFactory, CharacterTypes characterTypes) {
     this.resourceLoader = resourceLoader;
     this.objectFactory = objectFactory;
+    this.characterTypes = characterTypes;
   }
 
   public IExtensibleDataSetProvider initializeExtensibleResources() throws InitializationException {
     ExtensibleDataManager manager = new ExtensibleDataManager();
-    Collection<IExtensibleDataSetCompiler> compilers = objectFactory.instantiateAll(ExtensibleDataSetCompiler.class, objectFactory);
+    Collection<IExtensibleDataSetCompiler> compilers = objectFactory.instantiateAll(ExtensibleDataSetCompiler.class,
+            objectFactory, characterTypes);
     for (IExtensibleDataSetCompiler compiler : compilers) {
       try {
         ProxySplashscreen.getInstance().displayStatusMessage("Compiling " + compiler.getName() + "...");

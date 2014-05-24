@@ -2,11 +2,12 @@ package net.sf.anathema.character.magic.parser.spells;
 
 import net.sf.anathema.character.framework.data.ExtensibleDataSet;
 import net.sf.anathema.character.framework.data.IExtensibleDataSetCompiler;
+import net.sf.anathema.character.framework.type.CharacterTypes;
 import net.sf.anathema.character.magic.spells.Spell;
 import net.sf.anathema.character.magic.spells.SpellException;
-import net.sf.anathema.initialization.ExtensibleDataSetCompiler;
 import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.framework.environment.resources.ResourceFile;
+import net.sf.anathema.initialization.ExtensibleDataSetCompiler;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.io.SAXReader;
@@ -23,7 +24,7 @@ public class SpellCompiler implements IExtensibleDataSetCompiler {
   private final SpellCache cache = new SpellCache();
 
   @SuppressWarnings("UnusedParameters")
-  public SpellCompiler(ObjectFactory objectFactory) {
+  public SpellCompiler(ObjectFactory objectFactory, CharacterTypes types) {
     //nothing to do
   }
 
