@@ -19,8 +19,8 @@ public class BasicContent implements SubContent {
     return hero.getTemplate().getTemplateType().getCharacterType();
   }
 
-  public boolean isOfType(CharacterType type) {
-    return getCharacterType().equals(type);
+  public boolean hasTypeId(String id) {
+    return getCharacterType().getId().equals(id);
   }
 
   @Override

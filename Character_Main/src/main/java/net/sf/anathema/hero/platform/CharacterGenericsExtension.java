@@ -2,7 +2,6 @@ package net.sf.anathema.hero.platform;
 
 import net.sf.anathema.character.framework.CharacterTemplateInitializer;
 import net.sf.anathema.character.framework.data.IExtensibleDataSetProvider;
-import net.sf.anathema.character.framework.type.ReflectionCharacterTypes;
 import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.framework.environment.ResourceLoader;
 import net.sf.anathema.framework.extension.AnathemaExtension;
@@ -22,8 +21,7 @@ public class CharacterGenericsExtension implements HeroEnvironmentExtension, Ana
   }
 
   public void initialize(DataFileProvider dataFileProvider, ObjectFactory objectFactory, ResourceLoader loader) {
-    ReflectionCharacterTypes characterTypes = new ReflectionCharacterTypes(objectFactory);
-    IExtensibleDataSetProvider dataSetProvider = new DataSetInitializer(loader, objectFactory, characterTypes).initializeExtensibleResources();
+    IExtensibleDataSetProvider dataSetProvider = new DataSetInitializer(loader, objectFactory).initializeExtensibleResources();
     this.environment = new HeroEnvironmentImpl(dataFileProvider, objectFactory, dataSetProvider);
     new CharacterTemplateInitializer(environment).addCharacterTemplates();
   }

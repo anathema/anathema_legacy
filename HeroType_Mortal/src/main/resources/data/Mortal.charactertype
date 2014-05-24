@@ -1,0 +1,6 @@
+{
+    id: "Mortal";
+    essenceUser: false;
+    exalt: false;
+    favors: "Ability"
+}

@@ -3,7 +3,6 @@ package net.sf.anathema.hero.framework;
 import net.sf.anathema.ProxySplashscreen;
 import net.sf.anathema.character.framework.data.IExtensibleDataSetCompiler;
 import net.sf.anathema.character.framework.data.IExtensibleDataSetProvider;
-import net.sf.anathema.character.framework.type.CharacterTypes;
 import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.framework.environment.ResourceLoader;
 import net.sf.anathema.framework.environment.resources.ResourceFile;
@@ -19,18 +18,15 @@ public class DataSetInitializer {
   private static final Logger logger = Logger.getLogger(DataSetInitializer.class);
   private final ResourceLoader resourceLoader;
   private final ObjectFactory objectFactory;
-  private final CharacterTypes characterTypes;
 
-  public DataSetInitializer(ResourceLoader resourceLoader, ObjectFactory objectFactory, CharacterTypes characterTypes) {
+  public DataSetInitializer(ResourceLoader resourceLoader, ObjectFactory objectFactory) {
     this.resourceLoader = resourceLoader;
     this.objectFactory = objectFactory;
-    this.characterTypes = characterTypes;
   }
 
   public IExtensibleDataSetProvider initializeExtensibleResources() throws InitializationException {
     ExtensibleDataManager manager = new ExtensibleDataManager();
-    manager.addDataSet(characterTypes);
-    Collection<IExtensibleDataSetCompiler> compilers = objectFactory.instantiateAll(ExtensibleDataSetCompiler.class,
+    Collection<IExtensibleDataSetCompiler> compilers = objectFactory.instantiateOrdered(ExtensibleDataSetCompiler.class,
             objectFactory, manager);
     for (IExtensibleDataSetCompiler compiler : compilers) {
       try {

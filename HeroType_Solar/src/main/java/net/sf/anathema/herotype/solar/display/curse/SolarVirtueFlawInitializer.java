@@ -2,16 +2,16 @@ package net.sf.anathema.herotype.solar.display.curse;
 
 import net.sf.anathema.character.framework.display.SectionView;
 import net.sf.anathema.framework.environment.Environment;
+import net.sf.anathema.framework.environment.dependencies.Weight;
 import net.sf.anathema.framework.model.ApplicationModel;
 import net.sf.anathema.hero.display.HeroModelGroup;
 import net.sf.anathema.hero.display.configurableview.ConfigurableCharacterView;
 import net.sf.anathema.hero.display.presenter.HeroModelInitializer;
 import net.sf.anathema.hero.display.presenter.RegisteredInitializer;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.herotype.solar.model.SolarCharacterType;
+import net.sf.anathema.herotype.solar.model.SolarType;
 import net.sf.anathema.herotype.solar.model.curse.DescriptiveVirtueFlawModel;
 import net.sf.anathema.herotype.solar.model.curse.GreatCurseFetcher;
-import net.sf.anathema.framework.environment.dependencies.Weight;
 
 @RegisteredInitializer(HeroModelGroup.SpiritualTraits)
 @Weight(weight = 200)
@@ -24,7 +24,7 @@ public class SolarVirtueFlawInitializer implements HeroModelInitializer {
 
   @Override
   public void initialize(SectionView sectionView, Hero hero, Environment environment) {
-    if (!(hero.getTemplate().getTemplateType().getCharacterType() instanceof SolarCharacterType)) {
+    if (!(hero.getTemplate().getTemplateType().getCharacterType().getId().equals(SolarType.ID))) {
       return;
     }
     String viewName = environment.getString("AdditionalTemplateView.TabName.SolarVirtueFlaw");

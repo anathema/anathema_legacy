@@ -4,7 +4,7 @@ import net.sf.anathema.character.framework.type.CharacterType;
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.hero.charms.display.presenter.AbstractCharmPresentationProperties;
 import net.sf.anathema.hero.utilities.ForCharacterType;
-import net.sf.anathema.herotype.solar.model.SolarCharacterType;
+import net.sf.anathema.herotype.solar.model.SolarType;
 
 @ForCharacterType("Solar")
 public class SolarCharmPresentationProperties extends AbstractCharmPresentationProperties {
@@ -15,6 +15,6 @@ public class SolarCharmPresentationProperties extends AbstractCharmPresentationP
 
   @Override
   public boolean supportsCharacterType(CharacterType type) {
-    return type instanceof SolarCharacterType;
+    return type.getId().equals(SolarType.ID);
   }
 }

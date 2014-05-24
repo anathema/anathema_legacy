@@ -4,7 +4,6 @@ import net.sf.anathema.character.framework.Character;
 import net.sf.anathema.character.framework.data.IExtensibleDataSetProvider;
 import net.sf.anathema.character.framework.item.Item;
 import net.sf.anathema.character.framework.persistence.HeroItemPersister;
-import net.sf.anathema.character.framework.type.ReflectionCharacterTypes;
 import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.hero.dummy.DummyExaltCharacterType;
 import net.sf.anathema.hero.dummy.DummyObjectFactory;
@@ -33,8 +32,7 @@ public class HeroItemPersisterTest {
   private HeroEnvironment createEnvironment() {
     IExtensibleDataSetProvider dataSetProvider = mock(IExtensibleDataSetProvider.class);
     final DummyObjectFactory objectFactory = new DummyObjectFactory();
-    HeroEnvironment generics = new HeroEnvironmentImpl(null, objectFactory, dataSetProvider,
-            new ReflectionCharacterTypes(objectFactory));
+    HeroEnvironment generics = new HeroEnvironmentImpl(null, objectFactory, dataSetProvider);
     generics.getTemplateRegistry().register(template);
     return generics;
   }

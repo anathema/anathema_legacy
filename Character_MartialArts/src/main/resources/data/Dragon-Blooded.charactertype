@@ -1,0 +1,6 @@
+{
+    id: "Dragon-Blooded";
+    essenceUser: true;
+    exalt: true;
+    favors: "Ability"
+}

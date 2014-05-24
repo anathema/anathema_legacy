@@ -1,21 +1,20 @@
-package net.sf.anathema.character.framework.type;
+package net.sf.anathema.hero.type;
 
-import net.sf.anathema.framework.environment.ObjectFactory;
+import net.sf.anathema.character.framework.type.CharacterType;
+import net.sf.anathema.character.framework.type.CharacterTypes;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-public class ReflectionCharacterTypes implements CharacterTypes {
+public class ExtensibleCharacterTypes implements CharacterTypes{
 
   private final List<CharacterType> types = new ArrayList<>();
 
-  public ReflectionCharacterTypes(ObjectFactory objectFactory) {
-    Collection<CharacterType> types = objectFactory.instantiateOrdered(RegisteredCharacterType.class);
-    this.types.addAll(types);
+  public void add(CharacterType type) {
+    types.add(type);
   }
-
+  
   @Override
   public CharacterType findById(String id) {
     for (CharacterType type : types) {

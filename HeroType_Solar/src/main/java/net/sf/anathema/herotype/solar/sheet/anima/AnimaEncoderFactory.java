@@ -5,7 +5,7 @@ import net.sf.anathema.hero.concept.sheet.anima.encoder.AbstractAnimaEncoderFact
 import net.sf.anathema.hero.concept.sheet.anima.encoder.AnimaTableEncoder;
 import net.sf.anathema.hero.sheet.pdf.content.BasicContent;
 import net.sf.anathema.hero.sheet.pdf.encoder.table.ITableEncoder;
-import net.sf.anathema.herotype.solar.model.SolarCharacterType;
+import net.sf.anathema.herotype.solar.model.SolarType;
 
 @SuppressWarnings("UnusedDeclaration")
 public class AnimaEncoderFactory extends AbstractAnimaEncoderFactory {
@@ -17,6 +17,6 @@ public class AnimaEncoderFactory extends AbstractAnimaEncoderFactory {
 
   @Override
   public boolean supports(BasicContent content) {
-    return content.isOfType(new SolarCharacterType());
+    return content.hasTypeId(SolarType.ID);
   }
 }

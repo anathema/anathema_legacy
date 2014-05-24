@@ -8,12 +8,14 @@ import net.sf.anathema.hero.utilities.ForCharacterType;
 @ForCharacterType("Dragon-Blooded")
 public class DbCharmPresentationProperties extends AbstractCharmPresentationProperties {
 
+  public static final String ID = "Dragon-Blooded";
+
   public DbCharmPresentationProperties() {
     super(new RGBColor(139, 0, 0));
   }
 
   @Override
   public boolean supportsCharacterType(CharacterType type) {
-    return type instanceof DbCharacterType;
+    return type.getId().equals(ID);
   }
 }

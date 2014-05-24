@@ -1,0 +1,6 @@
+{
+    id: "Solar";
+    essenceUser: true;
+    exalt: true;
+    favors: "Ability"
+}
