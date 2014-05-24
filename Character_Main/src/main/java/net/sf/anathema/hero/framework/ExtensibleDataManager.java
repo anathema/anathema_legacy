@@ -15,6 +15,7 @@ public class ExtensibleDataManager implements IExtensibleDataSetProvider, IExten
     dataSets.add(data);
   }
 
+  @SuppressWarnings("unchecked")
   @Override
   public <T extends ExtensibleDataSet> T getDataSet(Class<T> setClass) {
     for (ExtensibleDataSet data : dataSets) {

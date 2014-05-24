@@ -8,18 +8,12 @@ import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
 import net.sf.anathema.character.equipment.item.model.gson.GsonEquipmentDatabase;
-import net.sf.anathema.hero.equipment.sheet.content.stats.ArtifactStats;
 import net.sf.anathema.character.framework.library.HeroStatsModifiers;
-import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IArmourStats;
-import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
-import net.sf.anathema.hero.traits.model.Trait;
-import net.sf.anathema.hero.specialties.Specialty;
-import net.sf.anathema.hero.traits.model.types.AbilityType;
-import net.sf.anathema.hero.traits.model.types.AttributeType;
 import net.sf.anathema.character.framework.type.CharacterType;
 import net.sf.anathema.equipment.core.IEquipmentTemplate;
 import net.sf.anathema.equipment.core.MagicalMaterial;
 import net.sf.anathema.equipment.core.MaterialComposition;
+import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.hero.equipment.model.CharacterStatsModifiers;
 import net.sf.anathema.hero.equipment.model.EquipmentCollection;
 import net.sf.anathema.hero.equipment.model.EquipmentDirectAccess;
@@ -29,14 +23,20 @@ import net.sf.anathema.hero.equipment.model.MaterialRules;
 import net.sf.anathema.hero.equipment.model.ReflectionMaterialRules;
 import net.sf.anathema.hero.equipment.model.natural.DefaultNaturalSoak;
 import net.sf.anathema.hero.equipment.model.natural.NaturalWeaponTemplate;
+import net.sf.anathema.hero.equipment.sheet.content.stats.ArtifactStats;
+import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IArmourStats;
+import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.change.UnspecifiedChangeListener;
 import net.sf.anathema.hero.sheet.pdf.content.stats.StatsModelFetcher;
+import net.sf.anathema.hero.specialties.Specialty;
 import net.sf.anathema.hero.spiritual.model.pool.EssencePoolModelFetcher;
+import net.sf.anathema.hero.traits.model.Trait;
 import net.sf.anathema.hero.traits.model.TraitModelFetcher;
-import net.sf.anathema.framework.environment.ObjectFactory;
+import net.sf.anathema.hero.traits.model.types.AbilityType;
+import net.sf.anathema.hero.traits.model.types.AttributeType;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ICollectionListener;
 import net.sf.anathema.lib.util.Identifier;
@@ -57,12 +57,7 @@ public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentMo
   private final Announcer<ICollectionListener> equipmentItemControl = Announcer.to(ICollectionListener.class);
   private final EquipmentCollection equipmentItems = new EquipmentCollection();
   private IEquipmentTemplateProvider equipmentTemplateProvider;
-  private final ChangeListener itemChangePropagator = new ChangeListener() {
-    @Override
-    public void changeOccurred() {
-      fireModelChanged();
-    }
-  };
+  private final ChangeListener itemChangePropagator = this::fireModelChanged;
   private CharacterType characterType;
   private MagicalMaterial defaultMaterial;
   private EquipmentHeroEvaluator dataProvider;

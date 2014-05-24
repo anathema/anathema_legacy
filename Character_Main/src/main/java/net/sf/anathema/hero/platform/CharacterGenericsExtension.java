@@ -21,8 +21,7 @@ public class CharacterGenericsExtension implements HeroEnvironmentExtension, Ana
   }
 
   public void initialize(DataFileProvider dataFileProvider, ObjectFactory objectFactory, ResourceLoader loader) {
-    DataSetInitializer dataSetInitializer = new DataSetInitializer(loader, objectFactory);
-    IExtensibleDataSetProvider dataSetProvider = dataSetInitializer.initializeExtensibleResources();
+    IExtensibleDataSetProvider dataSetProvider = new DataSetInitializer(loader, objectFactory).initializeExtensibleResources();
     this.environment = new HeroEnvironmentImpl(dataFileProvider, objectFactory, dataSetProvider);
     new CharacterTemplateInitializer(environment).addCharacterTemplates();
   }

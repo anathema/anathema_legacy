@@ -3,10 +3,10 @@ package net.sf.anathema.character.framework.xml.registry;
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.framework.ICharacterTemplateExtensionResourceCache;
 import net.sf.anathema.character.framework.xml.ITemplateParser;
+import net.sf.anathema.framework.environment.resources.ResourceFile;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.registry.Registry;
-import net.sf.anathema.framework.environment.resources.ResourceFile;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.apache.commons.io.IOUtils;
 import org.dom4j.Document;
@@ -38,39 +38,24 @@ public class XmlTemplateRegistry<T> implements IXmlTemplateRegistry<T> {
 
   @Override
   public T get(final String id, final String prefix) throws PersistenceException {
-    // First try to find a canon source file
-    ResourceFile resource = cache.getTemplateResource(prefix + "data/" + id);
-    // That failing, attempt to find a custom source file
+    ResourceFile resource = loadIntegratedSourceFile(id, prefix);
     if (resource == null) {
-      resource = cache.getTemplateResource(id);
+      resource = loadUserDefinedSourceFile(id);
     }
-    // If a source file has been found, load that.
-    if (resource != null) {
-      return get(resource);
-    }
-    // If all of that fails, try to directly load non-dataset files.
-    // (At this time, this method is only necessary for God-Blooded,
-    //  and may be safely removed if we clean house for Ex3)
-    return get(id, new IDocumentStreamOpener() {
-      @Override
-      public InputStream openDocument() throws Exception {
-        InputStream resourceAsStream = XmlTemplateRegistry.class.getClassLoader().getResourceAsStream(prefix + "data/" + id);
-        if (resourceAsStream == null) {
-          resourceAsStream = XmlTemplateRegistry.class.getClassLoader().getResourceAsStream(id);
-        }
-        return resourceAsStream;
-      }
-    });
+    return get(resource);
+  }
+
+  private ResourceFile loadUserDefinedSourceFile(String id) {
+    return cache.getTemplateResource(id);
+  }
+
+  private ResourceFile loadIntegratedSourceFile(String id, String prefix) {
+    return cache.getTemplateResource(prefix + "data/" + id);
   }
 
   @Override
   public T get(final ResourceFile resource) throws PersistenceException {
-    return get(resource.getFileName(), new IDocumentStreamOpener() {
-      @Override
-      public InputStream openDocument() throws Exception {
-        return resource.getURL().openStream();
-      }
-    });
+    return get(resource.getFileName(), () -> resource.getURL().openStream());
   }
 
   private T get(String id, IDocumentStreamOpener opener) throws PersistenceException {
