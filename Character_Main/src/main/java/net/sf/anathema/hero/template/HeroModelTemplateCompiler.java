@@ -2,9 +2,9 @@ package net.sf.anathema.hero.template;
 
 import net.sf.anathema.character.framework.data.ExtensibleDataSet;
 import net.sf.anathema.character.framework.data.IExtensibleDataSetCompiler;
-import net.sf.anathema.initialization.ExtensibleDataSetCompiler;
 import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.framework.environment.resources.ResourceFile;
+import net.sf.anathema.initialization.ExtensibleDataSetCompiler;
 
 @ExtensibleDataSetCompiler
 public class HeroModelTemplateCompiler implements IExtensibleDataSetCompiler {
@@ -20,7 +20,7 @@ public class HeroModelTemplateCompiler implements IExtensibleDataSetCompiler {
 
   @Override
   public String getName() {
-    return "CharacterModelTemplateExtensions";
+    return "character model template extensions";
   }
 
   @Override

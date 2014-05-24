@@ -2,9 +2,9 @@ package net.sf.anathema.character.framework;
 
 import net.sf.anathema.character.framework.data.ExtensibleDataSet;
 import net.sf.anathema.character.framework.data.IExtensibleDataSetCompiler;
-import net.sf.anathema.initialization.ExtensibleDataSetCompiler;
 import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.framework.environment.resources.ResourceFile;
+import net.sf.anathema.initialization.ExtensibleDataSetCompiler;
 
 @ExtensibleDataSetCompiler
 public class CharacterTemplateResourceCompiler implements IExtensibleDataSetCompiler {
@@ -20,7 +20,7 @@ public class CharacterTemplateResourceCompiler implements IExtensibleDataSetComp
 
   @Override
   public String getName() {
-    return "CharacterTemplates";
+    return "character templates";
   }
 
   @Override

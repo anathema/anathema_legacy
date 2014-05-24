@@ -2,7 +2,7 @@ package net.sf.anathema.framework.model;
 
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.environment.Environment;
-import net.sf.anathema.framework.extension.IAnathemaExtension;
+import net.sf.anathema.framework.extension.AnathemaExtension;
 import net.sf.anathema.framework.messaging.IMessageContainer;
 import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.framework.messaging.Messaging;
@@ -15,7 +15,7 @@ import java.io.File;
 
 public class ApplicationModel implements IApplicationModel {
 
-  private final IRegistry<String, IAnathemaExtension> extensionRegistry = new Registry<>();
+  private final IRegistry<String, AnathemaExtension> extensionRegistry = new Registry<>();
   private final FileSystemRepository repository;
   private final Messaging messaging;
 
@@ -32,7 +32,7 @@ public class ApplicationModel implements IApplicationModel {
   }
 
   @Override
-  public final IRegistry<String, IAnathemaExtension> getExtensionPointRegistry() {
+  public final IRegistry<String, AnathemaExtension> getExtensionPointRegistry() {
     return extensionRegistry;
   }
 

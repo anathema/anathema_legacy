@@ -2,9 +2,9 @@ package net.sf.anathema.hero.framework;
 
 import net.sf.anathema.character.framework.CharacterTemplateInitializer;
 import net.sf.anathema.character.framework.data.IExtensibleDataSetProvider;
-import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.framework.environment.ResourceLoader;
+import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.repository.DataFileProvider;
 
 public class HeroEnvironmentInitializer {
@@ -17,19 +17,16 @@ public class HeroEnvironmentInitializer {
     this.objectFactory = objectFactory;
   }
 
-  public HeroEnvironment initEnvironmnent(DataFileProvider dataFileProvider) throws InitializationException {
+  public HeroEnvironment initEnvironment(DataFileProvider dataFileProvider) throws InitializationException {
     HeroEnvironment environment = createEnvironment(dataFileProvider);
     new CharacterTemplateInitializer(environment).addCharacterTemplates();
     return environment;
   }
 
   private HeroEnvironmentImpl createEnvironment(DataFileProvider dataFileProvider) {
-    IExtensibleDataSetProvider dataSetProvider = loadExtensibleResources();
+    DataSetInitializer dataSetInitializer = new DataSetInitializer(resourceLoader, objectFactory);
+    IExtensibleDataSetProvider dataSetProvider = dataSetInitializer.initializeExtensibleResources();
     return new HeroEnvironmentImpl(dataFileProvider, objectFactory, dataSetProvider);
   }
 
-  private IExtensibleDataSetProvider loadExtensibleResources() {
-    DataSetInitializer dataSetInitializer = new DataSetInitializer(resourceLoader, objectFactory);
-    return dataSetInitializer.initializeExtensibleResources();
-  }
 }

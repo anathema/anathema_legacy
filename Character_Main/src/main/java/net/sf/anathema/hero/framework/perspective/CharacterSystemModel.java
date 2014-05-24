@@ -1,14 +1,15 @@
 package net.sf.anathema.hero.framework.perspective;
 
+import net.sf.anathema.character.framework.display.ItemReceiver;
 import net.sf.anathema.character.framework.item.CharacterReferenceScanner;
 import net.sf.anathema.character.framework.item.Item;
 import net.sf.anathema.character.framework.persistence.HeroItemPersister;
+import net.sf.anathema.character.framework.persistence.RepositoryItemPersister;
+import net.sf.anathema.character.framework.reporting.Report;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.environment.Environment;
-import net.sf.anathema.character.framework.persistence.RepositoryItemPersister;
-import net.sf.anathema.character.framework.display.ItemReceiver;
-import net.sf.anathema.character.framework.reporting.Report;
 import net.sf.anathema.framework.repository.IRepositoryFileResolver;
+import net.sf.anathema.hero.creation.CharacterTemplateCreator;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.framework.HeroEnvironmentExtractor;
@@ -25,7 +26,6 @@ import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.platform.JsonCharacterReferenceScanner;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.exception.PersistenceException;
-import net.sf.anathema.hero.creation.CharacterTemplateCreator;
 import org.jmock.example.announcer.Announcer;
 
 import java.io.IOException;
@@ -45,12 +45,7 @@ public class CharacterSystemModel implements ItemSystemModel {
   private CharacterIdentifier currentCharacter;
   private Announcer<ChangeListener> becomesDirtyAnnouncer = Announcer.to(ChangeListener.class);
   private Announcer<ChangeListener> becomesCleanAnnouncer = Announcer.to(ChangeListener.class);
-  private ChangeListener dirtyListener = new ChangeListener() {
-    @Override
-    public void changeOccurred() {
-      notifyDirtyListeners();
-    }
-  };
+  private ChangeListener dirtyListener = this::notifyDirtyListeners;
   private final CharacterPersistenceModel persistenceModel;
   private IApplicationModel model;
   private int newCharacterCount = 0;
@@ -146,15 +141,12 @@ public class CharacterSystemModel implements ItemSystemModel {
 
   @Override
   public void createNew(CharacterTemplateCreator factory, Environment environment) {
-    ItemReceiver receiver = new ItemReceiver() {
-      @Override
-      public void addItem(Item item) {
-        CharacterIdentifier identifier = new CharacterIdentifier("InternalNewCharacter" + newCharacterCount++);
-        initCharacterListening(item);
-        CharacterItemModel character = new CharacterItemModel(identifier, item);
-        modelsByIdentifier.put(identifier, character);
-        characterAddedListener.announce().added(character);
-      }
+    ItemReceiver receiver = item -> {
+      CharacterIdentifier identifier = new CharacterIdentifier("InternalNewCharacter" + newCharacterCount++);
+      initCharacterListening(item);
+      CharacterItemModel character = new CharacterItemModel(identifier, item);
+      modelsByIdentifier.put(identifier, character);
+      characterAddedListener.announce().added(character);
     };
     HeroEnvironment heroEnvironment = getHeroEnvironment();
     RepositoryItemPersister persister = new HeroItemPersister(heroEnvironment, model.getMessaging());

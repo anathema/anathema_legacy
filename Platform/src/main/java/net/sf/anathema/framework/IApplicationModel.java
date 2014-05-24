@@ -1,6 +1,6 @@
 package net.sf.anathema.framework;
 
-import net.sf.anathema.framework.extension.IAnathemaExtension;
+import net.sf.anathema.framework.extension.AnathemaExtension;
 import net.sf.anathema.framework.messaging.IMessageContainer;
 import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.framework.repository.Repository;
@@ -10,7 +10,7 @@ public interface IApplicationModel {
 
   Repository getRepository();
 
-  IRegistry<String, IAnathemaExtension> getExtensionPointRegistry();
+  IRegistry<String, AnathemaExtension> getExtensionPointRegistry();
 
   IMessaging getMessaging();
 

@@ -8,12 +8,10 @@ import net.sf.anathema.framework.view.ApplicationView;
 
 public abstract class Initializer {
 
-  private final AnathemaExtensionCollection extensionCollection;
   private final Environment environment;
 
   public Initializer(Environment environment) throws InitializationException {
     this.environment = environment;
-    this.extensionCollection = new AnathemaExtensionCollection(environment);
   }
 
   protected InitializedModelAndView initializeModelViewAndPresentation() throws InitializationException {
@@ -36,7 +34,7 @@ public abstract class Initializer {
 
   private IApplicationModel initModel(Environment environment) throws InitializationException {
     displayMessage("Creating Model...");
-    AnathemaModelInitializer modelInitializer = new AnathemaModelInitializer(extensionCollection);
+    AnathemaModelInitializer modelInitializer = new AnathemaModelInitializer();
     return modelInitializer.initializeModel(environment);
   }
 

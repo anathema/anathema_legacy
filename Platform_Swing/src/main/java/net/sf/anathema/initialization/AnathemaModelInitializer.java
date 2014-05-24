@@ -14,18 +14,8 @@ import java.io.File;
 
 public class AnathemaModelInitializer {
 
-  private final Iterable<ExtensionWithId> extensions;
-
-  public AnathemaModelInitializer(Iterable<ExtensionWithId> extensions) {
-    this.extensions = extensions;
-  }
-
   public IApplicationModel initializeModel(Environment environment) throws InitializationException {
-    ApplicationModel model = createModel(environment);
-    for (ExtensionWithId extension : extensions) {
-      extension.register(model, environment);
-    }
-    return model;
+    return createModel(environment);
   }
 
   private ApplicationModel createModel(Environment environment) throws InitializationException {
