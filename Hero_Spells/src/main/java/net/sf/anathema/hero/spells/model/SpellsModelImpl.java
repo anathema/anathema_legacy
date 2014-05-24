@@ -1,9 +1,14 @@
 package net.sf.anathema.hero.spells.model;
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
 import net.sf.anathema.character.magic.charm.Charm;
 import net.sf.anathema.character.magic.parser.spells.ISpellCache;
-import net.sf.anathema.character.magic.spells.*;
-import net.sf.anathema.hero.template.HeroTemplate;
+import net.sf.anathema.character.magic.spells.CircleType;
+import net.sf.anathema.character.magic.spells.ICircleTypeVisitor;
+import net.sf.anathema.character.magic.spells.ISpellMapper;
+import net.sf.anathema.character.magic.spells.Spell;
+import net.sf.anathema.character.magic.spells.SpellMapper;
 import net.sf.anathema.hero.charms.advance.MagicPointsModelFetcher;
 import net.sf.anathema.hero.charms.advance.experience.MagicExperienceCosts;
 import net.sf.anathema.hero.charms.model.CharmsModel;
@@ -14,20 +19,23 @@ import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.change.ChangeAnnouncer;
-import net.sf.anathema.hero.model.change.ChangeFlavor;
-import net.sf.anathema.hero.model.change.FlavoredChangeListener;
 import net.sf.anathema.hero.model.change.UnspecifiedChangeListener;
 import net.sf.anathema.hero.points.PointModelFetcher;
 import net.sf.anathema.hero.spells.advance.SpellExperienceCostCalculator;
 import net.sf.anathema.hero.spells.advance.SpellExperienceModel;
 import net.sf.anathema.hero.spells.sheet.content.PrintSpellsProvider;
 import net.sf.anathema.hero.spells.template.SpellsTemplate;
+import net.sf.anathema.hero.template.HeroTemplate;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 import org.apache.commons.lang3.ArrayUtils;
 import org.jmock.example.announcer.Announcer;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 public class SpellsModelImpl implements SpellsModel {
 
@@ -35,7 +43,7 @@ public class SpellsModelImpl implements SpellsModel {
   private final List<Spell> creationLearnedList = new ArrayList<>();
   private final List<Spell> experiencedLearnedList = new ArrayList<>();
   private final Announcer<ChangeListener> changeControl = Announcer.to(ChangeListener.class);
-  private final Map<CircleType, List<Spell>> spellsByCircle = new HashMap<>();
+  private final Multimap<CircleType, Spell> spellsByCircle = ArrayListMultimap.create();
   private final ISpellMapper spellMapper = new SpellMapper();
   private CharmsModel charms;
   private HeroTemplate heroTemplate;
@@ -68,11 +76,8 @@ public class SpellsModelImpl implements SpellsModel {
   }
 
   private void initializeSpellsByCircle(HeroEnvironment environment) {
-    for (CircleType type : CircleType.values()) {
-      spellsByCircle.put(type, new ArrayList<Spell>());
-    }
     for (Spell spell : environment.getDataSet(ISpellCache.class).getSpells()) {
-      spellsByCircle.get(spell.getCircleType()).add(spell);
+      spellsByCircle.put(spell.getCircleType(), spell);
     }
   }
 
@@ -87,13 +92,10 @@ public class SpellsModelImpl implements SpellsModel {
 
   @Override
   public void initializeListening(ChangeAnnouncer announcer) {
-    announcer.addListener(new FlavoredChangeListener() {
-      @Override
-      public void changeOccurred(ChangeFlavor flavor) {
-        if (flavor == ExperienceChange.FLAVOR_EXPERIENCE_STATE) {
-          boolean experienced = experience.isExperienced();
-          updateLearnStrategies(experienced);
-        }
+    announcer.addListener(flavor -> {
+      if (flavor == ExperienceChange.FLAVOR_EXPERIENCE_STATE) {
+        boolean experienced = experience.isExperienced();
+        updateLearnStrategies(experienced);
       }
     });
     addChangeListener(new UnspecifiedChangeListener(announcer));
@@ -160,6 +162,7 @@ public class SpellsModelImpl implements SpellsModel {
     return strategy.isSpellAllowed(this, spell);
   }
 
+  @SuppressWarnings("SimplifiableIfStatement")
   @Override
   public boolean isSpellAllowed(Spell spell, boolean experienced) {
     if (creationLearnedList.contains(spell) || (experienced && experiencedLearnedList.contains(spell))) {
@@ -189,11 +192,8 @@ public class SpellsModelImpl implements SpellsModel {
   }
 
   private Spell[] getSpellsByCircle(CircleType circle) {
-    List<Spell> spells = spellsByCircle.get(circle);
-    if (spells != null) {
-      return spells.toArray(new Spell[spells.size()]);
-    }
-    return new Spell[0];
+    Collection<Spell> spells = spellsByCircle.get(circle);
+    return spells.toArray(new Spell[spells.size()]);
   }
 
   @Override
@@ -209,8 +209,8 @@ public class SpellsModelImpl implements SpellsModel {
 
   private Iterable<Spell> getAllSpells() {
     List<Spell> allSpells = new ArrayList<>();
-    for (List<Spell> circleSpells : spellsByCircle.values()) {
-      allSpells.addAll(circleSpells);
+    for (Spell spell : spellsByCircle.values()) {
+      allSpells.add(spell);
     }
     return allSpells;
   }
