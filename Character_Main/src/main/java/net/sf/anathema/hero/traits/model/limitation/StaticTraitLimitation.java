@@ -3,7 +3,7 @@ package net.sf.anathema.hero.traits.model.limitation;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 
-public class StaticTraitLimitation extends ReflectionCloneableObject<TraitLimitation> implements TraitLimitation {
+public class StaticTraitLimitation implements TraitLimitation {
 
   private final int staticLimit;
 
