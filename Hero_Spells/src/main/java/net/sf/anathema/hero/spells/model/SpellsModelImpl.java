@@ -2,7 +2,6 @@ package net.sf.anathema.hero.spells.model;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
-import net.sf.anathema.character.magic.charm.Charm;
 import net.sf.anathema.character.magic.parser.spells.ISpellCache;
 import net.sf.anathema.character.magic.spells.CircleType;
 import net.sf.anathema.character.magic.spells.ICircleTypeVisitor;
@@ -28,7 +27,6 @@ import net.sf.anathema.hero.spells.template.SpellsTemplate;
 import net.sf.anathema.hero.template.HeroTemplate;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
-import org.apache.commons.lang3.ArrayUtils;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
@@ -165,10 +163,13 @@ public class SpellsModelImpl implements SpellsModel {
   @SuppressWarnings("SimplifiableIfStatement")
   @Override
   public boolean isSpellAllowed(Spell spell, boolean experienced) {
-    if (creationLearnedList.contains(spell) || (experienced && experiencedLearnedList.contains(spell))) {
+    boolean alreadyKnowsSpell = creationLearnedList.contains(spell) || (experienced && experiencedLearnedList.contains(
+            spell));
+    if (alreadyKnowsSpell) {
       return false;
     }
-    return knowsCharm(getInitiation(spell.getCircleType()), charms.getLearnedCharms(true));
+    String initiationCharm = getInitiation(spell.getCircleType());
+    return charms.isLearned(initiationCharm);
   }
 
   @Override
@@ -208,11 +209,7 @@ public class SpellsModelImpl implements SpellsModel {
   }
 
   private Iterable<Spell> getAllSpells() {
-    List<Spell> allSpells = new ArrayList<>();
-    for (Spell spell : spellsByCircle.values()) {
-      allSpells.add(spell);
-    }
-    return allSpells;
+    return new ArrayList<>(spellsByCircle.values());
   }
 
   @Override
@@ -234,10 +231,10 @@ public class SpellsModelImpl implements SpellsModel {
   }
 
   @Override
-  public List<Spell> getLearnedSpellsInCircles(CircleType[] eligibleCircles) {
+  public List<Spell> getLearnedSpellsInCircles(Collection<CircleType> eligibleCircles) {
     List<Spell> spellList = new ArrayList<>();
     for (Spell spell : getLearnedSpells()) {
-      if (ArrayUtils.contains(eligibleCircles, spell.getCircleType())) {
+      if (eligibleCircles.contains(spell.getCircleType())) {
         spellList.add(spell);
       }
     }
@@ -254,27 +251,18 @@ public class SpellsModelImpl implements SpellsModel {
     return !template.necromancy.isEmpty();
   }
 
-  protected boolean knowsCharm(String charm, Charm[] knownCharms) {
-    for (Charm knownCharm : knownCharms) {
-      if (charm.equals(knownCharm.getId())) {
-        return true;
-      }
-    }
-    return false;
+  @Override
+  public Collection<CircleType> getNecromancyCircles() {
+    return template.necromancy;
   }
 
   @Override
-  public CircleType[] getNecromancyCircles() {
-    return template.necromancy.toArray(new CircleType[0]);
-  }
-
-  @Override
-  public CircleType[] getSorceryCircles() {
-    return template.sorcery.toArray(new CircleType[0]);
+  public Collection<CircleType> getSorceryCircles() {
+    return template.sorcery;
   }
 
   private String getInitiation(CircleType type) {
-    final String[] initiation = new String[1];
+    String[] initiation = new String[1];
     type.accept(new ICircleTypeVisitor() {
       @Override
       public void visitTerrestrial(CircleType type) {

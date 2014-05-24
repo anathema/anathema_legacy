@@ -2,6 +2,8 @@ package net.sf.anathema.lib.gui.selection;
 
 import net.sf.anathema.lib.control.ObjectValueListener;
 
+import java.util.Collection;
+
 public interface ObjectSelectionView<V> {
 
   void setSelectedObject(V object);
@@ -12,9 +14,9 @@ public interface ObjectSelectionView<V> {
 
   void setObjects(V[] objects);
 
-  V getSelectedObject();
+  void setObjects(Collection<V> objects);
 
-  boolean isObjectSelected();
+  V getSelectedObject();
 
   void setEnabled(boolean enabled);
 }

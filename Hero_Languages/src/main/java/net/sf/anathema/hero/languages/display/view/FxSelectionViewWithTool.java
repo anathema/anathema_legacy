@@ -5,10 +5,11 @@ import net.sf.anathema.hero.languages.display.presenter.ObjectSelectionViewWithT
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
-import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.platform.fx.selection.ComboBoxSelectionView;
 import net.sf.anathema.platform.tool.FxButtonTool;
 import org.tbee.javafx.scene.layout.MigPane;
+
+import java.util.Collection;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
@@ -43,13 +44,13 @@ public class FxSelectionViewWithTool<V> implements ObjectSelectionViewWithTool<V
   }
 
   @Override
-  public V getSelectedObject() {
-    return comboBox.getSelectedObject();
+  public void setObjects(Collection<V> objects) {
+    comboBox.setObjects(objects);
   }
 
   @Override
-  public boolean isObjectSelected() {
-    return comboBox.isObjectSelected();
+  public V getSelectedObject() {
+    return comboBox.getSelectedObject();
   }
 
   @Override
@@ -60,22 +61,12 @@ public class FxSelectionViewWithTool<V> implements ObjectSelectionViewWithTool<V
   @Override
   public Tool addTool() {
     final FxButtonTool tool = FxButtonTool.ForToolbar();
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        buttonPanel.add(tool.getNode());
-      }
-    });
+    buttonPanel.add(tool.getNode());
     return tool;
   }
 
   public void addTo(final MigPane selectionPanel) {
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        selectionPanel.add(comboBox.getNode());
-        selectionPanel.add(buttonPanel, new CC().alignY("center"));
-      }
-    });
+    selectionPanel.add(comboBox.getNode());
+    selectionPanel.add(buttonPanel, new CC().alignY("center"));
   }
 }

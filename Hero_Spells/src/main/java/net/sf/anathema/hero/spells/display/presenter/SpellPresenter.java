@@ -3,18 +3,18 @@ package net.sf.anathema.hero.spells.display.presenter;
 import net.sf.anathema.character.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.magic.spells.CircleType;
 import net.sf.anathema.character.magic.spells.Spell;
-import net.sf.anathema.hero.experience.ExperienceModel;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.charms.display.magic.MagicLearnPresenter;
 import net.sf.anathema.hero.charms.display.magic.MagicLearnView;
 import net.sf.anathema.hero.charms.display.magic.MagicViewListener;
+import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.hero.spells.model.CircleModel;
 import net.sf.anathema.hero.spells.model.SpellsModel;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
-import net.sf.anathema.lib.control.ChangeListener;
-import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class SpellPresenter {
@@ -35,14 +35,10 @@ public class SpellPresenter {
   }
 
   public void initPresentation() {
-    view.addCircleSelection(circleModel.getCircles(), properties);
+    Collection<Identifier> circles = new ArrayList<>(circleModel.getCircles());
+    view.addCircleSelection(circles, properties);
     addMagicLearnView(view);
-    view.addCircleSelectionListener(new ObjectValueListener<CircleType>() {
-      @Override
-      public void valueChanged(CircleType circleType) {
-        circleModel.selectCircle(circleType);
-      }
-    });
+    view.addCircleSelectionListener(circleModel::selectCircle);
   }
 
   private void addMagicLearnView(final SpellView view) {
@@ -62,19 +58,11 @@ public class SpellPresenter {
         spellConfiguration.addSpells(spellList);
       }
     });
-    circleModel.addSelectionListener(new ObjectValueListener<CircleType>() {
-      @Override
-      public void valueChanged(CircleType newValue) {
-        showAvailableSpells(magicLearnView);
-        updateCircleInView(newValue, view);
-      }
+    circleModel.addSelectionListener(newValue -> {
+      showAvailableSpells(magicLearnView);
+      updateCircleInView(newValue, view);
     });
-    spellConfiguration.addChangeListener(new ChangeListener() {
-      @Override
-      public void changeOccurred() {
-        refreshSpellListsInView(magicLearnView);
-      }
-    });
+    spellConfiguration.addChangeListener(() -> refreshSpellListsInView(magicLearnView));
     refreshSpellListsInView(magicLearnView);
     updateCircleInView(circleModel.getSelectedCircle(), view);
   }

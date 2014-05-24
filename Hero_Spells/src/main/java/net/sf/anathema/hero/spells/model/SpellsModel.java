@@ -7,6 +7,7 @@ import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
+import java.util.Collection;
 import java.util.List;
 
 public interface SpellsModel extends HeroModel {
@@ -39,13 +40,13 @@ public interface SpellsModel extends HeroModel {
 
   List<Spell> getAvailableSpellsInCircle(CircleType circle);
 
-  List<Spell> getLearnedSpellsInCircles(CircleType[] eligibleCircles);
+  List<Spell> getLearnedSpellsInCircles(Collection<CircleType> eligibleCircles);
 
   boolean canLearnSorcery();
 
   boolean canLearnNecromancy();
 
-  CircleType[] getNecromancyCircles();
+  Collection<CircleType> getNecromancyCircles();
 
-  CircleType[] getSorceryCircles();
+  Collection<CircleType> getSorceryCircles();
 }

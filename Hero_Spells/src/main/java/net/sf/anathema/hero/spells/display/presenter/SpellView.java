@@ -6,9 +6,11 @@ import net.sf.anathema.hero.charms.display.magic.MagicLearnView;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.util.Identifier;
 
+import java.util.Collection;
+
 public interface SpellView {
 
-  void addCircleSelection(Identifier[] circles, SpellViewProperties properties);
+  void addCircleSelection(Collection<Identifier> circles, SpellViewProperties properties);
 
   void showSelectedCircle(CircleType newValue);
 

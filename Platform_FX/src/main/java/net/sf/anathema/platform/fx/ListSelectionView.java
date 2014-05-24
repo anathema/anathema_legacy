@@ -12,7 +12,9 @@ import net.sf.anathema.lib.gui.list.veto.Vetor;
 import net.sf.anathema.lib.gui.selection.VetoableObjectSelectionView;
 import org.jmock.example.announcer.Announcer;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 
 public class ListSelectionView<T> implements VetoableObjectSelectionView<T> {
 
@@ -62,22 +64,17 @@ public class ListSelectionView<T> implements VetoableObjectSelectionView<T> {
 
   @Override
   public void setObjects(final T[] objects) {
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        view.setItems(new ObservableListWrapper<>(Arrays.asList(objects)));
-      }
-    });
+    view.setItems(new ObservableListWrapper<>(Arrays.asList(objects)));
+  }
+
+  @Override
+  public void setObjects(Collection<T> objects) {
+    view.setItems(new ObservableListWrapper<>(new ArrayList<>(objects)));
   }
 
   @Override
   public T getSelectedObject() {
     return view.getSelectionModel().getSelectedItem();
-  }
-
-  @Override
-  public boolean isObjectSelected() {
-    return view.getSelectionModel().isEmpty();
   }
 
   @Override

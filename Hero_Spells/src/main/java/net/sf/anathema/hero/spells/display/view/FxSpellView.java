@@ -10,11 +10,12 @@ import net.sf.anathema.hero.spells.display.presenter.SpellView;
 import net.sf.anathema.hero.spells.display.presenter.SpellViewProperties;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.util.Identifier;
-import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.platform.fx.NodeHolder;
 import net.sf.anathema.platform.fx.selection.ComboBoxSelectionView;
 import org.jmock.example.announcer.Announcer;
 import org.tbee.javafx.scene.layout.MigPane;
+
+import java.util.Collection;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 
@@ -24,16 +25,13 @@ public class FxSpellView implements SpellView, NodeHolder {
   private ComboBoxSelectionView<Identifier> selectionView;
 
   @Override
-  public void addCircleSelection(Identifier[] circles, SpellViewProperties properties) {
-    this.selectionView = new ComboBoxSelectionView<>(properties.getCircleLabel(), properties.getCircleSelectionRenderer());
+  public void addCircleSelection(Collection<Identifier> circles, SpellViewProperties properties) {
+    this.selectionView = new ComboBoxSelectionView<>(properties.getCircleLabel(),
+            properties.getCircleSelectionRenderer());
     selectionView.setObjects(circles);
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        content.add(selectionView.getNode(), new CC().wrap());
-      }
-    });
+    content.add(selectionView.getNode(), new CC().wrap());
     selectionView.addObjectSelectionChangedListener(new ObjectValueListener<Identifier>() {
+      @SuppressWarnings("unchecked")
       @Override
       public void valueChanged(Identifier newValue) {
         circleControl.announce().valueChanged(newValue);
@@ -48,13 +46,8 @@ public class FxSpellView implements SpellView, NodeHolder {
 
   @Override
   public MagicLearnView addMagicLearnView(MagicLearnProperties properties) {
-    final FxMagicLearnView magicLearnView = new FxMagicLearnView(properties);
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        content.add(magicLearnView.getNode(), new CC().grow().push());
-      }
-    });
+    FxMagicLearnView magicLearnView = new FxMagicLearnView(properties);
+    content.add(magicLearnView.getNode(), new CC().grow().push());
     return magicLearnView;
   }
 

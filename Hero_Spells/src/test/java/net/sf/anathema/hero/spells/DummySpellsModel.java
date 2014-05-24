@@ -12,9 +12,13 @@ import net.sf.anathema.hero.spells.model.SpellsModel;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.util.Identifier;
-import org.apache.commons.lang3.ArrayUtils;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
 
 public class DummySpellsModel implements SpellsModel {
 
@@ -111,10 +115,10 @@ public class DummySpellsModel implements SpellsModel {
   }
 
   @Override
-  public List<Spell> getLearnedSpellsInCircles(CircleType[] eligibleCircles) {
+  public List<Spell> getLearnedSpellsInCircles(Collection<CircleType> eligibleCircles) {
     List<Spell> spellList = new ArrayList<>();
     for (Spell spell : getLearnedSpells()) {
-      if (ArrayUtils.contains(eligibleCircles, spell.getCircleType())) {
+      if (eligibleCircles.contains(spell.getCircleType())) {
         spellList.add(spell);
       }
     }
@@ -132,13 +136,13 @@ public class DummySpellsModel implements SpellsModel {
   }
 
   @Override
-  public CircleType[] getNecromancyCircles() {
-    return new CircleType[0];
+  public Collection<CircleType> getNecromancyCircles() {
+    return Collections.emptyList();
   }
 
   @Override
-  public CircleType[] getSorceryCircles() {
-    return new CircleType[0];
+  public Collection<CircleType> getSorceryCircles() {
+    return Collections.emptyList();
   }
 
   public void initializeMagicModel(CharmsModel charmsModel) {

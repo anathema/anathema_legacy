@@ -11,11 +11,12 @@ import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.platform.fx.ConfigurableListCellFactory;
 import net.sf.anathema.platform.fx.FxObjectSelectionView;
-import net.sf.anathema.platform.fx.FxThreading;
 import org.jmock.example.announcer.Announcer;
 import org.tbee.javafx.scene.layout.MigPane;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
@@ -27,42 +28,27 @@ public class ComboBoxSelectionView<V> implements FxObjectSelectionView<V> {
 
   @SuppressWarnings("unchecked")
   public ComboBoxSelectionView(final String description, final AgnosticUIConfiguration<V> ui) {
-    FxThreading.runOnCorrectThread(new Runnable() {
+    comboBox = new ComboBox<>();
+    label = new Label(description);
+    pane = new MigPane(withoutInsets());
+    if (!StringUtilities.isNullOrTrimmedEmpty(description)) {
+      pane.add(label);
+    }
+    pane.add(comboBox);
+    ConfigurableListCellFactory<V> factory = new ConfigurableListCellFactory<>(ui);
+    comboBox.setButtonCell(factory.call(null));
+    comboBox.setCellFactory(factory);
+    comboBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<V>() {
       @Override
-      public void run() {
-        comboBox = new ComboBox<>();
-        label = new Label(description);
-        pane = new MigPane(withoutInsets());
-        if (!StringUtilities.isNullOrTrimmedEmpty(description)) {
-          pane.add(label);
-        }
-        pane.add(comboBox);
-      }
-    });
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        ConfigurableListCellFactory<V> factory = new ConfigurableListCellFactory<>(ui);
-        comboBox.setButtonCell(factory.call(null));
-        comboBox.setCellFactory(factory);
-        comboBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<V>() {
-          @Override
-          public void changed(ObservableValue<? extends V> observableValue, V v, V newValue) {
-            announcer.announce().valueChanged(newValue);
-          }
-        });
+      public void changed(ObservableValue<? extends V> observableValue, V v, V newValue) {
+        announcer.announce().valueChanged(newValue);
       }
     });
   }
 
   @Override
   public void setSelectedObject(final V object) {
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        comboBox.getSelectionModel().select(object);
-      }
-    });
+    comboBox.getSelectionModel().select(object);
   }
 
   @Override
@@ -77,12 +63,12 @@ public class ComboBoxSelectionView<V> implements FxObjectSelectionView<V> {
 
   @Override
   public void setObjects(final V[] objects) {
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        comboBox.setItems(new ObservableListWrapper<>(Arrays.asList(objects)));
-      }
-    });
+    comboBox.setItems(new ObservableListWrapper<>(Arrays.asList(objects)));
+  }
+
+  @Override
+  public void setObjects(Collection<V> objects) {
+    comboBox.setItems(new ObservableListWrapper<>(new ArrayList<>(objects)));
   }
 
   private void waitForContent() {
@@ -98,11 +84,6 @@ public class ComboBoxSelectionView<V> implements FxObjectSelectionView<V> {
   @Override
   public V getSelectedObject() {
     return comboBox.getSelectionModel().getSelectedItem();
-  }
-
-  @Override
-  public boolean isObjectSelected() {
-    return comboBox.getSelectionModel().isEmpty();
   }
 
   @Override
