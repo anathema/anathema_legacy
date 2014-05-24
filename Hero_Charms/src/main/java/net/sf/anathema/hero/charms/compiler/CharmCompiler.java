@@ -2,6 +2,7 @@ package net.sf.anathema.hero.charms.compiler;
 
 import net.sf.anathema.character.framework.data.ExtensibleDataSet;
 import net.sf.anathema.character.framework.data.IExtensibleDataSetCompiler;
+import net.sf.anathema.character.framework.data.IExtensibleDataSetProvider;
 import net.sf.anathema.character.framework.type.CharacterType;
 import net.sf.anathema.character.framework.type.CharacterTypes;
 import net.sf.anathema.character.magic.charm.Charm;
@@ -51,11 +52,11 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
   private final CharmSetBuilder setBuilder;
   private final GenericCharmSetBuilder genericBuilder;
 
-  public CharmCompiler(ObjectFactory objectFactory, CharacterTypes types) {
+  public CharmCompiler(ObjectFactory objectFactory, IExtensibleDataSetProvider provider) {
     ReflectionSpecialCharmBuilder specialCharmBuilder = new ReflectionSpecialCharmBuilder(objectFactory);
     ReflectionSpecialCharmParser specialCharmParser = new ReflectionSpecialCharmParser(objectFactory);
     this.charmCache =  new CharmCacheImpl(specialCharmBuilder);
-    this.characterTypes = types;
+    this.characterTypes = provider.getDataSet(CharacterTypes.class);
     this.setBuilder = new CharmSetBuilder(characterTypes, specialCharmParser);
     this.genericBuilder = new GenericCharmSetBuilder(characterTypes, specialCharmParser);
   }

@@ -2,7 +2,7 @@ package net.sf.anathema.character.magic.parser.spells;
 
 import net.sf.anathema.character.framework.data.ExtensibleDataSet;
 import net.sf.anathema.character.framework.data.IExtensibleDataSetCompiler;
-import net.sf.anathema.character.framework.type.CharacterTypes;
+import net.sf.anathema.character.framework.data.IExtensibleDataSetProvider;
 import net.sf.anathema.character.magic.spells.Spell;
 import net.sf.anathema.character.magic.spells.SpellException;
 import net.sf.anathema.framework.environment.ObjectFactory;
@@ -24,7 +24,7 @@ public class SpellCompiler implements IExtensibleDataSetCompiler {
   private final SpellCache cache = new SpellCache();
 
   @SuppressWarnings("UnusedParameters")
-  public SpellCompiler(ObjectFactory objectFactory, CharacterTypes types) {
+  public SpellCompiler(ObjectFactory objectFactory, IExtensibleDataSetProvider provider) {
     //nothing to do
   }
 

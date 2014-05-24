@@ -17,11 +17,11 @@ public class HeroEnvironmentImpl implements HeroEnvironment {
   private final CharacterTypes characterTypes;
 
   public HeroEnvironmentImpl(DataFileProvider dataFileProvider, ObjectFactory objectFactory,
-                             IExtensibleDataSetProvider dataSetProvider, CharacterTypes types) {
+                             IExtensibleDataSetProvider dataSetProvider) {
     this.objectFactory = objectFactory;
     this.dataFileProvider = dataFileProvider;
     this.dataSetProvider = dataSetProvider;
-    this.characterTypes = types;
+    this.characterTypes = dataSetProvider.getDataSet(CharacterTypes.class);
   }
 
   @Override

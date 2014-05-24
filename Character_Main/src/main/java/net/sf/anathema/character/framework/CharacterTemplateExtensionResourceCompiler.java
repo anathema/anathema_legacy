@@ -2,7 +2,7 @@ package net.sf.anathema.character.framework;
 
 import net.sf.anathema.character.framework.data.ExtensibleDataSet;
 import net.sf.anathema.character.framework.data.IExtensibleDataSetCompiler;
-import net.sf.anathema.character.framework.type.CharacterTypes;
+import net.sf.anathema.character.framework.data.IExtensibleDataSetProvider;
 import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.framework.environment.resources.ResourceFile;
 import net.sf.anathema.initialization.ExtensibleDataSetCompiler;
@@ -17,13 +17,13 @@ public class CharacterTemplateExtensionResourceCompiler implements IExtensibleDa
   private final List<ResourceFile> templateResources = new ArrayList<>();
 
   @SuppressWarnings("UnusedParameters")
-  public CharacterTemplateExtensionResourceCompiler(ObjectFactory objectFactory, CharacterTypes types) {
+  public CharacterTemplateExtensionResourceCompiler(ObjectFactory objectFactory, IExtensibleDataSetProvider provider) {
     //nothing to do
   }
 
   @Override
   public String getName() {
-    return "character template extensions";
+    return "Character template extensions";
   }
 
   @Override

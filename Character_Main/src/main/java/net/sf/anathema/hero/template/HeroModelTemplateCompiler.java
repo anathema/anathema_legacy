@@ -2,7 +2,7 @@ package net.sf.anathema.hero.template;
 
 import net.sf.anathema.character.framework.data.ExtensibleDataSet;
 import net.sf.anathema.character.framework.data.IExtensibleDataSetCompiler;
-import net.sf.anathema.character.framework.type.CharacterTypes;
+import net.sf.anathema.character.framework.data.IExtensibleDataSetProvider;
 import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.framework.environment.resources.ResourceFile;
 import net.sf.anathema.initialization.ExtensibleDataSetCompiler;
@@ -15,13 +15,13 @@ public class HeroModelTemplateCompiler implements IExtensibleDataSetCompiler {
 
 
   @SuppressWarnings("UnusedParameters")
-  public HeroModelTemplateCompiler(ObjectFactory objectFactory, CharacterTypes types) {
+  public HeroModelTemplateCompiler(ObjectFactory objectFactory, IExtensibleDataSetProvider provider) {
     //nothing to do
   }
 
   @Override
   public String getName() {
-    return "character model template extensions";
+    return "Character model template extensions";
   }
 
   @Override

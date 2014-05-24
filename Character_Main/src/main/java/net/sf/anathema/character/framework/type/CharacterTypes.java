@@ -1,5 +1,7 @@
 package net.sf.anathema.character.framework.type;
 
-public interface CharacterTypes extends Iterable<CharacterType> {
+import net.sf.anathema.character.framework.data.ExtensibleDataSet;
+
+public interface CharacterTypes extends Iterable<CharacterType>, ExtensibleDataSet {
   CharacterType findById(String id);
 }
