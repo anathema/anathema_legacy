@@ -6,7 +6,6 @@ import net.sf.anathema.hero.traits.template.TraitTemplate;
 
 public class TraitTemplateMapImpl implements TraitTemplateMap {
 
-
   private GroupedTraitsTemplate template;
 
   public TraitTemplateMapImpl(GroupedTraitsTemplate template) {

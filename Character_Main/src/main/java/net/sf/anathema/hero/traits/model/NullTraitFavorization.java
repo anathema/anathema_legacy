@@ -46,9 +46,4 @@ public class NullTraitFavorization implements ITraitFavorization {
   public int getMinimalValue() {
     return 0;
   }
-
-  @Override
-  public void ensureMinimalValue() {
-    // nothing to do
-  }
 }

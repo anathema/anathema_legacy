@@ -3,8 +3,8 @@ package net.sf.anathema.hero.type;
 import net.sf.anathema.character.framework.type.CharacterType;
 import net.sf.anathema.hero.template.magic.FavoringTraitType;
 
-public class SimpleCharacterType implements CharacterType{
-  
+public class SimpleCharacterType implements CharacterType {
+
   public String id;
   public boolean exalt;
   public boolean essenceUser;

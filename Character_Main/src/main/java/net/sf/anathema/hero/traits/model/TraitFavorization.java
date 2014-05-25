@@ -46,8 +46,7 @@ public class TraitFavorization implements ITraitFavorization {
     favorableStateControl.announce().favorableStateChanged(this.state);
   }
 
-  @Override
-  public void ensureMinimalValue() {
+  private void ensureMinimalValue() {
     final int minimalValue = getMinimalValue();
     if (trait.getCurrentValue() < minimalValue) {
       trait.setCurrentValue(minimalValue);
@@ -67,8 +66,9 @@ public class TraitFavorization implements ITraitFavorization {
     setFavorableState(favored ? FavorableState.Favored : FavorableState.Default);
   }
 
+  @SuppressWarnings("ConstantConditions")
   public void setCaste(boolean caste) {
-    if (!caste && isCaste() == caste) {
+    if (!caste && !isCaste()) {
       return;
     }
     setFavorableState(caste ? FavorableState.Caste : (isCaste() ? FavorableState.Default : FavorableState.Favored));
