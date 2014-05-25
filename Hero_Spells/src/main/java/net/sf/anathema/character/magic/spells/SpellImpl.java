@@ -5,7 +5,7 @@ import net.sf.anathema.character.magic.basic.cost.ICostList;
 import net.sf.anathema.character.magic.basic.source.ISourceList;
 import net.sf.anathema.character.magic.basic.source.SourceBook;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.template.magic.FavoringTraitType;
+import net.sf.anathema.hero.spells.model.SpellsModelFetcher;
 import net.sf.anathema.hero.traits.model.TraitModelFetcher;
 import net.sf.anathema.hero.traits.model.TraitType;
 
@@ -50,8 +50,7 @@ public class SpellImpl extends AbstractMagic implements Spell {
 
   @Override
   public boolean isFavored(Hero hero) {
-    FavoringTraitType type = hero.getTemplate().getTemplateType().getCharacterType().getFavoringTraitType();
-    TraitType spellFavoringType = type.getSpellFavoringType();
-    return TraitModelFetcher.fetch(hero).getTrait(spellFavoringType).isCasteOrFavored();
+    TraitType traitType = SpellsModelFetcher.fetch(hero).getFavoringTraitType();
+    return TraitModelFetcher.fetch(hero).getTrait(traitType).isCasteOrFavored();
   }
 }

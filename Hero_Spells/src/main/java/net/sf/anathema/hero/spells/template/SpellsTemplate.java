@@ -9,4 +9,5 @@ public class SpellsTemplate {
 
   public List<CircleType> sorcery = new ArrayList<>();
   public List<CircleType> necromancy = new ArrayList<>();
+  public String favoringTrait;
 }

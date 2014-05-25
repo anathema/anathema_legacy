@@ -1,4 +1,5 @@
 {
-  sorcery: [Terrestrial, Celestial, Solar];
-  necromancy: [Shadowlands, Labyrinth]
+  sorcery: [Terrestrial, Celestial, Solar],
+  necromancy: [Shadowlands, Labyrinth],
+  favoringTrait: Occult
 }

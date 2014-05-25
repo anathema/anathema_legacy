@@ -2,6 +2,7 @@ package net.sf.anathema.hero.spells.model;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
+import net.sf.anathema.character.magic.parser.charms.TraitTypeFinder;
 import net.sf.anathema.character.magic.parser.spells.ISpellCache;
 import net.sf.anathema.character.magic.spells.CircleType;
 import net.sf.anathema.character.magic.spells.ICircleTypeVisitor;
@@ -23,6 +24,7 @@ import net.sf.anathema.hero.spells.advance.SpellExperienceModel;
 import net.sf.anathema.hero.spells.sheet.content.PrintSpellsProvider;
 import net.sf.anathema.hero.spells.template.SpellsTemplate;
 import net.sf.anathema.hero.template.HeroTemplate;
+import net.sf.anathema.hero.traits.model.TraitType;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 import org.jmock.example.announcer.Announcer;
@@ -255,6 +257,11 @@ public class SpellsModelImpl implements SpellsModel {
   @Override
   public Collection<CircleType> getSorceryCircles() {
     return template.sorcery;
+  }
+
+  @Override
+  public TraitType getFavoringTraitType() {
+    return new TraitTypeFinder().getTrait(template.favoringTrait);
   }
 
   private String getInitiation(CircleType type) {

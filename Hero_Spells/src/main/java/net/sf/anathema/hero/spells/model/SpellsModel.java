@@ -3,6 +3,7 @@ package net.sf.anathema.hero.spells.model;
 import net.sf.anathema.character.magic.spells.CircleType;
 import net.sf.anathema.character.magic.spells.Spell;
 import net.sf.anathema.hero.model.HeroModel;
+import net.sf.anathema.hero.traits.model.TraitType;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
@@ -49,4 +50,6 @@ public interface SpellsModel extends HeroModel {
   Collection<CircleType> getNecromancyCircles();
 
   Collection<CircleType> getSorceryCircles();
+
+  TraitType getFavoringTraitType();
 }
