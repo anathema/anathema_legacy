@@ -3,6 +3,7 @@ package net.sf.anathema.hero.type;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import net.sf.anathema.character.framework.type.CharacterType;
+import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.hero.template.magic.FavoringTraitType;
 import org.apache.commons.io.IOUtils;
 
@@ -12,9 +13,9 @@ import java.net.URL;
 public class CharacterTypeGson {
   private Gson gson;
 
-  public CharacterTypeGson() {
+  public CharacterTypeGson(ObjectFactory objectFactory) {
     GsonBuilder gsonBuilder = new GsonBuilder();
-    gsonBuilder.registerTypeAdapter(FavoringTraitType.class, new FavoringTraitTypeAdapter());
+    gsonBuilder.registerTypeAdapter(FavoringTraitType.class, new FavoringTraitTypeAdapter(objectFactory));
     gsonBuilder.setPrettyPrinting();
     gson = gsonBuilder.create();
   }

@@ -13,9 +13,10 @@ public class AbilityFavoringType implements FavoringTraitType {
   public TraitType getSpellFavoringType() {
     return AbilityType.Occult;
   }
+
   @Override
   public String getId() {
-    return "AbilityType";
+    return "Abilities";
   }
 
   @Override

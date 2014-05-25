@@ -15,11 +15,11 @@ public class HeroTypeCompiler implements IExtensibleDataSetCompiler {
 
   private static final String TEMPLATE_FILE_RECOGNITION_PATTERN = "(.+?)\\.charactertype";
   private final ExtensibleCharacterTypes types = new ExtensibleCharacterTypes();
-  private final CharacterTypeGson gson = new CharacterTypeGson();
+  private final CharacterTypeGson gson;
 
   @SuppressWarnings("UnusedParameters")
   public HeroTypeCompiler(ObjectFactory objectFactory, IExtensibleDataSetProvider provider) {
-    //nothing to do
+    this.gson = new CharacterTypeGson(objectFactory);
   }
 
   @Override

@@ -16,7 +16,7 @@ public class AttributeFavoringType implements FavoringTraitType {
 
   @Override
   public String getId() {
-    return "AttributeType";
+    return "Attributes";
   }
 
   @Override
