@@ -7,13 +7,14 @@ import cucumber.api.java.en.Then;
 import net.sf.anathema.character.framework.Character;
 import net.sf.anathema.character.framework.item.Item;
 import net.sf.anathema.character.framework.persistence.HeroItemPersister;
-import net.sf.anathema.hero.template.HeroTemplate;
-import net.sf.anathema.hero.template.TemplateTypeImpl;
+import net.sf.anathema.character.framework.persistence.RepositoryItemPersister;
 import net.sf.anathema.character.framework.type.CharacterTypes;
 import net.sf.anathema.framework.IApplicationModel;
-import net.sf.anathema.character.framework.persistence.RepositoryItemPersister;
+import net.sf.anathema.fx.hero.perspective.CharacterSystemInitializer;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.framework.HeroEnvironmentExtractor;
+import net.sf.anathema.hero.template.HeroTemplate;
+import net.sf.anathema.hero.template.TemplateTypeImpl;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
 public class CharacterCreationSteps {
@@ -28,8 +29,9 @@ public class CharacterCreationSteps {
 
   @Before
   public void startAnathema() {
-    TestInitializer initializer = new TestInitializer();
+    TestInitializer initializer = TestInitializer.Create();
     this.model = initializer.initialize();
+    new CharacterSystemInitializer(model,initializer.getEnvironment()).initializeCharacterSystem();
     this.characterTypes = HeroEnvironmentExtractor.getGenerics(model).getCharacterTypes();
   }
 

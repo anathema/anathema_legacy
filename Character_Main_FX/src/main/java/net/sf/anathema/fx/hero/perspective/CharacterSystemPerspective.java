@@ -13,7 +13,6 @@ import net.sf.anathema.hero.framework.perspective.CharacterStackPresenter;
 import net.sf.anathema.hero.framework.perspective.CharacterSystemModel;
 import net.sf.anathema.hero.framework.perspective.InteractionPresenter;
 import net.sf.anathema.hero.framework.perspective.ShowOnSelect;
-import net.sf.anathema.hero.platform.CharacterGenericsExtension;
 import net.sf.anathema.lib.file.RelativePath;
 
 @PerspectiveAutoCollector
@@ -28,7 +27,7 @@ public class CharacterSystemPerspective implements Perspective {
 
   @Override
   public void initContent(Container container, IApplicationModel model, Environment environment) {
-    initializeCharacterSystem(model, environment);
+    new CharacterSystemInitializer(model, environment).initializeCharacterSystem();
     CharacterSystemModel systemModel = new CharacterSystemModel(model);
     CharacterSystemView view = new CharacterSystemView();
     container.setContent(view.getNode());
@@ -39,11 +38,5 @@ public class CharacterSystemPerspective implements Perspective {
     CharacterGridPresenter gridPresenter = new CharacterGridPresenter(systemModel, view.getGridView(), showOnSelect, environment);
     gridPresenter.initPresentation();
     new InteractionPresenter(systemModel, view.getInteractionView(), environment, view.getGridView(), showOnSelect).initPresentation();
-  }
-
-  private void initializeCharacterSystem(IApplicationModel model, Environment environment) {
-    CharacterGenericsExtension extension = new CharacterGenericsExtension();
-    extension.initialize(model.getRepository(), environment, environment);
-    model.getExtensionPointRegistry().register(CharacterGenericsExtension.ID, extension);
   }
 }
