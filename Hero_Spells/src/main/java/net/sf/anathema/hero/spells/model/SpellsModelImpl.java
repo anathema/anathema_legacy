@@ -5,9 +5,7 @@ import com.google.common.collect.Multimap;
 import net.sf.anathema.character.magic.parser.spells.ISpellCache;
 import net.sf.anathema.character.magic.spells.CircleType;
 import net.sf.anathema.character.magic.spells.ICircleTypeVisitor;
-import net.sf.anathema.character.magic.spells.ISpellMapper;
 import net.sf.anathema.character.magic.spells.Spell;
-import net.sf.anathema.character.magic.spells.SpellMapper;
 import net.sf.anathema.hero.charms.advance.MagicPointsModelFetcher;
 import net.sf.anathema.hero.charms.advance.experience.MagicExperienceCosts;
 import net.sf.anathema.hero.charms.model.CharmsModel;
@@ -42,7 +40,6 @@ public class SpellsModelImpl implements SpellsModel {
   private final List<Spell> experiencedLearnedList = new ArrayList<>();
   private final Announcer<ChangeListener> changeControl = Announcer.to(ChangeListener.class);
   private final Multimap<CircleType, Spell> spellsByCircle = ArrayListMultimap.create();
-  private final ISpellMapper spellMapper = new SpellMapper();
   private CharmsModel charms;
   private HeroTemplate heroTemplate;
   private ExperienceModel experience;
@@ -199,9 +196,8 @@ public class SpellsModelImpl implements SpellsModel {
 
   @Override
   public Spell getSpellById(String id) {
-    String correctedId = spellMapper.getId(id);
     for (Spell spell : getAllSpells()) {
-      if (spell.getId().equals(correctedId)) {
+      if (spell.getId().equals(id)) {
         return spell;
       }
     }

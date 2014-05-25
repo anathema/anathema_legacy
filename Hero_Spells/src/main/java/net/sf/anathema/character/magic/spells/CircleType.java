@@ -2,9 +2,6 @@ package net.sf.anathema.character.magic.spells;
 
 import net.sf.anathema.lib.util.Identifier;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public enum CircleType implements Identifier {
 
   Terrestrial {
@@ -13,11 +10,6 @@ public enum CircleType implements Identifier {
       visitor.visitTerrestrial(this);
     }
 
-    @Override
-    public CircleType[] getComparableCircles() {
-      return getSorceryCircles();
-    }
-    
     @Override
     public boolean isSorceryCircle() {
       return true;
@@ -35,11 +27,6 @@ public enum CircleType implements Identifier {
     }
 
     @Override
-    public CircleType[] getComparableCircles() {
-      return getSorceryCircles();
-    }
-    
-    @Override
     public boolean isSorceryCircle() {
       return true;
     }
@@ -55,11 +42,6 @@ public enum CircleType implements Identifier {
       visitor.visitSolar(this);
     }
 
-    @Override
-    public CircleType[] getComparableCircles() {
-      return getSorceryCircles();
-    }
-    
     @Override
     public boolean isSorceryCircle() {
       return true;
@@ -77,11 +59,6 @@ public enum CircleType implements Identifier {
     }
 
     @Override
-    public CircleType[] getComparableCircles() {
-      return getNecromancyCircles();
-    }
-    
-    @Override
     public boolean isSorceryCircle() {
       return false;
     }
@@ -98,11 +75,6 @@ public enum CircleType implements Identifier {
     }
 
     @Override
-    public CircleType[] getComparableCircles() {
-      return getNecromancyCircles();
-    }
-    
-    @Override
     public boolean isSorceryCircle() {
       return false;
     }
@@ -118,11 +90,6 @@ public enum CircleType implements Identifier {
       visitor.visitVoid(this);
     }
 
-    @Override
-    public CircleType[] getComparableCircles() {
-      return getNecromancyCircles();
-    }
-    
     @Override
     public boolean isSorceryCircle() {
       return false;
@@ -141,41 +108,8 @@ public enum CircleType implements Identifier {
 
   public abstract void accept(ICircleTypeVisitor visitor);
 
-  public abstract CircleType[] getComparableCircles();
-  
   public abstract boolean isSorceryCircle();
   
   @SuppressWarnings("UnusedDeclaration")
   public abstract boolean isNecromancyCircle();
-
-  public static CircleType[] getSorceryCircles() {
-    return new CircleType[] { Terrestrial, Celestial, Solar };
-  }
-
-  public static CircleType[] getNecromancyCircles() {
-    return new CircleType[] { Shadowlands, Labyrinth, Void };
-  }
-
-  public static CircleType[] getSorceryCirclesUpTo(CircleType maximumCircle) {
-    CircleType[] sorceryCircles = getSorceryCircles();
-    return getCirclesUpTo(maximumCircle, sorceryCircles);
-  }
-
-  public static CircleType[] getNecromancyCirclesUpTo(CircleType maximumCircle) {
-    CircleType[] necromancyCircles = getNecromancyCircles();
-    return getCirclesUpTo(maximumCircle, necromancyCircles);
-  }
-
-  private static CircleType[] getCirclesUpTo(CircleType maximumCircle, CircleType[] allCircles) {
-    if (maximumCircle == null) {
-      return new CircleType[0];
-    }
-    List<CircleType> circleList = new ArrayList<>();
-    for (CircleType circle : allCircles) {
-      if (circle.compareTo(maximumCircle) <= 0) {
-        circleList.add(circle);
-      }
-    }
-    return circleList.toArray(new CircleType[circleList.size()]);
-  }
 }

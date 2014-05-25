@@ -14,6 +14,6 @@ public class SpellCache implements ISpellCache {
 
   @Override
   public Spell[] getSpells() {
-    return spellList.toArray(new Spell[0]);
+    return spellList.toArray(new Spell[spellList.size()]);
   }
 }

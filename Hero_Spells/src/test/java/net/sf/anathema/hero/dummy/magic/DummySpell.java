@@ -5,9 +5,9 @@ import net.sf.anathema.character.magic.basic.cost.ICostList;
 import net.sf.anathema.character.magic.basic.source.SourceBook;
 import net.sf.anathema.character.magic.spells.CircleType;
 import net.sf.anathema.character.magic.spells.Spell;
-import net.sf.anathema.hero.traits.model.types.AbilityType;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.traits.model.TraitModelFetcher;
+import net.sf.anathema.hero.traits.model.types.AbilityType;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.util.Identifier;
 

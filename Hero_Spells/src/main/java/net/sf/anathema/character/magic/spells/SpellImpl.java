@@ -4,10 +4,10 @@ import net.sf.anathema.character.magic.basic.AbstractMagic;
 import net.sf.anathema.character.magic.basic.cost.ICostList;
 import net.sf.anathema.character.magic.basic.source.ISourceList;
 import net.sf.anathema.character.magic.basic.source.SourceBook;
-import net.sf.anathema.hero.template.magic.FavoringTraitType;
-import net.sf.anathema.hero.traits.model.TraitType;
 import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.template.magic.FavoringTraitType;
 import net.sf.anathema.hero.traits.model.TraitModelFetcher;
+import net.sf.anathema.hero.traits.model.TraitType;
 
 public class SpellImpl extends AbstractMagic implements Spell {
   private final CircleType circleType;
