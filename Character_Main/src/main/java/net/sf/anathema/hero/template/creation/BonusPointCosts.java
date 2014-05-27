@@ -8,11 +8,7 @@ public interface BonusPointCosts extends AbilityPointCosts {
 
   int getAttributeCosts(ValuedTraitType trait);
 
-  CurrentRatingCosts getVirtueCosts();
-
   int getWillpowerCosts();
 
   CurrentRatingCosts getEssenceCost();
-
-  int getMaximumFreeVirtueRank();
 }

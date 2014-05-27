@@ -1,9 +1,9 @@
 package net.sf.anathema.character.framework.xml.creation;
 
-import net.sf.anathema.hero.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.framework.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.framework.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.framework.xml.util.CostParser;
+import net.sf.anathema.hero.template.experience.CurrentRatingCosts;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
@@ -23,11 +23,9 @@ public class BonusPointCostTemplateParser extends AbstractXmlTemplateParser<Gene
   private static final String TAG_GENERAL_DOTS_PER_POINT = "generalDotsPerPoint";
   private static final String TAG_FAVORED_DOTS_PER_POINT = "favoredDotsPerPoint";
   private static final String TAG_ADVANTAGES = "advantages";
-  private static final String TAG_VIRTUES = "virtues";
   private static final String TAG_WILLPOWER = "willpower";
   private static final String TAG_ESSENCE = "essence";
   private static final String TAG_MAXIMUM_FREE_ABILITY_RANK = "maximumFreeAbilityRank";
-  private static final String TAG_MAXIMUM_FREE_VIRTUE_RANK = "maximumFreeVirtueRank";
 
   private final CostParser costParser = new CostParser();
 
@@ -50,7 +48,6 @@ public class BonusPointCostTemplateParser extends AbstractXmlTemplateParser<Gene
     if (advantageElement == null) {
       return;
     }
-    setVirtueCosts(advantageElement, costs);
     setWillpowerCosts(advantageElement, costs);
     setEssenceCosts(advantageElement, costs);
   }
@@ -71,19 +68,6 @@ public class BonusPointCostTemplateParser extends AbstractXmlTemplateParser<Gene
     }
     int fixedCost = costParser.getFixedCostFromRequiredElement(element, TAG_WILLPOWER);
     costs.setWillpowerCosts(fixedCost);
-  }
-
-  private void setVirtueCosts(Element element, GenericBonusPointCosts costs) throws PersistenceException {
-    Element virtueElement = element.element(TAG_VIRTUES);
-    if (virtueElement == null) {
-      return;
-    }
-    CurrentRatingCosts virtueCost = costParser.getFixedCost(virtueElement);
-    costs.setVirtueCosts(virtueCost);
-    Element maximumFreeRank = virtueElement.element(TAG_MAXIMUM_FREE_VIRTUE_RANK);
-    if (maximumFreeRank != null) {
-      costs.setMaximumFreeVirtueRank(ElementUtilities.getRequiredIntAttrib(maximumFreeRank, ATTRIB_RANK));
-    }
   }
 
   private void setSpecialtyDots(Element element, GenericBonusPointCosts costs) throws PersistenceException {

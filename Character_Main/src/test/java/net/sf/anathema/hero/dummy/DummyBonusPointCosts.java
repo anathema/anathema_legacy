@@ -21,16 +21,6 @@ public class DummyBonusPointCosts implements BonusPointCosts {
   }
 
   @Override
-  public CurrentRatingCosts getVirtueCosts() {
-    return new FixedValueRatingCosts(3);
-  }
-
-  @Override
-  public int getMaximumFreeVirtueRank() {
-    return 3;
-  }
-
-  @Override
   public int getMaximumFreeAbilityRank() {
     return 3;
   }

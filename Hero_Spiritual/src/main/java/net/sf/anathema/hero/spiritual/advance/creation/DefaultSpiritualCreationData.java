@@ -1,10 +1,10 @@
 package net.sf.anathema.hero.spiritual.advance.creation;
 
+import net.sf.anathema.hero.spiritual.template.SpiritualPointsTemplate;
 import net.sf.anathema.hero.template.creation.BonusPointCosts;
 import net.sf.anathema.hero.template.experience.CurrentRatingCosts;
 import net.sf.anathema.hero.traits.model.TraitType;
 import net.sf.anathema.hero.traits.model.types.OtherTraitType;
-import net.sf.anathema.hero.spiritual.template.SpiritualPointsTemplate;
 
 public class DefaultSpiritualCreationData implements SpiritualCreationData {
 
@@ -27,15 +27,6 @@ public class DefaultSpiritualCreationData implements SpiritualCreationData {
     return 1;
   }
 
-  public int getFreeVirtueCreationDots() {
-    return 5;
-  }
-
-  @Override
-  public CurrentRatingCosts getVirtueCost() {
-    return costs.getVirtueCosts();
-  }
-
   @Override
   public CurrentRatingCosts getEssenceCost() {
     return costs.getEssenceCost();
@@ -44,10 +35,5 @@ public class DefaultSpiritualCreationData implements SpiritualCreationData {
   @Override
   public int getWillpowerCost() {
     return costs.getWillpowerCosts();
-  }
-
-  @Override
-  public int getMaximumFreeVirtueRank() {
-    return costs.getMaximumFreeVirtueRank();
   }
 }
