@@ -8,7 +8,6 @@ import net.sf.anathema.fx.hero.traitview.FxExtensibleTraitView;
 import net.sf.anathema.fx.hero.traitview.FxTraitView;
 import net.sf.anathema.fx.hero.traitview.SimpleTraitViewPanel;
 import net.sf.anathema.hero.display.ExtensibleTraitView;
-import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.platform.fx.NodeHolder;
 import org.tbee.javafx.scene.layout.MigPane;
 
@@ -37,12 +36,7 @@ public class FxIntimaciesView implements IntimaciesView, NodeHolder {
   @Override
   public StringEntryView addSelectionView(String labelText) {
     final FxStringEntryView view = new FxStringEntryView(labelText);
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        creationPane.add(view.getNode());
-      }
-    });
+    creationPane.add(view.getNode());
     return view;
   }
 
