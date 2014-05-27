@@ -1,12 +1,12 @@
 {
   favoringTrait: Occult,
   sorcery: {
-     Terrestrial: "Solar.TerrestrialCircleSorcery",
-     Celestial: "Solar.CelestialCircleSorcery",
-     Solar: "Solar.SolarCircleSorcery"
+     Terrestrial: Solar.TerrestrialCircleSorcery,
+     Celestial: Solar.CelestialCircleSorcery,
+     Solar: Solar.SolarCircleSorcery
   },
   necromancy: {
-     Shadowlands: "Solar.ShadowlandsCircleNecromancy",
-     Labyrinth: "Solar.LabyrinthCircleNecromancy"
+     Shadowlands: Solar.ShadowlandsCircleNecromancy,
+     Labyrinth: Solar.LabyrinthCircleNecromancy
   }
 }
