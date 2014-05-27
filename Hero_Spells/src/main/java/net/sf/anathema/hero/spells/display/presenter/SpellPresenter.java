@@ -1,5 +1,6 @@
 package net.sf.anathema.hero.spells.display.presenter;
 
+import net.sf.anathema.character.magic.charm.Charm;
 import net.sf.anathema.character.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.magic.spells.CircleType;
 import net.sf.anathema.character.magic.spells.Spell;
@@ -7,6 +8,8 @@ import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.charms.display.magic.MagicLearnPresenter;
 import net.sf.anathema.hero.charms.display.magic.MagicLearnView;
 import net.sf.anathema.hero.charms.display.magic.MagicViewListener;
+import net.sf.anathema.hero.charms.model.CharmsModel;
+import net.sf.anathema.hero.charms.model.learn.CharmLearnAdapter;
 import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.hero.spells.model.CircleModel;
 import net.sf.anathema.hero.spells.model.SpellsModel;
@@ -20,15 +23,17 @@ import java.util.List;
 public class SpellPresenter {
 
   private final SpellsModel spellConfiguration;
+  private final CharmsModel charmsModel;
   private final CombinedSpellAndMagicProperties properties;
   private final CircleModel circleModel;
   private final Resources resources;
   private final SpellView view;
 
   public SpellPresenter(CircleModel circleModel, Resources resources, SpellView view,
-                        MagicDescriptionProvider magicDescriptionProvider, ExperienceModel experienceModel, SpellsModel spellsModel) {
+                        MagicDescriptionProvider magicDescriptionProvider, ExperienceModel experienceModel, SpellsModel spellsModel, CharmsModel charmsModel) {
     this.circleModel = circleModel;
     this.spellConfiguration = spellsModel;
+    this.charmsModel = charmsModel;
     this.properties = new CombinedSpellAndMagicProperties(resources, magicDescriptionProvider, spellConfiguration, experienceModel);
     this.resources = resources;
     this.view = view;
@@ -61,10 +66,22 @@ public class SpellPresenter {
     circleModel.addSelectionListener(newValue -> {
       showAvailableSpells(magicLearnView);
       updateCircleInView(newValue, view);
+      learnPresenter.updateButtons();
     });
     spellConfiguration.addChangeListener(() -> refreshSpellListsInView(magicLearnView));
     refreshSpellListsInView(magicLearnView);
     updateCircleInView(circleModel.getSelectedCircle(), view);
+    charmsModel.addCharmLearnListener(new CharmLearnAdapter() {
+      @Override
+      public void charmLearned(Charm charm) {
+        learnPresenter.updateButtons();
+      }
+
+      @Override
+      public void charmForgotten(Charm charm) {
+        learnPresenter.updateButtons();
+      }
+    });
   }
 
   private void updateCircleInView(CircleType newValue, SpellView view) {
