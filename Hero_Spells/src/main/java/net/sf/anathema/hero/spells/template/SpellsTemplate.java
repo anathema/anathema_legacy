@@ -2,12 +2,12 @@ package net.sf.anathema.hero.spells.template;
 
 import net.sf.anathema.character.magic.spells.CircleType;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class SpellsTemplate {
 
-  public List<CircleType> sorcery = new ArrayList<>();
-  public List<CircleType> necromancy = new ArrayList<>();
+  public Map<CircleType, String> sorcery = new TreeMap<>();
+  public Map<CircleType, String> necromancy = new TreeMap<>();
   public String favoringTrait;
 }

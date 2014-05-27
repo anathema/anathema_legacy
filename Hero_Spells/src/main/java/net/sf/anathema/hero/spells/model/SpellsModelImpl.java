@@ -5,7 +5,6 @@ import com.google.common.collect.Multimap;
 import net.sf.anathema.character.magic.parser.charms.TraitTypeFinder;
 import net.sf.anathema.character.magic.parser.spells.ISpellCache;
 import net.sf.anathema.character.magic.spells.CircleType;
-import net.sf.anathema.character.magic.spells.ICircleTypeVisitor;
 import net.sf.anathema.character.magic.spells.Spell;
 import net.sf.anathema.hero.charms.advance.MagicPointsModelFetcher;
 import net.sf.anathema.hero.charms.advance.experience.MagicExperienceCosts;
@@ -23,7 +22,6 @@ import net.sf.anathema.hero.spells.advance.SpellExperienceCostCalculator;
 import net.sf.anathema.hero.spells.advance.SpellExperienceModel;
 import net.sf.anathema.hero.spells.sheet.content.PrintSpellsProvider;
 import net.sf.anathema.hero.spells.template.SpellsTemplate;
-import net.sf.anathema.hero.template.HeroTemplate;
 import net.sf.anathema.hero.traits.model.TraitType;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
@@ -43,7 +41,6 @@ public class SpellsModelImpl implements SpellsModel {
   private final Announcer<ChangeListener> changeControl = Announcer.to(ChangeListener.class);
   private final Multimap<CircleType, Spell> spellsByCircle = ArrayListMultimap.create();
   private CharmsModel charms;
-  private HeroTemplate heroTemplate;
   private ExperienceModel experience;
   private SpellsTemplate template;
 
@@ -60,7 +57,6 @@ public class SpellsModelImpl implements SpellsModel {
   public void initialize(HeroEnvironment environment, Hero hero) {
     this.charms = CharmsModelFetcher.fetch(hero);
     this.experience = ExperienceModelFetcher.fetch(hero);
-    this.heroTemplate = hero.getTemplate();
     initializeSpellsByCircle(environment);
     initializeCharmsModel(hero);
     initializeExperience(hero);
@@ -251,12 +247,12 @@ public class SpellsModelImpl implements SpellsModel {
 
   @Override
   public Collection<CircleType> getNecromancyCircles() {
-    return template.necromancy;
+    return template.necromancy.keySet();
   }
 
   @Override
   public Collection<CircleType> getSorceryCircles() {
-    return template.sorcery;
+    return template.sorcery.keySet();
   }
 
   @Override
@@ -265,38 +261,10 @@ public class SpellsModelImpl implements SpellsModel {
   }
 
   private String getInitiation(CircleType type) {
-    String[] initiation = new String[1];
-    type.accept(new ICircleTypeVisitor() {
-      @Override
-      public void visitTerrestrial(CircleType type) {
-        initiation[0] = heroTemplate.getTemplateType().getCharacterType().getId() + ".TerrestrialCircleSorcery";
-      }
-
-      @Override
-      public void visitCelestial(CircleType type) {
-        initiation[0] = heroTemplate.getTemplateType().getCharacterType().getId() + ".CelestialCircleSorcery";
-      }
-
-      @Override
-      public void visitSolar(CircleType type) {
-        initiation[0] = heroTemplate.getTemplateType().getCharacterType().getId() + ".SolarCircleSorcery";
-      }
-
-      @Override
-      public void visitShadowland(CircleType type) {
-        initiation[0] = heroTemplate.getTemplateType().getCharacterType().getId() + ".ShadowlandsCircleNecromancy";
-      }
-
-      @Override
-      public void visitLabyrinth(CircleType type) {
-        initiation[0] = heroTemplate.getTemplateType().getCharacterType().getId() + ".LabyrinthCircleNecromancy";
-      }
-
-      @Override
-      public void visitVoid(CircleType type) {
-        initiation[0] = heroTemplate.getTemplateType().getCharacterType().getId() + ".VoidCircleNecromancy";
-      }
-    });
-    return initiation[0];
+    String charmId = template.necromancy.get(type);
+    if (charmId == null) {
+      charmId = template.sorcery.get(type);
+    }
+    return charmId;
   }
 }
