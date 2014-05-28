@@ -1,6 +1,5 @@
 package net.sf.anathema.framework.environment.resources;
 
-import com.google.common.io.Closeables;
 import net.sf.anathema.framework.environment.Resources;
 
 import java.io.IOException;
@@ -19,11 +18,8 @@ public class FileStringProvider implements Resources {
   public FileStringProvider(String fileBase, Locale locale) throws IOException {
     Path propertyFile = getPropertyFile(fileBase, locale);
     if (Files.exists(propertyFile)) {
-      InputStream stream = Files.newInputStream(propertyFile);
-      try {
+      try (InputStream stream = Files.newInputStream(propertyFile)) {
         properties.load(stream);
-      } finally {
-        Closeables.closeQuietly(stream);
       }
     }
   }
