@@ -1,6 +1,5 @@
 package net.sf.anathema.hero.charms.sheet.content;
 
-import net.sf.anathema.character.framework.configuration.AnathemaCharacterPreferences;
 import net.sf.anathema.character.magic.charm.Charm;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.charms.model.CharmsModelFetcher;
@@ -70,17 +69,5 @@ public class CharmContentHelper {
       return specialCharmConfiguration.getCurrentLearnCount();
     }
     return model.isLearned(charm) ? 1 : 0;
-  }
-
-  public boolean shouldShowCharm(IMagicStats stats) {
-    if (AnathemaCharacterPreferences.getDefaultPreferences().printAllGenerics()) {
-      return true;
-    }
-    for (Charm magic : getLearnedCharms()) {
-      if (magic.getId().startsWith(stats.getName().getId())) {
-        return true;
-      }
-    }
-    return false;
   }
 }

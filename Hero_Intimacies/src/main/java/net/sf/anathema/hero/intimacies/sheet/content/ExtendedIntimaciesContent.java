@@ -1,15 +1,14 @@
 package net.sf.anathema.hero.intimacies.sheet.content;
 
-import net.sf.anathema.character.framework.configuration.AnathemaCharacterPreferences;
-import net.sf.anathema.hero.traits.model.types.VirtueType;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.intimacies.model.IntimaciesModel;
 import net.sf.anathema.hero.intimacies.model.IntimaciesModelFetcher;
 import net.sf.anathema.hero.intimacies.model.Intimacy;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.sheet.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.hero.spiritual.SpiritualTraitModelFetcher;
+import net.sf.anathema.hero.traits.model.types.VirtueType;
 import net.sf.anathema.hero.traits.sheet.content.NamedValue;
-import net.sf.anathema.framework.environment.Resources;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,9 +34,6 @@ public class ExtendedIntimaciesContent extends AbstractSubBoxContent {
   public List<NamedValue> getPrintIntimacies() {
     List<NamedValue> printIntimacies = new ArrayList<>();
     for (Intimacy intimacy : getModel().getEntries()) {
-      if (!isPrintZeroIntimacies() && intimacy.getTrait().getCurrentValue() == 0) {
-        continue;
-      }
       printIntimacies.add(new PrintIntimacy(intimacy));
     }
     return printIntimacies;
@@ -45,9 +41,5 @@ public class ExtendedIntimaciesContent extends AbstractSubBoxContent {
 
   private IntimaciesModel getModel() {
     return IntimaciesModelFetcher.fetch(hero);
-  }
-
-  private boolean isPrintZeroIntimacies() {
-    return AnathemaCharacterPreferences.getDefaultPreferences().printZeroIntimacies();
   }
 }
