@@ -1,4 +1,4 @@
-package net.sf.anathema.character.framework.data;
+package net.sf.anathema.hero.framework.data;
 
 import net.sf.anathema.framework.environment.resources.ResourceFile;
 

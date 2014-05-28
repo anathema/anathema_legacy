@@ -1,10 +1,10 @@
 package net.sf.anathema.character.framework;
 
-import net.sf.anathema.character.framework.data.ExtensibleDataSet;
-import net.sf.anathema.character.framework.data.IExtensibleDataSetCompiler;
-import net.sf.anathema.character.framework.data.IExtensibleDataSetProvider;
 import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.framework.environment.resources.ResourceFile;
+import net.sf.anathema.hero.framework.data.ExtensibleDataSet;
+import net.sf.anathema.hero.framework.data.IExtensibleDataSetCompiler;
+import net.sf.anathema.hero.framework.data.IExtensibleDataSetProvider;
 import net.sf.anathema.initialization.ExtensibleDataSetCompiler;
 
 import java.util.ArrayList;

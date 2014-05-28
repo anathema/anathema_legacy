@@ -1,12 +1,12 @@
 package net.sf.anathema.character.magic.parser.spells;
 
-import net.sf.anathema.character.framework.data.ExtensibleDataSet;
-import net.sf.anathema.character.framework.data.IExtensibleDataSetCompiler;
-import net.sf.anathema.character.framework.data.IExtensibleDataSetProvider;
 import net.sf.anathema.character.magic.spells.Spell;
 import net.sf.anathema.character.magic.spells.SpellException;
 import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.framework.environment.resources.ResourceFile;
+import net.sf.anathema.hero.framework.data.ExtensibleDataSet;
+import net.sf.anathema.hero.framework.data.IExtensibleDataSetCompiler;
+import net.sf.anathema.hero.framework.data.IExtensibleDataSetProvider;
 import net.sf.anathema.initialization.ExtensibleDataSetCompiler;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;

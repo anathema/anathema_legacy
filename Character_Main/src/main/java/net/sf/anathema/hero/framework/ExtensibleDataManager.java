@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.framework;
 
-import net.sf.anathema.character.framework.data.ExtensibleDataSet;
-import net.sf.anathema.character.framework.data.IExtensibleDataSetProvider;
+import net.sf.anathema.hero.framework.data.ExtensibleDataSet;
+import net.sf.anathema.hero.framework.data.IExtensibleDataSetProvider;
 
 import java.util.ArrayList;
 import java.util.List;
