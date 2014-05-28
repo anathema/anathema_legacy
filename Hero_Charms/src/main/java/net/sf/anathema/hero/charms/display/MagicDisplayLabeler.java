@@ -1,10 +1,9 @@
 package net.sf.anathema.hero.charms.display;
 
-import net.sf.anathema.character.magic.charm.Charm;
 import net.sf.anathema.character.magic.basic.Magic;
-import net.sf.anathema.hero.traits.model.TraitType;
+import net.sf.anathema.character.magic.charm.Charm;
 import net.sf.anathema.framework.environment.Resources;
-import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.hero.traits.model.TraitType;
 
 public class MagicDisplayLabeler {
   private Resources resources;
@@ -23,12 +22,6 @@ public class MagicDisplayLabeler {
   }
 
   public String getGenericLabelForMagic(Magic magic) {
-    if (magic instanceof Charm && ((Charm) magic).isInstanceOfGenericCharm()) {
-      Identifier favoringTraitType = ((Charm) magic).getCharacterType().getFavoringTraitType();
-      String traitString = "(" + resources.getString(favoringTraitType.getId()) + ")";
-      String baseCharmId = getGenericCharmBaseId((Charm) magic);
-      return resources.getString(baseCharmId, traitString);
-    }
     return resources.getString(magic.getId());
   }
 

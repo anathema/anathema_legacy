@@ -1,6 +1,5 @@
 {
     id: "Mortal";
     essenceUser: false;
-    exalt: false;
-    favors: "Abilities"
+    exalt: false
 }

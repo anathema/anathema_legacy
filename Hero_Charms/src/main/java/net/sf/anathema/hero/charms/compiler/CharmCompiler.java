@@ -3,7 +3,6 @@ package net.sf.anathema.hero.charms.compiler;
 import net.sf.anathema.character.framework.data.ExtensibleDataSet;
 import net.sf.anathema.character.framework.data.IExtensibleDataSetCompiler;
 import net.sf.anathema.character.framework.data.IExtensibleDataSetProvider;
-import net.sf.anathema.character.framework.type.CharacterType;
 import net.sf.anathema.character.framework.type.CharacterTypes;
 import net.sf.anathema.character.magic.charm.Charm;
 import net.sf.anathema.character.magic.charm.CharmException;
@@ -11,7 +10,6 @@ import net.sf.anathema.character.magic.charm.CharmImpl;
 import net.sf.anathema.character.magic.parser.charms.CharmAlternativeBuilder;
 import net.sf.anathema.character.magic.parser.charms.CharmMergedBuilder;
 import net.sf.anathema.character.magic.parser.charms.CharmSetBuilder;
-import net.sf.anathema.character.magic.parser.charms.GenericCharmSetBuilder;
 import net.sf.anathema.character.magic.parser.charms.ICharmSetBuilder;
 import net.sf.anathema.character.magic.parser.charms.IIdentificateRegistry;
 import net.sf.anathema.character.magic.parser.charms.IdentificateRegistry;
@@ -20,7 +18,6 @@ import net.sf.anathema.character.magic.parser.dto.special.SpecialCharmDto;
 import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.framework.environment.resources.ResourceFile;
 import net.sf.anathema.hero.charms.compiler.special.ReflectionSpecialCharmBuilder;
-import net.sf.anathema.hero.traits.model.TraitType;
 import net.sf.anathema.initialization.ExtensibleDataSetCompiler;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.util.Identifier;
@@ -48,17 +45,14 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
   private final CharmMergedBuilder mergedBuilder = new CharmMergedBuilder();
   private final SAXReader reader = new SAXReader();
   private final CharmCacheImpl charmCache;
-  private final CharacterTypes characterTypes;
   private final CharmSetBuilder setBuilder;
-  private final GenericCharmSetBuilder genericBuilder;
 
   public CharmCompiler(ObjectFactory objectFactory, IExtensibleDataSetProvider provider) {
     ReflectionSpecialCharmBuilder specialCharmBuilder = new ReflectionSpecialCharmBuilder(objectFactory);
     ReflectionSpecialCharmParser specialCharmParser = new ReflectionSpecialCharmParser(objectFactory);
     this.charmCache =  new CharmCacheImpl(specialCharmBuilder);
-    this.characterTypes = provider.getDataSet(CharacterTypes.class);
+    CharacterTypes characterTypes = provider.getDataSet(CharacterTypes.class);
     this.setBuilder = new CharmSetBuilder(characterTypes, specialCharmParser);
-    this.genericBuilder = new GenericCharmSetBuilder(characterTypes, specialCharmParser);
   }
 
   @Override
@@ -97,7 +91,6 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
   public ExtensibleDataSet build() throws PersistenceException {
     for (Identifier type : registry.getAll()) {
       buildStandardCharms(type);
-      buildGenericCharms(type);
       buildCharmAlternatives(type);
       buildCharmMerges(type);
     }
@@ -107,17 +100,6 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
 
   private void buildStandardCharms(Identifier type) throws PersistenceException {
     buildCharms(type, setBuilder);
-  }
-
-  private void buildGenericCharms(Identifier type) throws PersistenceException {
-    try {
-      CharacterType characterType = characterTypes.findById(type.getId());
-      TraitType[] primaryTypes = characterType.getFavoringTraitType().getTraitTypesForGenericCharms();
-      genericBuilder.setTypes(primaryTypes);
-      buildCharms(type, genericBuilder);
-    } catch (IllegalArgumentException exception) {
-      // Not a character type; no generic charms
-    }
   }
 
   private void buildCharmAlternatives(Identifier type) {

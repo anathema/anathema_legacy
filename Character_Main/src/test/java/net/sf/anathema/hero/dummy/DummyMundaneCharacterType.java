@@ -1,7 +1,5 @@
 package net.sf.anathema.hero.dummy;
 
-import net.sf.anathema.hero.template.magic.AbilityFavoringType;
-import net.sf.anathema.hero.template.magic.FavoringTraitType;
 import net.sf.anathema.character.framework.type.CharacterType;
 
 public class DummyMundaneCharacterType implements CharacterType {
@@ -14,11 +12,6 @@ public class DummyMundaneCharacterType implements CharacterType {
   @Override
   public boolean isEssenceUser() {
     return false;
-  }
-
-  @Override
-  public FavoringTraitType getFavoringTraitType() {
-    return new AbilityFavoringType();
   }
 
   @Override

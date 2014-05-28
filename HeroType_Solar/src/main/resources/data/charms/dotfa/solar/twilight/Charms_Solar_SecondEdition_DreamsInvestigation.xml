@@ -20,7 +20,6 @@
             <trait id="Investigation" value="5"/>
             <essence value="5"/>
             <charmReference id="Solar.Evidence-DiscerningMethod"/>
-            <charmReference id="Solar.EssenceFlow.Investigation"/>
         </prerequisite>
         <cost/>
         <duration duration="Permanent"/>

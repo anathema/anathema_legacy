@@ -19,7 +19,7 @@ public class HeroTypeCompiler implements IExtensibleDataSetCompiler {
 
   @SuppressWarnings("UnusedParameters")
   public HeroTypeCompiler(ObjectFactory objectFactory, IExtensibleDataSetProvider provider) {
-    this.gson = new CharacterTypeGson(objectFactory);
+    this.gson = new CharacterTypeGson();
   }
 
   @Override
