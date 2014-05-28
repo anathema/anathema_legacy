@@ -1,6 +1,5 @@
 package net.sf.anathema.hero.charms.sheet.content.stats;
 
-import com.google.common.base.Function;
 import net.sf.anathema.character.magic.basic.attribute.MagicAttribute;
 import net.sf.anathema.character.magic.charm.Charm;
 import net.sf.anathema.character.magic.charm.type.ICharmTypeModel;
@@ -56,19 +55,12 @@ public abstract class AbstractCharmStats extends AbstractMagicStats<Charm> {
 
   @Override
   public String[] getDetailStrings(final Resources resources) {
-    return transform(getDetailKeys(), String.class, new Function<String, String>() {
-      @Override
-      public String apply(String input) {
-        return resources.getString(input);
-      }
-    });
+    return transform(getDetailKeys(), String.class, resources::getString);
   }
 
   @Override
   public int compareTo(IMagicStats stats) {
-    if (stats instanceof GenericCharmStats) {
-      return 1;
-    } else if (stats instanceof AbstractCharmStats) {
+    if (stats instanceof AbstractCharmStats) {
       return 0;
     } else {
       return -1;

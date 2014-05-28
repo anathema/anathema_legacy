@@ -4,12 +4,10 @@ import net.sf.anathema.character.framework.configuration.AnathemaCharacterPrefer
 import net.sf.anathema.character.magic.charm.Charm;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.charms.model.CharmsModelFetcher;
-import net.sf.anathema.hero.charms.model.learn.ILearningCharmGroup;
 import net.sf.anathema.hero.charms.model.special.CharmSpecialsModel;
 import net.sf.anathema.hero.charms.model.special.subeffects.MultipleEffectCharmSpecials;
 import net.sf.anathema.hero.charms.model.special.subeffects.SubEffect;
 import net.sf.anathema.hero.charms.model.special.subeffects.SubEffectCharmSpecials;
-import net.sf.anathema.hero.charms.sheet.content.stats.GenericCharmStats;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
@@ -52,18 +50,6 @@ public class CharmContentHelper {
     return learnedEffectIds.toArray(new String[learnedEffectIds.size()]);
   }
 
-  public List<Charm> getGenericCharms() {
-    List<Charm> genericCharms = new ArrayList<>();
-    for (ILearningCharmGroup group : CharmsModelFetcher.fetch(hero).getAllGroups()) {
-      for (Charm charm : group.getAllCharms()) {
-        if (charm.isInstanceOfGenericCharm() && charm.getCharacterType().equals(hero.getTemplate().getTemplateType().getCharacterType())) {
-          genericCharms.add(charm);
-        }
-      }
-    }
-    return genericCharms;
-  }
-
   public List<Charm> getLearnedCharms() {
     boolean experienced = ExperienceModelFetcher.fetch(hero).isExperienced();
     return Arrays.asList(CharmsModelFetcher.fetch(hero).getLearnedCharms(experienced));
@@ -96,27 +82,5 @@ public class CharmContentHelper {
       }
     }
     return false;
-  }
-
-  public boolean isGenericCharmFor(Charm charm) {
-    IMagicStats[] genericCharmStats = getGenericCharmStats();
-    String charmId = charm.getId();
-    for (IMagicStats stat : genericCharmStats) {
-      if (charmId.startsWith(stat.getName().getId())) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  public IMagicStats[] getGenericCharmStats() {
-    List<IMagicStats> genericCharmStats = new ArrayList<>();
-    for (Charm charm : getGenericCharms()) {
-      IMagicStats stats = new GenericCharmStats(charm, hero);
-      if (!genericCharmStats.contains(stats)) {
-        genericCharmStats.add(stats);
-      }
-    }
-    return genericCharmStats.toArray(new IMagicStats[genericCharmStats.size()]);
   }
 }
