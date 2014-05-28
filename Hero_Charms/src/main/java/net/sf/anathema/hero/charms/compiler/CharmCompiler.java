@@ -10,7 +10,6 @@ import net.sf.anathema.character.magic.charm.CharmImpl;
 import net.sf.anathema.character.magic.parser.charms.CharmAlternativeBuilder;
 import net.sf.anathema.character.magic.parser.charms.CharmMergedBuilder;
 import net.sf.anathema.character.magic.parser.charms.CharmSetBuilder;
-import net.sf.anathema.character.magic.parser.charms.ICharmSetBuilder;
 import net.sf.anathema.character.magic.parser.charms.IIdentificateRegistry;
 import net.sf.anathema.character.magic.parser.charms.IdentificateRegistry;
 import net.sf.anathema.character.magic.parser.charms.special.ReflectionSpecialCharmParser;
@@ -99,7 +98,12 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
   }
 
   private void buildStandardCharms(Identifier type) throws PersistenceException {
-    buildCharms(type, setBuilder);
+    if (charmFileTable.containsKey(type)) {
+      List<Document> documents = charmFileTable.get(type);
+      for (Document charmDocument : documents) {
+        buildTypeCharms(type, charmDocument);
+      }
+    }
   }
 
   private void buildCharmAlternatives(Identifier type) {
@@ -118,18 +122,9 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
     }
   }
 
-  private void buildCharms(Identifier type, ICharmSetBuilder builder) throws PersistenceException {
-    if (charmFileTable.containsKey(type)) {
-      List<Document> documents = charmFileTable.get(type);
-      for (Document charmDocument : documents) {
-        buildTypeCharms(type, charmDocument, builder);
-      }
-    }
-  }
-
-  private void buildTypeCharms(Identifier type, Document charmDocument, ICharmSetBuilder builder) throws PersistenceException {
+  private void buildTypeCharms(Identifier type, Document charmDocument) throws PersistenceException {
     List<SpecialCharmDto> specialCharms = new ArrayList<>();
-    Charm[] charmArray = builder.buildCharms(charmDocument, specialCharms);
+    Charm[] charmArray = setBuilder.buildCharms(charmDocument, specialCharms);
     for (Charm charm : charmArray) {
       charmCache.addCharm(type, charm);
     }

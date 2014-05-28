@@ -1,18 +1,14 @@
 package net.sf.anathema.hero.charms.sheet.content;
 
-import com.google.common.base.Optional;
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
 import net.sf.anathema.character.framework.configuration.AnathemaCharacterPreferences;
 import net.sf.anathema.character.magic.charm.Charm;
+import net.sf.anathema.hero.charms.model.CharmsModel;
+import net.sf.anathema.hero.charms.model.CharmsModelFetcher;
+import net.sf.anathema.hero.charms.model.learn.ILearningCharmGroup;
 import net.sf.anathema.hero.charms.model.special.CharmSpecialsModel;
 import net.sf.anathema.hero.charms.model.special.subeffects.MultipleEffectCharmSpecials;
 import net.sf.anathema.hero.charms.model.special.subeffects.SubEffect;
 import net.sf.anathema.hero.charms.model.special.subeffects.SubEffectCharmSpecials;
-import net.sf.anathema.hero.charms.model.learn.ILearningCharmGroup;
-import net.sf.anathema.character.magic.basic.Magic;
-import net.sf.anathema.hero.charms.model.CharmsModel;
-import net.sf.anathema.hero.charms.model.CharmsModelFetcher;
 import net.sf.anathema.hero.charms.sheet.content.stats.GenericCharmStats;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.model.Hero;
@@ -122,16 +118,5 @@ public class CharmContentHelper {
       }
     }
     return genericCharmStats.toArray(new IMagicStats[genericCharmStats.size()]);
-  }
-
-  public boolean isGenericCharmLearned(final String charmId) {
-    List<Charm> allLearnedMagic = getLearnedCharms();
-    Optional<? extends Magic> optional = Iterables.tryFind(allLearnedMagic, new Predicate<Charm>() {
-      @Override
-      public boolean apply(Charm value) {
-        return charmId.equals(value.getId());
-      }
-    });
-    return optional.isPresent();
   }
 }

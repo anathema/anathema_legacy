@@ -1,14 +1,14 @@
 package net.sf.anathema.hero.charms.sheet.content.stats;
 
 import com.google.common.base.Function;
+import net.sf.anathema.character.magic.basic.attribute.MagicAttribute;
 import net.sf.anathema.character.magic.charm.Charm;
 import net.sf.anathema.character.magic.charm.type.ICharmTypeModel;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.charms.display.tooltip.IMagicSourceStringBuilder;
 import net.sf.anathema.hero.charms.display.tooltip.source.MagicSourceContributor;
 import net.sf.anathema.hero.charms.display.tooltip.type.ShortCharmTypeContributor;
-import net.sf.anathema.character.magic.basic.attribute.MagicAttribute;
 import net.sf.anathema.hero.charms.sheet.content.IMagicStats;
-import net.sf.anathema.framework.environment.Resources;
 
 import java.util.ArrayList;
 import java.util.List;
