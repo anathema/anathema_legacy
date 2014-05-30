@@ -3,7 +3,6 @@ package net.sf.anathema.framework.view.messaging;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import net.sf.anathema.lib.gui.message.MessageTypeImagePaths;
 import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.platform.tool.ImageContainer;
 import net.sf.anathema.platform.tool.LoadImage;

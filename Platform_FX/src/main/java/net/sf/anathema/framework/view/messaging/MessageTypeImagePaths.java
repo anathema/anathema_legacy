@@ -1,4 +1,4 @@
-package net.sf.anathema.lib.gui.message;
+package net.sf.anathema.framework.view.messaging;
 
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.message.IMessageTypeVisitor;
