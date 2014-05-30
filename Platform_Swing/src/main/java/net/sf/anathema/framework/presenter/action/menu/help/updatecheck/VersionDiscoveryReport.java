@@ -6,8 +6,6 @@ import net.sf.anathema.framework.environment.Resources;
 
 import static net.sf.anathema.framework.presenter.action.menu.help.updatecheck.UpdateState.CheckFailed;
 import static net.sf.anathema.framework.presenter.action.menu.help.updatecheck.UpdateState.Checking;
-import static net.sf.anathema.lib.message.MessageType.ERROR;
-import static net.sf.anathema.lib.message.MessageType.INFORMATION;
 
 public class VersionDiscoveryReport extends ProgressReportAdapter {
   private Resources resources;
@@ -26,7 +24,6 @@ public class VersionDiscoveryReport extends ProgressReportAdapter {
   @Override
   public void lookingUpLatestAvailableVersion() {
     view.showLatestVersion("?.?.?");
-    view.showNoMessage();
     model.setState(Checking);
   }
 
@@ -35,7 +32,7 @@ public class VersionDiscoveryReport extends ProgressReportAdapter {
     boolean isUpdateAvailable = updateAvailable(available);
     String messageKey = determineMessageToShow(isUpdateAvailable);
     view.showLatestVersion(available.asString());
-    view.showMessage(resources.getString(messageKey), INFORMATION);
+    view.showDescription(resources.getString(messageKey));
     model.setState(UpdateState.CheckSuccessful);
     if (isUpdateAvailable) {
       view.enableUpdate();
@@ -67,7 +64,6 @@ public class VersionDiscoveryReport extends ProgressReportAdapter {
 
   private void showErrorState(String key) {
     view.showLatestVersion("?.?.?");
-    view.showMessage(resources.getString(key), ERROR);
     model.setState(CheckFailed);
   }
 

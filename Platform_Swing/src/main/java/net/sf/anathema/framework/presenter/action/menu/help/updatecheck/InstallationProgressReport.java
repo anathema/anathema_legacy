@@ -4,8 +4,6 @@ import de.idos.updates.Version;
 import de.idos.updates.store.ProgressReportAdapter;
 import net.sf.anathema.framework.environment.Resources;
 
-import static net.sf.anathema.lib.message.MessageType.INFORMATION;
-
 public class InstallationProgressReport extends ProgressReportAdapter {
   private final Resources resources;
   private final UpdateView view;
@@ -65,7 +63,7 @@ public class InstallationProgressReport extends ProgressReportAdapter {
 
   @Override
   public void finishedInstallation() {
-    view.showMessage(resources.getString("Help.UpdateInstallation.RestartRequired"), INFORMATION);
+    view.showDescription(resources.getString("Help.UpdateInstallation.RestartRequired"));
     model.setState(UpdateState.InstallationDone);
     view.showProgressMessage(resources.getString("Help.UpdateInstallation.Done"));
   }

@@ -4,7 +4,6 @@ import de.idos.updates.Version;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.dialog.userdialog.DefaultDialogConfiguration;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
-import net.sf.anathema.lib.message.MessageType;
 
 import javax.swing.SwingUtilities;
 
@@ -38,16 +37,6 @@ public class SwingUpdateView implements UpdateView {
   @Override
   public void showInstalledVersion(Version installedVersion) {
     page.showInstalledVersion(installedVersion);
-  }
-
-  @Override
-  public void showNoMessage() {
-    page.showNoMessage();
-  }
-
-  @Override
-  public void showMessage(String message, MessageType type) {
-    page.showMessage(message, type);
   }
 
   @Override

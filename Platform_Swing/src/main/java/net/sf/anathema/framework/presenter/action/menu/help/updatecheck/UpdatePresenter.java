@@ -34,8 +34,8 @@ public class UpdatePresenter {
     updateSystem.reportAllProgressTo(new ConfigureAnathema(updateSystem));
     view.disableUpdate();
     view.showChangelog(resources.getString("Help.UpdateCheck.LoadingChangelog"));
-    view.show();
     runUpdateCheck(updater);
+    view.show();
   }
 
   private void initStateListening() {
@@ -78,7 +78,7 @@ public class UpdatePresenter {
     });
   }
 
-  private void runUpdateCheck(final Updater updater) {
+  private void runUpdateCheck(Updater updater) {
     runInThread(new CheckForUpdate(updater));
   }
 
