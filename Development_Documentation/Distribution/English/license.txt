@@ -194,10 +194,9 @@ THIRDPARTY LICENSES
 
 Anathema includes software developed by
 -The Apache Software Foundation (http://www.apache.org/).
--the Reflections project (http://code.google.com/p/reflections/)
+-the Reflections project (https://github.com/ronmamo/reflections)
 -the slf4j project (http://www.slf4j.org)
 -1T3XT BVBA (http://www.itextpdf.com)
--the Swing Labs project (http://java.net/projects/swinglabs)
 -the GSON project (http://code.google.com/p/google-gson/)
 -the Jaxen project (http://jaxen.codehaus.org/)
 -the DOM4J Project (http://www.dom4j.org).
@@ -205,6 +204,8 @@ Anathema includes software developed by
 -Nat Pryce (http://nat.truemesh.com/archives/000710.html)
 -MiG InfoCom AB (http://www.miglayout.com)
 -Everaldo Coelho (http://www.everaldo.com/)
+-the ControlsFX project (http://fxexperience.com/controlsfx/)
+-the JFXtras project (http://jfxtras.org)
 
 The "Save as PDF" icon was created by Wolfgang Bartelme (http://www.bartelme.at/) and is used with permission.
 Some of the other images are taken with permission from the archives at http://www.wolf-spoor.org.
@@ -221,20 +222,22 @@ GSON
 Guava
 XML-Commons/XML-APIs
 
-GNU GPL v3
-=========================
-MiG Layout
-
 GNU LGPL v2.1
 =========================
 Logback
 "Settings" icon
 
+New BSD License
+=========================
+ControlsFx
+JFXtras
+
 Individual Licenses:
 =========================
 iText is published under the GNU Affero General Public License 3.0.
+MiG Layout is published under the GNU GPL v3.
 Reflections is published under the WTFPL.
 SLF4J is published under the MIT License.
 jaxen is published under the Jaxen License.
-dom4j is published under the BSD License
+dom4j is published under a BSD-style License
 Nat Pryce's "Announcer" class is published under an unrestricted license.
