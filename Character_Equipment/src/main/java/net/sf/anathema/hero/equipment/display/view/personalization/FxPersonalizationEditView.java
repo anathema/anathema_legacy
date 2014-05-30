@@ -3,39 +3,54 @@ package net.sf.anathema.hero.equipment.display.view.personalization;
 import net.sf.anathema.hero.equipment.display.presenter.EquipmentPersonalizationProperties;
 import net.sf.anathema.hero.equipment.display.presenter.PersonalizationEditView;
 import net.sf.anathema.lib.util.Closure;
+import org.controlsfx.control.action.Action;
+import org.controlsfx.dialog.Dialog;
 
-public class FxPersonalizationEditView implements PersonalizationEditView{
+import static org.controlsfx.dialog.Dialog.Actions.CANCEL;
+import static org.controlsfx.dialog.Dialog.Actions.OK;
+import static org.controlsfx.dialog.DialogStyle.NATIVE;
+
+public class FxPersonalizationEditView implements PersonalizationEditView {
+  private final FxDialogPersonalizationView view;
+  private Runnable onConfirmation;
+
   public FxPersonalizationEditView(EquipmentPersonalizationProperties properties) {
-    //To change body of created methods use File | Settings | File Templates.
+    this.view = new FxDialogPersonalizationView(properties);
   }
 
   @Override
   public void show() {
-    //To change body of implemented methods use File | Settings | File Templates.
+    Dialog dialog = new Dialog(null, "", false, NATIVE);
+    dialog.getActions().setAll(OK, CANCEL);
+    dialog.setContent(view.getNode());
+    Action result = dialog.show();
+    if (result == OK) {
+      onConfirmation.run();
+    }
   }
 
   @Override
   public void whenChangeIsConfirmed(Runnable runnable) {
-    //To change body of implemented methods use File | Settings | File Templates.
+    this.onConfirmation = runnable;
   }
 
   @Override
   public void setTitle(String title) {
-    //To change body of implemented methods use File | Settings | File Templates.
+    view.setTitle(title);
   }
 
   @Override
   public void setDescription(String description) {
-    //To change body of implemented methods use File | Settings | File Templates.
+    view.setDescription(description);
   }
 
   @Override
   public void whenTitleChanges(Closure<String> closure) {
-    //To change body of implemented methods use File | Settings | File Templates.
+    view.whenTitleChanges(closure);
   }
 
   @Override
   public void whenDescriptionChanges(Closure<String> closure) {
-    //To change body of implemented methods use File | Settings | File Templates.
+    view.whenDescriptionChanges(closure);
   }
 }

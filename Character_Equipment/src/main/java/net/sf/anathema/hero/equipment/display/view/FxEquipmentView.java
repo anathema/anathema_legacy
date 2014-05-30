@@ -13,7 +13,6 @@ import net.sf.anathema.hero.equipment.display.view.personalization.FxPersonaliza
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.selection.VetoableObjectSelectionView;
-import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.platform.fx.ListSelectionView;
 import net.sf.anathema.platform.fx.NodeHolder;
 import net.sf.anathema.platform.tool.FxButtonTool;
@@ -49,12 +48,7 @@ public class FxEquipmentView implements EquipmentView, NodeHolder {
   @Override
   public EquipmentObjectView addEquipmentObjectView() {
     final FxEquipmentItemView itemView = new FxEquipmentItemView();
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        itemPane.add(itemView.getNode());
-      }
-    });
+    itemPane.add(itemView.getNode());
     return itemView;
   }
 
@@ -66,24 +60,14 @@ public class FxEquipmentView implements EquipmentView, NodeHolder {
   @Override
   public Tool addToolButton() {
     final FxButtonTool tool = FxButtonTool.ForAnyPurpose();
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        buttonPanel.add(tool.getNode());
-      }
-    });
+    buttonPanel.add(tool.getNode());
     return tool;
   }
 
   @Override
   public MagicalMaterialView addMagicMaterialView(String label, AgnosticUIConfiguration<MagicalMaterial> renderer) {
     final FxMaterialView magicMaterialView = new FxMaterialView(label, renderer);
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        selectionPanel.add(magicMaterialView.getNode(), new CC().growX().pushX());
-      }
-    });
+    selectionPanel.add(magicMaterialView.getNode(), new CC().growX().pushX());
     return magicMaterialView;
   }
 

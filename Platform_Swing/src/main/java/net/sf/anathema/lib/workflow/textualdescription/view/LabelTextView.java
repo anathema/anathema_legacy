@@ -48,11 +48,6 @@ public class LabelTextView implements ITextView {
     adjustLabelToDisabledColor();
   }
 
-  public void setDisabledLabelColor(Color color) {
-    this.disabledLabelColor = color;
-    adjustLabelToDisabledColor();
-  }
-
   private void adjustLabelToDisabledColor() {
     if (!label.isEnabled()) {
       label.setForeground(disabledLabelColor);
@@ -61,10 +56,6 @@ public class LabelTextView implements ITextView {
 
   public void addToMigPanel(JPanel panel) {
     addToMigPanel(panel, new CC().growX());
-  }
-
-  public void addToMigPanelSpanning(JPanel panel) {
-    addToMigPanel(panel, new CC().growX().spanX());
   }
 
   public void addToMigPanel(JPanel panel, CC data) {
