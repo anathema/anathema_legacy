@@ -2,15 +2,12 @@ package net.sf.anathema.framework.presenter.action.menu.help.updatecheck;
 
 import de.idos.updates.Version;
 import de.idos.updates.store.ProgressReportAdapter;
-import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
-
-import javax.swing.SwingUtilities;
 
 public class DialogUpdater extends ProgressReportAdapter {
-  private final UserDialog dialog;
+  private UpdateView view;
 
-  public DialogUpdater(UserDialog dialog) {
-    this.dialog = dialog;
+  public DialogUpdater(UpdateView view) {
+    this.view = view;
   }
 
   @Override
@@ -44,12 +41,6 @@ public class DialogUpdater extends ProgressReportAdapter {
   }
 
   private void updateDialog() {
-    SwingUtilities.invokeLater(new Runnable() {
-      @Override
-      public void run() {
-        dialog.updateDescription();
-        dialog.getDialogControl().checkInputValid();
-      }
-    });
+    view.refresh();
   }
 }

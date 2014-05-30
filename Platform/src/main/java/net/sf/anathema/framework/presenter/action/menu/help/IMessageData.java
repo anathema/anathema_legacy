@@ -4,7 +4,7 @@ import net.sf.anathema.lib.message.MessageType;
 
 public interface IMessageData {
 
-  String getKey();
+  String getMessage();
 
   MessageType getType();
 }

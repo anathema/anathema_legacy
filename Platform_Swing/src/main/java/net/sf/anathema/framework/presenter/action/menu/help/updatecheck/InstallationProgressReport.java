@@ -2,33 +2,40 @@ package net.sf.anathema.framework.presenter.action.menu.help.updatecheck;
 
 import de.idos.updates.Version;
 import de.idos.updates.store.ProgressReportAdapter;
+import net.sf.anathema.framework.environment.Resources;
+
+import static net.sf.anathema.lib.message.MessageType.INFORMATION;
 
 public class InstallationProgressReport extends ProgressReportAdapter {
-  private final UpdateDialogPage page;
+  private final Resources resources;
+  private final UpdateView view;
+  private final UpdateModel model;
   private int elementsHandled = 0;
   private long bytesHandled = 0;
   private long expectedSize;
 
-  public InstallationProgressReport(UpdateDialogPage page) {
-    this.page = page;
+  public InstallationProgressReport(Resources resources, UpdateView view, UpdateModel model) {
+    this.resources = resources;
+    this.view = view;
+    this.model = model;
   }
 
   @Override
   public void startingInstallationOf(Version version) {
     elementsHandled = 0;
-    page.showInstallationRunning();
+    model.setState(UpdateState.InstallationRunning);
   }
 
   @Override
   public void foundElementsToInstall(int numberOfElements) {
-    page.showFilesToDownload(numberOfElements);
+    view.showFilesToDownload(numberOfElements);
   }
 
   @Override
   public void expectedSize(long size) {
     this.expectedSize = size;
     int intSize = toInteger(size);
-    page.showExpectedFileSize(intSize);
+    view.showExpectedFileSize(intSize);
     bytesHandled = 0;
     progress(0);
   }
@@ -36,14 +43,14 @@ public class InstallationProgressReport extends ProgressReportAdapter {
   @Override
   public void progress(long progress) {
     bytesHandled += progress;
-    page.showProgressOnFile(toInteger(bytesHandled));
+    view.showProgressOnFile(toInteger(bytesHandled));
   }
 
   @Override
   public void finishedFile() {
     elementsHandled++;
-    page.showFilesAlreadyLoaded(elementsHandled);
-    page.showProgressOnFile(toInteger(expectedSize));
+    view.showFilesAlreadyLoaded(elementsHandled);
+    view.showProgressOnFile(toInteger(expectedSize));
   }
 
   private int toInteger(long longValue) {
@@ -58,6 +65,8 @@ public class InstallationProgressReport extends ProgressReportAdapter {
 
   @Override
   public void finishedInstallation() {
-    page.showInstallationDone();
+    view.showMessage(resources.getString("Help.UpdateInstallation.RestartRequired"), INFORMATION);
+    model.setState(UpdateState.InstallationDone);
+    view.showProgressMessage(resources.getString("Help.UpdateInstallation.Done"));
   }
 }

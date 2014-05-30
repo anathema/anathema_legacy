@@ -4,13 +4,14 @@ import de.idos.updates.Version;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.framework.presenter.action.menu.help.IMessageData;
 import net.sf.anathema.framework.presenter.action.menu.help.MessageData;
-import net.sf.anathema.lib.gui.action.SmartAction;
+import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.AbstractDialogPage;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.IBasicMessage;
-import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.lib.message.MessageType;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -21,24 +22,20 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 
-import static net.sf.anathema.lib.message.MessageType.ERROR;
-import static net.sf.anathema.lib.message.MessageType.INFORMATION;
-
 public class UpdateDialogPage extends AbstractDialogPage {
-  private final JLabel latestVersionLabel = new JLabel("?.?.?");
+  private final JLabel latestVersionLabel = new JLabel();
   private final JButton updateButton = new JButton("Install update");
   private final Resources resources;
-  private final Version installedVersion;
-  private UpdateState state = UpdateState.Checking;
   private IMessageData messageData;
   private final JProgressBar updateProgress = new JProgressBar();
   private final JProgressBar fileProgress = new JProgressBar();
   private JTextArea changelogDisplay = new JTextArea("Loading changelog...", 10, 0);
+  private String description;
+  private JLabel installedVersionLabel = new JLabel();
 
-  public UpdateDialogPage(Resources resources, Version installedVersion) {
+  public UpdateDialogPage(Resources resources) {
     super(resources.getString("Help.UpdateCheck.Checking"));
     this.resources = resources;
-    this.installedVersion = installedVersion;
     this.updateProgress.setStringPainted(true);
   }
 
@@ -46,7 +43,7 @@ public class UpdateDialogPage extends AbstractDialogPage {
   public JComponent createContent() {
     JPanel panel = new JPanel(new MigLayout(new LC().wrapAfter(2).insets("0", "0", "0", "15").fill()));
     panel.add(new JLabel(getString("Help.UpdateCheck.CurrentVersion") + ":"));
-    panel.add(new JLabel(installedVersion.asString()));
+    panel.add(installedVersionLabel);
     panel.add(new JLabel(getString("Help.UpdateCheck.LatestVersion") + ":"));
     panel.add(latestVersionLabel);
     panel.add(new JScrollPane(changelogDisplay), new CC().growX().spanX());
@@ -63,25 +60,12 @@ public class UpdateDialogPage extends AbstractDialogPage {
     if (messageData == null) {
       return getDefaultMessage();
     }
-    return new BasicMessage(getString(messageData.getKey()), messageData.getType());
+    return new BasicMessage(messageData.getMessage(), messageData.getType());
   }
 
   @Override
   public String getDescription() {
-    switch (state) {
-      case Checking:
-        return getString("Help.UpdateCheck.Checking");
-      case CheckSuccessful:
-        return getString("Help.UpdateCheck.Success");
-      case CheckFailed:
-        return getString("Help.UpdateCheck.Failure");
-      case InstallationRunning:
-        return getString("Help.UpdateInstallation.Running");
-      case InstallationDone:
-        return getString("Help.UpdateInstallation.Completed");
-      default:
-        throw new IllegalStateException("Unknown state");
-    }
+    return description;
   }
 
   @Override
@@ -89,34 +73,8 @@ public class UpdateDialogPage extends AbstractDialogPage {
     return getString("Help.UpdateCheck.Title");
   }
 
-  public void setErrorState(String key) {
-    showUnknownVersion();
-    this.state = UpdateState.CheckFailed;
-    this.messageData = new MessageData(key, ERROR);
-  }
-
-  public void setSuccessState(String key, Version latestVersion) {
-    showLatestVersion(latestVersion.asString());
-    this.state = UpdateState.CheckSuccessful;
-    this.messageData = new MessageData(key, INFORMATION);
-  }
-
-  public void clearState() {
-    showUnknownVersion();
-    this.state = UpdateState.Checking;
-    this.messageData = null;
-  }
-
   public void showChangelog(String changelog) {
     changelogDisplay.setText(changelog);
-  }
-
-  public void whenUpdateIsRequestedDo(SmartAction smartAction) {
-    updateButton.setAction(smartAction);
-  }
-
-  public void showInstallationRunning() {
-    state = UpdateState.InstallationRunning;
   }
 
   public void enableUpdate() {
@@ -131,72 +89,52 @@ public class UpdateDialogPage extends AbstractDialogPage {
     return resources.getString(key);
   }
 
-  private void showUnknownVersion() {
-    showLatestVersion("?.?.?");
-  }
-
   public void showFilesToDownload(final int numberOfElements) {
-    SwingUtilities.invokeLater(new Runnable() {
-      @Override
-      public void run() {
-        updateProgress.setMaximum(numberOfElements);
-      }
-    });
+    SwingUtilities.invokeLater(() -> updateProgress.setMaximum(numberOfElements));
   }
 
   public void showFilesAlreadyLoaded(final int numberOfElements) {
-    SwingUtilities.invokeLater(new Runnable() {
-      @Override
-      public void run() {
-        updateProgress.setValue(numberOfElements);
-      }
-    });
+    SwingUtilities.invokeLater(() -> updateProgress.setValue(numberOfElements));
   }
 
-  public void showInstallationDone() {
-    this.state = UpdateState.InstallationDone;
-    this.messageData = new MessageData("Help.UpdateInstallation.RestartRequired", INFORMATION);
-    SwingUtilities.invokeLater(new Runnable() {
-      @Override
-      public void run() {
-        updateProgress.setString(getString("Help.UpdateInstallation.Done"));
-      }
-    });
-  }
-
-  private void showLatestVersion(final String versionText) {
-    SwingUtilities.invokeLater(new Runnable() {
-      @Override
-      public void run() {
-        latestVersionLabel.setText(versionText);
-      }
-    });
+  public void showLatestVersion(final String versionText) {
+    SwingUtilities.invokeLater(() -> latestVersionLabel.setText(versionText));
   }
 
   private void changeButtonState(final boolean enabled) {
-    SwingUtilities.invokeLater(new Runnable() {
-      @Override
-      public void run() {
-        updateButton.setEnabled(enabled);
-      }
-    });
+    SwingUtilities.invokeLater(() -> updateButton.setEnabled(enabled));
   }
 
   public void showExpectedFileSize(final int size) {
-    SwingUtilities.invokeLater(new Runnable() {
-      @Override
-      public void run() {
-        fileProgress.setMaximum(size);
-      }
-    });
+    SwingUtilities.invokeLater(() -> fileProgress.setMaximum(size));
   }
 
   public void showProgressOnFile(final int progress) {
-    SwingUtilities.invokeLater(new Runnable() {
-      @Override
-      public void run() {
-        fileProgress.setValue(progress);
-      }
-    });
+    SwingUtilities.invokeLater(() -> fileProgress.setValue(progress));
+  }
+
+  public void showDescription(String message) {
+    this.description = message;
+      //TODO: Trigger update
+  }
+
+  public void showNoMessage() {
+    this.messageData = null;
+  }
+
+  public void showMessage(String message, MessageType type) {
+    this.messageData = new MessageData(message, type);
+  }
+
+  public void showProgressMessage(String message) {
+    SwingUtilities.invokeLater(() -> updateProgress.setString(message));
+  }
+
+  public void showInstalledVersion(Version installedVersion) {
+    installedVersionLabel.setText(installedVersion.asString());
+  }
+
+  public Tool addTool() {
+    return new SwingTool(updateButton);
   }
 }

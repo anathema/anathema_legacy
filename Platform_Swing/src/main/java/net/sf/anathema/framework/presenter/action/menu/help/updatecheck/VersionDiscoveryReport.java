@@ -2,34 +2,49 @@ package net.sf.anathema.framework.presenter.action.menu.help.updatecheck;
 
 import de.idos.updates.Version;
 import de.idos.updates.store.ProgressReportAdapter;
+import net.sf.anathema.framework.environment.Resources;
+
+import static net.sf.anathema.framework.presenter.action.menu.help.updatecheck.UpdateState.CheckFailed;
+import static net.sf.anathema.framework.presenter.action.menu.help.updatecheck.UpdateState.Checking;
+import static net.sf.anathema.lib.message.MessageType.ERROR;
+import static net.sf.anathema.lib.message.MessageType.INFORMATION;
 
 public class VersionDiscoveryReport extends ProgressReportAdapter {
-  private UpdateDialogPage page;
+  private Resources resources;
   private final Version installed;
+  private UpdateModel model;
+  private final UpdateView view;
 
-  public VersionDiscoveryReport(UpdateDialogPage updateDialogPage, Version installed) {
-    this.page = updateDialogPage;
+  public VersionDiscoveryReport(UpdateModel model, UpdateView view, Resources resources, Version installed) {
+    this.model = model;
+    this.view = view;
+    this.resources = resources;
     this.installed = installed;
+    view.showLatestVersion("?.?.?");
   }
 
   @Override
   public void lookingUpLatestAvailableVersion() {
-    page.clearState();
+    view.showLatestVersion("?.?.?");
+    view.showNoMessage();
+    model.setState(Checking);
   }
 
   @Override
   public void latestAvailableVersionIs(Version available) {
     boolean isUpdateAvailable = updateAvailable(available);
     String messageKey = determineMessageToShow(isUpdateAvailable);
-    page.setSuccessState(messageKey, available);
+    view.showLatestVersion(available.asString());
+    view.showMessage(resources.getString(messageKey), INFORMATION);
+    model.setState(UpdateState.CheckSuccessful);
     if (isUpdateAvailable) {
-      page.enableUpdate();
+      view.enableUpdate();
     }
     else {
-      page.disableUpdate();
+      view.disableUpdate();
     }
     UpdateChangelog changelog = new UpdateChangelog(installed, available);
-    page.showChangelog(changelog.getText());
+    view.showChangelog(changelog.getText());
   }
 
   private String determineMessageToShow(boolean available) {
@@ -42,12 +57,18 @@ public class VersionDiscoveryReport extends ProgressReportAdapter {
 
   @Override
   public void versionLookupFailed() {
-    page.setErrorState("Help.UpdateCheck.GeneralException");
+    showErrorState("Help.UpdateCheck.GeneralException");
   }
 
   @Override
   public void versionLookupFailed(Exception e) {
-    page.setErrorState("Help.UpdateCheck.IOException");
+    showErrorState("Help.UpdateCheck.IOException");
+  }
+
+  private void showErrorState(String key) {
+    view.showLatestVersion("?.?.?");
+    view.showMessage(resources.getString(key), ERROR);
+    model.setState(CheckFailed);
   }
 
   private boolean updateAvailable(Version available) {

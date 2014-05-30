@@ -4,17 +4,17 @@ import net.sf.anathema.lib.message.MessageType;
 
 public class MessageData implements IMessageData {
 
-  private final String key;
+  private final String message;
   private final MessageType type;
 
-  public MessageData(String key, MessageType type) {
-    this.key = key;
+  public MessageData(String message, MessageType type) {
+    this.message = message;
     this.type = type;
   }
 
   @Override
-  public String getKey() {
-    return key;
+  public String getMessage() {
+    return message;
   }
 
   @Override
