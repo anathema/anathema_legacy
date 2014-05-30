@@ -78,7 +78,7 @@ public class FxEquipmentView implements EquipmentView, NodeHolder {
 
   @Override
   public PersonalizationEditView startEditingPersonalization(EquipmentPersonalizationProperties properties) {
-    return new FxPersonalizationEditView(properties);
+    return new FxPersonalizationEditView(panel.getScene().getWindow(),  properties);
   }
 
   @Override
