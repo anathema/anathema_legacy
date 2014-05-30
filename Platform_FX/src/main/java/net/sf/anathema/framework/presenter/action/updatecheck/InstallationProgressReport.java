@@ -1,8 +1,9 @@
-package net.sf.anathema.framework.presenter.action.menu.help.updatecheck;
+package net.sf.anathema.framework.presenter.action.updatecheck;
 
 import de.idos.updates.Version;
 import de.idos.updates.store.ProgressReportAdapter;
 import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.framework.presenter.action.menu.help.updatecheck.UpdateState;
 
 public class InstallationProgressReport extends ProgressReportAdapter {
   private final Resources resources;

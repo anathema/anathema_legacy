@@ -1,4 +1,4 @@
-package net.sf.anathema.framework.presenter.action.menu.help.updatecheck;
+package net.sf.anathema.framework.presenter.action.updatecheck;
 
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.interaction.Command;

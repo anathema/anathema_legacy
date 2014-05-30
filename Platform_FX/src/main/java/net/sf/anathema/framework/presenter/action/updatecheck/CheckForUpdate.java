@@ -1,4 +1,4 @@
-package net.sf.anathema.framework.presenter.action.menu.help.updatecheck;
+package net.sf.anathema.framework.presenter.action.updatecheck;
 
 import de.idos.updates.Updater;
 

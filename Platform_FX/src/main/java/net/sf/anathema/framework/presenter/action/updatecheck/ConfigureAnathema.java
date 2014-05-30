@@ -1,7 +1,8 @@
-package net.sf.anathema.framework.presenter.action.menu.help.updatecheck;
+package net.sf.anathema.framework.presenter.action.updatecheck;
 
 import de.idos.updates.UpdateSystem;
 import de.idos.updates.store.ProgressReportAdapter;
+import net.sf.anathema.framework.presenter.action.menu.help.updatecheck.PropertiesSaver;
 import org.apache.commons.io.FilenameUtils;
 
 import java.io.File;
