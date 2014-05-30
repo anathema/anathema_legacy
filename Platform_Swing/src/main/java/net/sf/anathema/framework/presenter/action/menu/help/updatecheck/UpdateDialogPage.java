@@ -4,7 +4,6 @@ import de.idos.updates.Version;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
-import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.framework.presenter.action.menu.help.IMessageData;
 import net.sf.anathema.framework.presenter.action.menu.help.MessageData;
 import net.sf.anathema.interaction.Tool;
@@ -24,32 +23,36 @@ import javax.swing.SwingUtilities;
 
 public class UpdateDialogPage extends AbstractDialogPage {
   private final JLabel latestVersionLabel = new JLabel();
-  private final JButton updateButton = new JButton("Install update");
-  private final Resources resources;
+  private final JButton updateButton = new JButton();
   private IMessageData messageData;
   private final JProgressBar updateProgress = new JProgressBar();
   private final JProgressBar fileProgress = new JProgressBar();
-  private JTextArea changelogDisplay = new JTextArea("Loading changelog...", 10, 0);
+  private JTextArea changelogDisplay;
   private String description;
   private JLabel installedVersionLabel = new JLabel();
+  private final String title;
+  private final String currentVersionText;
+  private final String latestVersionText;
 
-  public UpdateDialogPage(Resources resources) {
-    super(resources.getString("Help.UpdateCheck.Checking"));
-    this.resources = resources;
+  public UpdateDialogPage(String title, String currentVersionText, String latestVersionText) {
+    super("");
+    this.title = title;
+    this.currentVersionText = currentVersionText;
+    this.latestVersionText = latestVersionText;
     this.updateProgress.setStringPainted(true);
+    this.changelogDisplay = new JTextArea("", 10, 0);
   }
 
   @Override
   public JComponent createContent() {
     JPanel panel = new JPanel(new MigLayout(new LC().wrapAfter(2).insets("0", "0", "0", "15").fill()));
-    panel.add(new JLabel(getString("Help.UpdateCheck.CurrentVersion") + ":"));
+    panel.add(new JLabel(currentVersionText));
     panel.add(installedVersionLabel);
-    panel.add(new JLabel(getString("Help.UpdateCheck.LatestVersion") + ":"));
+    panel.add(new JLabel(latestVersionText));
     panel.add(latestVersionLabel);
     panel.add(new JScrollPane(changelogDisplay), new CC().growX().spanX());
     changelogDisplay.setEditable(false);
     panel.add(updateButton, new CC().spanY(2).grow());
-    updateButton.setEnabled(false);
     panel.add(updateProgress, new CC().grow().push());
     panel.add(fileProgress, new CC().grow().push());
     return panel;
@@ -70,7 +73,7 @@ public class UpdateDialogPage extends AbstractDialogPage {
 
   @Override
   public String getTitle() {
-    return getString("Help.UpdateCheck.Title");
+    return title;
   }
 
   public void showChangelog(String changelog) {
@@ -83,10 +86,6 @@ public class UpdateDialogPage extends AbstractDialogPage {
 
   public void disableUpdate() {
     changeButtonState(false);
-  }
-
-  private String getString(String key) {
-    return resources.getString(key);
   }
 
   public void showFilesToDownload(final int numberOfElements) {

@@ -32,6 +32,8 @@ public class UpdatePresenter {
     updateSystem.reportAllProgressTo(new InstallationProgressReport(resources, view, model));
     updateSystem.reportAllProgressTo(new DialogUpdater(view));
     updateSystem.reportAllProgressTo(new ConfigureAnathema(updateSystem));
+    view.disableUpdate();
+    view.showChangelog(resources.getString("Help.UpdateCheck.LoadingChangelog"));
     view.show();
     runUpdateCheck(updater);
   }

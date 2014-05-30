@@ -13,7 +13,10 @@ public class UpdateAction implements Command {
 
   @Override
   public void execute() {
-    UpdateView view = new SwingUpdateView(resources);
+    String title = resources.getString("Help.UpdateCheck.Title");
+    String currentVersionLabel = resources.getString("Help.UpdateCheck.CurrentVersion") + ":";
+    String latestVersionLabel = resources.getString("Help.UpdateCheck.LatestVersion") + ":";
+    UpdateView view = new SwingUpdateView(title, currentVersionLabel, latestVersionLabel);
     UpdateModel model = new UpdateModel();
     UpdatePresenter updatePresenter = new UpdatePresenter(resources, view, model);
     updatePresenter.initPresentation();

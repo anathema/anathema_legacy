@@ -1,7 +1,6 @@
 package net.sf.anathema.framework.presenter.action.menu.help.updatecheck;
 
 import de.idos.updates.Version;
-import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.dialog.userdialog.DefaultDialogConfiguration;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
@@ -14,8 +13,8 @@ public class SwingUpdateView implements UpdateView {
   private final UpdateDialogPage page;
   private final UserDialog dialog;
 
-  public SwingUpdateView(Resources resources) {
-    this.page = new UpdateDialogPage(resources);
+  public SwingUpdateView(String title, String currentVersionLabel, String latestVersionLabel) {
+    this.page = new UpdateDialogPage(title, currentVersionLabel, latestVersionLabel);
     DefaultDialogConfiguration dialogConfiguration = DefaultDialogConfiguration.createWithOkOnly(page);
     this.dialog = new UserDialog(null, dialogConfiguration);
     dialog.getDialog().setModal(false);
