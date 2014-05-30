@@ -1,7 +1,5 @@
 package net.sf.anathema.fx.hero.perspective;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
@@ -36,16 +34,11 @@ public class TaskedMultipleContentView implements MultipleContentView {
   public void addView(NodeHolder view, ContentProperties tabProperties) {
     String name = tabProperties.getName();
     Node fxContainer = createContainer(view, name);
-    final Identifier containerId = new SimpleIdentifier(name);
+    Identifier containerId = new SimpleIdentifier(name);
     stack.add(containerId, fxContainer);
-    final Hyperlink trigger = new Hyperlink(name);
+    Hyperlink trigger = new Hyperlink(name);
     trigger.getStyleClass().add("character-subview-selector");
-    trigger.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent actionEvent) {
-        new SwitchToView(containerId, stack).execute();
-      }
-    });
+    trigger.setOnAction(actionEvent -> new SwitchToView(containerId, stack).execute());
     contentPane.add(trigger);
     isEmpty = false;
   }
@@ -60,7 +53,7 @@ public class TaskedMultipleContentView implements MultipleContentView {
   }
 
   private Node createContainer(final NodeHolder content, String name) {
-    final MigPane viewComponent = new MigPane(LayoutUtils.fillWithoutInsets().wrapAfter(1));
+    MigPane viewComponent = new MigPane(LayoutUtils.fillWithoutInsets().wrapAfter(1));
     MigPane titlePane = new MigPane(LayoutUtils.fillWithoutInsets());
     Label title = new Label(name);
     title.setStyle("-fx-font-weight: bold");
