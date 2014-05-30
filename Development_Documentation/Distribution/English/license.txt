@@ -198,7 +198,6 @@ Anathema includes software developed by
 -the slf4j project (http://www.slf4j.org)
 -1T3XT BVBA (http://www.itextpdf.com)
 -the Swing Labs project (http://java.net/projects/swinglabs)
--disy Informationssysteme GmbH (http://www.disy.net)
 -the GSON project (http://code.google.com/p/google-gson/)
 -the Jaxen project (http://jaxen.codehaus.org/)
 -the DOM4J Project (http://www.dom4j.org).
@@ -224,7 +223,6 @@ XML-Commons/XML-APIs
 
 GNU GPL v3
 =========================
-disy-commons (special license for Anathema, parts of the library are repackaged, integrated and modified in Anathema code)
 MiG Layout
 
 GNU LGPL v2.1
