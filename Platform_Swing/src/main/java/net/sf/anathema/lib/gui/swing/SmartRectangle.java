@@ -2,7 +2,6 @@ package net.sf.anathema.lib.gui.swing;
 
 import com.google.common.base.Preconditions;
 
-import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
 
@@ -10,10 +9,6 @@ public class SmartRectangle extends Rectangle {
 
   public SmartRectangle(Rectangle rect) {
     this(rect.x, rect.y, rect.width, rect.height);
-  }
-
-  public SmartRectangle(Point position, Dimension size) {
-    this(position.x, position.y, size.width, size.height);
   }
 
   public SmartRectangle(int ulx, int uly, int width, int height) {

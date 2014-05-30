@@ -49,24 +49,6 @@ public class GuiUtilities {
     return getWindowFor(component.getParent());
   }
 
-  /**
-   * Sets the location of the given window relative to another swing. If the other swing is
-   * not currently showing, the window is centered on the screen.
-   */
-  private static void centerToComponent(Window window, Component component) {
-    Window parentWindow = getWindowFor(component);
-    if (parentWindow == null || !parentWindow.isVisible()) {
-      centerOnScreen(window);
-    } else {
-      SmartRectangle parentBounds = getSizeOnScreen(parentWindow);
-      centerToPoint(window, parentBounds.getCenter());
-    }
-  }
-
-  private static SmartRectangle getSizeOnScreen(Component component) {
-    return new SmartRectangle(component.getLocationOnScreen(), component.getSize());
-  }
-
   public static void placeRelativeToOwner(Window window, RelativePosition position) {
     position.place(window);
     assureIsOnScreen(window);
@@ -88,10 +70,6 @@ public class GuiUtilities {
     x = x < 0 ? 0 : x;
     y = y < 0 ? 0 : y;
     window.setLocation(x, y);
-  }
-
-  public static void centerToParent(Window window) {
-    centerToComponent(window, window.getParent());
   }
 
   public static JDialog createDialog(String title) {
@@ -254,13 +232,10 @@ public class GuiUtilities {
   }
 
   public static void revalidate(final Container component) {
-    invokeOnEventDispatchThread(new Runnable() {
-      @Override
-      public void run() {
-        component.invalidate();
-        component.validate();
-        component.repaint();
-      }
+    invokeOnEventDispatchThread(() -> {
+      component.invalidate();
+      component.validate();
+      component.repaint();
     });
   }
 

@@ -6,12 +6,11 @@ import de.idos.updates.Updater;
 import de.idos.updates.Version;
 import de.idos.updates.configuration.ConfiguredUpdateSystem;
 import de.idos.updates.store.ProgressReportAdapter;
-import net.sf.anathema.framework.view.SwingApplicationFrame;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.userdialog.DefaultDialogConfiguration;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
-import net.sf.anathema.framework.environment.Resources;
 import org.apache.commons.io.FilenameUtils;
 
 import java.awt.Component;
@@ -36,7 +35,7 @@ public class UpdateAction implements Command {
     UpdateDialogPage page = new UpdateDialogPage(resources, currentVersion);
     prepareForInstallation(page, updater);
     DefaultDialogConfiguration dialogConfiguration = DefaultDialogConfiguration.createWithOkOnly(page);
-    UserDialog dialog = new UserDialog(SwingApplicationFrame.getParentComponent(), dialogConfiguration);
+    UserDialog dialog = new UserDialog(null, dialogConfiguration);
     updateSystem.reportAllProgressTo(new VersionDiscoveryReport(page, installedVersion));
     updateSystem.reportAllProgressTo(new InstallationProgressReport(page));
     updateSystem.reportAllProgressTo(new DialogUpdater(dialog));

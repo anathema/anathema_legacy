@@ -13,9 +13,4 @@ public abstract class AbstractObjectUi<T> implements ObjectUi<T> {
   public String getLabel(T value) {
     return null;
   }
-
-  @Override
-  public String getToolTipText(T value) {
-    return getLabel(value);
-  }
 }

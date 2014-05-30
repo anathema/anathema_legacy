@@ -37,8 +37,4 @@ public class SwingColors {
   public static Color getTextAreaSelectionForegroundColor() {
     return UIManager.getColor("TextArea.selectionForeground");
   }
-
-  public static Color getTextAreaInactiveForegroundColor() {
-    return UIManager.getColor("TextArea.inactiveForeground");
-  }
 }
