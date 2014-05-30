@@ -3,7 +3,6 @@ package net.sf.anathema.hero.equipment.display.view.personalization;
 import javafx.scene.Node;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.hero.equipment.display.presenter.EquipmentPersonalizationProperties;
-import net.sf.anathema.hero.equipment.display.presenter.EquipmentPersonalizationView;
 import net.sf.anathema.hero.equipment.display.presenter.ProxyClosure;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.util.Closure;
@@ -13,12 +12,12 @@ import org.tbee.javafx.scene.layout.MigPane;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 
-public class FxDialogPersonalizationView implements EquipmentPersonalizationView {
+public class FxDialogPersonalizationView {
   private final MigPane content = new MigPane(fillWithoutInsets().wrapAfter(2));
   private final ITextView title;
   private final ITextView description;
-  private ProxyClosure<String> onTitleChange = new ProxyClosure<>();
-  private ProxyClosure<String> onDescriptionChange = new ProxyClosure<>();
+  private final ProxyClosure<String> onTitleChange = new ProxyClosure<>();
+  private final ProxyClosure<String> onDescriptionChange = new ProxyClosure<>();
 
   public FxDialogPersonalizationView(EquipmentPersonalizationProperties properties) {
     this.title = addField(properties.getTitleMessage(), onTitleChange::execute);
@@ -51,8 +50,7 @@ public class FxDialogPersonalizationView implements EquipmentPersonalizationView
     return textView;
   }
 
-  @Override
-  public ITextView addEntry(String label) {
+  private ITextView addEntry(String label) {
     FxTextView textView = FxTextView.SingleLine(label);
     content.add(textView.getNode(), new CC().growX());
     return textView;
