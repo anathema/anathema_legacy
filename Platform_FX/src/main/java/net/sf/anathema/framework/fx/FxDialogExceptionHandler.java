@@ -3,8 +3,9 @@ package net.sf.anathema.framework.fx;
 import javafx.stage.Window;
 import net.sf.anathema.framework.environment.ExceptionHandler;
 import net.sf.anathema.framework.environment.Resources;
-import net.sf.anathema.platform.fx.FxThreading;
 import org.controlsfx.dialog.Dialogs;
+
+import static org.controlsfx.dialog.DialogStyle.NATIVE;
 
 public class FxDialogExceptionHandler implements ExceptionHandler {
 
@@ -38,28 +39,18 @@ public class FxDialogExceptionHandler implements ExceptionHandler {
 
   @SuppressWarnings("UnusedParameters")
   protected void indicateError(final Throwable throwable, final String message) {
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        String title = getString("CentralExceptionHandling.ErrorOccured.Title");
-        createDialog(title, message).showException(throwable);
-        System.exit(0);
-      }
-    });
+    String title = getString("CentralExceptionHandling.ErrorOccured.Title");
+    createDialog(title, message).showException(throwable);
+    System.exit(0);
   }
 
   private Dialogs createDialog(String title, String message) {
-    return Dialogs.create().owner(stage).nativeTitleBar().masthead(message).title(title);
+    return Dialogs.create().owner(stage).style(NATIVE).masthead(message).title(title);
   }
 
   protected void indicateException(final Exception exception, final String message) {
-    FxThreading.runInFxAsSoonAsPossible(new Runnable() {
-      @Override
-      public void run() {
-        String title = getString("CentralExceptionHandling.ExceptionOccured.Title");
-        createDialog(title, message).showException(exception);
-      }
-    });
+    String title = getString("CentralExceptionHandling.ExceptionOccured.Title");
+    createDialog(title, message).showException(exception);
   }
 
   private String getString(String resourceKey) {

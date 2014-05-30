@@ -9,6 +9,8 @@ import net.sf.anathema.initialization.ItemTypeCollection;
 import net.sf.anathema.interaction.Command;
 import org.controlsfx.dialog.Dialog;
 
+import static org.controlsfx.dialog.DialogStyle.NATIVE;
+
 public class RepositoryViewAction implements Command {
   private final IApplicationModel model;
   private final Environment environment;
@@ -22,7 +24,7 @@ public class RepositoryViewAction implements Command {
 
   @Override
   public void execute() {
-    Dialog dialog = new Dialog(stage, getTitle(), false, true);
+    Dialog dialog = new Dialog(stage, getTitle(), false, NATIVE);
     dialog.setMasthead(createCurrentMessage());
     dialog.getActions().setAll(Dialog.Actions.OK);
     dialog.setContent(createContent());

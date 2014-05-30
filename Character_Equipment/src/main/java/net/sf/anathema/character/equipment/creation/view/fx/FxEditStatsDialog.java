@@ -10,17 +10,19 @@ import net.sf.anathema.lib.message.IBasicMessage;
 import org.controlsfx.control.action.AbstractAction;
 import org.controlsfx.dialog.Dialog;
 
+import static org.controlsfx.dialog.DialogStyle.NATIVE;
+
 public class FxEditStatsDialog implements EquipmentStatsDialog {
   private final AbstractAction okayAction = new AbstractAction(Dialog.Actions.OK.textProperty().get()){
     @Override
-    public void execute(ActionEvent ae) {
+    public void handle(ActionEvent actionEvent) {
       dialog.hide();
       handler.handleOperationResult(StaticOperationResult.Confirmed());
     }
   };
   private final AbstractAction cancelAction = new AbstractAction(Dialog.Actions.CANCEL.textProperty().get()){
     @Override
-    public void execute(ActionEvent ae) {
+    public void handle(ActionEvent actionEvent) {
       dialog.hide();
       handler.handleOperationResult(StaticOperationResult.Canceled());
     }
@@ -57,7 +59,7 @@ public class FxEditStatsDialog implements EquipmentStatsDialog {
   @Override
   public void show(OperationResultHandler handler) {
     this.handler = handler;
-    this.dialog = new Dialog(window, title, false, true);
+    this.dialog = new Dialog(window, title, false, NATIVE);
     dialog.setMasthead(messageText);
     dialog.setContent(view.getNode());
     dialog.getActions().setAll(okayAction, cancelAction);

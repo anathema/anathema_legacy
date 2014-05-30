@@ -11,12 +11,12 @@ public class ConfigurableControlsFxAction extends AbstractAction {
     super(text);
   }
 
-  @Override
-  public void execute(ActionEvent ae) {
-    command.execute();
-  }
-
   public void setCommand(Command command) {
     this.command = command;
+  }
+
+  @Override
+  public void handle(ActionEvent actionEvent) {
+    command.execute();
   }
 }

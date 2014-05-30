@@ -3,6 +3,6 @@ dependencies {
     compile 'org.jfxtras:jfxtras-controls:8.0-r1'
     compile 'org.jfxtras:jfxtras-window:8.0-r1'
     compile 'org.jfxtras:jfxtras-labs:8.0-r1'
-    compile 'org.controlsfx:controlsfx:8.0.5'
+    compile 'org.controlsfx:controlsfx:8.0.6'
     compile project(':Platform')
 }

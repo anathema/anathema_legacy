@@ -22,6 +22,8 @@ import java.io.InputStream;
 import java.net.URL;
 import java.text.MessageFormat;
 
+import static org.controlsfx.dialog.DialogStyle.NATIVE;
+
 public class AnathemaAboutAction implements Command {
 
   private final Resources resources;
@@ -48,7 +50,7 @@ public class AnathemaAboutAction implements Command {
 
   private Dialog initializeDialogStage() {
     String title = resources.getString("Help.AboutDialog.Title");
-    Dialog dialog = new Dialog(stage, title, false, true);
+    Dialog dialog = new Dialog(stage, title, false, NATIVE);
     dialog.getActions().addAll(Dialog.Actions.CLOSE);
     initCloseOnEscape(dialog);
     return dialog;
@@ -94,11 +96,6 @@ public class AnathemaAboutAction implements Command {
   }
 
   private void initCloseOnEscape(final Dialog dialog) {
-    dialog.getWindow().getScene().getAccelerators().put(new KeyCodeCombination(KeyCode.ESCAPE), new Runnable() {
-      @Override
-      public void run() {
-        dialog.hide();
-      }
-    });
+    dialog.getWindow().getScene().getAccelerators().put(new KeyCodeCombination(KeyCode.ESCAPE), dialog::hide);
   }
 }

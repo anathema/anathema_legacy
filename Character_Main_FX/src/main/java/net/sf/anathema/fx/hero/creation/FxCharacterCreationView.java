@@ -4,9 +4,9 @@ import javafx.scene.control.ScrollPane;
 import javafx.stage.Window;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
-import net.sf.anathema.hero.template.HeroTemplate;
 import net.sf.anathema.hero.creation.CharacterCreationView;
 import net.sf.anathema.hero.creation.ToggleButtonPanel;
+import net.sf.anathema.hero.template.HeroTemplate;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.selection.VetoableObjectSelectionView;
 import net.sf.anathema.platform.fx.ListSelectionView;
@@ -15,6 +15,7 @@ import org.tbee.javafx.scene.layout.MigPane;
 
 import static javafx.scene.control.ScrollPane.ScrollBarPolicy.AS_NEEDED;
 import static javafx.scene.control.ScrollPane.ScrollBarPolicy.NEVER;
+import static org.controlsfx.dialog.DialogStyle.NATIVE;
 
 public class FxCharacterCreationView implements CharacterCreationView {
 
@@ -23,7 +24,7 @@ public class FxCharacterCreationView implements CharacterCreationView {
   private final Dialog dialog;
 
   public FxCharacterCreationView(Window parent) {
-    this.dialog = new Dialog(parent, NO_TITLE, false, true);
+    this.dialog = new Dialog(parent, NO_TITLE, false, NATIVE);
   }
 
   @Override
