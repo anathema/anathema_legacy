@@ -71,16 +71,6 @@ public class ComboBoxSelectionView<V> implements FxObjectSelectionView<V> {
     comboBox.setItems(new ObservableListWrapper<>(new ArrayList<>(objects)));
   }
 
-  private void waitForContent() {
-    try {
-      while (pane == null) {
-        Thread.sleep(50);
-      }
-    } catch (InterruptedException e) {
-      throw new RuntimeException(e);
-    }
-  }
-
   @Override
   public V getSelectedObject() {
     return comboBox.getSelectionModel().getSelectedItem();
@@ -88,14 +78,12 @@ public class ComboBoxSelectionView<V> implements FxObjectSelectionView<V> {
 
   @Override
   public void setEnabled(boolean enabled) {
-    waitForContent();
     label.setDisable(!enabled);
     comboBox.setDisable(!enabled);
   }
 
   @Override
   public Node getNode() {
-    waitForContent();
     return pane;
   }
 
@@ -104,12 +92,10 @@ public class ComboBoxSelectionView<V> implements FxObjectSelectionView<V> {
   }
 
   public void setStyleClass(String styleClass) {
-    waitForContent();
     comboBox.getStyleClass().add(styleClass);
   }
 
   public void makeEditable() {
-    waitForContent();
     comboBox.setEditable(true);
   }
 }
