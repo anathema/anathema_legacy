@@ -3,5 +3,9 @@
 }
 
 .table-row-cell:empty .table-cell {
-    -fx-border-width: 0px;
+    -fx-border-width: 0;
 }
+
+.right-aligned {
+    -fx-alignment: center-right;
+} 
