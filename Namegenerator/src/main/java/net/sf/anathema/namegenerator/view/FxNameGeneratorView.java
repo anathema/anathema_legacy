@@ -2,7 +2,6 @@ package net.sf.anathema.namegenerator.view;
 
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
-import javafx.application.Platform;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
@@ -16,7 +15,6 @@ import net.miginfocom.layout.LC;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.namegenerator.presenter.view.NameGeneratorView;
-import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.platform.fx.PerspectivePane;
 import org.jmock.example.announcer.Announcer;
 import org.tbee.javafx.scene.layout.MigPane;
@@ -31,22 +29,17 @@ public class FxNameGeneratorView implements NameGeneratorView {
   private final Announcer<ChangeListener> generatorListeners = Announcer.to(ChangeListener.class);
 
   public FxNameGeneratorView() {
-    FxThreading.runOnCorrectThread(new Runnable() {
+    pane.setNavigationComponent(navigation);
+    resultView.setPrefColumnCount(25);
+    resultView.setPrefRowCount(5);
+    pane.setContentComponent(resultView);
+    resultView.setEditable(false);
+    nameGeneratorTypeGroup.selectedToggleProperty().addListener(new javafx.beans.value.ChangeListener<Toggle>() {
       @Override
-      public void run() {
-        pane.setNavigationComponent(navigation);
-        resultView.setPrefColumnCount(25);
-        resultView.setPrefRowCount(5);
-        pane.setContentComponent(resultView);
-        resultView.setEditable(false);
-        nameGeneratorTypeGroup.selectedToggleProperty().addListener(new javafx.beans.value.ChangeListener<Toggle>() {
-          @Override
-          public void changed(ObservableValue<? extends Toggle> observableValue, Toggle toggle, Toggle toggle2) {
-            if (toggle2 != null) {
-              generatorListeners.announce().changeOccurred();
-            }
-          }
-        });
+      public void changed(ObservableValue<? extends Toggle> observableValue, Toggle toggle, Toggle toggle2) {
+        if (toggle2 != null) {
+          generatorListeners.announce().changeOccurred();
+        }
       }
     });
   }
@@ -58,25 +51,15 @@ public class FxNameGeneratorView implements NameGeneratorView {
 
   @Override
   public void addNameGeneratorType(final String label, final Object generatorType) {
-    Platform.runLater(new Runnable() {
-      @Override
-      public void run() {
-        final RadioButton generatorButton = new RadioButton(label);
-        generatorsByButton.put(generatorButton, generatorType);
-        generatorButton.setToggleGroup(nameGeneratorTypeGroup);
-        navigation.add(generatorButton);
-      }
-    });
+    final RadioButton generatorButton = new RadioButton(label);
+    generatorsByButton.put(generatorButton, generatorType);
+    generatorButton.setToggleGroup(nameGeneratorTypeGroup);
+    navigation.add(generatorButton);
   }
 
   @Override
   public void setResult(final String result) {
-    Platform.runLater(new Runnable() {
-      @Override
-      public void run() {
-        resultView.setText(result);
-      }
-    });
+    resultView.setText(result);
   }
 
   @Override
@@ -92,30 +75,20 @@ public class FxNameGeneratorView implements NameGeneratorView {
 
   @Override
   public void setSelectedGeneratorType(final Object generatorType) {
-    Platform.runLater(new Runnable() {
-      @Override
-      public void run() {
-        RadioButton radioButton = generatorsByButton.inverse().get(generatorType);
-        radioButton.setSelected(true);
-      }
-    });
+    RadioButton radioButton = generatorsByButton.inverse().get(generatorType);
+    radioButton.setSelected(true);
   }
 
   @Override
   public void addGenerationAction(final String label, final Command command) {
-    Platform.runLater(new Runnable() {
+    Button button = new Button();
+    button.setText(label);
+    button.setOnAction(new EventHandler<javafx.event.ActionEvent>() {
       @Override
-      public void run() {
-        Button button = new Button();
-        button.setText(label);
-        button.setOnAction(new EventHandler<javafx.event.ActionEvent>() {
-          @Override
-          public void handle(javafx.event.ActionEvent actionEvent) {
-            command.execute();
-          }
-        });
-        navigation.add(button, new CC().grow().pushX());
+      public void handle(javafx.event.ActionEvent actionEvent) {
+        command.execute();
       }
     });
+    navigation.add(button, new CC().grow().pushX());
   }
 }

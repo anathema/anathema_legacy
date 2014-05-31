@@ -5,7 +5,6 @@ import net.miginfocom.layout.CC;
 import net.sf.anathema.character.framework.display.labelledvalue.IValueView;
 import net.sf.anathema.framework.ui.FontStyle;
 import net.sf.anathema.framework.ui.RGBColor;
-import net.sf.anathema.platform.fx.FxThreading;
 import org.tbee.javafx.scene.layout.MigPane;
 
 public class FxStringOverview implements IValueView<String> {
@@ -24,12 +23,7 @@ public class FxStringOverview implements IValueView<String> {
 
   @Override
   public void setValue(final String value) {
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        valueLabel.setText(value);
-      }
-    });
+    valueLabel.setText(value);
   }
 
   @Override

@@ -1,7 +1,6 @@
 package net.sf.anathema.hero.charms.display.magic;
 
 import com.sun.javafx.collections.ObservableListWrapper;
-import javafx.beans.value.ObservableValue;
 import javafx.scene.Node;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
@@ -9,7 +8,6 @@ import net.miginfocom.layout.CC;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.platform.fx.ConfigurableListCellFactory;
-import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.platform.tool.FxButtonTool;
 import org.tbee.javafx.scene.layout.MigPane;
 
@@ -37,12 +35,7 @@ public class FxMagicLearnView implements MagicLearnView {
 
   @Override
   public void setAvailableMagic(final List magics) {
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        availableMagicList.setItems(new ObservableListWrapper(magics));
-      }
-    });
+    availableMagicList.setItems(new ObservableListWrapper(magics));
   }
 
   @Override
@@ -62,12 +55,7 @@ public class FxMagicLearnView implements MagicLearnView {
 
   @Override
   public void addLearnedListListener(final ChangeListener changeListener) {
-    learnedMagicList.itemsProperty().addListener(new javafx.beans.value.ChangeListener() {
-      @Override
-      public void changed(ObservableValue observableValue, Object o, Object o2) {
-        changeListener.changeOccurred();
-      }
-    });
+    learnedMagicList.itemsProperty().addListener((observableValue, o, o2) -> changeListener.changeOccurred());
   }
 
   @Override
@@ -101,22 +89,12 @@ public class FxMagicLearnView implements MagicLearnView {
   }
 
   private void addChangeListener(final ChangeListener changeListener, ListView list) {
-    list.getSelectionModel().selectedItemProperty().addListener(new javafx.beans.value.ChangeListener() {
-      @Override
-      public void changed(ObservableValue observableValue, Object o, Object o2) {
-        changeListener.changeOccurred();
-      }
-    });
+    list.getSelectionModel().selectedItemProperty().addListener((observableValue, o, o2) -> changeListener.changeOccurred());
   }
 
   private Tool addToolTo(final MigPane target) {
     final FxButtonTool tool = FxButtonTool.ForAnyPurpose();
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        target.add(tool.getNode());
-      }
-    });
+    target.add(tool.getNode());
     return tool;
   }
 

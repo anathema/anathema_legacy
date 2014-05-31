@@ -11,7 +11,6 @@ import net.sf.anathema.hero.combos.display.presenter.ComboViewProperties;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.platform.fx.FxTextView;
-import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.platform.fx.NodeHolder;
 import org.tbee.javafx.scene.layout.MigPane;
 
@@ -28,35 +27,20 @@ public class FxComboConfigurationView implements ComboConfigurationView, NodeHol
 
   @Override
   public void addComboEditor(ComboViewProperties properties) {
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        editPane.add(namePanel, new CC().alignY("top"));
-      }
-    });
+    editPane.add(namePanel, new CC().alignY("top"));
   }
 
   @Override
   public MagicLearnView addMagicLearnView(MagicLearnProperties viewProperties) {
     final FxMagicLearnView magicLearnView = new FxMagicLearnView(viewProperties);
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        editPane.add(magicLearnView.getNode());
-      }
-    });
+    editPane.add(magicLearnView.getNode());
     return magicLearnView;
   }
 
   @Override
   public ComboContainer addComboContainer() {
     final FxComboContainer container = new FxComboContainer();
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        content.add(container.getNode(), new CC().spanX().grow().push());
-      }
-    });
+    content.add(container.getNode(), new CC().spanX().grow().push());
     return container;
   }
 
@@ -78,12 +62,7 @@ public class FxComboConfigurationView implements ComboConfigurationView, NodeHol
   }
 
   private ITextView addTextView(final FxTextView textView) {
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        namePanel.add(textView.getNode(), new CC().growX());
-      }
-    });
+    namePanel.add(textView.getNode(), new CC().growX());
     return textView;
   }
 }

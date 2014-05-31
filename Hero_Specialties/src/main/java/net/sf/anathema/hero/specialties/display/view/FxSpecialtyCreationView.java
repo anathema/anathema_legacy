@@ -5,13 +5,12 @@ import javafx.beans.value.ObservableValue;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import net.miginfocom.layout.CC;
-import net.sf.anathema.hero.traits.model.TraitType;
 import net.sf.anathema.hero.specialties.display.presenter.SpecialtyCreationView;
+import net.sf.anathema.hero.traits.model.TraitType;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
-import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.platform.fx.selection.ComboBoxSelectionView;
 import net.sf.anathema.platform.tool.FxButtonTool;
 import org.tbee.javafx.scene.layout.MigPane;
@@ -80,12 +79,7 @@ public class FxSpecialtyCreationView implements SpecialtyCreationView {
 
   @Override
   public void enterName(final String currentName) {
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        field.setText(currentName);
-      }
-    });
+    field.setText(currentName);
   }
 
   public Node getNode() {

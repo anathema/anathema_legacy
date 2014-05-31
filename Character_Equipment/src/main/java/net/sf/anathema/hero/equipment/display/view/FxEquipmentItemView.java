@@ -7,7 +7,6 @@ import net.sf.anathema.hero.equipment.display.presenter.EquipmentObjectView;
 import net.sf.anathema.hero.equipment.display.presenter.StatsView;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
-import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.platform.tool.FxButtonTool;
 import org.tbee.javafx.scene.layout.MigPane;
 
@@ -44,12 +43,7 @@ public class FxEquipmentItemView implements EquipmentObjectView {
   @Override
   public StatsView addStats(String description) {
     final FxStatsView statsView = new FxStatsView(description);
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        elementPane.add(statsView.getNode());
-      }
-    });
+    elementPane.add(statsView.getNode());
     return statsView;
   }
 

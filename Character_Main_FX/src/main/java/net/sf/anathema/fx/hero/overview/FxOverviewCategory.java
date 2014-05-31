@@ -2,10 +2,9 @@ package net.sf.anathema.fx.hero.overview;
 
 import javafx.scene.Node;
 import net.miginfocom.layout.CC;
-import net.sf.anathema.character.framework.library.overview.OverviewCategory;
 import net.sf.anathema.character.framework.display.labelledvalue.IValueView;
 import net.sf.anathema.character.framework.display.labelledvalue.LabelledAllotmentView;
-import net.sf.anathema.platform.fx.FxThreading;
+import net.sf.anathema.character.framework.library.overview.OverviewCategory;
 import net.sf.anathema.platform.fx.StyledTitledPane;
 import org.tbee.javafx.scene.layout.MigPane;
 
@@ -16,13 +15,8 @@ public class FxOverviewCategory implements OverviewCategory {
   private Node overViewCategory;
 
   public FxOverviewCategory(final MigPane parent, final String label) {
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        overViewCategory = StyledTitledPane.Create(label, panel);
-        parent.add(overViewCategory, new CC().grow());
-      }
-    });
+    overViewCategory = StyledTitledPane.Create(label, panel);
+    parent.add(overViewCategory, new CC().grow());
   }
 
   @Override

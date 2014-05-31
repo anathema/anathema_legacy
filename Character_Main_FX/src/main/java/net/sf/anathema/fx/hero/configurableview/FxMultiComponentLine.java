@@ -7,7 +7,6 @@ import net.sf.anathema.hero.display.configurableview.MultiComponentLine;
 import net.sf.anathema.lib.gui.widgets.IIntegerView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.platform.fx.FxTextView;
-import net.sf.anathema.platform.fx.FxThreading;
 import org.tbee.javafx.scene.layout.MigPane;
 
 public class FxMultiComponentLine implements MultiComponentLine {
@@ -29,14 +28,9 @@ public class FxMultiComponentLine implements MultiComponentLine {
   }
 
   private void addLabeledComponent(final String text, final Node component) {
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        Label label = new Label(text);
-        fieldPanel.add(label);
-        fieldPanel.add(component);
-      }
-    });
+    Label label = new Label(text);
+    fieldPanel.add(label);
+    fieldPanel.add(component);
   }
 
   public Node getNode() {

@@ -23,7 +23,7 @@ public class FxSpecialtiesView implements SpecialtiesConfigurationView, NodeHold
 
   public FxSpecialtiesView() {
     pane.add(creationPane);
-    pane.add(existingSpecialtiesPane.getNode(),  new CC().grow().pushY());
+    pane.add(existingSpecialtiesPane.getNode(), new CC().grow().pushY());
   }
 
   @Override
@@ -37,12 +37,7 @@ public class FxSpecialtiesView implements SpecialtiesConfigurationView, NodeHold
   @Override
   public SpecialtyCreationView addSpecialtyCreationView(AgnosticUIConfiguration<TraitType> configuration, RelativePath addIcon) {
     final FxSpecialtyCreationView view = new FxSpecialtyCreationView(configuration, addIcon);
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        creationPane.add(view.getNode());
-      }
-    });
+    creationPane.add(view.getNode());
     return view;
   }
 

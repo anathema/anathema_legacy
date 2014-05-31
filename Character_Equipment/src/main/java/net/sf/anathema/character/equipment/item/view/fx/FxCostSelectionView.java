@@ -9,7 +9,6 @@ import net.sf.anathema.equipment.core.ItemCost;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.selection.ISelectionIntValueChangedListener;
 import net.sf.anathema.platform.fx.FxObjectSelectionView;
-import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.platform.fx.dot.DotSelectionSpinner;
 import net.sf.anathema.platform.fx.selection.SelectionViewFactory;
 import org.jmock.example.announcer.Announcer;
@@ -19,43 +18,31 @@ import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
 public class FxCostSelectionView implements CostSelectionView {
 
-  private final SelectionViewFactory selectionViewFactory;
   private FxObjectSelectionView<String> selection;
   private final DotSelectionSpinner spinner = new DotSelectionSpinner(0, 5);
   private final MigPane pane = new MigPane(withoutInsets());
   private final Announcer<ISelectionIntValueChangedListener> announcer = new Announcer<>(
           ISelectionIntValueChangedListener.class);
   private final CostTypeChangeListener typeChangeListener = new CostTypeChangeListener();
-  private final CostValueChangeListener valueChangeListener = new CostValueChangeListener();
 
   public FxCostSelectionView(final String text, SelectionViewFactory viewFactory) {
-    selectionViewFactory = viewFactory;
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        selection = selectionViewFactory.create(text, new SimpleUiConfiguration());
-        pane.add(selection.getNode());
-        pane.add(spinner.getNode(), new CC().alignY("center"));
-        selection.addObjectSelectionChangedListener(typeChangeListener);
-        spinner.addListener(valueChangeListener);
-      }
-    });
+    selection = viewFactory.create(text, new SimpleUiConfiguration());
+    pane.add(selection.getNode());
+    pane.add(spinner.getNode(), new CC().alignY("center"));
+    selection.addObjectSelectionChangedListener(typeChangeListener);
+    CostValueChangeListener valueChangeListener = new CostValueChangeListener();
+    spinner.addListener(valueChangeListener);
   }
 
   @Override
   public void setValue(final ItemCost cost) {
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        if (cost == null) {
-          selectTypeSilently(null);
-          spinner.setValueSilently(0);
-        } else {
-          selectTypeSilently(cost.getType());
-          spinner.setValueSilently(cost.getValue());
-        }
-      }
-    });
+    if (cost == null) {
+      selectTypeSilently(null);
+      spinner.setValueSilently(0);
+    } else {
+      selectTypeSilently(cost.getType());
+      spinner.setValueSilently(cost.getValue());
+    }
   }
 
   private void selectTypeSilently(String type) {
@@ -71,12 +58,7 @@ public class FxCostSelectionView implements CostSelectionView {
 
   @Override
   public void setSelectableBackgrounds(final String[] backgrounds) {
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        selection.setObjects(backgrounds);
-      }
-    });
+    selection.setObjects(backgrounds);
   }
 
   public Node getNode() {

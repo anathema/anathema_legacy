@@ -1,6 +1,5 @@
 package net.sf.anathema.platform.tree.fx;
 
-import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.Node;
@@ -14,7 +13,6 @@ import javafx.scene.transform.Transform;
 import net.sf.anathema.framework.ui.Coordinate;
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.lib.gui.StatefulTooltip;
-import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.platform.fx.tooltip.StatefulFxTooltip;
 import net.sf.anathema.platform.tree.display.DisplayPolygonPanel;
 import net.sf.anathema.platform.tree.display.transform.AgnosticTransform;
@@ -56,7 +54,7 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
   private final Rectangle background = new Rectangle();
   private final Group canvas = new Group();
   private final Rectangle glasspane = new Rectangle();
-  private Tooltip tooltip;
+  private Tooltip tooltip = new Tooltip();
   private AgnosticTransform transform = new AgnosticTransform();
 
   public FxPolygonPanel() {
@@ -69,12 +67,6 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
     canvas.setManaged(false);
     content.getChildren().addAll(background, canvas, glasspane);
     setBackground(RGBColor.White);
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        tooltip = new Tooltip();
-      }
-    });
   }
 
   @Override
@@ -96,15 +88,12 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
   public SpecialControlTrigger addSpecialControl() {
     final FxSpecialTrigger specialControl = new FxSpecialTrigger();
     specialControls.add(specialControl);
-    glasspane.addEventHandler(MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-      @Override
-      public void handle(MouseEvent event) {
-        MouseButton button = determineMouseButton(event);
-        Coordinate glasspaneCoordinate = determineCoordinate(event);
-        Coordinate coordinate = determineCoordinateInCanvas(glasspaneCoordinate);
-        if (specialControl.contains(coordinate) && button == MouseButton.Primary) {
-          specialControl.toggle();
-        }
+    glasspane.addEventHandler(MOUSE_CLICKED, event -> {
+      MouseButton button = determineMouseButton(event);
+      Coordinate glasspaneCoordinate = determineCoordinate(event);
+      Coordinate coordinate = determineCoordinateInCanvas(glasspaneCoordinate);
+      if (specialControl.contains(coordinate) && button == MouseButton.Primary) {
+        specialControl.toggle();
       }
     });
     return specialControl;
@@ -144,68 +133,37 @@ public class FxPolygonPanel implements DisplayPolygonPanel {
 
   @Override
   public void addMousePressListener(final MousePressClosure listener) {
-    glasspane.addEventHandler(MOUSE_PRESSED, new EventHandler<MouseEvent>() {
-      @Override
-      public void handle(MouseEvent event) {
-        listener.mousePressed(determineCoordinate(event));
-      }
-    });
+    glasspane.addEventHandler(MOUSE_PRESSED, event -> listener.mousePressed(determineCoordinate(event)));
   }
 
   @Override
   public void addMouseClickListener(final MouseClickClosure listener) {
-    glasspane.addEventHandler(MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-      @Override
-      public void handle(MouseEvent event) {
-        MouseButton button = determineMouseButton(event);
-        MetaKey key = determineMetaKey(event);
-        Coordinate coordinate = determineCoordinate(event);
-        listener.mouseClicked(button, key, coordinate, event.getClickCount());
-      }
+    glasspane.addEventHandler(MOUSE_CLICKED, event -> {
+      MouseButton button = determineMouseButton(event);
+      MetaKey key = determineMetaKey(event);
+      Coordinate coordinate = determineCoordinate(event);
+      listener.mouseClicked(button, key, coordinate, event.getClickCount());
     });
   }
 
   @Override
   public void addMouseWheelListener(final MouseWheelClosure listener) {
-    glasspane.addEventHandler(ScrollEvent.SCROLL, new EventHandler<ScrollEvent>() {
-      @Override
-      public void handle(ScrollEvent scrollEvent) {
-        int wheelClicks = (int) scrollEvent.getDeltaY() / 40;
-        listener.mouseWheelMoved(wheelClicks, determineCoordinate(scrollEvent));
-      }
+    glasspane.addEventHandler(ScrollEvent.SCROLL, scrollEvent -> {
+      int wheelClicks = (int) scrollEvent.getDeltaY() / 40;
+      listener.mouseWheelMoved(wheelClicks, determineCoordinate(scrollEvent));
     });
   }
 
   @Override
   public void addMouseBorderListener(final MouseBorderClosure listener) {
-    glasspane.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
-      @Override
-      public void handle(MouseEvent mouseEvent) {
-        listener.mouseEntered();
-      }
-    });
-    glasspane.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
-      @Override
-      public void handle(MouseEvent mouseEvent) {
-        listener.mouseExited();
-      }
-    });
+    glasspane.addEventHandler(MouseEvent.MOUSE_ENTERED, mouseEvent -> listener.mouseEntered());
+    glasspane.addEventHandler(MouseEvent.MOUSE_EXITED, mouseEvent -> listener.mouseExited());
   }
 
   @Override
   public void addMouseMotionListener(final MouseMotionClosure listener) {
-    glasspane.addEventHandler(MouseEvent.MOUSE_MOVED, new EventHandler<MouseEvent>() {
-      @Override
-      public void handle(MouseEvent mouseEvent) {
-        listener.mouseMoved(determineCoordinate(mouseEvent));
-      }
-    });
-    glasspane.addEventHandler(MOUSE_DRAGGED, new EventHandler<MouseEvent>() {
-      @Override
-      public void handle(MouseEvent mouseEvent) {
-        listener.mouseDragged(determineMouseButton(mouseEvent), determineCoordinate(mouseEvent));
-      }
-    });
+    glasspane.addEventHandler(MouseEvent.MOUSE_MOVED, mouseEvent -> listener.mouseMoved(determineCoordinate(mouseEvent)));
+    glasspane.addEventHandler(MOUSE_DRAGGED, mouseEvent -> listener.mouseDragged(determineMouseButton(mouseEvent), determineCoordinate(mouseEvent)));
   }
 
   @Override
