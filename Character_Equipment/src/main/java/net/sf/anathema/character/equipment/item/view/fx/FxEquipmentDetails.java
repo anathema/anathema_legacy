@@ -1,6 +1,5 @@
 package net.sf.anathema.character.equipment.item.view.fx;
 
-import javafx.application.Platform;
 import javafx.scene.Node;
 import net.miginfocom.layout.AC;
 import net.miginfocom.layout.CC;
@@ -34,26 +33,16 @@ public class FxEquipmentDetails implements EquipmentDetails {
   public ToolListView<IEquipmentStats> initStatsListView(final String title,
                                                          AgnosticUIConfiguration<IEquipmentStats> configuration) {
     listView.setUiConfiguration(configuration);
-    Platform.runLater(new Runnable() {
-      @Override
-      public void run() {
         Node node = listView.getNode();
         Node titledPane = StyledTitledPane.Create(title, node);
         outerPane.add(titledPane, new CC().push().grow());
-      }
-    });
     return listView;
   }
 
   @Override
   public EquipmentDescriptionPanel addDescriptionPanel(final String title) {
-    Platform.runLater(new Runnable() {
-      @Override
-      public void run() {
         Node titledPane = StyledTitledPane.Create(title, descriptionPanel.getNode());
         outerPane.add(titledPane, new CC().grow().push());
-      }
-    });
     return descriptionPanel;
   }
 

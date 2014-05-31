@@ -1,6 +1,5 @@
 package net.sf.anathema.character.equipment.item.view.fx;
 
-import javafx.application.Platform;
 import javafx.scene.Node;
 import net.miginfocom.layout.AC;
 import net.miginfocom.layout.CC;
@@ -24,73 +23,43 @@ public class FxEquipmentDescriptionPanel implements EquipmentDescriptionPanel {
 
   public FxEquipmentDescriptionPanel(SelectionViewFactory selectionFactory) {
     this.selectionViewFactory = selectionFactory;
-    Platform.runLater(new Runnable() {
-      @Override
-      public void run() {
-        pane = new MigPane(new LC().wrapAfter(1).fill().insets("4"), new AC(), new AC().index(1).shrinkPrio(200));
-      }
-    });
+    pane = new MigPane(new LC().wrapAfter(1).fill().insets("4"), new AC(), new AC().index(1).shrinkPrio(200));
   }
 
   @Override
   public ITextView addNameView(String label) {
     final FxTextView view = FxTextView.SingleLine(label);
-    Platform.runLater(new Runnable() {
-      @Override
-      public void run() {
-        pane.add(view.getNode(), new CC().growX().pushY().span());
-      }
-    });
+    pane.add(view.getNode(), new CC().growX().pushY().span());
     return view;
   }
 
   @Override
   public ITextView addDescriptionView(String label) {
     final FxTextView view = FxTextView.MultiLine(label);
-    Platform.runLater(new Runnable() {
-      @Override
-      public void run() {
-        pane.add(view.getNode(), new CC().growX().pushY().span());
-      }
-    });
+    pane.add(view.getNode(), new CC().growX().pushY().span());
     return view;
   }
 
   @Override
   public ObjectSelectionView<MaterialComposition> addCompositionView(String label,
-                                                                      AgnosticUIConfiguration<MaterialComposition> ui) {
+                                                                     AgnosticUIConfiguration<MaterialComposition> ui) {
     final FxObjectSelectionView<MaterialComposition> selectionView = selectionViewFactory.create(label, ui);
-    Platform.runLater(new Runnable() {
-      @Override
-      public void run() {
-        pane.add(selectionView.getNode(), new CC().split());
-      }
-    });
+    pane.add(selectionView.getNode(), new CC().split());
     return selectionView;
   }
 
   @Override
   public ObjectSelectionView<MagicalMaterial> addMaterialView(String label,
-                                                               AgnosticUIConfiguration<MagicalMaterial> ui) {
+                                                              AgnosticUIConfiguration<MagicalMaterial> ui) {
     final FxObjectSelectionView<MagicalMaterial> selectionView = selectionViewFactory.create(label, ui);
-    Platform.runLater(new Runnable() {
-      @Override
-      public void run() {
-        pane.add(selectionView.getNode(), new CC().growX().wrap());
-      }
-    });
+    pane.add(selectionView.getNode(), new CC().growX().wrap());
     return selectionView;
   }
 
   @Override
   public CostSelectionView addCostView(String label) {
     final FxCostSelectionView costSelectionView = new FxCostSelectionView(label, selectionViewFactory);
-    Platform.runLater(new Runnable() {
-      @Override
-      public void run() {
-        pane.add(costSelectionView.getNode(), new CC().split(2).pushX());
-      }
-    });
+    pane.add(costSelectionView.getNode(), new CC().split(2).pushX());
     return costSelectionView;
   }
 

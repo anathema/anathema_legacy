@@ -1,6 +1,5 @@
 package net.sf.anathema.platform.tool;
 
-import javafx.application.Platform;
 import javafx.scene.Node;
 import javafx.scene.control.ButtonBase;
 import javafx.scene.control.Tooltip;
@@ -29,77 +28,42 @@ public class FxBaseTool implements Tool, FxComponent {
     this.button = button;
     this.overlay = overlay;
     Collections.addAll(onLoad, actionsOnLoad);
-    Platform.runLater(new Runnable() {
-      @Override
-      public void run() {
-        button.setOnAction(new Execute(command));
-      }
-    });
+    button.setOnAction(new Execute(command));
   }
 
   @Override
   public void setIcon(final RelativePath relativePath) {
-    Platform.runLater(new Runnable() {
-      @Override
-      public void run() {
-        ImageContainer image = new LoadImage(relativePath).run();
-        for (ImageClosure action : onLoad) {
-          action.run(image);
-        }
-      }
-    });
+    ImageContainer image = new LoadImage(relativePath).run();
+    for (ImageClosure action : onLoad) {
+      action.run(image);
+    }
   }
 
 
   @Override
   public void setOverlay(final RelativePath relativePath) {
-    Platform.runLater(new Runnable() {
-      @Override
-      public void run() {
-        ImageContainer image = new LoadImage(relativePath).run();
-        new SetImage(overlay).run(image);
-      }
-    });
+    ImageContainer image = new LoadImage(relativePath).run();
+    new SetImage(overlay).run(image);
   }
 
   @Override
   public void setTooltip(final String text) {
-    Platform.runLater(new Runnable() {
-      @Override
-      public void run() {
-        button.setTooltip(new Tooltip(text));
-      }
-    });
+    button.setTooltip(new Tooltip(text));
   }
 
   @Override
   public void setText(final String text) {
-    Platform.runLater(new Runnable() {
-      @Override
-      public void run() {
-        button.setText(text);
-      }
-    });
+    button.setText(text);
   }
 
   @Override
   public void enable() {
-    Platform.runLater(new Runnable() {
-      @Override
-      public void run() {
-        button.setDisable(false);
-      }
-    });
+    button.setDisable(false);
   }
 
   @Override
   public void disable() {
-    Platform.runLater(new Runnable() {
-      @Override
-      public void run() {
-        button.setDisable(true);
-      }
-    });
+    button.setDisable(true);
   }
 
   @Override

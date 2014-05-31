@@ -16,15 +16,10 @@ public class ControlsFxTool implements Tool {
 
   @Override
   public void setIcon(RelativePath relativePath) {
-    Platform.runLater(new Runnable() {
-      @Override
-      public void run() {
-        ImageContainer image = new LoadImage(relativePath).run();
-        ImageView imageView = new ImageView();
-        new SetImage(imageView).run(image);
-        action.graphicProperty().setValue(imageView);
-      }
-    });
+    ImageContainer image = new LoadImage(relativePath).run();
+    ImageView imageView = new ImageView();
+    new SetImage(imageView).run(image);
+    action.graphicProperty().setValue(imageView);
   }
 
   @Override
@@ -59,7 +54,7 @@ public class ControlsFxTool implements Tool {
 
   @Override
   public void setHotkey(Hotkey s) {
-     //nothing to do
+    //nothing to do
   }
 
   public Action getAction() {

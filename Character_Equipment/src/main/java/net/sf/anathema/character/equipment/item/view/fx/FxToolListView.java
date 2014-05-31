@@ -1,8 +1,5 @@
 package net.sf.anathema.character.equipment.item.view.fx;
 
-import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.scene.Node;
 import javafx.scene.control.ListView;
@@ -27,46 +24,26 @@ public class FxToolListView<T> implements ToolListView<T> {
   private MigPane content = new MigPane(fillWithoutInsets().wrapAfter(1));
 
   public FxToolListView() {
-    Platform.runLater(new Runnable() {
-      @Override
-      public void run() {
-        list.getStyleClass().add("tool-list");
-        buttonPanel.getStyleClass().add("tool-buttons");
-        content.add(list, new CC().push().grow().span());
-        content.add(buttonPanel);
-        list.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-      }
-    });
+    list.getStyleClass().add("tool-list");
+    buttonPanel.getStyleClass().add("tool-buttons");
+    content.add(list, new CC().push().grow().span());
+    content.add(buttonPanel);
+    list.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
   }
 
   @Override
   public void setObjects(final List<T> items) {
-    Platform.runLater(new Runnable() {
-      @Override
-      public void run() {
-        list.setItems(FXCollections.observableArrayList(items));
-      }
-    });
+    list.setItems(FXCollections.observableArrayList(items));
   }
 
   @Override
   public void addListSelectionListener(final Runnable listener) {
-    list.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<T>() {
-      @Override
-      public void changed(ObservableValue<? extends T> observableValue, T t, T t2) {
-        listener.run();
-      }
-    });
+    list.getSelectionModel().selectedItemProperty().addListener((observableValue, t, t2) -> listener.run());
   }
 
   @Override
   public void addListSelectionListener(final Closure<T> listener) {
-    list.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<T>() {
-      @Override
-      public void changed(ObservableValue<? extends T> observableValue, T t, T newSelection) {
-        listener.execute(newSelection);
-      }
-    });
+    list.getSelectionModel().selectedItemProperty().addListener((observableValue, t, newSelection) -> listener.execute(newSelection));
   }
 
   @Override
@@ -77,12 +54,7 @@ public class FxToolListView<T> implements ToolListView<T> {
   @Override
   public Tool addTool() {
     final FxButtonTool tool = FxButtonTool.ForAnyPurpose();
-    Platform.runLater(new Runnable() {
-      @Override
-      public void run() {
-        buttonPanel.getChildren().add(tool.getNode());
-      }
-    });
+    buttonPanel.getChildren().add(tool.getNode());
     return tool;
   }
 
