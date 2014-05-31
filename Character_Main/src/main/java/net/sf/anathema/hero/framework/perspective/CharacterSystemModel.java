@@ -26,6 +26,7 @@ import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.platform.JsonCharacterReferenceScanner;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.exception.PersistenceException;
+import net.sf.anathema.lib.gui.file.SingleFileChooser;
 import org.jmock.example.announcer.Announcer;
 
 import java.io.IOException;
@@ -135,8 +136,8 @@ public class CharacterSystemModel implements ItemSystemModel {
   }
 
   @Override
-  public void printCurrentItemInto(Report report, Environment environment) {
-    new ControlledPrintWithSelectedReport(environment, report, getCurrentCharacter()).execute();
+  public void printCurrentItemInto(Report report, Environment environment, SingleFileChooser fileChooser) {
+    new ControlledPrintWithSelectedReport(environment, report, getCurrentCharacter(), fileChooser).execute();
   }
 
   @Override

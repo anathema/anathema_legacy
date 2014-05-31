@@ -8,6 +8,7 @@ import net.sf.anathema.framework.Version;
 import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.framework.environment.fx.UiEnvironment;
 import net.sf.anathema.framework.environment.exception.ExtensibleExceptionHandler;
 import net.sf.anathema.framework.fx.FxDialogExceptionHandler;
 import net.sf.anathema.framework.module.AnathemaCoreMenu;
@@ -19,18 +20,20 @@ import net.sf.anathema.lib.logging.Logger;
 public class GuiInitializer extends Initializer {
 
   private final Stage stage;
+  private final UiEnvironment uiEnvironment;
   private final ExtensibleExceptionHandler exceptionHandler;
 
-  public GuiInitializer(Stage stage, Environment environment, ExtensibleExceptionHandler exceptionHandler) throws InitializationException {
+  public GuiInitializer(Stage stage, Environment environment, UiEnvironment uiEnvironment, ExtensibleExceptionHandler exceptionHandler) throws InitializationException {
     super(environment);
     this.stage = stage;
+    this.uiEnvironment = uiEnvironment;
     this.exceptionHandler = exceptionHandler;
   }
 
   @Override
   protected void initPresentation(Environment environment, IApplicationModel model, ApplicationView view) {
     super.initPresentation(environment, model, view);
-    new AnathemaCoreMenu(stage).add(environment, model, view.getMenuBar());
+    new AnathemaCoreMenu().add(environment, uiEnvironment, model, view.getMenuBar());
   }
 
   public ApplicationView initialize() throws InitializationException {
@@ -46,7 +49,7 @@ public class GuiInitializer extends Initializer {
   protected ApplicationFrameView initView(Environment environment, IApplicationModel anathemaModel, ObjectFactory objectFactory) {
     displayMessage("Building View...");
     AnathemaViewProperties viewProperties = new AnathemaViewProperties(environment);
-    PerspectivePaneFactory factory = new PerspectivePaneFactory(anathemaModel, environment, objectFactory);
+    PerspectivePaneFactory factory = new PerspectivePaneFactory(anathemaModel, environment, objectFactory, uiEnvironment);
     return new FxApplicationFrame(stage, viewProperties, factory);
   }
 

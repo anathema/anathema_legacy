@@ -6,17 +6,20 @@ import net.sf.anathema.hero.framework.perspective.model.ReportRegister;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.file.RelativePath;
+import net.sf.anathema.lib.gui.file.SingleFileChooser;
 import net.sf.anathema.platform.view.MenuTool;
 
 public class PrintInteractionPresenter {
   private final ItemSelectionModel model;
   private final MenuTool interaction;
   private final Environment environment;
+  private final SingleFileChooser fileChooser;
 
-  public PrintInteractionPresenter(ItemSelectionModel model, MenuTool interaction, Environment environment) {
+  public PrintInteractionPresenter(ItemSelectionModel model, MenuTool interaction, Environment environment, SingleFileChooser fileChooser) {
     this.model = model;
     this.interaction = interaction;
     this.environment = environment;
+    this.fileChooser = fileChooser;
   }
 
   public void initPresentation() {
@@ -37,22 +40,14 @@ public class PrintInteractionPresenter {
   }
 
   private void initializeUpdate() {
-    model.whenGetsSelection(new ChangeListener() {
-      @Override
-      public void changeOccurred() {
-        interaction.clearMenu();
-        ReportRegister reportRegister = new InteractionReportRegister(interaction, model, environment);
-        model.registerAllReportsOn(reportRegister, environment);
-      }
+    model.whenGetsSelection(() -> {
+      interaction.clearMenu();
+      ReportRegister reportRegister = new InteractionReportRegister(interaction, model, environment, fileChooser);
+      model.registerAllReportsOn(reportRegister, environment);
     });
   }
 
   private void initializeCommand() {
-    interaction.setCommand(new Command() {
-      @Override
-      public void execute() {
-        model.printCurrentItemQuickly(environment);
-      }
-    });
+    interaction.setCommand(() -> model.printCurrentItemQuickly(environment));
   }
 }

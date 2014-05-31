@@ -7,11 +7,8 @@ import net.sf.anathema.framework.environment.dependencies.ReflectionObjectFactor
 import net.sf.anathema.framework.environment.exception.ConsoleExceptionHandler;
 import net.sf.anathema.framework.environment.resources.ResourceFile;
 import net.sf.anathema.initialization.InitializationException;
-import net.sf.anathema.lib.gui.file.Extension;
-import net.sf.anathema.lib.gui.file.FileChooserConfiguration;
 
 import java.lang.annotation.Annotation;
-import java.nio.file.Path;
 import java.util.Collection;
 import java.util.Set;
 
@@ -63,15 +60,5 @@ public class DummyEnvironment implements Environment {
   @Override
   public Set<ResourceFile> getResourcesMatching(String namePattern) {
     return finder.getResourcesMatching(namePattern);
-  }
-
-  @Override
-  public Path selectSaveFile(FileChooserConfiguration configuration) {
-    return null;
-  }
-
-  @Override
-  public Path selectLoadFile(Extension extension) {
-    return null;
   }
 }

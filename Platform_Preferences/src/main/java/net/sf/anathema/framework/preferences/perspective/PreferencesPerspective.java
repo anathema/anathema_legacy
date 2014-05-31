@@ -2,6 +2,7 @@ package net.sf.anathema.framework.preferences.perspective;
 
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.environment.Environment;
+import net.sf.anathema.framework.environment.fx.UiEnvironment;
 import net.sf.anathema.framework.environment.dependencies.Weight;
 import net.sf.anathema.framework.preferences.persistence.PropertiesPreferencesPersister;
 import net.sf.anathema.framework.view.perspective.Container;
@@ -20,7 +21,7 @@ public class PreferencesPerspective implements Perspective {
   }
 
   @Override
-  public void initContent(Container container, IApplicationModel applicationModel, Environment environment) {
+  public void initContent(Container container, IApplicationModel applicationModel, Environment environment, UiEnvironment uiEnvironment) {
     PreferencesSystemView view = new PreferencesSystemView(environment);
     container.setContent(view.perspectivePane.getNode());
     PreferencesModel model = new CollectingPreferencesModel(environment);

@@ -1,6 +1,7 @@
 package net.sf.anathema.character.equipment.item.view.fx;
 
 import net.sf.anathema.character.equipment.item.view.AgnosticEquipmentDatabaseView;
+import net.sf.anathema.framework.environment.fx.DialogFactory;
 import net.sf.anathema.platform.fx.PerspectivePane;
 import net.sf.anathema.platform.fx.selection.ComboBoxSelectionFactory;
 
@@ -11,8 +12,8 @@ public class FxEquipmentDatabaseView {
   private final FxEquipmentDetails details;
   public final AgnosticEquipmentDatabaseView view;
 
-  public FxEquipmentDatabaseView() {
-    this.details = new FxEquipmentDetails(new ComboBoxSelectionFactory());
+  public FxEquipmentDatabaseView(DialogFactory dialogFactory) {
+    this.details = new FxEquipmentDetails(new ComboBoxSelectionFactory(), dialogFactory);
     this.view = new AgnosticEquipmentDatabaseView(navigation, details);
     initializePerspective();
   }

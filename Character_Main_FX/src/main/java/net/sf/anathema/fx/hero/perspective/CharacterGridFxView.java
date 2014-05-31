@@ -5,6 +5,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ToggleGroup;
 import net.miginfocom.layout.AC;
 import net.miginfocom.layout.LC;
+import net.sf.anathema.framework.environment.fx.DialogFactory;
 import net.sf.anathema.fx.hero.creation.FxCharacterTemplateCreator;
 import net.sf.anathema.hero.creation.CharacterTemplateCreator;
 import net.sf.anathema.hero.framework.perspective.CharacterButtonDto;
@@ -25,8 +26,10 @@ public class CharacterGridFxView implements CharacterGridView {
   private final MigPane gridPane = new MigPane(new LC().insets("0").gridGap("0", "2").wrapAfter(1),
           new AC().grow().fill());
   private final Map<CharacterIdentifier, CharacterGridButton> buttonsByIdentifier = new HashMap<>();
+  private final DialogFactory dialogFactory;
 
-  public CharacterGridFxView() {
+  public CharacterGridFxView(DialogFactory dialogFactory) {
+    this.dialogFactory = dialogFactory;
     scrollPane.setContent(gridPane);
     scrollPane.setHbarPolicy(NEVER);
     new Stylesheet("skin/character/characternavigation.css").applyToParent(scrollPane);
@@ -49,7 +52,7 @@ public class CharacterGridFxView implements CharacterGridView {
 
   @Override
   public CharacterTemplateCreator createNewCharacter() {
-    return new FxCharacterTemplateCreator(gridPane.getScene().getWindow());
+    return new FxCharacterTemplateCreator(dialogFactory);
   }
 
   private CharacterGridButton createGridButton(CharacterButtonDto dto,

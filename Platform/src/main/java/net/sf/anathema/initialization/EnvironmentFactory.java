@@ -16,18 +16,15 @@ import net.sf.anathema.framework.environment.resources.ResourceFile;
 import net.sf.anathema.initialization.repository.CustomDataResourceLoader;
 import net.sf.anathema.initialization.repository.RepositoryLocationResolver;
 import net.sf.anathema.lib.exception.AnathemaException;
-import net.sf.anathema.lib.gui.file.SingleFileChooser;
 
 import java.util.Set;
 
 public class EnvironmentFactory {
 
   private final ExceptionHandler exceptionHandler;
-  private final SingleFileChooser fileChooser;
 
-  public EnvironmentFactory(ExceptionHandler exceptionHandler, SingleFileChooser fileChooser) {
+  public EnvironmentFactory(ExceptionHandler exceptionHandler) {
     this.exceptionHandler = exceptionHandler;
-    this.fileChooser = fileChooser;
   }
 
   public Environment create() {
@@ -36,7 +33,7 @@ public class EnvironmentFactory {
     ResourceLoader loader = createResourceLoaderForInternalAndCustomResources(exceptionHandler, reflections, preferences);
     ObjectFactory objectFactory = new ReflectionObjectFactory(reflections, reflections);
     LocaleResources resources = initResources(loader);
-    return new ApplicationEnvironment(resources, exceptionHandler, loader, objectFactory, preferences, fileChooser);
+    return new ApplicationEnvironment(resources, exceptionHandler, loader, objectFactory, preferences);
   }
 
   private LocaleResources initResources(ResourceLoader loader) {

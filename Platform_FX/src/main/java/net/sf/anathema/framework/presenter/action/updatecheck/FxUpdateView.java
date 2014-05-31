@@ -8,6 +8,7 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ScrollPane;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
+import net.sf.anathema.framework.environment.fx.UiEnvironment;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.platform.fx.FxTextView;
@@ -17,7 +18,6 @@ import org.controlsfx.dialog.Dialog;
 import org.tbee.javafx.scene.layout.MigPane;
 
 import static org.controlsfx.dialog.Dialog.Actions.OK;
-import static org.controlsfx.dialog.DialogStyle.NATIVE;
 
 public class FxUpdateView implements UpdateView {
 
@@ -34,10 +34,10 @@ public class FxUpdateView implements UpdateView {
   private int sizeOfFile;
   private MigPane toolPane = new MigPane(LayoutUtils.fillWithoutInsets());
 
-  public FxUpdateView(String title, String currentVersionText, String latestVersionText) {
+  public FxUpdateView(String title, String currentVersionText, String latestVersionText, UiEnvironment uiEnvironment) {
     this.currentVersionText = currentVersionText;
     this.latestVersionText = latestVersionText;
-    this.dialog = new Dialog(null, title, false, NATIVE);
+    this.dialog = uiEnvironment.createDialog(title);
     dialog.getActions().setAll(OK);
     this.changelogDisplay = FxTextView.MultiLine("", 10);
     changelogDisplay.setEnabled(false);
@@ -82,7 +82,7 @@ public class FxUpdateView implements UpdateView {
   @Override
   public void showChangelog(String text) {
     FxThreading.runOnCorrectThread(() -> changelogDisplay.setText(text));
-    
+
   }
 
   @Override

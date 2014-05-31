@@ -11,7 +11,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ApplicationEnvironmentTest {
   private ConfigurableDummyObjectFactory factory = new ConfigurableDummyObjectFactory();
-  private ApplicationEnvironment environment = new ApplicationEnvironment(null, null, null, factory, null, null);
+  private ApplicationEnvironment environment = new ApplicationEnvironment(null, null, null, factory, null);
 
   @Test
   public void forwardsImplementorInstantiationsToObjectFactory() {

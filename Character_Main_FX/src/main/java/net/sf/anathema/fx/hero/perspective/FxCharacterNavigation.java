@@ -1,5 +1,6 @@
 package net.sf.anathema.fx.hero.perspective;
 
+import net.sf.anathema.framework.environment.fx.DialogFactory;
 import net.sf.anathema.hero.creation.CharacterTemplateCreator;
 import net.sf.anathema.hero.framework.perspective.CharacterButtonDto;
 import net.sf.anathema.hero.framework.perspective.CharacterGridView;
@@ -10,9 +11,10 @@ import net.sf.anathema.platform.view.InteractionView;
 import net.sf.anathema.platform.view.MenuTool;
 
 public class FxCharacterNavigation extends Navigation implements InteractionView, CharacterGridView {
-  private final CharacterGridFxView gridView = new CharacterGridFxView();
+  private final CharacterGridFxView gridView;
 
-  public FxCharacterNavigation() {
+  public FxCharacterNavigation(DialogFactory dialogFactory) {
+    this.gridView = new CharacterGridFxView(dialogFactory);
     addContainerToNavigation(gridView.getNode());
   }
 

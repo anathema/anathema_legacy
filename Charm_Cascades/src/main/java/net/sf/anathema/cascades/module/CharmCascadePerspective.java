@@ -8,6 +8,7 @@ import net.sf.anathema.cascades.presenter.CharmTreeIdentifierMap;
 import net.sf.anathema.character.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.environment.Environment;
+import net.sf.anathema.framework.environment.fx.UiEnvironment;
 import net.sf.anathema.framework.environment.dependencies.Weight;
 import net.sf.anathema.framework.view.perspective.Container;
 import net.sf.anathema.framework.view.perspective.Perspective;
@@ -30,7 +31,7 @@ public class CharmCascadePerspective implements Perspective {
   }
 
   @Override
-  public void initContent(Container container, IApplicationModel applicationModel, Environment environment) {
+  public void initContent(Container container, IApplicationModel applicationModel, Environment environment, UiEnvironment uiEnvironment) {
     HeroEnvironment characterGenerics = HeroEnvironmentExtractor.getGenerics(applicationModel);
     MagicDescriptionProvider magicDescriptionProvider = getCharmDescriptionProvider(applicationModel, environment);
     FxCharmView cascadeView = new FxCharmView();

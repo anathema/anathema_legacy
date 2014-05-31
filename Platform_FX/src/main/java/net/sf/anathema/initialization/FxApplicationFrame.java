@@ -5,7 +5,6 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.sf.anathema.framework.presenter.AnathemaViewProperties;
@@ -19,29 +18,23 @@ import net.sf.anathema.platform.tool.LoadImage;
 import org.tbee.javafx.scene.layout.MigPane;
 
 public class FxApplicationFrame implements ApplicationFrameView {
-  private static Stage owner;
   private final Stage stage;
   private final AnathemaViewProperties properties;
   private final ViewFactory contentFactory;
   private final MainMenuBar menu;
   private final OneLineStatusBar statusBar = new OneLineStatusBar();
 
-  public static Window getOwner() {
-    return owner;
-  }
-
   public FxApplicationFrame(Stage stage, AnathemaViewProperties viewProperties, ViewFactory factory) {
     this.stage = stage;
-    owner = stage;
     this.properties = viewProperties;
     this.contentFactory = factory;
     this.menu = new MainMenuBar(properties.getMainMenuName(), properties.getHelpMenuName());
-  }
-
-  public void show() {
     Parent contentPane = createContentPane();
     Scene scene = new Scene(contentPane);
     stage.setScene(scene);
+  }
+
+  public void show() {
     stage.setHeight(720);
     stage.setWidth(1280);
     stage.setTitle(properties.getDefaultFrameTitle());

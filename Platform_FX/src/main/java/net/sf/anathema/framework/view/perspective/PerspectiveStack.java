@@ -3,6 +3,7 @@ package net.sf.anathema.framework.view.perspective;
 import javafx.scene.Node;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.environment.Environment;
+import net.sf.anathema.framework.environment.fx.UiEnvironment;
 import net.sf.anathema.framework.view.util.FxStack;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.lib.util.Identifier;
@@ -14,15 +15,17 @@ public class PerspectiveStack {
   private final FxStack perspectiveStack = new FxStack(cardPanel);
   private final IApplicationModel model;
   private final Environment environment;
+  private final UiEnvironment uiEnvironment;
 
-  public PerspectiveStack(IApplicationModel model, Environment environment) {
+  public PerspectiveStack(IApplicationModel model, Environment environment, UiEnvironment uiEnvironment) {
     this.model = model;
     this.environment = environment;
+    this.uiEnvironment = uiEnvironment;
   }
 
   public void add(Perspective perspective) {
     Container container = new CardContainer(getIdFor(perspective), perspectiveStack);
-    perspective.initContent(container, model, environment);
+    perspective.initContent(container, model, environment, uiEnvironment);
   }
 
   public void show(Perspective perspective) {

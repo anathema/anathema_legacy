@@ -2,6 +2,7 @@ package net.sf.anathema.scribe.perspective;
 
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.environment.Environment;
+import net.sf.anathema.framework.environment.fx.UiEnvironment;
 import net.sf.anathema.framework.view.perspective.Container;
 import net.sf.anathema.framework.view.perspective.Perspective;
 import net.sf.anathema.framework.view.perspective.PerspectiveAutoCollector;
@@ -23,7 +24,7 @@ public class ScribePerspective implements Perspective {
   }
 
   @Override
-  public void initContent(Container container, IApplicationModel applicationModel, Environment environment) {
+  public void initContent(Container container, IApplicationModel applicationModel, Environment environment, UiEnvironment uiEnvironment) {
     ScribeView view = new ScribeView();
     ScribeModel scribeModel = new ScribeModel(applicationModel);
     new ScribePresenter(scribeModel, view, environment).initPresentation();

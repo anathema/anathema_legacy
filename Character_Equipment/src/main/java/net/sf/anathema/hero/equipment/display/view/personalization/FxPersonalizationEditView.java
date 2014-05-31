@@ -23,6 +23,7 @@ public class FxPersonalizationEditView implements PersonalizationEditView {
 
   @Override
   public void show() {
+    //TODO: This is the only part of a character that opens a dialog. Move it out of the Dialog, into the main window
     Dialog dialog = new Dialog(window, "", false, NATIVE);
     dialog.getActions().setAll(OK, CANCEL);
     dialog.setContent(view.getNode());

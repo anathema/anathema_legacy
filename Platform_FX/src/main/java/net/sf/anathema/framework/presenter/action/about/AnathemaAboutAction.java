@@ -4,10 +4,10 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.web.WebView;
-import javafx.stage.Stage;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.framework.environment.fx.DialogFactory;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.platform.fx.Stylesheet;
 import net.sf.anathema.platform.markdown.HtmlConverter;
@@ -22,16 +22,14 @@ import java.io.InputStream;
 import java.net.URL;
 import java.text.MessageFormat;
 
-import static org.controlsfx.dialog.DialogStyle.NATIVE;
-
 public class AnathemaAboutAction implements Command {
 
   private final Resources resources;
-  private Stage stage;
+  private DialogFactory dialogFactory;
 
-  public AnathemaAboutAction(Resources resources, Stage stage) {
+  public AnathemaAboutAction(Resources resources, DialogFactory dialogFactory) {
     this.resources = resources;
-    this.stage = stage;
+    this.dialogFactory = dialogFactory;
   }
 
   @Override
@@ -50,7 +48,7 @@ public class AnathemaAboutAction implements Command {
 
   private Dialog initializeDialogStage() {
     String title = resources.getString("Help.AboutDialog.Title");
-    Dialog dialog = new Dialog(stage, title, false, NATIVE);
+    Dialog dialog = dialogFactory.createDialog(title);
     dialog.getActions().addAll(Dialog.Actions.CLOSE);
     initCloseOnEscape(dialog);
     return dialog;

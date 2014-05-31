@@ -10,7 +10,7 @@ import static org.controlsfx.dialog.DialogStyle.NATIVE;
 public class FxDialogExceptionHandler implements ExceptionHandler {
 
   private final Resources resources;
-  private Window stage;
+  private final Window stage;
 
   public FxDialogExceptionHandler(Resources resources, Window stage) {
     this.resources = resources;

@@ -4,6 +4,7 @@ import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.hero.framework.perspective.model.CharacterIdentifier;
 import net.sf.anathema.hero.framework.perspective.model.ItemSelectionModel;
 import net.sf.anathema.interaction.Tool;
+import net.sf.anathema.lib.gui.file.SingleFileChooser;
 import net.sf.anathema.platform.view.InteractionView;
 
 public class InteractionPresenter {
@@ -13,14 +14,16 @@ public class InteractionPresenter {
   private final Environment environment;
   private CharacterGridView gridView;
   private Selector<CharacterIdentifier> selector;
+  private final SingleFileChooser fileChooser;
 
   public InteractionPresenter(ItemSelectionModel model, InteractionView view, Environment environment, CharacterGridView gridView,
-                              Selector<CharacterIdentifier> selector) {
+                              Selector<CharacterIdentifier> selector, SingleFileChooser fileChooser) {
     this.model = model;
     this.view = view;
     this.environment = environment;
     this.gridView = gridView;
     this.selector = selector;
+    this.fileChooser = fileChooser;
   }
 
   public void initPresentation() {
@@ -40,7 +43,7 @@ public class InteractionPresenter {
   }
 
   private void initControlledPrintInteraction() {
-    new PrintInteractionPresenter(model, view.addMenuTool(), environment).initPresentation();
+    new PrintInteractionPresenter(model, view.addMenuTool(), environment, fileChooser).initPresentation();
   }
 
   private void initExperiencedInteraction() {

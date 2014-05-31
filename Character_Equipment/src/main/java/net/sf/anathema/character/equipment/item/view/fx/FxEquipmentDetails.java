@@ -8,6 +8,7 @@ import net.sf.anathema.character.equipment.creation.view.fx.FxEditStatsDialog;
 import net.sf.anathema.character.equipment.item.view.EquipmentDescriptionPanel;
 import net.sf.anathema.character.equipment.item.view.EquipmentDetails;
 import net.sf.anathema.character.equipment.item.view.ToolListView;
+import net.sf.anathema.framework.environment.fx.DialogFactory;
 import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
@@ -20,8 +21,10 @@ public class FxEquipmentDetails implements EquipmentDetails {
   private final FxToolListView<IEquipmentStats> listView = new FxToolListView<>();
   private final FxEquipmentDescriptionPanel descriptionPanel;
   private MigPane outerPane = new MigPane(LayoutUtils.fillWithoutInsets().wrapAfter(1), new AC().grow().fill());
+  private final DialogFactory dialogFactory;
 
-  public FxEquipmentDetails(SelectionViewFactory selectionFactory) {
+  public FxEquipmentDetails(SelectionViewFactory selectionFactory, DialogFactory dialogFactory) {
+    this.dialogFactory = dialogFactory;
     this.descriptionPanel = new FxEquipmentDescriptionPanel(selectionFactory);
   }
 
@@ -48,6 +51,6 @@ public class FxEquipmentDetails implements EquipmentDetails {
 
   @Override
   public EquipmentStatsDialog createEquipmentStatsDialog() {
-    return new FxEditStatsDialog(descriptionPanel.getNode().getScene().getWindow());
+    return new FxEditStatsDialog(dialogFactory);
   }
 }

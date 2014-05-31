@@ -4,6 +4,8 @@ import javafx.scene.control.ScrollPane;
 import javafx.stage.Window;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
+import net.sf.anathema.framework.environment.fx.DialogFactory;
+import net.sf.anathema.framework.environment.fx.UiEnvironment;
 import net.sf.anathema.hero.creation.CharacterCreationView;
 import net.sf.anathema.hero.creation.ToggleButtonPanel;
 import net.sf.anathema.hero.template.HeroTemplate;
@@ -23,8 +25,8 @@ public class FxCharacterCreationView implements CharacterCreationView {
   private final MigPane component = new MigPane(new LC().gridGapX("10").gridGapY("10").wrapAfter(2));
   private final Dialog dialog;
 
-  public FxCharacterCreationView(Window parent) {
-    this.dialog = new Dialog(parent, NO_TITLE, false, NATIVE);
+  public FxCharacterCreationView(DialogFactory factory) {
+    this.dialog = factory.createDialog(NO_TITLE);
   }
 
   @Override

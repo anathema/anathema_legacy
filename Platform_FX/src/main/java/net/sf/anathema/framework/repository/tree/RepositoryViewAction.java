@@ -1,30 +1,28 @@
 package net.sf.anathema.framework.repository.tree;
 
 import javafx.scene.Node;
-import javafx.stage.Stage;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.environment.Environment;
+import net.sf.anathema.framework.environment.fx.UiEnvironment;
 import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.initialization.ItemTypeCollection;
 import net.sf.anathema.interaction.Command;
 import org.controlsfx.dialog.Dialog;
 
-import static org.controlsfx.dialog.DialogStyle.NATIVE;
-
 public class RepositoryViewAction implements Command {
   private final IApplicationModel model;
   private final Environment environment;
-  private Stage stage;
+  private final UiEnvironment uiEnvironment;
 
-  public RepositoryViewAction(IApplicationModel model, Environment environment, Stage stage) {
+  public RepositoryViewAction(IApplicationModel model, Environment environment, UiEnvironment uiEnvironment) {
     this.model = model;
     this.environment = environment;
-    this.stage = stage;
+    this.uiEnvironment = uiEnvironment;
   }
 
   @Override
   public void execute() {
-    Dialog dialog = new Dialog(stage, getTitle(), false, NATIVE);
+    Dialog dialog = uiEnvironment.createDialog(getTitle());
     dialog.setMasthead(createCurrentMessage());
     dialog.getActions().setAll(Dialog.Actions.OK);
     dialog.setContent(createContent());
@@ -41,8 +39,8 @@ public class RepositoryViewAction implements Command {
     IMessaging messaging = model.getMessaging();
     AmountMessaging fileCountMessaging = new AmountMessaging(messaging, environment);
     new RepositoryItemDeletionPresenter(environment, repositoryTreeModel, treeView, fileCountMessaging).initPresentation();
-    new RepositoryItemExportPresenter(environment, repositoryTreeModel, treeView, fileCountMessaging).initPresentation();
-    new RepositoryItemImportPresenter(environment, repositoryTreeModel, treeView, fileCountMessaging).initPresentation();
+    new RepositoryItemExportPresenter(environment, uiEnvironment, repositoryTreeModel, treeView, fileCountMessaging).initPresentation();
+    new RepositoryItemImportPresenter(environment, uiEnvironment, repositoryTreeModel, treeView, fileCountMessaging).initPresentation();
     new RepositoryItemDuplicationPresenter(environment, repositoryTreeModel, treeView, messaging).initPresentation();
     new RepositoryMessagingPresenter(repositoryTreeModel, messaging).initPresentation();
     return treeView.getNode();

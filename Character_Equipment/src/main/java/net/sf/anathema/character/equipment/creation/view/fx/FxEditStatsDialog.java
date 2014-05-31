@@ -1,16 +1,14 @@
 package net.sf.anathema.character.equipment.creation.view.fx;
 
 import javafx.event.ActionEvent;
-import javafx.stage.Window;
 import net.sf.anathema.character.equipment.creation.presenter.EquipmentStatsDialog;
 import net.sf.anathema.character.equipment.creation.presenter.EquipmentStatsView;
+import net.sf.anathema.framework.environment.fx.DialogFactory;
 import net.sf.anathema.lib.gui.dialog.core.StaticOperationResult;
 import net.sf.anathema.lib.gui.dialog.userdialog.OperationResultHandler;
 import net.sf.anathema.lib.message.IBasicMessage;
 import org.controlsfx.control.action.AbstractAction;
 import org.controlsfx.dialog.Dialog;
-
-import static org.controlsfx.dialog.DialogStyle.NATIVE;
 
 public class FxEditStatsDialog implements EquipmentStatsDialog {
   private final AbstractAction okayAction = new AbstractAction(Dialog.Actions.OK.textProperty().get()){
@@ -32,10 +30,10 @@ public class FxEditStatsDialog implements EquipmentStatsDialog {
   private String title;
   private OperationResultHandler handler;
   private String messageText;
-  private final Window window;
+  private DialogFactory dialogFactory;
 
-  public FxEditStatsDialog(Window window) {
-    this.window = window;
+  public FxEditStatsDialog(DialogFactory dialogFactory) {
+    this.dialogFactory = dialogFactory;
   }
 
   public void setCanFinish() {
@@ -59,7 +57,7 @@ public class FxEditStatsDialog implements EquipmentStatsDialog {
   @Override
   public void show(OperationResultHandler handler) {
     this.handler = handler;
-    this.dialog = new Dialog(window, title, false, NATIVE);
+    this.dialog = dialogFactory.createDialog(title);
     dialog.setMasthead(messageText);
     dialog.setContent(view.getNode());
     dialog.getActions().setAll(okayAction, cancelAction);

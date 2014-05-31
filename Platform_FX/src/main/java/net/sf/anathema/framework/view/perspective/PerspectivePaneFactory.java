@@ -4,6 +4,7 @@ import javafx.scene.Node;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.environment.Environment;
+import net.sf.anathema.framework.environment.fx.UiEnvironment;
 import net.sf.anathema.framework.view.ViewFactory;
 import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
@@ -19,10 +20,10 @@ public class PerspectivePaneFactory implements ViewFactory {
   private final Resources resources;
   private final ObjectFactory objectFactory;
 
-  public PerspectivePaneFactory(IApplicationModel model, Environment environment, ObjectFactory objectFactory) {
+  public PerspectivePaneFactory(IApplicationModel model, Environment environment, ObjectFactory objectFactory, UiEnvironment uiEnvironment) {
     this.resources = environment;
     this.objectFactory = objectFactory;
-    this.perspectiveStack = new PerspectiveStack(model, environment);
+    this.perspectiveStack = new PerspectiveStack(model, environment, uiEnvironment);
     this.selectionBar = new PerspectiveSelectionBar(perspectiveStack);
   }
 

@@ -2,12 +2,8 @@ package net.sf.anathema.framework.environment;
 
 import net.sf.anathema.framework.environment.resources.ResourceFile;
 import net.sf.anathema.initialization.InitializationException;
-import net.sf.anathema.lib.gui.file.Extension;
-import net.sf.anathema.lib.gui.file.FileChooserConfiguration;
-import net.sf.anathema.lib.gui.file.SingleFileChooser;
 
 import java.lang.annotation.Annotation;
-import java.nio.file.Path;
 import java.util.Collection;
 import java.util.Set;
 
@@ -17,16 +13,14 @@ public class ApplicationEnvironment implements Environment {
   private final ResourceLoader loader;
   private final ObjectFactory objectFactory;
   private final Preferences preferences;
-  private SingleFileChooser fileChooser;
 
   public ApplicationEnvironment(Resources resources, ExceptionHandler handler, ResourceLoader loader,
-                                ObjectFactory objectFactory, Preferences preferences, SingleFileChooser fileChooser) {
+                                ObjectFactory objectFactory, Preferences preferences) {
     this.resources = resources;
     this.handler = handler;
     this.loader = loader;
     this.objectFactory = objectFactory;
     this.preferences = preferences;
-    this.fileChooser = fileChooser;
   }
 
   @Override
@@ -74,15 +68,5 @@ public class ApplicationEnvironment implements Environment {
   @Override
   public Set<ResourceFile> getResourcesMatching(String namePattern) {
     return loader.getResourcesMatching(namePattern);
-  }
-
-  @Override
-  public Path selectSaveFile(FileChooserConfiguration configuration) {
-    return fileChooser.selectSaveFile(configuration);
-  }
-
-  @Override
-  public Path selectLoadFile(Extension extension) {
-    return fileChooser.selectLoadFile(extension);
   }
 }

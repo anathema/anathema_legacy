@@ -2,6 +2,7 @@ package net.sf.anathema.fx.hero.perspective;
 
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.environment.Environment;
+import net.sf.anathema.framework.environment.fx.UiEnvironment;
 import net.sf.anathema.framework.environment.dependencies.Weight;
 import net.sf.anathema.framework.view.perspective.Container;
 import net.sf.anathema.framework.view.perspective.Perspective;
@@ -26,10 +27,10 @@ public class CharacterSystemPerspective implements Perspective {
   }
 
   @Override
-  public void initContent(Container container, IApplicationModel model, Environment environment) {
+  public void initContent(Container container, IApplicationModel model, Environment environment, UiEnvironment uiEnvironment) {
     new CharacterSystemInitializer(model, environment).initializeCharacterSystem();
     CharacterSystemModel systemModel = new CharacterSystemModel(model);
-    CharacterSystemView view = new CharacterSystemView();
+    CharacterSystemView view = new CharacterSystemView(uiEnvironment);
     container.setContent(view.getNode());
     CharacterViewFactory viewFactory = new CharacterViewFactory(environment, model);
     CharacterStackBridge bridge = new CharacterStackFxBridge(viewFactory, view.getStackView());
@@ -37,6 +38,6 @@ public class CharacterSystemPerspective implements Perspective {
     ShowOnSelect showOnSelect = new ShowOnSelect(stackPresenter);
     CharacterGridPresenter gridPresenter = new CharacterGridPresenter(systemModel, view.getGridView(), showOnSelect, environment);
     gridPresenter.initPresentation();
-    new InteractionPresenter(systemModel, view.getInteractionView(), environment, view.getGridView(), showOnSelect).initPresentation();
+    new InteractionPresenter(systemModel, view.getInteractionView(), environment, view.getGridView(), showOnSelect, uiEnvironment).initPresentation();
   }
 }
