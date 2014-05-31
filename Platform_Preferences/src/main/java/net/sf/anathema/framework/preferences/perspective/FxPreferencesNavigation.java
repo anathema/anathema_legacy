@@ -1,7 +1,5 @@
 package net.sf.anathema.framework.preferences.perspective;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import net.sf.anathema.framework.preferences.elements.PreferenceView;
 import net.sf.anathema.initialization.InitializationException;
@@ -21,19 +19,14 @@ public class FxPreferencesNavigation extends Navigation implements PreferencesNa
 
   @Override
   public PreferenceView addSection(String title, Class viewClass) {
-    for (final PreferenceView view : availableViews) {
+    for (PreferenceView view : availableViews) {
       if (viewClass.isInstance(view)) {
         Button trigger = new Button(title);
         addElementToNavigation(trigger);
-        trigger.setOnAction(new EventHandler<ActionEvent>() {
-          @Override
-          public void handle(ActionEvent actionEvent) {
-            preferencesView.show(title, (NodeHolder)view);
-          }
-        });
+        trigger.setOnAction(actionEvent -> preferencesView.show(title, (NodeHolder) view));
         return view;
       }
     }
-    throw new InitializationException("Unsupported preference view: " + viewClass.getName()); 
+    throw new InitializationException("Unsupported preference view: " + viewClass.getName());
   }
 }

@@ -1,17 +1,16 @@
 package net.sf.anathema.fx.hero.perspective;
 
-import javafx.application.Platform;
 import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ToggleGroup;
 import net.miginfocom.layout.AC;
 import net.miginfocom.layout.LC;
 import net.sf.anathema.fx.hero.creation.FxCharacterTemplateCreator;
+import net.sf.anathema.hero.creation.CharacterTemplateCreator;
 import net.sf.anathema.hero.framework.perspective.CharacterButtonDto;
 import net.sf.anathema.hero.framework.perspective.CharacterGridView;
 import net.sf.anathema.hero.framework.perspective.Selector;
 import net.sf.anathema.hero.framework.perspective.model.CharacterIdentifier;
-import net.sf.anathema.hero.creation.CharacterTemplateCreator;
 import net.sf.anathema.platform.fx.Stylesheet;
 import org.tbee.javafx.scene.layout.MigPane;
 
@@ -34,33 +33,18 @@ public class CharacterGridFxView implements CharacterGridView {
   }
 
   @Override
-  public void addButton(final CharacterButtonDto dto, final Selector<CharacterIdentifier> characterSelector) {
-    Platform.runLater(new Runnable() {
-      @Override
-      public void run() {
-        createGridButton(dto, characterSelector);
-      }
-    });
+  public void addButton(CharacterButtonDto dto, Selector<CharacterIdentifier> characterSelector) {
+    createGridButton(dto, characterSelector);
   }
 
   @Override
-  public void selectButton(final CharacterIdentifier identifier) {
-    Platform.runLater(new Runnable() {
-      @Override
-      public void run() {
-        buttonsByIdentifier.get(identifier).setSelected(true);
-      }
-    });
+  public void selectButton(CharacterIdentifier identifier) {
+    buttonsByIdentifier.get(identifier).setSelected(true);
   }
 
   @Override
-  public void updateButton(final CharacterButtonDto dto) {
-    Platform.runLater(new Runnable() {
-      @Override
-      public void run() {
-        buttonsByIdentifier.get(dto.identifier).setContent(dto);
-      }
-    });
+  public void updateButton(CharacterButtonDto dto) {
+    buttonsByIdentifier.get(dto.identifier).setContent(dto);
   }
 
   @Override

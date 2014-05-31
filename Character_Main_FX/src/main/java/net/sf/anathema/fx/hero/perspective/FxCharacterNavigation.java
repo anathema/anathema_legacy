@@ -10,10 +10,9 @@ import net.sf.anathema.platform.view.InteractionView;
 import net.sf.anathema.platform.view.MenuTool;
 
 public class FxCharacterNavigation extends Navigation implements InteractionView, CharacterGridView {
-  private CharacterGridFxView gridView;
+  private final CharacterGridFxView gridView = new CharacterGridFxView();
 
   public FxCharacterNavigation() {
-    gridView = new CharacterGridFxView();
     addContainerToNavigation(gridView.getNode());
   }
 
