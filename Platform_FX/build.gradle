@@ -1,7 +1,6 @@
 dependencies {
     compile 'com.miglayout:miglayout-javafx:5.0-SNAPSHOT'
     compile 'org.jfxtras:jfxtras-controls:8.0-r1'
-    compile 'org.jfxtras:jfxtras-window:8.0-r1'
     compile 'org.jfxtras:jfxtras-labs:8.0-r1'
     compile 'org.controlsfx:controlsfx:8.0.6'
     compile project(':Platform')
