@@ -4,7 +4,6 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.Node;
 import jfxtras.scene.control.ListSpinner;
-import net.sf.anathema.platform.fx.FxThreading;
 import org.jmock.example.announcer.Announcer;
 
 public class DotSelectionSpinner {
@@ -20,28 +19,20 @@ public class DotSelectionSpinner {
   };
 
   public DotSelectionSpinner(final int lowerBound, final int upperBound) {
-    FxThreading.runInFxAsSoonAsPossible(new Runnable() {
-      @Override
-      public void run() {
-        spinner = new ListSpinner<>(lowerBound, upperBound);
-        spinner.getStyleClass().add("dots");
-        spinner.valueProperty().addListener(announcingListener);
-      }
-    });
+    spinner = new ListSpinner<>(lowerBound, upperBound);
+    spinner.getStyleClass().add("dots");
+    spinner.valueProperty().addListener(announcingListener);
   }
 
   public Node getNode() {
-    waitForComponent();
     return spinner;
   }
 
   public void setValue(int value) {
-    waitForComponent();
     spinner.setValue(value);
   }
 
   public void setValueSilently(int value) {
-    waitForComponent();
     spinner.valueProperty().removeListener(announcingListener);
     setValue(value);
     spinner.valueProperty().addListener(announcingListener);
@@ -57,15 +48,5 @@ public class DotSelectionSpinner {
 
   public int getValue() {
     return spinner.getValue();
-  }
-
-  private void waitForComponent() {
-    try {
-      while (spinner == null) {
-        Thread.sleep(50);
-      }
-    } catch (InterruptedException e) {
-      throw new RuntimeException(e);
-    }
   }
 }
