@@ -1,10 +1,10 @@
 package net.sf.anathema.platform.fx;
 
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.ToolBar;
 import net.miginfocom.layout.AC;
 import net.miginfocom.layout.CC;
+import net.sf.anathema.interaction.AcceleratorMap;
 import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.platform.tool.FxBaseTool;
@@ -19,8 +19,10 @@ public class Navigation {
   private MigPane pane = new MigPane(withoutInsets().gridGap("0", "2").wrapAfter(1), new AC().grow().fill(), new AC().fill());
   private MigPane navigation = new MigPane(withoutInsets().gridGap("0", "2").wrapAfter(1), new AC().grow().fill(), new AC().fill());
   private ToolBar toolBar = new ToolBar();
+  private final AcceleratorMap acceleratorMap;
 
-  public Navigation() {
+  public Navigation(AcceleratorMap acceleratorMap) {
+    this.acceleratorMap = acceleratorMap;
     pane.add(toolBar, new CC().width("100%").grow());
     pane.add(navigation, new CC().push());
   }
@@ -54,11 +56,8 @@ public class Navigation {
     return pane;
   }
 
-  protected void addTool(final FxBaseTool fxButtonTool) {
+  protected void addTool(FxBaseTool fxButtonTool) {
     toolBar.getItems().add(fxButtonTool.getNode());
-    Scene scene = toolBar.getScene();
-        /*ObservableMap<KeyCombination, Runnable> accelerators = scene.getAccelerators();
-        FxAcceleratorMap acceleratorMap = new FxAcceleratorMap(accelerators);
-        fxButtonTool.registerHotkeyIn(acceleratorMap);*/
+    fxButtonTool.registerHotkeyIn(acceleratorMap);
   }
 }

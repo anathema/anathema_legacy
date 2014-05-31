@@ -1,10 +1,10 @@
 package net.sf.anathema.fx.hero.perspective;
 
 import javafx.scene.Node;
-import net.sf.anathema.framework.environment.fx.DialogFactory;
+import net.sf.anathema.framework.environment.fx.UiEnvironment;
 import net.sf.anathema.hero.framework.perspective.CharacterGridView;
-import net.sf.anathema.platform.view.InteractionView;
 import net.sf.anathema.platform.fx.PerspectivePane;
+import net.sf.anathema.platform.view.InteractionView;
 
 public class CharacterSystemView {
 
@@ -12,8 +12,8 @@ public class CharacterSystemView {
   private final StackView stackView = new StackView();
   private final FxCharacterNavigation navigation;
 
-  public CharacterSystemView(DialogFactory dialogFactory) {
-    this.navigation = new FxCharacterNavigation(dialogFactory);
+  public CharacterSystemView(UiEnvironment uiEnvironment) {
+    this.navigation = new FxCharacterNavigation(uiEnvironment);
     pane.setNavigationComponent(navigation.getNode());
     pane.setContentComponent(stackView.getComponent());
   }

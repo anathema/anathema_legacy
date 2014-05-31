@@ -15,7 +15,7 @@ public class PreferencesSystemView {
   public PreferencesSystemView(ObjectFactory objectFactory) {
     Collection<PreferenceView> views = objectFactory.instantiateAllImplementers(PreferenceView.class);
     this.preferencesView = new FxPreferencesView();
-    this.preferencesNavigation = new FxPreferencesNavigation(new ArrayList<>(views), preferencesView);
+    this.preferencesNavigation = new FxPreferencesNavigation(new ArrayList<>(views), preferencesView, null);
     perspectivePane.setNavigationComponent(preferencesNavigation.getNode());
     perspectivePane.setContentComponent(preferencesView.getNode());
   }

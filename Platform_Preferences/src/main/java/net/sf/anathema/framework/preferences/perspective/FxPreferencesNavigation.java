@@ -3,6 +3,7 @@ package net.sf.anathema.framework.preferences.perspective;
 import javafx.scene.control.Button;
 import net.sf.anathema.framework.preferences.elements.PreferenceView;
 import net.sf.anathema.initialization.InitializationException;
+import net.sf.anathema.interaction.AcceleratorMap;
 import net.sf.anathema.platform.fx.Navigation;
 import net.sf.anathema.platform.fx.NodeHolder;
 
@@ -12,7 +13,8 @@ public class FxPreferencesNavigation extends Navigation implements PreferencesNa
   private final ArrayList<PreferenceView> availableViews;
   private final FxPreferencesView preferencesView;
 
-  public FxPreferencesNavigation(ArrayList<PreferenceView> preferenceViews, FxPreferencesView preferencesView) {
+  public FxPreferencesNavigation(ArrayList<PreferenceView> preferenceViews, FxPreferencesView preferencesView, AcceleratorMap uiEnvironment) {
+    super(uiEnvironment);
     this.availableViews = preferenceViews;
     this.preferencesView = preferencesView;
   }

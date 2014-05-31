@@ -2,6 +2,7 @@ package net.sf.anathema.character.equipment.item.view.fx;
 
 import net.sf.anathema.character.equipment.item.view.EquipmentNavigation;
 import net.sf.anathema.framework.repository.tree.FxVetor;
+import net.sf.anathema.interaction.AcceleratorMap;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.list.veto.Vetor;
 import net.sf.anathema.lib.gui.selection.VetoableObjectSelectionView;
@@ -12,7 +13,8 @@ public class FxEquipmentNavigation extends Navigation implements EquipmentNaviga
 
   private ListSelectionView<String> listView = new ListSelectionView<>();
 
-  public FxEquipmentNavigation() {
+  public FxEquipmentNavigation(AcceleratorMap acceleratorMap) {
+    super(acceleratorMap);
     addContainerToNavigation(listView.getNode());
   }
 
