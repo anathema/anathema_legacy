@@ -21,22 +21,17 @@ public class Navigation {
   private ToolBar toolBar = new ToolBar();
 
   public Navigation() {
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        pane.add(toolBar, new CC().width("100%").grow());
-        pane.add(navigation, new CC().push());
-      }
-    });
+    pane.add(toolBar, new CC().width("100%").grow());
+    pane.add(navigation, new CC().push());
   }
 
   public Tool addTool() {
-    final FxButtonTool fxButtonTool = FxButtonTool.ForToolbar();
+    FxButtonTool fxButtonTool = FxButtonTool.ForToolbar();
     addTool(fxButtonTool);
     return fxButtonTool;
   }
 
-  @SuppressWarnings("UnusedDeclaration")
+  @SuppressWarnings("UnusedDeclaration")  //Used by subclasses
   public ToggleTool addToggleTool() {
     final FxToggleTool fxToggleTool = FxToggleTool.create();
     addTool(fxToggleTool);
@@ -52,12 +47,7 @@ public class Navigation {
   }
 
   public void clear() {
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        navigation.getChildren().clear();
-      }
-    });
+    navigation.getChildren().clear();
   }
 
   public Node getNode() {
@@ -65,15 +55,10 @@ public class Navigation {
   }
 
   protected void addTool(final FxBaseTool fxButtonTool) {
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        toolBar.getItems().add(fxButtonTool.getNode());
-        Scene scene = toolBar.getScene();
+    toolBar.getItems().add(fxButtonTool.getNode());
+    Scene scene = toolBar.getScene();
         /*ObservableMap<KeyCombination, Runnable> accelerators = scene.getAccelerators();
         FxAcceleratorMap acceleratorMap = new FxAcceleratorMap(accelerators);
         fxButtonTool.registerHotkeyIn(acceleratorMap);*/
-      }
-    });
   }
 }
