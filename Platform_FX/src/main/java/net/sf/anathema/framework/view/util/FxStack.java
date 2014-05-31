@@ -1,16 +1,12 @@
 package net.sf.anathema.framework.view.util;
 
-import com.google.common.collect.Collections2;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Sets;
 import javafx.scene.Node;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.lib.util.Identifier;
-import net.sf.anathema.platform.fx.FxThreading;
 import org.tbee.javafx.scene.layout.MigPane;
 
 import java.util.LinkedHashMap;
-import java.util.Map;
 
 public class FxStack {
 
@@ -26,18 +22,16 @@ public class FxStack {
   }
 
   public void show(final Identifier name) {
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        parent.getChildren().clear();
-        Node selectedNode = namedNodes.get(name);
-        parent.add(selectedNode, new CC().push().grow());
-      }
-    });
+    parent.getChildren().clear();
+    Node selectedNode = namedNodes.get(name);
+    parent.add(selectedNode, new CC().push().grow());
   }
 
   public void showFirst() {
     Identifier first = Iterables.getFirst(namedNodes.keySet(), null);
+    if (first == null) {
+      throw new IllegalStateException("No perspectives found");
+    }
     show(first);
   }
 }
