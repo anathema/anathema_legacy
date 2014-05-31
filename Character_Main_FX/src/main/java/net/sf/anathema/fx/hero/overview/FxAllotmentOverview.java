@@ -5,7 +5,6 @@ import net.miginfocom.layout.CC;
 import net.sf.anathema.character.framework.display.labelledvalue.LabelledAllotmentView;
 import net.sf.anathema.framework.ui.FontStyle;
 import net.sf.anathema.framework.ui.RGBColor;
-import net.sf.anathema.platform.fx.FxThreading;
 import org.tbee.javafx.scene.layout.MigPane;
 
 public class FxAllotmentOverview implements LabelledAllotmentView {
@@ -22,35 +21,20 @@ public class FxAllotmentOverview implements LabelledAllotmentView {
   }
 
   public void addTo(final MigPane panel) {
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        panel.add(titleLabel, new CC().growX().pushX());
-        panel.add(valueLabel, new CC().growX());
-        panel.add(separatorLabel, new CC().alignX("right"));
-        panel.add(alotmentLabel, new CC().alignX("right"));
-      }
-    });
+    panel.add(titleLabel, new CC().growX().pushX());
+    panel.add(valueLabel, new CC().growX());
+    panel.add(separatorLabel, new CC().alignX("right"));
+    panel.add(alotmentLabel, new CC().alignX("right"));
   }
 
   @Override
   public void setAllotment(final int value) {
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        alotmentLabel.setText(String.valueOf(value));
-      }
-    });
+    alotmentLabel.setText(String.valueOf(value));
   }
 
   @Override
   public void setValue(final Integer value) {
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        valueLabel.setText(String.valueOf(value));
-      }
-    });
+    valueLabel.setText(String.valueOf(value));
   }
 
   @Override

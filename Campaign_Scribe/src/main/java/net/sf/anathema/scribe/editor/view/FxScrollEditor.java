@@ -1,19 +1,14 @@
 package net.sf.anathema.scribe.editor.view;
 
-import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
-import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.platform.markdown.WikiText;
 import net.sf.anathema.scribe.editor.presenter.ScrollEditor;
 import net.sf.anathema.scribe.editor.presenter.TextTypedListener;
 import org.jmock.example.announcer.Announcer;
-
-import static net.sf.anathema.platform.fx.FxThreading.runInFxAsSoonAsPossible;
 
 public class FxScrollEditor implements ScrollEditor {
 
@@ -24,57 +19,33 @@ public class FxScrollEditor implements ScrollEditor {
   private final Announcer<TextTypedListener> titleChanged = Announcer.to(TextTypedListener.class);
 
   public FxScrollEditor() {
-    FxThreading.runOnCorrectThread(new Runnable() {
-      @Override
-      public void run() {
-        titleDisplay = createNameField();
-        content = createContentDisplay();
-        pane = new BorderPane();
-        pane.setTop(titleDisplay);
-        pane.setCenter(content);
-      }
-    });
+    titleDisplay = createNameField();
+    content = createContentDisplay();
+    pane = new BorderPane();
+    pane.setTop(titleDisplay);
+    pane.setCenter(content);
   }
 
   private TextField createNameField() {
     final TextField field = new TextField("");
     field.getStyleClass().add("scroll-title");
-    field.addEventFilter(KeyEvent.KEY_RELEASED, new EventHandler<KeyEvent>() {
-      public void handle(KeyEvent event) {
-        titleChanged.announce().textChanged(field.getText());
-      }
-    });
+    field.addEventFilter(KeyEvent.KEY_RELEASED, event -> titleChanged.announce().textChanged(field.getText()));
     return field;
   }
 
   @Override
   public void setTitlePrompt(final String prompt) {
-    Platform.runLater(new Runnable() {
-      @Override
-      public void run() {
-        titleDisplay.setPromptText(prompt);
-      }
-    });
+    titleDisplay.setPromptText(prompt);
   }
 
   @Override
   public void setWikiText(final WikiText text) {
-    runInFxAsSoonAsPossible(new Runnable() {
-      @Override
-      public void run() {
-        updateText(text);
-      }
-    });
+    updateText(text);
   }
 
   @Override
   public void setTitle(final String title) {
-    runInFxAsSoonAsPossible(new Runnable() {
-      @Override
-      public void run() {
-        updateTitle(title);
-      }
-    });
+    updateTitle(title);
   }
 
   @Override
@@ -90,11 +61,7 @@ public class FxScrollEditor implements ScrollEditor {
   private TextArea createContentDisplay() {
     final TextArea area = new TextArea();
     area.setWrapText(true);
-    area.addEventFilter(KeyEvent.KEY_RELEASED, new EventHandler<KeyEvent>() {
-      public void handle(KeyEvent event) {
-        contentChanged.announce().textChanged(area.getText());
-      }
-    });
+    area.addEventFilter(KeyEvent.KEY_RELEASED, event -> contentChanged.announce().textChanged(area.getText()));
     return area;
   }
 

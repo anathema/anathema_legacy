@@ -21,7 +21,7 @@ public class FxStack {
     namedNodes.put(name, node);
   }
 
-  public void show(final Identifier name) {
+  public void show(Identifier name) {
     parent.getChildren().clear();
     Node selectedNode = namedNodes.get(name);
     parent.add(selectedNode, new CC().push().grow());
