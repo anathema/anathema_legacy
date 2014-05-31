@@ -73,7 +73,12 @@ public class FxBaseTool implements Tool, FxComponent {
 
   @Override
   public void setHotkey(Hotkey key) {
-    acceleratorMap.register(key, command);
+    acceleratorMap.register(key, () -> {
+      if (button.isDisabled()) {
+        return;
+      }
+      command.execute();
+    });
   }
 
   public void registerHotkeyIn(AcceleratorMap actualMap) {

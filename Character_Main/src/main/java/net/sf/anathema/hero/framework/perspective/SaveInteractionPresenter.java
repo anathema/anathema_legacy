@@ -1,11 +1,11 @@
 package net.sf.anathema.hero.framework.perspective;
 
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.framework.perspective.model.ItemSelectionModel;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Hotkey;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.file.RelativePath;
-import net.sf.anathema.framework.environment.Resources;
 
 import java.io.IOException;
 
@@ -25,7 +25,7 @@ public class SaveInteractionPresenter {
     initializeAppearance();
     initializeEnabling();
     initializeCommand();
-    interaction.setHotkey(new Hotkey('S'));
+    interaction.setHotkey(new Hotkey('s'));
   }
 
   private void initializeAppearance() {

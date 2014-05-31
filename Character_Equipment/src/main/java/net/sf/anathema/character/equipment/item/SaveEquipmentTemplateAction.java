@@ -29,7 +29,7 @@ public class SaveEquipmentTemplateAction {
     saveTool.setTooltip(resources.getString("Equipment.Creation.Item.SaveActionTooltip"));
     initListening(saveTool);
     saveTool.setCommand(new SaveChangedEquipment(view));
-    saveTool.setHotkey(new Hotkey('s'));
+    saveTool.setHotkey(new Hotkey('S'));
   }
 
   private void initListening(Tool saveTool) {
@@ -89,12 +89,7 @@ public class SaveEquipmentTemplateAction {
           String message = resources.getString("Equipment.Creation.OverwriteMessage.Text");
           String title = resources.getString("AnathemaCore.DialogTitle.ConfirmationDialog");
           Vetor vetor = factory.createVetor(title, message);
-          vetor.requestPermissionFor(new Command() {
-            @Override
-            public void execute() {
-              model.getDatabase().deleteTemplate(existingTemplate.getName());
-            }
-          });
+          vetor.requestPermissionFor(() -> model.getDatabase().deleteTemplate(existingTemplate.getName()));
         }
       }
       if (editTemplateId != null) {
