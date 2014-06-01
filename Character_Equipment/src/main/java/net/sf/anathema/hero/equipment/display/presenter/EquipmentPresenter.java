@@ -49,7 +49,7 @@ public class EquipmentPresenter {
 
   public void initPresentation() {
     VetoableObjectSelectionView<String> equipmentTemplatePickList = view.getEquipmentTemplatePickList();
-    this.ownedEquipmentOverview = view.addOwnedEquipmentList(new SimpleEquipmentItemRenderer());
+    this.ownedEquipmentOverview = view.addOwnedEquipmentList(new SimpleEquipmentItemRenderer(resources));
     model.addEquipmentObjectListener(new UpdateOwnedItems());
     equipmentTemplatePickList.setCellRenderer(new EquipmentItemUIConfiguration(model, resources));
     setObjects(equipmentTemplatePickList);
@@ -127,6 +127,7 @@ public class EquipmentPresenter {
   private void removeItemView(IEquipmentItem item) {
     EquipmentObjectView objectView = viewsByItem.remove(item);
     view.removeEquipmentObjectView(objectView);
+    refreshOwnedItemOverview();
   }
 
   private void initEquipmentObjectPresentation(IEquipmentItem selectedObject) {
@@ -137,6 +138,10 @@ public class EquipmentPresenter {
             heroEvaluator, optionProvider, resources);
     objectPresenter.initPresentation();
     enablePersonalization(selectedObject, objectPresenter);
+    refreshOwnedItemOverview();
+  }
+
+  private void refreshOwnedItemOverview() {
     List<IEquipmentItem> allItems = new ArrayList<>();
     Collections.addAll(allItems, model.getNaturalWeapons());
     Collections.addAll(allItems, model.getEquipmentItems());
