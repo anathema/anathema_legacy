@@ -29,14 +29,20 @@ public class FxEquipmentView implements EquipmentView, NodeHolder {
 
 
   public FxEquipmentView() {
-    ScrollPane itemScrollpane = new ScrollPane();
-    itemScrollpane.setFitToWidth(true);
-    itemScrollpane.setFitToHeight(true);
-    itemScrollpane.setContent(equipmentPickList.getNode());
-    selectionPanel.add(itemScrollpane, new CC().grow().push());
+    ScrollPane availableItemScroller = createScrollPane(equipmentPickList.getNode(), true, true);
+    selectionPanel.add(availableItemScroller, new CC().grow().push());
     panel.add(selectionPanel, new CC().push().grow());
     panel.add(buttonPanel);
-    panel.add(itemPane, new CC().push().grow());
+    ScrollPane ownedItemScroller = createScrollPane(itemPane, true, false);
+    panel.add(ownedItemScroller, new CC().push().grow());
+  }
+
+  private ScrollPane createScrollPane(Node node, boolean fitWidth, boolean fitHeight) {
+    ScrollPane availableItemScroller = new ScrollPane();
+    availableItemScroller.setFitToWidth(fitWidth);
+    availableItemScroller.setFitToHeight(fitHeight);
+    availableItemScroller.setContent(node);
+    return availableItemScroller;
   }
 
 
