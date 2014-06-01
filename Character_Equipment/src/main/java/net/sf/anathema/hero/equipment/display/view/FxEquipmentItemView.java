@@ -3,6 +3,7 @@ package net.sf.anathema.hero.equipment.display.view;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TitledPane;
+import net.miginfocom.layout.LC;
 import net.sf.anathema.hero.equipment.display.presenter.EquipmentObjectView;
 import net.sf.anathema.hero.equipment.display.presenter.StatsView;
 import net.sf.anathema.interaction.Tool;
@@ -17,7 +18,7 @@ public class FxEquipmentItemView implements EquipmentObjectView {
   private final MigPane buttonPane = new MigPane(LayoutUtils.fillWithoutInsets());
 
   public FxEquipmentItemView() {
-    MigPane body = new MigPane(LayoutUtils.fillWithoutInsets().wrapAfter(1));
+    MigPane body = new MigPane(new LC().wrapAfter(1));
     body.add(descriptionLabel);
     body.add(elementPane);
     body.add(buttonPane);
@@ -42,7 +43,7 @@ public class FxEquipmentItemView implements EquipmentObjectView {
 
   @Override
   public StatsView addStats(String description) {
-    final FxStatsView statsView = new FxStatsView(description);
+    FxStatsView statsView = new FxStatsView(description);
     elementPane.add(statsView.getNode());
     return statsView;
   }

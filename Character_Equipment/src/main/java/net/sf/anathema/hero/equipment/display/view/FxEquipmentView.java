@@ -48,7 +48,7 @@ public class FxEquipmentView implements EquipmentView, NodeHolder {
   @Override
   public EquipmentObjectView addEquipmentObjectView() {
     final FxEquipmentItemView itemView = new FxEquipmentItemView();
-    itemPane.add(itemView.getNode());
+    itemPane.add(itemView.getNode(), new CC().growX().spanX());
     return itemView;
   }
 
