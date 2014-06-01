@@ -1,20 +1,17 @@
 package net.sf.anathema.hero.languages.display.presenter;
 
-import net.sf.anathema.character.framework.library.overview.OverviewCategory;
-import net.sf.anathema.character.framework.library.removableentry.RemovableEntryListener;
 import net.sf.anathema.character.framework.display.labelledvalue.IValueView;
 import net.sf.anathema.character.framework.display.labelledvalue.LabelledAllotmentView;
+import net.sf.anathema.character.framework.library.overview.OverviewCategory;
+import net.sf.anathema.character.framework.library.removableentry.RemovableEntryListener;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.hero.languages.model.LanguagesModel;
-import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
-import net.sf.anathema.lib.control.ChangeListener;
-import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.AbstractUIConfiguration;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
-import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.util.Identifier;
 
 import java.util.HashMap;
@@ -63,12 +60,7 @@ public class LanguagesPresenter {
         updateOverview(familyView, totalView, barbarianView);
       }
     });
-    model.addCharacterChangedListener(new ChangeListener() {
-      @Override
-      public void changeOccurred() {
-        updateOverview(familyView, totalView, barbarianView);
-      }
-    });
+    model.addCharacterChangedListener(() -> updateOverview(familyView, totalView, barbarianView));
     updateOverview(familyView, totalView, barbarianView);
   }
 
@@ -95,30 +87,24 @@ public class LanguagesPresenter {
     AgnosticUIConfiguration<Object> uiConfiguration = new LanguageUiConfiguration();
     final ObjectSelectionViewWithTool<Object> selectionView = view.addSelectionView(labelText, uiConfiguration);
     selectionView.setObjects(model.getPredefinedLanguages());
-    selectionView.addObjectSelectionChangedListener(new ObjectValueListener<Object>() {
-      @Override
-      public void valueChanged(Object newValue) {
-        if (newValue == null) {
-          return;
-        }
-        Identifier definedLanguage = getLanguage(newValue);
-        if (definedLanguage == null) {
-          model.selectBarbarianLanguage(newValue.toString());
-        } else {
-          model.selectLanguage(definedLanguage);
-        }
+    selectionView.addObjectSelectionChangedListener(newValue -> {
+      if (newValue == null) {
+        return;
+      }
+      Identifier definedLanguage = getLanguage(newValue);
+      if (definedLanguage == null) {
+        model.selectBarbarianLanguage(newValue.toString());
+      } else {
+        model.selectLanguage(definedLanguage);
       }
     });
     final Tool addButton = selectionView.addTool();
     addButton.setIcon(new BasicUi().getAddIconPath());
-    addButton.setCommand(new Command() {
-      @Override
-      public void execute() {
-        if (!model.isEntryAllowed()) {
-          return;
-        }
-        model.commitSelection();
+    addButton.setCommand(() -> {
+      if (!model.isEntryAllowed()) {
+        return;
       }
+      model.commitSelection();
     });
     model.addModelChangeListener(new RemovableEntryListener<Identifier>() {
       @Override
@@ -155,12 +141,7 @@ public class LanguagesPresenter {
     RelativePath removeIcon = new BasicUi().getRemoveIconPath();
     RemovableEntryView entryView = view.addEntryView(removeIcon, getDisplayString(language));
     viewsByEntry.put(language, entryView);
-    entryView.addButtonListener(new Command() {
-      @Override
-      public void execute() {
-        model.removeEntry(language);
-      }
-    });
+    entryView.addButtonListener(() -> model.removeEntry(language));
   }
 
   private Identifier getLanguage(Object anObject) {

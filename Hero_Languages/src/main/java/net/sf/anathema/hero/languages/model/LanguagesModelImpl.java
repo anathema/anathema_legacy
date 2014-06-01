@@ -2,19 +2,16 @@ package net.sf.anathema.hero.languages.model;
 
 import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import net.sf.anathema.character.framework.library.removableentry.AbstractRemovableEntryModel;
-import net.sf.anathema.hero.traits.model.Trait;
-import net.sf.anathema.hero.traits.model.types.AbilityType;
 import net.sf.anathema.hero.abilities.model.AbilityModelFetcher;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.change.ChangeAnnouncer;
-import net.sf.anathema.hero.model.change.ChangeFlavor;
-import net.sf.anathema.hero.model.change.FlavoredChangeListener;
 import net.sf.anathema.hero.model.change.RemovableEntryChangeAdapter;
+import net.sf.anathema.hero.traits.model.Trait;
 import net.sf.anathema.hero.traits.model.TraitChangeFlavor;
+import net.sf.anathema.hero.traits.model.types.AbilityType;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.util.Identifier;
@@ -51,13 +48,10 @@ public class LanguagesModelImpl extends AbstractRemovableEntryModel<Identifier> 
 
   @Override
   public void initializeListening(final ChangeAnnouncer announcer) {
-    addModelChangeListener(new RemovableEntryChangeAdapter<Identifier>(announcer));
-    announcer.addListener(new FlavoredChangeListener() {
-      @Override
-      public void changeOccurred(ChangeFlavor flavor) {
-        if (TraitChangeFlavor.changes(flavor, AbilityType.Linguistics)) {
-          updateLanguagePointAllowance();
-        }
+    addModelChangeListener(new RemovableEntryChangeAdapter<>(announcer));
+    announcer.addListener(flavor -> {
+      if (TraitChangeFlavor.changes(flavor, AbilityType.Linguistics)) {
+        updateLanguagePointAllowance();
       }
     });
   }
@@ -106,12 +100,7 @@ public class LanguagesModelImpl extends AbstractRemovableEntryModel<Identifier> 
   @Override
   public void selectLanguage(final Identifier language) {
     Preconditions.checkNotNull(language);
-    Identifier foundLanguage = Iterables.find(getEntries(), new Predicate<Identifier>() {
-      @Override
-      public boolean apply(Identifier selectedLanguage) {
-        return Objects.equal(language, selectedLanguage);
-      }
-    }, null);
+    Identifier foundLanguage = Iterables.find(getEntries(), selectedLanguage -> Objects.equal(language, selectedLanguage), null);
     if (foundLanguage != null) {
       fireEntryChanged();
       return;
@@ -122,12 +111,7 @@ public class LanguagesModelImpl extends AbstractRemovableEntryModel<Identifier> 
 
   @Override
   public Identifier getPredefinedLanguageById(final String id) {
-    return Iterables.find(Arrays.asList(languages), new Predicate<Identifier>() {
-      @Override
-      public boolean apply(Identifier definedLanuage) {
-        return Objects.equal(id, definedLanuage.getId());
-      }
-    }, null);
+    return Iterables.find(Arrays.asList(languages), definedLanuage -> Objects.equal(id, definedLanuage.getId()), null);
   }
 
   @Override
