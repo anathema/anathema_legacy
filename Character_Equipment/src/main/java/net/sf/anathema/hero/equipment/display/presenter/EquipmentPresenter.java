@@ -1,5 +1,7 @@
 package net.sf.anathema.hero.equipment.display.presenter;
 
+import net.sf.anathema.character.equipment.character.EquipmentHeroEvaluator;
+import net.sf.anathema.character.equipment.character.EquipmentOptionsProvider;
 import net.sf.anathema.character.equipment.character.IEquipmentStringBuilder;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.EquipmentUI;
@@ -13,10 +15,14 @@ import net.sf.anathema.hero.equipment.model.EquipmentPersonalizationModel;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ICollectionListener;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
+import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.gui.selection.VetoableObjectSelectionView;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static net.sf.anathema.equipment.core.MaterialComposition.Fixed;
@@ -30,23 +36,27 @@ public class EquipmentPresenter {
   private final EquipmentModel model;
   private final EquipmentView view;
   private final Map<IEquipmentItem, EquipmentObjectView> viewsByItem = new HashMap<>();
+  private final IEquipmentStringBuilder resourceBuilder;
+  private ObjectSelectionView<IEquipmentItem> ownedEquipmentOverview;
 
   public EquipmentPresenter(Resources resources, EquipmentModel model, EquipmentView view) {
     this.resources = resources;
     this.model = model;
     this.view = view;
+    this.resourceBuilder = new EquipmentStringBuilder(resources);
     model.getHeroEvaluator().addCharacterSpecialtyListChangeListener(() -> initializeAllOwnedItems(model));
   }
 
   public void initPresentation() {
-    initializeAllOwnedItems(model);
     VetoableObjectSelectionView<String> equipmentTemplatePickList = view.getEquipmentTemplatePickList();
+    this.ownedEquipmentOverview = view.addOwnedEquipmentList();
     model.addEquipmentObjectListener(new UpdateOwnedItems());
     equipmentTemplatePickList.setCellRenderer(new EquipmentItemUIConfiguration(model, resources));
     setObjects(equipmentTemplatePickList);
     MagicalMaterialView magicalMaterialView = initMaterialView(equipmentTemplatePickList);
     addAddButton(equipmentTemplatePickList, magicalMaterialView);
     addRefreshTool(equipmentTemplatePickList);
+    initializeAllOwnedItems(model);
   }
 
   private void initializeAllOwnedItems(EquipmentModel model) {
@@ -120,14 +130,26 @@ public class EquipmentPresenter {
   }
 
   private void initEquipmentObjectPresentation(IEquipmentItem selectedObject) {
-    EquipmentObjectView objectView = viewsByItem.get(selectedObject);
-    objectView = objectView == null ? view.addEquipmentObjectView() : objectView;
-    IEquipmentStringBuilder resourceBuilder = new EquipmentStringBuilder(resources);
-    viewsByItem.put(selectedObject, objectView);
+    EquipmentObjectView objectView = getViewForObject(selectedObject);
+    EquipmentHeroEvaluator heroEvaluator = model.getHeroEvaluator();
+    EquipmentOptionsProvider optionProvider = model.getOptionProvider();
     EquipmentObjectPresenter objectPresenter = new EquipmentObjectPresenter(selectedObject, objectView, resourceBuilder,
-            model.getHeroEvaluator(), model.getOptionProvider(), resources);
+            heroEvaluator, optionProvider, resources);
     objectPresenter.initPresentation();
     enablePersonalization(selectedObject, objectPresenter);
+    List<IEquipmentItem> allItems = new ArrayList<>();
+    Collections.addAll(allItems, model.getNaturalWeapons());
+    Collections.addAll(allItems, model.getEquipmentItems());
+    ownedEquipmentOverview.setObjects(allItems);
+  }
+
+  private EquipmentObjectView getViewForObject(IEquipmentItem selectedObject) {
+    EquipmentObjectView objectView = viewsByItem.get(selectedObject);
+    if (objectView == null) {
+      objectView = view.addEquipmentObjectView();
+      viewsByItem.put(selectedObject, objectView);
+    }
+    return objectView;
   }
 
   private void enablePersonalization(IEquipmentItem selectedObject, EquipmentObjectPresenter objectPresenter) {
