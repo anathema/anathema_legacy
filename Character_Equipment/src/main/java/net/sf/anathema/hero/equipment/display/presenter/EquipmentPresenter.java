@@ -61,12 +61,22 @@ public class EquipmentPresenter {
   private void addAddButton(VetoableObjectSelectionView<String> equipmentTemplatePickList,
                             MagicalMaterialView magicalMaterialView) {
     Tool addTool = view.addToolButton();
-    createTemplateAddAction(equipmentTemplatePickList, magicalMaterialView, addTool);
+    addTool.setIcon(new BasicUi().getRightArrowIconPath());
+    addTool.setTooltip(resources.getString("AdditionalTemplateView.AddTemplate.Action.Tooltip"));
+    addTool.setCommand(() -> model.addEquipmentObjectFor(equipmentTemplatePickList.getSelectedObject(),
+            magicalMaterialView.getSelectedMaterial()));
+    equipmentTemplatePickList.addObjectSelectionChangedListener(newValue -> setEnabled(newValue, addTool));
+    setEnabled(equipmentTemplatePickList.getSelectedObject(), addTool);
   }
 
   private void addRefreshTool(VetoableObjectSelectionView<String> equipmentTemplatePickList) {
     Tool refreshTool = view.addToolButton();
-    createRefreshAction(equipmentTemplatePickList, refreshTool);
+    refreshTool.setTooltip(resources.getString("AdditionalTemplateView.RefreshDatabase.Action.Tooltip"));
+    refreshTool.setIcon(new EquipmentUI().getRefreshIconPath());
+    refreshTool.setCommand(() -> {
+      setObjects(equipmentTemplatePickList);
+      model.refreshItems();
+    });
   }
 
   private void updateMagicalMaterialSelector(MagicalMaterialView magicalMaterialView, String templateId) {
@@ -90,29 +100,10 @@ public class EquipmentPresenter {
     return magicMaterialView;
   }
 
-  private void createRefreshAction(VetoableObjectSelectionView<String> equipmentTemplatePickList, Tool refreshTool) {
-    refreshTool.setTooltip(resources.getString("AdditionalTemplateView.RefreshDatabase.Action.Tooltip"));
-    refreshTool.setIcon(new EquipmentUI().getRefreshIconPath());
-    refreshTool.setCommand(() -> {
-      setObjects(equipmentTemplatePickList);
-      model.refreshItems();
-    });
-  }
-
   private void setObjects(VetoableObjectSelectionView<String> equipmentTemplatePickList) {
     String[] templates = model.getAvailableTemplateIds();
     Arrays.sort(templates, new EquipmentTemplateNameComparator());
     equipmentTemplatePickList.setObjects(templates);
-  }
-
-  private void createTemplateAddAction(VetoableObjectSelectionView<String> equipmentTemplatePickList,
-                                       MagicalMaterialView materialView, Tool selectTool) {
-    selectTool.setIcon(new BasicUi().getRightArrowIconPath());
-    selectTool.setTooltip(resources.getString("AdditionalTemplateView.AddTemplate.Action.Tooltip"));
-    selectTool.setCommand(() -> model.addEquipmentObjectFor(equipmentTemplatePickList.getSelectedObject(),
-            materialView.getSelectedMaterial()));
-    equipmentTemplatePickList.addObjectSelectionChangedListener(newValue -> setEnabled(newValue, selectTool));
-    setEnabled(equipmentTemplatePickList.getSelectedObject(), selectTool);
   }
 
   private void setEnabled(String newValue, Tool selectTool) {
