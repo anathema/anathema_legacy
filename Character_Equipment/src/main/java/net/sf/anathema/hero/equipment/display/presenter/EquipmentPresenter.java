@@ -136,7 +136,6 @@ public class EquipmentPresenter {
             model.getHeroEvaluator(), model.getOptionProvider(), resources);
     objectPresenter.initPresentation();
     enablePersonalization(selectedObject, objectPresenter);
-    view.revalidateEquipmentViews();
   }
 
   private void enablePersonalization(IEquipmentItem selectedObject, EquipmentObjectPresenter objectPresenter) {

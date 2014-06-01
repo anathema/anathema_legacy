@@ -47,7 +47,7 @@ public class FxEquipmentView implements EquipmentView, NodeHolder {
 
   @Override
   public EquipmentObjectView addEquipmentObjectView() {
-    final FxEquipmentItemView itemView = new FxEquipmentItemView();
+    FxEquipmentItemView itemView = new FxEquipmentItemView();
     itemPane.add(itemView.getNode(), new CC().growX().spanX());
     return itemView;
   }
@@ -59,26 +59,21 @@ public class FxEquipmentView implements EquipmentView, NodeHolder {
 
   @Override
   public Tool addToolButton() {
-    final FxButtonTool tool = FxButtonTool.ForAnyPurpose();
+    FxButtonTool tool = FxButtonTool.ForAnyPurpose();
     buttonPanel.add(tool.getNode());
     return tool;
   }
 
   @Override
   public MagicalMaterialView addMagicMaterialView(String label, AgnosticUIConfiguration<MagicalMaterial> renderer) {
-    final FxMaterialView magicMaterialView = new FxMaterialView(label, renderer);
+    FxMaterialView magicMaterialView = new FxMaterialView(label, renderer);
     selectionPanel.add(magicMaterialView.getNode(), new CC().growX().pushX());
     return magicMaterialView;
   }
 
   @Override
-  public void revalidateEquipmentViews() {
-    //nothing to do
-  }
-
-  @Override
   public PersonalizationEditView startEditingPersonalization(EquipmentPersonalizationProperties properties) {
-    return new FxPersonalizationEditView(panel.getScene().getWindow(),  properties);
+    return new FxPersonalizationEditView(panel.getScene().getWindow(), properties);
   }
 
   @Override

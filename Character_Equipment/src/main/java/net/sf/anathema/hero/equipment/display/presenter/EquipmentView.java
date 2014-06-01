@@ -17,7 +17,5 @@ public interface EquipmentView {
 
   MagicalMaterialView addMagicMaterialView(String label, AgnosticUIConfiguration<MagicalMaterial> renderer);
 
-  void revalidateEquipmentViews();
-
   PersonalizationEditView startEditingPersonalization(EquipmentPersonalizationProperties properties);
 }
