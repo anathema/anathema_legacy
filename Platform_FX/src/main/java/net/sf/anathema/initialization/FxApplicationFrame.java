@@ -35,8 +35,7 @@ public class FxApplicationFrame implements ApplicationFrameView {
   }
 
   public void show() {
-    stage.setHeight(720);
-    stage.setWidth(1280);
+    stage.setMaximized(true);
     stage.setTitle(properties.getDefaultFrameTitle());
     stage.getIcons().add(getFrameIcon());
     stage.show();
