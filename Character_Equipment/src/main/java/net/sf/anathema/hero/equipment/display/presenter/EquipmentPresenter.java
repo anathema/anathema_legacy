@@ -31,28 +31,15 @@ public class EquipmentPresenter {
   private final EquipmentView view;
   private final Map<IEquipmentItem, EquipmentObjectView> viewsByItem = new HashMap<>();
 
-  public EquipmentPresenter(Resources resources, final EquipmentModel model, EquipmentView view) {
+  public EquipmentPresenter(Resources resources, EquipmentModel model, EquipmentView view) {
     this.resources = resources;
     this.model = model;
     this.view = view;
-
-    model.getHeroEvaluator().addCharacterSpecialtyListChangeListener(() -> {
-      for (IEquipmentItem item : model.getNaturalWeapons()) {
-        initEquipmentObjectPresentation(item);
-      }
-      for (IEquipmentItem item : model.getEquipmentItems()) {
-        initEquipmentObjectPresentation(item);
-      }
-    });
+    model.getHeroEvaluator().addCharacterSpecialtyListChangeListener(() -> initializeAllOwnedItems(model));
   }
 
   public void initPresentation() {
-    for (IEquipmentItem item : model.getNaturalWeapons()) {
-      initEquipmentObjectPresentation(item);
-    }
-    for (IEquipmentItem item : model.getEquipmentItems()) {
-      initEquipmentObjectPresentation(item);
-    }
+    initializeAllOwnedItems(model);
     VetoableObjectSelectionView<String> equipmentTemplatePickList = view.getEquipmentTemplatePickList();
     model.addEquipmentObjectListener(new UpdateOwnedItems());
     equipmentTemplatePickList.setCellRenderer(new EquipmentItemUIConfiguration(model, resources));
@@ -60,6 +47,15 @@ public class EquipmentPresenter {
     MagicalMaterialView magicalMaterialView = initMaterialView(equipmentTemplatePickList);
     addAddButton(equipmentTemplatePickList, magicalMaterialView);
     addRefreshTool(equipmentTemplatePickList);
+  }
+
+  private void initializeAllOwnedItems(EquipmentModel model) {
+    for (IEquipmentItem item : model.getNaturalWeapons()) {
+      initEquipmentObjectPresentation(item);
+    }
+    for (IEquipmentItem item : model.getEquipmentItems()) {
+      initEquipmentObjectPresentation(item);
+    }
   }
 
   private void addAddButton(VetoableObjectSelectionView<String> equipmentTemplatePickList,
@@ -89,7 +85,8 @@ public class EquipmentPresenter {
     AgnosticUIConfiguration<MagicalMaterial> renderer = new MagicMaterialUIConfiguration(resources);
     MagicalMaterialView magicMaterialView = view.addMagicMaterialView(label, renderer);
     magicMaterialView.setMaterials(MagicalMaterial.values());
-    equipmentTemplatePickList.addObjectSelectionChangedListener(templateId -> updateMagicalMaterialSelector(magicMaterialView, templateId));
+    equipmentTemplatePickList.addObjectSelectionChangedListener(
+            templateId -> updateMagicalMaterialSelector(magicMaterialView, templateId));
     return magicMaterialView;
   }
 
