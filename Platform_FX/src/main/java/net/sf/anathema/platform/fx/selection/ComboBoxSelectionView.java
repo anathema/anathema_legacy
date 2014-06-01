@@ -40,7 +40,7 @@ public class ComboBoxSelectionView<V> implements FxObjectSelectionView<V> {
     comboBox.setCellFactory(factory);
     comboBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<V>() {
       @Override
-      public void changed(ObservableValue<? extends V> observableValue, V v, V newValue) {
+      public void changed(ObservableValue<? extends V> observableValue, V oldValue, V newValue) {
         announcer.announce().valueChanged(newValue);
       }
     });
