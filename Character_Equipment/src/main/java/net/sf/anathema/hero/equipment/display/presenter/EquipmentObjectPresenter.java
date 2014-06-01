@@ -5,16 +5,15 @@ import net.sf.anathema.character.equipment.character.EquipmentOptionsProvider;
 import net.sf.anathema.character.equipment.character.IEquipmentStringBuilder;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
+import net.sf.anathema.equipment.core.MaterialComposition;
+import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.hero.equipment.model.EquipmentItemPresentationModel;
+import net.sf.anathema.hero.equipment.model.EquipmentSpecialtyOption;
 import net.sf.anathema.hero.equipment.sheet.content.stats.ArtifactStats;
 import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IWeaponStats;
 import net.sf.anathema.hero.specialties.Specialty;
-import net.sf.anathema.equipment.core.MaterialComposition;
-import net.sf.anathema.hero.equipment.model.EquipmentItemPresentationModel;
-import net.sf.anathema.hero.equipment.model.EquipmentSpecialtyOption;
 import net.sf.anathema.interaction.Tool;
-import net.sf.anathema.lib.control.ChangeListener;
-import net.sf.anathema.framework.environment.Resources;
 
 import java.text.MessageFormat;
 
@@ -84,17 +83,14 @@ public class EquipmentObjectPresenter {
       }
       final StatsView statsView = view.addStats(createEquipmentDescription(model, stats));
       statsView.setSelected(model.isPrintEnabled(stats));
-      statsView.addChangeListener(new ChangeListener() {
-        @Override
-        public void changeOccurred() {
-          model.setPrintEnabled(stats, statsView.getSelected());
-          if (stats instanceof ArtifactStats) {
-            boolean userHasEnabledAttunementStats = statsView.getSelected();
-            if (userHasEnabledAttunementStats) {
-              disableAllOtherAttunementStats(stats);
-            }
-            refreshView();
+      statsView.addChangeListener(() -> {
+        model.setPrintEnabled(stats, statsView.getSelected());
+        if (stats instanceof ArtifactStats) {
+          boolean userHasEnabledAttunementStats = statsView.getSelected();
+          if (userHasEnabledAttunementStats) {
+            disableAllOtherAttunementStats(stats);
           }
+          refreshView();
         }
       });
       if (stats instanceof ArtifactStats) {
@@ -171,12 +167,9 @@ public class EquipmentObjectPresenter {
       final IEquipmentStatsOption specialtyOption = new EquipmentSpecialtyOption(specialty, weaponStats.getTraitType());
       final IEquipmentStats baseStat = model.getStat(weaponStats.getId());
       statsView.setSelected(characterOptionProvider.isStatOptionEnabled(model, baseStat, specialtyOption));
-      statsView.addChangeListener(new ChangeListener() {
-        @Override
-        public void changeOccurred() {
-          if (statsView.getSelected()) characterOptionProvider.enableStatOption(model, baseStat, specialtyOption);
-          else characterOptionProvider.disableStatOption(model, baseStat, specialtyOption);
-        }
+      statsView.addChangeListener(() -> {
+        if (statsView.getSelected()) characterOptionProvider.enableStatOption(model, baseStat, specialtyOption);
+        else characterOptionProvider.disableStatOption(model, baseStat, specialtyOption);
       });
     }
   }
