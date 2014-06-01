@@ -91,7 +91,7 @@ public class FxEquipmentView implements EquipmentView, NodeHolder {
   public ObjectSelectionView<IEquipmentItem> addOwnedEquipmentList(EquipmentItemRenderer renderer) {
     ListSelectionView<IEquipmentItem> selectionView = new ListSelectionView<>();
     selectionView.setCellRenderer(new EquipmentListCellFactory(renderer));
-    ownedPanel.add(selectionView.getNode());
+    ownedPanel.add(selectionView.getNode(), new CC().growX().pushX());
     return selectionView;
   }
 
