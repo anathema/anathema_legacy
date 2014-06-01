@@ -17,7 +17,7 @@ public class SimpleEquipmentItemRenderer implements EquipmentItemRenderer {
 
   @Override
   public String getLabel(IEquipmentItem item) {
-    return item.getTemplateId();
+    return item.getTitle();
   }
 
   @Override
