@@ -1,30 +1,24 @@
 package net.sf.anathema.hero.intimacies.display;
 
 import net.sf.anathema.character.framework.CharacterUI;
-import net.sf.anathema.character.framework.library.overview.OverviewCategory;
-import net.sf.anathema.character.framework.library.removableentry.RemovableEntryListener;
-import net.sf.anathema.hero.traits.display.TraitPresenter;
 import net.sf.anathema.character.framework.display.labelledvalue.IValueView;
 import net.sf.anathema.character.framework.display.labelledvalue.LabelledAllotmentView;
+import net.sf.anathema.character.framework.library.overview.OverviewCategory;
+import net.sf.anathema.character.framework.library.removableentry.RemovableEntryListener;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.hero.display.ExtensibleTraitView;
 import net.sf.anathema.hero.experience.ExperienceChange;
 import net.sf.anathema.hero.intimacies.model.IntimaciesModel;
 import net.sf.anathema.hero.intimacies.model.Intimacy;
 import net.sf.anathema.hero.intimacies.points.IntimaciesBonusPointCalculator;
-import net.sf.anathema.hero.model.change.ChangeFlavor;
-import net.sf.anathema.hero.model.change.FlavoredChangeListener;
 import net.sf.anathema.hero.points.HeroBonusPointCalculator;
-import net.sf.anathema.interaction.Command;
+import net.sf.anathema.hero.traits.display.TraitPresenter;
 import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.interaction.Tool;
-import net.sf.anathema.lib.control.ChangeListener;
-import net.sf.anathema.lib.control.IBooleanValueChangedListener;
-import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
 import net.sf.anathema.lib.control.legality.LegalityFontProvider;
 import net.sf.anathema.lib.control.legality.ValueLegalityState;
-import net.sf.anathema.framework.environment.Resources;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -70,12 +64,7 @@ public class IntimaciesPresenter {
             resources.getString("Intimacies.Overview.BorderLabel"));
     final LabelledAllotmentView experienceMaximumView = experienceOverview.addAlotmentView(
             resources.getString("Intimacies.Overview.Maximum"), 2);
-    model.addModelChangeListener(new ChangeListener() {
-      @Override
-      public void changeOccurred() {
-        recalculateOverview(freeIntimaciesView, totalIntimaciesView, bonusPointsView, experienceMaximumView);
-      }
-    });
+    model.addModelChangeListener(() -> recalculateOverview(freeIntimaciesView, totalIntimaciesView, bonusPointsView, experienceMaximumView));
     model.addModelChangeListener(new RemovableEntryListener<Intimacy>() {
       @Override
       public void entryAdded(Intimacy entry) {
@@ -92,13 +81,9 @@ public class IntimaciesPresenter {
         recalculateOverview(freeIntimaciesView, totalIntimaciesView, bonusPointsView, experienceMaximumView);
       }
     });
-    model.addChangeListener(new FlavoredChangeListener() {
-
-      @Override
-      public void changeOccurred(ChangeFlavor flavor) {
-        if (flavor == ExperienceChange.FLAVOR_EXPERIENCE_STATE) {
-          setOverview(model.isCharacterExperienced(), experienceOverview, creationOverview);
-        }
+    model.addChangeListener(flavor -> {
+      if (flavor == ExperienceChange.FLAVOR_EXPERIENCE_STATE) {
+        setOverview(model.isCharacterExperienced(), experienceOverview, creationOverview);
       }
     });
     setOverview(model.isCharacterExperienced(), experienceOverview, creationOverview);
@@ -161,28 +146,13 @@ public class IntimaciesPresenter {
   private void addDeleteTool(ExtensibleTraitView extensibleTraitView, final Intimacy intimacy) {
     Tool tool = extensibleTraitView.addToolBehind();
     tool.setIcon(new BasicUi().getRemoveIconPath());
-    tool.setCommand(new Command() {
-      @Override
-      public void execute() {
-        model.removeEntry(intimacy);
-      }
-    });
+    tool.setCommand(() -> model.removeEntry(intimacy));
   }
 
   private void addLinkToggle(ExtensibleTraitView extensibleTraitView, final Intimacy intimacy) {
     final ToggleTool toggleTool = extensibleTraitView.addToggleBehind();
-    toggleTool.setCommand(new Command() {
-      @Override
-      public void execute() {
-        intimacy.setComplete(!intimacy.isComplete());
-      }
-    });
-    intimacy.addCompletionListener(new IBooleanValueChangedListener() {
-      @Override
-      public void valueChanged(boolean isComplete) {
-        setCompletionState(isComplete, toggleTool);
-      }
-    });
+    toggleTool.setCommand(() -> intimacy.setComplete(!intimacy.isComplete()));
+    intimacy.addCompletionListener(isComplete -> setCompletionState(isComplete, toggleTool));
     setCompletionState(intimacy.isComplete(), toggleTool);
   }
 
@@ -224,20 +194,10 @@ public class IntimaciesPresenter {
   }
 
   protected final Tool initSelectionViewListening(StringEntryView selectionView) {
-    selectionView.addTextChangeListener(new ObjectValueListener<String>() {
-      @Override
-      public void valueChanged(String newValue) {
-        model.setCurrentName(newValue);
-      }
-    });
+    selectionView.addTextChangeListener(model::setCurrentName);
     Tool tool = selectionView.addTool();
     tool.setIcon(new BasicUi().getAddIconPath());
-    tool.setCommand(new Command() {
-      @Override
-      public void execute() {
-        model.commitSelection();
-      }
-    });
+    tool.setCommand(model::commitSelection);
     return tool;
   }
 

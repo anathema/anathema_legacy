@@ -1,7 +1,5 @@
 package net.sf.anathema.platform.fx;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.scene.Node;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -38,12 +36,7 @@ public class FxTextView implements ITextView {
 
   @Override
   public void addTextChangedListener(final ObjectValueListener<String> listener) {
-    view.textProperty().addListener(new ChangeListener<String>() {
-      @Override
-      public void changed(ObservableValue<? extends String> observableValue, String s, String newValue) {
-        listener.valueChanged(newValue);
-      }
-    });
+    view.textProperty().addListener((observableValue, s, newValue) -> listener.valueChanged(newValue));
   }
 
   @Override
