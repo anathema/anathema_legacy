@@ -21,5 +21,5 @@ public interface EquipmentView {
 
   PersonalizationEditView startEditingPersonalization(EquipmentPersonalizationProperties properties);
 
-  ObjectSelectionView<IEquipmentItem> addOwnedEquipmentList();
+  ObjectSelectionView<IEquipmentItem> addOwnedEquipmentList(EquipmentItemRenderer renderer);
 }

@@ -12,6 +12,7 @@ public class EquipmentViewFactory implements SubViewFactory {
   public <T> T create() {
     FxEquipmentView fxView = new FxEquipmentView();
     new Stylesheet("skin/platform/tooltip.css").applyToParent(fxView.getNode());
+    new Stylesheet("skin/equipment/items.css").applyToParent(fxView.getNode());
     return (T) fxView;
   }
 }

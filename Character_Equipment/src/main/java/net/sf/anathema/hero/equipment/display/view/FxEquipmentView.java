@@ -5,6 +5,7 @@ import javafx.scene.control.ScrollPane;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.equipment.core.MagicalMaterial;
+import net.sf.anathema.hero.equipment.display.presenter.EquipmentItemRenderer;
 import net.sf.anathema.hero.equipment.display.presenter.EquipmentObjectView;
 import net.sf.anathema.hero.equipment.display.presenter.EquipmentPersonalizationProperties;
 import net.sf.anathema.hero.equipment.display.presenter.EquipmentView;
@@ -87,8 +88,9 @@ public class FxEquipmentView implements EquipmentView, NodeHolder {
   }
 
   @Override
-  public ObjectSelectionView<IEquipmentItem> addOwnedEquipmentList() {
+  public ObjectSelectionView<IEquipmentItem> addOwnedEquipmentList(EquipmentItemRenderer renderer) {
     ListSelectionView<IEquipmentItem> selectionView = new ListSelectionView<>();
+    selectionView.setCellRenderer(new EquipmentListCellFactory(renderer));
     ownedPanel.add(selectionView.getNode());
     return selectionView;
   }

@@ -49,7 +49,7 @@ public class EquipmentPresenter {
 
   public void initPresentation() {
     VetoableObjectSelectionView<String> equipmentTemplatePickList = view.getEquipmentTemplatePickList();
-    this.ownedEquipmentOverview = view.addOwnedEquipmentList();
+    this.ownedEquipmentOverview = view.addOwnedEquipmentList(new SimpleEquipmentItemRenderer());
     model.addEquipmentObjectListener(new UpdateOwnedItems());
     equipmentTemplatePickList.setCellRenderer(new EquipmentItemUIConfiguration(model, resources));
     setObjects(equipmentTemplatePickList);
