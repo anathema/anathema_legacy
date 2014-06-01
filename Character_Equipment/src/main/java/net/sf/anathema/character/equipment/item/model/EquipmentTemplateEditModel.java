@@ -70,8 +70,8 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
   public void setNewTemplate() {
     editTemplateId = null;
     editedTemplate = null;
-    getDescription().getName().setText(null);
-    getDescription().getContent().setText(null);
+    getDescription().getName().clear();
+    getDescription().getContent().clear();
     setMaterialComposition(MaterialComposition.None);
     setCost(new ItemCost("Resources", 0));
     statses.clear();
