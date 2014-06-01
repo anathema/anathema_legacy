@@ -13,22 +13,25 @@ import net.sf.anathema.platform.fx.UITableCell;
 import org.tbee.javafx.scene.layout.MigPane;
 
 public class EquipmentCell extends ListCell<IEquipmentItem> {
+  public static final String OWNED_EQUIPMENT = "ownedEquipment";
   private EquipmentItemRenderer renderer;
 
   public EquipmentCell(EquipmentItemRenderer renderer) {
     this.renderer = renderer;
+    getStyleClass().add(OWNED_EQUIPMENT);
   }
 
   @Override
   public void updateItem(IEquipmentItem item, boolean empty) {
     super.updateItem(item, empty);
     if (item == null) {
-      return;
+      setText("");
+      setGraphic(null);
+    } else {
+      setText(renderer.getLabel(item));
+      Node combinedGraphic = createGraphic(item);
+      setGraphic(combinedGraphic);
     }
-    setText(renderer.getLabel(item));
-    Node combinedGraphic = createGraphic(item);
-    setGraphic(combinedGraphic);
-    getStyleClass().addAll("ownedEquipment");
   }
 
   private Node createGraphic(IEquipmentItem item) {
