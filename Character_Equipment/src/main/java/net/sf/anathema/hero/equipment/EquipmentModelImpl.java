@@ -258,13 +258,13 @@ public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentMo
   @Override
   public void removeItem(IEquipmentItem item) {
     equipmentItems.remove(item);
-    announce().itemRemoved(item);
+    announce().itemRemoved();
     item.removeChangeListener(itemChangePropagator);
     fireModelChanged();
   }
 
   @SuppressWarnings("unchecked")
-  private ICollectionListener<IEquipmentItem> announce() {
+  private ICollectionListener announce() {
     return equipmentItemControl.announce();
   }
 
@@ -292,7 +292,7 @@ public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentMo
   }
 
   private void announceItemAndListenForChanges(IEquipmentItem refreshedItem) {
-    announce().itemAdded(refreshedItem);
+    announce().itemAdded();
     refreshedItem.addChangeListener(itemChangePropagator);
     fireModelChanged();
   }
@@ -305,7 +305,7 @@ public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentMo
   }
 
   @Override
-  public void addEquipmentObjectListener(ICollectionListener<IEquipmentItem> listener) {
+  public void addEquipmentObjectListener(ICollectionListener listener) {
     equipmentItemControl.addListener(listener);
   }
 

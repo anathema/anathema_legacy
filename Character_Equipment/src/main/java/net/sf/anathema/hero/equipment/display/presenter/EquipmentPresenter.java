@@ -174,14 +174,14 @@ public class EquipmentPresenter {
     return view.startEditingPersonalization(properties);
   }
 
-  private class UpdateOwnedItems implements ICollectionListener<IEquipmentItem> {
+  private class UpdateOwnedItems implements ICollectionListener {
     @Override
-    public void itemAdded(IEquipmentItem item) {
+    public void itemAdded() {
       refreshOwnedItemOverview();
     }
 
     @Override
-    public void itemRemoved(IEquipmentItem item) {
+    public void itemRemoved() {
       refreshOwnedItemOverview();
     }
   }

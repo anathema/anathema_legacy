@@ -7,7 +7,7 @@ public interface IEquipmentItemCollection {
 
   IEquipmentItem addEquipmentObjectFor(String templateId, MagicalMaterial material);
 
-  void addEquipmentObjectListener(ICollectionListener<IEquipmentItem> listener);
+  void addEquipmentObjectListener(ICollectionListener listener);
 
   boolean canBeRemoved(IEquipmentItem item);
 

@@ -1,8 +1,8 @@
 package net.sf.anathema.lib.control;
 
-public interface ICollectionListener<T> {
+public interface ICollectionListener {
 
-  void itemAdded(T item);
+  void itemAdded();
 
-  void itemRemoved(T item);
+  void itemRemoved();
 }
