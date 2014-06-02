@@ -113,13 +113,17 @@ public class EquipmentPresenter {
     }
   }
 
-  private void initItemPresentation(IEquipmentItem selectedObject, EquipmentObjectView objectView) {
+  private void initItemPresentation(IEquipmentItem item, EquipmentObjectView objectView) {
+    if (item==null){
+      objectView.clear();
+      return;
+    }
     EquipmentHeroEvaluator heroEvaluator = model.getHeroEvaluator();
     EquipmentOptionsProvider optionProvider = model.getOptionProvider();
-    EquipmentObjectPresenter objectPresenter = new EquipmentObjectPresenter(selectedObject, objectView, resourceBuilder,
+    EquipmentObjectPresenter objectPresenter = new EquipmentObjectPresenter(item, objectView, resourceBuilder,
             heroEvaluator, optionProvider, resources);
     objectPresenter.initPresentation();
-    enablePersonalization(selectedObject, objectPresenter);
+    enablePersonalization(item, objectPresenter);
   }
 
   private void refreshOwnedItemOverview() {
