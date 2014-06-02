@@ -29,16 +29,12 @@ public class FxEquipmentView implements EquipmentView, NodeHolder {
   private final MigPane selectionPanel = new MigPane(withoutInsets().wrapAfter(1));
   private final MigPane ownedPanel = new MigPane(withoutInsets().wrapAfter(1));
   private final MigPane buttonPanel = new MigPane(withoutInsets().wrapAfter(1));
-  private final MigPane itemPane = new MigPane(withoutInsets().wrapAfter(1));
-
 
   public FxEquipmentView() {
     ScrollPane availableItemScroller = createScrollPane(equipmentPickList.getNode(), true, true);
     selectionPanel.add(availableItemScroller, new CC().grow().push());
     panel.add(selectionPanel, new CC().push().grow());
     panel.add(buttonPanel);
-    ScrollPane ownedItemScroller = createScrollPane(itemPane, true, false);
-    ownedPanel.add(ownedItemScroller, new CC().grow().push());
     panel.add(ownedPanel, new CC().push().grow());
   }
 
@@ -54,18 +50,6 @@ public class FxEquipmentView implements EquipmentView, NodeHolder {
   @Override
   public VetoableObjectSelectionView<String> getEquipmentTemplatePickList() {
     return equipmentPickList;
-  }
-
-  @Override
-  public EquipmentObjectView addEquipmentObjectView() {
-    FxEquipmentItemView itemView = new FxEquipmentItemView();
-    itemPane.add(itemView.getNode(), new CC().growX().spanX());
-    return itemView;
-  }
-
-  @Override
-  public void removeEquipmentObjectView(EquipmentObjectView objectView) {
-    itemPane.getChildren().remove(((FxEquipmentItemView) objectView).getNode());
   }
 
   @Override
@@ -93,6 +77,13 @@ public class FxEquipmentView implements EquipmentView, NodeHolder {
     selectionView.setCellRenderer(new EquipmentListCellFactory(renderer));
     ownedPanel.add(selectionView.getNode(), new CC().growX().pushX());
     return selectionView;
+  }
+
+  @Override
+  public EquipmentObjectView addItemEditView() {
+    FxEquipmentItemView itemView = new FxEquipmentItemView();
+    ownedPanel.add(itemView.getNode(), new CC().growX().spanX());
+    return itemView;
   }
 
   @Override

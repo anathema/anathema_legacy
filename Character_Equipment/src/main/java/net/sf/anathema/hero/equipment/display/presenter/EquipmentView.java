@@ -11,10 +11,6 @@ public interface EquipmentView {
 
   VetoableObjectSelectionView<String> getEquipmentTemplatePickList();
 
-  EquipmentObjectView addEquipmentObjectView();
-
-  void removeEquipmentObjectView(EquipmentObjectView objectView);
-
   Tool addToolButton();
 
   MagicalMaterialView addMagicMaterialView(String label, AgnosticUIConfiguration<MagicalMaterial> renderer);
@@ -22,4 +18,6 @@ public interface EquipmentView {
   PersonalizationEditView startEditingPersonalization(EquipmentPersonalizationProperties properties);
 
   ObjectSelectionView<IEquipmentItem> addOwnedEquipmentList(EquipmentItemRenderer renderer);
+
+  EquipmentObjectView addItemEditView();
 }

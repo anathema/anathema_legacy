@@ -21,9 +21,7 @@ import net.sf.anathema.lib.gui.selection.VetoableObjectSelectionView;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static net.sf.anathema.equipment.core.MaterialComposition.Fixed;
 import static net.sf.anathema.equipment.core.MaterialComposition.None;
@@ -35,7 +33,6 @@ public class EquipmentPresenter {
   private final Resources resources;
   private final EquipmentModel model;
   private final EquipmentView view;
-  private final Map<IEquipmentItem, EquipmentObjectView> viewsByItem = new HashMap<>();
   private final IEquipmentStringBuilder resourceBuilder;
   private ObjectSelectionView<IEquipmentItem> ownedEquipmentOverview;
 
@@ -44,7 +41,6 @@ public class EquipmentPresenter {
     this.model = model;
     this.view = view;
     this.resourceBuilder = new EquipmentStringBuilder(resources);
-    model.getHeroEvaluator().addCharacterSpecialtyListChangeListener(() -> initializeAllOwnedItems(model));
   }
 
   public void initPresentation() {
@@ -56,16 +52,9 @@ public class EquipmentPresenter {
     MagicalMaterialView magicalMaterialView = initMaterialView(equipmentTemplatePickList);
     addAddButton(equipmentTemplatePickList, magicalMaterialView);
     addRefreshTool(equipmentTemplatePickList);
-    initializeAllOwnedItems(model);
-  }
-
-  private void initializeAllOwnedItems(EquipmentModel model) {
-    for (IEquipmentItem item : model.getNaturalWeapons()) {
-      initEquipmentObjectPresentation(item);
-    }
-    for (IEquipmentItem item : model.getEquipmentItems()) {
-      initEquipmentObjectPresentation(item);
-    }
+    EquipmentObjectView editView = view.addItemEditView();
+    ownedEquipmentOverview.addObjectSelectionChangedListener(item -> initItemPresentation(item, editView));
+    refreshOwnedItemOverview();
   }
 
   private void addAddButton(VetoableObjectSelectionView<String> equipmentTemplatePickList,
@@ -124,21 +113,13 @@ public class EquipmentPresenter {
     }
   }
 
-  private void removeItemView(IEquipmentItem item) {
-    EquipmentObjectView objectView = viewsByItem.remove(item);
-    view.removeEquipmentObjectView(objectView);
-    refreshOwnedItemOverview();
-  }
-
-  private void initEquipmentObjectPresentation(IEquipmentItem selectedObject) {
-    EquipmentObjectView objectView = getViewForObject(selectedObject);
+  private void initItemPresentation(IEquipmentItem selectedObject, EquipmentObjectView objectView) {
     EquipmentHeroEvaluator heroEvaluator = model.getHeroEvaluator();
     EquipmentOptionsProvider optionProvider = model.getOptionProvider();
     EquipmentObjectPresenter objectPresenter = new EquipmentObjectPresenter(selectedObject, objectView, resourceBuilder,
             heroEvaluator, optionProvider, resources);
     objectPresenter.initPresentation();
     enablePersonalization(selectedObject, objectPresenter);
-    refreshOwnedItemOverview();
   }
 
   private void refreshOwnedItemOverview() {
@@ -146,15 +127,6 @@ public class EquipmentPresenter {
     Collections.addAll(allItems, model.getNaturalWeapons());
     Collections.addAll(allItems, model.getEquipmentItems());
     ownedEquipmentOverview.setObjects(allItems);
-  }
-
-  private EquipmentObjectView getViewForObject(IEquipmentItem selectedObject) {
-    EquipmentObjectView objectView = viewsByItem.get(selectedObject);
-    if (objectView == null) {
-      objectView = view.addEquipmentObjectView();
-      viewsByItem.put(selectedObject, objectView);
-    }
-    return objectView;
   }
 
   private void enablePersonalization(IEquipmentItem selectedObject, EquipmentObjectPresenter objectPresenter) {
@@ -187,7 +159,7 @@ public class EquipmentPresenter {
     personalizationView.whenDescriptionChanges(personalizationModel::setDescription);
     personalizationView.whenChangeIsConfirmed(() -> {
       personalizationModel.apply();
-      initEquipmentObjectPresentation(selectedObject);
+      refreshOwnedItemOverview();
       model.updateItem(selectedObject);
     });
     personalizationView.show();
@@ -201,12 +173,12 @@ public class EquipmentPresenter {
   private class UpdateOwnedItems implements ICollectionListener<IEquipmentItem> {
     @Override
     public void itemAdded(IEquipmentItem item) {
-      initEquipmentObjectPresentation(item);
+      refreshOwnedItemOverview();
     }
 
     @Override
     public void itemRemoved(IEquipmentItem item) {
-      removeItemView(item);
+      refreshOwnedItemOverview();
     }
   }
 }
