@@ -51,10 +51,26 @@ public class EquipmentPresenter {
     setObjects(equipmentTemplatePickList);
     MagicalMaterialView magicalMaterialView = initMaterialView(equipmentTemplatePickList);
     addAddButton(equipmentTemplatePickList, magicalMaterialView);
+    addRemoveButton();
     addRefreshTool(equipmentTemplatePickList);
     EquipmentObjectView editView = view.addItemEditView();
     ownedEquipmentOverview.addObjectSelectionChangedListener(item -> initItemPresentation(item, editView));
     refreshOwnedItemOverview();
+  }
+
+  private void addRemoveButton() {
+    Tool remove = view.addToolButton();
+    remove.setIcon(new BasicUi().getLeftArrowIconPath());
+    remove.setTooltip(resources.getString("AdditionalTemplateView.RemoveTemplate.Action.Name"));
+    remove.setCommand(() -> model.removeItem(ownedEquipmentOverview.getSelectedObject()));
+    ownedEquipmentOverview.addObjectSelectionChangedListener(newValue -> {
+      if (newValue == null || !(model.canBeRemoved(newValue))) {
+        remove.disable();
+      } else {
+        remove.enable();
+      }
+    });
+    remove.disable();
   }
 
   private void addAddButton(VetoableObjectSelectionView<String> equipmentTemplatePickList,
@@ -114,7 +130,7 @@ public class EquipmentPresenter {
   }
 
   private void initItemPresentation(IEquipmentItem item, EquipmentObjectView objectView) {
-    if (item==null){
+    if (item == null) {
       objectView.clear();
       return;
     }
@@ -136,7 +152,6 @@ public class EquipmentPresenter {
   private void enablePersonalization(IEquipmentItem selectedObject, EquipmentObjectPresenter objectPresenter) {
     if (model.canBeRemoved(selectedObject)) {
       createPersonalizeTool(selectedObject, objectPresenter);
-      createRemoveItemTool(selectedObject, objectPresenter);
     }
   }
 
@@ -145,13 +160,6 @@ public class EquipmentPresenter {
     personalize.setIcon(new BasicUi().getEditIconPath());
     personalize.setText(resources.getString("AdditionalTemplateView.Personalize.Action.Name"));
     personalize.setCommand(() -> personalizeItem(selectedObject));
-  }
-
-  private void createRemoveItemTool(IEquipmentItem selectedObject, EquipmentObjectPresenter objectPresenter) {
-    Tool remove = objectPresenter.addContextTool();
-    remove.setIcon(new BasicUi().getRemoveIconPath());
-    remove.setText(resources.getString("AdditionalTemplateView.RemoveTemplate.Action.Name"));
-    remove.setCommand(() -> model.removeItem(selectedObject));
   }
 
   private void personalizeItem(IEquipmentItem selectedObject) {
