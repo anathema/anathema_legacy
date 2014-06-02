@@ -13,7 +13,7 @@ import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.hero.equipment.EquipmentModel;
 import net.sf.anathema.hero.equipment.model.EquipmentPersonalizationModel;
 import net.sf.anathema.interaction.Tool;
-import net.sf.anathema.lib.control.ICollectionListener;
+import net.sf.anathema.lib.control.CollectionListener;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.gui.selection.VetoableObjectSelectionView;
@@ -174,7 +174,7 @@ public class EquipmentPresenter {
     return view.startEditingPersonalization(properties);
   }
 
-  private class UpdateOwnedItems implements ICollectionListener {
+  private class UpdateOwnedItems implements CollectionListener {
     @Override
     public void itemAdded() {
       refreshOwnedItemOverview();

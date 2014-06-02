@@ -1,6 +1,6 @@
 package net.sf.anathema.lib.control;
 
-public interface ICollectionListener {
+public interface CollectionListener {
 
   void itemAdded();
 

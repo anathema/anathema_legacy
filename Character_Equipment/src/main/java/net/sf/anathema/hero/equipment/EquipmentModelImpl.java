@@ -38,7 +38,7 @@ import net.sf.anathema.hero.traits.model.TraitModelFetcher;
 import net.sf.anathema.hero.traits.model.types.AbilityType;
 import net.sf.anathema.hero.traits.model.types.AttributeType;
 import net.sf.anathema.lib.control.ChangeListener;
-import net.sf.anathema.lib.control.ICollectionListener;
+import net.sf.anathema.lib.control.CollectionListener;
 import net.sf.anathema.lib.util.Identifier;
 import org.apache.commons.lang3.ArrayUtils;
 import org.jmock.example.announcer.Announcer;
@@ -54,7 +54,7 @@ public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentMo
   private final List<IEquipmentItem> naturalWeaponItems = new ArrayList<>();
   private final Table<IEquipmentItem, IEquipmentStats, List<IEquipmentStatsOption>> optionsTable = HashBasedTable.create();
   private final Announcer<ChangeListener> modelChangeControl = Announcer.to(ChangeListener.class);
-  private final Announcer<ICollectionListener> equipmentItemControl = Announcer.to(ICollectionListener.class);
+  private final Announcer<CollectionListener> equipmentItemControl = Announcer.to(CollectionListener.class);
   private final EquipmentCollection equipmentItems = new EquipmentCollection();
   private IEquipmentTemplateProvider equipmentTemplateProvider;
   private final ChangeListener itemChangePropagator = this::fireModelChanged;
@@ -264,7 +264,7 @@ public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentMo
   }
 
   @SuppressWarnings("unchecked")
-  private ICollectionListener announce() {
+  private CollectionListener announce() {
     return equipmentItemControl.announce();
   }
 
@@ -305,7 +305,7 @@ public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentMo
   }
 
   @Override
-  public void addEquipmentObjectListener(ICollectionListener listener) {
+  public void addEquipmentObjectListener(CollectionListener listener) {
     equipmentItemControl.addListener(listener);
   }
 
