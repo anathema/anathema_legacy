@@ -74,7 +74,7 @@ public class EquipmentObjectPresenter {
   }
 
   private void refreshView() {
-    view.clear();
+    view.clearStatsAndActions();
     presentationModel.clear();
     for (IEquipmentStats stats : model.getStats()) {
       StatsPresentationStrategy strategy = choosePresentationStrategy(stats);

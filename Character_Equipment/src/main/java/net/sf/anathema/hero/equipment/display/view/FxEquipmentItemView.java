@@ -39,6 +39,11 @@ public class FxEquipmentItemView implements EquipmentObjectView {
   public void clear() {
     setItemTitle("");
     setItemDescription("");
+    clearStatsAndActions();
+  }
+
+  @Override
+  public void clearStatsAndActions() {
     elementPane.getChildren().clear();
     buttonPane.getChildren().clear();
   }

@@ -7,10 +7,13 @@ public interface EquipmentObjectView {
   void setItemTitle(String title);
 
   void setItemDescription(String text);
-  
+
   void clear();
+
+  void clearStatsAndActions();
 
   StatsView addStats(String description);
 
   Tool addAction();
+
 }
