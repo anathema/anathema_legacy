@@ -186,7 +186,7 @@ public class EquipmentPresenter {
     personalizationView.whenTitleChanges(personalizationModel::setTitle);
     personalizationView.whenDescriptionChanges(personalizationModel::setDescription);
     personalizationView.whenChangeIsConfirmed(() -> {
-      selectedObject.setPersonalization(personalizationModel.getTitle(), personalizationModel.getDescription());
+      personalizationModel.apply();
       initEquipmentObjectPresentation(selectedObject);
       model.updateItem(selectedObject);
     });

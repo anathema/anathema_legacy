@@ -4,46 +4,37 @@ import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 
 public class EquipmentPersonalizationModel implements net.sf.anathema.hero.equipment.display.presenter.EquipmentPersonalizationModel {
 
-	private String title;
-	private String description;
-	
-	public EquipmentPersonalizationModel(IEquipmentItem item) {
-		setTitle(getCustomTitle(item));
-		setDescription(getCustomDescription(item));
-	}
-	
-	@Override
-	public void setTitle(String text) {
-		this.title = text;
-	}
+  private final IEquipmentItem item;
+  private String title;
+  private String description;
 
-	@Override
-	public void setDescription(String text) {
-		this.description = text;
-	}
-	
-	@Override
-	public String getTitle() {
-		return title;
-	}
+  public EquipmentPersonalizationModel(IEquipmentItem item) {
+    this.item = item;
+    setTitle(item.getTitle());
+    setDescription(item.getDescription());
+  }
 
-	@Override
-	public String getDescription() {
-		return description;
-	}
-	
-	private String getCustomTitle(IEquipmentItem item) {
-		if (item.getTitle().equals(item.getTemplateId())) {
-		  return null;
-		}
-		return item.getTitle();
-	}
-	  
-	private String getCustomDescription(IEquipmentItem item) {
-		if (item.getDescription().equals(item.getBaseDescription())) {
-		  return null;
-		}
-		return item.getDescription();
-	}
+  @Override
+  public void setTitle(String text) {
+    this.title = text;
+  }
 
+  @Override
+  public void setDescription(String text) {
+    this.description = text;
+  }
+
+  @Override
+  public String getTitle() {
+    return title;
+  }
+
+  @Override
+  public String getDescription() {
+    return description;
+  }
+
+  public void apply() {
+    item.setPersonalization(getTitle(), getDescription());
+  }
 }

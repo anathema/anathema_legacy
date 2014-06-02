@@ -7,16 +7,16 @@ import net.sf.anathema.character.equipment.character.model.stats.ProxyArmourStat
 import net.sf.anathema.character.equipment.character.model.stats.modification.BaseMaterial;
 import net.sf.anathema.character.equipment.character.model.stats.modification.InertBaseMaterial;
 import net.sf.anathema.character.equipment.character.model.stats.modification.ReactiveBaseMaterial;
-import net.sf.anathema.hero.equipment.sheet.content.stats.ArtifactAttuneType;
-import net.sf.anathema.hero.equipment.sheet.content.stats.ArtifactStats;
-import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IArmourStats;
-import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
-import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IWeaponStats;
 import net.sf.anathema.character.framework.library.IProxy;
 import net.sf.anathema.equipment.core.IEquipmentTemplate;
 import net.sf.anathema.equipment.core.ItemCost;
 import net.sf.anathema.equipment.core.MagicalMaterial;
 import net.sf.anathema.equipment.core.MaterialComposition;
+import net.sf.anathema.hero.equipment.sheet.content.stats.ArtifactAttuneType;
+import net.sf.anathema.hero.equipment.sheet.content.stats.ArtifactStats;
+import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IArmourStats;
+import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
+import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IWeaponStats;
 import net.sf.anathema.lib.control.ChangeListener;
 import org.jmock.example.announcer.Announcer;
 
@@ -28,6 +28,7 @@ import java.util.Set;
 
 import static net.sf.anathema.equipment.core.MaterialComposition.Variable;
 import static net.sf.anathema.lib.lang.ArrayUtilities.transform;
+import static net.sf.anathema.lib.lang.StringUtilities.isNullOrTrimmedEmpty;
 
 public class EquipmentItem implements IEquipmentItem {
 
@@ -39,8 +40,8 @@ public class EquipmentItem implements IEquipmentItem {
   private String customTitle;
   private String customDescription;
 
-  public EquipmentItem(IEquipmentTemplate template, String title, String description, MagicalMaterial material, ItemAttunementEvaluator provider,
-                       ModifierFactory modifiers) {
+  public EquipmentItem(IEquipmentTemplate template, String title, String description, MagicalMaterial material,
+                       ItemAttunementEvaluator provider, ModifierFactory modifiers) {
     this.modifiers = modifiers;
     if (template.getComposition() == Variable && material == null) {
       throw new MissingMaterialException("Variable material items must be created with material.");
@@ -54,8 +55,18 @@ public class EquipmentItem implements IEquipmentItem {
   }
 
   @Override
+  public String getTitle() {
+    return customTitle != null ? customTitle : getTemplateId();
+  }
+
+  @Override
   public String getDescription() {
     return customDescription != null ? customDescription : getBaseDescription();
+  }
+
+  @Override
+  public String getTemplateId() {
+    return template.getName();
   }
 
   @Override
@@ -65,8 +76,16 @@ public class EquipmentItem implements IEquipmentItem {
 
   @Override
   public void setPersonalization(String title, String description) {
-    this.customTitle = title != null && !title.isEmpty() ? title : null;
-    this.customDescription = description != null && !description.isEmpty() ? description : null;
+    this.customTitle = getNewValue(title, getTemplateId());
+    this.customDescription = getNewValue(description, getBaseDescription());
+  }
+
+  private String getNewValue(String input, String baseValue) {
+    if (isNullOrTrimmedEmpty(input) || input.equals(baseValue)) {
+      return null;
+    } else {
+      return input;
+    }
   }
 
   @Override
@@ -98,16 +117,6 @@ public class EquipmentItem implements IEquipmentItem {
       }
     }
     return views.toArray(new IEquipmentStats[views.size()]);
-  }
-
-  @Override
-  public String getTitle() {
-    return customTitle != null ? customTitle : getTemplateId();
-  }
-
-  @Override
-  public String getTemplateId() {
-    return template.getName();
   }
 
   @Override
@@ -206,8 +215,9 @@ public class EquipmentItem implements IEquipmentItem {
     ArtifactStats bestAttune = null;
     for (IEquipmentStats stat : getViews()) {
       if (stat instanceof ArtifactStats) {
-        if (hasAttunementType((ArtifactStats) stat, provider.getAttuneTypes(this)) &&
-            (bestAttune == null || ((ArtifactStats) stat).getAttuneType().compareTo(bestAttune.getAttuneType()) > 0)) {
+        if (hasAttunementType((ArtifactStats) stat, provider.getAttuneTypes(
+                this)) && (bestAttune == null || ((ArtifactStats) stat).getAttuneType().compareTo(
+                bestAttune.getAttuneType()) > 0)) {
           bestAttune = (ArtifactStats) stat;
         }
         continue;

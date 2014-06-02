@@ -43,10 +43,6 @@ public class EquipmentModelPersister extends AbstractModelJsonPersister<Equipmen
       logger.warn("No material found for item " + title);
       return;
     }
-    if (item == null) {
-      logger.warn("No template found for item " + title);
-      return;
-    }
     item.setPersonalization(title, description);
     item.setUnprinted();
     for (EquipmentStatsPto statsPto : equipment.printStats) {
