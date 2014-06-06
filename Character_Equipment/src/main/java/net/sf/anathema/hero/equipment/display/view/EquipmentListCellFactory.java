@@ -18,5 +18,4 @@ public class EquipmentListCellFactory implements ListCellFactory<IEquipmentItem>
   public ListCell<IEquipmentItem> call(ListView<IEquipmentItem> iEquipmentItemListView) {
     return new EquipmentCell(renderer);
   }
-
 }

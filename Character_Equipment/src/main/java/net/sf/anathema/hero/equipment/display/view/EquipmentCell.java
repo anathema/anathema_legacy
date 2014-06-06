@@ -13,7 +13,7 @@ import net.sf.anathema.platform.fx.UITableCell;
 import org.tbee.javafx.scene.layout.MigPane;
 
 public class EquipmentCell extends ListCell<IEquipmentItem> {
-  public static final String OWNED_EQUIPMENT = "ownedEquipment";
+  private static final String OWNED_EQUIPMENT = "ownedEquipment";
   private EquipmentItemRenderer renderer;
 
   public EquipmentCell(EquipmentItemRenderer renderer) {
@@ -25,27 +25,44 @@ public class EquipmentCell extends ListCell<IEquipmentItem> {
   public void updateItem(IEquipmentItem item, boolean empty) {
     super.updateItem(item, empty);
     if (item == null) {
-      setText("");
-      setGraphic(null);
+      clearCell();
     } else {
-      setText(renderer.getLabel(item));
-      Node combinedGraphic = createGraphic(item);
-      setGraphic(combinedGraphic);
+      displayItem(item);
     }
+  }
+
+  private void clearCell() {
+    setText("");
+    setGraphic(null);
+  }
+
+  private void displayItem(IEquipmentItem item) {
+    setText(renderer.getLabel(item));
+    Node combinedGraphic = createGraphic(item);
+    setGraphic(combinedGraphic);
   }
 
   private Node createGraphic(IEquipmentItem item) {
     MigPane pane = new MigPane(LayoutUtils.withoutInsets());
     for (RelativePathWithDisabling pathWithDisabling : renderer.getIcons(item)) {
-      Image image = UITableCell.loadImage(pathWithDisabling.path);
-      ImageView imageView = new ImageView(image);
-      if (!pathWithDisabling.enabled) {
-        ColorAdjust colorAdjust = new ColorAdjust();
-        colorAdjust.setSaturation(-1.0);
-        imageView.setEffect(colorAdjust);
-      }
+      ImageView imageView = createImage(pathWithDisabling);
       pane.add(imageView);
     }
     return pane;
+  }
+
+  private ImageView createImage(RelativePathWithDisabling pathWithDisabling) {
+    Image image = UITableCell.loadImage(pathWithDisabling.path);
+    ImageView imageView = new ImageView(image);
+    if (!pathWithDisabling.enabled) {
+      removeColor(imageView);
+    }
+    return imageView;
+  }
+
+  private void removeColor(ImageView imageView) {
+    ColorAdjust colorAdjust = new ColorAdjust();
+    colorAdjust.setSaturation(-1.0);
+    imageView.setEffect(colorAdjust);
   }
 }
