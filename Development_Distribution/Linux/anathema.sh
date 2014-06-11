@@ -11,7 +11,7 @@ while [ -h "$SOURCE" ]; do
   [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" 
 done
 ANATHEMA_DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
-REPO_DIR=${HOME}/.anathema/repository
+REPO_DIR=${1-${HOME}/.anathema/repository}
 JAVA_BIN=
 
 # Check for java in $JAVA_HOME
