@@ -151,7 +151,7 @@ public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentMo
     return equipmentTemplateProvider.loadTemplate(templateId);
   }
 
-  private IEquipmentItem getSpecialManagedItem(String templateId) {
+  private IEquipmentItem getNaturalWeapon(String templateId) {
     for (IEquipmentItem item : naturalWeapons) {
       if (templateId.equals(item.getTemplateId())) {
         return item;
@@ -254,7 +254,7 @@ public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentMo
   public IEquipmentItem addEquipmentObjectFor(String templateId, MagicalMaterial material) {
     IEquipmentTemplate template = loadEquipmentTemplate(templateId);
     if (template == null) {
-      return getSpecialManagedItem(templateId);
+      return getNaturalWeapon(templateId);
     }
     return addEquipmentObjectFor(template, material);
   }
@@ -336,7 +336,7 @@ public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentMo
     return template.getMaterial();
   }
 
-  public void addChangeListener(ChangeListener listener) {
+  private void addChangeListener(ChangeListener listener) {
     modelChangeControl.addListener(listener);
   }
 

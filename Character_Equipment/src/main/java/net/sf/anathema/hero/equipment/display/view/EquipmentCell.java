@@ -8,13 +8,16 @@ import javafx.scene.image.ImageView;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.hero.equipment.display.presenter.EquipmentItemRenderer;
 import net.sf.anathema.hero.equipment.display.presenter.RelativePathWithDisabling;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.platform.fx.UITableCell;
 import org.tbee.javafx.scene.layout.MigPane;
 
 public class EquipmentCell extends ListCell<IEquipmentItem> {
   private static final String OWNED_EQUIPMENT = "ownedEquipment";
+  private final ItemChangeListener listener = new ItemChangeListener();
   private EquipmentItemRenderer renderer;
+  private IEquipmentItem currentItem;
 
   public EquipmentCell(EquipmentItemRenderer renderer) {
     this.renderer = renderer;
@@ -27,13 +30,23 @@ public class EquipmentCell extends ListCell<IEquipmentItem> {
     if (item == null) {
       clearCell();
     } else {
-      displayItem(item);
+      showItem(item);
     }
   }
 
   private void clearCell() {
+    if (currentItem != null) {
+      currentItem.removeChangeListener(listener);
+    }
+    currentItem = null;
     setText("");
     setGraphic(null);
+  }
+
+  private void showItem(IEquipmentItem item) {
+    item.addChangeListener(listener);
+    currentItem = item;
+    displayItem(item);
   }
 
   private void displayItem(IEquipmentItem item) {
@@ -64,5 +77,12 @@ public class EquipmentCell extends ListCell<IEquipmentItem> {
     ColorAdjust colorAdjust = new ColorAdjust();
     colorAdjust.setSaturation(-1.0);
     imageView.setEffect(colorAdjust);
+  }
+
+  private class ItemChangeListener implements ChangeListener {
+    @Override
+    public void changeOccurred() {
+      displayItem(currentItem);
+    }
   }
 }
