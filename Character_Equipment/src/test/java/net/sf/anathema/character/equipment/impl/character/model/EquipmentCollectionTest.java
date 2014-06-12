@@ -2,9 +2,9 @@ package net.sf.anathema.character.equipment.impl.character.model;
 
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.stats.TraitModifyingStats;
-import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 import net.sf.anathema.hero.equipment.model.EquipmentCollection;
 import net.sf.anathema.hero.equipment.model.IWeaponModifiers;
+import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -22,6 +22,13 @@ public class EquipmentCollectionTest {
     collection.add(item);
     IWeaponModifiers modifiers = collection.createModifiers();
     assertThat(modifiers.getMeleeAccuracyMod(), is(5));
+  }
+
+  @Test
+  public void containsAddedItems() throws Exception {
+    IEquipmentItem item = createItemWithStats(createStats());
+    collection.add(item);
+    assertThat(collection.contains(item), is(true));    
   }
 
   private IEquipmentItem createItemWithStats(TraitModifyingStats traitModifyingStats) {

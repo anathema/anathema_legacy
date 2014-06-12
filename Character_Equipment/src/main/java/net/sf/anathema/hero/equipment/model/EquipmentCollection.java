@@ -32,4 +32,8 @@ public class EquipmentCollection implements Iterable<IEquipmentItem>, ModifierFa
   public Collection<IEquipmentItem> asList() {
     return equipmentItems;
   }
+
+  public boolean contains(IEquipmentItem item) {
+    return equipmentItems.contains(item);
+  }
 }
