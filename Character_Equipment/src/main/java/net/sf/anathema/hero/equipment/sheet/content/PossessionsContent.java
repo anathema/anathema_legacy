@@ -1,15 +1,16 @@
 package net.sf.anathema.hero.equipment.sheet.content;
 
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
-import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.equipment.EquipmentModel;
 import net.sf.anathema.hero.equipment.EquipmentModelFetcher;
+import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.sheet.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.hero.sheet.pdf.content.ListSubBoxContent;
-import net.sf.anathema.framework.environment.Resources;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import static net.sf.anathema.equipment.core.MaterialComposition.Fixed;
@@ -32,8 +33,7 @@ public class PossessionsContent extends AbstractSubBoxContent implements ListSub
   @Override
   public List<String> getPrintEntries() {
     List<String> printPossessions = new ArrayList<>();
-    IEquipmentItem[] equipmentItems = getEquipmentItems();
-    for (IEquipmentItem item : equipmentItems) {
+    for (IEquipmentItem item : getEquipmentItems()) {
       if (isInArsenalOrPanopoly(item)) {
         continue;
       }
@@ -55,7 +55,7 @@ public class PossessionsContent extends AbstractSubBoxContent implements ListSub
     return false;
   }
 
-  private IEquipmentItem[] getEquipmentItems() {
+  private Collection<IEquipmentItem> getEquipmentItems() {
     EquipmentModel model = EquipmentModelFetcher.fetch(hero);
     return model.getEquipmentItems();
   }

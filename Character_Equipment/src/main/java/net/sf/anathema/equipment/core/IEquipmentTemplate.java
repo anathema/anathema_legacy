@@ -2,13 +2,15 @@ package net.sf.anathema.equipment.core;
 
 import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 
+import java.util.Collection;
+
 public interface IEquipmentTemplate {
 
   String getName();
 
   String getDescription();
 
-  IEquipmentStats[] getStatsList();
+  Collection<IEquipmentStats> getStatsList();
 
   MaterialComposition getComposition();
 

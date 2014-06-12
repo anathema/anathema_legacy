@@ -1,5 +1,7 @@
 package net.sf.anathema.hero.equipment.display.presenter;
 
+import net.sf.anathema.character.equipment.character.EquipmentHeroEvaluator;
+import net.sf.anathema.character.equipment.character.EquipmentOptionsProvider;
 import net.sf.anathema.character.equipment.character.IEquipmentStringBuilder;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.EquipmentUI;
@@ -11,14 +13,18 @@ import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.hero.equipment.EquipmentModel;
 import net.sf.anathema.hero.equipment.model.EquipmentPersonalizationModel;
 import net.sf.anathema.interaction.Tool;
-import net.sf.anathema.lib.control.ICollectionListener;
+import net.sf.anathema.lib.control.CollectionListener;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
+import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.gui.selection.VetoableObjectSelectionView;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
+import static net.sf.anathema.equipment.core.MaterialComposition.Fixed;
+import static net.sf.anathema.equipment.core.MaterialComposition.None;
+import static net.sf.anathema.equipment.core.MaterialComposition.Variable;
 import static net.sf.anathema.lib.lang.StringUtilities.isNullOrTrimmedEmpty;
 
 public class EquipmentPresenter {
@@ -26,71 +32,59 @@ public class EquipmentPresenter {
   private final Resources resources;
   private final EquipmentModel model;
   private final EquipmentView view;
-  private final Map<IEquipmentItem, EquipmentObjectView> viewsByItem = new HashMap<>();
+  private final IEquipmentStringBuilder resourceBuilder;
+  private ObjectSelectionView<IEquipmentItem> ownedEquipmentOverview;
 
-  public EquipmentPresenter(Resources resources, final EquipmentModel model, EquipmentView view) {
+  public EquipmentPresenter(Resources resources, EquipmentModel model, EquipmentView view) {
     this.resources = resources;
     this.model = model;
     this.view = view;
-
-    model.getHeroEvaluator().addCharacterSpecialtyListChangeListener(() -> {
-      for (IEquipmentItem item : model.getNaturalWeapons()) {
-        initEquipmentObjectPresentation(item);
-      }
-      for (IEquipmentItem item : model.getEquipmentItems()) {
-        initEquipmentObjectPresentation(item);
-      }
-    });
+    this.resourceBuilder = new EquipmentStringBuilder(resources);
   }
 
   public void initPresentation() {
-    for (IEquipmentItem item : model.getNaturalWeapons()) {
-      initEquipmentObjectPresentation(item);
-    }
-    for (IEquipmentItem item : model.getEquipmentItems()) {
-      initEquipmentObjectPresentation(item);
-    }
     VetoableObjectSelectionView<String> equipmentTemplatePickList = view.getEquipmentTemplatePickList();
-    model.addEquipmentObjectListener(new ICollectionListener<IEquipmentItem>() {
-      @Override
-      public void itemAdded(IEquipmentItem item) {
-        initEquipmentObjectPresentation(item);
-      }
-
-      @Override
-      public void itemRemoved(IEquipmentItem item) {
-        removeItemView(item);
-      }
-    });
-    MagicalMaterialView magicalMaterialView = initMaterialView();
+    this.ownedEquipmentOverview = view.addOwnedEquipmentList(new SimpleEquipmentItemRenderer(resources));
+    model.addEquipmentObjectListener(new UpdateOwnedItems());
     equipmentTemplatePickList.setCellRenderer(new EquipmentItemUIConfiguration(model, resources));
     setObjects(equipmentTemplatePickList);
-    Tool addTool = view.addToolButton();
-    createTemplateAddAction(equipmentTemplatePickList, magicalMaterialView, addTool);
-    Tool refreshTool = view.addToolButton();
-    createRefreshAction(equipmentTemplatePickList, refreshTool);
-    equipmentTemplatePickList.addObjectSelectionChangedListener(templateId -> {
-      MaterialComposition composition = templateId == null ? MaterialComposition.None : model.getMaterialComposition(
-              templateId);
-      MagicalMaterial magicMaterial = null;
-      if (composition == MaterialComposition.Variable) {
-        magicMaterial = model.getDefaultMaterial();
-      } else if (composition == MaterialComposition.Fixed) {
-        magicMaterial = model.getMagicalMaterial(templateId);
+    MagicalMaterialView magicalMaterialView = initMaterialView(equipmentTemplatePickList);
+    addAddButton(equipmentTemplatePickList, magicalMaterialView);
+    addRemoveButton();
+    addRefreshTool(equipmentTemplatePickList);
+    EquipmentObjectView editView = view.addItemEditView();
+    ownedEquipmentOverview.addObjectSelectionChangedListener(item -> initItemPresentation(item, editView));
+    refreshOwnedItemOverview();
+  }
+
+  private void addRemoveButton() {
+    Tool remove = view.addToolButton();
+    remove.setIcon(new BasicUi().getLeftArrowIconPath());
+    remove.setTooltip(resources.getString("AdditionalTemplateView.RemoveTemplate.Action.Name"));
+    remove.setCommand(() -> model.removeItem(ownedEquipmentOverview.getSelectedObject()));
+    ownedEquipmentOverview.addObjectSelectionChangedListener(newValue -> {
+      if (newValue == null || !(model.canBeRemoved(newValue))) {
+        remove.disable();
+      } else {
+        remove.enable();
       }
-      magicalMaterialView.setSelectedMaterial(magicMaterial, composition == MaterialComposition.Variable);
     });
+    remove.disable();
   }
 
-  private MagicalMaterialView initMaterialView() {
-    String label = resources.getString("MagicMaterial.Label") + ":";
-    AgnosticUIConfiguration<MagicalMaterial> renderer = new MagicMaterialUIConfiguration(resources);
-    MagicalMaterialView magicMaterialView = view.addMagicMaterialView(label, renderer);
-    magicMaterialView.setMaterials(MagicalMaterial.values());
-    return magicMaterialView;
+  private void addAddButton(VetoableObjectSelectionView<String> equipmentTemplatePickList,
+                            MagicalMaterialView magicalMaterialView) {
+    Tool addTool = view.addToolButton();
+    addTool.setIcon(new BasicUi().getRightArrowIconPath());
+    addTool.setTooltip(resources.getString("AdditionalTemplateView.AddTemplate.Action.Tooltip"));
+    addTool.setCommand(() -> model.addItem(equipmentTemplatePickList.getSelectedObject(),
+            magicalMaterialView.getSelectedMaterial()));
+    equipmentTemplatePickList.addObjectSelectionChangedListener(newValue -> setEnabled(newValue, addTool));
+    setEnabled(equipmentTemplatePickList.getSelectedObject(), addTool);
   }
 
-  private void createRefreshAction(VetoableObjectSelectionView<String> equipmentTemplatePickList, Tool refreshTool) {
+  private void addRefreshTool(VetoableObjectSelectionView<String> equipmentTemplatePickList) {
+    Tool refreshTool = view.addToolButton();
     refreshTool.setTooltip(resources.getString("AdditionalTemplateView.RefreshDatabase.Action.Tooltip"));
     refreshTool.setIcon(new EquipmentUI().getRefreshIconPath());
     refreshTool.setCommand(() -> {
@@ -99,19 +93,31 @@ public class EquipmentPresenter {
     });
   }
 
+  private void updateMagicalMaterialSelector(MagicalMaterialView magicalMaterialView, String templateId) {
+    MaterialComposition composition = templateId == null ? None : model.getMaterialComposition(templateId);
+    MagicalMaterial magicMaterial = null;
+    if (composition == Variable) {
+      magicMaterial = model.getDefaultMaterial();
+    } else if (composition == Fixed) {
+      magicMaterial = model.getMagicalMaterial(templateId);
+    }
+    magicalMaterialView.setSelectedMaterial(magicMaterial, composition == Variable);
+  }
+
+  private MagicalMaterialView initMaterialView(VetoableObjectSelectionView<String> equipmentTemplatePickList) {
+    String label = resources.getString("MagicMaterial.Label") + ":";
+    AgnosticUIConfiguration<MagicalMaterial> renderer = new MagicMaterialUIConfiguration(resources);
+    MagicalMaterialView magicMaterialView = view.addMagicMaterialView(label, renderer);
+    magicMaterialView.setMaterials(MagicalMaterial.values());
+    equipmentTemplatePickList.addObjectSelectionChangedListener(
+            templateId -> updateMagicalMaterialSelector(magicMaterialView, templateId));
+    return magicMaterialView;
+  }
+
   private void setObjects(VetoableObjectSelectionView<String> equipmentTemplatePickList) {
     String[] templates = model.getAvailableTemplateIds();
     Arrays.sort(templates, new EquipmentTemplateNameComparator());
     equipmentTemplatePickList.setObjects(templates);
-  }
-
-  private void createTemplateAddAction(VetoableObjectSelectionView<String> equipmentTemplatePickList,
-                                       MagicalMaterialView materialView, Tool selectTool) {
-    selectTool.setIcon(new BasicUi().getRightArrowIconPath());
-    selectTool.setTooltip(resources.getString("AdditionalTemplateView.AddTemplate.Action.Tooltip"));
-    selectTool.setCommand(() -> model.addEquipmentObjectFor(equipmentTemplatePickList.getSelectedObject(), materialView.getSelectedMaterial()));
-    equipmentTemplatePickList.addObjectSelectionChangedListener(newValue -> setEnabled(newValue, selectTool));
-    setEnabled(equipmentTemplatePickList.getSelectedObject(), selectTool);
   }
 
   private void setEnabled(String newValue, Tool selectTool) {
@@ -122,27 +128,29 @@ public class EquipmentPresenter {
     }
   }
 
-  private void removeItemView(IEquipmentItem item) {
-    EquipmentObjectView objectView = viewsByItem.remove(item);
-    view.removeEquipmentObjectView(objectView);
+  private void initItemPresentation(IEquipmentItem item, EquipmentObjectView objectView) {
+    if (item == null) {
+      objectView.clear();
+      return;
+    }
+    EquipmentHeroEvaluator heroEvaluator = model.getHeroEvaluator();
+    EquipmentOptionsProvider optionProvider = model.getOptionProvider();
+    EquipmentObjectPresenter objectPresenter = new EquipmentObjectPresenter(item, objectView, resourceBuilder,
+            heroEvaluator, optionProvider, resources);
+    objectPresenter.initPresentation();
+    enablePersonalization(item, objectPresenter);
   }
 
-  private void initEquipmentObjectPresentation(IEquipmentItem selectedObject) {
-    EquipmentObjectView objectView = viewsByItem.get(selectedObject);
-    objectView = objectView == null ? view.addEquipmentObjectView() : objectView;
-    IEquipmentStringBuilder resourceBuilder = new EquipmentStringBuilder(resources);
-    viewsByItem.put(selectedObject, objectView);
-    EquipmentObjectPresenter objectPresenter = new EquipmentObjectPresenter(selectedObject, objectView, resourceBuilder,
-            model.getHeroEvaluator(), model.getOptionProvider(), resources);
-    objectPresenter.initPresentation();
-    enablePersonalization(selectedObject, objectPresenter);
-    view.revalidateEquipmentViews();
+  private void refreshOwnedItemOverview() {
+    List<IEquipmentItem> allItems = new ArrayList<>();
+    allItems.addAll(model.getNaturalWeapons());
+    allItems.addAll(model.getEquipmentItems());
+    ownedEquipmentOverview.setObjects(allItems);
   }
 
   private void enablePersonalization(IEquipmentItem selectedObject, EquipmentObjectPresenter objectPresenter) {
     if (model.canBeRemoved(selectedObject)) {
       createPersonalizeTool(selectedObject, objectPresenter);
-      createRemoveItemTool(selectedObject, objectPresenter);
     }
   }
 
@@ -153,13 +161,6 @@ public class EquipmentPresenter {
     personalize.setCommand(() -> personalizeItem(selectedObject));
   }
 
-  private void createRemoveItemTool(IEquipmentItem selectedObject, EquipmentObjectPresenter objectPresenter) {
-    Tool remove = objectPresenter.addContextTool();
-    remove.setIcon(new BasicUi().getRemoveIconPath());
-    remove.setText(resources.getString("AdditionalTemplateView.RemoveTemplate.Action.Name"));
-    remove.setCommand(() -> model.removeItem(selectedObject));
-  }
-
   private void personalizeItem(IEquipmentItem selectedObject) {
     PersonalizationEditView personalizationView = createView();
     EquipmentPersonalizationModel personalizationModel = new EquipmentPersonalizationModel(selectedObject);
@@ -168,8 +169,7 @@ public class EquipmentPresenter {
     personalizationView.whenTitleChanges(personalizationModel::setTitle);
     personalizationView.whenDescriptionChanges(personalizationModel::setDescription);
     personalizationView.whenChangeIsConfirmed(() -> {
-      selectedObject.setPersonalization(personalizationModel.getTitle(), personalizationModel.getDescription());
-      initEquipmentObjectPresentation(selectedObject);
+      personalizationModel.apply();
       model.updateItem(selectedObject);
     });
     personalizationView.show();
@@ -178,5 +178,17 @@ public class EquipmentPresenter {
   private PersonalizationEditView createView() {
     EquipmentPersonalizationProperties properties = new EquipmentPersonalizationProperties(resources);
     return view.startEditingPersonalization(properties);
+  }
+
+  private class UpdateOwnedItems implements CollectionListener {
+    @Override
+    public void itemAdded() {
+      refreshOwnedItemOverview();
+    }
+
+    @Override
+    public void itemRemoved() {
+      refreshOwnedItemOverview();
+    }
   }
 }

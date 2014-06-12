@@ -25,6 +25,11 @@ public class SimpleTextualDescription implements ITextualDescription {
   }
 
   @Override
+  public void clear() {
+    setText("");
+  }
+
+  @Override
   public void setText(String text) {
     if (Objects.equal(this.text, text)) {
       return;
@@ -58,8 +63,7 @@ public class SimpleTextualDescription implements ITextualDescription {
     return dirty;
   }
 
-  @Override
-  public void setDirty(boolean isDirty) {
+  private void setDirty(boolean isDirty) {
     this.dirty = isDirty;
     fireChangedEvent();
   }

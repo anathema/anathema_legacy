@@ -8,6 +8,7 @@ import net.sf.anathema.equipment.core.MaterialComposition;
 import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class EquipmentTemplate implements IEquipmentTemplate {
@@ -37,9 +38,8 @@ public class EquipmentTemplate implements IEquipmentTemplate {
   }
 
   @Override
-  public IEquipmentStats[] getStatsList() {
-    IEquipmentStats[] array = new IEquipmentStats[statsList.size()];
-    return statsList.toArray(array);
+  public Collection<IEquipmentStats> getStatsList() {
+    return statsList;
   }
 
   public synchronized void addStats(IEquipmentStats stats) {

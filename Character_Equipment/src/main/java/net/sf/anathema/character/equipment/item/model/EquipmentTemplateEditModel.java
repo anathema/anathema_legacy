@@ -16,8 +16,6 @@ import org.jmock.example.announcer.Announcer;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.util.Collections.addAll;
-
 public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
 
   public static final MagicalMaterial NO_MAGICAL_MATERIAL = null;
@@ -53,7 +51,7 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
     setMaterial(editedTemplate.getComposition(), editedTemplate.getMaterial());
     setCost(editedTemplate.getCost());
     statses.clear();
-    addAll(statses, editedTemplate.getStatsList());
+    statses.addAll(editedTemplate.getStatsList());
     fireStatsChangedEvent();
   }
 
@@ -70,8 +68,8 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
   public void setNewTemplate() {
     editTemplateId = null;
     editedTemplate = null;
-    getDescription().getName().setText(null);
-    getDescription().getContent().setText(null);
+    getDescription().getName().clear();
+    getDescription().getContent().clear();
     setMaterialComposition(MaterialComposition.None);
     setCost(new ItemCost("Resources", 0));
     statses.clear();
@@ -105,7 +103,7 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
   private List<IEquipmentStats> getAllPreviousStats() {
     List<IEquipmentStats> allStats = new ArrayList<>();
     if (editedTemplate != null) {
-      addAll(allStats, editedTemplate.getStatsList());
+      allStats.addAll(editedTemplate.getStatsList());
     }
     return allStats;
   }

@@ -3,15 +3,14 @@ package net.sf.anathema.hero.equipment.model;
 import net.sf.anathema.character.equipment.character.EquipmentHeroEvaluator;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
-import net.sf.anathema.hero.equipment.sheet.content.stats.ArtifactAttuneType;
-import net.sf.anathema.hero.specialties.Specialty;
-import net.sf.anathema.hero.traits.model.TraitType;
-import net.sf.anathema.hero.traits.model.types.AbilityType;
 import net.sf.anathema.character.framework.type.CharacterType;
 import net.sf.anathema.equipment.core.MagicalMaterial;
 import net.sf.anathema.hero.equipment.SpecialtiesCollectionImpl;
+import net.sf.anathema.hero.equipment.sheet.content.stats.ArtifactAttuneType;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.lib.control.ChangeListener;
+import net.sf.anathema.hero.specialties.Specialty;
+import net.sf.anathema.hero.traits.model.TraitType;
+import net.sf.anathema.hero.traits.model.types.AbilityType;
 
 import static net.sf.anathema.hero.equipment.sheet.content.stats.ArtifactAttuneType.FullyAttuned;
 import static net.sf.anathema.hero.equipment.sheet.content.stats.ArtifactAttuneType.Unattuned;
@@ -66,11 +65,6 @@ public class EquipmentHeroEvaluatorImpl implements EquipmentHeroEvaluator {
       return new ArtifactAttuneType[]{Unattuned, FullyAttuned};
     }
     return new ArtifactAttuneType[]{Unattuned, UnharmoniouslyAttuned};
-  }
-
-  @Override
-  public void addCharacterSpecialtyListChangeListener(ChangeListener listener) {
-    new SpecialtiesCollectionImpl(hero).addSpecialtyListChangeListener(listener);
   }
 
   private CharacterType getCharacterType() {

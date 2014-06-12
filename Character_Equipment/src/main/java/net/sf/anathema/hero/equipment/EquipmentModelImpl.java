@@ -38,23 +38,23 @@ import net.sf.anathema.hero.traits.model.TraitModelFetcher;
 import net.sf.anathema.hero.traits.model.types.AbilityType;
 import net.sf.anathema.hero.traits.model.types.AttributeType;
 import net.sf.anathema.lib.control.ChangeListener;
-import net.sf.anathema.lib.control.ICollectionListener;
+import net.sf.anathema.lib.control.CollectionListener;
 import net.sf.anathema.lib.util.Identifier;
 import org.apache.commons.lang3.ArrayUtils;
 import org.jmock.example.announcer.Announcer;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Collection;
 import java.util.List;
 
 import static net.sf.anathema.character.equipment.item.model.gson.GsonEquipmentDatabase.DATABASE_FOLDER;
 
 public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentModel {
-  private final List<IEquipmentItem> naturalWeaponItems = new ArrayList<>();
+  private final EquipmentCollection naturalWeapons = new EquipmentCollection();
   private final Table<IEquipmentItem, IEquipmentStats, List<IEquipmentStatsOption>> optionsTable = HashBasedTable.create();
   private final Announcer<ChangeListener> modelChangeControl = Announcer.to(ChangeListener.class);
-  private final Announcer<ICollectionListener> equipmentItemControl = Announcer.to(ICollectionListener.class);
+  private final Announcer<CollectionListener> equipmentItemControl = Announcer.to(CollectionListener.class);
   private final EquipmentCollection equipmentItems = new EquipmentCollection();
   private IEquipmentTemplateProvider equipmentTemplateProvider;
   private final ChangeListener itemChangePropagator = this::fireModelChanged;
@@ -71,22 +71,37 @@ public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentMo
   @Override
   public void initialize(HeroEnvironment environment, Hero hero) {
     StatsModelFetcher.fetch(hero).addModifierFactory(this);
-    Path dataBaseDirectory = environment.getDataFileProvider().getDataBaseDirectory(DATABASE_FOLDER);
-    EquipmentDirectAccess access = new EquipmentDirectAccess(dataBaseDirectory);
-    ObjectFactory objectFactory = environment.getObjectFactory();
-    MaterialRules materialRules = new ReflectionMaterialRules(objectFactory);
-    CharacterType characterType = hero.getTemplate().getTemplateType().getCharacterType();
-    Trait stamina = TraitModelFetcher.fetch(hero).getTrait(AttributeType.Stamina);
-    this.naturalArmor = new DefaultNaturalSoak(stamina, characterType);
-    EquipmentHeroEvaluatorImpl dataProvider = new EquipmentHeroEvaluatorImpl(hero, materialRules);
+    this.equipmentTemplateProvider = loadEquipmentDatabase(environment);
+    MaterialRules materialRules = createMagicalMaterialRules(environment);
+    this.naturalArmor = determineNaturalArmor(hero);
+    this.dataProvider = new EquipmentHeroEvaluatorImpl(hero, materialRules);
     this.characterType = hero.getTemplate().getTemplateType().getCharacterType();
     this.defaultMaterial = evaluateDefaultMaterial(materialRules);
-    this.equipmentTemplateProvider = new GsonEquipmentDatabase(access);
-    this.dataProvider = dataProvider;
-    IEquipmentItem item = createItem(new NaturalWeaponTemplate(), null);
-    naturalWeaponItems.add(item);
+    createNaturalWeapons();
     new SpecialtiesCollectionImpl(hero).addSpecialtyListChangeListener(new SpecialtyPrintRemover(dataProvider));
     EssencePoolModelFetcher.fetch(hero).addEssencePoolModifier(this);
+  }
+
+  private void createNaturalWeapons() {
+    IEquipmentItem item = createItem(new NaturalWeaponTemplate(), null);
+    naturalWeapons.add(item);
+  }
+
+  private GsonEquipmentDatabase loadEquipmentDatabase(HeroEnvironment environment) {
+    Path dataBaseDirectory = environment.getDataFileProvider().getDataBaseDirectory(DATABASE_FOLDER);
+    EquipmentDirectAccess access = new EquipmentDirectAccess(dataBaseDirectory);
+    return new GsonEquipmentDatabase(access);
+  }
+
+  private MaterialRules createMagicalMaterialRules(HeroEnvironment environment) {
+    ObjectFactory objectFactory = environment.getObjectFactory();
+    return new ReflectionMaterialRules(objectFactory);
+  }
+
+  private IArmourStats determineNaturalArmor(Hero hero) {
+    CharacterType characterType = hero.getTemplate().getTemplateType().getCharacterType();
+    Trait stamina = TraitModelFetcher.fetch(hero).getTrait(AttributeType.Stamina);
+    return new DefaultNaturalSoak(stamina, characterType);
   }
 
   @Override
@@ -118,13 +133,13 @@ public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentMo
   }
 
   @Override
-  public IEquipmentItem[] getNaturalWeapons() {
-    return naturalWeaponItems.toArray(new IEquipmentItem[naturalWeaponItems.size()]);
+  public Collection<IEquipmentItem> getNaturalWeapons() {
+    return naturalWeapons.asList();
   }
 
   @Override
   public boolean canBeRemoved(IEquipmentItem item) {
-    return !naturalWeaponItems.contains(item);
+    return !naturalWeapons.contains(item);
   }
 
   @Override
@@ -136,8 +151,8 @@ public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentMo
     return equipmentTemplateProvider.loadTemplate(templateId);
   }
 
-  private IEquipmentItem getSpecialManagedItem(String templateId) {
-    for (IEquipmentItem item : naturalWeaponItems) {
+  private IEquipmentItem getNaturalWeapon(String templateId) {
+    for (IEquipmentItem item : naturalWeapons) {
       if (templateId.equals(item.getTemplateId())) {
         return item;
       }
@@ -197,8 +212,8 @@ public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentMo
       return new IEquipmentStatsOption[0];
     }
     List<IEquipmentItem> itemList = new ArrayList<>();
-    itemList.addAll(naturalWeaponItems);
-    Collections.addAll(itemList, getEquipmentItems());
+    itemList.addAll(getNaturalWeapons());
+    itemList.addAll(getEquipmentItems());
     for (IEquipmentItem item : itemList) {
       for (IEquipmentStats stat : item.getStats()) {
         if (stats.equals(stat)) {
@@ -231,20 +246,20 @@ public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentMo
   }
 
   @Override
-  public IEquipmentItem[] getEquipmentItems() {
-    return equipmentItems.asArray();
+  public Collection<IEquipmentItem> getEquipmentItems() {
+    return equipmentItems.asList();
   }
 
   @Override
-  public IEquipmentItem addEquipmentObjectFor(String templateId, MagicalMaterial material) {
+  public IEquipmentItem addItem(String templateId, MagicalMaterial material) {
     IEquipmentTemplate template = loadEquipmentTemplate(templateId);
     if (template == null) {
-      return getSpecialManagedItem(templateId);
+      return getNaturalWeapon(templateId);
     }
-    return addEquipmentObjectFor(template, material);
+    return addManMadeObject(template, material);
   }
 
-  private IEquipmentItem addEquipmentObjectFor(IEquipmentTemplate template, MagicalMaterial material) {
+  private IEquipmentItem addManMadeObject(IEquipmentTemplate template, MagicalMaterial material) {
     IEquipmentItem item = createItem(template, material);
     equipmentItems.add(item);
     announceItemAndListenForChanges(item);
@@ -252,19 +267,19 @@ public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentMo
   }
 
   private IEquipmentItem createItem(IEquipmentTemplate template, MagicalMaterial material) {
-    return new EquipmentItem(template, null, null, material, getHeroEvaluator(), equipmentItems);
+    return new EquipmentItem(template, material, getHeroEvaluator(), equipmentItems);
   }
 
   @Override
   public void removeItem(IEquipmentItem item) {
     equipmentItems.remove(item);
-    announce().itemRemoved(item);
+    announce().itemRemoved();
     item.removeChangeListener(itemChangePropagator);
     fireModelChanged();
   }
 
   @SuppressWarnings("unchecked")
-  private ICollectionListener<IEquipmentItem> announce() {
+  private CollectionListener announce() {
     return equipmentItemControl.announce();
   }
 
@@ -292,7 +307,7 @@ public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentMo
   }
 
   private void announceItemAndListenForChanges(IEquipmentItem refreshedItem) {
-    announce().itemAdded(refreshedItem);
+    announce().itemAdded();
     refreshedItem.addChangeListener(itemChangePropagator);
     fireModelChanged();
   }
@@ -301,11 +316,11 @@ public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentMo
     String templateId = item.getTemplateId();
     MagicalMaterial material = item.getMaterial();
     removeItem(item);
-    return addEquipmentObjectFor(templateId, material);
+    return addItem(templateId, material);
   }
 
   @Override
-  public void addEquipmentObjectListener(ICollectionListener<IEquipmentItem> listener) {
+  public void addEquipmentObjectListener(CollectionListener listener) {
     equipmentItemControl.addListener(listener);
   }
 
@@ -321,7 +336,7 @@ public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentMo
     return template.getMaterial();
   }
 
-  public void addChangeListener(ChangeListener listener) {
+  private void addChangeListener(ChangeListener listener) {
     modelChangeControl.addListener(listener);
   }
 
@@ -352,7 +367,7 @@ public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentMo
 
     @Override
     public void changeOccurred() {
-      for (IEquipmentItem item : getEquipmentItems()) {
+      for (IEquipmentItem item : equipmentItems) {
         for (IEquipmentStats stats : item.getStats()) {
           List<IEquipmentStatsOption> list = optionsTable.get(item, stats);
           if (list == null) {

@@ -6,8 +6,6 @@ public interface ITextualDescription {
 
   boolean isDirty();
 
-  void setDirty(boolean isDirty);
-
   boolean isEmpty();
 
   void setText(String text);
@@ -18,4 +16,6 @@ public interface ITextualDescription {
   void removeTextChangeListener(ObjectValueListener<String> listener);
 
   String getText();
+
+  void clear();
 }

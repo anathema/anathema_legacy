@@ -10,7 +10,7 @@ import net.sf.anathema.platform.fx.tooltip.ConfigurableFxTooltip;
 import java.io.InputStream;
 
 public class UITableCell<T> extends ListCell<T> {
-  private static final Image NO_IMAGE = null;
+  public static final Image NO_IMAGE = null;
   private AgnosticUIConfiguration<T> configuration;
 
   public UITableCell(AgnosticUIConfiguration<T> configuration) {
@@ -38,6 +38,10 @@ public class UITableCell<T> extends ListCell<T> {
 
   private Image loadImageForItem(T item) {
     RelativePath relativePath = configuration.getIconsRelativePath(item);
+    return loadImage(relativePath);
+  }
+
+  public static Image loadImage(RelativePath relativePath) {
     if (relativePath == AgnosticUIConfiguration.NO_ICON) {
       return NO_IMAGE;
     }

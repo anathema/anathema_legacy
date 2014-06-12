@@ -2,23 +2,24 @@ package net.sf.anathema.character.equipment.dummy;
 
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.stats.AbstractStats;
-import net.sf.anathema.hero.equipment.sheet.content.stats.ArtifactAttuneType;
-import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 import net.sf.anathema.equipment.core.ItemCost;
 import net.sf.anathema.equipment.core.MagicalMaterial;
 import net.sf.anathema.equipment.core.MaterialComposition;
+import net.sf.anathema.hero.equipment.sheet.content.stats.ArtifactAttuneType;
+import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 import net.sf.anathema.lib.control.ChangeListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DummyEquipmentObject extends AbstractStats implements IEquipmentItem {
+public class DummyEquipmentItem extends AbstractStats implements IEquipmentItem {
 
   private final List<IEquipmentStats> allEquipments = new ArrayList<>();
+  private final List<IEquipmentStats> printed = new ArrayList<>();
   private final String name;
   private final String description;
 
-  public DummyEquipmentObject(String title, String description) {
+  public DummyEquipmentItem(String title, String description) {
     this.name = title;
     this.description = description;
   }
@@ -59,12 +60,12 @@ public class DummyEquipmentObject extends AbstractStats implements IEquipmentIte
 
   @Override
   public void setPrintEnabled(IEquipmentStats equipment, boolean enabled) {
-    //nothing to do;    
+    printed.add(equipment);
   }
 
   @Override
   public boolean isPrintEnabled(IEquipmentStats stats) {
-    return false;
+    return printed.contains(stats);
   }
 
   @Override
@@ -109,6 +110,11 @@ public class DummyEquipmentObject extends AbstractStats implements IEquipmentIte
 
   @Override
   public IEquipmentStats getStat(String name) {
+    for (IEquipmentStats stats : allEquipments) {
+      if (stats.getId().equals(name)) {
+        return stats;
+      }
+    }
     return null;
   }
 

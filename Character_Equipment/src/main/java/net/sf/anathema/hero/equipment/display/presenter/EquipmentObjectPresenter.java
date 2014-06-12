@@ -29,9 +29,9 @@ public class EquipmentObjectPresenter {
   private final EquipmentHeroEvaluator dataProvider;
   private final Resources resources;
 
-  public EquipmentObjectPresenter(IEquipmentItem model, EquipmentObjectView view,
-                                  IEquipmentStringBuilder stringBuilder, EquipmentHeroEvaluator dataProvider,
-                                  EquipmentOptionsProvider characterOptionProvider, Resources resources) {
+  public EquipmentObjectPresenter(IEquipmentItem model, EquipmentObjectView view, IEquipmentStringBuilder stringBuilder,
+                                  EquipmentHeroEvaluator dataProvider, EquipmentOptionsProvider characterOptionProvider,
+                                  Resources resources) {
     this.model = model;
     this.view = view;
     this.stringBuilder = stringBuilder;
@@ -74,14 +74,14 @@ public class EquipmentObjectPresenter {
   }
 
   private void refreshView() {
-    view.clear();
+    view.clearStatsAndActions();
     presentationModel.clear();
-    for (final IEquipmentStats stats : model.getStats()) {
+    for (IEquipmentStats stats : model.getStats()) {
       StatsPresentationStrategy strategy = choosePresentationStrategy(stats);
       if (!strategy.shouldStatsBeShown()) {
         continue;
       }
-      final StatsView statsView = view.addStats(createEquipmentDescription(model, stats));
+      StatsView statsView = view.addStats(createEquipmentDescription(model, stats));
       statsView.setSelected(model.isPrintEnabled(stats));
       statsView.addChangeListener(() -> {
         model.setPrintEnabled(stats, statsView.getSelected());
@@ -163,9 +163,9 @@ public class EquipmentObjectPresenter {
     Specialty[] specialties = dataProvider.getSpecialties(weaponStats.getTraitType());
     for (Specialty specialty : specialties) {
       String label = MessageFormat.format(resources.getString("Equipment.Specialty"), specialty.getName());
-      final StatsView statsView = baseView.addOptionFlag(label);
-      final IEquipmentStatsOption specialtyOption = new EquipmentSpecialtyOption(specialty, weaponStats.getTraitType());
-      final IEquipmentStats baseStat = model.getStat(weaponStats.getId());
+      StatsView statsView = baseView.addOptionFlag(label);
+      IEquipmentStatsOption specialtyOption = new EquipmentSpecialtyOption(specialty, weaponStats.getTraitType());
+      IEquipmentStats baseStat = model.getStat(weaponStats.getId());
       statsView.setSelected(characterOptionProvider.isStatOptionEnabled(model, baseStat, specialtyOption));
       statsView.addChangeListener(() -> {
         if (statsView.getSelected()) characterOptionProvider.enableStatOption(model, baseStat, specialtyOption);

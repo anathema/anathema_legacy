@@ -47,6 +47,10 @@ public class ListSelectionView<T> implements VetoableObjectSelectionView<T> {
     view.setCellFactory(new ConfigurableListCellFactory<>(renderer));
   }
 
+  public void setCellRenderer(ListCellFactory<T> renderer) {
+    view.setCellFactory(renderer);
+  }
+
   @Override
   public void setSelectedObject(T object) {
     view.getSelectionModel().select(object);
