@@ -77,7 +77,7 @@ public class EquipmentPresenter {
     Tool addTool = view.addToolButton();
     addTool.setIcon(new BasicUi().getRightArrowIconPath());
     addTool.setTooltip(resources.getString("AdditionalTemplateView.AddTemplate.Action.Tooltip"));
-    addTool.setCommand(() -> model.addEquipmentObjectFor(equipmentTemplatePickList.getSelectedObject(),
+    addTool.setCommand(() -> model.addItem(equipmentTemplatePickList.getSelectedObject(),
             magicalMaterialView.getSelectedMaterial()));
     equipmentTemplatePickList.addObjectSelectionChangedListener(newValue -> setEnabled(newValue, addTool));
     setEnabled(equipmentTemplatePickList.getSelectedObject(), addTool);
@@ -170,7 +170,6 @@ public class EquipmentPresenter {
     personalizationView.whenDescriptionChanges(personalizationModel::setDescription);
     personalizationView.whenChangeIsConfirmed(() -> {
       personalizationModel.apply();
-      refreshOwnedItemOverview();
       model.updateItem(selectedObject);
     });
     personalizationView.show();

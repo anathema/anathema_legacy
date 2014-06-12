@@ -37,20 +37,17 @@ public class EquipmentItem implements IEquipmentItem {
   private final IEquipmentTemplate template;
   private final MagicalMaterial material;
   private final ModifierFactory modifiers;
-  private String customTitle;
-  private String customDescription;
+  private String customTitle = null;
+  private String customDescription = null;
 
-  public EquipmentItem(IEquipmentTemplate template, String title, String description, MagicalMaterial material,
-                       ItemAttunementEvaluator provider, ModifierFactory modifiers) {
+  public EquipmentItem(IEquipmentTemplate template, MagicalMaterial material, ItemAttunementEvaluator provider, ModifierFactory modifiers) {
     this.modifiers = modifiers;
     if (template.getComposition() == Variable && material == null) {
       throw new MissingMaterialException("Variable material items must be created with material.");
     }
     this.template = template;
     this.material = material != null ? material : template.getMaterial();
-    this.customTitle = title;
-    this.customDescription = description;
-    Collections.addAll(printedStats, template.getStatsList());
+    printedStats.addAll(template.getStatsList());
     initPrintStats(provider);
   }
 
@@ -74,12 +71,6 @@ public class EquipmentItem implements IEquipmentItem {
     return template.getDescription();
   }
 
-  @Override
-  public void setPersonalization(String title, String description) {
-    this.customTitle = getNewValue(title, getTemplateId());
-    this.customDescription = getNewValue(description, getBaseDescription());
-  }
-
   private String getNewValue(String input, String baseValue) {
     if (isNullOrTrimmedEmpty(input) || input.equals(baseValue)) {
       return null;
@@ -90,8 +81,15 @@ public class EquipmentItem implements IEquipmentItem {
 
   @Override
   public void setPersonalization(IEquipmentItem item) {
-    this.customTitle = ((EquipmentItem) item).customTitle;
-    this.customDescription = ((EquipmentItem) item).customDescription;
+    EquipmentItem template = (EquipmentItem) item;
+    setPersonalization(template.customTitle, template.customDescription);
+  }
+
+  @Override
+  public void setPersonalization(String title, String description) {
+    this.customTitle = getNewValue(title, getTemplateId());
+    this.customDescription = getNewValue(description, getBaseDescription());
+    announceChange();
   }
 
   @Override
@@ -105,9 +103,8 @@ public class EquipmentItem implements IEquipmentItem {
   }
 
   private IEquipmentStats[] getViews() {
-    IEquipmentStats[] statsArray = template.getStatsList();
     List<IEquipmentStats> views = new ArrayList<>();
-    for (IEquipmentStats stats : statsArray) {
+    for (IEquipmentStats stats : template.getStatsList()) {
       if (stats instanceof IWeaponStats) {
         Collections.addAll(views, ((IWeaponStats) stats).getViews());
       } else if (stats instanceof ArtifactStats) {
@@ -215,9 +212,8 @@ public class EquipmentItem implements IEquipmentItem {
     ArtifactStats bestAttune = null;
     for (IEquipmentStats stat : getViews()) {
       if (stat instanceof ArtifactStats) {
-        if (hasAttunementType((ArtifactStats) stat, provider.getAttuneTypes(
-                this)) && (bestAttune == null || ((ArtifactStats) stat).getAttuneType().compareTo(
-                bestAttune.getAttuneType()) > 0)) {
+        if (hasAttunementType((ArtifactStats) stat, provider.getAttuneTypes(this))
+                && (bestAttune == null || ((ArtifactStats) stat).getAttuneType().compareTo(bestAttune.getAttuneType()) > 0)) {
           bestAttune = (ArtifactStats) stat;
         }
         continue;

@@ -251,15 +251,15 @@ public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentMo
   }
 
   @Override
-  public IEquipmentItem addEquipmentObjectFor(String templateId, MagicalMaterial material) {
+  public IEquipmentItem addItem(String templateId, MagicalMaterial material) {
     IEquipmentTemplate template = loadEquipmentTemplate(templateId);
     if (template == null) {
       return getNaturalWeapon(templateId);
     }
-    return addEquipmentObjectFor(template, material);
+    return addManMadeObject(template, material);
   }
 
-  private IEquipmentItem addEquipmentObjectFor(IEquipmentTemplate template, MagicalMaterial material) {
+  private IEquipmentItem addManMadeObject(IEquipmentTemplate template, MagicalMaterial material) {
     IEquipmentItem item = createItem(template, material);
     equipmentItems.add(item);
     announceItemAndListenForChanges(item);
@@ -267,7 +267,7 @@ public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentMo
   }
 
   private IEquipmentItem createItem(IEquipmentTemplate template, MagicalMaterial material) {
-    return new EquipmentItem(template, null, null, material, getHeroEvaluator(), equipmentItems);
+    return new EquipmentItem(template, material, getHeroEvaluator(), equipmentItems);
   }
 
   @Override
@@ -316,7 +316,7 @@ public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentMo
     String templateId = item.getTemplateId();
     MagicalMaterial material = item.getMaterial();
     removeItem(item);
-    return addEquipmentObjectFor(templateId, material);
+    return addItem(templateId, material);
   }
 
   @Override

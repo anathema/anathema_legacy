@@ -7,7 +7,7 @@ import java.util.Collection;
 
 public interface IEquipmentItemCollection {
 
-  IEquipmentItem addEquipmentObjectFor(String templateId, MagicalMaterial material);
+  IEquipmentItem addItem(String templateId, MagicalMaterial material);
 
   void addEquipmentObjectListener(CollectionListener listener);
 

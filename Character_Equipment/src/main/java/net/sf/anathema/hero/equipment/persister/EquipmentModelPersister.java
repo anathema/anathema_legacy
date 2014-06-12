@@ -38,7 +38,7 @@ public class EquipmentModelPersister extends AbstractModelJsonPersister<Equipmen
     }
     IEquipmentItem item;
     try {
-      item = model.addEquipmentObjectFor(templateId, magicalMaterial);
+      item = model.addItem(templateId, magicalMaterial);
     } catch (MissingMaterialException e) {
       logger.warn("No material found for item " + title);
       return;
