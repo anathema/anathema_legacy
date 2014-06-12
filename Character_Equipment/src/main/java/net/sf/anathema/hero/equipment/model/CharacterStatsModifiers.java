@@ -2,18 +2,16 @@ package net.sf.anathema.hero.equipment.model;
 
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.framework.library.HeroStatsModifiers;
+import net.sf.anathema.hero.equipment.EquipmentModel;
+import net.sf.anathema.hero.equipment.EquipmentModelFetcher;
 import net.sf.anathema.hero.equipment.sheet.content.stats.ITraitModifyingStats;
 import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IArmourStats;
 import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IWeaponStats;
-import net.sf.anathema.hero.equipment.EquipmentModel;
-import net.sf.anathema.hero.equipment.EquipmentModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.google.common.collect.Lists.newArrayList;
 
 public class CharacterStatsModifiers implements HeroStatsModifiers {
   private final List<ITraitModifyingStats> stats = new ArrayList<>();
@@ -21,12 +19,10 @@ public class CharacterStatsModifiers implements HeroStatsModifiers {
 
   public static CharacterStatsModifiers extractFromCharacter(Hero hero) {
     EquipmentModel model = EquipmentModelFetcher.fetch(hero);
-    IEquipmentItem[] items = model.getEquipmentItems();
-    List<IEquipmentItem> list = newArrayList(items);
-    return new CharacterStatsModifiers(list);
+    return new CharacterStatsModifiers(model.getNaturalWeapons());
   }
 
-  public CharacterStatsModifiers(List<IEquipmentItem> equipmentItems) {
+  public CharacterStatsModifiers(Iterable<IEquipmentItem> equipmentItems) {
     for (IEquipmentItem item : equipmentItems) {
       for (IEquipmentStats equipmentStats : item.getStats()) {
         boolean isDefensive = equipmentStats instanceof IArmourStats;

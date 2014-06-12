@@ -7,7 +7,7 @@ import net.sf.anathema.character.equipment.character.model.stats.ProxyArmourStat
 import net.sf.anathema.character.equipment.character.model.stats.modification.BaseMaterial;
 import net.sf.anathema.character.equipment.character.model.stats.modification.InertBaseMaterial;
 import net.sf.anathema.character.equipment.character.model.stats.modification.ReactiveBaseMaterial;
-import net.sf.anathema.character.framework.library.IProxy;
+import net.sf.anathema.character.framework.library.Proxy;
 import net.sf.anathema.equipment.core.IEquipmentTemplate;
 import net.sf.anathema.equipment.core.ItemCost;
 import net.sf.anathema.equipment.core.MagicalMaterial;
@@ -144,8 +144,8 @@ public class EquipmentItem implements IEquipmentItem {
   @Override
   @SuppressWarnings("unchecked")
   public boolean isPrintEnabled(IEquipmentStats stats) {
-    if (stats instanceof IProxy<?>) {
-      stats = ((IProxy<? extends IEquipmentStats>) stats).getUnderlying();
+    if (stats instanceof Proxy<?>) {
+      stats = ((Proxy<? extends IEquipmentStats>) stats).getUnderlying();
     }
     return printedStats.contains(stats);
   }
@@ -153,8 +153,8 @@ public class EquipmentItem implements IEquipmentItem {
   @Override
   @SuppressWarnings("unchecked")
   public void setPrintEnabled(IEquipmentStats stats, boolean enabled) {
-    if (stats instanceof IProxy<?>) {
-      stats = ((IProxy<? extends IEquipmentStats>) stats).getUnderlying();
+    if (stats instanceof Proxy<?>) {
+      stats = ((Proxy<? extends IEquipmentStats>) stats).getUnderlying();
     }
     if (isPrintEnabled(stats) == enabled) {
       return;

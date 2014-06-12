@@ -45,7 +45,7 @@ import org.jmock.example.announcer.Announcer;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Collection;
 import java.util.List;
 
 import static net.sf.anathema.character.equipment.item.model.gson.GsonEquipmentDatabase.DATABASE_FOLDER;
@@ -118,8 +118,8 @@ public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentMo
   }
 
   @Override
-  public IEquipmentItem[] getNaturalWeapons() {
-    return naturalWeaponItems.toArray(new IEquipmentItem[naturalWeaponItems.size()]);
+  public Collection<IEquipmentItem> getNaturalWeapons() {
+    return naturalWeaponItems;
   }
 
   @Override
@@ -198,7 +198,7 @@ public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentMo
     }
     List<IEquipmentItem> itemList = new ArrayList<>();
     itemList.addAll(naturalWeaponItems);
-    Collections.addAll(itemList, getEquipmentItems());
+    itemList.addAll(getEquipmentItems());
     for (IEquipmentItem item : itemList) {
       for (IEquipmentStats stat : item.getStats()) {
         if (stats.equals(stat)) {
@@ -231,8 +231,8 @@ public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentMo
   }
 
   @Override
-  public IEquipmentItem[] getEquipmentItems() {
-    return equipmentItems.asArray();
+  public Collection<IEquipmentItem> getEquipmentItems() {
+    return equipmentItems.asList();
   }
 
   @Override

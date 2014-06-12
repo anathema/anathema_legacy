@@ -13,12 +13,12 @@ import net.sf.anathema.character.equipment.character.model.stats.modification.ma
 import net.sf.anathema.character.equipment.character.model.stats.modification.material.MaterialMobilityPenaltyModifier;
 import net.sf.anathema.character.equipment.character.model.stats.modification.material.MaterialSoakModifier;
 import net.sf.anathema.character.equipment.character.model.stats.modification.modifier.AttunementModifier;
+import net.sf.anathema.character.framework.library.Proxy;
 import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IArmourStats;
-import net.sf.anathema.character.framework.library.IProxy;
 import net.sf.anathema.hero.health.HealthType;
 import net.sf.anathema.lib.util.Identifier;
 
-public class ProxyArmourStats extends AbstractStats implements IArmourStats, IProxy<IArmourStats> {
+public class ProxyArmourStats extends AbstractStats implements IArmourStats, Proxy<IArmourStats> {
 
   private final IArmourStats delegate;
   private final BaseMaterial material;

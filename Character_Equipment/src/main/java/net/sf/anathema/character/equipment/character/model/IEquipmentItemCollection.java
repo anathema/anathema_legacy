@@ -3,6 +3,8 @@ package net.sf.anathema.character.equipment.character.model;
 import net.sf.anathema.equipment.core.MagicalMaterial;
 import net.sf.anathema.lib.control.CollectionListener;
 
+import java.util.Collection;
+
 public interface IEquipmentItemCollection {
 
   IEquipmentItem addEquipmentObjectFor(String templateId, MagicalMaterial material);
@@ -13,9 +15,9 @@ public interface IEquipmentItemCollection {
 
   String[] getAvailableTemplateIds();
 
-  IEquipmentItem[] getEquipmentItems();
+  Collection<IEquipmentItem> getEquipmentItems();
+
+  Collection<IEquipmentItem> getNaturalWeapons();
 
   void removeItem(IEquipmentItem item);
-
-  IEquipmentItem[] getNaturalWeapons();
 }

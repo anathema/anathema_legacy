@@ -20,7 +20,6 @@ import net.sf.anathema.lib.gui.selection.VetoableObjectSelectionView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import static net.sf.anathema.equipment.core.MaterialComposition.Fixed;
@@ -144,8 +143,8 @@ public class EquipmentPresenter {
 
   private void refreshOwnedItemOverview() {
     List<IEquipmentItem> allItems = new ArrayList<>();
-    Collections.addAll(allItems, model.getNaturalWeapons());
-    Collections.addAll(allItems, model.getEquipmentItems());
+    allItems.addAll(model.getNaturalWeapons());
+    allItems.addAll(model.getEquipmentItems());
     ownedEquipmentOverview.setObjects(allItems);
   }
 
