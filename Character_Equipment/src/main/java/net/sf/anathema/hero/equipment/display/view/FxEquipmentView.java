@@ -7,11 +7,8 @@ import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.equipment.core.MagicalMaterial;
 import net.sf.anathema.hero.equipment.display.presenter.EquipmentItemRenderer;
 import net.sf.anathema.hero.equipment.display.presenter.EquipmentObjectView;
-import net.sf.anathema.hero.equipment.display.presenter.EquipmentPersonalizationProperties;
 import net.sf.anathema.hero.equipment.display.presenter.EquipmentView;
 import net.sf.anathema.hero.equipment.display.presenter.MagicalMaterialView;
-import net.sf.anathema.hero.equipment.display.presenter.PersonalizationEditView;
-import net.sf.anathema.hero.equipment.display.view.personalization.FxPersonalizationEditView;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
@@ -64,11 +61,6 @@ public class FxEquipmentView implements EquipmentView, NodeHolder {
     FxMaterialView magicMaterialView = new FxMaterialView(label, renderer);
     selectionPanel.add(magicMaterialView.getNode(), new CC().growX().pushX());
     return magicMaterialView;
-  }
-
-  @Override
-  public PersonalizationEditView startEditingPersonalization(EquipmentPersonalizationProperties properties) {
-    return new FxPersonalizationEditView(panel.getScene().getWindow(), properties);
   }
 
   @Override

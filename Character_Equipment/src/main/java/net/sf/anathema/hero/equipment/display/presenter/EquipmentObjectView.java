@@ -16,4 +16,5 @@ public interface EquipmentObjectView {
 
   Tool addAction();
 
+  PersonalizationEditView startEditingPersonalization(EquipmentPersonalizationProperties properties);
 }

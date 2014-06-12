@@ -5,7 +5,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TitledPane;
 import net.miginfocom.layout.LC;
 import net.sf.anathema.hero.equipment.display.presenter.EquipmentObjectView;
+import net.sf.anathema.hero.equipment.display.presenter.EquipmentPersonalizationProperties;
+import net.sf.anathema.hero.equipment.display.presenter.PersonalizationEditView;
 import net.sf.anathema.hero.equipment.display.presenter.StatsView;
+import net.sf.anathema.hero.equipment.display.view.personalization.FxPersonalizationEditView;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.platform.tool.FxButtonTool;
@@ -60,6 +63,11 @@ public class FxEquipmentItemView implements EquipmentObjectView {
     FxButtonTool tool = FxButtonTool.ForToolbar();
     buttonPane.add(tool.getNode());
     return tool;
+  }
+
+  @Override
+  public PersonalizationEditView startEditingPersonalization(EquipmentPersonalizationProperties properties) {
+    return new FxPersonalizationEditView(border.getScene().getWindow(), properties);
   }
 
   public Node getNode() {

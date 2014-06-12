@@ -138,7 +138,7 @@ public class EquipmentPresenter {
     EquipmentObjectPresenter objectPresenter = new EquipmentObjectPresenter(item, objectView, resourceBuilder,
             heroEvaluator, optionProvider, resources);
     objectPresenter.initPresentation();
-    enablePersonalization(item, objectPresenter);
+    enablePersonalization(item, objectView, objectPresenter);
   }
 
   private void refreshOwnedItemOverview() {
@@ -148,36 +148,29 @@ public class EquipmentPresenter {
     ownedEquipmentOverview.setObjects(allItems);
   }
 
-  private void enablePersonalization(IEquipmentItem selectedObject, EquipmentObjectPresenter objectPresenter) {
+  private void enablePersonalization(IEquipmentItem selectedObject, EquipmentObjectView objectView, EquipmentObjectPresenter objectPresenter) {
     if (model.canBeRemoved(selectedObject)) {
-      createPersonalizeTool(selectedObject, objectPresenter);
+      createPersonalizeTool(selectedObject,objectView, objectPresenter);
     }
   }
 
-  private void createPersonalizeTool(IEquipmentItem selectedObject, EquipmentObjectPresenter objectPresenter) {
+  private void createPersonalizeTool(IEquipmentItem selectedObject, EquipmentObjectView objectView, EquipmentObjectPresenter objectPresenter) {
     Tool personalize = objectPresenter.addContextTool();
     personalize.setIcon(new BasicUi().getEditIconPath());
     personalize.setText(resources.getString("AdditionalTemplateView.Personalize.Action.Name"));
-    personalize.setCommand(() -> personalizeItem(selectedObject));
+    personalize.setCommand(() -> personalizeItem(selectedObject, objectView));
   }
 
-  private void personalizeItem(IEquipmentItem selectedObject) {
-    PersonalizationEditView personalizationView = createView();
+  private void personalizeItem(IEquipmentItem selectedObject, EquipmentObjectView objectView) {
+    EquipmentPersonalizationProperties properties = new EquipmentPersonalizationProperties(resources);
+    PersonalizationEditView personalizationView = objectView.startEditingPersonalization(properties);
     EquipmentPersonalizationModel personalizationModel = new EquipmentPersonalizationModel(selectedObject);
     personalizationView.setTitle(personalizationModel.getTitle());
     personalizationView.setDescription(personalizationModel.getDescription());
     personalizationView.whenTitleChanges(personalizationModel::setTitle);
     personalizationView.whenDescriptionChanges(personalizationModel::setDescription);
-    personalizationView.whenChangeIsConfirmed(() -> {
-      personalizationModel.apply();
-      model.updateItem(selectedObject);
-    });
+    personalizationView.whenChangeIsConfirmed(personalizationModel::apply);
     personalizationView.show();
-  }
-
-  private PersonalizationEditView createView() {
-    EquipmentPersonalizationProperties properties = new EquipmentPersonalizationProperties(resources);
-    return view.startEditingPersonalization(properties);
   }
 
   private class UpdateOwnedItems implements CollectionListener {

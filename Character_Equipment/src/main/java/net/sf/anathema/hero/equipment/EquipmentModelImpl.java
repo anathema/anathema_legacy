@@ -283,11 +283,6 @@ public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentMo
     return equipmentItemControl.announce();
   }
 
-  @Override
-  public void updateItem(IEquipmentItem item) {
-    fireModelChanged();
-  }
-
   private void fireModelChanged() {
     modelChangeControl.announce().changeOccurred();
   }

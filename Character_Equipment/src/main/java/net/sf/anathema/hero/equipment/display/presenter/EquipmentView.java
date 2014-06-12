@@ -15,8 +15,6 @@ public interface EquipmentView {
 
   MagicalMaterialView addMagicMaterialView(String label, AgnosticUIConfiguration<MagicalMaterial> renderer);
 
-  PersonalizationEditView startEditingPersonalization(EquipmentPersonalizationProperties properties);
-
   ObjectSelectionView<IEquipmentItem> addOwnedEquipmentList(EquipmentItemRenderer renderer);
 
   EquipmentObjectView addItemEditView();
