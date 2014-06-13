@@ -82,7 +82,7 @@ public class EquipmentObjectPresenter {
     view.clearStats();
     presentationModel.clear();
     for (IEquipmentStats stats : model.getStats()) {
-      StatsPresentationStrategy strategy = choosePresentationStrategy(stats);
+      StatsPresentationStrategy strategy = new StatsPresentationFactory(dataProvider, model).choosePresentationStrategy(stats);
       if (!strategy.shouldStatsBeShown()) {
         continue;
       }
@@ -147,14 +147,6 @@ public class EquipmentObjectPresenter {
       }
     }
     return false;
-  }
-
-  private StatsPresentationStrategy choosePresentationStrategy(IEquipmentStats equipment) {
-    if (equipment instanceof ArtifactStats) {
-      return new ArtifactPresentationStrategy((ArtifactStats) equipment, dataProvider, model);
-    } else {
-      return new DefaultPresentationStrategy(equipment);
-    }
   }
 
   private void showEligibleSpecialties(IEquipmentStats equipment, StatsView statsView) {
