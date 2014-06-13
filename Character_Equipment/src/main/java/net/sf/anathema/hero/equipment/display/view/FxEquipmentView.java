@@ -44,7 +44,6 @@ public class FxEquipmentView implements EquipmentView, NodeHolder {
     return scroller;
   }
 
-
   @Override
   public VetoableObjectSelectionView<String> getEquipmentTemplatePickList() {
     return equipmentPickList;
