@@ -7,15 +7,12 @@ import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
 import net.sf.anathema.equipment.core.MaterialComposition;
 import net.sf.anathema.framework.environment.Resources;
-import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.hero.equipment.model.EquipmentItemPresentationModel;
-import net.sf.anathema.hero.equipment.model.EquipmentPersonalizationModel;
 import net.sf.anathema.hero.equipment.model.EquipmentSpecialtyOption;
 import net.sf.anathema.hero.equipment.sheet.content.stats.ArtifactStats;
 import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IWeaponStats;
 import net.sf.anathema.hero.specialties.Specialty;
-import net.sf.anathema.interaction.Tool;
 
 import java.text.MessageFormat;
 
@@ -24,58 +21,47 @@ public class EquipmentObjectPresenter {
   public static final String EQUIPMENT_NAME_PREFIX = "Equipment.Name.";
   private static final String DESCRIPTION_PREFIX = "Equipment.Description.";
   private final EquipmentItemPresentationModel presentationModel = new EquipmentItemPresentationModel();
-  private final IEquipmentItem model;
-  private final EquipmentObjectView view;
   private final IEquipmentStringBuilder stringBuilder;
   private final EquipmentOptionsProvider characterOptionProvider;
   private final EquipmentHeroEvaluator dataProvider;
   private final Resources resources;
+  private EquipmentObjectView view;
+  private IEquipmentItem model;
 
-  public EquipmentObjectPresenter(IEquipmentItem model, EquipmentObjectView view, IEquipmentStringBuilder stringBuilder,
+  public EquipmentObjectPresenter(IEquipmentStringBuilder stringBuilder,
                                   EquipmentHeroEvaluator dataProvider, EquipmentOptionsProvider characterOptionProvider,
                                   Resources resources) {
-    this.model = model;
-    this.view = view;
     this.stringBuilder = stringBuilder;
     this.characterOptionProvider = characterOptionProvider;
     this.resources = resources;
     this.dataProvider = dataProvider;
   }
 
-  public void initPresentation() {
+  public void initPresentation(IEquipmentItem item, EquipmentObjectView objectView) {
+    if (view != null) {
+      view.disablePersonalization();
+    }
+    this.model = item;
+    this.view = objectView;
     showItemTitle();
     showItemDescription();
-    view.disablePersonalization();
     refreshView();
   }
 
   public void initPersonalization() {
     view.enablePersonalization();
-    Tool personalize = view.addAction();
-    personalize.setIcon(new BasicUi().getEditIconPath());
-    personalize.setText(resources.getString("AdditionalTemplateView.Personalize.Action.Name"));
-    personalize.setCommand(() -> personalizeItem(model, view));
-  }
-
-  private void personalizeItem(IEquipmentItem selectedObject, EquipmentObjectView objectView) {
-    EquipmentPersonalizationProperties properties = new EquipmentPersonalizationProperties(resources);
-    PersonalizationEditView personalizationView = objectView.startEditingPersonalization(properties);
-    EquipmentPersonalizationModel personalizationModel = new EquipmentPersonalizationModel(selectedObject);
-    personalizationView.setTitle(personalizationModel.getTitle());
-    personalizationView.setDescription(personalizationModel.getDescription());
-    personalizationView.whenTitleChanges(personalizationModel::setTitle);
-    personalizationView.whenDescriptionChanges(personalizationModel::setDescription);
-    personalizationView.whenChangeIsConfirmed(personalizationModel::apply);
-    personalizationView.show();
+    view.whenTitleChanges(model::setTitle);
+    view.whenDescriptionChanges(model::setDescription);
   }
 
   private void showItemTitle() {
     String itemTitle = model.getTitle();
-    boolean customTitle = !model.getTemplateId().equals(itemTitle);
+    boolean hasCustomTitle = !model.getTemplateId().equals(itemTitle);
     if (resources.supportsKey(EQUIPMENT_NAME_PREFIX + itemTitle)) {
       itemTitle = resources.getString(EQUIPMENT_NAME_PREFIX + itemTitle);
     }
-    if (!customTitle && model.getMaterialComposition() == MaterialComposition.Variable) {
+    boolean materialWasSelectedOnPurchase = model.getMaterialComposition() == MaterialComposition.Variable;
+    if (!hasCustomTitle && materialWasSelectedOnPurchase) {
       String materialString = resources.getString("MagicMaterial." + model.getMaterial().name());
       itemTitle += " (" + materialString + ")";
     }

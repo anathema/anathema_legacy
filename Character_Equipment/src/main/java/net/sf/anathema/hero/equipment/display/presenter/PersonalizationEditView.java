@@ -3,10 +3,6 @@ package net.sf.anathema.hero.equipment.display.presenter;
 import net.sf.anathema.lib.util.Closure;
 
 public interface PersonalizationEditView {
-  void show();
-
-  void whenChangeIsConfirmed(Runnable runnable);
-
   void setTitle(String title);
 
   void setDescription(String description);

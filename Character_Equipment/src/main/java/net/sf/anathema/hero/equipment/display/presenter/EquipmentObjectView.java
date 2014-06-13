@@ -1,8 +1,6 @@
 package net.sf.anathema.hero.equipment.display.presenter;
 
-import net.sf.anathema.interaction.Tool;
-
-public interface EquipmentObjectView {
+public interface EquipmentObjectView extends PersonalizationEditView {
 
   void setItemTitle(String title);
 
@@ -13,10 +11,6 @@ public interface EquipmentObjectView {
   void clearStatsAndActions();
 
   StatsView addStats(String description);
-
-  Tool addAction();
-
-  PersonalizationEditView startEditingPersonalization(EquipmentPersonalizationProperties properties);
 
   void enablePersonalization();
 

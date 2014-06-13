@@ -99,6 +99,16 @@ public class DummyEquipmentItem extends AbstractStats implements IEquipmentItem 
   }
 
   @Override
+  public void setTitle(String title) {
+    // nothing to do
+  }
+
+  @Override
+  public void setDescription(String description) {
+    // nothing to do
+  }
+
+  @Override
   public ArtifactAttuneType getAttunementState() {
     return null;
   }

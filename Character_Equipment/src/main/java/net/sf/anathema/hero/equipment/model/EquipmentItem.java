@@ -200,6 +200,19 @@ public class EquipmentItem implements IEquipmentItem {
     changeControl.removeListener(listener);
   }
 
+  @Override
+  public void setTitle(String title) {
+    this.customTitle = getNewValue(title, getTemplateId());
+    announceChange();
+  }
+
+  @Override
+  public void setDescription(String description) {
+    this.customDescription = getNewValue(description, getBaseDescription());
+    announceChange();
+
+  }
+
   private void announceChange() {
     changeControl.announce().changeOccurred();
   }

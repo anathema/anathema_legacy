@@ -10,7 +10,6 @@ import net.sf.anathema.framework.environment.resources.LocaleResources;
 import net.sf.anathema.hero.equipment.display.presenter.EquipmentObjectPresenter;
 import net.sf.anathema.hero.equipment.display.presenter.EquipmentObjectView;
 import net.sf.anathema.hero.equipment.display.presenter.StatsView;
-import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 import net.sf.anathema.hero.health.HealthType;
 import net.sf.anathema.hero.specialties.Specialty;
 import net.sf.anathema.hero.traits.model.TraitType;
@@ -25,14 +24,11 @@ import static org.mockito.Mockito.when;
 
 public class EquipmentItemPresenterTest {
 
-  private IEquipmentStringBuilder equipmentStringBuilder = new IEquipmentStringBuilder() {
-    @Override
-    public String createString(IEquipmentItem item, IEquipmentStats equipment) {
-      if (equipment.getName().getId().equals("Sword")) {
-        return "Passt!";
-      }
-      throw new IllegalArgumentException();
+  private IEquipmentStringBuilder equipmentStringBuilder = (item, equipment) -> {
+    if (equipment.getName().getId().equals("Sword")) {
+      return "Passt!";
     }
+    throw new IllegalArgumentException();
   };
 
   @Test
@@ -67,7 +63,7 @@ public class EquipmentItemPresenterTest {
   public void testPrintModelInitialization() throws Exception {
     EquipmentObjectView view = mock(EquipmentObjectView.class);
     view.setItemTitle("Title");
-    StatsView isPrintSelectedModel =  mock(StatsView.class);
+    StatsView isPrintSelectedModel = mock(StatsView.class);
     when(view.addStats("Passt!")).thenReturn(isPrintSelectedModel);
     DummyEquipmentItem model = new DummyEquipmentItem("Title", null);
     model.addEquipment(new DemoMeleeWeapon(new SimpleIdentifier("Sword"), 5, 2, 7, 1, HealthType.Lethal, -1, 0, 2));
@@ -79,6 +75,6 @@ public class EquipmentItemPresenterTest {
     EquipmentHeroEvaluator dataProvider = mock(EquipmentHeroEvaluator.class);
     EquipmentOptionsProvider optionProvider = mock(EquipmentOptionsProvider.class);
     when(dataProvider.getSpecialties(isA(TraitType.class))).thenReturn(new Specialty[0]);
-    new EquipmentObjectPresenter(model, view, equipmentStringBuilder, dataProvider, optionProvider, new LocaleResources()).initPresentation();
+    new EquipmentObjectPresenter(equipmentStringBuilder, dataProvider, optionProvider, new LocaleResources()).initPresentation(model, view);
   }
 }

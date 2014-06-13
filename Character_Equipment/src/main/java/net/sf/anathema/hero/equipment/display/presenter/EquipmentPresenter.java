@@ -2,7 +2,6 @@ package net.sf.anathema.hero.equipment.display.presenter;
 
 import net.sf.anathema.character.equipment.character.EquipmentHeroEvaluator;
 import net.sf.anathema.character.equipment.character.EquipmentOptionsProvider;
-import net.sf.anathema.character.equipment.character.IEquipmentStringBuilder;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.EquipmentUI;
 import net.sf.anathema.character.equipment.item.EquipmentTemplateNameComparator;
@@ -31,14 +30,16 @@ public class EquipmentPresenter {
   private final Resources resources;
   private final EquipmentModel model;
   private final EquipmentView view;
-  private final IEquipmentStringBuilder resourceBuilder;
   private ObjectSelectionView<IEquipmentItem> ownedEquipmentOverview;
+  private EquipmentObjectPresenter objectPresenter;
 
   public EquipmentPresenter(Resources resources, EquipmentModel model, EquipmentView view) {
     this.resources = resources;
     this.model = model;
     this.view = view;
-    this.resourceBuilder = new EquipmentStringBuilder(resources);
+    EquipmentHeroEvaluator heroEvaluator = model.getHeroEvaluator();
+    EquipmentOptionsProvider optionProvider = model.getOptionProvider();
+    this.objectPresenter = new EquipmentObjectPresenter(new EquipmentStringBuilder(resources), heroEvaluator, optionProvider, resources);
   }
 
   public void initPresentation() {
@@ -132,11 +133,7 @@ public class EquipmentPresenter {
       objectView.clear();
       return;
     }
-    EquipmentHeroEvaluator heroEvaluator = model.getHeroEvaluator();
-    EquipmentOptionsProvider optionProvider = model.getOptionProvider();
-    EquipmentObjectPresenter objectPresenter = new EquipmentObjectPresenter(item, objectView, resourceBuilder,
-            heroEvaluator, optionProvider, resources);
-    objectPresenter.initPresentation();
+    objectPresenter.initPresentation(item, objectView);
     if (model.canBeRemoved(item)) {
       objectPresenter.initPersonalization();
     }

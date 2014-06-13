@@ -32,6 +32,11 @@ public class TextView implements SwingTextView {
   }
 
   @Override
+  public void removeAllListeners() {
+    //nothing to do
+  }
+
+  @Override
   public final void addTextChangedListener(final ObjectValueListener<String> listener) {
     textComponent.getDocument().addDocumentListener(new AbstractDocumentListener() {
       @Override

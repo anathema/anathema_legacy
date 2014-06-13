@@ -64,4 +64,8 @@ public class Announcer<T> {
 	public static <T> Announcer<T> to(Class<? extends T> listenerType) {
 		return new Announcer<>(listenerType);
 	}
+
+  public void clear() {
+    listeners.clear();
+  }
 }

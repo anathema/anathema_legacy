@@ -9,4 +9,6 @@ public interface ITextView {
   void setEnabled(boolean enabled);
 
   void setText(String text);
+
+  void removeAllListeners();
 }

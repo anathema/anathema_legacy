@@ -17,11 +17,13 @@ public class EquipmentPersonalizationModel implements net.sf.anathema.hero.equip
   @Override
   public void setTitle(String text) {
     this.title = text;
+    item.setPersonalization(getTitle(), getDescription());
   }
 
   @Override
   public void setDescription(String text) {
     this.description = text;
+    item.setPersonalization(getTitle(), getDescription());
   }
 
   @Override

@@ -5,14 +5,10 @@ import javafx.scene.control.TitledPane;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.sf.anathema.hero.equipment.display.presenter.EquipmentObjectView;
-import net.sf.anathema.hero.equipment.display.presenter.EquipmentPersonalizationProperties;
-import net.sf.anathema.hero.equipment.display.presenter.PersonalizationEditView;
 import net.sf.anathema.hero.equipment.display.presenter.StatsView;
-import net.sf.anathema.hero.equipment.display.view.personalization.FxPersonalizationEditView;
-import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
+import net.sf.anathema.lib.util.Closure;
 import net.sf.anathema.platform.fx.FxTextView;
-import net.sf.anathema.platform.tool.FxButtonTool;
 import org.tbee.javafx.scene.layout.MigPane;
 
 public class FxEquipmentItemView implements EquipmentObjectView {
@@ -63,18 +59,6 @@ public class FxEquipmentItemView implements EquipmentObjectView {
   }
 
   @Override
-  public Tool addAction() {
-    FxButtonTool tool = FxButtonTool.ForToolbar();
-    buttonPane.add(tool.getNode());
-    return tool;
-  }
-
-  @Override
-  public PersonalizationEditView startEditingPersonalization(EquipmentPersonalizationProperties properties) {
-    return new FxPersonalizationEditView(body.getScene().getWindow(), properties);
-  }
-
-  @Override
   public void enablePersonalization() {
     titleLabel.setEnabled(true);
     descriptionLabel.setEnabled(true);
@@ -83,10 +67,32 @@ public class FxEquipmentItemView implements EquipmentObjectView {
   @Override
   public void disablePersonalization() {
     titleLabel.setEnabled(false);
+    titleLabel.removeAllListeners();
     descriptionLabel.setEnabled(false);
+    descriptionLabel.removeAllListeners();
   }
 
   public Node getNode() {
     return border;
+  }
+
+  @Override
+  public void setTitle(String title) {
+    titleLabel.setText(title);
+  }
+
+  @Override
+  public void setDescription(String description) {
+    descriptionLabel.setText(description);
+  }
+
+  @Override
+  public void whenTitleChanges(Closure<String> closure) {
+    titleLabel.addTextChangedListener(closure::execute);
+  }
+
+  @Override
+  public void whenDescriptionChanges(Closure<String> closure) {
+    descriptionLabel.addTextChangedListener(closure::execute);
   }
 }

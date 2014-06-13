@@ -6,6 +6,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputControl;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
+import org.jmock.example.announcer.Announcer;
 
 
 public class FxTextView implements ITextView {
@@ -28,15 +29,18 @@ public class FxTextView implements ITextView {
   }
 
   private final TextInputControl view;
+  private final Announcer<ObjectValueListener> announcer = Announcer.to(ObjectValueListener.class);
 
+  @SuppressWarnings("unchecked")
   public FxTextView(String label, TextInputControl view) {
     this.view = view;
     view.setPromptText(label);
+    view.textProperty().addListener((observableValue, s, newValue) -> announcer.announce().valueChanged(newValue));
   }
 
   @Override
-  public void addTextChangedListener(final ObjectValueListener<String> listener) {
-    view.textProperty().addListener((observableValue, s, newValue) -> listener.valueChanged(newValue));
+  public void addTextChangedListener(ObjectValueListener<String> listener) {
+    announcer.addListener(listener);
   }
 
   @Override
@@ -47,6 +51,11 @@ public class FxTextView implements ITextView {
   @Override
   public void setText(String text) {
     view.setText(text);
+  }
+
+  @Override
+  public void removeAllListeners() {
+    announcer.clear();
   }
 
   public Node getNode() {
