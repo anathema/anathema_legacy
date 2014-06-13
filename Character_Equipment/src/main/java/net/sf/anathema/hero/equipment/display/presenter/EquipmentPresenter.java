@@ -11,7 +11,6 @@ import net.sf.anathema.equipment.core.MaterialComposition;
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.hero.equipment.EquipmentModel;
-import net.sf.anathema.hero.equipment.model.EquipmentPersonalizationModel;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.CollectionListener;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
@@ -138,7 +137,9 @@ public class EquipmentPresenter {
     EquipmentObjectPresenter objectPresenter = new EquipmentObjectPresenter(item, objectView, resourceBuilder,
             heroEvaluator, optionProvider, resources);
     objectPresenter.initPresentation();
-    enablePersonalization(item, objectView, objectPresenter);
+    if (model.canBeRemoved(item)) {
+      objectPresenter.initPersonalization();
+    }
   }
 
   private void refreshOwnedItemOverview() {
@@ -146,31 +147,6 @@ public class EquipmentPresenter {
     allItems.addAll(model.getNaturalWeapons());
     allItems.addAll(model.getEquipmentItems());
     ownedEquipmentOverview.setObjects(allItems);
-  }
-
-  private void enablePersonalization(IEquipmentItem selectedObject, EquipmentObjectView objectView, EquipmentObjectPresenter objectPresenter) {
-    if (model.canBeRemoved(selectedObject)) {
-      createPersonalizeTool(selectedObject,objectView, objectPresenter);
-    }
-  }
-
-  private void createPersonalizeTool(IEquipmentItem selectedObject, EquipmentObjectView objectView, EquipmentObjectPresenter objectPresenter) {
-    Tool personalize = objectPresenter.addContextTool();
-    personalize.setIcon(new BasicUi().getEditIconPath());
-    personalize.setText(resources.getString("AdditionalTemplateView.Personalize.Action.Name"));
-    personalize.setCommand(() -> personalizeItem(selectedObject, objectView));
-  }
-
-  private void personalizeItem(IEquipmentItem selectedObject, EquipmentObjectView objectView) {
-    EquipmentPersonalizationProperties properties = new EquipmentPersonalizationProperties(resources);
-    PersonalizationEditView personalizationView = objectView.startEditingPersonalization(properties);
-    EquipmentPersonalizationModel personalizationModel = new EquipmentPersonalizationModel(selectedObject);
-    personalizationView.setTitle(personalizationModel.getTitle());
-    personalizationView.setDescription(personalizationModel.getDescription());
-    personalizationView.whenTitleChanges(personalizationModel::setTitle);
-    personalizationView.whenDescriptionChanges(personalizationModel::setDescription);
-    personalizationView.whenChangeIsConfirmed(personalizationModel::apply);
-    personalizationView.show();
   }
 
   private class UpdateOwnedItems implements CollectionListener {

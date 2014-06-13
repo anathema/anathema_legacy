@@ -7,6 +7,7 @@ import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
 import net.sf.anathema.equipment.core.MaterialComposition;
 import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.hero.equipment.model.EquipmentItemPresentationModel;
 import net.sf.anathema.hero.equipment.model.EquipmentSpecialtyOption;
 import net.sf.anathema.hero.equipment.sheet.content.stats.ArtifactStats;
@@ -40,14 +41,29 @@ public class EquipmentObjectPresenter {
     this.dataProvider = dataProvider;
   }
 
-  public Tool addContextTool() {
-    return view.addAction();
-  }
-
   public void initPresentation() {
     showItemTitle();
     showItemDescription();
     refreshView();
+  }
+
+  public void initPersonalization() {
+    Tool personalize = view.addAction();
+    personalize.setIcon(new BasicUi().getEditIconPath());
+    personalize.setText(resources.getString("AdditionalTemplateView.Personalize.Action.Name"));
+    personalize.setCommand(() -> personalizeItem(model, view));
+  }
+
+  private void personalizeItem(IEquipmentItem selectedObject, EquipmentObjectView objectView) {
+    EquipmentPersonalizationProperties properties = new EquipmentPersonalizationProperties(resources);
+    PersonalizationEditView personalizationView = objectView.startEditingPersonalization(properties);
+    net.sf.anathema.hero.equipment.model.EquipmentPersonalizationModel personalizationModel = new net.sf.anathema.hero.equipment.model.EquipmentPersonalizationModel(selectedObject);
+    personalizationView.setTitle(personalizationModel.getTitle());
+    personalizationView.setDescription(personalizationModel.getDescription());
+    personalizationView.whenTitleChanges(personalizationModel::setTitle);
+    personalizationView.whenDescriptionChanges(personalizationModel::setDescription);
+    personalizationView.whenChangeIsConfirmed(personalizationModel::apply);
+    personalizationView.show();
   }
 
   private void showItemTitle() {
