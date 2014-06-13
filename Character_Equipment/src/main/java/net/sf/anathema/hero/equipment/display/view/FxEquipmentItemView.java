@@ -29,8 +29,7 @@ public class FxEquipmentItemView implements EquipmentObjectView {
     body.add(elementPane);
     body.add(buttonPane);
     border.setContent(body);
-    titleLabel.setEnabled(false);
-    descriptionLabel.setEnabled(false);
+    disablePersonalization();
   }
 
   @Override
@@ -79,6 +78,12 @@ public class FxEquipmentItemView implements EquipmentObjectView {
   public void enablePersonalization() {
     titleLabel.setEnabled(true);
     descriptionLabel.setEnabled(true);
+  }
+
+  @Override
+  public void disablePersonalization() {
+    titleLabel.setEnabled(false);
+    descriptionLabel.setEnabled(false);
   }
 
   public Node getNode() {

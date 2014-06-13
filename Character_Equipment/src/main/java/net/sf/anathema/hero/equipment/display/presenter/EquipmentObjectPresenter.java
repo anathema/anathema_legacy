@@ -45,6 +45,7 @@ public class EquipmentObjectPresenter {
   public void initPresentation() {
     showItemTitle();
     showItemDescription();
+    view.disablePersonalization();
     refreshView();
   }
 

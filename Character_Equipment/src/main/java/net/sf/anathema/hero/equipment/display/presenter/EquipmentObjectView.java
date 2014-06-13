@@ -19,4 +19,6 @@ public interface EquipmentObjectView {
   PersonalizationEditView startEditingPersonalization(EquipmentPersonalizationProperties properties);
 
   void enablePersonalization();
+
+  void disablePersonalization();
 }
