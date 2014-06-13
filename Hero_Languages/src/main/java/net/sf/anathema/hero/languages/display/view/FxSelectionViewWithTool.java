@@ -59,6 +59,11 @@ public class FxSelectionViewWithTool<V> implements ObjectSelectionViewWithTool<V
   }
 
   @Override
+  public void clearSelection() {
+    comboBox.clearSelection();
+  }
+
+  @Override
   public Tool addTool() {
     final FxButtonTool tool = FxButtonTool.ForToolbar();
     buttonPanel.add(tool.getNode());

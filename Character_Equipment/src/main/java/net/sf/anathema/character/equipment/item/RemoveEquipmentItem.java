@@ -28,13 +28,11 @@ public class RemoveEquipmentItem implements Command {
     String deleteNotification = resources.getString("Equipment.Creation.DeleteMessage.Text");
     String messageText = format("{0} - {1}", itemId, deleteNotification);
     Vetor vetor = view.createVetor(title, messageText);
-    vetor.requestPermissionFor(new Command() {
-      @Override
-      public void execute() {
-        model.getDatabase().deleteTemplate(view.getTemplateListView().getSelectedObject());
-        model.getTemplateEditModel().setNewTemplate();
-        editModel.clearStatsSelection();
-      }
+    vetor.requestPermissionFor(() -> {
+      model.getDatabase().deleteTemplate(view.getTemplateListView().getSelectedObject());
+      model.getTemplateEditModel().setNewTemplate();
+      editModel.clearStatsSelection();
+      view.getTemplateListView().clearSelection();
     });
   }
 }

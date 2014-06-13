@@ -19,4 +19,6 @@ public interface ObjectSelectionView<V> {
   V getSelectedObject();
 
   void setEnabled(boolean enabled);
+
+  void clearSelection();
 }

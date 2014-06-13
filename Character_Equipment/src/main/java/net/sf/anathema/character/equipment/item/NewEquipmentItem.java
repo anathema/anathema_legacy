@@ -21,12 +21,10 @@ public class NewEquipmentItem implements Command {
   @Override
   public void execute() {
     DiscardChangesVetor vetor = new DiscardChangesVetor(model, view, resources);
-    vetor.requestPermissionFor(new Command() {
-      @Override
-      public void execute() {
-        model.getTemplateEditModel().setNewTemplate();
-        editModel.clearStatsSelection();
-      }
+    vetor.requestPermissionFor(() -> {
+      model.getTemplateEditModel().setNewTemplate();
+      editModel.clearStatsSelection();
+      view.getTemplateListView().clearSelection();
     });
   }
 }

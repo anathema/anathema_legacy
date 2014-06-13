@@ -73,7 +73,8 @@ public class ListSelectionView<T> implements VetoableObjectSelectionView<T> {
 
   @Override
   public void setObjects(Collection<T> objects) {
-    view.setItems(new ObservableListWrapper<>(new ArrayList<>(objects)));
+    ArrayList<T> list = new ArrayList<>(objects);
+    view.setItems(new ObservableListWrapper<>(list));
   }
 
   @Override
@@ -84,6 +85,11 @@ public class ListSelectionView<T> implements VetoableObjectSelectionView<T> {
   @Override
   public void setEnabled(boolean enabled) {
     view.setDisable(!enabled);
+  }
+
+  @Override
+  public void clearSelection() {
+    view.getSelectionModel().clearSelection();
   }
 
   public Node getNode() {
