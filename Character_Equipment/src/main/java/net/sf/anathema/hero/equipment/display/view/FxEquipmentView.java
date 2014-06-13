@@ -2,6 +2,7 @@ package net.sf.anathema.hero.equipment.display.view;
 
 import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
+import net.miginfocom.layout.AC;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.equipment.core.MagicalMaterial;
@@ -22,7 +23,7 @@ import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
 public class FxEquipmentView implements EquipmentView, NodeHolder {
   private final ListSelectionView<String> equipmentPickList = new ListSelectionView<>();
-  private final MigPane panel = new MigPane(withoutInsets());
+  private final MigPane panel = new MigPane(withoutInsets(), new AC().index(2).grow());
   private final MigPane selectionPanel = new MigPane(withoutInsets().wrapAfter(1));
   private final MigPane ownedPanel = new MigPane(withoutInsets().wrapAfter(1));
   private final MigPane buttonPanel = new MigPane(withoutInsets().wrapAfter(1));

@@ -16,15 +16,14 @@ public class FxEquipmentItemView implements EquipmentObjectView {
   private final FxTextView titleLabel = FxTextView.SingleLine("");
   private final FxTextView descriptionLabel = FxTextView.SingleLine("");
   private final MigPane elementPane = new MigPane(LayoutUtils.fillWithoutInsets().wrapAfter(1));
-  private final MigPane buttonPane = new MigPane(LayoutUtils.fillWithoutInsets());
   private final MigPane body = new MigPane(new LC().fill().wrapAfter(1));
 
   public FxEquipmentItemView() {
     body.add(titleLabel.getNode(), new CC().grow());
     body.add(descriptionLabel.getNode(), new CC().grow());
     body.add(elementPane);
-    body.add(buttonPane);
     border.setContent(body);
+    border.setCollapsible(false);
     disablePersonalization();
   }
 
@@ -42,13 +41,12 @@ public class FxEquipmentItemView implements EquipmentObjectView {
   public void clear() {
     setItemTitle("");
     setItemDescription("");
-    clearStatsAndActions();
+    clearStats();
   }
 
   @Override
-  public void clearStatsAndActions() {
+  public void clearStats() {
     elementPane.getChildren().clear();
-    buttonPane.getChildren().clear();
   }
 
   @Override

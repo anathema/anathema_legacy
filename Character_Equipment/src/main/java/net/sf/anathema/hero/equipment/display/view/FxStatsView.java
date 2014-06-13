@@ -1,6 +1,5 @@
 package net.sf.anathema.hero.equipment.display.view;
 
-import javafx.beans.value.ObservableValue;
 import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
 import net.sf.anathema.hero.equipment.display.presenter.StatsView;
@@ -49,18 +48,8 @@ public class FxStatsView implements StatsView {
 
   private CheckBox createCheckBox(final BooleanModel selectedModel, String description) {
     final CheckBox checkBox = new CheckBox(description);
-    selectedModel.addChangeListener(new ChangeListener() {
-      @Override
-      public void changeOccurred() {
-        checkBox.setSelected(selectedModel.getValue());
-      }
-    });
-    checkBox.selectedProperty().addListener(new javafx.beans.value.ChangeListener<Boolean>() {
-      @Override
-      public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean newValue) {
-        selectedModel.setValue(newValue);
-      }
-    });
+    selectedModel.addChangeListener(() -> checkBox.setSelected(selectedModel.getValue()));
+    checkBox.selectedProperty().addListener((observableValue, aBoolean, newValue) -> selectedModel.setValue(newValue));
     return checkBox;
   }
 

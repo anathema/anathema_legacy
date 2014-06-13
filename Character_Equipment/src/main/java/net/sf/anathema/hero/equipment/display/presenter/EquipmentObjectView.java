@@ -8,7 +8,7 @@ public interface EquipmentObjectView extends PersonalizationEditView {
 
   void clear();
 
-  void clearStatsAndActions();
+  void clearStats();
 
   StatsView addStats(String description);
 
