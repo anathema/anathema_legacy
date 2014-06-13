@@ -9,6 +9,7 @@ import net.sf.anathema.equipment.core.MaterialComposition;
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.hero.equipment.model.EquipmentItemPresentationModel;
+import net.sf.anathema.hero.equipment.model.EquipmentPersonalizationModel;
 import net.sf.anathema.hero.equipment.model.EquipmentSpecialtyOption;
 import net.sf.anathema.hero.equipment.sheet.content.stats.ArtifactStats;
 import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
@@ -48,6 +49,7 @@ public class EquipmentObjectPresenter {
   }
 
   public void initPersonalization() {
+    view.enablePersonalization();
     Tool personalize = view.addAction();
     personalize.setIcon(new BasicUi().getEditIconPath());
     personalize.setText(resources.getString("AdditionalTemplateView.Personalize.Action.Name"));
@@ -57,7 +59,7 @@ public class EquipmentObjectPresenter {
   private void personalizeItem(IEquipmentItem selectedObject, EquipmentObjectView objectView) {
     EquipmentPersonalizationProperties properties = new EquipmentPersonalizationProperties(resources);
     PersonalizationEditView personalizationView = objectView.startEditingPersonalization(properties);
-    net.sf.anathema.hero.equipment.model.EquipmentPersonalizationModel personalizationModel = new net.sf.anathema.hero.equipment.model.EquipmentPersonalizationModel(selectedObject);
+    EquipmentPersonalizationModel personalizationModel = new EquipmentPersonalizationModel(selectedObject);
     personalizationView.setTitle(personalizationModel.getTitle());
     personalizationView.setDescription(personalizationModel.getDescription());
     personalizationView.whenTitleChanges(personalizationModel::setTitle);

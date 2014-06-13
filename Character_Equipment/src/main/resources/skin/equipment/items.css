@@ -1,3 +1,9 @@
 .ownedEquipment {
     -fx-content-display: right;
 }
+
+.text-field:disabled {
+    -fx-background-color: -fx-background, -fx-background, -fx-background;
+    -fx-text-fill: -fx-dark-text-color;
+    -fx-opacity: 1.0;
+}
