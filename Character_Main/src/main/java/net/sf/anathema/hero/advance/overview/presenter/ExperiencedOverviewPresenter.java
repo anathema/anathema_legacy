@@ -78,4 +78,8 @@ public class ExperiencedOverviewPresenter {
   private String getString(String string) {
     return resources.getString(string);
   }
+
+  public void refresh() {
+    calculateXPCost();
+  }
 }

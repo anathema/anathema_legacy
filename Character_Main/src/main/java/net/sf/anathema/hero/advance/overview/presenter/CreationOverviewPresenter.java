@@ -68,4 +68,8 @@ public class CreationOverviewPresenter {
   private String getString(String string) {
     return resources.getString(string);
   }
+
+  public void refresh() {
+    updateOverview();
+  }
 }

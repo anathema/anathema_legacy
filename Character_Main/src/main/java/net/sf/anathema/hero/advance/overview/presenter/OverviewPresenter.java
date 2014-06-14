@@ -31,10 +31,19 @@ public class OverviewPresenter {
 
   public void initPresentation() {
     CategorizedOverview creationPointView = container.addCreationOverviewView();
-    new CreationOverviewPresenter(resources, hero, creationPointView, bonusPoints, messaging).initPresentation();
+    CreationOverviewPresenter creationOverviewPresenter = new CreationOverviewPresenter(resources, hero, creationPointView, bonusPoints, messaging);
+    creationOverviewPresenter.initPresentation();
     CategorizedOverview experiencePointView = container.addExperienceOverviewView();
-    new ExperiencedOverviewPresenter(resources, hero, experiencePointView, experiencePoints,messaging).initPresentation();
-    setOverviewView(ExperienceModelFetcher.fetch(hero).isExperienced());
+    ExperiencedOverviewPresenter experiencedOverviewPresenter = new ExperiencedOverviewPresenter(resources, hero, experiencePointView, experiencePoints, messaging);
+    experiencedOverviewPresenter.initPresentation();
+    boolean experienced = ExperienceModelFetcher.fetch(hero).isExperienced();
+    setOverviewView(experienced);
+    if (experienced) {
+      experiencedOverviewPresenter.refresh();
+    }
+    else {
+      creationOverviewPresenter.refresh();
+    }
     hero.getChangeAnnouncer().addListener(flavor -> {
       if (flavor == ExperienceChange.FLAVOR_EXPERIENCE_STATE) {
         setOverviewView(ExperienceModelFetcher.fetch(hero).isExperienced());
