@@ -30,13 +30,17 @@ public class CharacterViewFactory {
   }
 
   public NodeHolder createView(net.sf.anathema.character.framework.Character hero) {
-    SubViewRegistry viewFactory = new SubViewMap(environment);
-    Stylesheet[] stylesheets = createStylesheets(hero);
-    TaskedCharacterView characterView = new TaskedCharacterView(viewFactory, stylesheets);
+    TaskedCharacterView characterView = createCharacterView(hero);
     new CharacterPresenter(hero, characterView, environment, applicationModel).initPresentation();
     initOverviewPresentation(hero, characterView, environment);
     hero.getChangeManagement().setClean();
     return characterView;
+  }
+
+  private TaskedCharacterView createCharacterView(net.sf.anathema.character.framework.Character hero) {
+    SubViewRegistry viewFactory = new SubViewMap(environment);
+    Stylesheet[] stylesheets = createStylesheets(hero);
+    return new TaskedCharacterView(viewFactory, stylesheets);
   }
 
   private Stylesheet[] createStylesheets(Hero hero) {
