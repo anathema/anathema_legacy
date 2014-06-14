@@ -11,6 +11,7 @@ import net.sf.anathema.platform.tool.LoadImage;
 import org.controlsfx.control.NotificationPane;
 
 import static javafx.util.Duration.millis;
+import static net.sf.anathema.lib.message.MessageDuration.Temporary;
 
 public class PopInStatusBar implements StatusBar {
   private NotificationPane pane;
@@ -29,6 +30,8 @@ public class PopInStatusBar implements StatusBar {
     ImageContainer container = image.run();
     container.displayIn(imageView);
     pane.show();
-    new Timeline(new KeyFrame(millis(2500), event -> pane.hide())).play();
+    if (message.getDuration() == Temporary) {
+      new Timeline(new KeyFrame(millis(2500), event -> pane.hide())).play();
+    }
   }
 }
