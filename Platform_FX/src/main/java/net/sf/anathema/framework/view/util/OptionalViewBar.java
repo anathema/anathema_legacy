@@ -1,7 +1,5 @@
 package net.sf.anathema.framework.view.util;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import net.miginfocom.layout.CC;
@@ -26,12 +24,7 @@ public class OptionalViewBar {
   private void addButtonForTitle(String title, final OptionalView view) {
     Button button = new Button();
     button.setText(title);
-    button.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent actionEvent) {
-        view.toggle();
-      }
-    });
+    button.setOnAction(actionEvent -> view.toggle());
     button.setRotate(90);
     button.translateYProperty().bind(button.widthProperty().divide(2));
     button.translateXProperty().bind(button.heightProperty());
