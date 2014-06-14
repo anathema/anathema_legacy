@@ -4,7 +4,6 @@ import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.messaging.IMessageContainer;
 import net.sf.anathema.framework.view.ApplicationView;
-import net.sf.anathema.lib.control.ChangeListener;
 
 import java.util.Collection;
 
@@ -26,13 +25,8 @@ public class AnathemaPresenter {
   }
 
   private void initMessaging() {
-    final IMessageContainer messageContainer = model.getMessageContainer();
-    messageContainer.addChangeListener(new ChangeListener() {
-      @Override
-      public void changeOccurred() {
-        showLatestMessage(messageContainer);
-      }
-    });
+    IMessageContainer messageContainer = model.getMessageContainer();
+    messageContainer.addChangeListener(() -> showLatestMessage(messageContainer));
     showLatestMessage(messageContainer);
   }
 

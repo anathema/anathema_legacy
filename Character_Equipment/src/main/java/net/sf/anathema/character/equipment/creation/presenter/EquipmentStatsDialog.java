@@ -1,7 +1,7 @@
 package net.sf.anathema.character.equipment.creation.presenter;
 
 import net.sf.anathema.lib.gui.dialog.userdialog.OperationResultHandler;
-import net.sf.anathema.lib.message.IBasicMessage;
+import net.sf.anathema.lib.message.Message;
 
 public interface EquipmentStatsDialog {
 
@@ -9,7 +9,7 @@ public interface EquipmentStatsDialog {
 
   void setCannotFinish();
 
-  void setMessage(IBasicMessage message);
+  void setMessage(Message message);
 
   void setTitle(String title);
 

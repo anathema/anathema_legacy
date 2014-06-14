@@ -1,9 +1,9 @@
 package net.sf.anathema.fx.hero.perspective;
 
-import net.sf.anathema.framework.*;
-import net.sf.anathema.character.framework.library.util.CssSkinner;
 import net.sf.anathema.character.framework.display.SubViewMap;
 import net.sf.anathema.character.framework.display.SubViewRegistry;
+import net.sf.anathema.character.framework.library.util.CssSkinner;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.environment.Environment;
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.advance.creation.BonusPointManagement;
@@ -52,6 +52,6 @@ public class CharacterViewFactory {
     IBonusPointManagement bonusPointManagement = new BonusPointManagement(hero);
     ExperiencePointManagement experiencePointManagement = new ExperiencePointManagementImpl(hero);
     new OverviewPresenter(resources, hero, container, bonusPointManagement,
-            experiencePointManagement).initPresentation();
+            experiencePointManagement, applicationModel.getMessaging()).initPresentation();
   }
 }

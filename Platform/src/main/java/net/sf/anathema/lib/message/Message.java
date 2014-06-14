@@ -1,24 +1,31 @@
 package net.sf.anathema.lib.message;
 
-public class Message extends BasicMessage implements IMessage {
+import static net.sf.anathema.lib.message.MessageDuration.Temporary;
 
-  private final Throwable throwable;
-
-  public Message(String text, Throwable throwable) {
-    this(text, MessageType.ERROR, throwable);
-  }
+public class Message {
+  private final MessageType type;
+  private final MessageDuration duration;
+  private final String text;
 
   public Message(String text, MessageType type) {
-    this(text, type, null);
+    this(text, type, Temporary);
   }
 
-  private Message(String text, MessageType type, Throwable throwable) {
-    super(text, type);
-    this.throwable = throwable;
+  public Message(String text, MessageType type, MessageDuration duration) {
+    this.text = text;
+    this.type = type;
+    this.duration = duration;
   }
 
-  @Override
-  public Throwable getThrowable() {
-    return throwable;
+  public String getText() {
+    return text;
+  }
+
+  public MessageType getType() {
+    return type;
+  }
+
+  public MessageDuration getDuration() {
+    return duration;
   }
 }

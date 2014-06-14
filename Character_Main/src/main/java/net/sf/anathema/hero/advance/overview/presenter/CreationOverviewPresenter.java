@@ -2,6 +2,7 @@ package net.sf.anathema.hero.advance.overview.presenter;
 
 import net.sf.anathema.character.framework.library.overview.OverviewCategory;
 import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.hero.advance.creation.IBonusPointManagement;
 import net.sf.anathema.hero.advance.overview.view.CategorizedOverview;
 import net.sf.anathema.hero.model.Hero;
@@ -14,14 +15,16 @@ public class CreationOverviewPresenter {
   private final Resources resources;
   private final CategorizedOverview view;
   private final Hero hero;
+  private IMessaging messaging;
   private final IBonusPointManagement management;
   private final OverviewUpdater updater = new OverviewUpdater();
   private final MappedOverviewCategories categoriesById = new MappedOverviewCategories();
 
-  public CreationOverviewPresenter(Resources resources, Hero hero, CategorizedOverview overviewView, IBonusPointManagement management) {
+  public CreationOverviewPresenter(Resources resources, Hero hero, CategorizedOverview overviewView, IBonusPointManagement management, IMessaging messaging) {
     this.management = management;
     this.resources = resources;
     this.hero = hero;
+    this.messaging = messaging;
     hero.getChangeAnnouncer().addListener(flavor -> updateOverview());
     this.view = overviewView;
   }
@@ -33,7 +36,6 @@ public class CreationOverviewPresenter {
   }
 
   private void initCategories() {
-    initCategory(management.getSummaryCategory());
     initCategories(PointModelFetcher.fetch(hero).getBonusCategories());
   }
 
@@ -55,7 +57,7 @@ public class CreationOverviewPresenter {
     for (IOverviewModel model : PointModelFetcher.fetch(hero).getBonusOverviewModels()) {
       model.accept(new InitOverviewPresentationVisitor(resources, updater, categoriesById));
     }
-    management.getTotalModel().accept(new InitOverviewPresentationVisitor(resources, updater, categoriesById));
+    updater.add(new OverviewBonusPointsPresenter(management.getTotalModel(), messaging));
   }
 
   private void updateOverview() {
