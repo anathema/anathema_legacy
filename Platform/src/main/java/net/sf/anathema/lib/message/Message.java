@@ -1,8 +1,19 @@
 package net.sf.anathema.lib.message;
 
-public interface Message {
+public class Message {
+  private final MessageType type;
+  private final String text;
 
-  String getText();
+  public Message(String text, MessageType type) {
+    this.text = text;
+    this.type = type;
+  }
 
-  MessageType getType();
+  public String getText() {
+    return text;
+  }
+
+  public MessageType getType() {
+    return type;
+  }
 }

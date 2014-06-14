@@ -3,7 +3,6 @@ package net.sf.anathema.framework.messaging;
 import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.message.Message;
-import net.sf.anathema.lib.message.MessageImpl;
 import net.sf.anathema.lib.message.MessageType;
 import org.jmock.example.announcer.Announcer;
 
@@ -23,7 +22,7 @@ public class Messaging implements IMessaging, IMessageContainer {
   @Override
   public void addMessage(String pattern, MessageType messageType, Object... arguments) {
     String messageText = resources.getString(pattern, arguments);
-    addMessage(new MessageImpl(messageText, messageType));
+    addMessage(new Message(messageText, messageType));
   }
 
   @Override
@@ -47,7 +46,7 @@ public class Messaging implements IMessaging, IMessageContainer {
   @Override
   public synchronized Message getLatestMessage() {
     if (messages.isEmpty()) {
-      return new MessageImpl("", MessageType.NORMAL);
+      return new Message("", MessageType.NORMAL);
     }
     return messages.get(0);
   }
