@@ -1,9 +1,8 @@
 package net.sf.anathema.character.equipment.creation.presenter;
 
 import net.sf.anathema.framework.environment.Resources;
-import net.sf.anathema.lib.control.ChangeListener;
-import net.sf.anathema.lib.message.BasicMessage;
-import net.sf.anathema.lib.message.IBasicMessage;
+import net.sf.anathema.lib.message.Message;
+import net.sf.anathema.lib.message.MessageImpl;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
@@ -36,12 +35,7 @@ public class GeneralStatsPresenter {
   }
 
   private void initCompletionPresentation() {
-    model.addValidListener(new ChangeListener() {
-      @Override
-      public void changeOccurred() {
-        GeneralStatsPresenter.this.updateValidity();
-      }
-    });
+    model.addValidListener(GeneralStatsPresenter.this::updateValidity);
     updateValidity();
   }
 
@@ -67,8 +61,8 @@ public class GeneralStatsPresenter {
     return overallModel.isNameUnique(model.getName().getText());
   }
 
-  public IBasicMessage getDefaultMessage() {
-    return new BasicMessage(resources.getString("Equipment.Creation.Stats.DefaultMessage"));
+  public Message getDefaultMessage() {
+    return new MessageImpl(resources.getString("Equipment.Creation.Stats.DefaultMessage"));
   }
 
   public String getPageDescription() {

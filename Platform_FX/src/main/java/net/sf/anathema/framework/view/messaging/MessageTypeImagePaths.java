@@ -1,7 +1,6 @@
 package net.sf.anathema.framework.view.messaging;
 
 import net.sf.anathema.lib.file.RelativePath;
-import net.sf.anathema.lib.message.IMessageTypeVisitor;
 import net.sf.anathema.lib.message.MessageType;
 
 public class MessageTypeImagePaths {
@@ -12,33 +11,17 @@ public class MessageTypeImagePaths {
   private static final RelativePath questionPath = new RelativePath("icons/question.gif");
 
   public RelativePath getIconPath(MessageType type) {
-    final RelativePath[] icon = new RelativePath[1];
-    type.accept(new IMessageTypeVisitor() {
-      @Override
-      public void visitError(MessageType visitedType) {
-        icon[0] = errorPath;
-      }
-
-      @Override
-      public void visitNormal(MessageType visitedType) {
-        icon[0] = infoPath;
-      }
-
-      @Override
-      public void visitWarning(MessageType visitedType) {
-        icon[0] = warningPath;
-      }
-
-      @Override
-      public void visitInformation(MessageType visitedType) {
-        icon[0] = infoPath;
-      }
-
-      @Override
-      public void visitQuestion(MessageType visitedType) {
-        icon[0] = questionPath;
-      }
-    });
-    return icon[0];
+    switch (type) {
+      case ERROR:
+        return errorPath;
+      case WARNING:
+        return warningPath;
+      case QUESTION:
+        return questionPath;
+      case NORMAL:
+      case INFORMATION:
+      default:
+        return infoPath;
+    }
   }
 }

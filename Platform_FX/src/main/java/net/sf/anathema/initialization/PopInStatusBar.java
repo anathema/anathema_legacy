@@ -2,8 +2,12 @@ package net.sf.anathema.initialization;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.scene.image.ImageView;
+import net.sf.anathema.framework.view.messaging.MessageTypeImagePaths;
 import net.sf.anathema.framework.view.messaging.StatusBar;
-import net.sf.anathema.lib.message.IBasicMessage;
+import net.sf.anathema.lib.message.Message;
+import net.sf.anathema.platform.tool.ImageContainer;
+import net.sf.anathema.platform.tool.LoadImage;
 import org.controlsfx.control.NotificationPane;
 
 import static javafx.util.Duration.millis;
@@ -17,8 +21,14 @@ public class PopInStatusBar implements StatusBar {
   }
 
   @Override
-  public void setLatestMessage(IBasicMessage message) {
-    pane.show(message.getText());
+  public void setLatestMessage(Message message) {
+    ImageView imageView = new ImageView();
+    pane.setGraphic(imageView);
+    pane.setText(message.getText());
+    LoadImage image = new LoadImage(new MessageTypeImagePaths().getIconPath(message.getType()));
+    ImageContainer container = image.run();
+    container.displayIn(imageView);
+    pane.show();
     new Timeline(new KeyFrame(millis(2500), event -> pane.hide())).play();
   }
 }

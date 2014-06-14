@@ -1,10 +1,10 @@
 package net.sf.anathema.framework.messaging;
 
-import net.sf.anathema.lib.control.ChangeListener;
-import net.sf.anathema.lib.message.BasicMessage;
-import net.sf.anathema.lib.message.IBasicMessage;
-import net.sf.anathema.lib.message.MessageType;
 import net.sf.anathema.framework.environment.Resources;
+import net.sf.anathema.lib.control.ChangeListener;
+import net.sf.anathema.lib.message.Message;
+import net.sf.anathema.lib.message.MessageImpl;
+import net.sf.anathema.lib.message.MessageType;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ import java.util.List;
 public class Messaging implements IMessaging, IMessageContainer {
 
   private final Resources resources;
-  private final List<IBasicMessage> messages = new ArrayList<>();
+  private final List<Message> messages = new ArrayList<>();
   private final Announcer<ChangeListener> changeControl = Announcer.to(ChangeListener.class);
 
   public Messaging(Resources resources) {
@@ -23,11 +23,11 @@ public class Messaging implements IMessaging, IMessageContainer {
   @Override
   public void addMessage(String pattern, MessageType messageType, Object... arguments) {
     String messageText = resources.getString(pattern, arguments);
-    addMessage(new BasicMessage(messageText, messageType));
+    addMessage(new MessageImpl(messageText, messageType));
   }
 
   @Override
-  public synchronized void addMessage(IBasicMessage message) {
+  public synchronized void addMessage(Message message) {
     messages.add(0, message);
     changeControl.announce().changeOccurred();
     if (messages.size() > getMessageLimit()) {
@@ -45,9 +45,9 @@ public class Messaging implements IMessaging, IMessageContainer {
   }
 
   @Override
-  public synchronized IBasicMessage getLatestMessage() {
+  public synchronized Message getLatestMessage() {
     if (messages.isEmpty()) {
-      return new BasicMessage("", MessageType.NORMAL);
+      return new MessageImpl("", MessageType.NORMAL);
     }
     return messages.get(0);
   }

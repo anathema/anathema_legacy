@@ -6,7 +6,7 @@ import net.sf.anathema.character.equipment.creation.presenter.EquipmentStatsView
 import net.sf.anathema.framework.environment.fx.DialogFactory;
 import net.sf.anathema.lib.gui.dialog.core.StaticOperationResult;
 import net.sf.anathema.lib.gui.dialog.userdialog.OperationResultHandler;
-import net.sf.anathema.lib.message.IBasicMessage;
+import net.sf.anathema.lib.message.Message;
 import org.controlsfx.control.action.AbstractAction;
 import org.controlsfx.dialog.Dialog;
 
@@ -45,7 +45,7 @@ public class FxEditStatsDialog implements EquipmentStatsDialog {
   }
 
   @Override
-  public void setMessage(IBasicMessage message) {
+  public void setMessage(Message message) {
     this.messageText = message.getText();
   }
 
