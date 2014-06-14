@@ -11,10 +11,10 @@ import net.sf.anathema.framework.presenter.AnathemaViewProperties;
 import net.sf.anathema.framework.view.ApplicationFrame;
 import net.sf.anathema.framework.view.ViewFactory;
 import net.sf.anathema.framework.view.menu.MainMenuBar;
-import net.sf.anathema.framework.view.messaging.OneLineStatusBar;
 import net.sf.anathema.framework.view.messaging.StatusBar;
 import net.sf.anathema.platform.tool.ImageContainer;
 import net.sf.anathema.platform.tool.LoadImage;
+import org.controlsfx.control.NotificationPane;
 import org.tbee.javafx.scene.layout.MigPane;
 
 public class FxApplicationFrame implements ApplicationFrameView {
@@ -22,7 +22,8 @@ public class FxApplicationFrame implements ApplicationFrameView {
   private final AnathemaViewProperties properties;
   private final ViewFactory contentFactory;
   private final MainMenuBar menu;
-  private final OneLineStatusBar statusBar = new OneLineStatusBar();
+  private final NotificationPane notificationPane = new NotificationPane();
+  private final PopInStatusBar statusBar = new PopInStatusBar(notificationPane);
 
   public FxApplicationFrame(Stage stage, AnathemaViewProperties viewProperties, ViewFactory factory) {
     this.stage = stage;
@@ -30,7 +31,8 @@ public class FxApplicationFrame implements ApplicationFrameView {
     this.contentFactory = factory;
     this.menu = new MainMenuBar(properties.getMainMenuName(), properties.getHelpMenuName());
     Parent contentPane = createContentPane();
-    Scene scene = new Scene(contentPane);
+    notificationPane.setContent(contentPane);
+    Scene scene = new Scene(notificationPane);
     stage.setScene(scene);
   }
 
@@ -66,7 +68,6 @@ public class FxApplicationFrame implements ApplicationFrameView {
     MigPane contentPane = new MigPane(new LC().fill().wrapAfter(1));
     contentPane.add(menu.getMenuBar(), new CC().dockNorth());
     contentPane.add(contentFactory.createContent(), new CC().grow().push());
-    contentPane.add(statusBar.getComponent(), new CC().dockSouth());
     return contentPane;
   }
 }
