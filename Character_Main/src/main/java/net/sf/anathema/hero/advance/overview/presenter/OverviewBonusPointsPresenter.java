@@ -1,5 +1,6 @@
 package net.sf.anathema.hero.advance.overview.presenter;
 
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.hero.points.overview.SpendingModel;
 import net.sf.anathema.lib.message.Message;
@@ -11,10 +12,12 @@ import static net.sf.anathema.lib.message.MessageType.NORMAL;
 import static net.sf.anathema.lib.message.MessageType.WARNING;
 
 class OverviewBonusPointsPresenter implements IOverviewSubPresenter {
+  private Resources resources;
   private SpendingModel model;
   private IMessaging messaging;
 
-  public OverviewBonusPointsPresenter(SpendingModel model, IMessaging messaging) {
+  public OverviewBonusPointsPresenter(Resources resources, SpendingModel model, IMessaging messaging) {
+    this.resources = resources;
     this.model = model;
     this.messaging = messaging;
   }
@@ -26,10 +29,10 @@ class OverviewBonusPointsPresenter implements IOverviewSubPresenter {
     String pattern;
     MessageType type;
     if (spending < allotment) {
-      pattern = "You have spent {0} out of {1} Bonus Points.";
+      pattern = resources.getString("Overview.Creation.BonusPoints.Spent");
       type = NORMAL;
     } else {
-      pattern = "You have overspent! {1} Bonus Points available, but {0} Bonus Points assigned.";
+      pattern = resources.getString("Overview.Creation.BonusPoints.Overspent");
       type = WARNING;
     }
     messaging.addMessage(new Message(format(pattern, spending, allotment), type, Permanent));

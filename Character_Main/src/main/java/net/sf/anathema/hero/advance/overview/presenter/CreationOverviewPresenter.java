@@ -57,7 +57,7 @@ public class CreationOverviewPresenter {
     for (IOverviewModel model : PointModelFetcher.fetch(hero).getBonusOverviewModels()) {
       model.accept(new InitOverviewPresentationVisitor(resources, updater, categoriesById));
     }
-    updater.add(new OverviewBonusPointsPresenter(management.getTotalModel(), messaging));
+    updater.add(new OverviewBonusPointsPresenter(resources,management.getTotalModel(), messaging));
   }
 
   private void updateOverview() {
