@@ -8,8 +8,6 @@ import net.sf.anathema.hero.advance.overview.view.OverviewContainer;
 import net.sf.anathema.hero.experience.ExperienceChange;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.model.change.ChangeFlavor;
-import net.sf.anathema.hero.model.change.FlavoredChangeListener;
 
 public class OverviewPresenter {
 
@@ -34,12 +32,9 @@ public class OverviewPresenter {
     CategorizedOverview experiencePointView = container.addExperienceOverviewView();
     new ExperiencedOverviewPresenter(resources, hero, experiencePointView, experiencePoints).initPresentation();
     setOverviewView(ExperienceModelFetcher.fetch(hero).isExperienced());
-    hero.getChangeAnnouncer().addListener(new FlavoredChangeListener() {
-      @Override
-      public void changeOccurred(ChangeFlavor flavor) {
-        if (flavor == ExperienceChange.FLAVOR_EXPERIENCE_STATE) {
-          setOverviewView(ExperienceModelFetcher.fetch(hero).isExperienced());
-        }
+    hero.getChangeAnnouncer().addListener(flavor -> {
+      if (flavor == ExperienceChange.FLAVOR_EXPERIENCE_STATE) {
+        setOverviewView(ExperienceModelFetcher.fetch(hero).isExperienced());
       }
     });
    }
