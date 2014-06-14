@@ -4,6 +4,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
+import net.sf.anathema.platform.fx.Stylesheet;
 import org.tbee.javafx.scene.layout.MigPane;
 
 import static net.sf.anathema.lib.lang.StringUtilities.insertLineBreakEveryXCharacters;
@@ -11,6 +12,10 @@ import static net.sf.anathema.lib.lang.StringUtilities.insertLineBreakEveryXChar
 public class FxTooltipBuilder {
   private final MigPane body = new MigPane(LayoutUtils.withoutInsets().wrapAfter(2));
   public static final int DEFAULT_TOOLTIP_WIDTH = 80;
+
+  public FxTooltipBuilder() {
+    new Stylesheet("skin/platform/tooltip.css").applyToParent(body);
+  }
 
   public void appendLine(String text) {
     addAsLine(new Label(text));
@@ -24,7 +29,6 @@ public class FxTooltipBuilder {
 
   public void appendLine(String labelText, String valueText) {
     Label label = new Label(labelText + ": ");
-    label.getStyleClass().add("italicText");
     Label value = new Label(valueText);
     body.add(label);
     body.add(value);
