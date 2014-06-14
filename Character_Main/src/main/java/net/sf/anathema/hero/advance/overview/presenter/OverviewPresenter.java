@@ -33,7 +33,7 @@ public class OverviewPresenter {
     CategorizedOverview creationPointView = container.addCreationOverviewView();
     new CreationOverviewPresenter(resources, hero, creationPointView, bonusPoints, messaging).initPresentation();
     CategorizedOverview experiencePointView = container.addExperienceOverviewView();
-    new ExperiencedOverviewPresenter(resources, hero, experiencePointView, experiencePoints).initPresentation();
+    new ExperiencedOverviewPresenter(resources, hero, experiencePointView, experiencePoints,messaging).initPresentation();
     setOverviewView(ExperienceModelFetcher.fetch(hero).isExperienced());
     hero.getChangeAnnouncer().addListener(flavor -> {
       if (flavor == ExperienceChange.FLAVOR_EXPERIENCE_STATE) {

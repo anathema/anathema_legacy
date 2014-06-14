@@ -28,7 +28,7 @@ class OverviewBonusPointsPresenter implements IOverviewSubPresenter {
     int allotment = model.getAllotment();
     String pattern;
     MessageType type;
-    if (spending < allotment) {
+    if (spending <= allotment) {
       pattern = resources.getString("Overview.Creation.BonusPoints.Spent");
       type = NORMAL;
     } else {

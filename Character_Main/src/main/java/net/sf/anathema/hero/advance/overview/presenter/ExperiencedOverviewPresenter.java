@@ -1,16 +1,14 @@
 package net.sf.anathema.hero.advance.overview.presenter;
 
-import net.sf.anathema.character.framework.library.overview.OverviewCategory;
 import net.sf.anathema.character.framework.display.labelledvalue.IValueView;
 import net.sf.anathema.character.framework.display.labelledvalue.LabelledAllotmentView;
+import net.sf.anathema.character.framework.library.overview.OverviewCategory;
 import net.sf.anathema.framework.environment.Resources;
-import net.sf.anathema.hero.advance.experience.ExperiencePointConfigurationListener;
+import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.hero.advance.experience.ExperiencePointManagement;
 import net.sf.anathema.hero.advance.overview.view.CategorizedOverview;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.model.change.ChangeFlavor;
-import net.sf.anathema.hero.model.change.FlavoredChangeListener;
 import net.sf.anathema.hero.points.overview.IValueModel;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
 
@@ -22,21 +20,20 @@ public class ExperiencedOverviewPresenter {
   private final ExperiencePointManagement management;
   private final CategorizedOverview view;
   private final Hero hero;
+  private IMessaging messaging;
   private final Resources resources;
   private final List<IOverviewSubPresenter> presenters = new ArrayList<>();
 
   private LabelledAllotmentView totalView;
 
   public ExperiencedOverviewPresenter(Resources resources, final Hero hero, CategorizedOverview overview,
-                                      ExperiencePointManagement experiencePoints) {
+                                      ExperiencePointManagement experiencePoints, IMessaging messaging) {
     this.resources = resources;
     this.hero = hero;
-    hero.getChangeAnnouncer().addListener(new FlavoredChangeListener() {
-      @Override
-      public void changeOccurred(ChangeFlavor flavor) {
-        if (ExperienceModelFetcher.fetch(hero).isExperienced()) {
-          calculateXPCost();
-        }
+    this.messaging = messaging;
+    hero.getChangeAnnouncer().addListener(flavor -> {
+      if (ExperienceModelFetcher.fetch(hero).isExperienced()) {
+        calculateXPCost();
       }
     });
     this.management = experiencePoints;
@@ -49,18 +46,14 @@ public class ExperiencedOverviewPresenter {
       IValueView<Integer> valueView = category.addIntegerValueView(getString("Overview.Experience." + model.getId()), 2);
       presenters.add(new ValueSubPresenter(model, valueView));
     }
+    presenters.add(new TotalExperiencePresenter(hero, resources, messaging, management));
     initTotal(category);
     calculateXPCost();
   }
 
   private void initTotal(OverviewCategory category) {
     totalView = category.addAlotmentView(getString("Overview.Experience.Total"), 4);
-    ExperienceModelFetcher.fetch(hero).getExperiencePoints().addExperiencePointConfigurationListener(new ExperiencePointConfigurationListener() {
-      @Override
-      public void entriesAddedRemovedOrChanged() {
-        calculateXPCost();
-      }
-    });
+    ExperienceModelFetcher.fetch(hero).getExperiencePoints().addExperiencePointConfigurationListener(this::calculateXPCost);
   }
 
   private void calculateXPCost() {
