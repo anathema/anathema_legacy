@@ -30,7 +30,7 @@ public class FxStack {
   public void showFirst() {
     Identifier first = Iterables.getFirst(namedNodes.keySet(), null);
     if (first == null) {
-      throw new IllegalStateException("No perspectives found");
+      throw new IllegalStateException("No views found");
     }
     show(first);
   }
