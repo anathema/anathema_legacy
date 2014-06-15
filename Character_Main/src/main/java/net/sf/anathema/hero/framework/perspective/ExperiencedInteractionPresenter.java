@@ -1,10 +1,9 @@
 package net.sf.anathema.hero.framework.perspective;
 
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.framework.perspective.model.ItemSelectionModel;
-import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.lib.file.RelativePath;
-import net.sf.anathema.framework.environment.Resources;
 
 public class ExperiencedInteractionPresenter {
   private ItemSelectionModel model;
@@ -40,12 +39,9 @@ public class ExperiencedInteractionPresenter {
   }
 
   private void initializeCommand() {
-    interaction.setCommand(new Command() {
-      @Override
-      public void execute() {
-        model.convertCurrentToExperienced();
-        interaction.select();
-      }
+    interaction.setCommand(() -> {
+      model.convertCurrentToExperienced();
+      interaction.select();
     });
   }
 }
