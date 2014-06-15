@@ -56,7 +56,7 @@ public class PreferencesPresenter {
       savePreferences();
       tool.disable();
     });
-    dirtyProxy.whenDirtied(() -> tool.enable());
+    dirtyProxy.whenDirtied(tool::enable);
     tool.disable();
   }
 
