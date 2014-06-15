@@ -28,7 +28,7 @@ public class LeafStructureOptimizerTest {
   }
 
   private void assertNodeStructure(IStructureNode[] inputArray, IStructureNode[] expectedNodes) {
-    assertEquals(Arrays.asList(expectedNodes), new LeafStructureOptimizer<IStructureNode>().optimize(inputArray));
+    assertEquals(Arrays.asList(expectedNodes), new LeafStructureOptimizer<>().optimize(inputArray));
   }
 
   private IStructureNode[] createInputArray(boolean... isLeaf) {

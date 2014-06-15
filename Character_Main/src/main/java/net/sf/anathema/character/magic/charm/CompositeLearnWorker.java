@@ -1,14 +1,14 @@
 package net.sf.anathema.character.magic.charm;
 
+import net.sf.anathema.character.magic.basic.attribute.MagicAttribute;
+
 import java.util.HashSet;
 import java.util.Set;
-
-import net.sf.anathema.character.magic.basic.attribute.MagicAttribute;
 
 public class CompositeLearnWorker implements ICharmLearnWorker {
 
   private final ICharmLearnArbitrator learnArbitrator;
-  private final Set<CharmImpl> forgottenCharm = new HashSet<>();
+  private final Set<Charm> forgottenCharm = new HashSet<>();
 
   public CompositeLearnWorker(ICharmLearnArbitrator learnArbitrator) {
     this.learnArbitrator = learnArbitrator;
@@ -26,11 +26,11 @@ public class CompositeLearnWorker implements ICharmLearnWorker {
   }
 
   @Override
-  public void forget(CharmImpl charm) {
+  public void forget(Charm charm) {
     forgottenCharm.add(charm);
   }
 
   public Set<Charm> getForgottenCharms() {
-    return new HashSet<Charm>(forgottenCharm);
+    return new HashSet<>(forgottenCharm);
   }
 }

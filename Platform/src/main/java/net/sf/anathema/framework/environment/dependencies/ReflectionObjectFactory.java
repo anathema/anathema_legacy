@@ -1,7 +1,6 @@
 package net.sf.anathema.framework.environment.dependencies;
 
 import com.google.common.base.Function;
-import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 import net.sf.anathema.framework.environment.ObjectFactory;
 import net.sf.anathema.initialization.InitializationException;
@@ -35,20 +34,20 @@ public class ReflectionObjectFactory implements ObjectFactory {
                                               Object... parameter) throws InitializationException {
     Set<Class<?>> pluginClasses = finder.getTypesAnnotatedWith(annotation);
     List<Class<?>> sortedClasses = sort(pluginClasses);
-    return Collections2.transform(sortedClasses, new Instantiate<T>(parameter));
+    return Collections2.transform(sortedClasses, new Instantiate<>(parameter));
   }
 
   @Override
   public <T> Collection<T> instantiateAll(Class<? extends Annotation> annotation,
                                           Object... parameter) throws InitializationException {
     Set<Class<?>> pluginClasses = finder.getTypesAnnotatedWith(annotation);
-    return Collections2.transform(pluginClasses, new Instantiate<T>(parameter));
+    return Collections2.transform(pluginClasses, new Instantiate<>(parameter));
   }
   
   @Override
   public <T> Collection<T> instantiateAllImplementers(Class<T> interfaceClass, Object... parameter) {
     Collection<Class<? extends T>> filteredClasses = findLegalImplementers(interfaceClass);
-    return Collections2.transform(filteredClasses, new Instantiate<T>(parameter));
+    return Collections2.transform(filteredClasses, new Instantiate<>(parameter));
   }
 
   private <T> Collection<Class<? extends T>> findLegalImplementers(Class<T> interfaceClass) {
@@ -59,21 +58,11 @@ public class ReflectionObjectFactory implements ObjectFactory {
   }
 
   private <T> Collection<Class<? extends T>> filterBlackListedClasses(Set<Class<? extends T>> classes) {
-    return filter(classes, new Predicate<Class<?>>() {
-      @Override
-      public boolean apply(Class<?> input) {
-        return !input.isAnnotationPresent(DoNotInstantiateAutomatically.class);
-      }
-    });
+    return filter(classes, input -> !input.isAnnotationPresent(DoNotInstantiateAutomatically.class));
   }
 
   private <T> Collection<Class<? extends T>> filterAbstractClasses(Collection<Class<? extends T>> classes) {
-    return filter(classes, new Predicate<Class<?>>() {
-      @Override
-      public boolean apply(Class<?> input) {
-        return !Modifier.isAbstract(input.getModifiers());
-      }
-    });
+    return filter(classes, input -> !Modifier.isAbstract(input.getModifiers()));
   }
 
   private List<Class<?>> sort(Set<Class<?>> pluginClasses) {
@@ -95,7 +84,7 @@ public class ReflectionObjectFactory implements ObjectFactory {
     }
 
     @SuppressWarnings("unchecked")
-    private <T> T instantiate(Class<?> input) {
+    private T instantiate(Class<?> input) {
       try {
         return (T) invokeConstructor(input, parameters);
       } catch (InstantiationException e) {

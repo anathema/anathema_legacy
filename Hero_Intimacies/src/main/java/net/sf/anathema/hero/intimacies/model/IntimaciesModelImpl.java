@@ -2,23 +2,22 @@ package net.sf.anathema.hero.intimacies.model;
 
 import com.google.common.base.Strings;
 import net.sf.anathema.character.framework.library.removableentry.AbstractRemovableEntryModel;
-import net.sf.anathema.hero.traits.model.Trait;
-import net.sf.anathema.hero.traits.model.TraitType;
-import net.sf.anathema.hero.traits.model.ValuedTraitType;
-import net.sf.anathema.hero.traits.model.types.OtherTraitType;
-import net.sf.anathema.hero.traits.model.types.VirtueType;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.intimacies.points.IntimaciesBonusPointCalculator;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.change.ChangeAnnouncer;
-import net.sf.anathema.hero.model.change.ChangeFlavor;
 import net.sf.anathema.hero.model.change.FlavoredChangeListener;
 import net.sf.anathema.hero.model.change.RemovableEntryChangeAdapter;
 import net.sf.anathema.hero.model.change.UnspecifiedChangeListener;
 import net.sf.anathema.hero.points.PointModelFetcher;
+import net.sf.anathema.hero.traits.model.Trait;
 import net.sf.anathema.hero.traits.model.TraitChangeFlavor;
 import net.sf.anathema.hero.traits.model.TraitModelFetcher;
+import net.sf.anathema.hero.traits.model.TraitType;
+import net.sf.anathema.hero.traits.model.ValuedTraitType;
+import net.sf.anathema.hero.traits.model.types.OtherTraitType;
+import net.sf.anathema.hero.traits.model.types.VirtueType;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 import org.jmock.example.announcer.Announcer;
@@ -43,25 +42,19 @@ public class IntimaciesModelImpl extends AbstractRemovableEntryModel<Intimacy> i
   @Override
   public void initializeListening(final ChangeAnnouncer announcer) {
     addModelChangeListener(new UnspecifiedChangeListener(announcer));
-    addModelChangeListener(new RemovableEntryChangeAdapter<Intimacy>(announcer));
-    announcer.addListener(new FlavoredChangeListener() {
-      @Override
-      public void changeOccurred(ChangeFlavor flavor) {
-        if (TraitChangeFlavor.changes(flavor, VirtueType.Conviction)) {
-          for (Intimacy entry : getEntries()) {
-            entry.resetCurrentValue();
-          }
-          fireModelChangedEvent();
+    addModelChangeListener(new RemovableEntryChangeAdapter<>(announcer));
+    announcer.addListener(flavor -> {
+      if (TraitChangeFlavor.changes(flavor, VirtueType.Conviction)) {
+        for (Intimacy entry : getEntries()) {
+          entry.resetCurrentValue();
         }
+        fireModelChangedEvent();
       }
     });
-    announcer.addListener(new FlavoredChangeListener() {
-      @Override
-      public void changeOccurred(ChangeFlavor flavor) {
-        if (TraitChangeFlavor.changes(flavor, VirtueType.Compassion, OtherTraitType.Willpower)) {
-          fireModelChangedEvent();
-          fireEntryChanged();
-        }
+    announcer.addListener(flavor -> {
+      if (TraitChangeFlavor.changes(flavor, VirtueType.Compassion, OtherTraitType.Willpower)) {
+        fireModelChangedEvent();
+        fireEntryChanged();
       }
     });
   }
@@ -90,12 +83,7 @@ public class IntimaciesModelImpl extends AbstractRemovableEntryModel<Intimacy> i
   protected Intimacy createEntry() {
     IntimacyImpl intimacy = new IntimacyImpl(hero, name, getInitialValue(), getConviction());
     intimacy.setComplete(!isCharacterExperienced());
-    intimacy.addChangeListener(new ChangeListener() {
-      @Override
-      public void changeOccurred() {
-        fireModelChangedEvent();
-      }
-    });
+    intimacy.addChangeListener(this::fireModelChangedEvent);
     return intimacy;
   }
 

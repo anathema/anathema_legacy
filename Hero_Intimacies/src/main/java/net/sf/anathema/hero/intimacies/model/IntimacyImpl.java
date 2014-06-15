@@ -1,13 +1,12 @@
 package net.sf.anathema.hero.intimacies.model;
 
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.traits.model.DefaultTrait;
 import net.sf.anathema.hero.traits.model.Trait;
-import net.sf.anathema.hero.traits.model.ValueChangeChecker;
 import net.sf.anathema.hero.traits.model.TraitRules;
-import net.sf.anathema.hero.traits.model.trait.ModificationType;
+import net.sf.anathema.hero.traits.model.ValueChangeChecker;
 import net.sf.anathema.hero.traits.model.ValuedTraitType;
-import net.sf.anathema.hero.traits.model.types.VirtueType;
-import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.traits.model.trait.ModificationType;
 import net.sf.anathema.hero.traits.model.trait.TraitRulesImpl;
 import net.sf.anathema.hero.traits.template.LimitationTemplate;
 import net.sf.anathema.hero.traits.template.LimitationType;
@@ -28,13 +27,13 @@ public class IntimacyImpl implements Intimacy {
   public IntimacyImpl(Hero hero, String name, Integer initialValue, final ValuedTraitType maxValueTrait) {
     this.name = name;
     this.maxValueTrait = maxValueTrait;
-    TraitTemplate template = createIntimacyTemplate(0, initialValue, ModificationType.Free, VirtueType.Conviction);
+    TraitTemplate template = createIntimacyTemplate(0, initialValue, ModificationType.Free);
     TraitRules traitRules = new TraitRulesImpl(new IntimacyType(name), template, hero);
     ValueChangeChecker incrementChecker = new IntimacyValueChangeChecker(maxValueTrait);
     this.trait = new DefaultTrait(hero, traitRules, incrementChecker);
   }
 
-  private static TraitTemplate createIntimacyTemplate(int minimumValue, int startValue, ModificationType state, VirtueType type) {
+  private static TraitTemplate createIntimacyTemplate(int minimumValue, int startValue, ModificationType state) {
     TraitTemplate template = new TraitTemplate();
     template.minimumValue = minimumValue;
     template.startValue = startValue;
@@ -82,7 +81,7 @@ public class IntimacyImpl implements Intimacy {
   }
 
   public void addChangeListener(ChangeListener listener) {
-    GlobalChangeAdapter< ? > adapter = new GlobalChangeAdapter<Object>(listener);
+    GlobalChangeAdapter< ? > adapter = new GlobalChangeAdapter<>(listener);
     control.addListener(adapter);
     trait.addCurrentValueListener(adapter);
   }
