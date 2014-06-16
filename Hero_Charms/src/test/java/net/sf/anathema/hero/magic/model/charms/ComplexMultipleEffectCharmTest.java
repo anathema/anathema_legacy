@@ -20,7 +20,7 @@ public class ComplexMultipleEffectCharmTest {
   private ICharmLearnableArbitrator arbitrator = mock(ICharmLearnableArbitrator.class);
   private Charm baseCharm = mock(Charm.class);
   private IMultipleEffectCharm charmWithThreeEffects =
-          new ComplexMultipleEffectCharm("Solar.TestCharm", new String[]{"A", "B", "C"}, new HashMap<String, String>());
+          new ComplexMultipleEffectCharm("Solar.TestCharm", new String[]{"A", "B", "C"}, new HashMap<>());
 
   @Test
   public void instantiatesSubeffects() throws Exception {

@@ -3,7 +3,6 @@ package net.sf.anathema.graph.hierarchy;
 import net.sf.anathema.graph.graph.IProperHierarchicalGraph;
 import net.sf.anathema.graph.graph.ProperHierarchicalGraph;
 import net.sf.anathema.graph.graph.SingleNodeGraph;
-import net.sf.anathema.graph.nodes.IRegularNode;
 import net.sf.anathema.graph.nodes.ISimpleNode;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 
@@ -85,13 +84,13 @@ public class SubtreeSeparator {
         roots.add(node);
       }
     }
-    return roots.toArray(new IRegularNode[roots.size()]);
+    return roots.toArray(new ISimpleNode[roots.size()]);
   }
 
   private MultiEntryMap<ISimpleNode, ISimpleNode> createLeafGroups(int deepestLayer, ISimpleNode[] hierarchicalGraph) {
     Map<Integer, List<ISimpleNode>> nodesByLayer = new HashMap<>();
     for (int index = 1; index <= deepestLayer; index++) {
-      nodesByLayer.put(index, new ArrayList<ISimpleNode>());
+      nodesByLayer.put(index, new ArrayList<>());
     }
     for (ISimpleNode node : hierarchicalGraph) {
       List<ISimpleNode> layerNodes = nodesByLayer.get(node.getLayer());

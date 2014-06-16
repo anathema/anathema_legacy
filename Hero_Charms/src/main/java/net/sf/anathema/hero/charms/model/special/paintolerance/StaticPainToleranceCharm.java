@@ -15,7 +15,7 @@ public class StaticPainToleranceCharm extends StaticMultiLearnableCharm implemen
   public StaticPainToleranceCharm(String charmId, PainToleranceDto dto) {
     super(charmId, dto.learnCount);
     Preconditions.checkArgument(dto.learnCount == dto.levels.size(), "Number of pain tolerance levels must equal learn count.");
-    this.painToleranceLevels = new ArrayList<Integer>(dto.levels);
+    this.painToleranceLevels = new ArrayList<>(dto.levels);
   }
 
   @Override

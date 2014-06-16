@@ -1,10 +1,5 @@
 package net.sf.anathema.hero.magic.model.charms;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
-
-import java.util.HashMap;
-
 import net.sf.anathema.character.magic.basic.cost.CostList;
 import net.sf.anathema.character.magic.basic.source.SourceBook;
 import net.sf.anathema.character.magic.charm.CharmImpl;
@@ -15,13 +10,17 @@ import net.sf.anathema.character.magic.charm.prerequisite.SimpleCharmLearnPrereq
 import net.sf.anathema.character.magic.charm.type.CharmType;
 import net.sf.anathema.character.magic.charm.type.CharmTypeModel;
 import net.sf.anathema.character.magic.parser.charms.CharmPrerequisiteList;
+import net.sf.anathema.hero.dummy.DummyCharm;
+import net.sf.anathema.hero.dummy.DummyExaltCharacterType;
 import net.sf.anathema.hero.traits.model.ValuedTraitType;
 import net.sf.anathema.hero.traits.model.types.AbilityType;
 import net.sf.anathema.hero.traits.model.types.OtherTraitType;
-import net.sf.anathema.hero.dummy.DummyCharm;
-import net.sf.anathema.hero.dummy.DummyExaltCharacterType;
-
 import org.junit.Test;
+
+import java.util.HashMap;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 public class CharmTest {
 
@@ -29,7 +28,7 @@ public class CharmTest {
   public void testParentCharmsNotOverwritten() throws Exception {
     DummyCharm dummy = new DummyCharm("OtherDummy");
     CharmImpl charm = createCharm(dummy);
-    charm.extractParentCharms(new HashMap<String, CharmImpl>());
+    charm.extractParentCharms(new HashMap<>());
     assertEquals(1, charm.getPrerequisitesOfType(SimpleCharmLearnPrerequisite.class).size());
     assertEquals(dummy, charm.getPrerequisitesOfType(SimpleCharmLearnPrerequisite.class).toArray(new SimpleCharmLearnPrerequisite[1])[0].getDirectPredecessors()[0]);
   }

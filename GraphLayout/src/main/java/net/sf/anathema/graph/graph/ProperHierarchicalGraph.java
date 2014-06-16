@@ -27,7 +27,7 @@ public class ProperHierarchicalGraph implements IProperHierarchicalGraph, Clonea
     this.allNodes = hierarchicalGraph;
     this.deepestLayer = deepestLayer;
     for (int index = 1; index <= deepestLayer; index++) {
-      nodesByLayer.put(index, new ArrayList<ISimpleNode>());
+      nodesByLayer.put(index, new ArrayList<>());
     }
     for (ISimpleNode node : hierarchicalGraph) {
       for (ISimpleNode child : node.getChildren()) {
@@ -44,7 +44,7 @@ public class ProperHierarchicalGraph implements IProperHierarchicalGraph, Clonea
     this.deepestLayer = deepestLayer;
     this.type = type;
     for (int index = 1; index - 1 < deepestLayer; index++) {
-      nodesByLayer.put(index, new ArrayList<ISimpleNode>());
+      nodesByLayer.put(index, new ArrayList<>());
     }
     for (ISimpleNode node : nodes) {
       nodesByLayer.get(node.getLayer()).add(node);

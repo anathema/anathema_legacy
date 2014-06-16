@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.equipment.sheet.content;
 
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
+import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IEquipmentStats;
 import net.sf.anathema.hero.equipment.sheet.content.stats.weapon.IWeaponStats;
-import net.sf.anathema.framework.environment.Resources;
 import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ public class EquipmentPrintNameFactory {
       builder.append(" - ");
       builder.append(stats.getName());
     }
-    if (Collections.frequency(getStatNames(item, new ArrayList<Identifier>()), stats.getName()) > 1) {
+    if (Collections.frequency(getStatNames(item, new ArrayList<>()), stats.getName()) > 1) {
       builder.append(" (");
       builder.append(resources.getString(stats.getTraitType().getId()));
       builder.append(")");
@@ -36,7 +36,7 @@ public class EquipmentPrintNameFactory {
   }
 
   private boolean hasSingleOriginalStat(IEquipmentItem item) {
-    return getStatNames(item, new HashSet<Identifier>()).size() == 1;
+    return getStatNames(item, new HashSet<>()).size() == 1;
   }
 
   private Collection<Identifier> getStatNames(IEquipmentItem item, Collection<Identifier> names) {
