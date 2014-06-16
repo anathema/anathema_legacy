@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.attributes.advance.creation;
 
+import net.sf.anathema.hero.advance.overview.model.AbstractSpendingModel;
 import net.sf.anathema.hero.template.creation.ICreationPoints;
 import net.sf.anathema.hero.template.points.AttributeGroupPriority;
-import net.sf.anathema.hero.advance.overview.model.AbstractSpendingModel;
 
 public class AttributeBonusModel extends AbstractSpendingModel {
   private final AttributeBonusPointCalculator attributeCalculator;
@@ -28,6 +28,6 @@ public class AttributeBonusModel extends AbstractSpendingModel {
 
   @Override
   public int getAllotment() {
-    return creationPoints.getAttributeCreationPoints().getCount(priority == null ? AttributeGroupPriority.Primary : priority);
+    return creationPoints.getAttributeCreationPoints().getCount(priority);
   }
 }
