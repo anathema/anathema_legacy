@@ -4,5 +4,5 @@ public interface CostElement {
 
   int getCalculationValue();
 
-  int getCalculationBase();
+  int getBaseValue();
 }

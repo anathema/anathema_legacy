@@ -15,7 +15,7 @@ public class AttributeBonusPointCalculator implements HeroBonusPointCalculator {
   private List<TraitGroupCost> orderedGroups;
   private final TraitGroup[] traitGroups;
   private final List<List<TraitGroup>> priorityPermutations = new ArrayList<>();
-  private AttributeCreationData creationData;
+  private final AttributeCreationData creationData;
 
   public AttributeBonusPointCalculator(AttributeModel attributes, AttributeCreationData creationData) {
     this.creationData = creationData;
@@ -98,8 +98,8 @@ public class AttributeBonusPointCalculator implements HeroBonusPointCalculator {
 
   private List<TraitGroupCost> createGroupCost(List<TraitGroup> groups) {
     List<TraitGroupCost> priorizedGroups = new ArrayList<>(traitGroups.length);
-    for (int groupIndex = 0; groupIndex < groups.size(); groupIndex++) {
-      priorizedGroups.add(new TraitGroupCost(groups.get(groupIndex), creationData.getCounts()[groupIndex]));
+    for (TraitGroup group : groups) {
+      priorizedGroups.add(new TraitGroupCost(group));
     }
     return priorizedGroups;
   }

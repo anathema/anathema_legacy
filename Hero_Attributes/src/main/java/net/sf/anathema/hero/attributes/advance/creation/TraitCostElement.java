@@ -1,13 +1,13 @@
 package net.sf.anathema.hero.attributes.advance.creation;
 
-import net.sf.anathema.hero.traits.model.Trait;
 import net.sf.anathema.hero.traits.advance.TraitCalculationUtilities;
 import net.sf.anathema.hero.traits.advance.TraitListCreationData;
+import net.sf.anathema.hero.traits.model.Trait;
 
 public class TraitCostElement implements CostElement {
 
   private final Trait trait;
-  private TraitListCreationData creationData;
+  private final TraitListCreationData creationData;
 
   public TraitCostElement(Trait trait, TraitListCreationData creationData) {
     this.trait = trait;
@@ -20,7 +20,7 @@ public class TraitCostElement implements CostElement {
   }
 
   @Override
-  public int getCalculationBase() {
+  public int getBaseValue() {
     return creationData.getCalculationBase(trait.getType());
   }
 }

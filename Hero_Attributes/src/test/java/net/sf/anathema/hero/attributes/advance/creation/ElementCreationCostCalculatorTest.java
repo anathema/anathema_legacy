@@ -8,27 +8,38 @@ public class ElementCreationCostCalculatorTest {
 
   private ElementCreationCostCalculator costCalculator = new ElementCreationCostCalculator();
 
-  private void assertCalculatedCosts(ElementCreationCost expectedCosts, SimpleCostElement element, int freeDots, int bonusPointCostFactor) {
-    assertEquals(expectedCosts, costCalculator.calculateElementCreationCost(element, freeDots, bonusPointCostFactor));
+  @Test
+  public void calculatesNoCostForATraitAtBaseValue() throws Exception {
+    ElementCreationCost actual = calculateActualCost(new SimpleCostElement(1, 1), 1, 2);
+    int expectedDots = 0;
+    int expectedBonusPoints = 0;
+    assertThatCostEqualsExpectation(actual, expectedDots, expectedBonusPoints);
   }
 
   @Test
-  public void testUnraisedElement() throws Exception {
-    assertCalculatedCosts(new ElementCreationCost(0, 0), new SimpleCostElement(3, 3), 4, 2);
+  public void prefersFreeDotsOverBonusPoints() throws Exception {
+    ElementCreationCost actual = calculateActualCost(new SimpleCostElement(1, 2), 1, 2);
+    assertThatCostEqualsExpectation(actual, 1, 0);
   }
 
   @Test
-  public void testRaiseElementWithFreeDots() throws Exception {
-    assertCalculatedCosts(new ElementCreationCost(2, 0), new SimpleCostElement(1, 3), 2, 3);
+  public void usesBonusPointsIfNoFreeDotsAvailable() throws Exception {
+    ElementCreationCost actual = calculateActualCost(new SimpleCostElement(1, 2), 0, 2);
+    assertThatCostEqualsExpectation(actual, 0, 2);
   }
 
   @Test
-  public void testRaiseElementWithBonusPoints() throws Exception {
-    assertCalculatedCosts(new ElementCreationCost(0, 6), new SimpleCostElement(1, 4), 0, 2);
+  public void usesBonusPointsIfAllFreeDotsAreSpent() throws Exception {
+    ElementCreationCost actual = calculateActualCost(new SimpleCostElement(1, 3), 1, 2);
+    assertThatCostEqualsExpectation(actual, 1, 2);
   }
 
-  @Test
-  public void testRaiseElementWithFreeDotsAndBonusPoints() throws Exception {
-    assertCalculatedCosts(new ElementCreationCost(1, 4), new SimpleCostElement(1, 4), 1, 2);
+  private ElementCreationCost calculateActualCost(SimpleCostElement trait, int freeDots, int bonusPointCost) {
+    return costCalculator.calculateElementCreationCost(trait, freeDots, bonusPointCost);
   }
+
+  private void assertThatCostEqualsExpectation(ElementCreationCost actual, int expectedDots, int expectedBonusPoints) {
+    assertEquals(new ElementCreationCost(expectedDots, expectedBonusPoints), actual);
+  }
+
 }

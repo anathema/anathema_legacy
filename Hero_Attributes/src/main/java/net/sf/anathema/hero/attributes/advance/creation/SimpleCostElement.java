@@ -2,11 +2,11 @@ package net.sf.anathema.hero.attributes.advance.creation;
 
 public class SimpleCostElement implements CostElement {
 
-  private final int zeroCalculationValue;
+  private final int baseValue;
   private final int calculationValue;
 
-  public SimpleCostElement(int zeroCalculationValue, int calculationValue) {
-    this.zeroCalculationValue = zeroCalculationValue;
+  public SimpleCostElement(int baseValue, int calculationValue) {
+    this.baseValue = baseValue;
     this.calculationValue = calculationValue;
   }
 
@@ -16,7 +16,7 @@ public class SimpleCostElement implements CostElement {
   }
 
   @Override
-  public int getCalculationBase() {
-    return zeroCalculationValue;
+  public int getBaseValue() {
+    return baseValue;
   }
 }

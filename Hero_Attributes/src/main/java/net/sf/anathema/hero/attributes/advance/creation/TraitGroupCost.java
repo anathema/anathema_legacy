@@ -9,15 +9,13 @@ import java.util.List;
 
 public class TraitGroupCost {
 
-  private final int dotsToSpend;
   private final List<Trait> unhandledTraits;
   private final TraitGroup group;
   private int bonusPointsSpent = 0;
   private int dotsSpent = 0;
 
-  public TraitGroupCost(TraitGroup group, int dotsToSpend) {
+  public TraitGroupCost(TraitGroup group) {
     this.group = group;
-    this.dotsToSpend = dotsToSpend;
     this.unhandledTraits = new ArrayList<>(Arrays.asList(group.getGroupTraits()));
   }
 
@@ -27,10 +25,6 @@ public class TraitGroupCost {
 
   public Trait[] getTraits() {
     return group.getGroupTraits();
-  }
-
-  public int getPointsToSpend() {
-    return dotsToSpend;
   }
 
   public void addTraitToCost(Trait trait, ElementCreationCost cost) {

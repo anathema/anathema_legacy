@@ -11,7 +11,7 @@ public class ElementCreationCostCalculator {
     int bonusPointsSpent = 0;
     int extraFavoredDotsSpent = 0;
     int extraGenericDotsSpent = 0;
-    int pointsToAdd = element.getCalculationValue() - element.getCalculationBase();
+    int pointsToAdd = element.getCalculationValue() - element.getBaseValue();
     int dotsSpent = Math.min(freeDots, pointsToAdd);
     pointsToAdd -= dotsSpent;
     if (pointsToAdd > 0) {
