@@ -3,7 +3,6 @@ package net.sf.anathema.hero.attributes.advance.creation;
 import net.sf.anathema.hero.attributes.model.AttributeModel;
 import net.sf.anathema.hero.points.HeroBonusPointCalculator;
 import net.sf.anathema.hero.template.points.AttributeGroupPriority;
-import net.sf.anathema.hero.template.points.IAttributeGroupPriorityVisitor;
 import net.sf.anathema.hero.traits.model.Trait;
 import net.sf.anathema.hero.traits.model.TraitGroup;
 
@@ -75,8 +74,8 @@ public class AttributeBonusPointCalculator implements HeroBonusPointCalculator {
       for (Trait attribute : orderedTraits) {
         favoredInGroup = favoredInGroup || (attribute.isCasteOrFavored() && attribute.getCurrentValue() > attribute.getInitialValue());
         int costFactor = creationData.getAttributeCosts(attribute);
-        ElementCreationCost cost =
-                handleAttribute(attribute, freePointsLeft, favoredInGroup ? extraFavoredDotsLeft : 0, extraGenericDotsLeft, costFactor);
+        ElementCreationCost cost = handleAttribute(attribute, freePointsLeft, favoredInGroup ? extraFavoredDotsLeft : 0,
+                extraGenericDotsLeft, costFactor);
         freePointsLeft -= cost.getDotsSpent();
         extraFavoredDotsLeft -= cost.getExtraFavoredDotsSpent();
         extraGenericDotsLeft -= cost.getExtraGenericDotsSpent();
@@ -93,8 +92,8 @@ public class AttributeBonusPointCalculator implements HeroBonusPointCalculator {
   private ElementCreationCost handleAttribute(Trait attribute, int freeDots, int extraFavoredDots, int extraGenericDots,
                                               int bonusPointCostFactor) {
     CostElement element = new TraitCostElement(attribute, creationData);
-    return new ElementCreationCostCalculator()
-            .calculateElementCreationCost(element, freeDots, extraFavoredDots, extraGenericDots, bonusPointCostFactor);
+    return new ElementCreationCostCalculator().calculateElementCreationCost(element, freeDots, extraFavoredDots,
+            extraGenericDots, bonusPointCostFactor);
   }
 
   private List<TraitGroupCost> createGroupCost(List<TraitGroup> groups) {
@@ -110,24 +109,16 @@ public class AttributeBonusPointCalculator implements HeroBonusPointCalculator {
   }
 
   public TraitGroupCost getAttributePoints(AttributeGroupPriority priority) {
-    final TraitGroupCost[] cost = new TraitGroupCost[1];
-    priority.accept(new IAttributeGroupPriorityVisitor() {
-      @Override
-      public void acceptTertiary() {
-        cost[0] = orderedGroups.get(2);
-      }
-
-      @Override
-      public void acceptSecondary() {
-        cost[0] = orderedGroups.get(1);
-      }
-
-      @Override
-      public void acceptPrimary() {
-        cost[0] = orderedGroups.get(0);
-      }
-    });
-    return cost[0];
+    switch (priority) {
+      case Primary:
+        return orderedGroups.get(0);
+      case Secondary:
+        return orderedGroups.get(1);
+      case Tertiary:
+        return orderedGroups.get(2);
+      default:
+        throw new IllegalArgumentException("Unknown Attribute Group Priority: " + priority);
+    }
   }
 
   @Override

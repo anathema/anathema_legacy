@@ -15,28 +15,14 @@ public class AttributeCreationPoints extends ReflectionCloneableObject<IAttribut
     this(primary, secondary, tertiary, 0, 0, 0);
   }
 
-  public AttributeCreationPoints(int primary, int secondary, int tertiary, int picks, int favoredDots, int genericDots) {
+  public AttributeCreationPoints(int primary, int secondary, int tertiary, int picks, int favoredDots,
+                                 int genericDots) {
     this.primary = primary;
     this.secondary = secondary;
     this.tertiary = tertiary;
     this.favoredPicks = picks;
     this.favoredDots = favoredDots;
     this.genericDots = genericDots;
-  }
-
-  @Override
-  public int getPrimaryCount() {
-    return primary;
-  }
-
-  @Override
-  public int getSecondaryCount() {
-    return secondary;
-  }
-
-  @Override
-  public int getTertiaryCount() {
-    return tertiary;
   }
 
   @Override
@@ -66,24 +52,16 @@ public class AttributeCreationPoints extends ReflectionCloneableObject<IAttribut
 
   @Override
   public int getCount(AttributeGroupPriority priority) {
-    final int[] count = new int[1];
-    priority.accept(new IAttributeGroupPriorityVisitor() {
-      @Override
-      public void acceptPrimary() {
-        count[0] = primary;
-      }
-
-      @Override
-      public void acceptSecondary() {
-        count[0] = secondary;
-      }
-
-      @Override
-      public void acceptTertiary() {
-        count[0] = tertiary;
-      }
-    });
-    return count[0];
+    switch (priority) {
+      case Primary:
+        return primary;
+      case Secondary:
+        return secondary;
+      case Tertiary:
+        return tertiary;
+      default:
+        throw new IllegalArgumentException("Unknown Attribute Group Priority: " + priority);
+    }
   }
 
   @Override

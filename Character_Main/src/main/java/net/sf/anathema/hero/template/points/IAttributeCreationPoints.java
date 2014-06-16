@@ -4,12 +4,6 @@ import net.sf.anathema.lib.lang.clone.ICloneable;
 
 public interface IAttributeCreationPoints extends ICloneable<IAttributeCreationPoints>, IFavorableTraitCreationPoints  {
 
-  int getPrimaryCount();
-
-  int getSecondaryCount();
-
-  int getTertiaryCount();
-  
   @Override
   int getFavorableTraitCount();
 
