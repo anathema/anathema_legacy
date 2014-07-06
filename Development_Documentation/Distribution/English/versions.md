@@ -8,6 +8,9 @@ Website: [anathema.github.com](http://anathema.github.com)
 ### Features
 * Shows Scrollbar if the screen area available doesn't suffice.
 
+### Bugfix
+* Removes "Whispers 1" prerequiste from [Abyssal/Thrown] "Eyes Like Daggers Glance" and "Burrowing Bone Maggot"
+
 ## Release 5.1.3
 
 ### Features
