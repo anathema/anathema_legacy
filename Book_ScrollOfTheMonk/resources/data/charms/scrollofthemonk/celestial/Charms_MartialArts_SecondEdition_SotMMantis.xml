@@ -76,7 +76,7 @@
      <charm id="Celestial.GraspingClawMethod" exalt="Solar" group="MantisStyle">
           <prerequisite>
                <trait id="MartialArts" value="4" />
-               <essence value="5" />
+               <essence value="3" />
                <charmReference id="Celestial.MantisForm" />
           </prerequisite>
           <cost>

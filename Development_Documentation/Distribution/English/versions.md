@@ -10,6 +10,7 @@ Website: [anathema.github.com](http://anathema.github.com)
 
 ### Bugfix
 * Removes "Whispers 1" prerequiste from [Abyssal/Thrown] "Eyes Like Daggers Glance" and "Burrowing Bone Maggot"
+* Corrects requirements for [Martial Arts/Mantis Style] "Grasping Claw Method".
 
 ## Release 5.1.3
 
