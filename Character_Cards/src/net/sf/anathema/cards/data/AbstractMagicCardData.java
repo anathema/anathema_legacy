@@ -3,6 +3,7 @@ package net.sf.anathema.cards.data;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import net.sf.anathema.cards.layout.ICardReportResourceProvider;
+import net.sf.anathema.character.generic.framework.magic.MagicDisplayLabeler;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.ScreenDisplayInfoStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.MagicSourceStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.Cost;
@@ -36,12 +37,12 @@ public abstract class AbstractMagicCardData implements ICardData {
 	
 	@Override
 	public String getTitle() {
-		return getResources().getString(magic.getId());
-	}
+      return new MagicDisplayLabeler(getResources()).getLabelForMagic(magic);
+    }
 
 	@Override
 	public String getSource() {
-		String source = new MagicSourceStringBuilder<IMagic>(resources).createSourceString(magic);
+		String source = new MagicSourceStringBuilder<>(resources).createSourceString(magic);
 		source = source.replaceAll(resources.getString("CardsReport.MoEP.Long"),
 								   resources.getString("CardsReport.MoEP.Short"));
 		return source;
