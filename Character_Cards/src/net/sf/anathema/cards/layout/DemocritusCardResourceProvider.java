@@ -42,7 +42,7 @@ public class DemocritusCardResourceProvider implements ICardReportResourceProvid
 
   @Override
   public Image getCardBaseImage() {
-    return getImage("democritus_base/card_base.png");
+    return getImage("icons/democritus_base/card_base.png");
   }
 
   @Override
