@@ -46,3 +46,8 @@ Run ``gradlew cucumber``
 
 1. Run ``gradlew clean build``
 2. Fetch your artifacts from ``./build/Anathema x.x.x``
+
+
+### A word from our sponsors ###
+JetBrains helps development with a license for IntelliJ IDEA Ultimate.  
+![IntelliJ IDEA logo](https://www.jetbrains.com/idea/docs/logo_intellij_idea.png)
