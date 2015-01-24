@@ -322,7 +322,7 @@ assembleZip.dependsOn compileLauncherWin
 assembleWin.dependsOn compileLauncherWin
 assembleMac.dependsOn compileLauncherMac
 
-task prepareJRE dependsOn(assembleZip, assembleWin, assembleMac)
+task assembleAll dependsOn(assembleZip, assembleWin, assembleMac)
 
 //SSH Support
 def usePropertyOrPrompt(property, prompt) {
