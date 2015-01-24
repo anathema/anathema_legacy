@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/anathema/anathema.svg?branch=master)](https://travis-ci.org/anathema/anathema)
+
 > Gradle will set itself up during the first build on any system. It requires an active internet connection to do so.
 
 Set Up
