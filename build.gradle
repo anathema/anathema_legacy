@@ -322,7 +322,7 @@ assembleZip.dependsOn compileLauncherWin
 assembleWin.dependsOn compileLauncherWin
 assembleMac.dependsOn compileLauncherMac
 
-assemble.dependsOn assembleZip, assembleWin, assembleMac
+assembleAll.dependsOn assembleZip, assembleWin, assembleMac
 
 //SSH Support
 def usePropertyOrPrompt(property, prompt) {
