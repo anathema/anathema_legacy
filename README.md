@@ -51,5 +51,6 @@ Run ``gradlew cucumber``
 
 
 ### A word from our sponsors ###
-JetBrains helps development with a license for IntelliJ IDEA Ultimate.  
+JetBrains helps development with a license for IntelliJ IDEA Ultimate.
 ![IntelliJ IDEA logo](https://www.jetbrains.com/idea/docs/logo_intellij_idea.png)
+ej-technologies provides us with a [Java profiler](http://www.ej-technologies.com/products/jprofiler/overview.html) for solving hard performance puzzlers.
