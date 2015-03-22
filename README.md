@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/anathema/anathema.svg?branch=master)](https://travis-ci.org/anathema/anathema)
+
 > Gradle will set itself up during the first build on any system. It requires an active internet connection to do so.
 
 Set Up
@@ -46,3 +48,9 @@ Run ``gradlew cucumber``
 
 1. Run ``gradlew clean build``
 2. Fetch your artifacts from ``./build/Anathema x.x.x``
+
+
+### A word from our sponsors ###
+JetBrains helps development with a license for IntelliJ IDEA Ultimate.
+![IntelliJ IDEA logo](https://www.jetbrains.com/idea/docs/logo_intellij_idea.png)
+ej-technologies provides us with a [Java profiler](http://www.ej-technologies.com/products/jprofiler/overview.html) for solving hard performance puzzlers.

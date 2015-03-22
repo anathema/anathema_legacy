@@ -54,7 +54,7 @@ dependencies {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.11'
+    gradleVersion = '2.2.1'
 }
 
 def os = operatingSystem()
@@ -322,7 +322,7 @@ assembleZip.dependsOn compileLauncherWin
 assembleWin.dependsOn compileLauncherWin
 assembleMac.dependsOn compileLauncherMac
 
-assemble.dependsOn assembleZip, assembleWin, assembleMac
+task assembleAll dependsOn(assembleZip, assembleWin, assembleMac)
 
 //SSH Support
 def usePropertyOrPrompt(property, prompt) {
