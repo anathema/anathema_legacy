@@ -2,11 +2,11 @@ package net.sf.anathema.framework.repository.tree;
 
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.gui.list.veto.Vetor;
+import net.sf.anathema.framework.fx.compat.Dialogs;
 import org.controlsfx.control.action.Action;
-import org.controlsfx.dialog.Dialogs;
 
-import static org.controlsfx.dialog.Dialog.Actions.NO;
-import static org.controlsfx.dialog.Dialog.Actions.YES;
+import static net.sf.anathema.framework.fx.compat.Dialog.Actions.NO;
+import static net.sf.anathema.framework.fx.compat.Dialog.Actions.YES;
 
 public class FxVetor implements Vetor {
   private String title;

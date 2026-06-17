@@ -1,6 +1,6 @@
 package net.sf.anathema.platform.fx.dot;
 
-import com.sun.javafx.Utils;
+import com.sun.javafx.util.Utils;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;

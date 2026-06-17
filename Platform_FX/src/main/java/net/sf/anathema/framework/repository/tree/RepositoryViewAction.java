@@ -7,7 +7,7 @@ import net.sf.anathema.framework.environment.fx.UiEnvironment;
 import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.initialization.ItemTypeCollection;
 import net.sf.anathema.interaction.Command;
-import org.controlsfx.dialog.Dialog;
+import net.sf.anathema.framework.fx.compat.Dialog;
 
 public class RepositoryViewAction implements Command {
   private final IApplicationModel model;

@@ -1,36 +1,29 @@
 package net.sf.anathema.character.equipment.creation.view.fx;
 
-import javafx.event.ActionEvent;
 import net.sf.anathema.character.equipment.creation.presenter.EquipmentStatsDialog;
 import net.sf.anathema.character.equipment.creation.presenter.EquipmentStatsView;
 import net.sf.anathema.framework.environment.fx.DialogFactory;
+import net.sf.anathema.framework.fx.compat.Dialog;
 import net.sf.anathema.lib.gui.dialog.core.StaticOperationResult;
 import net.sf.anathema.lib.gui.dialog.userdialog.OperationResultHandler;
 import net.sf.anathema.lib.message.Message;
-import org.controlsfx.control.action.AbstractAction;
-import org.controlsfx.dialog.Dialog;
+import org.controlsfx.control.action.Action;
 
 public class FxEditStatsDialog implements EquipmentStatsDialog {
-  private final AbstractAction okayAction = new AbstractAction(Dialog.Actions.OK.textProperty().get()){
-    @Override
-    public void handle(ActionEvent actionEvent) {
-      dialog.hide();
-      handler.handleOperationResult(StaticOperationResult.Confirmed());
-    }
-  };
-  private final AbstractAction cancelAction = new AbstractAction(Dialog.Actions.CANCEL.textProperty().get()){
-    @Override
-    public void handle(ActionEvent actionEvent) {
-      dialog.hide();
-      handler.handleOperationResult(StaticOperationResult.Canceled());
-    }
-  };
   private final FxEquipmentStatsView view = new FxEquipmentStatsView();
   private Dialog dialog;
   private String title;
   private OperationResultHandler handler;
   private String messageText;
   private DialogFactory dialogFactory;
+  private final Action okayAction = new Action(Dialog.Actions.OK.getText(), actionEvent -> {
+    dialog.hide();
+    handler.handleOperationResult(StaticOperationResult.Confirmed());
+  });
+  private final Action cancelAction = new Action(Dialog.Actions.CANCEL.getText(), actionEvent -> {
+    dialog.hide();
+    handler.handleOperationResult(StaticOperationResult.Canceled());
+  });
 
   public FxEditStatsDialog(DialogFactory dialogFactory) {
     this.dialogFactory = dialogFactory;

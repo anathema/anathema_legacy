@@ -15,7 +15,10 @@ import java.nio.file.Paths;
 @RegisteredPreferenceModel
 public class RepositoryPreferenceModel implements PreferenceModel {
   public static final PreferenceKey key = new PreferenceKey("framework.repository.location");
-  public static final String DEFAULT_REPOSITORY_LOCATION = "./repository/";
+  // Use an absolute, per-user location (the %USER_HOME% token is expanded by
+  // RepositoryLocationResolver). A relative "./repository/" default fails for a packaged macOS
+  // .app, whose working directory is "/" and is not writable. Matches the Linux launcher default.
+  public static final String DEFAULT_REPOSITORY_LOCATION = "%USER_HOME%/.anathema/repository/";
   private final Path defaultPath = Paths.get(DEFAULT_REPOSITORY_LOCATION);
   private final Announcer<ChangeListener> announcer = Announcer.to(ChangeListener.class);
   private Path repositoryPath;

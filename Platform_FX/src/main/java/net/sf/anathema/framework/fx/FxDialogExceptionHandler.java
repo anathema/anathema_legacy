@@ -3,9 +3,9 @@ package net.sf.anathema.framework.fx;
 import javafx.stage.Window;
 import net.sf.anathema.framework.environment.ExceptionHandler;
 import net.sf.anathema.framework.environment.Resources;
-import org.controlsfx.dialog.Dialogs;
+import net.sf.anathema.framework.fx.compat.Dialogs;
 
-import static org.controlsfx.dialog.DialogStyle.NATIVE;
+import static net.sf.anathema.framework.fx.compat.DialogStyle.NATIVE;
 
 public class FxDialogExceptionHandler implements ExceptionHandler {
 

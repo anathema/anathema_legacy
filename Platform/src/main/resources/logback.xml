@@ -7,7 +7,9 @@
   </appender>
 
   <appender name="FILE" class="ch.qos.logback.core.FileAppender">
-    <file>runtime.log</file>
+    <!-- Absolute, per-user path: a packaged app's working directory ("/") is read-only.
+         logback creates the parent directory if it is missing. -->
+    <file>${user.home}/.anathema/runtime.log</file>
     <encoder>
       <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
     </encoder>

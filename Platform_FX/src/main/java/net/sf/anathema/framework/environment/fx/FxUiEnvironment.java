@@ -9,11 +9,11 @@ import net.sf.anathema.interaction.ProxyAcceleratorMap;
 import net.sf.anathema.lib.gui.file.Extension;
 import net.sf.anathema.lib.gui.file.FileChooserConfiguration;
 import net.sf.anathema.lib.gui.file.SingleFileChooser;
-import org.controlsfx.dialog.Dialog;
+import net.sf.anathema.framework.fx.compat.Dialog;
 
 import java.nio.file.Path;
 
-import static org.controlsfx.dialog.DialogStyle.NATIVE;
+import static net.sf.anathema.framework.fx.compat.DialogStyle.NATIVE;
 
 public class FxUiEnvironment implements UiEnvironment {
 

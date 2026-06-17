@@ -14,10 +14,10 @@ import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.platform.fx.FxTextView;
 import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.platform.tool.FxButtonTool;
-import org.controlsfx.dialog.Dialog;
+import net.sf.anathema.framework.fx.compat.Dialog;
 import org.tbee.javafx.scene.layout.MigPane;
 
-import static org.controlsfx.dialog.Dialog.Actions.OK;
+import static net.sf.anathema.framework.fx.compat.Dialog.Actions.OK;
 
 public class FxUpdateView implements UpdateView {
 

@@ -13,8 +13,8 @@ import net.sf.anathema.platform.fx.Stylesheet;
 import net.sf.anathema.platform.markdown.HtmlConverter;
 import net.sf.anathema.platform.markdown.HtmlText;
 import net.sf.anathema.platform.markdown.WikiText;
+import net.sf.anathema.framework.fx.compat.Dialog;
 import org.apache.commons.io.IOUtils;
-import org.controlsfx.dialog.Dialog;
 import org.tbee.javafx.scene.layout.MigPane;
 
 import java.io.IOException;

@@ -11,13 +11,12 @@ import net.sf.anathema.hero.creation.ToggleButtonPanel;
 import net.sf.anathema.hero.template.HeroTemplate;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.selection.VetoableObjectSelectionView;
+import net.sf.anathema.framework.fx.compat.Dialog;
 import net.sf.anathema.platform.fx.ListSelectionView;
-import org.controlsfx.dialog.Dialog;
 import org.tbee.javafx.scene.layout.MigPane;
 
 import static javafx.scene.control.ScrollPane.ScrollBarPolicy.AS_NEEDED;
 import static javafx.scene.control.ScrollPane.ScrollBarPolicy.NEVER;
-import static org.controlsfx.dialog.DialogStyle.NATIVE;
 
 public class FxCharacterCreationView implements CharacterCreationView {
 
